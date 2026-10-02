@@ -1,0 +1,14 @@
+- generic [ref=f1e79] [cursor=pointer]:
+  - alertdialog:
+    - generic "Alert":
+      - group:
+        - generic [ref=f1e80]: Chia sẻ ghi chú
+        - generic:
+          - generic [ref=f1e81]: Chia sẻ bản đã lưu trên server. Người nhận cần có tài khoản; cần kết nối để quản lý quyền.
+          - generic [ref=f1e90]: Một email chưa đăng ký. Chưa thêm người nhận nào.
+          - textbox "Email người nhận" [ref=f1e83]: web-share-recipient-1790932208856241000@example.test,missing-web-share-1790932208856241000@example.test
+          - button "Quyền khi thêm Chỉ xem" [ref=f1e91]
+          - button "Thêm người nhận" [active] [ref=f1e85]
+          - generic [ref=f1e92]: Chưa có người nhận.
+          - button "Kiểm tra quyền và cập nhật" [ref=f1e93]
+      - button "Đóng" [ref=f1e88]

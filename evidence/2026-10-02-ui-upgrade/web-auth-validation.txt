@@ -1,0 +1,28 @@
+### Page
+- Page URL: http://127.0.0.1:7357/
+- Page Title: NoteTogether
+### Snapshot
+```yaml
+- generic [ref=e4]:
+  - generic:
+    - generic:
+      - generic:
+        - generic:
+          - generic:
+            - group:
+              - generic:
+                - generic [ref=e8]: NoteTogether
+                - generic [ref=e9]: Chào mừng trở lại
+                - generic [ref=e10]: Ghi lại hôm nay. Dễ dàng tìm lại ngày mai.
+                - generic [ref=e11]:
+                  - textbox "Email" [invalid] [ref=e12]
+                  - generic [ref=e20]: Nhập email hợp lệ
+                - generic [ref=e13]:
+                  - textbox "Mật khẩu" [invalid] [ref=e14]
+                  - button "Hiện mật khẩu" [ref=e15]
+                  - generic [ref=e21]: Ít nhất 10 ký tự
+                - button "Đăng nhập" [active] [ref=e16]
+                - button "Chưa có tài khoản? Đăng ký" [ref=e17]
+                - button "Quên mật khẩu" [ref=e18]
+                - button "Kích hoạt / đặt lại" [ref=e19]
+```

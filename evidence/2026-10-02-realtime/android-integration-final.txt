@@ -1,0 +1,8 @@
+00:00 +0: loading D:/flutter cuoi ki/integration_test/realtime_test.dart
+Running Gradle task 'assembleDebug'...                             31,2s
+√ Built build\app\outputs\flutter-apk\app-debug.apk
+Installing build\app\outputs\flutter-apk\app-debug.apk...          931ms
+00:00 +0: Native live updates, reconnect, frozen-base conflict and realtime access recovery
+PASS real SSE UI auto-refresh / editor save / lifecycle reconnect / frozen-base409 / viewer-revoke / encrypted reopen
+00:19 +1: (tearDownAll)
+00:20 +1: All tests passed!

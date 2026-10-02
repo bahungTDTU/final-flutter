@@ -1,0 +1,5 @@
+
+Algorithm : SHA256
+Hash      : 79306B3612208D0B05A566284F807ABC6358D5BF0878F11815A963EFF23A2DF5
+Path      : D:\flutter cuoi ki\build\app\outputs\flutter-apk\app-release.apk
+

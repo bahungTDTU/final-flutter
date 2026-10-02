@@ -1,0 +1,13 @@
+Formatted 56 files (0 changed) in 0.69 seconds.
+Analyzing flutter cuoi ki...                                    
+
+   info - The import of 'package:flutter/gestures.dart' is unnecessary because all of the used elements are also provided by the import of 'dart:ui'. Try removing the import directive - test\prism_motion_test.dart:3:8 - unnecessary_import
+
+1 issue found. (ran in 6.2s)
+Analyze failed with exit code 1
+At D:\flutter cuoi ki\scripts\toolchain.ps1:4 char:66
++ ... ITCODE -ne 0) { throw "$Step failed with exit code $LASTEXITCODE" } }
++                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (Analyze failed with exit code 1:String) [], RuntimeException
+    + FullyQualifiedErrorId : Analyze failed with exit code 1
+ 

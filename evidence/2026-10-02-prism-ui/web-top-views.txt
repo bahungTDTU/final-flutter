@@ -1,0 +1,27 @@
+### Error
+TimeoutError: Timeout 5000ms exceeded.
+Call log:
+[2m  - waiting for locator('aria-ref=f1e99')[22m
+[2m    - locator resolved to <flt-semantics tabindex="0" role="button" flt-tappable="" id="flt-semantic-node-125">Đóng tùy chỉnh</flt-semantics>[22m
+[2m  - attempting click action[22m
+[2m    2 × waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <flt-semantics id="flt-semantic-node-145"></flt-semantics> intercepts pointer events[22m
+[2m    - retrying click action[22m
+[2m    - waiting 20ms[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+
+### Ran Playwright code
+```js
+await (async page => { await page.mouse.move(1100,350); await page.mouse.wheel(0,-3000); await page.waitForTimeout(600); })(page);
+```
+### Ran Playwright code
+```js
+await (async page => { await page.setViewportSize({width:768,height:1024}); await page.waitForTimeout(600); })(page);
+```
+### Ran Playwright code
+```js
+await (async page => { await page.setViewportSize({width:390,height:844}); await page.waitForTimeout(600); await page.mouse.move(280,400); await page.mouse.wheel(0,-3000); await page.waitForTimeout(600); })(page);
+```

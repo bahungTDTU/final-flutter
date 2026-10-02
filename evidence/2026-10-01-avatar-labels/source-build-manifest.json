@@ -1,0 +1,95 @@
+{
+  "generated_utc": "2026-10-01T15:01:54.3245152Z",
+  "commit": null,
+  "scope": "Avatar and server labels final source/build; no Git commit or publication",
+  "files": [
+    {
+      "path": "lib/data/api.dart",
+      "sha256": "b988b426ca8a397b3b6d947bf9815dd3103ec0cb06ccdfca4c10738d12e85b39"
+    },
+    {
+      "path": "lib/data/avatar_picker.dart",
+      "sha256": "c582dba1f5c082b1c0d6cd9bfaceb71bbf4edb50d9981a8e5b156343dadf5854"
+    },
+    {
+      "path": "lib/domain/note.dart",
+      "sha256": "f5cec0175db5016c6b85a2bde3c92ed022ac0a253ac4e1f6fe235611fb604e13"
+    },
+    {
+      "path": "lib/state/app_controller.dart",
+      "sha256": "038fc69963eb94b8189c28cff09891a65977e95b6346fc58b810a26c2b58eefe"
+    },
+    {
+      "path": "lib/ui/avatar_editor.dart",
+      "sha256": "3cff9051ecdba48498e37d2dfbbb96346f8d4c7f46db981674526c1246980eb3"
+    },
+    {
+      "path": "lib/ui/home.dart",
+      "sha256": "6f01f351f0367b4efbfd98e9edb176e6236ad5373d3eddd3d5849d90c714278b"
+    },
+    {
+      "path": "lib/ui/editor.dart",
+      "sha256": "5afb5b36e88368d5c76c23843b6dd51e27cb71b19145ffb4e89cb789b88e8b20"
+    },
+    {
+      "path": "backend/app.py",
+      "sha256": "04310c3505de5dfb2591e2591c985abceb586beb6fdc474b8c6fea358094134e"
+    },
+    {
+      "path": "backend/catalogue.py",
+      "sha256": "bad6f5c52c57b5374941e0aa63579d08224923c407abfbafa2dcefbedf1c86b9"
+    },
+    {
+      "path": "backend/avatars.py",
+      "sha256": "84fff8e11aa6c1c335de21f911f470ac523480620a9afb732a02e3fbbb3afe6d"
+    },
+    {
+      "path": "backend/schema.sql",
+      "sha256": "f16fd679a61032e1b7c29b8943e5f2cd8214bd5048e1ddc13bf45306c48a13fe"
+    },
+    {
+      "path": "backend/requirements.txt",
+      "sha256": "336bff20d62af72411f3aab653a65b93b122f7d2a074f9bb03a1c4462d39731a"
+    },
+    {
+      "path": "pubspec.yaml",
+      "sha256": "7f877d6de53edd3d63258ddc8564a4a79fd4c8cb341829ba33945383e686f010"
+    },
+    {
+      "path": "pubspec.lock",
+      "sha256": "58671341f7ae04a87771862100008d7d63c775aa83c6e1c265825df0696a5b59"
+    },
+    {
+      "path": "android/gradle.properties",
+      "sha256": "4d46799771bfe9f41bb8ac94eefeee71ed45688f02a625601aaed4efb8472748"
+    },
+    {
+      "path": "scripts/start_backend.ps1",
+      "sha256": "3282da39057c7f6609fb5b10a467297738ca8a672907c82447aa6a59d545a570"
+    },
+    {
+      "path": "test/avatar_labels_test.dart",
+      "sha256": "3d75add9d993191db04a3e7df1be590412fcb303c3d93a528372ed45c7fa6ea6"
+    },
+    {
+      "path": "backend/tests/test_avatar_labels.py",
+      "sha256": "0b64f36ecf79d6eb8b4b1d90275fcfa80f6cbfb20c49f3bc6e386852e56b0d61"
+    },
+    {
+      "path": "integration_test/avatar_labels_test.dart",
+      "sha256": "43348e26fe8c4be7f6e44f71249b4e612128bb9a9ed57884c3c6eed40aa13436"
+    },
+    {
+      "path": "build/web/main.dart.js",
+      "sha256": "cbd0e127cd4aeaf43cb549fcf6a6b72ad2b3ff84543032144506971af04ee41f"
+    },
+    {
+      "path": "build/web/offline_worker.js",
+      "sha256": "a262eda7fb2bbd9d194e392d695bd093343ff022b9c435592aef3b9bffa3b825"
+    },
+    {
+      "path": "build/app/outputs/flutter-apk/app-release.apk",
+      "sha256": "3f59f5ac753e63ed10a9373a1b4eff53402c2048b3f79042e0cdf7952c357229"
+    }
+  ]
+}

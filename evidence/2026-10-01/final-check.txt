@@ -1,0 +1,50 @@
+Formatted 16 files (0 changed) in 0.13 seconds.
+Resolving dependencies...
+Downloading packages...
+  code_assets 1.2.1 (2.1.0 available)
+  cupertino_icons 1.0.9 (2.0.0 available)
+  hooks 2.0.2 (2.2.0 available)
+  material_color_utilities 0.13.0 (0.13.1 available)
+  meta 1.18.3 (1.19.0 available)
+  objective_c 9.5.0 (9.6.2 available)
+  record_use 0.6.0 (1.1.1 available)
+  test_api 0.7.12 (0.7.14 available)
+  vector_math 2.4.0 (2.4.3 available)
+Got dependencies!
+9 packages have newer versions incompatible with dependency constraints.
+Try `flutter pub outdated` for more information.
+Analyzing flutter cuoi ki...                                    
+No issues found! (ran in 4.2s)
+Resolving dependencies...
+Downloading packages...
+  code_assets 1.2.1 (2.1.0 available)
+  cupertino_icons 1.0.9 (2.0.0 available)
+  hooks 2.0.2 (2.2.0 available)
+  material_color_utilities 0.13.0 (0.13.1 available)
+  meta 1.18.3 (1.19.0 available)
+  objective_c 9.5.0 (9.6.2 available)
+  record_use 0.6.0 (1.1.1 available)
+  test_api 0.7.12 (0.7.14 available)
+  vector_math 2.4.0 (2.4.3 available)
+Got dependencies!
+9 packages have newer versions incompatible with dependency constraints.
+Try `flutter pub outdated` for more information.
+00:00 +0: loading D:/flutter cuoi ki/test/domain_test.dart
+00:00 +0: D:/flutter cuoi ki/test/domain_test.dart: Pinned time is descending, unpinned follows, tie-break is stable
+00:00 +1: D:/flutter cuoi ki/test/domain_test.dart: Invalid draft persists without creating remote operations
+00:00 +2: D:/flutter cuoi ki/test/domain_test.dart: Offline operations preserve immutable payload and sequential base revisions
+00:00 +3: D:/flutter cuoi ki/test/domain_test.dart: Accounts use separate local namespaces and logout clears visible state
+00:00 +4: D:/flutter cuoi ki/test/widgets_test.dart: Editor preserves base revision when remote changes while typing
+00:01 +5: D:/flutter cuoi ki/test/widgets_test.dart: Unverified user sees banner and can open editor
+00:01 +6: D:/flutter cuoi ki/test/widgets_test.dart: Editor keeps invalid local draft, then auto-saves valid content
+00:01 +7: D:/flutter cuoi ki/test/widgets_test.dart: Delete dialog cancellation leaves note intact; confirmation deletes
+00:01 +8: D:/flutter cuoi ki/test/widgets_test.dart: Compact layout and scaled text do not overflow
+00:01 +9: All tests passed!
+............                                                             [100%]
+============================== warnings summary ===============================
+.venv\Lib\site-packages\fastapi\testclient.py:1
+  D:\flutter cuoi ki\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+12 passed, 1 warning in 5.04s

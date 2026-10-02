@@ -1,0 +1,42 @@
+00:00 +0: loading D:/flutter cuoi ki/integration_test/realtime_test.dart
+Running Gradle task 'assembleDebug'...                             24,8s
+√ Built build\app\outputs\flutter-apk\app-debug.apk
+Installing build\app\outputs\flutter-apk\app-debug.apk...        1.275ms
+00:00 +0: Native live updates, reconnect, frozen-base conflict and realtime access recovery
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following ClientException was thrown running a test:
+Connection closed while receiving data, uri=http://127.0.0.1:8000/events
+
+When the exception was thrown, this was the stack:
+#0      _HttpIncoming.listen.<anonymous closure> (dart:_http/http_impl.dart:426:11)
+#16     _HttpParser._reportBodyError (dart:_http/http_parser.dart:1311:22)
+#17     _HttpParser._onDone (dart:_http/http_parser.dart:979:9)
+#29     _Socket.destroy (dart:io-patch/socket_patch.dart:2802:17)
+#30     _HttpClientConnection.destroyFromExternal (dart:_http/http_impl.dart:2451:13)
+#31     _ConnectionTarget.close (dart:_http/http_impl.dart:2644:11)
+#32     _HttpClient._closeConnections (dart:_http/http_impl.dart:3165:24)
+#33     _HttpClient.close (dart:_http/http_impl.dart:2903:5)
+#34     IOClient.close (package:http/src/io_client.dart:243:15)
+#35     RealtimeFeed.stop (package:note_together/data/realtime_feed.dart:184:14)
+#36     AppController.setForeground (package:note_together/state/app_controller.dart:28:17)
+#37     main.<anonymous closure> (file:///D:/flutter%20cuoi%20ki/integration_test/realtime_test.dart:152:9)
+<asynchronous suspension>
+#38     testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#39     TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1953:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided 27 frames from dart:async and package:stack_trace)
+
+The test description was:
+  Native live updates, reconnect, frozen-base conflict and realtime access recovery
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:11 +0 -1: Native live updates, reconnect, frozen-base conflict and realtime access recovery [E]
+  Test failed. See exception logs above.
+  The test description was: Native live updates, reconnect, frozen-base conflict and realtime access recovery
+  
+00:11 +0 -1: (tearDownAll)
+00:12 +0 -1: Some tests failed.
+
+Failing tests:
+  D:/flutter cuoi ki/integration_test/realtime_test.dart: Native live updates, reconnect, frozen-base conflict and realtime access recovery

@@ -1,0 +1,26 @@
+00:00 +0: loading D:/flutter cuoi ki/test/ui_redesign_test.dart
+00:00 +0: Grid accommodates largest note font, long labels and conflict action
+00:00 +1: Password dialog validates confirmation and retains form on service failure
+00:01 +2: Home controls have labeled Android-sized touch targets
+00:01 +3: Home/auth/editor/settings fit Size(360.0, 800.0) at scale 1.0
+00:01 +4: Home/auth/editor/settings fit Size(360.0, 800.0) at scale 1.5
+00:02 +5: Home/auth/editor/settings fit Size(360.0, 800.0) at scale 2.0
+00:02 +6: Home/auth/editor/settings fit Size(390.0, 844.0) at scale 1.0
+00:02 +7: Home/auth/editor/settings fit Size(390.0, 844.0) at scale 1.5
+00:02 +8: Home/auth/editor/settings fit Size(390.0, 844.0) at scale 2.0
+00:03 +9: Home/auth/editor/settings fit Size(844.0, 390.0) at scale 1.0
+00:03 +10: Home/auth/editor/settings fit Size(844.0, 390.0) at scale 1.5
+00:03 +11: Home/auth/editor/settings fit Size(844.0, 390.0) at scale 2.0
+00:03 +12: Home/auth/editor/settings fit Size(768.0, 1024.0) at scale 1.0
+00:04 +13: Home/auth/editor/settings fit Size(768.0, 1024.0) at scale 1.5
+00:04 +14: Home/auth/editor/settings fit Size(768.0, 1024.0) at scale 2.0
+00:04 +15: Home/auth/editor/settings fit Size(1280.0, 800.0) at scale 1.0
+00:04 +16: Home/auth/editor/settings fit Size(1280.0, 800.0) at scale 1.5
+00:04 +17: Home/auth/editor/settings fit Size(1280.0, 800.0) at scale 2.0
+00:05 +18: Home/auth/editor/settings fit Size(1440.0, 900.0) at scale 1.0
+00:05 +19: Home/auth/editor/settings fit Size(1440.0, 900.0) at scale 1.5
+00:05 +20: Home/auth/editor/settings fit Size(1440.0, 900.0) at scale 2.0
+00:05 +21: Locked card never exposes title content or labels; viewer has no owner menu
+00:05 +22: Search clear and AND filter preserve note list and distinguish empty results
+00:06 +23: Resize and theme retain editor text selection, ID and frozen revision
+00:06 +24: All tests passed!

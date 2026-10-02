@@ -1,0 +1,41 @@
+### Page
+- Page URL: http://127.0.0.1:7357/
+- Page Title: NoteTogether
+- Console: 4 errors, 0 warnings
+### Snapshot
+```yaml
+- generic [ref=f5e4]:
+  - generic:
+    - generic:
+      - generic:
+        - generic:
+          - generic:
+            - generic:
+              - button "Quay lại" [ref=f5e63]
+              - heading "Không gian viết" [level=2] [ref=f5e64]
+              - button "Đổi giao diện" [ref=f5e65]
+              - button "Đồng bộ" [ref=f5e66]
+            - group:
+              - generic [ref=f5e67]: Một điều đáng ghi nhớ
+              - generic [ref=f5e68]: Viết theo cách của bạn. Các thay đổi được tự động lưu.
+              - generic [ref=f5e69]: Đã lưu trên thiết bị. Sẽ đồng bộ khi có kết nối. Trực tiếp
+              - generic [ref=f5e70]:
+                - textbox "Tiêu đề" [ref=f5e71]:
+                  - /placeholder: Điều bạn muốn ghi nhớ
+                  - text: UI Web bản nháp offline
+                - generic [ref=f5e72]: Còn lại 177 ký tự
+              - checkbox "Ghim ghi chú" [ref=f5e78]
+              - checkbox "Cá nhân" [ref=f5e79]
+              - checkbox "Học tập" [ref=f5e80]
+              - checkbox "Nhóm" [ref=f5e81]
+              - checkbox "Đồ án" [ref=f5e82]
+              - generic [ref=f5e73]:
+                - textbox "Nội dung" [active] [ref=f5e74]:
+                  - /placeholder: Bắt đầu viết…
+                  - text: Nội dung được giữ trên thiết bị khi mất kết nối.
+                - generic [ref=f5e75]: Còn lại 99.952 ký tự
+              - generic [ref=f5e76]: 48 ký tự
+              - generic [ref=f5e77]: Tự động lưu. Nhập tiêu đề và nội dung để tạo ghi chú; bản nháp chưa hoàn chỉnh được giữ riêng.
+```
+### Events
+- New console entries: .playwright-cli\console-2026-10-02T11-17-07-469Z.log#L4

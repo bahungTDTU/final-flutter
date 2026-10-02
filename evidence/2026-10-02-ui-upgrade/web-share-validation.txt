@@ -1,0 +1,26 @@
+### Page
+- Page URL: http://127.0.0.1:7357/
+- Page Title: NoteTogether
+- Console: 24 errors, 0 warnings
+### Snapshot
+```yaml
+- generic [ref=f6e63] [cursor=pointer]:
+  - alertdialog:
+    - generic "Thông báo":
+      - group:
+        - generic [ref=f6e64]: Chia sẻ ghi chú
+        - generic:
+          - generic [ref=f6e65]: Người nhận cần có tài khoản. Chia sẻ bản đã đồng bộ và quản lý quyền khi có kết nối.
+          - generic [ref=f6e66]: Mời người cộng tác
+          - generic [ref=f6e67]: Thêm một hoặc nhiều email, rồi chọn quyền truy cập.
+          - generic [ref=f6e68]:
+            - textbox "Email người nhận" [invalid] [ref=f6e69]
+            - generic [ref=f6e77]: Nhập từ 1 đến 20 email.
+          - button "Quyền khi thêm Chỉ xem" [ref=f6e70]
+          - button "Thêm người nhận" [active] [ref=f6e71]
+          - generic [ref=f6e72]: Người có quyền truy cập
+          - generic [ref=f6e73]: 0 người nhận
+          - generic [ref=f6e74]: Chưa có người nhận.
+          - button "Kiểm tra quyền và cập nhật" [ref=f6e75]
+      - button "Đóng" [ref=f6e76]
+```

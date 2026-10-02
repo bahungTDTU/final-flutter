@@ -1,0 +1,37 @@
+### Page
+- Page URL: http://localhost:7357/
+- Page Title: NoteTogether
+### Snapshot
+```yaml
+- generic [ref=f3e5]:
+  - generic:
+    - generic:
+      - generic:
+        - generic:
+          - generic:
+            - generic:
+              - heading "NoteTogether" [active] [level=2] [ref=f3e6]
+              - button "Hồ sơ và tùy chỉnh" [ref=f3e7]
+            - generic:
+              - group:
+                - generic [ref=f3e8]: Ghi chú của bạn
+                - generic [ref=f3e9]: 2 ghi chú
+                - button "Đã đồng bộ" [ref=f3e10]
+                - generic [ref=f3e11]: Email của bạn chưa được xác minh.
+                - button "Kiểm tra" [ref=f3e12]
+                - textbox "Tìm ghi chú" [ref=f3e14]
+                - button "Lưới" [ref=f3e15]
+                - button "Danh sách" [ref=f3e16]
+                - button "Quản lý nhãn" [ref=f3e17]
+                - generic [ref=f3e18]: 1 bản chỉnh sửa được giữ trong kho phục hồi local.
+                - button "Phục hồi" [ref=f3e19]
+                - generic [ref=f3e20]: Tất cả ghi chú
+                - group "Recovered browser copy Unfinished browser edit preserved after remote lock 01/10/2026" [ref=f3e21]:
+                  - button "Thao tác ghi chú" [ref=f3e22]
+                - button "Ghi chú đã khóa Mở khóa để xem nội dung. Đã khóa" [ref=f3e23]
+            - button "Ghi chú mới" [ref=f3e24]
+            - tablist:
+              - tab "Ghi chú" [selected] [ref=f3e25]
+              - tab "Được chia sẻ" [ref=f3e26]
+              - tab "Hỏi ghi chú" [ref=f3e27]
+```

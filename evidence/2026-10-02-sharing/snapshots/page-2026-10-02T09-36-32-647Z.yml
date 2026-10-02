@@ -1,0 +1,14 @@
+- generic [ref=f3e30]:
+  - alertdialog:
+    - generic "Alert":
+      - group:
+        - generic [ref=f3e31]: Chia sẻ ghi chú
+        - generic:
+          - generic [ref=f3e32]: Chia sẻ bản đã lưu trên server. Người nhận cần có tài khoản; cần kết nối để quản lý quyền.
+          - textbox "Email người nhận" [ref=f3e34]
+          - button "Quyền khi thêm Chỉ xem" [ref=f3e35]
+          - button "Thêm người nhận" [ref=f3e36]
+          - 'button "Web other web-share-other-1790932208856241000@example.test Chia sẻ: 02/10/2026 16:15 Quyền của web-share-other-1790932208856241000@example.test Chỉ xem" [ref=f3e37]':
+            - button "Thu hồi quyền" [ref=f3e38]
+          - button "Kiểm tra quyền và cập nhật" [ref=f3e39]
+      - button "Đóng" [ref=f3e40]

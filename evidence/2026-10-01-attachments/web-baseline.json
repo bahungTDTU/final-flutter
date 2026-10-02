@@ -1,0 +1,36 @@
+{
+  "stage": "baseline",
+  "utc": "2026-10-01T15:44:03.038778+00:00",
+  "commit": null,
+  "note_id": "3df559e7-7e58-488c-873c-900c892e31cf",
+  "note_revision": 2,
+  "note_content_preserved": true,
+  "attachment_count": 3,
+  "files": [
+    {
+      "id": "d661819e-3496-418a-a86e-3d49bf5ce30b",
+      "name": "attachment-fixture.png",
+      "kind": "image",
+      "media_type": "image/png",
+      "size": 672,
+      "created_at": "2026-10-01T15:36:55.194080+00:00"
+    },
+    {
+      "id": "7ce0cafe-9711-4d79-97a5-306c97fea092",
+      "name": "attachment-fixture.mp4",
+      "kind": "video",
+      "media_type": "video/mp4",
+      "size": 9361,
+      "created_at": "2026-10-01T15:36:55.300419+00:00"
+    },
+    {
+      "id": "b1c9d59c-8496-4f9e-9072-65668aea95b9",
+      "name": "attachment-fixture.txt",
+      "kind": "file",
+      "media_type": "text/plain",
+      "size": 42,
+      "created_at": "2026-10-01T15:36:55.417127+00:00"
+    }
+  ],
+  "result": "PASS"
+}

@@ -1,0 +1,20 @@
+### Result
+{
+  "utc": "2026-10-02T09:34:38.235Z",
+  "viewport": [
+    390,
+    844,
+    1.0000000298023224
+  ],
+  "main_sha256": "8c454b838c14903021dd08dbfa62d1f926af2ffa17c0dc0b82e2f0541ea798b8",
+  "match": true,
+  "caches": [
+    "notetogether-static-7e5e4205a9ecb007",
+    "notetogether-static-71b17977c80275dc"
+  ],
+  "worker": "http://127.0.0.1:7357/offline_worker.js"
+}
+### Ran Playwright code
+```js
+await page.evaluate('async () => { const bytes=await (await fetch("/main.dart.js")).arrayBuffer(); const digest=Array.from(new Uint8Array(await crypto.subtle.digest("SHA-256",bytes))).map(b=>b.toString(16).padStart(2,"0")).join(""); return {utc:new Date().toISOString(), viewport:[innerWidth,innerHeight,devicePixelRatio], main_sha256:digest, match:digest==="8c454b838c14903021dd08dbfa62d1f926af2ffa17c0dc0b82e2f0541ea798b8", caches:await caches.keys(), worker:navigator.serviceWorker.controller?.scriptURL}; }');
+```

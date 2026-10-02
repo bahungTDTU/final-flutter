@@ -1,0 +1,35 @@
+### Page
+- Page URL: http://127.0.0.1:7357/
+- Page Title: NoteTogether
+### Snapshot
+```yaml
+- generic [ref=f2e5]:
+  - generic:
+    - generic:
+      - generic:
+        - generic:
+          - generic:
+            - generic:
+              - heading "NoteTogether" [active] [level=2] [ref=f2e6]
+              - button "Hồ sơ và tùy chỉnh" [ref=f2e7]
+            - generic:
+              - group:
+                - generic [ref=f2e8]: Ghi chú của bạn
+                - generic [ref=f2e9]: 0 ghi chú
+                - button "Trực tiếp" [ref=f2e10]
+                - generic [ref=f2e11]: Email của bạn chưa được xác minh.
+                - button "Xác minh" [ref=f2e12]
+                - textbox "Tìm ghi chú" [ref=f2e14]
+                - button "Lưới" [ref=f2e15]
+                - button "Danh sách" [ref=f2e16]
+                - button "Quản lý nhãn" [ref=f2e17]
+                - generic [ref=f2e18]: 1 bản chỉnh sửa được giữ trong kho phục hồi local.
+                - button "Phục hồi" [ref=f2e19]
+                - generic [ref=f2e20]: Bắt đầu với ghi chú đầu tiên
+                - generic [ref=f2e21]: Một ý tưởng, một bài học, một điều cần nhớ.
+            - button "Ghi chú mới" [ref=f2e22]
+            - tablist:
+              - tab "Ghi chú" [selected] [ref=f2e23]
+              - tab "Được chia sẻ" [ref=f2e24]
+              - tab "Hỏi ghi chú" [ref=f2e25]
+```

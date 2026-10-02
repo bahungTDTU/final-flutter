@@ -1,0 +1,15 @@
+{
+  "verified": true,
+  "notes": [
+    [
+      "Ghi chú kiểm chứng Web",
+      "Nội dung tự lưu và giữ sau khi tải lạiNội dung sửa khi mất mạng 01/10",
+      2
+    ],
+    [
+      "Ghi chú offline Web",
+      "Tạo khi mất mạng và giữ sau reload",
+      1
+    ]
+  ]
+}

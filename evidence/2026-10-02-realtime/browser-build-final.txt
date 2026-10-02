@@ -1,0 +1,17 @@
+### Result
+{
+  "viewport": [
+    390,
+    844,
+    1.0000000298023224
+  ],
+  "worker": "http://127.0.0.1:7357/offline_worker.js",
+  "caches": [
+    "notetogether-static-af4ed9f3afad7268"
+  ],
+  "mainSha256": "8601d48caa8d6a84a78992160e8dd0035d0513d17cadcd8ac8e46c090c105596"
+}
+### Ran Playwright code
+```js
+await page.evaluate('async () => ({viewport:[innerWidth,innerHeight,devicePixelRatio],worker:navigator.serviceWorker.controller?.scriptURL,caches:await caches.keys(),mainSha256:Array.from(new Uint8Array(await crypto.subtle.digest(\'SHA-256\',await (await fetch(\'/main.dart.js\',{cache:\'no-store\'})).arrayBuffer()))).map(x=>x.toString(16).padStart(2,\'0\')).join(\'\')})');
+```

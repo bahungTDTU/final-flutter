@@ -1,0 +1,13 @@
+{
+  "stage": "after",
+  "note_id": "cf3d7eeb-6d10-440a-b3c2-0feddfa73920",
+  "content": "Kiểm chứng UI mới: ghi chú được giữ trên thiết bị khi mất mạng và đồng bộ khi có kết nối.",
+  "pinned": true,
+  "account_note_count": 3,
+  "preferences": {
+    "grid": true,
+    "dark": true,
+    "font_size": 18.0
+  },
+  "commit": null
+}

@@ -1,0 +1,2 @@
+[  363109ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://127.0.0.1:8000/notes/37ed00db-ae1b-4f4d-ada8-f3caa539034c/shares/sync:0
+[ 1762673ms] [ERROR] Failed to load resource: the server responded with a status of 423 (Locked) @ http://127.0.0.1:8000/notes/37ed00db-ae1b-4f4d-ada8-f3caa539034c/shares:0

@@ -1,0 +1,31 @@
+00:00 +0: loading D:/flutter cuoi ki/test/realtime_test.dart
+00:00 +0: SSE parser handles chunk boundaries, comments, CRLF and expiration
+00:00 +1: Malformed, sensitive or oversized frames are rejected
+00:00 +2: Reconnect catches up, deduplicates changes and never puts token in URL
+00:00 +3: Account replacement and stop cancel old stream and reconnect timers
+00:00 +3 -1: Account replacement and stop cancel old stream and reconnect timers [E]
+  Expected: <true>
+    Actual: <false>
+  
+  package:matcher                                     expect
+  package:flutter_test/src/widget_tester.dart 473:18  expect
+  test\realtime_test.dart 171:7                       main.<fn>
+  
+00:00 +3 -1: Expired stream calls session handler once and does not retry
+00:00 +4 -1: Signal during GET drains another refresh and preserves latest draft
+00:00 +5 -1: Foreground resume catches up; background and logout close authenticated stream
+00:00 +5 -2: Foreground resume catches up; background and logout close authenticated stream [E]
+  Expected: <true>
+    Actual: <false>
+  
+  package:matcher                                     expect
+  package:flutter_test/src/widget_tester.dart 473:18  expect
+  test\realtime_test.dart 280:5                       main.<fn>
+  
+00:00 +5 -2: Clean live editor preserves selection and explicitly opens a new base
+00:01 +6 -2: Dirty live editor keeps typed content and frozen base for conflict
+00:02 +7 -2: Some tests failed.
+
+Failing tests:
+  D:/flutter cuoi ki/test/realtime_test.dart: Account replacement and stop cancel old stream and reconnect timers
+  D:/flutter cuoi ki/test/realtime_test.dart: Foreground resume catches up; background and logout close authenticated stream

@@ -1,0 +1,10 @@
+00:00 +0: loading D:/flutter cuoi ki/test/domain_test.dart
+00:00 +0: D:/flutter cuoi ki/test/domain_test.dart: Pinned time is descending, unpinned follows, tie-break is stable
+00:00 +1: D:/flutter cuoi ki/test/domain_test.dart: Invalid draft persists without creating remote operations
+00:00 +2: D:/flutter cuoi ki/test/domain_test.dart: Offline operations preserve immutable payload and sequential base revisions
+00:00 +3: D:/flutter cuoi ki/test/domain_test.dart: Accounts use separate local namespaces and logout clears visible state
+00:00 +4: D:/flutter cuoi ki/test/widgets_test.dart: Unverified user sees banner and can open editor
+00:01 +5: D:/flutter cuoi ki/test/widgets_test.dart: Editor keeps invalid local draft, then auto-saves valid content
+00:01 +6: D:/flutter cuoi ki/test/widgets_test.dart: Delete dialog cancellation leaves note intact; confirmation deletes
+00:01 +7: D:/flutter cuoi ki/test/widgets_test.dart: Compact layout and scaled text do not overflow
+00:01 +8: All tests passed!

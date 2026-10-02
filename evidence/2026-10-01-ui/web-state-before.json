@@ -1,0 +1,13 @@
+{
+  "stage": "before",
+  "note_id": "cf3d7eeb-6d10-440a-b3c2-0feddfa73920",
+  "content": "Nội dung sau sửa routeNội dung sau sửa route. Kiểm chứng UI mới giữ ý tưởng khi đổi theme và resize.",
+  "pinned": true,
+  "account_note_count": 3,
+  "preferences": {
+    "grid": true,
+    "dark": true,
+    "font_size": 18.0
+  },
+  "commit": null
+}

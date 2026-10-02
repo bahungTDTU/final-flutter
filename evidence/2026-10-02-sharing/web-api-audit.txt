@@ -1,0 +1,4 @@
+{"check": "PASS", "note_id": "37ed00db-ae1b-4f4d-ada8-f3caa539034c", "content_revision": 1, "share_revision": 1, "recipient_count": 2, "owner_name": "Web owner", "shared_at": "2026-10-02T09:15:56.461341+00:00", "role": "viewer", "stranger": 404, "recipient_catalogue": 403}
+{"check": "PASS", "note_id": "37ed00db-ae1b-4f4d-ada8-f3caa539034c", "content_revision": 1, "share_revision": 2, "recipient_count": 2, "owner_name": "Web owner", "shared_at": "2026-10-02T09:15:56.461341+00:00", "role": "editor", "stranger": 404, "recipient_catalogue": 403}
+{"check": "PASS after UI revoke", "note_id": "37ed00db-ae1b-4f4d-ada8-f3caa539034c", "content_revision": 1, "share_revision": 3, "recipient_count": 1, "recipient_read": 404, "content_unchanged": true}
+{"check": "PASS after UI revoke", "note_id": "37ed00db-ae1b-4f4d-ada8-f3caa539034c", "content_revision": 1, "share_revision": 3, "recipient_count": 1, "recipient_read": 404, "content_unchanged": true}

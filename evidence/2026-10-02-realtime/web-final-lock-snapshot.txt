@@ -1,0 +1,15 @@
+### Page
+- Page URL: http://127.0.0.1:7357/
+- Page Title: NoteTogether
+- Console: 4 errors, 0 warnings
+### Snapshot
+```yaml
+- generic [active] [ref=f5e5]:
+  - generic:
+    - generic:
+      - generic:
+        - generic:
+          - generic:
+            - button "Back" [ref=f5e56]
+            - generic [ref=f5e57]: Ghi chú đã bị khóa.
+```

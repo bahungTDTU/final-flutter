@@ -1,0 +1,12 @@
+00:00 +0: loading D:/flutter cuoi ki/integration_test/attachments_test.dart
+Running Gradle task 'assembleDebug'...                          
+Warning: SDK processing. This version only understands SDK XML versions up to 3 but an SDK XML file of version 4 was encountered. This can happen if you use versions of Android Studio and the command-line tools that were released at different times.
+Running Gradle task 'assembleDebug'...                            125,9s
+√ Built build\app\outputs\flutter-apk\app-debug.apk
+Installing build\app\outputs\flutter-apk\app-debug.apk...        2.418ms
+00:00 +0: Actual native attachment picker, private image/video preview and SAF save
+QA_ATTACHMENT_PICKER_READY: choose attachment-fixture.png in DocumentsUI.
+QA_VIDEO_PLAYED: initialized H264 MP4; position advanced.
+QA_ATTACHMENT_SAVE_READY: save attachment-fixture.txt through DocumentsUI.
+02:34 +1: (tearDownAll)
+02:35 +1: All tests passed!

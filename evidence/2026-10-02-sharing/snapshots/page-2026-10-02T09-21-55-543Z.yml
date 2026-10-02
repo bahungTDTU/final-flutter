@@ -1,0 +1,27 @@
+- generic [ref=f1e5] [cursor=pointer]:
+  - generic:
+    - generic:
+      - generic:
+        - generic:
+          - generic:
+            - generic:
+              - heading "NoteTogether" [level=2] [ref=f1e19]
+              - button "Hồ sơ và tùy chỉnh" [ref=f1e20]
+            - generic:
+              - group:
+                - generic [ref=f1e37]: Được chia sẻ
+                - generic [ref=f1e38]: 1 ghi chú
+                - button "Đã đồng bộ" [ref=f1e39]
+                - generic [ref=f1e40]: Email của bạn chưa được xác minh.
+                - button "Xác minh" [ref=f1e41]
+                - textbox "Tìm ghi chú" [ref=f1e43]
+                - button "Lưới" [ref=f1e44]
+                - button "Danh sách" [ref=f1e45]
+                - button "Quản lý nhãn" [ref=f1e46]
+                - generic [ref=f1e47]: Tất cả ghi chú
+                - button "Được chia sẻ với bạn Web sharing fixture Original Web content Từ Web owner · 02/10/2026 16:15 Ghi chú được chia sẻ Có thể chỉnh sửa 02/10/2026" [ref=f1e48]
+            - button "Ghi chú mới" [ref=f1e33]
+            - tablist:
+              - tab "Ghi chú" [ref=f1e34]
+              - tab "Được chia sẻ" [active] [selected] [ref=f1e35]
+              - tab "Hỏi ghi chú" [ref=f1e36]

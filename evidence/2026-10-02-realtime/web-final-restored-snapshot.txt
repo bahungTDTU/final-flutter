@@ -1,0 +1,26 @@
+### Page
+- Page URL: http://127.0.0.1:7357/
+- Page Title: NoteTogether
+### Snapshot
+```yaml
+- generic [ref=f6e5]:
+  - generic:
+    - generic:
+      - generic:
+        - generic:
+          - generic:
+            - generic:
+              - button "Quay lại" [active] [ref=f6e33]
+              - heading "Không gian viết" [level=2] [ref=f6e34]
+              - button "Đổi giao diện" [ref=f6e35]
+              - button "Đồng bộ" [ref=f6e36]
+            - group:
+              - generic [ref=f6e37]: Sẵn sàng Trực tiếp
+              - generic [ref=f6e38]:
+                - textbox "Tiêu đề" [ref=f6e39]
+                - generic [ref=f6e40]: 200 characters remaining
+              - generic [ref=f6e41]:
+                - textbox "Nội dung" [ref=f6e42]
+                - generic [ref=f6e43]: 99965 characters remaining
+              - generic [ref=f6e44]: Tự động lưu. Nhập tiêu đề và nội dung để tạo ghi chú; bản nháp chưa hoàn chỉnh được giữ riêng.
+```

@@ -1,0 +1,45 @@
+### Page
+- Page URL: http://127.0.0.1:7357/
+- Page Title: NoteTogether
+### Snapshot
+```yaml
+- generic [ref=e4] [cursor=pointer]:
+  - generic:
+    - generic:
+      - generic:
+        - generic:
+          - generic:
+            - generic [active]:
+              - generic:
+                - heading "NoteTogether" [level=2] [ref=e22]
+                - button "Hồ sơ và tùy chỉnh" [ref=e23]
+              - generic:
+                - group:
+                  - generic [ref=e24]: Ghi chú của bạn
+                  - generic [ref=e25]: Ý tưởng, bài học và kế hoạch — gọn trong một nơi.
+                  - generic [ref=e26]: 6 ghi chú
+                  - button "Trực tiếp" [ref=e27]
+                  - generic [ref=e28]: Email của bạn chưa được xác minh.
+                  - button "Xác minh" [ref=e29]
+                  - textbox "Tìm ghi chú" [ref=e31]
+                  - button "Lưới" [ref=e32]
+                  - button "Danh sách" [ref=e33]
+                  - button "Quản lý nhãn" [ref=e34]
+                  - checkbox "Cá nhân" [ref=e35]
+                  - checkbox "Học tập" [ref=e36]
+                  - checkbox "Nhóm" [ref=e37]
+                  - checkbox "Đồ án" [ref=e38]
+                  - generic [ref=e39]: Đã ghim
+                  - generic [ref=e40]: "1"
+                  - 'group "Kế hoạch đồ án cuối kỳ Chốt luồng ghi chú, rà lại quyền chia sẻ và chuẩn bị buổi demo. Mỗi thay đổi cần có bằng chứng kiểm thử. Đã ghim #Đồ án #Nhóm 02/10/2026" [ref=e41]':
+                    - button "Thao tác ghi chú" [ref=e42]
+                  - generic [ref=e43]: Các ghi chú khác
+                  - generic [ref=e44]: "5"
+                  - group "UI Web bản nháp offline Nội dung được giữ trên thiết bị khi mất kết nối. 02/10/2026" [ref=e45]:
+                    - button "Thao tác ghi chú" [ref=e46]
+              - button "Ghi chú mới" [ref=e47]
+              - tablist:
+                - tab "Ghi chú" [selected] [ref=e48]
+                - tab "Được chia sẻ" [ref=e49]
+                - tab "Hỏi ghi chú" [ref=e50]
+```

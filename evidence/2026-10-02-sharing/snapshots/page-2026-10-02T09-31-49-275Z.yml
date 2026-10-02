@@ -1,0 +1,10 @@
+- generic [ref=f3e26]:
+  - alertdialog:
+    - generic "Alert":
+      - generic [ref=f3e27]:
+        - generic [active]: Phục hồi chỉnh sửa local
+      - generic:
+        - group:
+          - generic [ref=f3e28]: Tạo bản nháp mới từ nội dung bạn đã gõ trước khi ghi chú bị khóa hoặc quyền chỉnh sửa thay đổi. Quyền của ghi chú gốc do server quản lý. Bản phục hồi chỉ có trên thiết bị này.
+          - 'button "Bản chỉnh sửa đã giữ Lưu: 2026-10-02T09:26:27.477Z" [ref=f3e29]'
+      - button "Đóng" [ref=f3e30]

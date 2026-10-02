@@ -1,0 +1,7 @@
+00:00 +0: loading D:/flutter cuoi ki/integration_test/note_protection_test.dart
+Running Gradle task 'assembleDebug'...                             18,3s
+√ Built build\app\outputs\flutter-apk\app-debug.apk
+Installing build\app\outputs\flutter-apk\app-debug.apk...          689ms
+00:00 +0: Native protection UI: enable, wrong password, temporary read, background, change and disable
+00:14 +1: (tearDownAll)
+00:14 +1: All tests passed!

@@ -1,0 +1,22 @@
+### Page
+- Page URL: http://127.0.0.1:7357/
+- Page Title: NoteTogether
+- Console: 24 errors, 0 warnings
+### Snapshot
+```yaml
+- generic [ref=f6e100]:
+  - alertdialog:
+    - generic "Thông báo":
+      - group:
+        - generic [ref=f6e101]: Đính kèm
+        - generic:
+          - generic [ref=f6e102]: Tệp được bảo vệ theo quyền của ghi chú. Cần kết nối để tải lên, tải xuống và xem trước.
+          - generic [ref=f6e103]: "Tối đa 10 tệp/ghi chú · PNG/JPEG: 10 MiB · MP4/PDF/TXT/CSV/ZIP: 20 MiB"
+          - generic [ref=f6e104]: Tệp của ghi chú
+          - generic [ref=f6e105]: 0 tệp
+          - generic [ref=f6e106]: Chưa có tệp đính kèm.
+          - button "Chọn tệp" [ref=f6e107]
+          - button "Tải tệp lên" [disabled] [ref=f6e108]
+          - button "Kiểm tra quyền và cập nhật" [ref=f6e109]
+      - button "Đóng" [ref=f6e110]
+```

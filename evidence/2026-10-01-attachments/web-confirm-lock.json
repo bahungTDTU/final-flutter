@@ -1,0 +1,10 @@
+{
+  "stage": "confirm-lock",
+  "utc": "2026-10-01T16:26:43.253921+00:00",
+  "commit": null,
+  "note_id": "3df559e7-7e58-488c-873c-900c892e31cf",
+  "note_revision": 5,
+  "attachments_list": 423,
+  "attachments_direct": 423,
+  "result": "PASS"
+}

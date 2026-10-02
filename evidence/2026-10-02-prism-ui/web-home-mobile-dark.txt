@@ -1,0 +1,40 @@
+### Page
+- Page URL: http://127.0.0.1:7357/
+- Page Title: NoteTogether
+### Snapshot
+```yaml
+- generic [ref=f1e4]:
+  - generic:
+    - generic:
+      - generic:
+        - generic:
+          - generic:
+            - generic:
+              - button [active] [ref=f1e64]:
+                - text: Quay lại
+                - generic: Quay lại
+              - heading "Không gian viết" [level=2] [ref=f1e43]
+              - button "Chia sẻ ghi chú" [ref=f1e44]
+              - button "Đính kèm" [ref=f1e45]
+              - button "Đổi giao diện" [ref=f1e46]
+              - button "Đồng bộ" [ref=f1e47]
+            - group:
+              - generic [ref=f1e48]: Một điều đáng ghi nhớ
+              - generic [ref=f1e49]: Viết theo cách của bạn. Các thay đổi được tự động lưu.
+              - generic [ref=f1e50]: Đã đồng bộ Trực tiếp
+              - generic [ref=f1e51]:
+                - textbox "Tiêu đề" [ref=f1e52]
+                - generic [ref=f1e53]: Còn lại 177 ký tự
+              - checkbox "Ghim ghi chú" [ref=f1e54]
+              - checkbox "Cá nhân" [ref=f1e55]
+              - checkbox "Học tập" [ref=f1e56]
+              - checkbox "Nhóm" [ref=f1e57]
+              - checkbox "Đồ án" [ref=f1e58]
+              - generic [ref=f1e59]:
+                - textbox "Nội dung" [ref=f1e60]:
+                  - /placeholder: Bắt đầu viết…
+                  - text: Nội dung vẫn được giữ khi mất mạng; trạng thái kết nối được hiển thị đúng.
+                - generic [ref=f1e61]: Còn lại 99.926 ký tự
+              - generic [ref=f1e62]: 74 ký tự
+              - generic [ref=f1e63]: Tự động lưu. Nhập tiêu đề và nội dung để tạo ghi chú; bản nháp chưa hoàn chỉnh được giữ riêng.
+```

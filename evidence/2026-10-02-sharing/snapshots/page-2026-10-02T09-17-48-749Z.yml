@@ -1,0 +1,17 @@
+- generic [ref=f1e114] [cursor=pointer]:
+  - alertdialog:
+    - generic "Alert":
+      - group:
+        - generic [ref=f1e115]: Chia sẻ ghi chú
+        - generic:
+          - generic [ref=f1e116]: Chia sẻ bản đã lưu trên server. Người nhận cần có tài khoản; cần kết nối để quản lý quyền.
+          - generic [ref=f1e117]: Server đã cập nhật chia sẻ.
+          - textbox "Email người nhận" [ref=f1e119]
+          - button "Quyền khi thêm Chỉ xem" [ref=f1e120]
+          - button "Thêm người nhận" [ref=f1e121]
+          - 'button "Web recipient web-share-recipient-1790932208856241000@example.test Chia sẻ: 02/10/2026 16:15 Quyền của web-share-recipient-1790932208856241000@example.test Có thể chỉnh sửa" [ref=f1e122]':
+            - button "Thu hồi quyền" [ref=f1e123]
+          - 'button "Web other web-share-other-1790932208856241000@example.test Chia sẻ: 02/10/2026 16:15 Quyền của web-share-other-1790932208856241000@example.test Chỉ xem" [ref=f1e124]':
+            - button "Thu hồi quyền" [ref=f1e125]
+          - button "Kiểm tra quyền và cập nhật" [ref=f1e126]
+      - button "Đóng" [ref=f1e127]

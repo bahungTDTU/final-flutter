@@ -1,0 +1,5 @@
+### Result
+Total messages: 2 (Errors: 1, Warnings: 0)
+Returning 1 messages for level "error"
+
+[ERROR] Failed to load resource: the server responded with a status of 423 (Locked) @ http://127.0.0.1:8000/notes/37ed00db-ae1b-4f4d-ada8-f3caa539034c/shares:0

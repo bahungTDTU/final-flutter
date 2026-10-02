@@ -1,0 +1,15 @@
+### Page
+- Page URL: http://127.0.0.1:7357/
+- Page Title: NoteTogether
+- Console: 1 errors, 0 warnings
+### Snapshot
+```yaml
+- generic [ref=f3e42]:
+  - alertdialog:
+    - generic "Alert":
+      - generic [ref=f3e43]:
+        - generic [active]: Thu hồi quyền truy cập?
+      - generic: Quyền đã thay đổi. Đóng và kiểm tra lại.
+      - button "Hủy" [ref=f3e45]
+      - button "Thu hồi" [disabled] [ref=f3e46]
+```

@@ -1,0 +1,11 @@
+{
+  "target": "Android API36 document picker",
+  "file": "notetogether-avatar.png",
+  "observed_bounds": "[36,308][244,516]",
+  "selection_tap": [
+    140,
+    412
+  ],
+  "integration_log": "android-integration.txt",
+  "date": "2026-10-01"
+}

@@ -1,0 +1,319 @@
+# NoteTogether - trạng thái 02/10/2026
+
+## Mốc hiện tại
+
+M0 đã dựng nền tảng và kiểm chứng nhiều spike local; chưa hoàn thành mọi spike dịch vụ.
+M1/M2 đã triển khai một phần. M3 có sync/conflict/protection/ACL backend spine; chưa nghiệm thu đầy đủ.
+M4 sharing/SSE realtime đã có local QA; chưa nghiệm thu mọi gate. M5–M7 chưa hoàn thành.
+Route editor đã cố định ID/base; remote sạch hiển thị live, chỉnh sửa phiên bản mới phải explicit.
+Không tuyên bố đạt đủ 32 mục hoặc sẵn sàng nộp.
+
+## Đã thực hiện
+
+- Đọc/extract lại PDF gốc 19 trang và đối chiếu rubric; tạo matrix 32 mục tổng 10 điểm.
+- Scaffold một Flutter project Web/Android, state ChangeNotifier, Sembast local, FastAPI/SQLite.
+- Auth register tự login, persistent unverified banner, login/logout, profile name/private avatar,
+  SMTP/TLS + mã kích hoạt/reset UI hai bước; email ngoài/Gmail/Outlook chưa nghiệm thu.
+- Preferences font/theme/grid có outbox bền + server field merge/idempotency; editor chung/create/edit, immediate local draft,
+  debounce650ms, Back/lifecycle flush, CRUD/delete confirm, search300ms, pins/order, nhãn server IDs + AND filter.
+- Immutable outbox, operation ID/revision/idempotency, account namespaces/generation guard,
+  conflict copy/remote choice; backend lock/grants/roles/revoke spike với direct API negative tests.
+- SSE authenticated theo account, transactional SQLite counters, reconnect/foreground guards;
+  cập nhật sạch ngay trong editor, giữ dirty draft/base khi concurrent edit/lock/viewer/revoke.
+- Custom static-only Web offline worker sau khi browser test phát hiện offline reload thất bại.
+  Worker và manifest sinh từ build thật, local CanvasKit, không cache API/session/note/private file.
+- UI/UX toàn diện: light/dark tokens và Material Việt hóa, adaptive home/search/pinned cards,
+  editor paper/status, auth/profile/labels/share/files/protection dialog; giữ draft/ID/base/caret.
+- UI đa sắc/lăng kính:6 accent tones, rim/CTA gradient, static optical backdrop/crystal,
+  hover/route/theme/reveal ngắn, reduced motion; nền đọc kín, không looping decoration.
+- ADR/architecture/permission/offline/tests/demo/team/submission documents và setup/check/build scripts.
+- GitHub repository: https://github.com/bahungTDTU/final-flutter. Người dùng ủy quyền initial
+  commit/push02/10 với danh tính Bahung; không gán initial import thành bằng chứng teamwork4 tuần.
+  Lịch sử/ref hiện tại kiểm tra bằng git log và git ls-remote; xem docs/GITHUB_PUBLISH.md.
+
+## Bằng chứng đã chạy
+
+Windows 11, Flutter3.47.1/Dart3.13.1, Python3.12, Android SDK36/JDK21, Chrome154,
+Android API36 emulator taskflow_api36. Các QA logs/manifest bên dưới được chốt trước initial
+commit, nên trường commitnull mô tả đúng snapshot kiểm chứng; lịch sử hiện tại xem Git.
+
+| Check | Kết quả / phạm vi |
+|---|---|
+| Format/check/analyze | PASS, không issue; evidence/2026-10-02-prism-ui/check-final.txt |
+| Flutter tests | 118 PASS; thêm hover/reduced-motion/no restart/129 contrast pairs; adaptive320px/200%, keyboard/filter/draft/offline-label/crypto/preferences/labels/sharing/realtime/base suites giữ PASS |
+| Backend | 53 PASS gồm realtime socket SSE/ACL/idempotency;1 TestClient deprecation warning; thêm direct actual HTTP owner/viewer/editor/stranger PASS |
+| Web release | PASS API8000/41 static resources/workerd000707d1578e9da; navigation main JS hash trong prism UI index; chưa public HTTPS |
+| APK release | Build55.9MB PASS sau pub get sinh lại plugins; debug signing/local HTTP URL, chưa HTTPS/release core acceptance |
+| Android integration | Prism final source register/labels/preferences/theme/editor ID/text/caret PASS,3 PNG; API36 debug/backend thật, Skia software;2 default-renderer disconnects không PASS; sharing/core/realtime mốc trước có scope riêng |
+| Browser local | Prism final bundle: Chrome auth/login/home hover/settings/light-dark desktop/tablet/mobile; editor theme/resize giữ nội dung. Search/filter/offline reload/sharing/picker ở UI đợt trước, không rerun toàn bộ trong đợt trang trí |
+
+Actual integration dùng port65530 không lắng nghe để tạo lỗi kết nối thật (không HTTP mock).
+DB close/reopen là trong test process; chưa chứng minh OS force-kill/relaunch hay Wi-Fi toggle Android.
+Native functional integration là debug APK; release install/launch chỉ smoke màn hình login.
+Web ở http localhost, không thay public deployed HTTPS.
+
+Đợt màu sắc/lăng kính mới: `evidence/2026-10-02-prism-ui/INDEX.md`, source/build hashes
+và README equality được verify riêng. 4 host tests mới có129 cặp contrast được chọn,
+không thay full WCAG audit. Native PASS dưới Skia software, không sửa flag production;
+hai lượt emulator mất kết nối giữ log/không kết luận nguyên nhân. Chưa FPS/jank/physical QA.
+
+Đợt UI/UX toàn diện: `evidence/2026-10-02-ui-upgrade/INDEX.md`, `docs/UI_UX_QA.md` và
+`docs/UI_UX_DESIGN.md` ghi checks/ảnh/contrast/giới hạn. Sửa lỗi surface Ink bị che,
+AlertDialog intrinsic layout, cửa sổ thấp/chữ200%, pinned card/lazy scroll và badge realtime
+khi offline. Native screenshot driver chạy mã cuối; Web worker cần reload và đối chiếu response
+thật, không suy từ cache đã update. Chưa NVDA/TalkBack/physical/history/deep-link/full release QA.
+
+## Chưa làm / blocker / next work
+
+Internet SMTP delivery và durable email outbox; attachment offline queue/full OS/protected reader/release QA;
+protected editing/offline note-password unlock/key backup; protected-reader share/file UI acceptance;
+protected-reader realtime UI acceptance; full distributed/two-device stress races; real LLM Summary/Q&A/citations;
+production abuse protection/session storage/signing/backups; public HTTPS; clean clone setup;
+GitHub contribution4 tuần/video/Rubric.xlsx/Insights/final ZIP.
+
+GitHub repo đã được người dùng cung cấp và ủy quyền push; cloud/domain/budget/LLM key sẽ xử lý sau,
+không tự deploy/tạo phí.
+Ngày deadline chính xác và ngày bắt đầu chính thức/phân công vẫn chưa xác định.
+Người dùng xác nhận 2 thành viên Hùng–Long và được dùng AI toàn phần; xem TEAM_CONTRIBUTIONS.
+
+Remote lock nay giữ draft/upsert qua encrypted recovery; chi tiết và lỗi ghi ở ENCRYPTED_RECOVERY.md.
+Rủi ro trước M3 nghiệm thu: Web key provider experimental, key backup/loss, protected edit/offline unlock.
+Session local plaintext chưa production hardening.
+Preference/label outbox/cross-session đã triển khai; retry cố định15s chưa backoff.
+
+Nhóm cần hiểu operation ID khác revision, grant khác permission, local draft khác server saved,
+và vì sao backend test/build pass chưa phải full feature/production/video evidence.
+
+## Tiêu chí tiếp theo đã triển khai: 8 – Preferences
+
+- Durable preference queue per-account, field-patch API + server journal chống stale replay; UI pending/retry.
+- Last-server-accepted cho cùng trường; merge trường khác; local edit in-flight không mất.
+- Analyze sạch, 12 Flutter tests (6 unit/6 widget), 14 backend tests PASS; 1 Android real-backend
+  integration PASS bao gồm offline preference/reopen/reconnect/second-session update.
+- Source/results: docs/PREFERENCES_SYNC.md, evidence/2026-10-01-preferences.
+- Chrome Web release PASS: offline list/dark/font18 → offline reload giữ pending3 →
+  reconnect pending0; SQLite xác nhận server nhận đúng ba trường. Web/APK release build PASS.
+- Chưa video/public deployment; Android integration debug/emulator, không claim physical/release feature parity.
+
+## Đợt UI/UX theo PROMPT_UI_UX_NOTETOGETHER.md
+
+- Design system teal/giấy ấm, Noto Sans offline (OFL), sidebar/rail/bottom nav thích nghi,
+  segmented view, pinned sections, note metadata/privacy, empty/search/offline states.
+- Auth responsive + password toggle/Enter/busy; editor canvas + trung thực local/server save,
+  stable ID/frozen revision; settings groups/font preview/email; label validation; password dialog
+  giữ input/error và chặn double submit. Backend/controller stack giữ nguyên.
+- Spec/state matrix + dependency preview tách riêng; share/lock/files/AI vẫn chưa integrated.
+- scripts/check.ps1: analyze sạch,37 Flutter tests (6 unit +31 widget/harness),14 backend PASS.
+  Responsive6 sizes x3 scales; labeled48 targets phạm vi home;14 contrast pairs đo PASS.
+- Android integration1 PASS real API/Sembast; debug main install/login/screenshot smoke.
+  Chrome release login/validation, theme/edit/resize/Back, pin/group/view/search-clear,
+  offline edit/reload/reconnect + SQLite ID/count/content assertions PASS.
+- Web release build41 static resources; APK release51.9MB PASS, chưa release core HTTPS/signing.
+- Evidence: evidence/2026-10-01-ui; spec docs/UI_UX_DESIGN.md, QA docs/UI_UX_QA.md.
+- Chưa full history Back/deep link, TalkBack/NVDA, physical-device/force-kill, full two-session
+  revoke/conflict UI, SMTP/avatar/files/shares/realtime/LLM/public deploy/video. Không đạt đủ32.
+
+## Bước tiếp theo: durable outbox và conflict recovery — 01/10/2026
+
+- Serialize session write/remove cùng snapshot, chờ write trước load account; generation check
+  sau local await để logout không ghi lại session/gửi preference queue cũ.
+- Sync phải ghi snapshot trước gửi operation; lỗi local báo chưa ghi, giữ operation ID cho retry.
+- Conflict copy dùng draft mới nhất, tạo bản mới/outbox base0 trong cùng transaction với bỏ bản cũ;
+  invalid draft giữ riêng. Write failure rollback và UI báo thử lại.
+- scripts/check.ps1 PASS: format/analyze sạch,45 Flutter tests,14 backend tests gồm direct API
+  owner/viewer/editor/stranger/lock/revoke (FastAPI TestClient),1 warning deprecation thư viện.
+- 8 tests mới gồm file Sembast thật close/reopen Windows host, lost ack/replay, edit in-flight,
+  logout/write race và fault injection. HTTP race dùng doubles, không claim browser/2 thiết bị.
+- Android emulator-5554 integration1 PASS với backend thật, debug HTTP + Sembast reopen;
+  không force-kill/physical device/release acceptance. Logs: evidence/2026-10-01-durability.
+- Web release build PASS, worker notetogether-static-321ef473f248fcdf gồm41 static resources;
+  chưa chạy browser regression cho lượt durability này. APK release chưa rebuild lượt này.
+- Commit: chưa có. Remote lock vẫn có nguy cơ xóa draft/pending; encrypted recovery + key lifecycle
+  là ưu tiên ở thời điểm đợt durability; đã được xử lý trong đợt tiếp theo bên dưới.
+
+## Phục hồi mã hóa khi khóa từ xa — 01/10/2026
+
+- Account snapshots AES-256-GCM, fresh nonce/AAD account+version, device key riêng qua
+  flutter_secure_storage11.2.0; cryptography2.9.0 pinned. Main/integration dùng encrypted store.
+- Legacy migration trước load, compact log với durable retry marker. Missing key/tamper/load error
+  giữ ciphertext, chặn overwrite/sync. Device key không xóa khi logout/reset/note-password change;
+  rotation primitive atomic đã test, giữ old keys, chưa rotation UI/key backup.
+- Lock snapshot chuyển local draft/upsert mới nhất sang recovery cùng transaction trước loại source;
+  không archive chỉ cached server content. Editor clear/cancel debounce, chặn draft/save source khóa.
+- POST423 archive/che ngay cả khi GET list lỗi, skip các operation nguồn đã archive; local write failure
+  banner nói chưa ghi và giữ app mở. Regression + Android real unreachable-backend queued edit PASS.
+- Home recovery count → dialog không preview content → explicit copy dưới draft ID mới; invalid draft
+  giữ được, copy không mở source, retry dùng cùng ID không ghi đè copy đã sửa.
+- Locked API metadata thêm role server-authoritative cho owner/shared tab; không lộ title/content/labels/pin.
+  Owner/viewer/editor/stranger API regression trong14 backend tests PASS.
+- scripts/check.ps1 PASS: analyze sạch,60 Flutter tests (15 mới),14 backend tests;1 deprecation warning.
+- Android encrypted recovery integration PASS real backend + second session + platform keys/Sembast
+  close/reopen + UI copy/server assertion/source423. Baseline integration với wrapper mới cũng PASS.
+- Chrome release PASS register/create → offline unfinished draft → second API session lock → offline
+  reload → reconnect archive → online reload giữ recovery → new draft/copy, API exact-content/ID/count2,
+  source423. IndexedDB envelope không plaintext fixture; screenshots gồm390x844 mobile.
+- Web release workeraf8d3638dfa4eed3/41 resources PASS; APK release52.0MB build PASS,
+  debug signing/HTTP local chưa phải release core acceptance; xem apk-build.txt.
+- Evidence: evidence/2026-10-01-encrypted-recovery; doc docs/ENCRYPTED_RECOVERY.md.
+  Commit chưa có; chưa deploy/push/video. Không nghiệm thu đủ23/24 và offline hay toàn bộ32 tiêu chí.
+- Giới hạn: Web provider experimental/exportable browser master key, không chống XSS/profile reader;
+  session plaintext, không key export/cloud backup, không full offline note unlock/force-kill/physical-device.
+
+## UI khóa ghi chú và phiên đọc online — 01/10/2026
+
+- Home owner menu bật khóa (password2x), thẻ khóa mở password gate; đọc tạm online tối đa5 phút.
+  Owner đổi/tắt bằng current password; Khóa lại hủy grant chỉ session hiện tại.
+- ProtectedReader giữ content ở RAM route, không đưa vào ordinary notes/cache/search/drafts/outbox.
+  Epoch/TTL guard che nội dung khi phản hồi muộn, lifecycle, logout, lỗi network/permission hoặc đóng route.
+  Kiểm tra quyền mỗi15s và nút refresh; chưa realtime. Unlock/relock serialize qua controller cả hai route.
+- Mutation chặn khi draft/outbox nguồn còn; bật khóa redacts/persist trước refresh và giữ recovery
+  nếu local edit đến trong request. Frozen editor base revision và encrypted recovery regression giữ nguyên.
+- POST /notes/{id}/lock và protection response ok/revision/locked; list vẫn neutral kể cả có grant.
+  Direct API tests owner/viewer/editor/stranger + session isolation + idempotent relock PASS.
+- scripts/check.ps1 PASS: format/analyze sạch,67 Flutter tests (7 mới),15 backend tests (1 mới);
+  còn Starlette TestClient deprecation warning. Evidence checks.txt là lần chạy chốt.
+- Android integration mới PASS emulator-5554 + backend thật + platform keys/Sembast + dialogs:
+  enable → 423 → wrong/retry/read → lifecycle notification che → change → old403/new read → disable200.
+  Background có mô phỏng lifecycle; chưa OS force-kill/physical-device. Tests cũ không chạy lại native đợt này.
+- Chrome local release PASS menu enable → neutral cards → wrong/retry/read → explicit relock → change
+  → new unlock → disable; second API session asserts revision3/4, old403/new200/relock423,
+  exact fixture content/count2 và original vẫn423. Web tab-background chưa nghiệm thu: automation
+  báo visible ở cả hai tab; không coi tab-select là hidden event PASS. Full screen-reader chưa nghiệm thu.
+- Web workeraf10e1047aa661e6/41 resources và APK release52.3MB build PASS. Debug signing/local HTTP
+  vẫn là spike; chưa public HTTPS/signing release acceptance. Đã cập nhật README/Readme/matrix/docs.
+- Evidence evidence/2026-10-01-note-protection; docs/NOTE_PROTECTION.md. Commit chưa có;
+  không push/deploy/nộp/video. Chưa full23/24: protected edit/offline unlock/key backup còn thiếu.
+- Ưu tiên tiếp theo: SMTP thật/avatar/server labels, rồi private attachments/shares/realtime/LLM;
+  mở rộng protected editing/offline và nghiệm thu release theo matrix.
+
+## SMTP/TLS và UI mã kích hoạt/reset — 01/10/2026
+
+- Transport SMTP STARTTLS/SSL đọc environment, kiểm tra certificate/hostname; không plaintext fallback.
+  Main bỏ mailbox memory. Chưa cấu hình thì báo not_configured, không giả email đã gửi.
+- Mã ngẫu nhiên dùng một lần30 phút, DB chỉ digest; resend60s thay mã cũ. Register tự login và
+  chưa verified vẫn dùng core. Forgot trả response chung cho email tồn tại/không tồn tại; timing còn khác.
+- Home mở form xác minh/gửi lại; public forgot → kiểm tra mã → password2x → manual login.
+  Backend kiểm tra lại code khi reset atomic, thu hồi sessions; UI giữ input khi lỗi/chặn double submit.
+- scripts/check.ps1 PASS: format/analyze sạch,71 Flutter/22 backend tests;7 backend mới có socket
+  SMTP TLS thực local (STARTTLS/SSL/AUTH, CA/refusal/fail closed),4 widget mới. Không SMTP internet.
+- Android integration email_flow PASS debug emulator API36, backend8011 + TLS SMTP8025 fixture,
+  code reader8026 chỉ QA; note vẫn giữ sau reset, old session401, new login200. Không thiết bị vật lý.
+- Chrome release390x844 PASS register/auto-login → verify/banner gone → logout → forgot →
+  code check/password2x → manual login. Direct API/SQLite xác nhận verified, old password401,
+  new200, hai mã reuse400/digest/used. Screenshots/logs: evidence/2026-10-01-email.
+- Web release/API8000 và APK release52.3MB build PASS; release signing vẫn debug, HTTP local.
+  Đợt này không install/test core release APK; Android functional QA là debug integration.
+- docs/EMAIL_DELIVERY.md có cấu hình và fixture tái lập. Không gửi tới bên ngoài hoặc dùng credentials thật.
+  SMTP accepted chỉ là server nhận thư; receipt/SPF/DKIM/HTTPS/email queue/retry/video chưa chạy.
+  Commit chưa có; chưa push/deploy/nộp. Tiêu chí2/4 còn partial; bước kế tiếp avatar/server labels.
+
+## Avatar và catalogue nhãn server — 01/10/2026
+
+- Avatar file_selector1.1.0 Web/Android PNG/JPEG≤2 MiB; server Pillow12.3.0 decode/canonical PNG
+  ≤512×512 bỏ metadata. SQLite private BLOB/CAS revision; authenticated download/no public URL,
+  default delete atomic. Canonical bytes cache trong encrypted account snapshot, generation guards.
+- Nhãn server ID/name/revision/tombstone/account unique; immutable label outbox trước note sends,
+  CAS/journal/replay/conflict/duplicate resolution. Rename/delete không đổi note content/revision;
+  ID filter giữ selected qua rename, AND filter và owner/editor ACL vẫn giữ.
+- Migration schema0/1→2 stable legacy IDs, giữ pending v1 note operations/fingerprint; factory startup
+  không migrate DB default khi import tests. Encrypted vault/preferences policy/editor base giữ nguyên.
+- Regression phát hiện label-create conflict chặn GET notes/remote-lock recovery: note dependent
+  chờ nhãn, sync vẫn refresh lock và archive latest draft. Log trước sửa và81 Flutter/29 backend
+  PASS sau sửa ở evidence/2026-10-01-avatar-labels; format/analyze sạch,1 deprecation warning.
+- Android API36 debug integration dùng DocumentsUI thật chọn PNG, API/second session/platform keys/
+  Sembast close/reopen/offline draft-label queues/peer rename/delete/default PASS. Native assign và
+  offline rename qua controller; UI picker/upload/create/delete/default thật. Không OS kill/physical.
+- Chrome release390×844 actual chooser/upload → offline reload cache avatar → UI assign/filter/
+  offline rename → reload pending1 → online sync → peer rename → delete/default PASS. Second API/
+  SQLite asserts count1/content/note revision2 unchanged, label revision1→4/tombstone,
+  avatar1→2/BLOB NULL/private anonymous401. Không full screen-reader/history.
+- Web/APK release build PASS; hash/logs/index và giới hạn signing/debug HTTP ghi trong evidence.
+  Kotlin incremental=false xử lý different-roots C:Pub cache/D:project; không sửa generated Java.
+- README/Readme.txt/matrix/UI QA/API docs đã cập nhật. Commit chưa có, chưa push/deploy/quay/nộp.
+  Cloud storage/production rate limits/backups/physical/release HTTPS chưa nghiệm thu;5/6/20–22 partial.
+- Ưu tiên tiếp theo: private attachments cho15/16, rồi share manager/realtime/LLM và release gates.
+
+## Đính kèm riêng tư ảnh/video/file — 01/10/2026
+
+- Tiêu chí15/16: editor note đã sync → nhiều PNG/JPEG/MP4/PDF/TXT/CSV/ZIP, validate/limits,
+  upload/private list/preview/download/xóa-confirm; viewer chỉ đọc. Protected reader nối nút xem
+  theo grant hiện tại nhưng actual UI flow này chưa chạy. Ảnh canonical≤2048px bỏ metadata.
+- Backend attachments.py/schema2 additive BLOB table: ACL/grant trước stream và trước commit,
+  immutable ID/fingerprint retry/tombstone, count10/100 MiB, Range206/416/private headers;
+  note delete null BLOB atomic. Owner không bypass lock, attachment không đổi note revision/content.
+- Route AttachmentSession RAM-only/account/token/epoch/poll15s; không snapshot/media outbox.
+  Web authorized bytes→Blob video/download; Android native video Bearer/private URL + export
+  ACTION_CREATE_DOCUMENT. Account/lock/revoke/network/background/peer delete che preview;
+  retry trong cửa sổ giữ ID/payload, đóng cửa sổ bỏ lựa chọn chưa upload, online-only.
+  Xóa-confirm che tên/vô hiệu Xóa tệp khi lock/revoke/delete thay đổi quyền/ID; regression widget
+  và actual Chrome/Android remote-lock-confirm PASS.
+- scripts/check.ps1 PASS88 Flutter/40 backend (7/11 mới), format/analyze sạch; final analyze
+  sau integration assertion mới PASS. Có direct owner/viewer/editor/stranger/anonymous,
+  grant session/revoke/replay/type-size/count/canonical/restart/cleanup và lock-during-normalize race.
+- Chrome actual local release390×844/DPR1 chọn3 files/upload/image/video2s Blob, TXT download
+  SHA-256 khớp, UI delete BLOBNULL/content/revision2 giữ, phiên API khác lock423 che preview.
+  Restore protection revision4 trước final-source peer-delete; note content giữ nguyên.
+- Android API36 emulator debug integration PASS: actual DocumentsUI PNG picker/image upload,
+  peer delete che active preview, native H264 position>0, peer API MP4/TXT, DocumentsUI Save
+  TXT42 bytes hash khớp, UI delete giữ note revision1/content; test bật/tắt khóa riêng tăng revision3
+  đúng protection mutation, nội dung giữ. Không physical/OS kill/release functional.
+- Web release worker300d8deb084e2b7e/41 static resources và APK release54.0MB build PASS.
+  Denied/cancel/scale2 chỉ widget doubles; chưa mọi codec/antivirus/OS provider/media durability,
+  protected-reader files actual UI, HTTPS/public/video. Tiêu chí15/16 vẫn partial toàn bộ nghiệm thu.
+- Docs README/Readme/PRIVATE_ATTACHMENTS/architecture/security/offline/UI QA/matrix đồng bộ;
+  evidence/2026-10-01-attachments có exact commands/logs/hash/ảnh/errors. Commit chưa có,
+  không push/deploy/quay/nộp. Ưu tiên kế tiếp: share manager/metadata/quyền rồi realtime và LLM;
+  SMTP delivery/release signing/HTTPS/submission vẫn là các gate riêng cần thông tin/dịch vụ thật.
+
+## Quản lý chia sẻ và thay đổi quyền — 02/10/2026
+
+- Tiêu chí25/18: ShareDialog email batch1–20, viewer/editor, owner catalogue name/email/time/role,
+  dropdown change/revoke-confirm. Recipient tab owner/time/role, owner shared icon/count; khóa
+  không owner/email/time. Share API strict owner/grant + batch atomic/CAS/share journal; legacy
+  writes tăng share revision, UI dùng sync mới; không đổi note content/revision/pin/labels.
+- ShareSession RAM-only/account/token/epoch; pending retry immutable, CAS requires review;
+  background che và chặn polling đến foreground. Không offline share outbox/realtime subscription.
+- Incoming viewer/403/404/revoked chuyển latest draft/upsert vào encrypted recovery, bỏ source
+  queue cùng snapshot. Viewer readonly server content; revoked editor che và chặn source save;
+  reopen giữ recovery, copy UUID mới. Attachment role downgrade vô hiệu open delete-confirm.
+- scripts/check.ps1 PASS97 Flutter/48 backend (9/8 mới), format/analyze sạch. Đã sửa regression
+  locked+viewer điền title sau khi clear, giữ encrypted_recovery_test assertion controller rỗng.
+- Chrome390×844/DPR1 actual UI missing-email atomic, batch2, role dropdown, recipient owner/time,
+  invalid draft + owner revoke-confirm → hidden editor/recovery/reload/copy. API note revision1
+  và content giữ, share revision3/count1, recipient404; final-source hash/cache đối chiếu riêng.
+- Android API36 debug real API8000/platform keys/Sembast/socket65530 PASS trên source cuối:
+  UI batch2/dropdown/recipient editor edit → peer viewer/revoke → readonly/hidden editor →
+  encrypted DB reopen offline → UI recovery UUID mới; note revision2 đúng một editor save.
+- Web final worker7e5e4205a9ecb007/41 resources và APK54.5MB build PASS. Chưa physical/OS kill/
+  release functional/protected-reader share UI/full two-device races/screen reader/HTTPS/video.
+  Docs/evidence: SHARING_AND_PERMISSIONS.md, evidence/2026-10-02-sharing/INDEX.md. Không commit/
+  push/deploy/phí/nộp; bước kế tiếp là authorized realtime subscriptions rồi LLM/release gates.
+
+## Cộng tác realtime —02/10/2026
+
+- Authenticated SSE /events, private/no-store/Origin/header-only token; SQLite counters theo
+  account tăng trong note/share/attachment/label/profile/avatar/preferences transaction. Payload
+  chỉ version; session revalidated250ms; cap3/session8/account per-process, heartbeat10s.
+- Production app một feed foreground, epoch/account guards/abort/backoff1–30s, ready catchup,
+  coalesce100ms/drain event giữa sync; ShareSession/AttachmentSession nhận refresh signals.
+  HTTP15s fallback giữ, không OT/CRDT hay production scale claim.
+- Editor sạch hiển thị update ngay/selection giữ; frozen base không tự nâng, nút mở phiên mới
+  rõ ràng cho sửa tiếp. Dirty/draft/pending/conflict giữ local; stale409, lock/viewer/revoke
+  chuyển latest edit vào encrypted recovery; không thay preference merge/immutable ops.
+- scripts/check.ps1 PASS106 Flutter/53 backend (9/5 mới), format/analyze sạch. Socket SSE tests
+  uvicorn/httpx thật: owner/editor/viewer/stranger/auth/origin/cap/disconnect/lock/expiry/revoke/
+  rollback/replay/counter persistence. Native phát hiện cancellation error; parser/await-cancel
+  cleanup sửa và actual Android run PASS. Logs fail không tính PASS.
+- Android API36 debug real SSE/API/platform keys/Sembast: clean update, editor save→owner peer,
+  lifecycle reconnect, concurrent409/frozen base4, viewer/revoke/hide, encrypted offline DB reopen
+  socket65530 PASS. Hai controllers/account cùng test; peer mutations API, recipient UI thật.
+  Không physical/OS kill/Wi-Fi toggle/release functional/protected-reader acceptance.
+- Chrome local release owner/editor contexts độc lập: sạch hiển thị update, UI editor save→
+  owner editor update, backend stop/restart tự nối/catchup; permissions/reload scope trong index.
+  Final-source navigation hash/draft status/remote lock→hide/2 encrypted recoveries reload và
+  UI restore latest draft PASS; metadata4fields/owner-editor-viewer423 qua API.
+  Web workeraf4ed9f3afad7268/41 resources, navigation response main JS hash khớp; APK54.6MB build PASS sau
+  pub get regenerate plugins (không patch generated Java). Public HTTPS/signing/video chưa có.
+- Docs REALTIME_COLLABORATION/evidence/2026-10-02-realtime ghi protocol/commands/date/targets/
+  hashes/limitations; README/Readme/matrix cập nhật. Commit chưa có, không push/deploy/phí/nộp.
+  Bước tiếp theo: LLM Summary/Q&A có nguồn/quyền; SMTP ngoài/release/submission gates vẫn riêng.

@@ -1,0 +1,119 @@
+Abbreviated first failed attempt. Full original preserved in ui-first-pass.txt.gz.
+Missing test filename, Material/ColoredBox and LayoutBuilder intrinsic failures were repaired; final gates recorded separately.
+
+00:00 +0: loading D:/flutter cuoi ki/test/ui_redesign_test.dart
+00:00 +0 -1: loading D:/flutter cuoi ki/test/private_attachments_test.dart [E]
+  Failed to load "D:/flutter cuoi ki/test/private_attachments_test.dart": Does not exist.
+00:00 +0 -1: D:/flutter cuoi ki/test/ui_redesign_test.dart: Grid accommodates largest note font, long labels and conflict action
+00:00 +1 -1: D:/flutter cuoi ki/test/ui_redesign_test.dart: Grid accommodates largest note font, long labels and conflict action
+00:00 +2 -1: D:/flutter cuoi ki/test/ui_redesign_test.dart: Grid accommodates largest note font, long labels and conflict action
+00:00 +3 -1: D:/flutter cuoi ki/test/ui_redesign_test.dart: Grid accommodates largest note font, long labels and conflict action
+00:00 +4 -1: D:/flutter cuoi ki/test/ui_redesign_test.dart: Grid accommodates largest note font, long labels and conflict action
+00:00 +5 -1: D:/flutter cuoi ki/test/ui_redesign_test.dart: Grid accommodates largest note font, long labels and conflict action
+00:01 +6 -1: D:/flutter cuoi ki/test/widgets_test.dart: Settings apply dark theme, show pending sync and reset at logout
+00:01 +7 -1: D:/flutter cuoi ki/test/widgets_test.dart: Settings apply dark theme, show pending sync and reset at logout
+00:01 +8 -1: D:/flutter cuoi ki/test/widgets_test.dart: Settings apply dark theme, show pending sync and reset at logout
+00:01 +9 -1: D:/flutter cuoi ki/test/sharing_test.dart: Share form validation and remote lock hide revoke confirmation at scale2
+00:01 +10 -1: D:/flutter cuoi ki/test/sharing_test.dart: Share form validation and remote lock hide revoke confirmation at scale2
+00:02 +11 -1: D:/flutter cuoi ki/test/sharing_test.dart: Share form validation and remote lock hide revoke confirmation at scale2
+00:02 +12 -1: D:/flutter cuoi ki/test/sharing_test.dart: Share form validation and remote lock hide revoke confirmation at scale2
+00:02 +13 -1: D:/flutter cuoi ki/test/sharing_test.dart: Share form validation and remote lock hide revoke confirmation at scale2
+00:02 +14 -1: D:/flutter cuoi ki/test/sharing_test.dart: Share form validation and remote lock hide revoke confirmation at scale2
+00:02 +15 -1: D:/flutter cuoi ki/test/sharing_test.dart: Share form validation and remote lock hide revoke confirmation at scale2
+00:02 +16 -1: D:/flutter cuoi ki/test/sharing_test.dart: Share form validation and remote lock hide revoke confirmation at scale2
+00:02 +17 -1: D:/flutter cuoi ki/test/sharing_test.dart: Share form validation and remote lock hide revoke confirmation at scale2
+00:02 +18 -1: D:/flutter cuoi ki/test/sharing_test.dart: Share form validation and remote lock hide revoke confirmation at scale2
+00:03 +19 -1: D:/flutter cuoi ki/test/sharing_test.dart: Share form validation and remote lock hide revoke confirmation at scale2
+00:03 +20 -1: D:/flutter cuoi ki/test/sharing_test.dart: Share form validation and remote lock hide revoke confirmation at scale2
+00:03 +21 -1: D:/flutter cuoi ki/test/sharing_test.dart: Share form validation and remote lock hide revoke confirmation at scale2
+00:03 +22 -1: D:/flutter cuoi ki/test/sharing_test.dart: Share form validation and remote lock hide revoke confirmation at scale2
+00:04 +23 -1: D:/flutter cuoi ki/test/sharing_test.dart: Share form validation and remote lock hide revoke confirmation at scale2
+00:04 +24 -1: D:/flutter cuoi ki/test/sharing_test.dart: Share form validation and remote lock hide revoke confirmation at scale2
+00:04 +25 -1: D:/flutter cuoi ki/test/sharing_test.dart: Share form validation and remote lock hide revoke confirmation at scale2
+00:04 +26 -1: D:/flutter cuoi ki/test/sharing_test.dart: Share form validation and remote lock hide revoke confirmation at scale2
+00:04 +27 -1: D:/flutter cuoi ki/test/sharing_test.dart: Share form validation and remote lock hide revoke confirmation at scale2
+00:05 +27 -1: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(1280.0, 800.0) at scale 1.0
+══╡ EXCEPTION CAUGHT BY FLUTTER FRAMEWORK ╞═════════════════════════════════════════════════════════
+The following assertion was thrown:
+ListTile background color or ink splashes may be invisible.
+The ListTile is wrapped in a ColoredBox that has a background color. Because ListTile paints its
+background and ink splashes on the nearest Material ancestor, this ColoredBox will hide those
+effects.
+To fix this, wrap the ListTile in its own Material widget, or remove the background color from the
+intermediate ColoredBox.
+
+ListTile:
+  ListTile(shape: RoundedRectangleBorder(BorderSide(width: 0.0, style: none), BorderRadius.circular(12.0)), onTap: Closure: () => void, selected: true, selectedTileColor: Color(alpha: 1.0000, red: 0.9176, green: 0.9451, blue: 0.9216, colorSpace: ColorSpace.sRGB))
+ColoredBox:
+  ColoredBox(color: Color(alpha: 1.0000, red: 1.0000, green: 1.0000, blue: 1.0000, colorSpace: ColorSpace.sRGB))
+════════════════════════════════════════════════════════════════════════════════════════════════════
+══╡ EXCEPTION CAUGHT BY FLUTTER FRAMEWORK ╞═════════════════════════════════════════════════════════
+The following assertion was thrown:
+ListTile background color or ink splashes may be invisible.
+The ListTile is wrapped in a ColoredBox that has a background color. Because ListTile paints its
+background and ink splashes on the nearest Material ancestor, this ColoredBox will hide those
+effects.
+To fix this, wrap the ListTile in its own Material widget, or remove the background color from the
+intermediate ColoredBox.
+
+ListTile:
+  ListTile(shape: RoundedRectangleBorder(BorderSide(width: 0.0, style: none), BorderRadius.circular(12.0)), onTap: Closure: () => void, selectedTileColor: Color(alpha: 1.0000, red: 0.9176, green: 0.9451, blue: 0.9216, colorSpace: ColorSpace.sRGB))
+ColoredBox:
+  ColoredBox(color: Color(alpha: 1.0000, red: 1.0000, green: 1.0000, blue: 1.0000, colorSpace: ColorSpace.sRGB))
+════════════════════════════════════════════════════════════════════════════════════════════════════
+══╡ EXCEPTION CAUGHT BY FLUTTER FRAMEWORK ╞═════════════════════════════════════════════════════════
+The following assertion was thrown:
+ListTile background color or ink splashes may be invisible.
+The ListTile is wrapped in a ColoredBox that has a background color. Because ListTile paints its
+background and ink splashes on the nearest Material ancestor, this ColoredBox will hide those
+effects.
+To fix this, wrap the ListTile in its own Material widget, or remove the background color from the
+intermediate ColoredBox.
+
+ListTile:
+  ListTile(shape: RoundedRectangleBorder(BorderSide(width: 0.0, style: none), BorderRadius.circular(12.0)), onTap: Closure: () => void, selectedTileColor: Color(alpha: 1.0000, red: 0.9176, green: 0.9451, blue: 0.9216, colorSpace: ColorSpace.sRGB))
+ColoredBox:
+  ColoredBox(color: Color(alpha: 1.0000, red: 1.0000, green: 1.0000, blue: 1.0000, colorSpace: ColorSpace.sRGB))
+════════════════════════════════════════════════════════════════════════════════════════════════════
+══╡ EXCEPTION CAUGHT BY FLUTTER FRAMEWORK ╞═════════════════════════════════════════════════════════
+The following assertion was thrown:
+ListTile background color or ink splashes may be invisible.
+The ListTile is wrapped in a ColoredBox that has a background color. Because ListTile paints its
+background and ink splashes on the nearest Material ancestor, this ColoredBox will hide those
+effects.
+To fix this, wrap the ListTile in its own Material widget, or remove the background color from the
+intermediate ColoredBox.
+
+ListTile: ListTile(onTap: Closure: () => Future<void> from Function 'manageLabels':.)
+ColoredBox:
+  ColoredBox(color: Color(alpha: 1.0000, red: 1.0000, green: 1.0000, blue: 1.0000, colorSpace: ColorSpace.sRGB))
+════════════════════════════════════════════════════════════════════════════════════════════════════
+══╡ EXCEPTION CAUGHT BY FLUTTER FRAMEWORK ╞═════════════════════════════════════════════════════════
+The following assertion was thrown:
+ListTile background color or ink splashes may be invisible.
+... repeated exceptions omitted here ...
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1953:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///D:/flutter%20cuoi%20ki/test/sharing_test.dart line 406
+The test description was:
+  Shared card identifies owner and time while locked card redacts them
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:26 +31 -8: D:/flutter cuoi ki/test/sharing_test.dart: Shared card identifies owner and time while locked card redacts them [E]
+  Test failed. See exception logs above.
+  The test description was: Shared card identifies owner and time while locked card redacts them
+  
+00:26 +31 -8: Some tests failed.
+
+Failing tests:
+  D:/flutter cuoi ki/test/private_attachments_test.dart: loading D:/flutter cuoi ki/test/private_attachments_test.dart
+  D:/flutter cuoi ki/test/sharing_test.dart: Share form validation and remote lock hide revoke confirmation at scale2
+  D:/flutter cuoi ki/test/sharing_test.dart: Shared card identifies owner and time while locked card redacts them
+  D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(1280.0, 800.0) at scale 1.0
+  ... and 4 more

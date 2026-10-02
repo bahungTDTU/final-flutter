@@ -1,0 +1,114 @@
+[
+  {
+    "pair": "light text/surface",
+    "foreground": "17251E",
+    "background": "FFFFFF",
+    "ratio": 15.91,
+    "minimum": 4.5,
+    "passed": true
+  },
+  {
+    "pair": "light text/canvas",
+    "foreground": "17251E",
+    "background": "F7F8F5",
+    "ratio": 14.93,
+    "minimum": 4.5,
+    "passed": true
+  },
+  {
+    "pair": "light muted/surface",
+    "foreground": "52645A",
+    "background": "FFFFFF",
+    "ratio": 6.31,
+    "minimum": 4.5,
+    "passed": true
+  },
+  {
+    "pair": "light muted/secondary",
+    "foreground": "52645A",
+    "background": "EFF3EF",
+    "ratio": 5.63,
+    "minimum": 4.5,
+    "passed": true
+  },
+  {
+    "pair": "light button",
+    "foreground": "FFFFFF",
+    "background": "176B57",
+    "ratio": 6.41,
+    "minimum": 4.5,
+    "passed": true
+  },
+  {
+    "pair": "light focus/canvas",
+    "foreground": "176B57",
+    "background": "F7F8F5",
+    "ratio": 6.01,
+    "minimum": 3,
+    "passed": true
+  },
+  {
+    "pair": "light control outline/surface",
+    "foreground": "687E70",
+    "background": "FFFFFF",
+    "ratio": 4.37,
+    "minimum": 3,
+    "passed": true
+  },
+  {
+    "pair": "dark text/surface",
+    "foreground": "E6EEE8",
+    "background": "1A2320",
+    "ratio": 13.61,
+    "minimum": 4.5,
+    "passed": true
+  },
+  {
+    "pair": "dark text/canvas",
+    "foreground": "E6EEE8",
+    "background": "111816",
+    "ratio": 15.23,
+    "minimum": 4.5,
+    "passed": true
+  },
+  {
+    "pair": "dark muted/surface",
+    "foreground": "AFBEB4",
+    "background": "1A2320",
+    "ratio": 8.31,
+    "minimum": 4.5,
+    "passed": true
+  },
+  {
+    "pair": "dark muted/secondary",
+    "foreground": "AFBEB4",
+    "background": "24312B",
+    "ratio": 7.0,
+    "minimum": 4.5,
+    "passed": true
+  },
+  {
+    "pair": "dark button",
+    "foreground": "073B2D",
+    "background": "83D8B8",
+    "ratio": 7.46,
+    "minimum": 4.5,
+    "passed": true
+  },
+  {
+    "pair": "dark focus/canvas",
+    "foreground": "83D8B8",
+    "background": "111816",
+    "ratio": 10.7,
+    "minimum": 3,
+    "passed": true
+  },
+  {
+    "pair": "dark control outline/surface",
+    "foreground": "859C8E",
+    "background": "1A2320",
+    "ratio": 5.47,
+    "minimum": 3,
+    "passed": true
+  }
+]

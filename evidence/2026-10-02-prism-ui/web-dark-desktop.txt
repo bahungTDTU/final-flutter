@@ -1,0 +1,49 @@
+### Ran Playwright code
+```js
+await (async page => { await page.setViewportSize({width:1440,height:900}); await page.waitForTimeout(800); })(page);
+```
+### Page
+- Page URL: http://127.0.0.1:7357/
+- Page Title: NoteTogether
+### Snapshot
+```yaml
+- generic [ref=f1e4]:
+  - generic:
+    - generic:
+      - generic:
+        - generic:
+          - generic:
+            - group "NoteTogether KHÔNG GIAN CỦA BẠN 6 ghi chú · 4 nhãn":
+              - button "Ghi chú" [ref=f1e66]
+              - button "Được chia sẻ" [ref=f1e67]
+              - button "Hỏi ghi chú" [ref=f1e68]
+              - button "Quản lý nhãn" [ref=f1e69]
+              - button "Ảnh đại diện mặc định K Không gian học tập Hồ sơ và tùy chỉnh" [ref=f1e70]
+              - button "Đăng xuất" [ref=f1e71]
+              - generic:
+                - group:
+                  - generic [ref=f1e72]:
+                    - textbox "Tìm ghi chú" [ref=f1e73]
+                    - generic [ref=f1e74]: Tìm ngay khi nhập · Ctrl + F để đến ô tìm kiếm
+                  - button "Lưới" [ref=f1e75]
+                  - button "Danh sách" [ref=f1e76]
+                  - checkbox "Cá nhân" [ref=f1e77]
+                  - checkbox "Học tập" [ref=f1e78]
+                  - checkbox "Nhóm" [ref=f1e79]
+                  - checkbox "Đồ án" [ref=f1e80]
+                  - generic [ref=f1e81]: Đã ghim
+                  - generic [ref=f1e82]: "1"
+                  - 'group "Kế hoạch đồ án cuối kỳ Chốt luồng ghi chú, rà lại quyền chia sẻ và chuẩn bị buổi demo. Mỗi thay đổi cần có bằng chứng kiểm thử. Đã ghim #Đồ án #Nhóm 02/10/2026" [ref=f1e83]':
+                    - button "Thao tác ghi chú" [ref=f1e84]
+                  - generic [ref=f1e85]: Các ghi chú khác
+                  - generic [ref=f1e86]: "5"
+                  - group "UI Web bản nháp offline Nội dung vẫn được giữ khi mất mạng; trạng thái kết nối được hiển thị đúng. 02/10/2026" [active] [ref=f1e87]:
+                    - button "Thao tác ghi chú" [ref=f1e88]
+                  - 'group "Checklist buổi họp nhóm • Rà lại tiến độ • Thử Web và Android • Ghi lại các việc còn cần xác minh #Nhóm 02/10/2026" [ref=f1e89]':
+                    - button "Thao tác ghi chú" [ref=f1e90]
+                  - 'group "Flutter: ghi chú buổi học Widget tạo giao diện. Controller quản lý trạng thái. Tách rõ giao diện, dữ liệu và kiểm thử. #Học tập 02/10/2026" [ref=f1e91]':
+                    - button "Thao tác ghi chú" [ref=f1e92]
+                  - 'group "Những ý tưởng đáng giữ Một nơi để ghi nhanh ý tưởng trong ngày. Đọc lại, sắp xếp và cùng nhau phát triển. #Cá nhân 02/10/2026" [ref=f1e93]':
+                    - button "Thao tác ghi chú" [ref=f1e94]
+                  - button "Ghi chú đã khóa Mở khóa để xem nội dung. Đã khóa" [ref=f1e95]
+```

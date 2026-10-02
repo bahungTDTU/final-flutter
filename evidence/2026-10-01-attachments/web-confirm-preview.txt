@@ -1,0 +1,6 @@
+### Result
+{"utc":"2026-10-01T16:28:21.325Z","deleteDisabled":true,"filenameAbsent":true,"result":"PASS","sourceEvidence":"web-final-source.txt"}
+### Ran Playwright code
+```js
+await (async page => { await page.getByText("Quyền truy cập đã thay đổi. Đóng và kiểm tra lại.",{exact:true}).waitFor({timeout:30000}); const disabled=await page.getByRole("button",{name:"Xóa tệp",exact:true}).isDisabled(); const absent=(await page.getByText("Xóa attachment-fixture.mp4; nội dung ghi chú vẫn giữ.",{exact:true}).count())===0; if(!disabled||!absent) throw new Error("Lock confirmation guard failed"); return {utc:new Date().toISOString(),deleteDisabled:disabled,filenameAbsent:absent,result:"PASS",sourceEvidence:"web-final-source.txt"}; })(page);
+```

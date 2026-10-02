@@ -1,0 +1,45 @@
+### Page
+- Page URL: http://127.0.0.1:7357/
+- Page Title: NoteTogether
+### Snapshot
+```yaml
+- generic [ref=f5e4] [cursor=pointer]:
+  - generic:
+    - generic:
+      - generic:
+        - generic:
+          - generic:
+            - group "NoteTogether KHÔNG GIAN CỦA BẠN 5 ghi chú · 4 nhãn":
+              - button "Ghi chú" [ref=f5e5]
+              - button "Được chia sẻ" [ref=f5e6]
+              - button "Hỏi ghi chú" [ref=f5e7]
+              - button "Quản lý nhãn" [ref=f5e8]
+              - button "Ảnh đại diện mặc định K Không gian học tập Hồ sơ và tùy chỉnh" [ref=f5e9]
+              - button "Đăng xuất" [ref=f5e10]
+              - generic:
+                - group:
+                  - generic [ref=f5e11]: Ghi chú của bạn
+                  - button "Ghi chú mới" [ref=f5e12]
+                  - generic [ref=f5e13]: Ý tưởng, bài học và kế hoạch — gọn trong một nơi.
+                  - generic [ref=f5e14]: 0 ghi chú
+                  - button "Trực tiếp" [ref=f5e15]
+                  - generic [ref=f5e16]: Email của bạn chưa được xác minh.
+                  - button "Xác minh" [ref=f5e17]
+                  - generic [ref=f5e18]:
+                    - textbox "Tìm ghi chú" [ref=f5e19]:
+                      - /placeholder: Tìm trong tiêu đề và nội dung
+                      - text: Flutter
+                    - button "Xóa tìm kiếm" [ref=f5e40]
+                    - generic [ref=f5e20]: Tìm ngay khi nhập · Ctrl + F để đến ô tìm kiếm
+                  - button "Lưới" [ref=f5e21]
+                  - button "Danh sách" [ref=f5e22]
+                  - checkbox "Cá nhân" [ref=f5e23]
+                  - checkbox "Học tập" [checked] [ref=f5e24]
+                  - checkbox "Nhóm" [checked] [active] [ref=f5e25]
+                  - checkbox "Đồ án" [ref=f5e26]
+                  - generic [ref=f5e43]: Khớp tất cả nhãn đã chọn
+                  - button "Bỏ bộ lọc nhãn" [ref=f5e44]
+                  - generic [ref=f5e45]: Không tìm thấy ghi chú phù hợp
+                  - generic [ref=f5e46]: Thử từ khóa khác hoặc bỏ bớt nhãn.
+                  - button "Xóa tìm kiếm và bộ lọc" [ref=f5e47]
+```

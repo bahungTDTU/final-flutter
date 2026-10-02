@@ -1,0 +1,44 @@
+### Page
+- Page URL: http://127.0.0.1:7357/
+- Page Title: NoteTogether
+### Snapshot
+```yaml
+- generic [ref=f5e4]:
+  - generic:
+    - generic:
+      - generic:
+        - generic:
+          - generic:
+            - group "NoteTogether KHÔNG GIAN CỦA BẠN 5 ghi chú · 4 nhãn":
+              - button "Ghi chú" [ref=f5e5]
+              - button "Được chia sẻ" [ref=f5e6]
+              - button "Hỏi ghi chú" [ref=f5e7]
+              - button "Quản lý nhãn" [ref=f5e8]
+              - button "Ảnh đại diện mặc định K Không gian học tập Hồ sơ và tùy chỉnh" [ref=f5e9]
+              - button "Đăng xuất" [ref=f5e10]
+              - generic:
+                - group:
+                  - generic [ref=f5e11]: Ghi chú của bạn
+                  - button "Ghi chú mới" [ref=f5e12]
+                  - generic [ref=f5e13]: Ý tưởng, bài học và kế hoạch — gọn trong một nơi.
+                  - generic [ref=f5e14]: 1 ghi chú
+                  - button "Trực tiếp" [ref=f5e15]
+                  - generic [ref=f5e16]: Email của bạn chưa được xác minh.
+                  - button "Xác minh" [ref=f5e17]
+                  - generic [ref=f5e18]:
+                    - textbox "Tìm ghi chú" [active] [ref=f5e19]:
+                      - /placeholder: Tìm trong tiêu đề và nội dung
+                      - text: Flutter
+                    - button "Xóa tìm kiếm" [ref=f5e40]
+                    - generic [ref=f5e20]: Tìm ngay khi nhập · Ctrl + F để đến ô tìm kiếm
+                  - button "Lưới" [ref=f5e21]
+                  - button "Danh sách" [ref=f5e22]
+                  - checkbox "Cá nhân" [ref=f5e23]
+                  - checkbox "Học tập" [ref=f5e24]
+                  - checkbox "Nhóm" [ref=f5e25]
+                  - checkbox "Đồ án" [ref=f5e26]
+                  - generic [ref=f5e27]: Tất cả ghi chú
+                  - generic [ref=f5e28]: "1"
+                  - 'group "Flutter: ghi chú buổi học Widget tạo giao diện. Controller quản lý trạng thái. Tách rõ giao diện, dữ liệu và kiểm thử. #Học tập 02/10/2026" [ref=f5e41]':
+                    - button "Thao tác ghi chú" [ref=f5e42]
+```

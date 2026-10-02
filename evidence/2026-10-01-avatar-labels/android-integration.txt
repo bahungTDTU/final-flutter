@@ -1,0 +1,8 @@
+00:00 +0: loading D:/flutter cuoi ki/integration_test/avatar_labels_test.dart
+Running Gradle task 'assembleDebug'...                             25,0s
+√ Built build\app\outputs\flutter-apk\app-debug.apk
+Installing build\app\outputs\flutter-apk\app-debug.apk...        1.548ms
+00:00 +0: Native OS avatar picker and durable label IDs sync across account sessions
+QA_NATIVE_PICKER_READY: select notetogether-avatar.png in Android document picker.
+03:15 +1: (tearDownAll)
+03:15 +1: All tests passed!

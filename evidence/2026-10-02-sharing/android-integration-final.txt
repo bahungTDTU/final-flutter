@@ -1,0 +1,8 @@
+00:00 +0: loading D:/flutter cuoi ki/integration_test/sharing_test.dart
+Running Gradle task 'assembleDebug'...                             23,6s
+√ Built build\app\outputs\flutter-apk\app-debug.apk
+Installing build\app\outputs\flutter-apk\app-debug.apk...          698ms
+00:00 +0: Native sharing manager and server role changes preserve encrypted drafts on reopen
+QA_NATIVE_SHARING_PASS: atomic batch, editor/viewer/revoke, owner/time, encrypted DB reopen offline, new-ID recovery. No mocks.
+00:23 +1: (tearDownAll)
+00:24 +1: All tests passed!

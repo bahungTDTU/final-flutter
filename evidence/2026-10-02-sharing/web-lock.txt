@@ -1,0 +1,2 @@
+{"action": "lock", "ok": true, "revision": 2, "locked": true}
+{"check": "PASS locked redaction", "note_id": "37ed00db-ae1b-4f4d-ada8-f3caa539034c", "content_revision": 2, "owner_catalogue": 423, "revoked_recipient": 404, "owner_list_fields": ["id", "locked", "revision", "role"], "viewer_list_fields": ["id", "locked", "revision", "role"]}

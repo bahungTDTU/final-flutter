@@ -1,0 +1,34 @@
+### Page
+- Page URL: http://127.0.0.1:7357/
+- Page Title: NoteTogether
+- Console: 9 errors, 0 warnings
+### Snapshot
+```yaml
+- generic [ref=f1e5]:
+  - generic:
+    - generic:
+      - generic:
+        - generic:
+          - generic:
+            - generic:
+              - button "Quay lại" [ref=f1e68]
+              - heading "Không gian viết" [level=2] [ref=f1e69]
+              - button "Đính kèm" [ref=f1e70]
+              - button "Đổi giao diện" [ref=f1e71]
+              - button "Đồng bộ" [ref=f1e72]
+            - group:
+              - generic [ref=f1e73]: Đã đồng bộ Trực tiếp
+              - generic [ref=f1e81]: Đã nhận phiên bản mới. Bắt đầu phiên chỉnh sửa mới để tiếp tục.
+              - button "Chỉnh sửa phiên bản mới" [ref=f1e82]
+              - generic [ref=f1e74]:
+                - textbox "Tiêu đề" [ref=f1e75]:
+                  - /placeholder: Điều bạn muốn ghi nhớ
+                  - text: Web realtime fixture
+                - generic [ref=f1e76]: 180 characters remaining
+              - generic [ref=f1e77]:
+                - textbox "Nội dung" [active] [ref=f1e78]:
+                  - /placeholder: Bắt đầu viết…
+                  - text: Concurrent owner version in Chrome
+                - generic [ref=f1e79]: 99966 characters remaining
+              - generic [ref=f1e80]: Tự động lưu. Nhập tiêu đề và nội dung để tạo ghi chú; bản nháp chưa hoàn chỉnh được giữ riêng.
+```

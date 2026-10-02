@@ -1,0 +1,31 @@
+### Page
+- Page URL: http://127.0.0.1:7357/
+- Page Title: NoteTogether
+### Snapshot
+```yaml
+- generic [ref=e51]:
+  - generic "Hộp thoại":
+    - button "Bỏ qua" [ref=e52]
+    - group:
+      - generic [ref=e53]: Hồ sơ và tùy chỉnh
+      - button "Đóng tùy chỉnh" [ref=e54]
+      - generic:
+        - img "Ảnh đại diện mặc định K Không gian học tập"
+        - button "Sửa tên hiển thị" [ref=e55]
+      - textbox [disabled] [ref=e57]
+      - button "Đổi ảnh đại diện" [ref=e58]
+      - generic [ref=e59]: Giao diện
+      - generic [ref=e60]: Chọn không gian dễ đọc nhất với bạn.
+      - switch "Giao diện tối" [checked] [ref=e61]
+      - generic [ref=e62]: Ghi chú
+      - generic [ref=e63]: "Cỡ chữ ghi chú: 16"
+      - generic "16" [ref=e64]:
+        - slider [ref=e65]: "1"
+      - generic [ref=e66]: Một ý tưởng đáng giữ. Một ghi chú dễ đọc.
+      - generic [ref=e67]: Tùy chỉnh theo tài khoản; thiết bị khác nhận khi đồng bộ.
+      - button "Đồng bộ tùy chỉnh" [ref=e68]
+      - generic [ref=e69]: Tài khoản
+      - generic [ref=e70]: Email chưa xác minh
+      - button "Đăng xuất" [ref=e71]
+      - button "Đổi mật khẩu" [ref=e72]
+```

@@ -1,0 +1,29 @@
+- generic [ref=f1e5]:
+  - generic:
+    - generic:
+      - generic:
+        - generic:
+          - generic:
+            - generic:
+              - heading "NoteTogether" [level=2] [ref=f1e68]
+              - button "Hồ sơ và tùy chỉnh" [ref=f1e69]
+            - generic:
+              - group:
+                - generic [ref=f1e70]: Được chia sẻ
+                - generic [ref=f1e71]: 0 ghi chú
+                - button "Đã đồng bộ" [ref=f1e72]
+                - generic [ref=f1e73]: Email của bạn chưa được xác minh.
+                - button "Xác minh" [ref=f1e74]
+                - textbox "Tìm ghi chú" [ref=f1e76]
+                - button "Lưới" [ref=f1e77]
+                - button "Danh sách" [ref=f1e78]
+                - button "Quản lý nhãn" [ref=f1e79]
+                - generic [ref=f1e80]: 1 bản chỉnh sửa được giữ trong kho phục hồi local.
+                - button "Phục hồi" [ref=f1e81]
+                - generic [ref=f1e82]: Chưa có ghi chú được chia sẻ
+                - generic [ref=f1e83]: Ghi chú được chia sẻ với tài khoản của bạn sẽ xuất hiện ở đây.
+            - button "Ghi chú mới" [ref=f1e84]
+            - tablist:
+              - tab "Ghi chú" [ref=f1e85]
+              - tab "Được chia sẻ" [active] [selected] [ref=f1e86]
+              - tab "Hỏi ghi chú" [ref=f1e87]

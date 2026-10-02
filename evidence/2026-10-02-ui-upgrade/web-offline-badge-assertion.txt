@@ -1,0 +1,4 @@
+### Ran Playwright code
+```js
+await (async(page)=>{await page.getByText('Đã lưu trên thiết bị. Sẽ đồng bộ khi có kết nối.',{exact:true}).last().waitFor();if(await page.getByText('Trực tiếp',{exact:true}).count())throw new Error('stale live badge');if(await page.getByText('Đang nối lại',{exact:true}).count())throw new Error('stale retry badge');})(page);
+```

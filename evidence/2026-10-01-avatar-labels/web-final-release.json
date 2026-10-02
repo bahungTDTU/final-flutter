@@ -1,0 +1,15 @@
+{
+  "utc": "2026-10-01T14:57:25.478Z",
+  "worker": "activated",
+  "caches": [
+    "notetogether-static-6acc3c3f573d01f6"
+  ],
+  "main_sha256": "cbd0e127cd4aeaf43cb549fcf6a6b72ad2b3ff84543032144506971af04ee41f",
+  "width": 390,
+  "height": 844,
+  "dpr": 1.0000000298023224,
+  "note_visible": true,
+  "deleted_label_checkbox_count": 0,
+  "result": "PASS",
+  "commit": null
+}

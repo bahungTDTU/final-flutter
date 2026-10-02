@@ -1,0 +1,12 @@
+00:00 +0: loading D:/flutter cuoi ki/integration_test/attachments_test.dart
+Running Gradle task 'assembleDebug'...                             37,2s
+√ Built build\app\outputs\flutter-apk\app-debug.apk
+Installing build\app\outputs\flutter-apk\app-debug.apk...           9,2s
+00:00 +0: Actual native attachment picker, private image/video preview and SAF save
+QA_ATTACHMENT_PICKER_READY: choose attachment-fixture.png in DocumentsUI.
+QA_PEER_DELETE_HIDDEN: active image preview cleared after attachment deletion.
+QA_VIDEO_PLAYED: initialized H264 MP4; position advanced.
+QA_ATTACHMENT_SAVE_READY: save attachment-fixture.txt through DocumentsUI.
+QA_LOCK_CONFIRM_HIDDEN: remote lock clears filename and disables delete confirmation.
+04:48 +1: (tearDownAll)
+04:49 +1: All tests passed!

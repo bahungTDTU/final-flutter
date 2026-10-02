@@ -1,0 +1,35 @@
+### Page
+- Page URL: http://127.0.0.1:7357/
+- Page Title: NoteTogether
+- Console: 13 errors, 0 warnings
+### Snapshot
+```yaml
+- generic [ref=f6e4]:
+  - generic:
+    - generic:
+      - generic:
+        - generic:
+          - generic:
+            - generic:
+              - button "Quay lại" [active] [ref=f6e36]
+              - heading "Không gian viết" [level=2] [ref=f6e37]
+              - button "Đổi giao diện" [ref=f6e38]
+              - button "Đồng bộ" [ref=f6e39]
+            - group:
+              - generic [ref=f6e40]: Một điều đáng ghi nhớ
+              - generic [ref=f6e41]: Viết theo cách của bạn. Các thay đổi được tự động lưu.
+              - generic [ref=f6e42]: Đã lưu trên thiết bị. Sẽ đồng bộ khi có kết nối. Đang nối lại
+              - generic [ref=f6e43]:
+                - textbox "Tiêu đề" [ref=f6e44]
+                - generic [ref=f6e45]: Còn lại 177 ký tự
+              - checkbox "Ghim ghi chú" [ref=f6e46]
+              - checkbox "Cá nhân" [ref=f6e47]
+              - checkbox "Học tập" [ref=f6e48]
+              - checkbox "Nhóm" [ref=f6e49]
+              - checkbox "Đồ án" [ref=f6e50]
+              - generic [ref=f6e51]:
+                - textbox "Nội dung" [ref=f6e52]
+                - generic [ref=f6e53]: Còn lại 99.952 ký tự
+              - generic [ref=f6e54]: 48 ký tự
+              - generic [ref=f6e55]: Tự động lưu. Nhập tiêu đề và nội dung để tạo ghi chú; bản nháp chưa hoàn chỉnh được giữ riêng.
+```

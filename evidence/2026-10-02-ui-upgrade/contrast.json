@@ -1,0 +1,86 @@
+{
+  "measured_at_utc": "2026-10-02T12:14:12.396672+00:00",
+  "scope": "10 explicit theme pairs; not all hover/error/SDK-generated states or a screen-reader audit",
+  "results": [
+    {
+      "pair": "light primary container text",
+      "foreground": "154b39",
+      "background": "e0f0e7",
+      "ratio": 8.481,
+      "threshold": 4.5,
+      "passed": true
+    },
+    {
+      "pair": "dark primary container text",
+      "foreground": "b4efd2",
+      "background": "204c3c",
+      "ratio": 7.507,
+      "threshold": 4.5,
+      "passed": true
+    },
+    {
+      "pair": "light selected navigation text",
+      "foreground": "17251e",
+      "background": "eaf1eb",
+      "ratio": 13.851,
+      "threshold": 4.5,
+      "passed": true
+    },
+    {
+      "pair": "dark selected navigation text",
+      "foreground": "e6eee8",
+      "background": "314137",
+      "ratio": 9.146,
+      "threshold": 4.5,
+      "passed": true
+    },
+    {
+      "pair": "light surface text",
+      "foreground": "17251e",
+      "background": "ffffff",
+      "ratio": 15.911,
+      "threshold": 4.5,
+      "passed": true
+    },
+    {
+      "pair": "dark surface text",
+      "foreground": "e6eee8",
+      "background": "1a2320",
+      "ratio": 13.607,
+      "threshold": 4.5,
+      "passed": true
+    },
+    {
+      "pair": "light pill muted text",
+      "foreground": "52645a",
+      "background": "eff3ef",
+      "ratio": 5.628,
+      "threshold": 4.5,
+      "passed": true
+    },
+    {
+      "pair": "dark pill muted text",
+      "foreground": "afbeb4",
+      "background": "24312b",
+      "ratio": 7.002,
+      "threshold": 4.5,
+      "passed": true
+    },
+    {
+      "pair": "light input outline",
+      "foreground": "687e70",
+      "background": "ffffff",
+      "ratio": 4.369,
+      "threshold": 3.0,
+      "passed": true
+    },
+    {
+      "pair": "dark input outline",
+      "foreground": "859c8e",
+      "background": "1a2320",
+      "ratio": 5.473,
+      "threshold": 3.0,
+      "passed": true
+    }
+  ]
+}

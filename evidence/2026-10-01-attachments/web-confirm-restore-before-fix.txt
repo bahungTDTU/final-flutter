@@ -1,0 +1,7 @@
+Captured from actual command output, 2026-10-01. QA verifier failure after restore mutation.
+Traceback (most recent call last):
+  File "D:\flutter cuoi ki\evidence\2026-10-01-attachments\verify_web_attachments.py", line 57, in <module>
+    assert response.json()['content'] == 'Content remains unchanged across label rename and deletion.'
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'content'
+Protection mutation returns metadata by design; verify full content via GET /notes/{id}.

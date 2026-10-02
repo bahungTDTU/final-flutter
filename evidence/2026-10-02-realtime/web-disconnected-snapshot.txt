@@ -1,0 +1,32 @@
+### Page
+- Page URL: http://127.0.0.1:7357/
+- Page Title: NoteTogether
+- Console: 8 errors, 0 warnings
+### Snapshot
+```yaml
+- generic [ref=f1e5]:
+  - generic:
+    - generic:
+      - generic:
+        - generic:
+          - generic:
+            - generic:
+              - button "Quay lại" [ref=f1e53]
+              - heading "Không gian viết" [level=2] [ref=f1e54]
+              - button "Đính kèm" [ref=f1e55]
+              - button "Đổi giao diện" [ref=f1e56]
+              - button "Đồng bộ" [ref=f1e57]
+            - group:
+              - generic [ref=f1e58]: Đã đồng bộ Đang nối lại
+              - generic [ref=f1e59]:
+                - textbox "Tiêu đề" [ref=f1e60]
+                - generic [ref=f1e61]: 180 characters remaining
+              - generic [ref=f1e62]:
+                - textbox "Nội dung" [active] [ref=f1e63]:
+                  - /placeholder: Bắt đầu viết…
+                  - text: Chrome second live edit
+                - generic [ref=f1e64]: 99977 characters remaining
+              - generic [ref=f1e65]: Tự động lưu. Nhập tiêu đề và nội dung để tạo ghi chú; bản nháp chưa hoàn chỉnh được giữ riêng.
+```
+### Events
+- New console entries: .playwright-cli\console-2026-10-02T10-20-21-170Z.log#L1-L8

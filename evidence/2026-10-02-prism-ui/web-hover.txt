@@ -1,0 +1,4 @@
+### Ran Playwright code
+```js
+await (async(page)=>{const card=page.getByRole('group',{name:/^Checklist buổi họp nhóm /});const before=await card.boundingBox();await card.hover();await page.screenshot({path:'output/playwright/prism-hover.png',scale:'css'});const after=await card.boundingBox();console.log(JSON.stringify({beforeY:before.y,afterY:after.y}));})(page);
+```

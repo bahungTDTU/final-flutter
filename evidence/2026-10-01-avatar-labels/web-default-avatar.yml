@@ -1,0 +1,13 @@
+- generic [ref=f3e77] [cursor=pointer]:
+  - alertdialog:
+    - generic "Alert":
+      - group:
+        - generic [ref=f3e78]: Ảnh đại diện
+        - generic:
+          - img "Ảnh đại diện mặc định W" [ref=f3e86]
+          - generic [ref=f3e80]: PNG/JPEG, tối đa 2 MiB. Ảnh được kiểm tra và thu nhỏ trên server; cần kết nối để thay ảnh.
+          - generic [ref=f3e87]: Đã dùng ảnh mặc định.
+          - button "Chọn ảnh" [ref=f3e81]
+          - button "Kiểm tra trạng thái" [ref=f3e83]
+      - button "Đóng" [ref=f3e84]
+      - button "Tải ảnh lên" [disabled] [ref=f3e88]

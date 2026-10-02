@@ -1,0 +1,8 @@
+### Result
+{
+  "loadedMainSha256": "556ad8ff7e32b995d984811bdd0c34e07569d48113a6b2c4fa0e0aed33afc2ca"
+}
+### Ran Playwright code
+```js
+await page.evaluate('()=>({loadedMainSha256:globalThis.__qaLoadedSha})');
+```

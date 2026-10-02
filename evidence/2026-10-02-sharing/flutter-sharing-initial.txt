@@ -1,0 +1,45 @@
+00:00 +0: loading D:/flutter cuoi ki/test/sharing_test.dart
+00:00 +0: Lost share acknowledgement retries immutable op even after catalogue changes
+00:00 +1: Late recipient list cannot cross accounts and locked list clears names
+00:00 +2: CAS conflict adopts catalogue but requires a new reviewed operation
+00:00 +3: Revoked pending edit keeps latest encrypted draft across file database reopen
+00:00 +4: Downgrade while typing shows server read-only and preserves draft
+00:01 +5: Share form validation and remote lock hide revoke confirmation at scale2
+00:01 +6: Shared card identifies owner and time while locked card redacts them
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: no matching candidates
+  Actual: _TextContainingWidgetFinder:<Found 1 widget with text containing Từ Original owner: [
+            Text("Từ Original owner · 02/10/2026 07:00", debugLabel: (englishLike bodySmall
+2021).merge((blackMountainView bodySmall).apply), inherit: false, color: Color(alpha: 1.0000, red:
+0.1137, green: 0.1059, blue: 0.1255, colorSpace: ColorSpace.sRGB), family: Roboto, size: 12.0,
+weight: 400, letterSpacing: 0.4, baseline: alphabetic, height: 1.3x, leadingDistribution: even,
+decoration: Color(alpha: 1.0000, red: 0.1137, green: 0.1059, blue: 0.1255, colorSpace:
+ColorSpace.sRGB) TextDecoration.none, overflow: ellipsis, maxLines: 2, dependencies:
+[DefaultSelectionStyle, DefaultTextStyle, MediaQuery]),
+          ]>
+   Which: means one was found but none were expected
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///D:/flutter%20cuoi%20ki/test/sharing_test.dart:382:7)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1953:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///D:/flutter%20cuoi%20ki/test/sharing_test.dart line 382
+The test description was:
+  Shared card identifies owner and time while locked card redacts them
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:01 +6 -1: Shared card identifies owner and time while locked card redacts them [E]
+  Test failed. See exception logs above.
+  The test description was: Shared card identifies owner and time while locked card redacts them
+  
+00:01 +6 -1: Some tests failed.
+
+Failing tests:
+  D:/flutter cuoi ki/test/sharing_test.dart: Shared card identifies owner and time while locked card redacts them

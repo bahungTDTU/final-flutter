@@ -1,0 +1,4 @@
+### Ran Playwright code
+```js
+await (async(page)=>{const field=page.getByRole('textbox',{name:'Nội dung',exact:true});const before=await field.inputValue();if(!before.includes('Nội dung vẫn được giữ'))throw new Error('Initial fixture text missing');await page.getByRole('button',{name:'Đổi giao diện',exact:true}).click();await page.setViewportSize({width:390,height:844});await field.click();await page.keyboard.press('End');const after=await field.inputValue();if(after!==before)throw new Error('Theme/resize changed editor content');})(page);
+```

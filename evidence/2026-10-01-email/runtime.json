@@ -1,0 +1,15 @@
+{
+  "date_utc": "2026-10-01T13:03:08.534929+00:00",
+  "target": "backend8000",
+  "commit": null,
+  "health": {
+    "status": "ok",
+    "email_delivery": "not_configured",
+    "ai": "not_configured"
+  },
+  "qa_fixture_ports_closed": [
+    8011,
+    8026
+  ],
+  "readme_files_identical": true
+}

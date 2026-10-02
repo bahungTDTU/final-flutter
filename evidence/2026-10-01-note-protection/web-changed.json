@@ -1,0 +1,15 @@
+{
+  "mode": "changed",
+  "time_utc": "2026-10-01T12:01:31.594604+00:00",
+  "target": "Chrome local release localhost:7357 / FastAPI localhost:8000",
+  "commit": null,
+  "original_id": "ef296c65-3f7d-4d2f-85e2-9ed845530cf7",
+  "copy_id": "36db3893-1aa5-4543-b6f1-b61b603d9679",
+  "note_count": 2,
+  "original_still_locked": true,
+  "redacted_metadata": true,
+  "old_password_status": 403,
+  "new_password_read_status": 200,
+  "own_relock_read_status": 423,
+  "exact_content_preserved": true
+}

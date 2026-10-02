@@ -1,0 +1,6 @@
+### Result
+{"utc":"2026-10-01T16:09:36.300Z","closedPreview":true,"filenameAbsent":true,"result":"PASS","sourceEvidence":"web-final-source.txt"}
+### Ran Playwright code
+```js
+await (async page => { await page.getByText("Nội dung đã được che.",{exact:true}).waitFor({timeout:30000}); const hiddenName=await page.getByText("attachment-fixture.png",{exact:true}).count()===0; if(!hiddenName) throw new Error("Deleted filename still visible"); return {utc:new Date().toISOString(),closedPreview:await page.getByText("Phiên xem đã đóng",{exact:true}).count()===1,filenameAbsent:hiddenName,result:"PASS",sourceEvidence:"web-final-source.txt"}; })(page);
+```

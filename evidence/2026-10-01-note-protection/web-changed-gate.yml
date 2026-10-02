@@ -1,0 +1,17 @@
+- generic [ref=f1e5]:
+  - generic:
+    - generic:
+      - generic:
+        - generic:
+          - generic:
+            - generic:
+              - button "Back" [active] [ref=f1e110]
+              - heading "Ghi chú bảo vệ" [level=2] [ref=f1e111]
+            - group:
+              - generic [ref=f1e112]: Mở khóa để đọc
+              - generic [ref=f1e113]: Cần kết nối backend. Phiên mở khóa tối đa 5 phút; nội dung sẽ che khi chuyển nền hoặc khóa lại.
+              - generic [ref=f1e114]:
+                - textbox "Mật khẩu ghi chú" [ref=f1e115]
+                - button "Hiện mật khẩu" [ref=f1e116]
+              - button "Mở khóa" [ref=f1e117]
+              - generic [ref=f1e118]: Khóa đã cập nhật. Các phiên mở khóa cũ đã đóng.

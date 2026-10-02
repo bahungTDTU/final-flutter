@@ -1,0 +1,11 @@
+{
+  "stage": "peer-delete",
+  "utc": "2026-10-01T16:09:03.911919+00:00",
+  "commit": null,
+  "note_id": "3df559e7-7e58-488c-873c-900c892e31cf",
+  "note_revision": 4,
+  "note_content_preserved": true,
+  "deleted_image": "d661819e-3496-418a-a86e-3d49bf5ce30b",
+  "attachment_count": 1,
+  "result": "PASS"
+}

@@ -1,0 +1,9 @@
+{
+  "stage": "confirm-restore",
+  "utc": "2026-10-01T16:29:45.858838+00:00",
+  "commit": null,
+  "note_id": "3df559e7-7e58-488c-873c-900c892e31cf",
+  "note_revision": 6,
+  "attachments_restored": 200,
+  "result": "PASS"
+}

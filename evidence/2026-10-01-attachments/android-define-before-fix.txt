@@ -1,0 +1,26 @@
+00:00 +0: loading D:/flutter cuoi ki/integration_test/attachments_test.dart
+Running Gradle task 'assembleDebug'...                          
+The command line is too long.
+Running Gradle task 'assembleDebug'...                              63ms
+00:00 +0 -1: loading D:/flutter cuoi ki/integration_test/attachments_test.dart [E]
+  Failed to load "D:/flutter cuoi ki/integration_test/attachments_test.dart": Gradle task assembleDebug failed with exit code 1
+  package:flutter_tools/src/base/common.dart 34:3                    throwToolExit
+  package:flutter_tools/src/android/gradle.dart 653:7                AndroidGradleBuilder.buildGradleApp
+  ===== asynchronous gap ===========================
+  package:flutter_tools/src/android/gradle.dart 246:5                AndroidGradleBuilder.buildApk
+  ===== asynchronous gap ===========================
+  package:flutter_tools/src/android/android_device.dart 571:7        AndroidDevice.startApp
+  ===== asynchronous gap ===========================
+  package:flutter_tools/src/test/integration_test_device.dart 59:39  IntegrationTestTestDevice.start
+  ===== asynchronous gap ===========================
+  package:flutter_tools/src/test/flutter_platform.dart 679:51        FlutterPlatform._startTest.<fn>
+  ===== asynchronous gap ===========================
+  package:flutter_tools/src/base/async_guard.dart 108:24             asyncGuard.<fn>
+  
+00:00 +0 -1: Some tests failed.
+
+Failing tests:
+  D:/flutter cuoi ki/integration_test/attachments_test.dart: loading D:/flutter cuoi ki/integration_test/attachments_test.dart
+adb uninstall failed: ProcessException: Process exited abnormally with exit code 1:
+Failure [DELETE_FAILED_INTERNAL_ERROR]
+  Command: D:/Android/sdk\platform-tools\adb.exe -s emulator-5554 uninstall vn.edu.notetogether.note_together

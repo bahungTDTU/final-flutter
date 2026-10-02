@@ -1,0 +1,10 @@
+.git
+.venv
+build
+.dart_tool
+backend/state
+**/__pycache__
+.env
+tmp
+output
+evidence

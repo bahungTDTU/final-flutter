@@ -1,0 +1,9 @@
+00:00 +0: loading D:/flutter cuoi ki/test/attachments_test.dart
+00:00 +0: Remote lock removes filename from an open delete confirmation
+00:00 +1: Preview clears bytes and filename when peer deletes attachment
+00:00 +2: Late binary after account switch or remote lock cannot enter preview; no persistent cache
+00:00 +3: Upload retry keeps ID/payload and never changes frozen note revision or note outbox
+00:00 +4: Revoked list and lifecycle epoch invalidate already displayed metadata and future bytes
+00:00 +5: Cancel and denied picker preserve selected retry; mobile scale2 dialog has no overflow
+00:00 +6: Viewer has download access but no mutation controls; remote lock clears file names
+00:01 +7: All tests passed!

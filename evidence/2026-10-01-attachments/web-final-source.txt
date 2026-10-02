@@ -1,0 +1,9 @@
+### Result
+{"utc":"2026-10-01T16:25:03.684Z","sha256":"360d770979709223a55fb965e5f9f745d95e7f5f340d14d7b0f71730a8669f85","caches":["notetogether-static-300d8deb084e2b7e"],"worker":"http://localhost:7357/offline_worker.js","width":390,"height":844,"dpr":1.0000000298023224}
+### Ran Playwright code
+```js
+await (async page => { const enable=page.getByRole("button",{name:"Enable accessibility",exact:true}); if(await enable.count()){ await enable.focus(); await page.keyboard.press("Enter"); } return await page.evaluate(async () => { const data = await (await fetch("/main.dart.js")).arrayBuffer(); return { utc: new Date().toISOString(), sha256: [...new Uint8Array(await crypto.subtle.digest("SHA-256", data))].map(v => v.toString(16).padStart(2,"0")).join(""), caches: await caches.keys(), worker: navigator.serviceWorker.controller?.scriptURL, width: innerWidth, height: innerHeight, dpr: devicePixelRatio }; }); })(page);
+```
+### Page
+- Page URL: http://localhost:7357/
+- Page Title: NoteTogether

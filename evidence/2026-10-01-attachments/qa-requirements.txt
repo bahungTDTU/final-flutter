@@ -1,0 +1,2 @@
+# Optional fixture generation only; not backend runtime dependencies.
+imageio-ffmpeg==0.6.0

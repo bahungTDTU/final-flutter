@@ -1,0 +1,73 @@
+Formatted 26 files (0 changed) in 0.26 seconds.
+Analyzing flutter cuoi ki...                                    
+No issues found! (ran in 3.7s)
+00:00 +0: loading D:/flutter cuoi ki/test/domain_test.dart
+00:00 +0: D:/flutter cuoi ki/test/domain_test.dart: Pinned time is descending, unpinned follows, tie-break is stable
+00:00 +1: D:/flutter cuoi ki/test/domain_test.dart: Invalid draft persists without creating remote operations
+00:00 +2: D:/flutter cuoi ki/test/domain_test.dart: Offline operations preserve immutable payload and sequential base revisions
+00:00 +3: D:/flutter cuoi ki/test/domain_test.dart: Accounts use separate local namespaces and logout clears visible state
+00:00 +4: D:/flutter cuoi ki/test/encrypted_recovery_test.dart: 423 archives latest queued edit even when the following list request fails
+00:00 +5: D:/flutter cuoi ki/test/encrypted_recovery_test.dart: 423 archives latest queued edit even when the following list request fails
+00:00 +6: D:/flutter cuoi ki/test/encrypted_recovery_test.dart: 423 archives latest queued edit even when the following list request fails
+00:00 +7: D:/flutter cuoi ki/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:00 +8: D:/flutter cuoi ki/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:00 +9: D:/flutter cuoi ki/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:00 +10: D:/flutter cuoi ki/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:01 +11: D:/flutter cuoi ki/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:01 +12: D:/flutter cuoi ki/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:01 +13: D:/flutter cuoi ki/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:01 +14: D:/flutter cuoi ki/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:01 +15: D:/flutter cuoi ki/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:02 +16: D:/flutter cuoi ki/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:02 +17: D:/flutter cuoi ki/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:02 +18: D:/flutter cuoi ki/test/widgets_test.dart: Settings apply dark theme, show pending sync and reset at logout
+00:03 +19: D:/flutter cuoi ki/test/widgets_test.dart: Settings apply dark theme, show pending sync and reset at logout
+00:03 +20: D:/flutter cuoi ki/test/widgets_test.dart: Settings apply dark theme, show pending sync and reset at logout
+00:03 +21: D:/flutter cuoi ki/test/widgets_test.dart: Settings apply dark theme, show pending sync and reset at logout
+00:03 +22: D:/flutter cuoi ki/test/widgets_test.dart: Settings apply dark theme, show pending sync and reset at logout
+00:03 +23: D:/flutter cuoi ki/test/widgets_test.dart: Settings apply dark theme, show pending sync and reset at logout
+00:03 +24: D:/flutter cuoi ki/test/widgets_test.dart: Settings apply dark theme, show pending sync and reset at logout
+00:03 +25: D:/flutter cuoi ki/test/widgets_test.dart: Settings apply dark theme, show pending sync and reset at logout
+00:03 +26: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home controls have labeled Android-sized touch targets
+00:03 +27: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home controls have labeled Android-sized touch targets
+00:03 +28: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home controls have labeled Android-sized touch targets
+00:03 +29: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home controls have labeled Android-sized touch targets
+00:03 +30: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home controls have labeled Android-sized touch targets
+00:03 +31: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home controls have labeled Android-sized touch targets
+00:03 +32: D:/flutter cuoi ki/test/widgets_test.dart: Editor preserves base revision when remote changes while typing
+00:03 +33: D:/flutter cuoi ki/test/widgets_test.dart: Editor preserves base revision when remote changes while typing
+00:03 +34: D:/flutter cuoi ki/test/widgets_test.dart: Editor preserves base revision when remote changes while typing
+00:03 +35: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(360.0, 800.0) at scale 1.0
+00:04 +36: D:/flutter cuoi ki/test/widgets_test.dart: Unverified user sees banner and can open editor
+00:04 +37: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(360.0, 800.0) at scale 1.5
+00:04 +38: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(360.0, 800.0) at scale 1.5
+00:04 +39: D:/flutter cuoi ki/test/widgets_test.dart: Delete dialog cancellation leaves note intact; confirmation deletes
+00:04 +40: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(360.0, 800.0) at scale 2.0
+00:04 +41: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(360.0, 800.0) at scale 2.0
+00:04 +42: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(390.0, 844.0) at scale 1.0
+00:05 +43: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(390.0, 844.0) at scale 1.5
+00:05 +44: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(390.0, 844.0) at scale 2.0
+00:05 +45: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(844.0, 390.0) at scale 1.0
+00:05 +46: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(844.0, 390.0) at scale 1.5
+00:05 +47: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(844.0, 390.0) at scale 2.0
+00:06 +48: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(768.0, 1024.0) at scale 1.0
+00:06 +49: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(768.0, 1024.0) at scale 1.5
+00:06 +50: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(768.0, 1024.0) at scale 2.0
+00:06 +51: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(1280.0, 800.0) at scale 1.0
+00:06 +52: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(1280.0, 800.0) at scale 1.5
+00:07 +53: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(1280.0, 800.0) at scale 2.0
+00:07 +54: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(1440.0, 900.0) at scale 1.0
+00:07 +55: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(1440.0, 900.0) at scale 1.5
+00:07 +56: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(1440.0, 900.0) at scale 2.0
+00:07 +57: D:/flutter cuoi ki/test/ui_redesign_test.dart: Locked card never exposes title content or labels; viewer has no owner menu
+00:07 +58: D:/flutter cuoi ki/test/ui_redesign_test.dart: Search clear and AND filter preserve note list and distinguish empty results
+00:08 +59: D:/flutter cuoi ki/test/ui_redesign_test.dart: Resize and theme retain editor text selection, ID and frozen revision
+00:08 +60: All tests passed!
+..............                                                           [100%]
+============================== warnings summary ===============================
+.venv\Lib\site-packages\fastapi\testclient.py:1
+  D:\flutter cuoi ki\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+14 passed, 1 warning in 6.71s

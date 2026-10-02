@@ -1,0 +1,40 @@
+### Ran Playwright code
+```js
+await page.getByRole('button', { name: 'Ảnh đại diện mặc định K Không' }).click();
+```
+### Page
+- Page URL: http://127.0.0.1:7357/
+- Page Title: NoteTogether
+### Snapshot
+- [Snapshot](.playwright-cli\page-2026-10-02T13-58-26-210Z.yml)
+### Page
+- Page URL: http://127.0.0.1:7357/
+- Page Title: NoteTogether
+### Snapshot
+```yaml
+- generic [ref=f1e96]:
+  - generic "Hộp thoại":
+    - button "Bỏ qua" [ref=f1e97]
+    - group:
+      - generic [ref=f1e98]: Hồ sơ và tùy chỉnh
+      - button "Đóng tùy chỉnh" [ref=f1e99]
+      - generic:
+        - img "Ảnh đại diện mặc định K Không gian học tập"
+        - button "Sửa tên hiển thị" [ref=f1e100]
+      - textbox [disabled] [ref=f1e102]
+      - button "Đổi ảnh đại diện" [ref=f1e103]
+      - generic [ref=f1e104]: Giao diện
+      - generic [ref=f1e105]: Chọn không gian dễ đọc nhất với bạn.
+      - switch "Giao diện tối" [checked] [ref=f1e106]
+      - generic [ref=f1e107]: Ghi chú
+      - generic [ref=f1e108]: "Cỡ chữ ghi chú: 16"
+      - generic "16" [ref=f1e109]:
+        - slider [ref=f1e110]: "1"
+      - generic [ref=f1e111]: Một ý tưởng đáng giữ. Một ghi chú dễ đọc.
+      - generic [ref=f1e112]: Tùy chỉnh theo tài khoản; thiết bị khác nhận khi đồng bộ.
+      - button "Đồng bộ tùy chỉnh" [ref=f1e113]
+      - generic [ref=f1e114]: Tài khoản
+      - generic [ref=f1e115]: Email chưa xác minh
+      - button "Đăng xuất" [ref=f1e116]
+      - button "Đổi mật khẩu" [ref=f1e117]
+```

@@ -1,0 +1,12 @@
+{
+  "observed_on": "2026-10-01",
+  "target": "Chrome / localhost Web release + real FastAPI SQLite",
+  "commit": null,
+  "preferences": {
+    "grid": false,
+    "dark": true,
+    "font_size": 18.0
+  },
+  "accepted_preference_operations": 3,
+  "result": "PASS"
+}

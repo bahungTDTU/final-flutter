@@ -1,0 +1,18 @@
+### Result
+[
+  {
+    "fields": [
+      "vault_version",
+      "key_id",
+      "nonce",
+      "ciphertext",
+      "mac"
+    ],
+    "vaultVersion": 1,
+    "plaintextLeak": false
+  }
+]
+### Ran Playwright code
+```js
+await page.evaluate('async () => { const db = await new Promise(resolve=>{const q=indexedDB.open("notetogether-v1"); q.onsuccess=()=>resolve(q.result);}); const rows=await new Promise(resolve=>{const r=db.transaction("entry").objectStore("entry").getAll(); r.onsuccess=()=>resolve(r.result);}); db.close(); return rows.filter(x=>String(x.key).startsWith("account:")).map(x=>({fields:Object.keys(x.value),vaultVersion:x.value.vault_version,plaintextLeak:JSON.stringify(x.value).includes("Unfinished browser edit")})); }');
+```

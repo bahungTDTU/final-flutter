@@ -1,0 +1,59 @@
+### Ran Playwright code
+```js
+await (async page => { await page.keyboard.press("Escape"); await page.waitForTimeout(400); await page.mouse.move(280,400); await page.mouse.wheel(0,-3000); await page.waitForTimeout(600); })(page);
+```
+### Page
+- Page URL: http://127.0.0.1:7357/
+- Page Title: NoteTogether
+### Snapshot
+```yaml
+- generic [ref=f1e4] [cursor=pointer]:
+  - generic:
+    - generic:
+      - generic:
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - heading "NoteTogether" [level=2] [ref=f1e120]
+                - button "Hồ sơ và tùy chỉnh" [ref=f1e121]
+              - generic:
+                - group:
+                  - generic [ref=f1e122]: Ghi chú của bạn
+                  - generic [ref=f1e123]: Ý tưởng, bài học và kế hoạch — gọn trong một nơi.
+                  - generic [ref=f1e124]: 6 ghi chú
+                  - button "Trực tiếp" [ref=f1e125]
+                  - generic [ref=f1e126]: Email của bạn chưa được xác minh.
+                  - button "Xác minh" [ref=f1e127]
+                  - textbox "Tìm ghi chú" [ref=f1e129]
+                  - button "Lưới" [ref=f1e130]
+                  - button "Danh sách" [ref=f1e131]
+                  - button [ref=f1e132]:
+                    - text: Quản lý nhãn
+                    - generic: Quản lý nhãn
+                  - checkbox "Cá nhân" [ref=f1e134]
+                  - checkbox "Học tập" [ref=f1e135]
+                  - checkbox "Nhóm" [ref=f1e136]
+                  - checkbox "Đồ án" [ref=f1e137]
+                  - generic [ref=f1e138]: Đã ghim
+                  - generic [ref=f1e139]: "1"
+                  - 'group "Kế hoạch đồ án cuối kỳ Chốt luồng ghi chú, rà lại quyền chia sẻ và chuẩn bị buổi demo. Mỗi thay đổi cần có bằng chứng kiểm thử. Đã ghim #Đồ án #Nhóm 02/10/2026" [ref=f1e140]':
+                    - button "Thao tác ghi chú" [ref=f1e141]
+                  - generic [ref=f1e142]: Các ghi chú khác
+                  - generic [ref=f1e143]: "5"
+                  - group "UI Web bản nháp offline Nội dung vẫn được giữ khi mất mạng; trạng thái kết nối được hiển thị đúng. 02/10/2026" [active] [ref=f1e144]:
+                    - button "Thao tác ghi chú" [ref=f1e145]
+              - button "Ghi chú mới" [ref=f1e146]
+              - tablist:
+                - tab "Ghi chú" [selected] [ref=f1e147]
+                - tab "Được chia sẻ" [ref=f1e148]
+                - tab "Hỏi ghi chú" [ref=f1e149]
+```
+### Ran Playwright code
+```js
+await (async page => { await page.setViewportSize({width:768,height:1024}); await page.waitForTimeout(500); })(page);
+```
+### Ran Playwright code
+```js
+await (async page => { await page.setViewportSize({width:1440,height:900}); await page.waitForTimeout(500); })(page);
+```

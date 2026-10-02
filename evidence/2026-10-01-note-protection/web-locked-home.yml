@@ -1,0 +1,28 @@
+- generic [ref=f1e5] [cursor=pointer]:
+  - generic:
+    - generic:
+      - generic:
+        - generic:
+          - generic:
+            - generic:
+              - button "Ghi chú Tab 1 of 3" [ref=f1e42]
+              - button "Được chia sẻ Tab 2 of 3" [ref=f1e43]
+              - button "Hỏi ghi chú Tab 3 of 3" [ref=f1e44]
+              - button "Hồ sơ và tùy chỉnh" [ref=f1e45]
+            - generic:
+              - group:
+                - generic [ref=f1e46]: Ghi chú của bạn
+                - button "Ghi chú mới" [ref=f1e47]
+                - generic [ref=f1e48]: 2 ghi chú
+                - button "Đã đồng bộ" [ref=f1e49]
+                - generic [ref=f1e50]: Email của bạn chưa được xác minh.
+                - button "Kiểm tra" [ref=f1e51]
+                - textbox "Tìm ghi chú" [ref=f1e53]
+                - button "Lưới" [ref=f1e54]
+                - button "Danh sách" [ref=f1e55]
+                - button "Quản lý nhãn" [ref=f1e56]
+                - generic [ref=f1e57]: 1 bản chỉnh sửa được giữ trong kho phục hồi local.
+                - button "Phục hồi" [ref=f1e58]
+                - generic [ref=f1e59]: Tất cả ghi chú
+                - button "Ghi chú đã khóa Mở khóa để xem nội dung. Đã khóa" [active] [ref=f1e60]
+                - button "Ghi chú đã khóa Mở khóa để xem nội dung. Đã khóa" [ref=f1e61]

@@ -1,0 +1,43 @@
+00:00 +0: loading D:/flutter cuoi ki/integration_test/sharing_test.dart
+Running Gradle task 'assembleDebug'...                          
+Warning: SDK processing. This version only understands SDK XML versions up to 3 but an SDK XML file of version 4 was encountered. This can happen if you use versions of Android Studio and the command-line tools that were released at different times.
+Running Gradle task 'assembleDebug'...                             68,8s
+√ Built build\app\outputs\flutter-apk\app-debug.apk
+Installing build\app\outputs\flutter-apk\app-debug.apk...        1.291ms
+00:00 +0: Native sharing manager and server role changes preserve encrypted drafts on reopen
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: exactly one matching candidate
+  Actual: _TypeWidgetFinder:<Found 0 widgets with type "CupertinoNavigationBarBackButton": []>
+   Which: means none were found but one was expected
+One back button expected on screen
+
+When the exception was thrown, this was the stack:
+#0      fail (package:matcher/src/expect/expect.dart:187:31)
+#1      _expect (package:matcher/src/expect/expect.dart:182:3)
+#2      expect (package:matcher/src/expect/expect.dart:65:3)
+#3      expectSync (package:flutter_test/src/widget_tester.dart:486:18)
+#4      WidgetTester.pageBack.<anonymous closure> (package:flutter_test/src/widget_tester.dart:1177:7)
+#7      TestAsyncUtils.guard (package:flutter_test/src/test_async_utils.dart:74:41)
+#8      WidgetTester.pageBack (package:flutter_test/src/widget_tester.dart:1171:27)
+#9      main.<anonymous closure> (file:///D:/flutter%20cuoi%20ki/integration_test/sharing_test.dart:166:20)
+<asynchronous suspension>
+#10     testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#11     TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1953:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided 3 frames from dart:async and package:stack_trace)
+
+The test description was:
+  Native sharing manager and server role changes preserve encrypted drafts on reopen
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:10 +0 -1: Native sharing manager and server role changes preserve encrypted drafts on reopen [E]
+  Test failed. See exception logs above.
+  The test description was: Native sharing manager and server role changes preserve encrypted drafts on reopen
+  
+00:10 +0 -1: (tearDownAll)
+00:11 +0 -1: Some tests failed.
+
+Failing tests:
+  D:/flutter cuoi ki/integration_test/sharing_test.dart: Native sharing manager and server role changes preserve encrypted drafts on reopen

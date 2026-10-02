@@ -1,0 +1,13 @@
+{
+  "date_utc": "2026-10-01T13:00:08.680955+00:00",
+  "target": "local API8011 / SMTP TLS fixture",
+  "commit": null,
+  "account": "web-mail-20261001-1243@example.test",
+  "old_password_login": 401,
+  "new_password_login": 200,
+  "profile_verified": true,
+  "verify_reuse": 400,
+  "reset_check_reuse": 400,
+  "reset_reuse": 400,
+  "sqlite_used_and_digest_only": true
+}

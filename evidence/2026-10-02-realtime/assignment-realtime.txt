@@ -1,0 +1,57 @@
+PAGE 4
+- The application must provide efficient live search, enabling users to search for notes by keywords contained in either the title or content.
+Search must begin as the user types, without requiring a Search button. A short delay, such as approximately 300 milliseconds, may be
+used to reduce unnecessary processing and requests.
+- Users must be able to view all labels, add labels, rename labels, and delete labels. A note may have no label or may be associated with
+one or multiple labels. Users must also be able to filter notes by selected labels. Deleting a label must not delete or otherwise damage
+associated notes, and renaming a label must automatically update its displayed name for every associated note.
+2.3 Advanced Note Management
+- The application must provide a mechanism for locking individual notes with a password. Each protected note must have its own
+password. After protection is enabled, users must enter the note password before viewing, editing, deleting, sharing, summarizing, or
+otherwise accessing the protected content. Users must be able to change the note password or disable protection. Note passwords must
+not be stored in plain text, and protected-note access must be enforced by the backend or security rules rather than only by hiding
+controls in the user interface.
+- Users must be able to share notes with one or multiple registered accounts identified by email address. The note owner must be able to
+assign read-only or edit permission to each recipient and must retain the ability to modify permissions or revoke access at any time. All
+permissions must be enforced through backend authorization or data-service security rules; a read-only user must not be able to modify
+a note by directly invoking an API or data service.
+- Recipients must have a dedicated section containing all notes shared with them. Each shared note must identify whether it is read-only
+or editable, who shared it, and when it was shared. Notes shared with edit permission must support real-time collaboration through an
+appropriate real-time data service or communication mechanism. Multiple authorized users must observe updates without manually
+refreshing or reopening the note, while unauthorized or read-only users must be prevented from submitting changes.
+PAGE 13
+LEVEL 1 2 3
+ID CRITERIA
+POINT 0 PT 25-75% POINT FULL POINT
+The feature is not available, The feature has been implemented but is The feature has been implemented
+Share, receive, and manage does not work, or has been incomplete, unreliable, inconsistent across correctly as required on the submitted
+25 0.5
+note permissions implemented in a substantially the required platforms, or contains serious platforms, with no defects or only
+incorrect manner. defects. insignificant defects.
+The feature is not available, The feature has been implemented but is The feature has been implemented
+Real-time collaboration and does not work, or has been incomplete, unreliable, inconsistent across correctly as required on the submitted
+26 0.5
+modification implemented in a substantially the required platforms, or contains serious platforms, with no defects or only
+incorrect manner. defects. insignificant defects.
+The feature is not available, The feature has been implemented but is The feature has been implemented
+does not work, or has been incomplete, unreliable, inconsistent across correctly as required on the submitted
+27 AI Summary 0.25
+implemented in a substantially the required platforms, or contains serious platforms, with no defects or only
+incorrect manner. defects. insignificant defects.
+The feature is not available, The feature has been implemented but is The feature has been implemented
+AI Question Answering does not work, or has been incomplete, unreliable, inconsistent across correctly as required on the submitted
+28 0.25
+with source-note references implemented in a substantially the required platforms, or contains serious platforms, with no defects or only
+incorrect manner. defects. insignificant defects.
+Other requirements 2.0
+Poor or unusable interface; A polished, accessible, and consistent
+A generally usable interface on the
+major overflows or platform interface with appropriate
+UI, UX, accessibility, and required platforms, but with noticeable
+failures; inconsistent loading/empty/error states, adaptive
+29 adaptive cross-platform 0.5 limitations in adaptive layout, platform
+navigation; no meaningful layouts for mobile, tablet, desktop, and
+interface interaction, accessibility, consistency, or
+feedback or accessibility web, and effective touch, mouse, and
+user feedback.
+support. keyboard interaction.

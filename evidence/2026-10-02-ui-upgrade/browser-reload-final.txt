@@ -1,0 +1,4 @@
+### Ran Playwright code
+```js
+await (async(page)=>{const loaded=page.waitForResponse(r=>r.url().endsWith('/main.dart.js'));await page.reload();const bytes=Array.from(await(await loaded).body());await page.evaluate(async bytes=>{globalThis.__qaLoadedSha=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',new Uint8Array(bytes)))).map(x=>x.toString(16).padStart(2,'0')).join('');},bytes);})(page);
+```

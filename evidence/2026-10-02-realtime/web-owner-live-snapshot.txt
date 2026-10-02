@@ -1,0 +1,31 @@
+### Page
+- Page URL: http://127.0.0.1:7357/
+- Page Title: NoteTogether
+### Snapshot
+```yaml
+- generic [ref=e5]:
+  - generic:
+    - generic:
+      - generic:
+        - generic:
+          - generic:
+            - generic:
+              - button "Quay lại" [active] [ref=e43]
+              - heading "Không gian viết" [level=2] [ref=e44]
+              - button "Chia sẻ ghi chú" [ref=e45]
+              - button "Đính kèm" [ref=e46]
+              - button "Đổi giao diện" [ref=e47]
+              - button "Đồng bộ" [ref=e48]
+            - group:
+              - generic [ref=e49]: Đã đồng bộ Trực tiếp
+              - generic [ref=e58]: Đã nhận phiên bản mới. Bắt đầu phiên chỉnh sửa mới để tiếp tục.
+              - button "Chỉnh sửa phiên bản mới" [ref=e59]
+              - generic [ref=e50]:
+                - textbox "Tiêu đề" [ref=e51]
+                - generic [ref=e52]: 180 characters remaining
+              - checkbox "Ghim ghi chú" [disabled] [ref=e53]
+              - generic [ref=e54]:
+                - textbox "Nội dung" [ref=e55]
+                - generic [ref=e56]: 99977 characters remaining
+              - generic [ref=e57]: Tự động lưu. Nhập tiêu đề và nội dung để tạo ghi chú; bản nháp chưa hoàn chỉnh được giữ riêng.
+```

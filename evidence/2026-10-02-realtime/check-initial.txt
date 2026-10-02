@@ -1,0 +1,8 @@
+Formatted 49 files (0 changed) in 0.53 seconds.
+Analyzing flutter cuoi ki...                                    
+
+   info - Statements in an if should be enclosed in a block. Try wrapping the statement in a block - lib\state\app_controller.dart:43:7 - curly_braces_in_flow_control_structures
+   info - Statements in an if should be enclosed in a block. Try wrapping the statement in a block - lib\state\app_controller.dart:76:7 - curly_braces_in_flow_control_structures
+   info - Statements in an if should be enclosed in a block. Try wrapping the statement in a block - lib\state\app_controller.dart:79:9 - curly_braces_in_flow_control_structures
+
+3 issues found. (ran in 4.4s)

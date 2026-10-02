@@ -1,0 +1,14 @@
+- generic [ref=e64]:
+  - alertdialog:
+    - generic "Alert":
+      - group:
+        - generic [ref=e65]: Ảnh đại diện
+        - generic:
+          - img "Ảnh đại diện của bạn" [ref=e74]
+          - generic [ref=e67]: PNG/JPEG, tối đa 2 MiB. Ảnh được kiểm tra và thu nhỏ trên server; cần kết nối để thay ảnh.
+          - generic [ref=e75]: Server đã lưu ảnh đại diện.
+          - button "Chọn ảnh" [ref=e68]
+          - button "Dùng ảnh mặc định" [ref=e76]
+          - button "Kiểm tra trạng thái" [ref=e69]
+      - button "Đóng" [ref=e70]
+      - button "Tải ảnh lên" [disabled] [ref=e77]

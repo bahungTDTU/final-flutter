@@ -1,0 +1,1 @@
+{"action": "revoke", "content_revision_unchanged": 7}

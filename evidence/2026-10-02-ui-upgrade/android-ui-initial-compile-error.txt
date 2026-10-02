@@ -1,0 +1,43 @@
+00:00 +0: loading D:/flutter cuoi ki/integration_test/ui_upgrade_test.dart
+Running Gradle task 'assembleDebug'...                          
+integration_test/ui_upgrade_test.dart:62:41: Error: The method 'revertFlutterImage' isn't defined for the type 'CallbackManager'.
+ - 'CallbackManager' is from 'package:integration_test/common.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/integration_test/lib/common.dart').
+Try correcting the name to the name of an existing method, or defining a method named 'revertFlutterImage'.
+          await binding.callbackManager.revertFlutterImage();
+                                        ^^^^^^^^^^^^^^^^^^
+Target kernel_snapshot_program failed: Exception
+
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:compileFlutterBuildDebug'.
+> Process 'command 'C:\Users\LENOVO\flutter-sdk\bin\flutter.bat'' finished with non-zero exit value 1
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 22s
+Running Gradle task 'assembleDebug'...                             22,7s
+00:00 +0 -1: loading D:/flutter cuoi ki/integration_test/ui_upgrade_test.dart [E]
+  Failed to load "D:/flutter cuoi ki/integration_test/ui_upgrade_test.dart": Gradle task assembleDebug failed with exit code 1
+  package:flutter_tools/src/base/common.dart 34:3                    throwToolExit
+  package:flutter_tools/src/android/gradle.dart 653:7                AndroidGradleBuilder.buildGradleApp
+  ===== asynchronous gap ===========================
+  package:flutter_tools/src/android/gradle.dart 246:5                AndroidGradleBuilder.buildApk
+  ===== asynchronous gap ===========================
+  package:flutter_tools/src/android/android_device.dart 571:7        AndroidDevice.startApp
+  ===== asynchronous gap ===========================
+  package:flutter_tools/src/test/integration_test_device.dart 59:39  IntegrationTestTestDevice.start
+  ===== asynchronous gap ===========================
+  package:flutter_tools/src/test/flutter_platform.dart 679:51        FlutterPlatform._startTest.<fn>
+  ===== asynchronous gap ===========================
+  package:flutter_tools/src/base/async_guard.dart 108:24             asyncGuard.<fn>
+  
+00:00 +0 -1: Some tests failed.
+
+Failing tests:
+  D:/flutter cuoi ki/integration_test/ui_upgrade_test.dart: loading D:/flutter cuoi ki/integration_test/ui_upgrade_test.dart

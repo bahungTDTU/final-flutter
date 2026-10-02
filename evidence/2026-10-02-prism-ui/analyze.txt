@@ -1,0 +1,7 @@
+Analyzing flutter cuoi ki...                                    
+
+  error - Invalid constant value - lib\ui\design_system.dart:165:29 - invalid_constant
+  error - The function 'CupertinoPageTransitionsBuilder' isn't defined. Try importing the library that defines 'CupertinoPageTransitionsBuilder', correcting the name to the name of an existing function, or defining a function named 'CupertinoPageTransitionsBuilder' - lib\ui\design_system.dart:165:29 - undefined_function
+  error - The values in a const map literal must be constant. Try removing the keyword 'const' from the map literal - lib\ui\design_system.dart:165:29 - non_constant_map_value
+
+3 issues found. (ran in 8.1s)

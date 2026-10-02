@@ -1,0 +1,7 @@
+00:00 +0: loading D:/flutter cuoi ki/integration_test/encrypted_recovery_test.dart
+Running Gradle task 'assembleDebug'...                             19,1s
+√ Built build\app\outputs\flutter-apk\app-debug.apk
+Installing build\app\outputs\flutter-apk\app-debug.apk...          735ms
+00:00 +0: Real second-session lock preserves encrypted draft across native reopen
+00:07 +1: (tearDownAll)
+00:07 +1: All tests passed!

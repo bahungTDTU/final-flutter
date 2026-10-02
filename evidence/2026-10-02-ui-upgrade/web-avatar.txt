@@ -1,0 +1,18 @@
+### Page
+- Page URL: http://127.0.0.1:7357/
+- Page Title: NoteTogether
+### Snapshot
+```yaml
+- generic [ref=e75]:
+  - alertdialog:
+    - generic "Thông báo":
+      - group:
+        - generic [ref=e76]: Ảnh đại diện
+        - generic:
+          - img "Ảnh đại diện mặc định K" [ref=e77]
+          - generic [ref=e78]: Chọn ảnh PNG/JPEG tối đa 2 MiB. Cần kết nối để cập nhật ảnh đại diện cho tài khoản.
+          - button "Chọn ảnh" [ref=e79]
+          - button "Kiểm tra trạng thái" [ref=e80]
+      - button "Đóng" [ref=e81]
+      - button "Tải ảnh lên" [disabled] [ref=e82]
+```
