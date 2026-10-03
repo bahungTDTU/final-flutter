@@ -1,0 +1,79 @@
+### Ran Playwright code
+```js
+await (async page => { await page.context().setOffline(true); const body=page.getByRole("textbox",{name:"Nội dung",exact:true}); await body.click(); await page.keyboard.press("Control+A"); await page.keyboard.type("Bản offline maintenance 03/10 được giữ sau reload."); await page.waitForTimeout(1300); await page.getByRole("button",{name:"Quay lại",exact:true}).click(); await page.waitForTimeout(600); })(page);
+```
+### Page
+- Page URL: http://127.0.0.1:7357/
+- Page Title: NoteTogether
+- Console: 2 errors, 0 warnings
+### Events
+- New console entries: .playwright-cli\console-2026-10-03T14-02-07-305Z.log#L1-L2
+### Ran Playwright code
+```js
+await page.reload();
+```
+### Page
+- Page URL: http://127.0.0.1:7357/
+- Page Title: NoteTogether
+### Snapshot
+- [Snapshot](.playwright-cli\page-2026-10-03T14-11-57-865Z.yml)
+### Ran Playwright code
+```js
+await (async page => { await page.getByRole("button",{name:"Enable accessibility"}).dispatchEvent("click"); await page.waitForTimeout(500); })(page);
+```
+### Page
+- Page URL: http://127.0.0.1:7357/
+- Page Title: NoteTogether
+- Console: 3 errors, 0 warnings
+### Events
+- New console entries: .playwright-cli\console-2026-10-03T14-02-07-305Z.log#L3-L5
+### Page
+- Page URL: http://127.0.0.1:7357/
+- Page Title: NoteTogether
+- Console: 4 errors, 0 warnings
+### Snapshot
+```yaml
+- generic [ref=f3e4]:
+  - generic:
+    - generic:
+      - generic:
+        - generic:
+          - generic:
+            - generic [active]:
+              - generic:
+                - heading "NoteTogether" [level=2] [ref=f3e5]
+                - button "Hồ sơ và tùy chỉnh" [ref=f3e6]
+              - generic:
+                - group:
+                  - generic [ref=f3e7]: Ghi chú của bạn
+                  - generic [ref=f3e8]: Ý tưởng, bài học và kế hoạch — gọn trong một nơi.
+                  - generic [ref=f3e9]: 7 ghi chú
+                  - button "Offline · 1 thay đổi chờ" [ref=f3e10]
+                  - generic [ref=f3e11]: Email của bạn chưa được xác minh.
+                  - button "Xác minh" [ref=f3e12]
+                  - generic [ref=f3e13]: Đang offline. Các thay đổi đã lưu trên thiết bị đang chờ kết nối.
+                  - button "Thử lại" [ref=f3e14]
+                  - textbox "Tìm ghi chú" [ref=f3e16]
+                  - button "Lưới" [ref=f3e17]
+                  - button "Danh sách" [ref=f3e18]
+                  - button "Quản lý nhãn" [ref=f3e19]
+                  - checkbox "Cá nhân" [ref=f3e20]
+                  - checkbox "Học tập" [ref=f3e21]
+                  - checkbox "Nhóm" [ref=f3e22]
+                  - checkbox "Đồ án" [ref=f3e23]
+                  - generic [ref=f3e24]: Đã ghim
+                  - generic [ref=f3e25]: "1"
+                  - 'group "Kế hoạch đồ án cuối kỳ Chốt luồng ghi chú, rà lại quyền chia sẻ và chuẩn bị buổi demo. Mỗi thay đổi cần có bằng chứng kiểm thử. Đã ghim #Đồ án #Nhóm 02/10/2026" [ref=f3e26]':
+                    - button "Thao tác ghi chú" [ref=f3e27]
+                  - generic [ref=f3e28]: Các ghi chú khác
+                  - generic [ref=f3e29]: "6"
+                  - group "QA maintenance 2026-10-03 Bản offline maintenance 03/10 được giữ sau reload. 03/10/2026 Chờ đồng bộ" [ref=f3e30]:
+                    - button "Thao tác ghi chú" [ref=f3e31]
+              - button "Ghi chú mới" [ref=f3e32]
+              - tablist:
+                - tab "Ghi chú" [selected] [ref=f3e33]
+                - tab "Được chia sẻ" [ref=f3e34]
+                - tab "Hỏi ghi chú" [ref=f3e35]
+```
+### Events
+- New console entries: .playwright-cli\console-2026-10-03T14-02-07-305Z.log#L6

@@ -1,0 +1,10 @@
+### Browser `maintenance` opened with pid 31672.
+### Ran Playwright code
+```js
+await page.goto('http://127.0.0.1:7357/');
+```
+### Page
+- Page URL: http://127.0.0.1:7357/
+- Page Title: NoteTogether
+### Snapshot
+- [Snapshot](.playwright-cli\page-2026-10-03T14-02-07-533Z.yml)

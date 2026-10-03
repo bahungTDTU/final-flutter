@@ -61,3 +61,7 @@ android/key.properties
 tmp/
 .playwright-cli/
 /output/
+
+# Logs written by active local development services.
+/evidence/**/backend-local.txt
+/evidence/**/web-local.txt

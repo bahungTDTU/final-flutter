@@ -1,0 +1,51 @@
+### Ran Playwright code
+```js
+await (async page => { await page.getByRole("group",{name:/^QA maintenance 2026-10-03/}).click(); const body=page.getByRole("textbox",{name:"Nội dung",exact:true}); await body.click(); if(await body.inputValue()!=="Bản offline maintenance 03/10 được giữ sau reload.") throw new Error("Offline reload lost text"); await page.context().setOffline(false); await page.getByRole("button",{name:"Đồng bộ",exact:true}).click(); await page.waitForTimeout(1200); })(page);
+```
+### Page
+- Page URL: http://127.0.0.1:7357/
+- Page Title: NoteTogether
+- Console: 28 errors, 0 warnings
+### Events
+- New console entries: .playwright-cli\console-2026-10-03T14-02-07-305Z.log#L7-L30
+### Page
+- Page URL: http://127.0.0.1:7357/
+- Page Title: NoteTogether
+- Console: 28 errors, 0 warnings
+### Snapshot
+```yaml
+- generic [ref=f3e4] [cursor=pointer]:
+  - generic:
+    - generic:
+      - generic:
+        - generic:
+          - generic:
+            - generic:
+              - button "Quay lại" [ref=f3e36]
+              - heading "Không gian viết" [level=2] [ref=f3e37]
+              - button "Chia sẻ ghi chú" [ref=f3e38]
+              - button "Đính kèm" [active] [ref=f3e39]
+              - button "Đổi giao diện" [ref=f3e40]
+              - button [ref=f3e41]:
+                - text: Đồng bộ
+                - generic: Đồng bộ
+            - group:
+              - generic [ref=f3e43]: Một điều đáng ghi nhớ
+              - generic [ref=f3e44]: Viết theo cách của bạn. Các thay đổi được tự động lưu.
+              - generic [ref=f3e45]: Đã đồng bộ Đang nối lại
+              - generic [ref=f3e46]:
+                - textbox "Tiêu đề" [ref=f3e47]
+                - generic [ref=f3e48]: Còn lại 175 ký tự
+              - checkbox "Ghim ghi chú" [ref=f3e49]
+              - checkbox "Cá nhân" [ref=f3e50]
+              - checkbox "Học tập" [ref=f3e51]
+              - checkbox "Nhóm" [ref=f3e52]
+              - checkbox "Đồ án" [ref=f3e53]
+              - generic [ref=f3e54]:
+                - textbox "Nội dung" [ref=f3e55]:
+                  - /placeholder: Bắt đầu viết…
+                  - text: Bản offline maintenance 03/10 được giữ sau reload.
+                - generic [ref=f3e56]: Còn lại 99.950 ký tự
+              - generic [ref=f3e57]: 50 ký tự
+              - generic [ref=f3e58]: Tự động lưu. Nhập tiêu đề và nội dung để tạo ghi chú; bản nháp chưa hoàn chỉnh được giữ riêng.
+```

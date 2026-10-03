@@ -1,4 +1,4 @@
-# NoteTogether - trạng thái 02/10/2026
+# NoteTogether - trạng thái 03/10/2026
 
 ## Mốc hiện tại
 
@@ -10,6 +10,10 @@ Không tuyên bố đạt đủ 32 mục hoặc sẵn sàng nộp.
 
 ## Đã thực hiện
 
+- Bảo trì03/10: batch GET /notes giữ ACL/minimal lock response; index merge sync, bỏ archive
+  cho clean notes; HTTP plain-error giữ status, timeout abort; background/dispose guards.
+  Dọn309 generated files cũ/trùng, bỏ unused PaperIllustration/cupertino_icons,
+  chuyển legacy contrast script ra evidence. Xem docs/PERFORMANCE_AND_MAINTENANCE.md.
 - Đọc/extract lại PDF gốc 19 trang và đối chiếu rubric; tạo matrix 32 mục tổng 10 điểm.
 - Scaffold một Flutter project Web/Android, state ChangeNotifier, Sembast local, FastAPI/SQLite.
 - Auth register tự login, persistent unverified banner, login/logout, profile name/private avatar,
@@ -34,18 +38,23 @@ Không tuyên bố đạt đủ 32 mục hoặc sẵn sàng nộp.
 ## Bằng chứng đã chạy
 
 Windows 11, Flutter3.47.1/Dart3.13.1, Python3.12, Android SDK36/JDK21, Chrome154,
-Android API36 emulator taskflow_api36. Các QA logs/manifest bên dưới được chốt trước initial
-commit, nên trường commitnull mô tả đúng snapshot kiểm chứng; lịch sử hiện tại xem Git.
+Android API36 emulator taskflow_api36. Maintenance03/10 chạy trên base35ee911 + working changes;
+source hashes/commands/results trong evidence/2026-10-03-maintenance/INDEX.md.
+Các QA snapshots01–02/10 chốt trước initial commit giữ commitnull đúng phạm vi lịch sử.
 
 | Check | Kết quả / phạm vi |
 |---|---|
-| Format/check/analyze | PASS, không issue; evidence/2026-10-02-prism-ui/check-final.txt |
-| Flutter tests | 118 PASS; thêm hover/reduced-motion/no restart/129 contrast pairs; adaptive320px/200%, keyboard/filter/draft/offline-label/crypto/preferences/labels/sharing/realtime/base suites giữ PASS |
-| Backend | 53 PASS gồm realtime socket SSE/ACL/idempotency;1 TestClient deprecation warning; thêm direct actual HTTP owner/viewer/editor/stranger PASS |
-| Web release | PASS API8000/41 static resources/workerd000707d1578e9da; navigation main JS hash trong prism UI index; chưa public HTTPS |
-| APK release | Build55.9MB PASS sau pub get sinh lại plugins; debug signing/local HTTP URL, chưa HTTPS/release core acceptance |
-| Android integration | Prism final source register/labels/preferences/theme/editor ID/text/caret PASS,3 PNG; API36 debug/backend thật, Skia software;2 default-renderer disconnects không PASS; sharing/core/realtime mốc trước có scope riêng |
-| Browser local | Prism final bundle: Chrome auth/login/home hover/settings/light-dark desktop/tablet/mobile; editor theme/resize giữ nội dung. Search/filter/offline reload/sharing/picker ở UI đợt trước, không rerun toàn bộ trong đợt trang trí |
+| Format/check/analyze | PASS, không issue; evidence/2026-10-03-maintenance/check-final.txt |
+| Flutter tests | 123 PASS;5 HTTP/lifecycle regressions mới; hover/reduced/no restart/129 contrast/adaptive200%/privacy/base/durability/recovery/preferences/labels/sharing/SSE suites giữ PASS |
+| Backend | 56 PASS; thêm bounded list queries/detail parity/current ACL/labels/lock;1 TestClient deprecation warning; direct actual HTTP owner/viewer/editor/stranger PASS |
+| Web release | PASS API8000/40 static resources/workerfe2154b5779bb956; navigation main JS SHA trong maintenance index; chưa public HTTPS |
+| APK release | Build55.8MB PASS sau native integration/pub get; debug signing/local HTTP URL, chưa HTTPS/release core acceptance |
+| Android integration | Maintenance final source note_flow real API/Sembast/keys/register/autosave/offline/reopen PASS; API36 debug Skia software; UI/sharing/realtime PNG/flow mốc trước có scope riêng |
+| Browser local | Maintenance final bundle: actual Chrome login/home/editor/theme-resize/offline draft/reload/reconnect; actual API ID/count/content assertions trong maintenance index; các flow khác giữ historical scope |
+
+Benchmark local ASGI/SQLite1.000 notes: owner/viewer SELECT5.803/7.753→4;7 measured requests
+median64.248/76.335ms→52.397/58.701ms. Hai lần đo host có nhiễu,10-note latency không ổn định;
+không claim network/production/FPS/jank improvement. Details: PERFORMANCE_AND_MAINTENANCE.md.
 
 Actual integration dùng port65530 không lắng nghe để tạo lỗi kết nối thật (không HTTP mock).
 DB close/reopen là trong test process; chưa chứng minh OS force-kill/relaunch hay Wi-Fi toggle Android.

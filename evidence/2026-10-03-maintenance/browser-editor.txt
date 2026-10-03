@@ -1,0 +1,38 @@
+### Ran Playwright code
+```js
+await page.getByRole('button', { name: 'Ghi chú mới' }).click();
+```
+### Page
+- Page URL: http://127.0.0.1:7357/
+- Page Title: NoteTogether
+### Snapshot
+- [Snapshot](.playwright-cli\page-2026-10-03T14-08-52-058Z.yml)
+### Page
+- Page URL: http://127.0.0.1:7357/
+- Page Title: NoteTogether
+### Snapshot
+```yaml
+- generic [ref=f2e4]:
+  - generic:
+    - generic:
+      - generic:
+        - generic:
+          - generic:
+            - generic:
+              - button "Quay lại" [active] [ref=f2e57]
+              - heading "Không gian viết" [level=2] [ref=f2e58]
+              - button "Đổi giao diện" [ref=f2e59]
+              - button "Đồng bộ" [ref=f2e60]
+            - group:
+              - generic [ref=f2e61]: Một điều đáng ghi nhớ
+              - generic [ref=f2e62]: Viết theo cách của bạn. Các thay đổi được tự động lưu.
+              - generic [ref=f2e63]: Bắt đầu ghi chú mới Trực tiếp
+              - generic [ref=f2e64]:
+                - textbox "Tiêu đề" [ref=f2e65]
+                - generic [ref=f2e66]: Còn lại 200 ký tự
+              - generic [ref=f2e67]:
+                - textbox "Nội dung" [ref=f2e68]
+                - generic [ref=f2e69]: Còn lại 100.000 ký tự
+              - generic [ref=f2e70]: 0 ký tự
+              - generic [ref=f2e71]: Tự động lưu. Nhập tiêu đề và nội dung để tạo ghi chú; bản nháp chưa hoàn chỉnh được giữ riêng.
+```

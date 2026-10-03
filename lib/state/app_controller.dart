@@ -30,6 +30,8 @@ class AppController extends ChangeNotifier {
       _realtimeRefresh?.cancel();
     } else {
       _startRealtime();
+      // A client without SSE must catch up on resume rather than wait 15s.
+      if (realtime == null) unawaited(synchronize());
     }
     notifyListeners();
   }
@@ -218,24 +220,28 @@ class AppController extends ChangeNotifier {
   }
 
   Future<void> initialize() async {
+    if (_disposed) return;
     try {
       final session = await local.read('session');
+      if (_disposed) return;
       if (session != null) {
         user = Map<String, dynamic>.from(session['user'] as Map);
         token = session['token'] as String;
         await _loadAccount();
       }
     } catch (e) {
+      if (_disposed) return;
       user = null;
       token = null;
       error = 'Không thể mở dữ liệu local: $e';
     }
+    if (_disposed) return;
     ready = true;
     notifyListeners();
     _retry = Timer.periodic(const Duration(seconds: 15), (_) {
-      if (user != null) unawaited(synchronize());
+      if (!_disposed && _foreground && user != null) unawaited(synchronize());
     });
-    if (user != null) unawaited(synchronize());
+    if (_foreground && user != null) unawaited(synchronize());
     _startRealtime();
   }
 
@@ -544,7 +550,7 @@ class AppController extends ChangeNotifier {
   }
 
   Future<void> synchronize() async {
-    if (_syncing || user == null) return;
+    if (_disposed || _syncing || user == null) return;
     _syncing = true;
     final generation = _generation, sessionToken = token!, userId = user!['id'];
     bool active() =>
@@ -654,28 +660,42 @@ class AppController extends ChangeNotifier {
       final incoming = remote
           .map((n) => Note.fromJson(Map<String, dynamic>.from(n as Map)))
           .toList();
+      final incomingById = {for (final note in incoming) note.id: note};
+      final localStateIds = {
+        ...drafts.keys,
+        ...conflicts.keys,
+        ...pending.map((op) => op['note_id']),
+      };
       for (final n in incoming.where((n) => n.locked)) {
-        _archiveLocked(n);
+        if (localStateIds.contains(n.id)) _archiveLocked(n);
       }
       for (final old in List<Note>.from(notes)) {
-        if (old.role != 'owner' && !incoming.any((n) => n.id == old.id)) {
-          _archiveAccessLoss(old.id, reason: 'revoked');
+        if (old.role != 'owner' && !incomingById.containsKey(old.id)) {
+          if (localStateIds.contains(old.id)) {
+            _archiveAccessLoss(old.id, reason: 'revoked');
+          } else {
+            accessUnavailable.add(old.id);
+          }
         }
       }
       for (final n in incoming.where((n) => !n.locked && n.role == 'viewer')) {
-        _archiveAccessLoss(n.id, reason: 'viewer', remote: n);
+        if (localStateIds.contains(n.id)) {
+          _archiveAccessLoss(n.id, reason: 'viewer', remote: n);
+        }
       }
       accessUnavailable.removeAll(incoming.map((n) => n.id));
+      // Recovery may retire operations above; index only the surviving queue.
+      final pendingIds = pending.map((op) => op['note_id']).toSet();
       notes = [
-        ...incoming.where((n) => n.locked || !hasPending(n.id)),
+        ...incoming.where((n) => n.locked || !pendingIds.contains(n.id)),
         ...notes
             .where(
               (n) =>
-                  hasPending(n.id) &&
-                  !incoming.any((r) => r.id == n.id && r.locked),
+                  pendingIds.contains(n.id) &&
+                  incomingById[n.id]?.locked != true,
             )
             .map((n) {
-              final metadata = incoming.where((r) => r.id == n.id).firstOrNull;
+              final metadata = incomingById[n.id];
               return metadata == null ? n : n.withAccessFrom(metadata);
             }),
       ];

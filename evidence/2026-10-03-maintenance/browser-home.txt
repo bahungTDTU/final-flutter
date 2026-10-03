@@ -1,0 +1,52 @@
+### Page
+- Page URL: http://127.0.0.1:7357/
+- Page Title: NoteTogether
+### Snapshot
+```yaml
+- generic [ref=f2e4] [cursor=pointer]:
+  - generic:
+    - generic:
+      - generic:
+        - generic:
+          - generic:
+            - group "NoteTogether KHÔNG GIAN CỦA BẠN 6 ghi chú · 4 nhãn" [active]:
+              - button "Ghi chú" [ref=f2e20]
+              - button "Được chia sẻ" [ref=f2e21]
+              - button "Hỏi ghi chú" [ref=f2e22]
+              - button "Quản lý nhãn" [ref=f2e23]
+              - button "Ảnh đại diện mặc định K Không gian học tập Hồ sơ và tùy chỉnh" [ref=f2e24]
+              - button "Đăng xuất" [ref=f2e25]
+              - generic:
+                - group:
+                  - generic [ref=f2e26]: Ghi chú của bạn
+                  - button "Ghi chú mới" [ref=f2e27]
+                  - generic [ref=f2e28]: Ý tưởng, bài học và kế hoạch — gọn trong một nơi.
+                  - generic [ref=f2e29]: 6 ghi chú
+                  - button "Trực tiếp" [ref=f2e30]
+                  - generic [ref=f2e31]: Email của bạn chưa được xác minh.
+                  - button "Xác minh" [ref=f2e32]
+                  - generic [ref=f2e33]:
+                    - textbox "Tìm ghi chú" [ref=f2e34]
+                    - generic [ref=f2e35]: Tìm ngay khi nhập · Ctrl + F để đến ô tìm kiếm
+                  - button "Lưới" [ref=f2e36]
+                  - button "Danh sách" [ref=f2e37]
+                  - checkbox "Cá nhân" [ref=f2e38]
+                  - checkbox "Học tập" [ref=f2e39]
+                  - checkbox "Nhóm" [ref=f2e40]
+                  - checkbox "Đồ án" [ref=f2e41]
+                  - generic [ref=f2e42]: Đã ghim
+                  - generic [ref=f2e43]: "1"
+                  - 'group "Kế hoạch đồ án cuối kỳ Chốt luồng ghi chú, rà lại quyền chia sẻ và chuẩn bị buổi demo. Mỗi thay đổi cần có bằng chứng kiểm thử. Đã ghim #Đồ án #Nhóm 02/10/2026" [ref=f2e44]':
+                    - button "Thao tác ghi chú" [ref=f2e45]
+                  - generic [ref=f2e46]: Các ghi chú khác
+                  - generic [ref=f2e47]: "5"
+                  - group "UI Web bản nháp offline Nội dung vẫn được giữ khi mất mạng; trạng thái kết nối được hiển thị đúng. 02/10/2026" [ref=f2e48]:
+                    - button "Thao tác ghi chú" [ref=f2e49]
+                  - 'group "Checklist buổi họp nhóm • Rà lại tiến độ • Thử Web và Android • Ghi lại các việc còn cần xác minh #Nhóm 02/10/2026" [ref=f2e50]':
+                    - button "Thao tác ghi chú" [ref=f2e51]
+                  - 'group "Flutter: ghi chú buổi học Widget tạo giao diện. Controller quản lý trạng thái. Tách rõ giao diện, dữ liệu và kiểm thử. #Học tập 02/10/2026" [ref=f2e52]':
+                    - button "Thao tác ghi chú" [ref=f2e53]
+                  - 'group "Những ý tưởng đáng giữ Một nơi để ghi nhanh ý tưởng trong ngày. Đọc lại, sắp xếp và cùng nhau phát triển. #Cá nhân 02/10/2026" [ref=f2e54]':
+                    - button "Thao tác ghi chú" [ref=f2e55]
+                  - button "Ghi chú đã khóa Mở khóa để xem nội dung. Đã khóa" [ref=f2e56]
+```

@@ -1,0 +1,12 @@
+### Ran Playwright code
+```js
+await (async page => { const loaded=page.waitForResponse(r=>r.url().endsWith("/main.dart.js")); await page.reload(); const response=await loaded; const sha=await page.evaluate(async bytes=>Array.from(new Uint8Array(await crypto.subtle.digest("SHA-256",new Uint8Array(bytes)))).map(v=>v.toString(16).padStart(2,"0")).join(""),Array.from(await response.body())); await page.evaluate(sha=>globalThis.__qaLoadedSha=sha,sha); await page.getByRole("button",{name:"Enable accessibility"}).dispatchEvent("click"); })(page);
+```
+### Result
+{
+  "loadedMainSha256": "4ede5c31629bf6b0c0a3f77db6db963d7ca001d281da5e6e323b72b9335f70f1"
+}
+### Ran Playwright code
+```js
+await page.evaluate('()=>({loadedMainSha256:globalThis.__qaLoadedSha})');
+```

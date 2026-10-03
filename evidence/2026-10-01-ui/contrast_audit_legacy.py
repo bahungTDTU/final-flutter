@@ -1,4 +1,4 @@
-"""Measure used UI foreground/background pairs; not a whole-screen WCAG audit."""
+"""Archived 2026-10-01 teal palette audit; not the current Prism theme."""
 import json
 from pathlib import Path
 
@@ -31,7 +31,10 @@ for name, (foreground, background, minimum) in pairs.items():
     ratio = (hi + .05) / (lo + .05)
     results.append(dict(pair=name, foreground=foreground, background=background,
                         ratio=round(ratio, 2), minimum=minimum, passed=ratio >= minimum))
-target = Path('evidence/2026-10-01-ui/contrast.json')
+import argparse
+parser = argparse.ArgumentParser(description='Historical teal tokens only; current theme is tested by prism_motion_test.dart')
+parser.add_argument('--output', type=Path, required=True)
+target = parser.parse_args().output
 target.write_text(json.dumps(results, indent=2), encoding='utf-8')
 assert all(r['passed'] for r in results), results
 print(f'{len(results)} used color pairs: PASS. Decorative outline not a control/focus boundary.')

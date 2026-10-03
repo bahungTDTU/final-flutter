@@ -1,4 +1,8 @@
-# NoteTogether – UI/UX design, cập nhật 02/10/2026
+# NoteTogether – UI/UX design, cập nhật 03/10/2026
+
+Maintenance03/10 giữ giao diện prism; bỏ PaperIllustration không còn caller và dependency
+cupertino_icons không dùng. Theme/motion/metadata vẫn theo spec dưới; HTTP/lifecycle/sync
+fixes và cleanup có regression ở docs/PERFORMANCE_AND_MAINTENANCE.md.
 
 ## Đợt màu sắc và lăng kính 02/10/2026
 

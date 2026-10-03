@@ -1,0 +1,241 @@
+{
+  "duplicates": [
+    {
+      "path": "output\\native-ui\\android-editor-light.png",
+      "kept": "evidence\\2026-10-02-prism-ui\\android-editor-light.png",
+      "bytes": 115923
+    },
+    {
+      "path": "output\\native-ui\\android-home-dark.png",
+      "kept": "evidence\\2026-10-02-prism-ui\\android-home-dark.png",
+      "bytes": 175077
+    },
+    {
+      "path": "output\\native-ui\\android-settings-dark.png",
+      "kept": "evidence\\2026-10-02-prism-ui\\android-settings-dark.png",
+      "bytes": 78357
+    },
+    {
+      "path": "output\\playwright\\attachment-image.png",
+      "kept": "evidence\\2026-10-01-attachments\\web-image.png",
+      "bytes": 41740
+    },
+    {
+      "path": "output\\playwright\\attachment-video.png",
+      "kept": "evidence\\2026-10-01-attachments\\web-video.png",
+      "bytes": 52940
+    },
+    {
+      "path": "output\\playwright\\attachment-web.txt",
+      "kept": "evidence\\2026-10-01-attachments\\attachment-fixture.txt",
+      "bytes": 42
+    },
+    {
+      "path": "output\\playwright\\email-reset-manual-login.png",
+      "kept": "evidence\\2026-10-01-email\\web-reset-manual-login.png",
+      "bytes": 34196
+    },
+    {
+      "path": "output\\playwright\\email-verified-home.png",
+      "kept": "evidence\\2026-10-01-email\\web-verified-home.png",
+      "bytes": 36101
+    },
+    {
+      "path": "output\\playwright\\prism-auth-desktop.png",
+      "kept": "evidence\\2026-10-02-prism-ui\\prism-auth-desktop.png",
+      "bytes": 413386
+    },
+    {
+      "path": "output\\playwright\\prism-editor-mobile-dark.png",
+      "kept": "evidence\\2026-10-02-prism-ui\\prism-editor-mobile-dark.png",
+      "bytes": 118533
+    },
+    {
+      "path": "output\\playwright\\prism-home-desktop-dark-top.png",
+      "kept": "evidence\\2026-10-02-prism-ui\\prism-home-desktop-dark-top.png",
+      "bytes": 447519
+    },
+    {
+      "path": "output\\playwright\\prism-home-desktop-dark.png",
+      "kept": "evidence\\2026-10-02-prism-ui\\prism-home-desktop-dark.png",
+      "bytes": 364767
+    },
+    {
+      "path": "output\\playwright\\prism-home-desktop.png",
+      "kept": "evidence\\2026-10-02-prism-ui\\prism-home-desktop.png",
+      "bytes": 425379
+    },
+    {
+      "path": "output\\playwright\\prism-home-mobile-dark-top.png",
+      "kept": "evidence\\2026-10-02-prism-ui\\prism-home-mobile-dark-top.png",
+      "bytes": 163088
+    },
+    {
+      "path": "output\\playwright\\prism-home-mobile-dark.png",
+      "kept": "evidence\\2026-10-02-prism-ui\\prism-home-mobile-dark.png",
+      "bytes": 174937
+    },
+    {
+      "path": "output\\playwright\\prism-home-tablet-dark.png",
+      "kept": "evidence\\2026-10-02-prism-ui\\prism-home-tablet-dark.png",
+      "bytes": 322347
+    },
+    {
+      "path": "output\\playwright\\prism-hover.png",
+      "kept": "evidence\\2026-10-02-prism-ui\\prism-hover.png",
+      "bytes": 333862
+    },
+    {
+      "path": "output\\playwright\\prism-settings-dark.png",
+      "kept": "evidence\\2026-10-02-prism-ui\\prism-settings-dark.png",
+      "bytes": 212557
+    },
+    {
+      "path": "output\\playwright\\protected-mobile-gate.png",
+      "kept": "evidence\\2026-10-01-note-protection\\web-mobile-gate.png",
+      "bytes": 23596
+    },
+    {
+      "path": "output\\playwright\\protected-reader.png",
+      "kept": "evidence\\2026-10-01-note-protection\\web-reader.png",
+      "bytes": 51967
+    },
+    {
+      "path": "output\\playwright\\realtime-draft-preserved.png",
+      "kept": "evidence\\2026-10-02-realtime\\web-draft-preserved.png",
+      "bytes": 23660
+    },
+    {
+      "path": "output\\playwright\\realtime-final-draft.png",
+      "kept": "evidence\\2026-10-02-realtime\\web-final-draft.png",
+      "bytes": 25646
+    },
+    {
+      "path": "output\\playwright\\realtime-final-locked.png",
+      "kept": "evidence\\2026-10-02-realtime\\web-final-locked.png",
+      "bytes": 5514
+    },
+    {
+      "path": "output\\playwright\\realtime-final-restored.png",
+      "kept": "evidence\\2026-10-02-realtime\\web-final-restored.png",
+      "bytes": 23985
+    },
+    {
+      "path": "output\\playwright\\realtime-live.png",
+      "kept": "evidence\\2026-10-02-realtime\\web-live.png",
+      "bytes": 38182
+    },
+    {
+      "path": "output\\playwright\\realtime-owner-live.png",
+      "kept": "evidence\\2026-10-02-realtime\\web-owner-live.png",
+      "bytes": 35989
+    },
+    {
+      "path": "output\\playwright\\realtime-reconnected.png",
+      "kept": "evidence\\2026-10-02-realtime\\web-reconnected.png",
+      "bytes": 38145
+    },
+    {
+      "path": "output\\playwright\\sharing-locked-confirm-final.png",
+      "kept": "evidence\\2026-10-02-sharing\\web-locked-confirm-final.png",
+      "bytes": 38905
+    },
+    {
+      "path": "output\\playwright\\sharing-manager-mobile.png",
+      "kept": "evidence\\2026-10-02-sharing\\web-manager-mobile.png",
+      "bytes": 54459
+    },
+    {
+      "path": "output\\playwright\\sharing-recipient-mobile.png",
+      "kept": "evidence\\2026-10-02-sharing\\web-recipient-mobile.png",
+      "bytes": 45419
+    },
+    {
+      "path": "output\\playwright\\sharing-recovered-final.png",
+      "kept": "evidence\\2026-10-02-sharing\\web-recovered-final.png",
+      "bytes": 23071
+    },
+    {
+      "path": "output\\playwright\\ui-avatar-current.png",
+      "kept": "evidence\\2026-10-02-ui-upgrade\\ui-final-settings-tablet.png",
+      "bytes": 70457
+    },
+    {
+      "path": "output\\playwright\\ui-before-auth.png",
+      "kept": "evidence\\2026-10-02-ui-upgrade\\before-auth.png",
+      "bytes": 61964
+    },
+    {
+      "path": "output\\playwright\\ui-before-home.png",
+      "kept": "evidence\\2026-10-02-ui-upgrade\\before-home.png",
+      "bytes": 112384
+    },
+    {
+      "path": "output\\playwright\\ui-before-mobile.png",
+      "kept": "evidence\\2026-10-02-ui-upgrade\\before-mobile.png",
+      "bytes": 52715
+    },
+    {
+      "path": "output\\playwright\\ui-final-attachments-mobile.png",
+      "kept": "evidence\\2026-10-02-ui-upgrade\\ui-final-attachments-mobile.png",
+      "bytes": 45980
+    },
+    {
+      "path": "output\\playwright\\ui-final-auth-desktop.png",
+      "kept": "evidence\\2026-10-02-ui-upgrade\\ui-final-auth-desktop.png",
+      "bytes": 64943
+    },
+    {
+      "path": "output\\playwright\\ui-final-auth-mobile-error.png",
+      "kept": "evidence\\2026-10-02-ui-upgrade\\ui-final-auth-mobile-error.png",
+      "bytes": 30721
+    },
+    {
+      "path": "output\\playwright\\ui-final-avatar.png",
+      "kept": "evidence\\2026-10-02-ui-upgrade\\ui-final-avatar.png",
+      "bytes": 65232
+    },
+    {
+      "path": "output\\playwright\\ui-final-home-desktop.png",
+      "kept": "evidence\\2026-10-02-prism-ui\\before-home-desktop.png",
+      "bytes": 131358
+    },
+    {
+      "path": "output\\playwright\\ui-final-home-mobile-dark.png",
+      "kept": "evidence\\2026-10-02-ui-upgrade\\ui-final-home-mobile-dark.png",
+      "bytes": 57353
+    },
+    {
+      "path": "output\\playwright\\ui-final-home-tablet.png",
+      "kept": "evidence\\2026-10-02-ui-upgrade\\ui-final-home-tablet.png",
+      "bytes": 93080
+    },
+    {
+      "path": "output\\playwright\\ui-final-offline-dark.png",
+      "kept": "evidence\\2026-10-02-ui-upgrade\\ui-final-offline-dark.png",
+      "bytes": 44249
+    },
+    {
+      "path": "output\\playwright\\ui-final-offline-reopened.png",
+      "kept": "evidence\\2026-10-02-ui-upgrade\\web-before-badge-fix-reopened.png",
+      "bytes": 41894
+    },
+    {
+      "path": "output\\playwright\\ui-final-password.png",
+      "kept": "evidence\\2026-10-02-ui-upgrade\\ui-final-password.png",
+      "bytes": 78301
+    },
+    {
+      "path": "output\\playwright\\ui-final-settings-tablet.png",
+      "kept": "evidence\\2026-10-02-ui-upgrade\\ui-final-settings-tablet.png",
+      "bytes": 70457
+    },
+    {
+      "path": "output\\playwright\\ui-final-share-mobile.png",
+      "kept": "evidence\\2026-10-02-ui-upgrade\\ui-final-share-mobile.png",
+      "bytes": 48045
+    }
+  ],
+  "count": 47,
+  "bytes": 5008422
+}

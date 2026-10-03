@@ -1,9 +1,20 @@
-# UI/UX QA – cập nhật 02/10/2026
+# UI/UX QA – cập nhật 03/10/2026
+
+## Maintenance03/10/2026
+
+Giao diện prism giữ nguyên; chỉ bỏ illustration/dependency không dùng. Full host123 Flutter/
+56 backend PASS gồm responsive200%/privacy/frozen base/draft/recovery/motion/contrast.
+Chrome final Web auth/home và mobile editor theme-resize giữ nội dung; offline edit→reload→
+reconnect với real API ID/count/content assertions. Android API36 debug Skia software core
+register/autosave/offline/encrypted DB reopen PASS. Web40resources/APK55.8MB build PASS.
+Evidence/commands/limits: evidence/2026-10-03-maintenance/INDEX.md. Local SQLite/ASGI benchmark
+không phải đo animation FPS; emulator log có IME frame warnings, không kết luận jank đã hết.
+Các flow/picker/sharing/SMTP/history/physical/release-functional giữ scope các mốc dưới.
 
 ## Đợt lăng kính và motion 02/10/2026
 
 Evidence: `evidence/2026-10-02-prism-ui/INDEX.md`; source/build/evidence SHA-256 trong
-manifest. Local Git chưa commit/remote. Các đợt bên dưới giữ phạm vi lịch sử của chúng.
+manifest. Git tại lúc snapshot02/10 chưa commit/remote. Các đợt bên dưới giữ phạm vi lịch sử của chúng.
 
 | Kiểm tra hiện tại | Kết quả và phạm vi |
 |---|---|

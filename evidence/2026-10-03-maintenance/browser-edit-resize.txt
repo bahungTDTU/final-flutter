@@ -1,0 +1,4 @@
+### Ran Playwright code
+```js
+await (async page => { await page.getByRole("textbox",{name:"Tiêu đề",exact:true}).click(); await page.keyboard.type("QA maintenance 2026-10-03"); const body=page.getByRole("textbox",{name:"Nội dung",exact:true}); await body.click(); await page.keyboard.type("Bản online maintenance trước khi mất mạng."); await page.waitForTimeout(2200); const before=await body.inputValue(); if(!before.includes("Bản online maintenance")) throw new Error("Initial editor content missing"); await page.getByRole("button",{name:"Đổi giao diện",exact:true}).click(); await page.setViewportSize({width:390,height:844}); await body.click(); if(await body.inputValue()!==before) throw new Error("Theme/resize changed editor text"); })(page);
+```

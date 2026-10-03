@@ -105,6 +105,22 @@ source nộp phải clone GitHub và giữ .git; local git init không chứng m
 Read docs/SUBMISSION_CHECKLIST.md; chưa tạo ZIP nộp vì thiếu repo/video/Rubric/URL/release-final.
 Readme.txt được giữ cùng nội dung cốt lõi với README.md. Tài khoản chấm chỉ đưa riêng trong bộ nộp.
 
+## Bảo trì và hiệu năng03/10/2026
+
+GET /notes đọc theo lô giữ server ACL/locked minimal metadata; client merge dùng ID indexes,
+background polling dừng khi app ở nền. HTTP error không phải JSON vẫn giữ mã lỗi, timeout
+abort underlying request; encrypted draft/outbox và frozen editor base giữ regression PASS.
+123 Flutter/56 backend, direct actual HTTP ACL và Android debug API36 Skia software PASS;
+Chrome local release có offline/reload/reconnect + note ID/count/content assertions thật.
+Web40 static resources/APK55.8MB build PASS; chưa physical/release-functional/FPS/HTTPS.
+
+Benchmark local1.000 notes,7 measured requests: owner/viewer SELECT5.803/7.753→4,
+median64/76ms→52/59ms. Không áp dụng như cam kết production hoặc UI FPS.
+Đã dọn309 generated files cũ/trùng, bỏ dependency cupertino_icons/illustration không dùng;
+evidence lịch sử và dữ liệu local được giữ. Legacy teal contrast script đã archive, current
+theme contrast được kiểm tra trong prism_motion_test.dart. Details/commands:
+docs/PERFORMANCE_AND_MAINTENANCE.md và evidence/2026-10-03-maintenance/INDEX.md.
+
 ## UI/UX mới
 
 Giao diện hiện tại dùng sáu tông tím/xanh/cyan/hồng/amber/mint, viền chuyển sắc mảnh,
@@ -121,7 +137,7 @@ có spec/component fixtures; Hỏi ghi chú trong app báo chưa khả dụng, k
 
 Chạy/xem bằng scripts/start_backend.ps1 và scripts/start_web.ps1 như trên; build lại Web sau
 sửa code. docs/UI_UX_DESIGN.md là spec/component map, docs/UI_UX_QA.md là phạm vi kiểm chứng,
-evidence/2026-10-02-prism-ui/INDEX.md chứa ảnh, commands, hashes và phạm vi đợt mới:
+evidence/2026-10-02-prism-ui/INDEX.md chứa ảnh, commands, hashes và phạm vi đợt prism02/10:
 118 Flutter/53 backend PASS, Chrome local release và Android debug Skia software PASS,
 Web/APK release build PASS. Các đợt UI trước giữ evidence riêng. scripts/check.ps1 chạy preview harness,
 responsive/scaled layouts và invariant tests. lib/ui/previews.dart không nằm trong production navigation.

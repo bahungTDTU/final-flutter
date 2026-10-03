@@ -1,0 +1,1552 @@
+{
+  "date": "2026-10-03T21:00:56.3368824+07:00",
+  "deleted_count": 309,
+  "deleted_bytes": 5229325.0,
+  "files": [
+    {
+      "path": "output\\native-ui\\android-editor-light.png",
+      "kept": "evidence\\2026-10-02-prism-ui\\android-editor-light.png",
+      "bytes": 115923
+    },
+    {
+      "path": "output\\native-ui\\android-home-dark.png",
+      "kept": "evidence\\2026-10-02-prism-ui\\android-home-dark.png",
+      "bytes": 175077
+    },
+    {
+      "path": "output\\native-ui\\android-settings-dark.png",
+      "kept": "evidence\\2026-10-02-prism-ui\\android-settings-dark.png",
+      "bytes": 78357
+    },
+    {
+      "path": "output\\playwright\\attachment-image.png",
+      "kept": "evidence\\2026-10-01-attachments\\web-image.png",
+      "bytes": 41740
+    },
+    {
+      "path": "output\\playwright\\attachment-video.png",
+      "kept": "evidence\\2026-10-01-attachments\\web-video.png",
+      "bytes": 52940
+    },
+    {
+      "path": "output\\playwright\\attachment-web.txt",
+      "kept": "evidence\\2026-10-01-attachments\\attachment-fixture.txt",
+      "bytes": 42
+    },
+    {
+      "path": "output\\playwright\\email-reset-manual-login.png",
+      "kept": "evidence\\2026-10-01-email\\web-reset-manual-login.png",
+      "bytes": 34196
+    },
+    {
+      "path": "output\\playwright\\email-verified-home.png",
+      "kept": "evidence\\2026-10-01-email\\web-verified-home.png",
+      "bytes": 36101
+    },
+    {
+      "path": "output\\playwright\\prism-auth-desktop.png",
+      "kept": "evidence\\2026-10-02-prism-ui\\prism-auth-desktop.png",
+      "bytes": 413386
+    },
+    {
+      "path": "output\\playwright\\prism-editor-mobile-dark.png",
+      "kept": "evidence\\2026-10-02-prism-ui\\prism-editor-mobile-dark.png",
+      "bytes": 118533
+    },
+    {
+      "path": "output\\playwright\\prism-home-desktop-dark-top.png",
+      "kept": "evidence\\2026-10-02-prism-ui\\prism-home-desktop-dark-top.png",
+      "bytes": 447519
+    },
+    {
+      "path": "output\\playwright\\prism-home-desktop-dark.png",
+      "kept": "evidence\\2026-10-02-prism-ui\\prism-home-desktop-dark.png",
+      "bytes": 364767
+    },
+    {
+      "path": "output\\playwright\\prism-home-desktop.png",
+      "kept": "evidence\\2026-10-02-prism-ui\\prism-home-desktop.png",
+      "bytes": 425379
+    },
+    {
+      "path": "output\\playwright\\prism-home-mobile-dark-top.png",
+      "kept": "evidence\\2026-10-02-prism-ui\\prism-home-mobile-dark-top.png",
+      "bytes": 163088
+    },
+    {
+      "path": "output\\playwright\\prism-home-mobile-dark.png",
+      "kept": "evidence\\2026-10-02-prism-ui\\prism-home-mobile-dark.png",
+      "bytes": 174937
+    },
+    {
+      "path": "output\\playwright\\prism-home-tablet-dark.png",
+      "kept": "evidence\\2026-10-02-prism-ui\\prism-home-tablet-dark.png",
+      "bytes": 322347
+    },
+    {
+      "path": "output\\playwright\\prism-hover.png",
+      "kept": "evidence\\2026-10-02-prism-ui\\prism-hover.png",
+      "bytes": 333862
+    },
+    {
+      "path": "output\\playwright\\prism-settings-dark.png",
+      "kept": "evidence\\2026-10-02-prism-ui\\prism-settings-dark.png",
+      "bytes": 212557
+    },
+    {
+      "path": "output\\playwright\\protected-mobile-gate.png",
+      "kept": "evidence\\2026-10-01-note-protection\\web-mobile-gate.png",
+      "bytes": 23596
+    },
+    {
+      "path": "output\\playwright\\protected-reader.png",
+      "kept": "evidence\\2026-10-01-note-protection\\web-reader.png",
+      "bytes": 51967
+    },
+    {
+      "path": "output\\playwright\\realtime-draft-preserved.png",
+      "kept": "evidence\\2026-10-02-realtime\\web-draft-preserved.png",
+      "bytes": 23660
+    },
+    {
+      "path": "output\\playwright\\realtime-final-draft.png",
+      "kept": "evidence\\2026-10-02-realtime\\web-final-draft.png",
+      "bytes": 25646
+    },
+    {
+      "path": "output\\playwright\\realtime-final-locked.png",
+      "kept": "evidence\\2026-10-02-realtime\\web-final-locked.png",
+      "bytes": 5514
+    },
+    {
+      "path": "output\\playwright\\realtime-final-restored.png",
+      "kept": "evidence\\2026-10-02-realtime\\web-final-restored.png",
+      "bytes": 23985
+    },
+    {
+      "path": "output\\playwright\\realtime-live.png",
+      "kept": "evidence\\2026-10-02-realtime\\web-live.png",
+      "bytes": 38182
+    },
+    {
+      "path": "output\\playwright\\realtime-owner-live.png",
+      "kept": "evidence\\2026-10-02-realtime\\web-owner-live.png",
+      "bytes": 35989
+    },
+    {
+      "path": "output\\playwright\\realtime-reconnected.png",
+      "kept": "evidence\\2026-10-02-realtime\\web-reconnected.png",
+      "bytes": 38145
+    },
+    {
+      "path": "output\\playwright\\sharing-locked-confirm-final.png",
+      "kept": "evidence\\2026-10-02-sharing\\web-locked-confirm-final.png",
+      "bytes": 38905
+    },
+    {
+      "path": "output\\playwright\\sharing-manager-mobile.png",
+      "kept": "evidence\\2026-10-02-sharing\\web-manager-mobile.png",
+      "bytes": 54459
+    },
+    {
+      "path": "output\\playwright\\sharing-recipient-mobile.png",
+      "kept": "evidence\\2026-10-02-sharing\\web-recipient-mobile.png",
+      "bytes": 45419
+    },
+    {
+      "path": "output\\playwright\\sharing-recovered-final.png",
+      "kept": "evidence\\2026-10-02-sharing\\web-recovered-final.png",
+      "bytes": 23071
+    },
+    {
+      "path": "output\\playwright\\ui-avatar-current.png",
+      "kept": "evidence\\2026-10-02-ui-upgrade\\ui-final-settings-tablet.png",
+      "bytes": 70457
+    },
+    {
+      "path": "output\\playwright\\ui-before-auth.png",
+      "kept": "evidence\\2026-10-02-ui-upgrade\\before-auth.png",
+      "bytes": 61964
+    },
+    {
+      "path": "output\\playwright\\ui-before-home.png",
+      "kept": "evidence\\2026-10-02-ui-upgrade\\before-home.png",
+      "bytes": 112384
+    },
+    {
+      "path": "output\\playwright\\ui-before-mobile.png",
+      "kept": "evidence\\2026-10-02-ui-upgrade\\before-mobile.png",
+      "bytes": 52715
+    },
+    {
+      "path": "output\\playwright\\ui-final-attachments-mobile.png",
+      "kept": "evidence\\2026-10-02-ui-upgrade\\ui-final-attachments-mobile.png",
+      "bytes": 45980
+    },
+    {
+      "path": "output\\playwright\\ui-final-auth-desktop.png",
+      "kept": "evidence\\2026-10-02-ui-upgrade\\ui-final-auth-desktop.png",
+      "bytes": 64943
+    },
+    {
+      "path": "output\\playwright\\ui-final-auth-mobile-error.png",
+      "kept": "evidence\\2026-10-02-ui-upgrade\\ui-final-auth-mobile-error.png",
+      "bytes": 30721
+    },
+    {
+      "path": "output\\playwright\\ui-final-avatar.png",
+      "kept": "evidence\\2026-10-02-ui-upgrade\\ui-final-avatar.png",
+      "bytes": 65232
+    },
+    {
+      "path": "output\\playwright\\ui-final-home-desktop.png",
+      "kept": "evidence\\2026-10-02-prism-ui\\before-home-desktop.png",
+      "bytes": 131358
+    },
+    {
+      "path": "output\\playwright\\ui-final-home-mobile-dark.png",
+      "kept": "evidence\\2026-10-02-ui-upgrade\\ui-final-home-mobile-dark.png",
+      "bytes": 57353
+    },
+    {
+      "path": "output\\playwright\\ui-final-home-tablet.png",
+      "kept": "evidence\\2026-10-02-ui-upgrade\\ui-final-home-tablet.png",
+      "bytes": 93080
+    },
+    {
+      "path": "output\\playwright\\ui-final-offline-dark.png",
+      "kept": "evidence\\2026-10-02-ui-upgrade\\ui-final-offline-dark.png",
+      "bytes": 44249
+    },
+    {
+      "path": "output\\playwright\\ui-final-offline-reopened.png",
+      "kept": "evidence\\2026-10-02-ui-upgrade\\web-before-badge-fix-reopened.png",
+      "bytes": 41894
+    },
+    {
+      "path": "output\\playwright\\ui-final-password.png",
+      "kept": "evidence\\2026-10-02-ui-upgrade\\ui-final-password.png",
+      "bytes": 78301
+    },
+    {
+      "path": "output\\playwright\\ui-final-settings-tablet.png",
+      "kept": "evidence\\2026-10-02-ui-upgrade\\ui-final-settings-tablet.png",
+      "bytes": 70457
+    },
+    {
+      "path": "output\\playwright\\ui-final-share-mobile.png",
+      "kept": "evidence\\2026-10-02-ui-upgrade\\ui-final-share-mobile.png",
+      "bytes": 48045
+    },
+    {
+      "path": ".playwright-cli\\console-2026-10-01T05-44-56-913Z.log",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 424
+    },
+    {
+      "path": ".playwright-cli\\console-2026-10-01T06-02-53-943Z.log",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 2438
+    },
+    {
+      "path": ".playwright-cli\\console-2026-10-01T06-23-51-162Z.log",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 3922
+    },
+    {
+      "path": ".playwright-cli\\console-2026-10-01T09-28-40-125Z.log",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 318
+    },
+    {
+      "path": ".playwright-cli\\console-2026-10-01T11-45-12-800Z.log",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 352
+    },
+    {
+      "path": ".playwright-cli\\console-2026-10-01T12-36-53-494Z.log",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 103
+    },
+    {
+      "path": ".playwright-cli\\console-2026-10-01T13-59-37-131Z.log",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 2862
+    },
+    {
+      "path": ".playwright-cli\\console-2026-10-01T15-29-06-627Z.log",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 178
+    },
+    {
+      "path": ".playwright-cli\\console-2026-10-02T09-08-08-854Z.log",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 354
+    },
+    {
+      "path": ".playwright-cli\\console-2026-10-02T10-20-21-170Z.log",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1371
+    },
+    {
+      "path": ".playwright-cli\\console-2026-10-02T10-31-55-042Z.log",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1268
+    },
+    {
+      "path": ".playwright-cli\\console-2026-10-02T11-17-07-469Z.log",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 3436
+    },
+    {
+      "path": ".playwright-cli\\console-2026-10-02T12-07-59-681Z.log",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 742
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T05-44-57-172Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 0
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T05-50-28-639Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 810
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T05-51-25-379Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1241
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T05-53-07-731Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 762
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T05-53-32-043Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1288
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T05-54-27-348Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 0
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T05-57-19-769Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 42
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T05-58-10-406Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 783
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T05-58-49-526Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1496
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T06-02-54-071Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 0
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T06-03-27-050Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 0
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T06-05-57-988Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 784
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T06-06-30-095Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1726
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T06-06-34-602Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 0
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T06-09-28-096Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1668
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T06-10-21-791Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 0
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T06-11-40-455Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 784
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T06-13-00-266Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1744
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T06-23-51-519Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 0
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T06-25-39-320Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1572
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T06-26-05-439Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1776
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T06-26-08-164Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 639
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T06-29-30-517Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 0
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T06-30-01-661Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 669
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T06-37-30-649Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 783
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T06-42-19-238Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1609
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T06-42-24-470Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 0
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T06-45-42-125Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 0
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T06-45-44-251Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 0
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T06-47-30-307Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 0
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T06-47-44-857Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 0
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T06-47-47-191Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 0
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T06-50-10-981Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 962
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T06-51-25-211Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1257
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T06-53-23-786Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1776
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T06-53-30-393Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1227
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T06-53-52-919Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1647
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T06-53-57-452Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 899
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T06-57-40-566Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1064
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T06-57-49-794Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1511
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T07-02-59-500Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1697
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T07-05-09-171Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 0
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T07-05-55-995Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 0
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T07-08-28-230Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 251
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T07-08-54-202Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1660
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T07-09-52-764Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 907
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T07-13-17-021Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 968
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T07-16-05-330Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1874
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T07-16-07-410Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 0
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T07-20-23-836Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 0
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T07-29-59-865Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 917
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T07-31-04-719Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 0
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T09-28-40-454Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 0
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T09-29-38-901Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 976
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T09-30-12-919Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1144
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T09-31-13-590Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 894
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T09-32-35-697Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1425
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T09-32-37-581Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 0
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T09-33-13-680Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1349
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T09-35-33-190Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 0
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T09-36-09-388Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 527
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T09-36-22-179Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 903
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T09-37-07-205Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1213
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T09-41-20-943Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1500
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T09-58-12-729Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 0
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T11-45-12-939Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 0
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T11-51-51-649Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 0
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T11-52-17-757Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1513
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T11-52-35-809Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 311
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T11-52-55-411Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 647
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T11-54-36-334Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 670
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T11-54-58-876Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1435
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T11-55-42-541Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 713
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T11-56-11-532Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 774
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T11-56-39-156Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 808
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T11-57-45-521Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 808
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T11-58-08-794Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 889
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T11-58-28-034Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 696
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T11-58-43-761Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 696
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T11-58-49-172Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 889
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T11-59-25-003Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 720
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T11-59-41-633Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 701
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T11-59-46-380Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 724
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T11-59-51-394Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 747
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T12-00-43-944Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 807
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T12-01-34-479Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 807
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T12-01-39-844Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 899
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T12-02-13-884Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 0
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T12-02-46-121Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 916
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T12-03-17-130Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 547
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T12-03-22-434Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1537
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T12-04-02-634Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 0
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T12-07-46-615Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 696
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T12-09-20-025Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1549
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T12-36-53-726Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 0
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T12-42-30-100Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 0
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T12-43-21-095Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1006
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T12-43-59-666Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1006
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T12-44-04-851Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1043
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T12-44-09-659Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1061
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T12-44-14-962Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1087
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T12-44-24-908Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1226
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T12-49-28-372Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 774
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T12-50-03-816Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 774
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T12-50-41-861Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1094
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T12-51-18-525Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 904
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T12-52-46-334Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 249
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T12-53-25-856Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 881
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T12-54-09-288Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 728
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T12-54-57-530Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1037
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T12-55-11-014Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1060
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T12-55-25-216Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1020
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T12-56-18-689Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 911
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T12-56-31-258Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 948
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T12-56-44-871Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1109
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T13-59-37-336Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 0
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T14-04-08-261Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 976
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T14-04-54-687Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 976
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T14-06-33-770Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1015
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T14-08-41-802Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1035
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T14-08-56-279Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1060
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T14-09-16-344Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1195
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T14-11-42-671Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 977
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T14-16-38-933Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 0
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T14-16-47-124Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 621
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T14-19-26-799Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 666
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T14-21-33-963Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 990
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T14-27-18-630Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 0
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T14-28-30-833Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 465
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T14-29-00-759Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 230
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T14-29-29-063Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 576
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T14-29-59-405Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1283
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T14-30-22-820Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 920
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T14-30-55-141Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1017
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T14-31-09-042Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1119
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T14-31-51-318Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1306
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T14-31-58-266Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1380
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T14-33-52-099Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1096
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T14-36-33-073Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 257
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T14-37-31-691Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 0
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T14-40-51-764Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 291
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T14-41-39-358Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 489
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T14-43-48-109Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 642
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T14-56-08-663Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 0
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T14-56-15-273Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 0
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T15-29-06-871Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 0
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T15-29-42-343Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 0
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T15-31-55-558Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 895
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T15-32-03-674Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 934
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T15-32-17-664Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1315
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T15-33-43-871Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1011
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T15-34-11-295Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1028
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T15-35-43-824Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 0
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T15-35-47-635Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 963
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T15-36-57-577Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1125
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T15-38-26-344Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1142
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T15-39-43-470Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 172
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T15-40-30-331Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1142
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T15-42-13-150Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 235
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T15-44-10-283Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 234
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T15-51-45-339Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1175
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T15-52-59-899Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 282
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T15-54-32-352Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 939
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T16-06-17-122Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1310
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T16-07-40-162Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1028
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-01T16-08-47-936Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 926
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T09-08-09-319Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 0
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T09-09-58-967Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 0
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T09-10-42-698Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1006
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T09-11-14-478Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1231
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T09-12-02-273Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 920
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T09-12-29-767Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 569
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T09-13-05-160Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1067
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T09-13-38-922Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 640
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T09-14-13-024Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 868
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T09-14-34-493Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 976
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T09-15-01-192Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 959
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T09-15-57-517Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1276
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T09-17-48-749Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1203
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T09-17-57-916Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 0
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T09-18-27-253Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 0
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T09-21-20-275Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1226
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T09-21-55-543Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1326
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T09-23-13-140Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 958
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T09-23-46-004Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1070
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T09-24-24-541Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1129
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T09-26-16-437Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 909
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T09-28-40-569Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1404
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T09-29-37-104Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 0
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T09-29-39-263Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 0
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T09-31-49-275Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 587
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T09-32-47-080Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 903
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T09-33-46-735Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 0
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T09-33-48-763Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 0
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T09-35-22-040Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 360
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T09-36-32-647Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 829
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T10-20-21-428Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 0
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T10-26-14-933Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 934
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T10-27-35-334Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 989
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T10-27-55-926Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1186
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T10-28-31-854Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 0
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T10-29-37-371Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1235
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T10-30-06-988Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1560
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T10-31-11-322Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 972
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T10-31-55-267Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 0
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T10-33-16-238Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1092
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T10-33-26-073Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1484
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T10-35-18-974Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1049
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T10-40-30-452Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1306
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T10-42-44-958Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1420
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T10-43-29-374Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 972
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T10-44-06-483Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1069
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T10-47-00-917Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 0
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T10-48-49-210Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 587
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T10-49-40-595Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1380
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T10-49-42-820Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 0
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T10-51-06-386Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1496
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T10-52-03-721Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 972
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T10-53-49-725Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1090
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T10-54-35-478Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1146
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T10-56-56-314Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 0
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T10-59-54-452Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1562
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T11-00-50-028Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 966
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T11-01-56-973Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1080
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T11-04-27-536Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 0
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T11-06-23-019Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 701
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T11-07-08-439Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 917
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T11-17-07-695Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 0
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T11-19-16-115Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1033
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T11-19-20-844Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1064
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T11-19-31-131Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 2491
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T11-38-52-996Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1522
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T12-00-37-031Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 2183
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T12-01-02-449Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 2333
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T12-01-08-464Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 2203
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T12-02-27-620Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 2232
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T12-02-52-898Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1164
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T12-02-58-901Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1310
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T12-05-07-474Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 2361
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T12-07-46-336Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 0
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T12-07-59-895Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 0
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T12-09-27-905Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 942
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T12-09-33-908Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1053
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T12-09-42-521Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 980
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T12-16-24-274Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1201
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T12-17-24-249Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 2953
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T13-36-39-464Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 0
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T13-53-27-373Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1713
+    },
+    {
+      "path": ".playwright-cli\\page-2026-10-02T13-58-26-210Z.yml",
+      "kept": "QA results already recorded in dated evidence",
+      "bytes": 1237
+    }
+  ]
+}

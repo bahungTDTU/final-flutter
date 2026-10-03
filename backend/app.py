@@ -23,6 +23,7 @@ from backend.attachments import install_attachment_routes
 from backend.sharing import install_share_routes, touch_shares, shared_metadata
 from backend.realtime import install_tracking, install_realtime_routes
 from backend.catalogue import migrate, install_label_routes, normalize_labels, note_labels
+from backend.note_listing import list_visible_notes
 
 hasher = PasswordHasher()
 bearer = HTTPBearer(auto_error=False)
@@ -416,20 +417,9 @@ def create_app(db_path=None, *, email_delivery=None):
 
     @app.get('/notes')
     def list_notes(identity=Depends(authenticate)):
-        result = []
         with db() as conn:
             validate_session(conn, identity)
-            notes = conn.execute('SELECT n.* FROM notes n WHERE n.deleted=0 AND (n.owner_id=? OR EXISTS '
-                '(SELECT 1 FROM shares s WHERE s.note_id=n.id AND s.user_id=?))', (identity[0], identity[0])).fetchall()
-            for note in notes:
-                # Locked content is NEVER returned in list/cache endpoints, even after unlock.
-                if note['password']:
-                    _, role = access(conn, note['id'], identity, unlocked=False)
-                    result.append({'id': note['id'], 'locked': True, 'revision': note['revision'], 'role': role})
-                else:
-                    _, role = access(conn, note['id'], identity)
-                    result.append(serialize(conn, note, role, identity))
-        return result
+            return list_visible_notes(conn, identity[0])
 
     @app.get('/notes/{note_id}')
     def read_note(note_id: str, identity=Depends(authenticate)):

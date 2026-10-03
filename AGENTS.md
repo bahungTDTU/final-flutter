@@ -6,7 +6,8 @@
 Một Flutter project Web/Android, ChangeNotifier controller, FastAPI/SQLite local, Sembast local.
 Không chép app/module hoàn chỉnh từ repo khác. Không đổi owner/permission/protection qua payload.
 Không biến mock/email memory thành claim production. Không fake AI/Git/commit/video/timestamp.
-Không push/deploy/tốn phí/nộp bài khi chưa được ủy quyền. Local Git chưa có commit, đừng giả authorship.
+Không push/deploy/tốn phí/nộp bài khi chưa được ủy quyền. Git đã có initial import35ee911
+lên bahungTDTU/final-flutter; author/committer Bahung theo người dùng, không giả teamwork/authorship.
 
 Lệnh thật: `scripts/setup.ps1`, `scripts/check.ps1`, `scripts/start_backend.ps1`, `scripts/start_web.ps1`,
 `scripts/build.ps1`. Flutter executable discovery trong toolchain.ps1, Python dependency versions pinned

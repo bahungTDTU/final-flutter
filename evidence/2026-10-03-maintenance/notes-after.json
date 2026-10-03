@@ -1,0 +1,47 @@
+{
+  "measured_at_utc": "2026-10-03T13:55:28.280709+00:00",
+  "target": "local TestClient ASGI + real temporary SQLite; not network/device/FPS",
+  "fixture": "3 labels/note; 5% locked; owner and shared viewer",
+  "results": [
+    {
+      "notes": 10,
+      "role": "owner",
+      "repeats": 7,
+      "median_ms": 4.135,
+      "min_ms": 3.15,
+      "max_ms": 5.821,
+      "selects_min": 4,
+      "selects_max": 4
+    },
+    {
+      "notes": 10,
+      "role": "viewer",
+      "repeats": 7,
+      "median_ms": 3.629,
+      "min_ms": 3.065,
+      "max_ms": 4.21,
+      "selects_min": 4,
+      "selects_max": 4
+    },
+    {
+      "notes": 1000,
+      "role": "owner",
+      "repeats": 7,
+      "median_ms": 52.397,
+      "min_ms": 43.172,
+      "max_ms": 87.085,
+      "selects_min": 4,
+      "selects_max": 4
+    },
+    {
+      "notes": 1000,
+      "role": "viewer",
+      "repeats": 7,
+      "median_ms": 58.701,
+      "min_ms": 53.931,
+      "max_ms": 77.866,
+      "selects_min": 4,
+      "selects_max": 4
+    }
+  ]
+}

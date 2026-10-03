@@ -1,12 +1,19 @@
 # Ma trận yêu cầu 32 tiêu chí
 
-Nguồn: đề 503107-FinalProject-V1.pdf tr.9–14; đối chiếu 02/10/2026. Tổng 10.0 điểm.
+Nguồn: đề 503107-FinalProject-V1.pdf tr.9–14; đối chiếu 03/10/2026. Tổng 10.0 điểm.
 Không tự chấm điểm đạt. Không mục nào hiện được tuyên bố hoàn thành toàn bộ trên cả hai target.
 Ban đầu chưa triển khai/chưa đo; bảng đã cập nhật theo code/test thực ở lượt triển khai đầu.
 Web là local release, Android integration là debug nếu có; build ≠ feature pass ≠ public deployment.
-Logs thực theo từng mốc ở evidence và STATUS được chốt trước initial commit (commitnull).
+Logs thực theo từng mốc ở evidence và STATUS;01–02/10 trước initial commit (commitnull),
+maintenance03/10 base35ee911 + working changes/source hashes.
 Repository hiện tại: https://github.com/bahungTDTU/final-flutter; refs/history kiểm tra bằng Git.
 Initial import không thay bằng chứng teamwork4 tuần. Video/timestamp: chưa quay cho mọi mục.
+
+Maintenance03/10:123 Flutter/56 backend + direct HTTP ACL PASS; batch notes query/detail
+parity/lock/current roles/labels, HTTP status/timeout abort, lifecycle guards và sync ID indexes.
+Android API36 debug Skia software core/offline/reopen PASS; Chrome actual offline/reload/
+reconnect và API ID/count/content assertions; Web/APK builds PASS. Local query benchmark
+ở evidence/2026-10-03-maintenance, không nâng thành FPS/physical/HTTPS/full rubric completion.
 
 Prism visual02/10:6 accent tones, iridescent rim/static backdrop, short/reduced motion;
 118 Flutter/53 backend PASS,129 selected contrast pairs. Chrome final bundle responsive/auth/
@@ -88,6 +95,6 @@ OS denied/cancel chỉ doubles; protected-reader actual file UI/physical/release
 | 27 | AI Summary | 0.25 | Chưa có | Chưa chạy | Chưa triển khai; chưa nghiệm thu đủ | Chưa triển khai; chưa nghiệm thu đủ | Chưa deploy/demo | Chưa quay | Cần triển khai |
 | 28 | AI Q&A có nguồn | 0.25 | Chưa có | Chưa chạy | Chưa triển khai; chưa nghiệm thu đủ | Chưa triển khai; chưa nghiệm thu đủ | Chưa deploy/demo | Chưa quay | Cần triển khai |
 | 29 | UI/UX/accessibility/adaptive | 0.5 | All implemented lib/ui routes + design_system/prism/localizations; docs/UI_UX_DESIGN | evidence/2026-10-02-prism-ui; motion/reduced/no restart/129 selected contrast; responsive320/360/390/768/desktop/landscape200%; lock/base/draft regression | Chrome final local release auth/home hover/theme/resize/settings; scope/ảnh trong INDEX | API36 debug Skia software real registration/labels/preferences/theme/editor;3 PNG; other flows historical | Chưa deploy/demo | Chưa quay | NVDA/TalkBack/physical/FPS/default-renderer/history/deep-link/release-all/protected reader advanced chưa đủ |
-| 30 | Kiến trúc/state/automated tests | 0.5 | Controller/API/local/vault/schema2 + SSE/sessions; UI components giữ state contracts | evidence/2026-10-02-prism-ui/check-final.txt + api-acl.txt | 118 Flutter/53 backend PASS; chưa nghiệm thu đủ | UI real backend Skia software PASS; core/sharing/realtime mốc trước giữ regression host | Chưa deploy/demo | Chưa quay | Clean clone/release/physical/full rubric còn thiếu; không fabricated coverage/teamwork |
+| 30 | Kiến trúc/state/automated tests | 0.5 | Controller/API/local/vault/schema2 + SSE/sessions; batch note_listing/ID merge/HTTP abort/lifecycle guards | evidence/2026-10-03-maintenance/check-final.txt + api-acl.txt + benchmark | 123 Flutter/56 backend PASS; Chrome offline/reload/API preserved ID/content; chưa đủ rubric | API36 debug Skia software core/offline/reopen PASS; other flows historical scope | Chưa deploy/demo | Chưa quay | Clean clone/release/physical/FPS/full rubric còn thiếu; không fabricated coverage/teamwork |
 | 31 | Offline persistence và sync | 0.5 | backend/app.py / docs/ | flutter-tests/backend-tests; xem STATUS đúng scope | Đã code một phần; chưa nghiệm thu đủ | Đã code một phần; chưa nghiệm thu đủ | Chưa deploy/demo | Chưa quay | Sembast + immutable queue/conflict; actual Web reload/pending/sync + native DB reopen PASS; OS kill/physical còn test |
 | 32 | Build và public deployment | 0.5 | backend/app.py / docs/ | flutter-tests/backend-tests; xem STATUS đúng scope | Đã code một phần; chưa nghiệm thu đủ | Đã code một phần; chưa nghiệm thu đủ | Chưa deploy/demo | Chưa quay | Local build spike Web/APK; chưa public HTTPS/signing production |
