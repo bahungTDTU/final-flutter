@@ -1,0 +1,1 @@
+QA fixture only: API8011 / TLS SMTP8025 / code reader8026. No external delivery.

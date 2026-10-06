@@ -1,0 +1,12 @@
+{
+  "date_utc": "2026-10-05T15:52:44.350762+00:00",
+  "result": "PASS served local Web artifact bytes equal final build; backend health200",
+  "url": "http://127.0.0.1:7357/",
+  "worker": "notetogether-static-aaf0baf19a213a73",
+  "resources": 40,
+  "served_sha256": {
+    "main.dart.js": "4eb68617c192354004041c2278c09a63c047961d09e4a1572e0cddf6feed79ab",
+    "offline_worker.js": "e42a30c58921a0b5eb6e62d7f8094f268fa565c52bc533d097af539369ec52cf"
+  },
+  "scope": "HTTP server bytes; does not prove browser cache executed these exact bytes"
+}

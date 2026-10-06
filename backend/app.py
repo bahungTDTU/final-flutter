@@ -5,7 +5,7 @@ import os
 import secrets
 import sqlite3
 import time
-from contextlib import contextmanager
+from contextlib import contextmanager, asynccontextmanager
 from datetime import datetime, timezone
 from pathlib import Path
 from uuid import uuid4
@@ -18,12 +18,14 @@ from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from pydantic import BaseModel, Field, ConfigDict, model_validator
 
 from backend.email_delivery import delivery_from_environment, valid_email
+from backend.email_queue import EmailQueue
 from backend.avatars import install_avatar_routes
 from backend.attachments import install_attachment_routes
 from backend.sharing import install_share_routes, touch_shares, shared_metadata
 from backend.realtime import install_tracking, install_realtime_routes
 from backend.catalogue import migrate, install_label_routes, normalize_labels, note_labels
 from backend.note_listing import list_visible_notes
+from backend.ai import provider_from_environment, install_ai_routes
 
 hasher = PasswordHasher()
 bearer = HTTPBearer(auto_error=False)
@@ -127,7 +129,7 @@ class Share(BaseModel):
     role: str = Field(pattern='^(viewer|editor)$')
 
 
-def create_app(db_path=None, *, email_delivery=None):
+def create_app(db_path=None, *, email_delivery=None, ai_provider=None, start_email_worker=True):
     database = str(db_path or os.environ.get('NOTETOGETHER_DB', 'backend/state/app.sqlite3'))
     Path(database).parent.mkdir(parents=True, exist_ok=True)
 
@@ -153,9 +155,23 @@ def create_app(db_path=None, *, email_delivery=None):
         migrate(conn)
         install_tracking(conn)
 
-    app = FastAPI(title='NoteTogether', version='0.2.0')
+    @asynccontextmanager
+    async def lifespan(app):
+        if start_email_worker:
+            app.state.email_queue.start()
+        try:
+            yield
+        finally:
+            if start_email_worker:
+                import anyio
+                await anyio.to_thread.run_sync(app.state.email_queue.stop)
+
+    app = FastAPI(title='NoteTogether', version='0.2.0', lifespan=lifespan)
     app.state.database = database
     app.state.email_delivery = email_delivery if email_delivery is not None else delivery_from_environment(os.environ)
+    app.state.email_queue = EmailQueue(db, app.state.email_delivery,
+                                     os.environ.get('MAIL_OUTBOX_KEY_FILE') or database + '.mail-key')
+    app.state.ai_provider = ai_provider if ai_provider is not None else provider_from_environment(os.environ)
     origins = [value.strip() for value in os.environ.get('WEB_ORIGINS', 'http://localhost:7357,http://127.0.0.1:7357').split(',')]
     app.add_middleware(CORSMiddleware,
         allow_origins=origins,
@@ -190,23 +206,16 @@ def create_app(db_path=None, *, email_delivery=None):
         return {'token': token, 'user': profile(conn, user_id)}
 
     def email_token(conn, user_id, kind):
-        token = secrets.token_urlsafe(32)
-        conn.execute('UPDATE email_tokens SET used=1 WHERE user_id=? AND kind=?', (user_id, kind))
-        conn.execute('INSERT INTO email_tokens VALUES (?,?,?,?,0)',
-                     (digest(token), user_id, kind, time.time() + 1800))
-        return token
+        try:
+            return app.state.email_queue.issue(conn, user_id, kind)
+        except (OSError, ValueError):
+            raise HTTPException(503, 'Email queue unavailable') from None
 
     def email_cooldown(conn, scope):
         attempt = conn.execute('SELECT blocked_until FROM attempts WHERE scope=?', (scope,)).fetchone()
         if attempt and attempt['blocked_until'] > time.time():
             raise HTTPException(429, 'Try again later')
         conn.execute('INSERT OR REPLACE INTO attempts VALUES (?,0,?)', (scope, time.time() + 60))
-
-    def send_code(recipient, kind, token):
-        try:
-            return app.state.email_delivery.send(recipient, kind, token)
-        except Exception:
-            return 'delivery_failed'
 
     def take_token(conn, token, kind):
         row = conn.execute('SELECT * FROM email_tokens WHERE digest=? AND kind=? AND used=0 AND expires>?',
@@ -244,6 +253,8 @@ def create_app(db_path=None, *, email_delivery=None):
                 'pinned_at': note['pinned_at'], 'labels': ids, 'label_names': names,
                 'locked': bool(note['password']), 'role': role, 'deleted': bool(note['deleted'])}
         result.update(shared_metadata(conn, note, role))
+        if note['password']:
+            result['protection_version'] = note['protection_version']
         if role != 'owner' and identity is not None:
             row = conn.execute('SELECT shared_at FROM shares WHERE note_id=? AND user_id=?', (note['id'], identity[0])).fetchone()
             result['shared_at'] = row['shared_at'] if row else None
@@ -251,13 +262,15 @@ def create_app(db_path=None, *, email_delivery=None):
 
     @app.get('/health')
     def health():
-        return {'status': 'ok', 'email_delivery': app.state.email_delivery.mode, 'ai': 'not_configured'}
+        return {'status': 'ok', 'email_delivery': app.state.email_delivery.mode,
+                'ai': 'configured' if app.state.ai_provider is not None else 'not_configured'}
 
     install_avatar_routes(app, db, authenticate, validate_session, profile)
     install_label_routes(app, db, authenticate, validate_session, digest)
     install_attachment_routes(app, db, authenticate, access, now)
     install_share_routes(app, db, authenticate, access, now)
     install_realtime_routes(app, authenticate, origins)
+    install_ai_routes(app, db, authenticate, validate_session, access)
 
     @app.post('/auth/register', status_code=201)
     def register(body: Registration):
@@ -275,7 +288,7 @@ def create_app(db_path=None, *, email_delivery=None):
             code = email_token(conn, user_id, 'verify')
             email_cooldown(conn, 'verify:' + user_id)
             result = session(conn, user_id)
-        result['email_delivery'] = send_code(email, 'verify', code)
+        result['email_delivery'] = code
         return result
 
     @app.post('/auth/login')
@@ -365,22 +378,31 @@ def create_app(db_path=None, *, email_delivery=None):
                 return {'email_delivery': 'already_verified'}
             email_cooldown(conn, 'verify:' + identity[0])
             code = email_token(conn, identity[0], 'verify')
-        return {'email_delivery': send_code(user['email'], 'verify', code)}
+        return {'email_delivery': code}
+
+    @app.get('/auth/email-status')
+    def email_status(identity=Depends(authenticate)):
+        with db() as conn:
+            validate_session(conn, identity)
+            return app.state.email_queue.status(conn, identity[0])
 
     @app.post('/auth/forgot')
     def forgot(body: EmailRequest):
         email = body.email.strip().lower()
         if not valid_email(email):
             raise HTTPException(422, 'Invalid email')
-        code = None
         with db() as conn:
             # Same cooldown and response for known and unknown addresses.
             email_cooldown(conn, 'forgot:' + digest(email))
             user = conn.execute('SELECT id FROM users WHERE email=?', (email,)).fetchone()
             if user:
-                code = email_token(conn, user['id'], 'reset')
-        if code:
-            send_code(email, 'reset', code)
+                try:
+                    email_token(conn, user['id'], 'reset')
+                except HTTPException as error:
+                    if error.status_code != 503:
+                        raise
+                    # Public recovery must not disclose account existence when
+                    # the private queue/key is temporarily unavailable.
         return {'message': 'If the account exists, recovery is requested.',
                 'email_delivery': 'not_configured' if app.state.email_delivery.mode == 'not_configured' else 'requested'}
 

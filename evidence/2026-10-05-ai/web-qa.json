@@ -1,0 +1,28 @@
+{
+  "dateUtc": "2026-10-05T14:12:14.988Z",
+  "url": "http://127.0.0.1:7357/",
+  "browser": "Codex in-app browser; engine version not measured",
+  "provider": "test-double",
+  "liveGemini": false,
+  "checks": [
+    "Summary shown with explicit fixture label",
+    "Q&A displayed two source buttons",
+    "Citation opened Orion schedule editor",
+    "Unrelated question showed insufficient information with no source buttons",
+    "Peer source lock cleared output and citations"
+  ],
+  "observedScripts": [
+    {
+      "name": "flutter_bootstrap.js",
+      "url": "http://127.0.0.1:7357/flutter_bootstrap.js"
+    },
+    {
+      "name": "canvaskit.js",
+      "url": "http://127.0.0.1:7357/canvaskit/chromium/canvaskit.js"
+    },
+    {
+      "name": "main.dart.js",
+      "url": "http://127.0.0.1:7357/main.dart.js"
+    }
+  ]
+}

@@ -12,12 +12,65 @@ Một Flutter project Web + Android, ChangeNotifier, HTTP, Sembast/IndexedDB/app
 FastAPI/SQLite/Argon2id. Versions chính xác: pubspec.lock + backend/requirements.txt.
 Architecture/ACL/offline ở docs; ADR so sánh Firebase/custom.
 Email có SMTP/TLS transport + code UI, disabled khi chưa config. Main không giữ mailbox memory;
-internet inbox chưa xác minh. Private attachments và SSE realtime đã có local QA; AI chưa triển khai.
+internet inbox chưa xác minh. Private attachments và SSE realtime đã có local QA.
+AI Summary/Q&A đã có backend Gemini và UI/citations; local tests + Web/native fixture QA,
+chưa gọi Gemini thật. Không có key sẽ báo AI chưa cấu hình, không trả kết quả giả.
 Local DB schema version2, migration0/1→2 giữ note revisions/content và operation v1.
 Avatar PNG/JPEG lưu private trong SQLite; catalogue nhãn server dùng ID/revision/tombstone.
 Attachment ảnh/video/file dùng private note API và BLOB SQLite, chỉ online; xem docs/PRIVATE_ATTACHMENTS.md.
 
+## UI responsive và performance —06/10/2026
+
+Editor/AI/ghi chú bảo vệ dùng chung khung Prism và spacing thích nghi; gallery có footer gọn/
+preview cho màn hình thấp. Preview note dài giới hạn480+ellipsis, search/editor giữ full content.
+Home cache view theo nguồn/account/query/labels, tìm kiếm literal tránh lowercase toàn note;
+metadata khóa được ẩn.161 Flutter/88 backend PASS, actual Web/native debug local đã chạy.
+[Thay đổi và benchmark có phạm vi](docs/UI_COHESION_AND_PERFORMANCE.md) ·
+[Ảnh/log/evidence](evidence/2026-10-06-ui-cohesion/INDEX.md). Release tiếp tục để sau cùng.
+
+## Công cụ sáng tạo cho ghi chú
+
+Home → **Xưởng ghi chú**:6 mẫu học tập/nhóm có preview; chọn tạo bản nháp riêng và sửa offline.
+Editor → **Dàn ý & checklist**: heading `#`, việc `- [ ]`, bấm đặt caret/tick để tự lưu và đồng bộ.
+**Viết tập trung** thu gọn UI, phiên25 phút bắt đầu/tạm dừng/đặt lại; rời app tạm dừng.
+Thống kê từ/ký tự/thời gian đọc chạy local; không dùng AI hoặc key. Quyền/revision/lock vẫn qua
+luồng note hiện có; công cụ hiện áp dụng editor thường. [Hướng dẫn/demo](docs/WRITING_STUDIO.md).
+Gate06/10:155 Flutter/88 backend, Web debug/API36 debug actual local PASS; xem
+[evidence](evidence/2026-10-06-writing-studio/INDEX.md). Release để sau cùng, không có claim điểm thêm.
+
 ## Setup trên Windows
+
+AI: xem [docs/AI_FEATURES.md](docs/AI_FEATURES.md). Dùng Gemini key của project Free tier,
+chỉ cấu hình ở backend, không đặt trong Flutter hoặc Git. Key cũ đã xuất hiện trong output
+công cụ ở lượt05/10 và chưa được lưu/sử dụng; cần thay trước khi cấu hình.
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/configure_ai.ps1
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/start_backend.ps1
+```
+
+Nhập key vào prompt che ký tự. File local `backend/state/gemini-api-key.txt` bị Git bỏ qua;
+không đưa vào gói nộp. `.env.example` có `GEMINI_API_KEY`/`GEMINI_API_KEY_FILE`/`GEMINI_MODEL`.
+`start_backend.ps1` tự chọn file local; backend deployment cần service env/secret store riêng.
+Free tier có thể dùng dữ liệu gửi lên để cải thiện sản phẩm; AI UI có thông báo trước khi gửi.
+
+Nghiệm thu local có provider double tường minh, không gọi Google:
+
+```powershell
+# Terminal fixture; chỉ loopback và ghi nhãn không phải LLM.
+& .\.venv\Scripts\python.exe scripts/ai_fixture.py --allow-test-provider
+& .\.venv\Scripts\python.exe scripts/qa_ai.py --url http://127.0.0.1:8012 --output output/ai-http-fixture.json
+# Android debug/emulator cần adb reverse8012, giống hướng dẫn integration bên dưới.
+& 'D:\Android\sdk\platform-tools\adb.exe' reverse tcp:8012 tcp:8012
+& 'C:\Users\LENOVO\flutter-sdk\bin\flutter.bat' drive --driver=test_driver/ai.dart --target=integration_test/ai_flow_test.dart -d emulator-5554 --dart-define=API_URL=http://127.0.0.1:8012 --enable-software-rendering --no-enable-impeller
+# Chỉ khi đã thay/config key: actual Gemini QA với disposable notes.
+& .\.venv\Scripts\python.exe scripts/qa_ai.py --url http://127.0.0.1:8000 --live --output output/ai-live.json
+```
+
+`--live` từ chối provider fixture; không được gọi fixture PASS là Gemini đã nghiệm thu.
+Hai AI routes chỉ đọc bản server; summary không overwrite/autosave vào note, pending draft
+bị chặn. Q&A retrieval lọc quyền/unlock trước prompt, recheck mọi nguồn sau inference;
+result ở RAM, citation mở note thật với recheck. Hạn mức/giới hạn ở AI_FEATURES.md.
 
 Flutter SDK cần có trên PATH hoặc đặt FLUTTER_BIN (đường dẫn flutter.bat).
 Python 3.12 cần sẵn; trên máy hiện tại setup script dùng bundled runtime Codex.
@@ -86,21 +139,24 @@ Account namespace + generation guard; account snapshots mã hóa AES-GCM bằng 
 session/profile vẫn plaintext, cần hardening. Khóa remote giữ local edit trong encrypted recovery,
 Phục hồi tạo draft UUID mới rồi auto-save khi hợp lệ, không mở source. Xem docs/ENCRYPTED_RECOVERY.md.
 Web key store experimental; không chống XSS/browser-profile reader. Key loss/clear storage có thể mất
-recovery; chưa backup/export key/offline note unlock. Labels catalogue server với durable queue riêng;
+recovery; chưa backup/export key. Ghi chú bảo vệ đã tải có password-encrypted cache/draft,
+mở offline bằng mật khẩu ghi chú; reconnect cần xác thực quyền/grant trên server trước sync.
+Labels catalogue server với durable queue riêng;
 Preferences có durable field-patch outbox/idempotency và đồng bộ theo tài khoản; xem docs/PREFERENCES_SYNC.md.
 Sync ghi snapshot thành công trước gửi; session write/logout dùng cùng hàng đợi. Conflict copy giữ
 draft mới nhất và lưu bản thay thế trong cùng transaction. Regression durability ở
 test/sync_durability_test.dart và evidence/2026-10-01-durability; lock recovery ở evidence/2026-10-01-encrypted-recovery.
 Web dùng custom static-only service worker và local CanvasKit qua scripts/build.ps1; API/private data không cache.
 Cold first-load offline chưa hỗ trợ; cập nhật worker/quota/eviction cần regression riêng.
-Known blockers: internet SMTP receipt/outbox, attachment offline queue/full OS/release QA, protected editing/offline unlock, protected-reader share/file/realtime UI acceptance, LLM, HTTPS hosting,
+Known blockers: internet SMTP receipt/production worker operations, attachment offline queue/full OS/release QA,
+key backup/transfer, real Gemini acceptance, HTTPS hosting,
 production signing, release regression, clone sạch, deadline lịch teamwork, video và Rubric.xlsx gốc.
 
 ## Deployment và nộp
 
 backend/Dockerfile chuẩn bị một service với SQLite persistent disk cần mount/backup. Chưa build/run Docker
 image và chưa public deploy. Không hứa free tier. WEB_ORIGINS/API_URL phải dùng HTTPS origin thật.
-SMTP variables đã được code đọc; LLM placeholders chưa đọc. Không dán secrets vào chat hoặc commit.
+SMTP/Gemini variables đã được code đọc; thiếu cấu hình thì disabled. Không dán secrets vào chat hoặc commit.
 source nộp phải clone GitHub và giữ .git; local git init không chứng minh teamwork.
 Read docs/SUBMISSION_CHECKLIST.md; chưa tạo ZIP nộp vì thiếu repo/video/Rubric/URL/release-final.
 Readme.txt được giữ cùng nội dung cốt lõi với README.md. Tài khoản chấm chỉ đưa riêng trong bộ nộp.
@@ -152,17 +208,29 @@ Lệnh native UI driver đã chạy đợt lăng kính (backend/adb reverse như
 Hai lượt renderer mặc định mất kết nối emulator; chưa nghiệm thu renderer đó. Software rendering
 chỉ là flags của lệnh QA này, không cấu hình sản phẩm. Chưa physical-device/release-functional.
 
-## Khóa ghi chú online
+## Ghi chú bảo vệ — 05/10/2026
 
 Menu ghi chú của mình → Bật khóa ghi chú (mật khẩu2x, ghi chú đã đồng bộ). Chạm thẻ khóa → nhập
-mật khẩu → phiên đọc tạm tối đa5 phút. Owner có đổi/tắt mật khẩu; Khóa lại chỉ hủy phiên hiện tại.
-Nội dung không vào ordinary cache/search/snapshot; che khi background/expiry/lỗi quyền/kết nối.
-Phiên này chỉ đọc; protected editing và offline unlock chưa có. Xem docs/NOTE_PROTECTION.md.
+mật khẩu → phiên tối đa5 phút. Owner/editor sửa và autosave; owner xóa-confirm, gắn nhãn,
+đổi/tắt mật khẩu, quản lý chia sẻ. Viewer chỉ đọc. Tệp riêng tư và AI cần online/grant;
+AI chặn khi draft chưa đồng bộ. Ghim/shared/role/nhãn chỉ hiển thị sau unlock.
+Nội dung không vào ordinary cache/search/outbox; cache/draft AES-GCM dẫn xuất từ mật khẩu
+ghi chú (PBKDF2-SHA256600000), nằm trong encrypted account snapshot. Không persist password/key.
+Ghi chú đã tải mở offline được trên thiết bị/origin này; reconnect yêu cầu server unlock trước sync.
+Thu hồi/xóa/đổi mật khẩu giữ draft cũ để Home **Bản nháp bảo vệ** → mật khẩu cũ → copy ID mới.
+SSE cập nhật clean content, dirty draft giữ frozen base; lost ack replay immutable operation.
+Khóa lại/background/expiry/logout che nội dung; chọn tệp che tạm rồi revalidate khi trở về.
+Xem docs/NOTE_PROTECTION.md và evidence/2026-10-05-protected-notes/INDEX.md cho scope/giới hạn.
 Integration mới (backend + adb reverse như trên):
 
 ```powershell
 & 'C:\Users\LENOVO\flutter-sdk\bin\flutter.bat' test integration_test/note_protection_test.dart -d emulator-5554 --dart-define=API_URL=http://127.0.0.1:8000
+& 'C:\Users\LENOVO\flutter-sdk\bin\flutter.bat' drive --driver=test_driver/protected_notes.dart --target=integration_test/protected_editing_test.dart -d emulator-5554 --dart-define=API_URL=http://127.0.0.1:8000 --enable-software-rendering --no-enable-impeller
+& .\.venv\Scripts\python.exe scripts/qa_protected_notes.py
 ```
+
+HTTP probe tạo dữ liệu test disposable trên backend local8000; session chỉ trong tmp ignored,
+không đưa vào evidence/Git/gói nộp. Sau native integration chạy `flutter pub get` trước release build.
 
 ## Email xác minh và khôi phục
 
@@ -170,8 +238,29 @@ SMTP_HOST trống thì không gửi thư; account chưa verified vẫn dùng đ�
 SMTP_HOST/PORT/SECURITY/FROM/USERNAME/PASSWORD trong process environment rồi restart backend;
 chỉ STARTTLS hoặc TLS, verify CA/hostname. Hướng dẫn không lộ secret ở docs/EMAIL_DELIVERY.md.
 Home **Xác minh** cho nhập/gửi lại mã (cooldown60s). **Quên mật khẩu** → kiểm tra mã trước →
-mật khẩu mới2x → login thủ công; code30 phút/one-time. smtp_accepted là server nhận thư, chưa
-chứng minh inbox delivery. Local TLS fixture/Android test có lệnh riêng trong doc; không deploy fixture.
+mật khẩu mới2x → login thủ công; code30 phút/one-time. Register/resend trả queued sau lưu DB,
+worker retry/restart cùng mã, không chờ SMTP trong request. UI có kiểm tra trạng thái gửi,
+email reset + yêu cầu gửi lại. smtp_accepted là SMTP nhận thư, chưa chứng minh inbox delivery.
+Job giữ nonce/digest, HMAC server key bên cạnh DB (*.mail-key) hoặc MAIL_OUTBOX_KEY_FILE;
+không mã thô trong SQLite, backup đúng key cùng server state. Key mất/hỏng sau restart giữ job
+và chặn overwrite, không tạo key thay thế. Xem docs/EMAIL_DELIVERY.md cho states/lease/limits.
+Local TLS fixture/Android test có lệnh riêng trong doc; không deploy fixture.
+
+Đợt06/10:146 Flutter/88 backend PASS; HTTP actual roles/TLS và Web debug + Android debug email
+queue/status/verify/reset local QA. Release theo yêu cầu để cuối, không build/deploy đợt này.
+
+```powershell
+# Chỉ local QA, không SMTP Internet; terminal1
+$env:WEB_ORIGINS = 'http://127.0.0.1:7361,http://localhost:7361'
+& .\.venv\Scripts\python.exe scripts/email_fixture.py --allow-code-endpoint
+# Terminal2: HTTP role/email probe; terminal3: Web debug
+& .\.venv\Scripts\python.exe scripts/qa_email_queue.py
+& 'C:\Users\LENOVO\flutter-sdk\bin\flutter.bat' run -d web-server --web-hostname 127.0.0.1 --web-port 7361 --dart-define=API_URL=http://127.0.0.1:8011
+# Android emulator đã online, adb reverse8011/8026 theo docs/EMAIL_DELIVERY.md
+& 'C:\Users\LENOVO\flutter-sdk\bin\flutter.bat' drive --driver=test_driver/email_queue.dart --target=integration_test/email_flow_test.dart -d emulator-5554 --dart-define=API_URL=http://127.0.0.1:8011 --enable-software-rendering --no-enable-impeller
+```
+
+Sau native integration chạy flutter pub get; không sửa generated registrant bằng tay.
 
 ## Avatar và nhãn server
 
@@ -243,7 +332,7 @@ chọn “Chỉnh sửa phiên bản mới” để mở base mới rõ ràng. L
 Reconnect/backoff/foreground/account guards; HTTP15s vẫn fallback. SQLite counter polling
 250ms phía server, không OT/CRDT. Host106 Flutter/53 backend PASS; Android debug API36 real
 SSE/API/encrypted reopen và Chrome local release QA xem evidence/2026-10-02-realtime/INDEX.md.
-Web/APK build PASS; protected-reader actual realtime/physical/release functional/load/HTTPS/video
+Web/APK build PASS; protected-reader realtime bổ sung QA05/10; physical/release functional/load/HTTPS/video
 chưa nghiệm thu. Chi tiết protocol/races/limits: docs/REALTIME_COLLABORATION.md.
 
 ```powershell

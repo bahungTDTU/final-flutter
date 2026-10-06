@@ -1,0 +1,13 @@
+{
+  "date_utc": "2026-10-06T02:20:02.537156+00:00",
+  "web": "IAB/debug http://127.0.0.1:7361",
+  "api": "actual FastAPI/SQLite http://127.0.0.1:8011",
+  "transport": "actual STARTTLS loopback fixture, not external provider",
+  "results": [
+    "PASS account login/private send status smtp_accepted",
+    "PASS received fixture code verifies account and banner disappears",
+    "PASS public forgot + populated reset email + request-resend cooldown, no status oracle"
+  ],
+  "password_reset_completion": "native/API verified; Web final password submission NOT RUN here",
+  "release": "deferred by user; no release build/deploy"
+}

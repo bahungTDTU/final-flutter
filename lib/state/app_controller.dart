@@ -19,6 +19,7 @@ class AppController extends ChangeNotifier {
   Timer? _realtimeRefresh;
   bool _foreground = true, _realtimeDirty = false;
   bool get realtimeLive => realtimeStatus == RealtimeStatus.live;
+  bool get foreground => _foreground;
   int realtimeSignals = 0;
 
   void setForeground(bool value) {
@@ -106,6 +107,7 @@ class AppController extends ChangeNotifier {
   List<Map<String, dynamic>> pending = [];
   List<Map<String, dynamic>> pendingPreferences = [];
   Map<String, dynamic> drafts = {}, conflicts = {}, recoveries = {};
+  Map<String, Map<String, dynamic>> protectedVaults = {};
   final accessUnavailable = <String>{};
   List<String> labels = [];
   Map<String, Map<String, dynamic>> labelCatalogue = {}, remoteLabels = {};
@@ -254,6 +256,7 @@ class AppController extends ChangeNotifier {
     drafts = {};
     conflicts = {};
     recoveries = {};
+    protectedVaults = {};
     labels = [];
     labelCatalogue = {};
     remoteLabels = {};
@@ -273,6 +276,10 @@ class AppController extends ChangeNotifier {
         .toList();
     drafts = Map<String, dynamic>.from(cached['drafts'] as Map? ?? {});
     recoveries = Map<String, dynamic>.from(cached['recoveries'] as Map? ?? {});
+    protectedVaults = (cached['protected_vaults'] as Map? ?? {}).map(
+      (key, value) =>
+          MapEntry(key as String, Map<String, dynamic>.from(value as Map)),
+    );
     accessUnavailable.addAll(
       recoveries.values
           .whereType<Map>()
@@ -319,6 +326,7 @@ class AppController extends ChangeNotifier {
       throw StateError('Kho tài khoản chưa mở được; không ghi đè dữ liệu.');
     }
     final key = accountKey;
+    final protectedSnapshot = Map<String, dynamic>.from(protectedVaults);
     final snapshot = {
       'notes': notes.map((n) => n.toJson()).toList(),
       'pending': pending.map((op) => Map<String, dynamic>.from(op)).toList(),
@@ -345,7 +353,139 @@ class AppController extends ChangeNotifier {
       },
       'preferences': Map<String, dynamic>.from(preferences),
     };
-    return _queueWrite(() => local.write(key, snapshot));
+    return _queueWrite(() async {
+      // Protected encryption may finish after this ordinary snapshot was captured.
+      // Merge its independently serialized field from the durable record at commit.
+      final durable = await local.read(key);
+      snapshot['protected_vaults'] =
+          durable?['protected_vaults'] ?? protectedSnapshot;
+      await local.write(key, snapshot);
+    });
+  }
+
+  Future<void> storeProtectedEnvelope(
+    String id,
+    String account,
+    Future<Map<String, dynamic>> Function() encrypt,
+  ) {
+    final key = 'account:$account';
+    final fallback = user?['id'] == account
+        ? {
+            'notes': notes.map((n) => n.toJson()).toList(),
+            'pending': pending,
+            'drafts': drafts,
+            'recoveries': recoveries,
+            'preferences': preferences,
+            'protected_vaults': protectedVaults,
+          }
+        : <String, dynamic>{};
+    final write = _queueWrite(() async {
+      final envelope = await encrypt();
+      final snapshot = await local.read(key) ?? fallback;
+      final records = Map<String, dynamic>.from(
+        snapshot['protected_vaults'] as Map? ?? {},
+      );
+      final old = records[id] as Map?;
+      records[id] = {
+        ...envelope,
+        if (old?['copy_id'] != null) 'copy_id': old!['copy_id'],
+      };
+      snapshot['protected_vaults'] = records;
+      await local.write(key, snapshot);
+      if (user?['id'] == account) {
+        protectedVaults = records.map(
+          (key, value) =>
+              MapEntry(key, Map<String, dynamic>.from(value as Map)),
+        );
+      }
+    });
+    return write.then((_) {
+      if (user?['id'] == account && !_disposed) notifyListeners();
+    });
+  }
+
+  Future<void> invalidateProtectedVault(String id, String account) =>
+      _queueWrite(() async {
+        final key = 'account:$account';
+        final snapshot = await local.read(key);
+        if (snapshot == null) return;
+        final records = Map<String, dynamic>.from(
+          snapshot['protected_vaults'] as Map? ?? {},
+        );
+        final previous = records[id] as Map?;
+        if (previous?['dirty'] == true) {
+          records[id] = {...previous!, 'recovery_only': true};
+        } else {
+          records.remove(id);
+        }
+        snapshot['protected_vaults'] = records;
+        await local.write(key, snapshot);
+        if (user?['id'] == account) {
+          protectedVaults = records.map(
+            (key, value) =>
+                MapEntry(key, Map<String, dynamic>.from(value as Map)),
+          );
+        }
+      });
+
+  Future<Map<String, dynamic>?> readProtectedEnvelope(
+    String id,
+    String account,
+  ) async {
+    await _writes.catchError((_) {});
+    final snapshot = await local.read('account:$account');
+    final value = (snapshot?['protected_vaults'] as Map?)?[id];
+    return value == null ? null : Map<String, dynamic>.from(value as Map);
+  }
+
+  Future<String> copyProtectedDraft(
+    String id,
+    String account,
+    String title,
+    String content,
+  ) async {
+    if (user?['id'] != account) throw StateError('Account changed');
+    final record = protectedVaults[id];
+    if (record == null || record['dirty'] != true) {
+      throw StateError('No protected draft');
+    }
+    final copyId = record['copy_id'] as String? ?? uuid.v4();
+    await storeProtectedEnvelope(
+      id,
+      account,
+      () async => {...record, 'copy_id': copyId},
+    );
+    if (user?['id'] != account) throw StateError('Account changed');
+    if (!drafts.containsKey(copyId) && !notes.any((n) => n.id == copyId)) {
+      await draft(copyId, title, content);
+    }
+    await _queueWrite(() async {
+      final key = 'account:$account';
+      final snapshot = await local.read(key);
+      if (snapshot == null) return;
+      final records = Map<String, dynamic>.from(
+        snapshot['protected_vaults'] as Map? ?? {},
+      );
+      final current = records[id] as Map?;
+      final copied =
+          (snapshot['drafts'] as Map?)?.containsKey(copyId) == true ||
+          (snapshot['notes'] as List? ?? []).any(
+            (n) => (n as Map)['id'] == copyId,
+          );
+      // A later keystroke must not be marked as copied by an older copy request.
+      if (!copied || current?['ciphertext'] != record['ciphertext']) return;
+      records[id] = {...current!, 'recovered_copy_id': copyId};
+      snapshot['protected_vaults'] = records;
+      await local.write(key, snapshot);
+      if (user?['id'] == account) {
+        protectedVaults = records.map(
+          (key, value) =>
+              MapEntry(key, Map<String, dynamic>.from(value as Map)),
+        );
+      }
+    });
+    notifyListeners();
+    return copyId;
   }
 
   Future<void> _queueWrite(Future<void> Function() action) {
@@ -426,6 +566,7 @@ class AppController extends ChangeNotifier {
     drafts = {};
     conflicts = {};
     recoveries = {};
+    protectedVaults = {};
     labels = [];
     labelCatalogue = {};
     remoteLabels = {};

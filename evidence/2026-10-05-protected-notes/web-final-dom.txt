@@ -1,0 +1,22 @@
+- button "Quay lại"
+- heading "Ghi chú bảo vệ" [level=2]
+- button "Khóa lại"
+- generic: Đã mở khóa · nội dung không xuất hiện trong cache hoặc tìm kiếm thường.
+- checkbox "Đã ghim"
+- checkbox "Đã chia sẻ"
+- checkbox "Chủ sở hữu"
+- checkbox "Đã ghim"
+- button "Chỉnh sửa" [active]
+- textbox "Tiêu đề"
+- generic: Còn lại 183 ký tự
+- textbox "Nội dung"
+- generic: Còn lại 99.957 ký tự
+- generic: Đã đồng bộ
+- button "Tóm tắt AI"
+- button "Hỏi AI"
+- button "Quản lý đính kèm"
+- button "Kiểm tra quyền và cập nhật"
+- button "Quản lý chia sẻ"
+- button "Đổi mật khẩu ghi chú"
+- button "Tắt khóa ghi chú"
+- button "Xóa ghi chú"

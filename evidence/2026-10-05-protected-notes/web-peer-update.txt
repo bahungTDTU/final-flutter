@@ -1,0 +1,2 @@
+2026-10-05T15:17:00.494796+00:00
+PASS peer actual HTTP update while protected Web reader is open; no token/private content logged.

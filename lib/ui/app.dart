@@ -362,6 +362,7 @@ class _AuthScreenState extends State<AuthScreen> {
               builder: (_) => TokenScreen(
                 controller: widget.controller,
                 initialReset: true,
+                initialEmail: value,
               ),
             ),
           );
@@ -382,9 +383,11 @@ class TokenScreen extends StatefulWidget {
     super.key,
     required this.controller,
     this.initialReset = false,
+    this.initialEmail = '',
   });
   final AppController controller;
   final bool initialReset;
+  final String initialEmail;
   @override
   State<TokenScreen> createState() => _TokenScreenState();
 }
@@ -393,7 +396,8 @@ class _TokenScreenState extends State<TokenScreen> {
   final form = GlobalKey<FormState>();
   final token = TextEditingController(),
       password = TextEditingController(),
-      confirm = TextEditingController();
+      confirm = TextEditingController(),
+      resetEmail = TextEditingController();
   late bool reset;
   bool busy = false, checked = false, complete = false;
   String? message;
@@ -401,6 +405,7 @@ class _TokenScreenState extends State<TokenScreen> {
   void initState() {
     super.initState();
     reset = widget.initialReset;
+    resetEmail.text = widget.initialEmail;
   }
 
   @override
@@ -408,6 +413,7 @@ class _TokenScreenState extends State<TokenScreen> {
     token.dispose();
     password.dispose();
     confirm.dispose();
+    resetEmail.dispose();
     super.dispose();
   }
 
@@ -465,16 +471,23 @@ class _TokenScreenState extends State<TokenScreen> {
   }
 
   Future<void> resend() async {
-    if (busy || widget.controller.token == null) return;
+    if (busy || (!reset && widget.controller.token == null)) return;
+    if (reset &&
+        (resetEmail.text.trim().isEmpty || resetEmail.text.length > 254)) {
+      setState(() => message = 'Nhập email nhận mã khôi phục.');
+      return;
+    }
     setState(() => busy = true);
     final sessionToken = widget.controller.token;
     try {
       final result = await widget.controller.api.call(
         'POST',
-        '/auth/resend',
-        token: sessionToken,
+        reset ? '/auth/forgot' : '/auth/resend',
+        token: reset ? null : sessionToken,
+        body: reset ? {'email': resetEmail.text.trim()} : null,
       );
-      if (widget.controller.token == sessionToken) {
+      if (!reset && widget.controller.token != sessionToken) return;
+      if (!reset) {
         widget.controller.recordEmailDelivery(
           result['email_delivery'] as String,
         );
@@ -488,6 +501,29 @@ class _TokenScreenState extends State<TokenScreen> {
       }
     } catch (e) {
       if (mounted) setState(() => message = friendlyError(e));
+    } finally {
+      if (mounted) setState(() => busy = false);
+    }
+  }
+
+  Future<void> checkDelivery() async {
+    final sessionToken = widget.controller.token;
+    if (busy || reset || sessionToken == null) return;
+    setState(() => busy = true);
+    try {
+      final result = await widget.controller.api.call(
+        'GET',
+        '/auth/email-status',
+        token: sessionToken,
+      );
+      if (!mounted || widget.controller.token != sessionToken) return;
+      final status = result['email_delivery'] as String;
+      widget.controller.recordEmailDelivery(status);
+      setState(() => message = emailDeliveryMessage(status));
+    } catch (e) {
+      if (mounted && widget.controller.token == sessionToken) {
+        setState(() => message = friendlyError(e));
+      }
     } finally {
       if (mounted) setState(() => busy = false);
     }
@@ -600,12 +636,36 @@ class _TokenScreenState extends State<TokenScreen> {
                             }),
                       child: const Text('Nhập mã khác'),
                     ),
-                  if (!reset && !complete && widget.controller.user != null)
+                  if (reset && !checked) ...[
+                    TextField(
+                      key: const Key('reset-email'),
+                      controller: resetEmail,
+                      enabled: !busy,
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: const InputDecoration(
+                        labelText: 'Email nhận mã khôi phục',
+                      ),
+                    ),
+                    TextButton(
+                      key: const Key('resend-reset-code'),
+                      onPressed: busy ? null : resend,
+                      child: const Text('Yêu cầu gửi lại mã'),
+                    ),
+                  ],
+                  if (!reset &&
+                      !complete &&
+                      widget.controller.user != null) ...[
                     TextButton(
                       key: const Key('resend-email-code'),
                       onPressed: busy ? null : resend,
                       child: const Text('Gửi lại mã xác minh'),
                     ),
+                    TextButton(
+                      key: const Key('email-delivery-status'),
+                      onPressed: busy ? null : checkDelivery,
+                      child: const Text('Kiểm tra trạng thái gửi'),
+                    ),
+                  ],
                   if (message != null)
                     Padding(
                       padding: const EdgeInsets.only(top: 12),
@@ -631,6 +691,14 @@ class _TokenScreenState extends State<TokenScreen> {
 }
 
 String emailDeliveryMessage(String status) => switch (status) {
+  'queued' => 'Mã đang chờ gửi. Server sẽ tự thử lại nếu dịch vụ email gặp lỗi; bạn vẫn dùng được ghi chú.',
+  'retrying' => 'Gửi email chưa thành công. Server đang tự thử lại; không cần tạo mã mới ngay.',
+  'expired' ||
+  'cancelled' => 'Mã đã hết hạn hoặc được thay thế. Yêu cầu gửi mã mới.',
+  'not_requested' =>
+    'Chưa có yêu cầu gửi mã. Chọn gửi lại để nhận mã xác minh.',
+  'failed' =>
+    'Server đã dừng thử gửi mã này. Yêu cầu mã mới; ghi chú vẫn dùng được.',
   'smtp_accepted' => 'Dịch vụ gửi thư đã nhận email. Kiểm tra hộp thư và spam; mã hết hạn sau 30 phút.',
   'requested' => 'Nếu email có tài khoản, yêu cầu gửi mã đã được ghi nhận. Kiểm tra hộp thư và spam.',
   'already_verified' =>

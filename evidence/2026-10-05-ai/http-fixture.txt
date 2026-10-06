@@ -1,0 +1,5 @@
+PASS actual HTTP anonymous/stranger/viewer-write/owner-locked ACL
+PASS owner/viewer/editor summary read access and original unchanged
+PASS multi-note sources/open citations/no-data/locked exclusion
+PASS revoke invalidates validation and later summary
+TEST DOUBLE ONLY; real HTTP/ACL PASS, Gemini NOT RUN

@@ -1,0 +1,10 @@
+00:00 +0: loading D:/flutter cuoi ki/test/ai_test.dart
+00:00 +0: Summary regeneration stays RAM-only and cannot overwrite notes or outbox
+00:00 +1: Unsent draft blocks summary of stale server version
+00:00 +2: Removing an uncited context source clears the whole answer
+00:00 +3: Account switch during inference discards late answer and source metadata
+00:00 +4: Validation failure and citation open both enforce current server permission
+00:00 +5: Protected gate expiry and background hide output immediately
+00:00 +6: Question UI validates input, displays synthesis and opens the exact source
+00:01 +7: Summary dialog regenerate/error state and compact scaled layout remain usable
+00:01 +8: All tests passed!

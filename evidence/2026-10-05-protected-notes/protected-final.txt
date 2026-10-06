@@ -1,0 +1,14 @@
+00:00 +0: loading D:/flutter cuoi ki/test/protected_editing_test.dart
+00:00 +0: Protected editor autosaves; revoked delete confirmation removes name and disables action
+00:02 +1: Protected viewer keeps metadata visible after unlock and has no mutation controls
+00:02 +2: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:26 +3: Delete conflict requires new confirmation and revoked delete hides content
+00:26 +4: Offline draft survives encrypted Sembast close/reopen and never enters ordinary outbox
+00:26 +5: A copied old-password draft permits new-password unlock without losing the private copy
+00:26 +6: Lost acknowledgement replays the same immutable operation after reopen
+00:26 +7: Typing while protected operation is inflight keeps newest draft and chains own ack
+00:26 +8: Realtime clean content updates keep frozen base; dirty content remains on conflict
+00:26 +9: Revoke hides content and preserves password-bound recovery; copy never mutates source
+00:26 +10: Encrypted field merge survives ordinary snapshot capture and account switch mid-write
+00:26 +11: Delegated picker obscures content and rechecks grant before showing it again
+00:26 +12: All tests passed!

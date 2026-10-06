@@ -1,0 +1,157 @@
+Formatted 67 files (0 changed) in 1.84 seconds.
+Analyzing flutter cuoi ki...                                    
+No issues found! (ran in 36.7s)
+00:00 +0: loading D:/flutter cuoi ki/test/ai_test.dart
+00:00 +0: D:/flutter cuoi ki/test/ai_test.dart: Summary regeneration stays RAM-only and cannot overwrite notes or outbox
+00:00 +1: D:/flutter cuoi ki/test/attachments_test.dart: Remote lock removes filename from an open delete confirmation
+00:00 +2: D:/flutter cuoi ki/test/attachments_test.dart: Remote lock removes filename from an open delete confirmation
+00:00 +3: D:/flutter cuoi ki/test/attachments_test.dart: Remote lock removes filename from an open delete confirmation
+00:00 +4: D:/flutter cuoi ki/test/attachments_test.dart: Remote lock removes filename from an open delete confirmation
+00:00 +5: D:/flutter cuoi ki/test/attachments_test.dart: Remote lock removes filename from an open delete confirmation
+00:00 +6: D:/flutter cuoi ki/test/attachments_test.dart: Remote lock removes filename from an open delete confirmation
+00:00 +7: D:/flutter cuoi ki/test/attachments_test.dart: Remote lock removes filename from an open delete confirmation
+00:00 +8: D:/flutter cuoi ki/test/attachments_test.dart: Remote lock removes filename from an open delete confirmation
+00:00 +9: D:/flutter cuoi ki/test/attachments_test.dart: Remote lock removes filename from an open delete confirmation
+00:00 +10: D:/flutter cuoi ki/test/attachments_test.dart: Remote lock removes filename from an open delete confirmation
+00:00 +11: D:/flutter cuoi ki/test/attachments_test.dart: Remote lock removes filename from an open delete confirmation
+00:00 +12: D:/flutter cuoi ki/test/attachments_test.dart: Remote lock removes filename from an open delete confirmation
+00:00 +13: D:/flutter cuoi ki/test/attachments_test.dart: Remote lock removes filename from an open delete confirmation
+00:00 +14: D:/flutter cuoi ki/test/attachments_test.dart: Remote lock removes filename from an open delete confirmation
+00:00 +15: D:/flutter cuoi ki/test/attachments_test.dart: Remote lock removes filename from an open delete confirmation
+00:00 +16: D:/flutter cuoi ki/test/attachments_test.dart: Remote lock removes filename from an open delete confirmation
+00:00 +17: D:/flutter cuoi ki/test/attachments_test.dart: Remote lock removes filename from an open delete confirmation
+00:02 +18: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:03 +19: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:03 +20: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:03 +21: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:03 +22: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:03 +23: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:03 +24: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:03 +25: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:04 +26: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:04 +27: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:04 +28: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:04 +29: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:04 +30: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:04 +31: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:04 +32: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:04 +33: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:04 +34: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:04 +35: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:05 +36: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:05 +37: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:05 +38: D:/flutter cuoi ki/test/email_flow_test.dart: reset validates code before showing passwords and returns to manual login
+00:05 +39: D:/flutter cuoi ki/test/email_flow_test.dart: reset validates code before showing passwords and returns to manual login
+00:06 +40: D:/flutter cuoi ki/test/email_flow_test.dart: reset validates code before showing passwords and returns to manual login
+00:06 +41: D:/flutter cuoi ki/test/email_flow_test.dart: reset validates code before showing passwords and returns to manual login
+00:07 +42: D:/flutter cuoi ki/test/email_flow_test.dart: reset validates code before showing passwords and returns to manual login
+00:08 +43: D:/flutter cuoi ki/test/email_flow_test.dart: reset validates code before showing passwords and returns to manual login
+00:08 +44: D:/flutter cuoi ki/test/email_flow_test.dart: reset validates code before showing passwords and returns to manual login
+00:08 +45: D:/flutter cuoi ki/test/email_flow_test.dart: reset validates code before showing passwords and returns to manual login
+00:08 +46: D:/flutter cuoi ki/test/email_flow_test.dart: reset validates code before showing passwords and returns to manual login
+00:08 +47: D:/flutter cuoi ki/test/email_flow_test.dart: reset validates code before showing passwords and returns to manual login
+00:08 +48: D:/flutter cuoi ki/test/email_flow_test.dart: reset validates code before showing passwords and returns to manual login
+00:08 +49: D:/flutter cuoi ki/test/email_flow_test.dart: reset validates code before showing passwords and returns to manual login
+00:08 +50: D:/flutter cuoi ki/test/email_flow_test.dart: reset validates code before showing passwords and returns to manual login
+00:09 +51: D:/flutter cuoi ki/test/email_flow_test.dart: reset validates code before showing passwords and returns to manual login
+00:09 +52: D:/flutter cuoi ki/test/email_flow_test.dart: reset validates code before showing passwords and returns to manual login
+00:09 +53: D:/flutter cuoi ki/test/email_flow_test.dart: reset validates code before showing passwords and returns to manual login
+00:09 +54: D:/flutter cuoi ki/test/email_flow_test.dart: reset validates code before showing passwords and returns to manual login
+00:09 +55: D:/flutter cuoi ki/test/email_flow_test.dart: reset validates code before showing passwords and returns to manual login
+00:09 +56: D:/flutter cuoi ki/test/email_flow_test.dart: reset validates code before showing passwords and returns to manual login
+00:09 +57: D:/flutter cuoi ki/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:09 +58: D:/flutter cuoi ki/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:10 +59: D:/flutter cuoi ki/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:11 +60: D:/flutter cuoi ki/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:11 +61: D:/flutter cuoi ki/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:11 +62: D:/flutter cuoi ki/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:11 +63: D:/flutter cuoi ki/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:11 +64: D:/flutter cuoi ki/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:11 +65: D:/flutter cuoi ki/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:11 +66: D:/flutter cuoi ki/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:11 +67: D:/flutter cuoi ki/test/protected_editing_test.dart: Protected editor autosaves; revoked delete confirmation removes name and disables action
+00:11 +68: D:/flutter cuoi ki/test/protected_editing_test.dart: Protected editor autosaves; revoked delete confirmation removes name and disables action
+00:11 +69: D:/flutter cuoi ki/test/protected_editing_test.dart: Protected editor autosaves; revoked delete confirmation removes name and disables action
+00:11 +70: D:/flutter cuoi ki/test/protected_editing_test.dart: Protected editor autosaves; revoked delete confirmation removes name and disables action
+00:11 +71: D:/flutter cuoi ki/test/protected_editing_test.dart: Protected editor autosaves; revoked delete confirmation removes name and disables action
+00:11 +72: D:/flutter cuoi ki/test/protected_editing_test.dart: Protected editor autosaves; revoked delete confirmation removes name and disables action
+00:11 +73: D:/flutter cuoi ki/test/protected_editing_test.dart: Protected editor autosaves; revoked delete confirmation removes name and disables action
+00:13 +74: D:/flutter cuoi ki/test/protected_editing_test.dart: Protected editor autosaves; revoked delete confirmation removes name and disables action
+00:13 +75: D:/flutter cuoi ki/test/protected_editing_test.dart: Protected editor autosaves; revoked delete confirmation removes name and disables action
+00:14 +76: D:/flutter cuoi ki/test/protected_editing_test.dart: Protected editor autosaves; revoked delete confirmation removes name and disables action
+00:14 +77: D:/flutter cuoi ki/test/realtime_test.dart: Clean live editor preserves selection and explicitly opens a new base
+00:14 +78: D:/flutter cuoi ki/test/realtime_test.dart: Clean live editor preserves selection and explicitly opens a new base
+00:14 +79: D:/flutter cuoi ki/test/realtime_test.dart: Clean live editor preserves selection and explicitly opens a new base
+00:14 +80: D:/flutter cuoi ki/test/realtime_test.dart: Clean live editor preserves selection and explicitly opens a new base
+00:14 +81: D:/flutter cuoi ki/test/realtime_test.dart: Clean live editor preserves selection and explicitly opens a new base
+00:14 +82: D:/flutter cuoi ki/test/realtime_test.dart: Clean live editor preserves selection and explicitly opens a new base
+00:14 +83: D:/flutter cuoi ki/test/realtime_test.dart: Clean live editor preserves selection and explicitly opens a new base
+00:14 +84: D:/flutter cuoi ki/test/realtime_test.dart: Clean live editor preserves selection and explicitly opens a new base
+00:14 +85: D:/flutter cuoi ki/test/ui_preview_test.dart: Dependency previews clearly disclose fixtures and contain no enabled submit
+00:14 +86: D:/flutter cuoi ki/test/ui_preview_test.dart: Dependency previews clearly disclose fixtures and contain no enabled submit
+00:14 +87: D:/flutter cuoi ki/test/ui_preview_test.dart: Dependency previews clearly disclose fixtures and contain no enabled submit
+00:14 +88: D:/flutter cuoi ki/test/ui_preview_test.dart: Dependency previews clearly disclose fixtures and contain no enabled submit
+00:14 +89: D:/flutter cuoi ki/test/ui_preview_test.dart: Dependency previews clearly disclose fixtures and contain no enabled submit
+00:15 +90: D:/flutter cuoi ki/test/ui_preview_test.dart: Dependency previews clearly disclose fixtures and contain no enabled submit
+00:15 +91: D:/flutter cuoi ki/test/ui_preview_test.dart: Dependency previews clearly disclose fixtures and contain no enabled submit
+00:15 +92: D:/flutter cuoi ki/test/ui_preview_test.dart: Dependency previews clearly disclose fixtures and contain no enabled submit
+00:15 +93: D:/flutter cuoi ki/test/ui_preview_test.dart: Dependency previews clearly disclose fixtures and contain no enabled submit
+00:16 +94: D:/flutter cuoi ki/test/ui_redesign_test.dart: Grid accommodates largest note font, long labels and conflict action
+00:16 +95: D:/flutter cuoi ki/test/ui_redesign_test.dart: Grid accommodates largest note font, long labels and conflict action
+00:17 +96: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:18 +97: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:18 +98: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:19 +99: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:19 +100: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:20 +101: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:20 +102: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:20 +103: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:20 +104: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:21 +105: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:21 +106: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:22 +107: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:24 +108: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:24 +109: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:25 +110: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:25 +111: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:25 +112: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:26 +113: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:27 +114: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:27 +115: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:28 +116: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:29 +117: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:29 +118: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:30 +119: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:32 +120: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:32 +121: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:34 +122: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:35 +123: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:37 +124: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:38 +125: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:40 +126: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:41 +127: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:43 +128: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:44 +129: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:45 +130: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:46 +131: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:48 +132: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:51 +133: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+01:02 +134: D:/flutter cuoi ki/test/protected_editing_test.dart: Delete conflict requires new confirmation and revoked delete hides content
+01:02 +135: D:/flutter cuoi ki/test/protected_editing_test.dart: Offline draft survives encrypted Sembast close/reopen and never enters ordinary outbox
+01:02 +136: D:/flutter cuoi ki/test/protected_editing_test.dart: A copied old-password draft permits new-password unlock without losing the private copy
+01:02 +137: D:/flutter cuoi ki/test/protected_editing_test.dart: Lost acknowledgement replays the same immutable operation after reopen
+01:02 +138: D:/flutter cuoi ki/test/protected_editing_test.dart: Typing while protected operation is inflight keeps newest draft and chains own ack
+01:02 +139: D:/flutter cuoi ki/test/protected_editing_test.dart: Realtime clean content updates keep frozen base; dirty content remains on conflict
+01:02 +140: D:/flutter cuoi ki/test/protected_editing_test.dart: Revoke hides content and preserves password-bound recovery; copy never mutates source
+01:02 +141: D:/flutter cuoi ki/test/protected_editing_test.dart: Encrypted field merge survives ordinary snapshot capture and account switch mid-write
+01:02 +142: D:/flutter cuoi ki/test/protected_editing_test.dart: Delegated picker obscures content and rechecks grant before showing it again
+01:02 +143: All tests passed!
+........................................................................ [ 91%]
+.......                                                                  [100%]
+============================== warnings summary ===============================
+.venv\Lib\site-packages\fastapi\testclient.py:1
+  D:\flutter cuoi ki\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+79 passed, 1 warning in 72.51s (0:01:12)

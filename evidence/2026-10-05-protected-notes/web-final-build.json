@@ -1,0 +1,8 @@
+{
+  "date_utc": "2026-10-05T15:54:30.877299+00:00",
+  "result": "PASS IAB reload twice/unlock/edit/autosave after final Web build; actual API same-ID exact content/minimal locked list",
+  "note": "dc614be4-0545-4489-a6f2-699ee9dab3ad",
+  "revision": 6,
+  "content": "Protected final Web build verified",
+  "scope": "served bytes verified separately; no exact browser-cache executable hash assertion"
+}

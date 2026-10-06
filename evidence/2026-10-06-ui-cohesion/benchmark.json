@@ -1,0 +1,13 @@
+{
+  "target": "host Flutter test engine/NotoSans",
+  "iterations": 11,
+  "note_chars": 100000,
+  "preview_chars": 481,
+  "paragraph_full_median_us": 4279,
+  "paragraph_preview_median_us": 165,
+  "notes": 500,
+  "baseline_query_median_us": 348926,
+  "optimized_query_median_us": 388,
+  "cached_query_median_us": 10,
+  "fps_measured": false
+}

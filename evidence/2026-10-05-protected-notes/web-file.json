@@ -1,0 +1,5 @@
+{
+  "result": "PASS actual Web picker/upload protected file + API content/hash/privacy check",
+  "name": "protected-ui.txt",
+  "sha256": "3e65af93a33fe094f4e0baa4e2ab6d5cee6f21b8e4f4a63059d73a63d901ef02"
+}

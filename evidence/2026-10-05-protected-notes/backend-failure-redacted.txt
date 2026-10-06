@@ -1,0 +1,59 @@
+F....F.................................                                  [100%]
+================================== FAILURES ===================================
+_ test_protected_mutations_require_both_grant_and_current_role[owner-200-200] _
+
+env = (<starlette.testclient.TestClient object at 0x0000024AFFA6B890>, <fastapi.applications.FastAPI object at 0x0000024AFFA...ace35d', 'email': 'stranger@example.com', 'name': 'stranger', 'verified': False, ...}, 'email_delivery': 'test_only'}])
+role = 'owner', edit_status = 200, delete_status = 200
+
+    @pytest.mark.parametrize('role,edit_status,delete_status', [('owner',200,200),('viewer',403,403),('editor',200,403),('stranger',404,404)])
+    def test_protected_mutations_require_both_grant_and_current_role(env, role, edit_status, delete_status):
+        client, app, users = env
+        owner, viewer, editor = users
+        if role=='stranger':
+            actor = client.post('/auth/register', json={'email':f'stranger-{uuid4()}@example.test','name':'Stranger',
+                'password':'stranger-password-123','confirmation':'stranger-password-123'}).json()
+        else:
+            actor = {'owner':owner,'viewer':viewer,'editor':editor}[role]
+        key=protected(client,owner)
+        for recipient, assigned in ((viewer,'viewer'),(editor,'editor')):
+            unlock(client,owner,key)
+            assert client.post(f'/notes/{key}/shares',headers=headers(owner),json={'email':recipient['user']['email'],'role':assigned}).status_code==200
+        if role in ('owner','editor'):
+>           assert client.post('/sync',headers=headers(actor),json=operation(key,2,content='Before unlock')).status_code==423
+E           AssertionError: assert 200 == 423
+E            +  where 200 = <Response [200 OK]>.status_code
+E            +    where <Response [200 OK]> = post('/sync', headers={'Authorization': 'Bearer [fixture-token-redacted]'}, json={'op_id': '66aadb94-c6a5-4fa3-9f09-e7f29f353c92', 'note_id': 'f59709f3-1e8e-4a75-a9aa-4531e17c3804', 'base_revision': 2, 'kind': 'upsert', ...})
+E            +      where post = <starlette.testclient.TestClient object at 0x0000024AFFA6B890>.post
+E            +      and   {'Authorization': 'Bearer [fixture-token-redacted]'} = headers({'token': '[fixture-token-redacted]', 'user': {'id': '16a449be-e0b7-483a-8feb-2e35ce2a7cdf', 'email': 'owner@example.com', 'name': 'owner', 'verified': False, ...}, 'email_delivery': 'test_only'})
+E            +      and   {'op_id': '66aadb94-c6a5-4fa3-9f09-e7f29f353c92', 'note_id': 'f59709f3-1e8e-4a75-a9aa-4531e17c3804', 'base_revision': 2, 'kind': 'upsert', ...} = operation('f59709f3-1e8e-4a75-a9aa-4531e17c3804', 2, content='Before unlock')
+
+backend\tests\test_protected_editing.py:33: AssertionError
+_ test_protected_attachments_edit_read_roles_grant_expiry_and_private_headers _
+
+env = (<starlette.testclient.TestClient object at 0x0000024A801D37D0>, <fastapi.applications.FastAPI object at 0x0000024A801...9eb818', 'email': 'stranger@example.com', 'name': 'stranger', 'verified': False, ...}, 'email_delivery': 'test_only'}])
+
+    def test_protected_attachments_edit_read_roles_grant_expiry_and_private_headers(env):
+        client,app,users=env
+        owner,viewer,editor=users; key=protected(client,owner); unlock(client,owner,key)
+        for recipient,role in ((viewer,'viewer'),(editor,'editor')):
+            client.post(f'/notes/{key}/shares',headers=headers(owner),json={'email':recipient['user']['email'],'role':role})
+            unlock(client,recipient,key)
+        file=str(uuid4()); route=f'/notes/{key}/attachments/{file}?name=fixture.txt&kind=file'
+        assert client.post(route,headers={**headers(viewer),'Content-Type':'text/plain'},content=b'Protected attachment').status_code==403
+>       assert client.post(route,headers={**headers(editor),'Content-Type':'text/plain'},content=b'Protected attachment').status_code==201
+E       AssertionError: assert 200 == 201
+E        +  where 200 = <Response [200 OK]>.status_code
+E        +    where <Response [200 OK]> = post('/notes/7f5c206d-1c89-4ff0-ad88-100d1f6a3c61/attachments/c3faafd7-57f3-4b04-a44e-a461d55443bc?name=fixture.txt&kind=file', headers={'Authorization': 'Bearer [fixture-token-redacted]', 'Content-Type': 'text/plain'}, content=b'Protected attachment')
+E        +      where post = <starlette.testclient.TestClient object at 0x0000024A801D37D0>.post
+
+backend\tests\test_protected_editing.py:73: AssertionError
+============================== warnings summary ===============================
+.venv\Lib\site-packages\fastapi\testclient.py:1
+  D:\flutter cuoi ki\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED backend/tests/test_protected_editing.py::test_protected_mutations_require_both_grant_and_current_role[owner-200-200]
+FAILED backend/tests/test_protected_editing.py::test_protected_attachments_edit_read_roles_grant_expiry_and_private_headers
+2 failed, 37 passed, 1 warning in 15.05s

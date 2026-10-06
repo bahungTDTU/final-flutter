@@ -11,6 +11,16 @@ CREATE TABLE IF NOT EXISTS email_tokens (
  digest TEXT PRIMARY KEY, user_id TEXT NOT NULL REFERENCES users(id),
  kind TEXT NOT NULL, expires REAL NOT NULL, used INTEGER NOT NULL DEFAULT 0
 );
+CREATE TABLE IF NOT EXISTS email_jobs (
+ id TEXT PRIMARY KEY, user_id TEXT NOT NULL REFERENCES users(id),
+ kind TEXT NOT NULL CHECK(kind IN ('verify','reset')),
+ token_digest TEXT NOT NULL REFERENCES email_tokens(digest), nonce BLOB,
+ status TEXT NOT NULL CHECK(status IN ('queued','sending','retrying','smtp_accepted','test_only','failed','cancelled')),
+ attempts INTEGER NOT NULL DEFAULT 0, next_attempt REAL NOT NULL,
+ leased_until REAL NOT NULL DEFAULT 0, lease_owner TEXT,
+ created_at REAL NOT NULL, last_error TEXT
+);
+CREATE INDEX IF NOT EXISTS email_jobs_due ON email_jobs(status,next_attempt,leased_until);
 CREATE TABLE IF NOT EXISTS notes (
  id TEXT PRIMARY KEY, owner_id TEXT NOT NULL REFERENCES users(id),
  title TEXT NOT NULL, content TEXT NOT NULL, revision INTEGER NOT NULL,
@@ -53,4 +63,8 @@ CREATE TABLE IF NOT EXISTS share_versions (
 CREATE TABLE IF NOT EXISTS share_operations (
  user_id TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE, op_id TEXT NOT NULL, fingerprint TEXT NOT NULL,
  PRIMARY KEY(user_id,op_id)
+);
+CREATE TABLE IF NOT EXISTS ai_budgets (
+ scope TEXT NOT NULL, bucket INTEGER NOT NULL, count INTEGER NOT NULL,
+ PRIMARY KEY(scope,bucket)
 );

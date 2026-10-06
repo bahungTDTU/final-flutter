@@ -1,0 +1,9 @@
+00:00 +0: loading D:/flutter cuoi ki/test/email_flow_test.dart
+00:00 +0: verification queue status updates only after an authenticated check
+00:00 +1: public reset can request another code without exposing account delivery status
+00:00 +2: late email status from account A is ignored after account switch
+00:01 +3: reset validates code before showing passwords and returns to manual login
+00:01 +4: expired code keeps input, busy prevents duplicate verification
+00:01 +5: home verification opens resend; transport failure remains honest and does not block notes
+00:01 +6: public code/reset form fits mobile with doubled text
+00:02 +7: All tests passed!

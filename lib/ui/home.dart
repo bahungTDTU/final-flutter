@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../domain/note.dart';
+import '../domain/writing_tools.dart';
 import '../state/app_controller.dart';
+import '../state/note_listing.dart';
 import 'app.dart';
 import 'editor.dart';
 import 'design_system.dart';
@@ -12,6 +14,8 @@ import 'password_dialog.dart';
 import 'note_protection.dart';
 import 'avatar_editor.dart';
 import 'sharing.dart';
+import 'ai.dart';
+import 'writing_studio.dart';
 
 class UnverifiedBanner extends StatelessWidget {
   const UnverifiedBanner({super.key, required this.onCheck, this.delivery});
@@ -20,8 +24,10 @@ class UnverifiedBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) => StatusNotice(
     icon: Icons.mark_email_unread_outlined,
-    message: ['not_configured', 'delivery_failed'].contains(delivery)
+    message: ['not_configured', 'delivery_failed', 'failed'].contains(delivery)
         ? 'Email chưa xác minh. Chưa gửi được mã.'
+        : ['queued', 'retrying'].contains(delivery)
+        ? 'Email chưa xác minh. Mã đang chờ gửi; ghi chú vẫn dùng được.'
         : 'Email của bạn chưa được xác minh.',
     action: TextButton(onPressed: onCheck, child: const Text('Xác minh')),
   );
@@ -61,9 +67,30 @@ class _HomeScreenState extends State<HomeScreen> {
   final selectedLabels = <String>{};
   int destination = 0;
   Timer? searchDelay;
+  final listingCache = NoteListingCache();
   AppController get c => widget.controller;
   @override
+  void initState() {
+    super.initState();
+    c.addListener(invalidateListing);
+  }
+
+  void invalidateListing() =>
+      listingCache.invalidateSource(c.user?['id'] as String?, c.notes);
+  @override
+  void didUpdateWidget(covariant HomeScreen oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.controller != c) {
+      oldWidget.controller.removeListener(invalidateListing);
+      listingCache.clear();
+      c.addListener(invalidateListing);
+    }
+  }
+
+  @override
   void dispose() {
+    c.removeListener(invalidateListing);
+    listingCache.clear();
     search.dispose();
     searchFocus.dispose();
     searchDelay?.cancel();
@@ -88,6 +115,28 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   static const destinations = ['Ghi chú', 'Được chia sẻ', 'Hỏi ghi chú'];
+  Future<void> createFromTemplate() async {
+    final account = c.user?['id'];
+    final template = await Navigator.of(context).push<NoteTemplate>(
+      MaterialPageRoute(builder: (_) => const TemplateGallery()),
+    );
+    if (!mounted ||
+        template == null ||
+        account == null ||
+        c.user?['id'] != account) {
+      return;
+    }
+    final id = c.uuid.v4();
+    try {
+      await c.draft(id, template.title, template.content);
+      if (mounted && c.user?['id'] == account) open(draftId: id);
+    } catch (e) {
+      if (mounted) {
+        showMessage(context, 'Chưa lưu được bản nháp từ mẫu. Hãy thử lại.');
+      }
+    }
+  }
+
   static const icons = [
     Icons.notes_outlined,
     Icons.people_outline,
@@ -137,6 +186,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 ? AppBar(
                     title: const Brand(),
                     actions: [
+                      IconButton(
+                        key: const Key('note-templates'),
+                        tooltip: 'Xưởng ghi chú',
+                        onPressed: createFromTemplate,
+                        icon: const Icon(Icons.auto_awesome_mosaic_outlined),
+                      ),
                       IconButton(
                         tooltip: 'Hồ sơ và tùy chỉnh',
                         onPressed: settings,
@@ -317,52 +372,28 @@ class _HomeScreenState extends State<HomeScreen> {
                   if (!small) const VerticalDivider(width: 1),
                   Expanded(
                     child: destination == 2
-                        ? SingleChildScrollView(
-                            child: EmptyNotes(
-                              icon: Icons.auto_awesome_outlined,
-                              title: 'Hỏi từ những ghi chú của bạn',
-                              detail: 'Hỏi đáp có nguồn hiện chưa khả dụng. Bạn vẫn có thể tìm nội dung trong Ghi chú.',
-                              action: OutlinedButton.icon(
-                                onPressed: () =>
-                                    setState(() => destination = 0),
-                                icon: const Icon(Icons.search),
-                                label: const Text('Tìm trong ghi chú'),
-                              ),
-                            ),
-                          )
+                        ? AiQuestionsPanel(controller: c)
                         : LayoutBuilder(
                             builder: (context, area) {
                               final padding = small ? 16.0 : 32.0;
                               final scale = MediaQuery.textScalerOf(context)
                                   .scale(1);
-                              final list =
-                                  c.notes
-                                      .where(
-                                        (n) =>
-                                            (destination == 1
-                                                ? n.role != 'owner'
-                                                : n.role == 'owner') &&
-                                            (query.isEmpty ||
-                                                !n.locked &&
-                                                    '${n.title} ${n.content}'
-                                                        .toLowerCase()
-                                                        .contains(query)) &&
-                                            (selectedLabels.isEmpty ||
-                                                !n.locked &&
-                                                    selectedLabels.every(
-                                                      c
-                                                          .noteLabelIds(n)
-                                                          .contains,
-                                                    )),
-                                      )
-                                      .toList()
-                                    ..sort(compareNotes);
-                              final pinned = list
-                                  .where((n) => n.pinnedAt != null)
-                                  .toList();
-                              final remaining = list
-                                  .where((n) => n.pinnedAt == null)
-                                  .toList();
+                              final listing = listingCache.select(
+                                account: c.user?['id'] as String?,
+                                notes: c.notes,
+                                query: query,
+                                shared: destination == 1,
+                                labels: selectedLabels,
+                                deletedLabels: c.labelCatalogue.entries
+                                    .where(
+                                      (entry) => entry.value['deleted'] == true,
+                                    )
+                                    .map((entry) => entry.key)
+                                    .toSet(),
+                              );
+                              final list = listing.all,
+                                  pinned = listing.pinned,
+                                  remaining = listing.remaining;
                               return CustomScrollView(
                                 key: PageStorageKey('notes-$destination'),
                                 slivers: [
@@ -489,23 +520,33 @@ class _HomeScreenState extends State<HomeScreen> {
                                               helperText: area.maxWidth < 800
                                                   ? null
                                                   : 'Tìm ngay khi nhập · Ctrl + F để đến ô tìm kiếm',
-                                              suffixIcon: search.text.isEmpty
-                                                  ? null
-                                                  : IconButton(
-                                                      tooltip: 'Xóa tìm kiếm',
-                                                      icon: const Icon(
-                                                        Icons.close,
-                                                      ),
-                                                      onPressed: () {
-                                                        search.clear();
-                                                        setState(
-                                                          () => query = '',
-                                                        );
-                                                      },
-                                                    ),
+                                              suffixIcon:
+                                                  ValueListenableBuilder<
+                                                    TextEditingValue
+                                                  >(
+                                                    valueListenable: search,
+                                                    builder: (_, value, _) =>
+                                                        value.text.isEmpty
+                                                        ? const SizedBox.shrink()
+                                                        : IconButton(
+                                                            tooltip:
+                                                                'Xóa tìm kiếm',
+                                                            icon: const Icon(
+                                                              Icons.close,
+                                                            ),
+                                                            onPressed: () {
+                                                              searchDelay
+                                                                  ?.cancel();
+                                                              search.clear();
+                                                              setState(
+                                                                () =>
+                                                                    query = '',
+                                                              );
+                                                            },
+                                                          ),
+                                                  ),
                                             ),
                                             onChanged: (v) {
-                                              setState(() {});
                                               searchDelay?.cancel();
                                               searchDelay = Timer(
                                                 const Duration(
@@ -530,6 +571,18 @@ class _HomeScreenState extends State<HomeScreen> {
                                             crossAxisAlignment:
                                                 WrapCrossAlignment.center,
                                             children: [
+                                              if (!small)
+                                                IconButton(
+                                                  key: const Key(
+                                                    'note-templates',
+                                                  ),
+                                                  tooltip: 'Xưởng ghi chú',
+                                                  onPressed: createFromTemplate,
+                                                  icon: const Icon(
+                                                    Icons
+                                                        .auto_awesome_mosaic_outlined,
+                                                  ),
+                                                ),
                                               SegmentedButton<bool>(
                                                 showSelectedIcon: false,
                                                 style:
@@ -675,6 +728,27 @@ class _HomeScreenState extends State<HomeScreen> {
                                                     ),
                                                   )
                                                   .toList(),
+                                            ),
+                                          if (c.protectedVaults.values.any(
+                                            (r) => r['dirty'] == true,
+                                          ))
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                top: 12,
+                                              ),
+                                              child: StatusNotice(
+                                                icon: Icons.lock_outline,
+                                                message: 'Có bản nháp bảo vệ được giữ mã hóa trên thiết bị.',
+                                                action: TextButton(
+                                                  key: const Key(
+                                                    'open-protected-recovery',
+                                                  ),
+                                                  onPressed: protectedRecovery,
+                                                  child: const Text(
+                                                    'Bản nháp bảo vệ',
+                                                  ),
+                                                ),
+                                              ),
                                             ),
                                           if (c.recoveries.isNotEmpty)
                                             Padding(
@@ -845,7 +919,9 @@ class _HomeScreenState extends State<HomeScreen> {
     final colors = Theme.of(context).colorScheme;
     final palette = PrismPalette.of(context);
     final tone = note.locked ? null : palette.tone(note.id);
-    final date = DateTime.tryParse(note.updatedAt)?.toLocal();
+    final date = note.locked
+        ? null
+        : DateTime.tryParse(note.updatedAt)?.toLocal();
     final dateText = date == null
         ? ''
         : '${date.day.toString().padLeft(2, '0')}/${date.month.toString().padLeft(2, '0')}/${date.year}';
@@ -953,7 +1029,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             const SizedBox(height: 8),
             Text(
-              note.locked ? 'Mở khóa để xem nội dung.' : note.content,
+              noteCardPreview(note),
               maxLines: c.grid && !compact ? 4 : 2,
               overflow: TextOverflow.ellipsis,
               style: TextStyle(
@@ -975,7 +1051,7 @@ class _HomeScreenState extends State<HomeScreen> {
               spacing: 8,
               runSpacing: 8,
               children: [
-                if (note.pinnedAt != null)
+                if (!note.locked && note.pinnedAt != null)
                   MetadataPill(
                     'Đã ghim',
                     icon: Icons.push_pin_outlined,
@@ -1043,6 +1119,39 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
     );
+  }
+
+  Future<void> protectedRecovery() async {
+    final items = c.protectedVaults.entries
+        .where((r) => r.value['dirty'] == true)
+        .toList();
+    final id = await showDialog<String>(
+      context: context,
+      builder: (_) => SimpleDialog(
+        title: const Text('Bản nháp bảo vệ'),
+        children: [
+          const Padding(
+            padding: EdgeInsets.all(16),
+            child: Text(
+              'Cần mật khẩu cũ để đọc bản chỉnh sửa riêng. Không cấp quyền truy cập lên máy chủ.',
+            ),
+          ),
+          for (var i = 0; i < items.length; i++)
+            SimpleDialogOption(
+              onPressed: () => Navigator.pop(context, items[i].key),
+              child: Text('Bản chỉnh sửa ${i + 1}'),
+            ),
+        ],
+      ),
+    );
+    if (id != null && mounted) {
+      await Navigator.of(context).push(
+        MaterialPageRoute<void>(
+          builder: (_) =>
+              ProtectedNoteScreen(controller: c, id: id, recoveryMode: true),
+        ),
+      );
+    }
   }
 
   Future<void> recovery() async {

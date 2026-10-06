@@ -20,6 +20,7 @@ class AttachmentsDialog extends StatefulWidget {
     this.protectedGate,
     this.gateChanges,
     this.picker = pickAttachments,
+    this.onPickingChanged,
   });
   final AppController controller;
   final String noteId;
@@ -27,6 +28,7 @@ class AttachmentsDialog extends StatefulWidget {
   final bool Function()? protectedGate;
   final Listenable? gateChanges;
   final Future<List<SelectedAttachment>> Function() picker;
+  final Future<void> Function(bool)? onPickingChanged;
   @override
   State<AttachmentsDialog> createState() => _AttachmentsDialogState();
 }
@@ -283,7 +285,13 @@ class _AttachmentsDialogState extends State<AttachmentsDialog>
                     onPressed: busy
                         ? null
                         : () => action(() async {
-                            final files = await widget.picker();
+                            await widget.onPickingChanged?.call(true);
+                            List<SelectedAttachment> files;
+                            try {
+                              files = await widget.picker();
+                            } finally {
+                              await widget.onPickingChanged?.call(false);
+                            }
                             if (mounted && session.active && files.isNotEmpty) {
                               setState(() => selected = files);
                             }

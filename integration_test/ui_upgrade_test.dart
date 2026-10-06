@@ -115,7 +115,15 @@ void main() {
         find.byKey(const Key('note-content')),
       );
       final selection = field.controller!.selection;
-      await tester.tap(find.byTooltip('Đổi giao diện'));
+      final themeAction = find.byTooltip('Đổi giao diện');
+      if (themeAction.evaluate().isNotEmpty) {
+        await tester.tap(themeAction);
+      } else {
+        // Compact editor exposes secondary actions through its real overflow menu.
+        await tester.tap(find.byKey(const Key('editor-tools-menu')));
+        await tester.pumpAndSettle();
+        await tester.tap(find.text('Đổi giao diện'));
+      }
       await until(() => !c.dark && !c.syncing && c.pendingPreferences.isEmpty);
       expect(tester.widget<EditorScreen>(find.byType(EditorScreen)).id, id);
       expect(field.controller!.text, 'Giữ ý tưởng và cùng nhau phát triển.');

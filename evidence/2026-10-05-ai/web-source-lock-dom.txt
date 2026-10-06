@@ -1,0 +1,14 @@
+- heading "NoteTogether" [level=2]
+- button "Hồ sơ và tùy chỉnh"
+- generic: Hỏi từ những ghi chú của bạn
+- generic: AI tổng hợp từ ghi chú đã đồng bộ mà bạn có quyền đọc. Kết quả kèm nguồn để bạn kiểm tra.
+- generic: Nội dung liên quan sẽ được gửi tới Gemini. Với free tier, Google có thể dùng dữ liệu để cải thiện sản phẩm. Chỉ gửi nội dung phù hợp.
+- textbox "Câu hỏi của bạn": Dự án Orion nộp báo cáo khi nào và có ngân sách bao nhiêu?
+- generic: Còn lại 942 ký tự
+- button "Hỏi AI"
+- generic: Phiên đăng nhập hoặc quyền mở khóa đã thay đổi.
+- generic: Ghi chú đang khóa được loại khỏi nguồn. Để hỏi về ghi chú bảo vệ, mở khóa ghi chú rồi chọn “Hỏi AI”. Kết quả AI có thể sai; hãy kiểm tra nguồn.
+- tablist:
+  - tab "Ghi chú"
+  - tab "Được chia sẻ"
+  - tab "Hỏi ghi chú" [active] [selected]

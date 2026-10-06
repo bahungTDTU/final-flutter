@@ -8,6 +8,37 @@ abstract final class Space {
   static const double sidebar = 248, reading = 800;
 }
 
+/// Shared reading/writing surface. Padding is derived from available space,
+/// including short landscape windows; controllers stay owned by the route.
+class ReadingCanvas extends StatelessWidget {
+  const ReadingCanvas({super.key, required this.child, this.controller});
+  final Widget child;
+  final ScrollController? controller;
+  @override
+  Widget build(BuildContext context) => SafeArea(
+    child: LayoutBuilder(
+      builder: (context, area) {
+        final compact = area.maxWidth < 600 || area.maxHeight < 440;
+        final inset = compact ? 12.0 : 24.0;
+        return Align(
+          alignment: Alignment.topCenter,
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: Space.reading),
+            child: SingleChildScrollView(
+              controller: controller,
+              padding: EdgeInsets.all(inset),
+              child: SurfacePanel(
+                padding: EdgeInsets.all(compact ? 16 : 28),
+                child: child,
+              ),
+            ),
+          ),
+        );
+      },
+    ),
+  );
+}
+
 ThemeData noteTheme(Brightness brightness) {
   final dark = brightness == Brightness.dark;
   final palette = PrismPalette.forBrightness(brightness);

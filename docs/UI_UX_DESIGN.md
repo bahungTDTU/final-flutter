@@ -108,17 +108,17 @@ theme animation tắt khi disableAnimations, không animation danh sách lúc se
 | Home offline/error | pending notes+preferences+labels; retry thật | Durable queues + encrypted lock recovery |
 | Card owner/viewer/editor/locked | title/snippet/date/labels/status; only owner menu; locked neutral | API role; không fetch nội dung bị khóa |
 | Editor dirty/local saved/pending/ack/error | phân biệt local và server; retry, preserve caret/controllers; ẩn realtime label khi offline | Existing draft/save/hasPending; frozen revision |
-| Editor read-only/revoked/locked | đọc/copy nếu còn quyền; che nội dung sau lock/revoke, phục hồi riêng | SSE/refetch + encrypted durable recovery integrated; protected edit/offline unlock còn thiếu |
+| Editor read-only/revoked/locked | đọc/copy nếu còn quyền; che nội dung sau lock/revoke, phục hồi riêng | SSE/refetch + encrypted recovery; protected password cache/draft + offline unlock/revalidate05/10 |
 | Conflict | Hai phiên bản; local/remote preview nếu được phép; copy hoặc remote + hệ quả | resolveConflict thật; không merge giả |
 | Labels empty/validation | add/rename/delete-confirm; pending/conflict/remote; note còn; AND IDs | Server catalogue/revisions/outbox + SSE invalidation integrated |
 | Settings/profile | groups, verified, font preview, name/password; choose/upload/default avatar | Private avatar API/canonical encrypted cache; online changes |
 | Share owner flow | email batch1–20 + viewer/editor, recipient list/change/revoke | Real ShareSession + ACL/revision/idempotency integrated; protected-reader full acceptance chưa đủ |
-| Lock/unlock flow | password2x/current/new, pending/network/errors/rate-limit | Online enable/read/change/disable/relock integrated; protected edit/offline unlock còn thiếu |
+| Lock/unlock flow | password2x/current/new, pending/network/errors/rate-limit | Enable/read/edit/autosave/delete/relock + cached offline unlock; metadata chỉ sau unlock; server grant trước sync |
 | Attachments | picker→validate→upload/private list→image/video preview/download/delete-confirm | Private API/RAM session integrated; online-only, retry trong route, ACL/grant/epoch guards |
-| AI summary/Q&A | note scope, source cards, loading/error/no sources, regenerate/copy | Component preview tách riêng; LLM chưa có |
+| AI summary/Q&A | note scope, source cards, loading/error/no sources, regenerate/copy | Production AiSession/Gemini adapter/citations; fixture QA local, Gemini thật chưa chạy |
 
 Preview fixtures không đi vào production navigation; không đưa fake note/AI vào account.
-Unavailable Q&A thông báo chưa khả dụng và về tìm kiếm; không có submit/presence giả.
+Q&A production báo lỗi cấu hình khi thiếu key; fixture component vẫn tách riêng, không presence giả.
 Lock UI đã nối endpoint sau encrypted draft recovery; không tuyên bố encryption E2E.
 Share spec: owner nhập email và chọn Chỉ xem/Có thể chỉnh sửa trước cấp quyền; mỗi recipient
 có permission menu; revoke ngừng đọc/source open. AI source open phải reauthorize, không cache câu
@@ -134,3 +134,20 @@ Tham khảo đã mở: [Flutter adaptive](https://docs.flutter.dev/ui/adaptive-r
 [accessibility testing](https://docs.flutter.dev/ui/accessibility/accessibility-testing),
 [Noto OFL](https://github.com/notofonts/noto-fonts/blob/main/LICENSE).
 Contrast đo bằng script, kết quả và target QA tách trong UI_UX_QA.md; không suy từ Material.
+
+
+## Xưởng ghi chú06/10
+
+Gallery dùng Prism tone/selected border/check, preview hai cột rộng/một cột hẹp hoặc chữ lớn. Home có icon gọn giữ list height. Editor outline/checklist collapse, focus timer route-local/toolbar overflow mobile; giữ controller/selection/base. Local deterministic analysis, không preview fixture/LLM. Protected reader chưa nối. Xem WRITING_STUDIO.md.
+
+
+## UI đồng bộ/responsive/performance06/10
+
+ReadingCanvas dùng chung editor/AI/protected, width800/adaptive spacing/Scaffold keyboard resize;
+gallery không backdrop lặp,6tones/compact footer/preview dialog, short landscape/chữ200%.
+Bound card preview480UTF16+ellipsis, source/account/query/role/label-aware view cache, suffix-only
+search input rebuild/literal Unicode search. Locked pin/date/group và semantics được ẩn.
+161 Flutter/88 backend/analyze PASS;native debug3 reused workflows, actual Web gallery/theme/
+AI form breakpoint/protected unlock-relock/tail100000 search/remote lock cached Home PASS.
+Host benchmark NotoSans có phạm vi, không FPS. Xem UI_COHESION_AND_PERFORMANCE.md và
+evidence/2026-10-06-ui-cohesion/INDEX.md;physical/screen-reader/production/release chưa nghiệm thu.

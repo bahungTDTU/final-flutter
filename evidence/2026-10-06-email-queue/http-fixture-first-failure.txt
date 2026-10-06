@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "D:\flutter cuoi ki\scripts\qa_email_queue.py", line 69, in <module>
+    main()
+  File "D:\flutter cuoi ki\scripts\qa_email_queue.py", line 53, in main
+    call('POST', '/auth/reset/check', body={'token': reset})
+  File "D:\flutter cuoi ki\scripts\qa_email_queue.py", line 16, in call
+    assert response.status_code == status, (path, response.status_code)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('/auth/reset/check', 400)

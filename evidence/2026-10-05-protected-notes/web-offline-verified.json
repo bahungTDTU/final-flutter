@@ -1,0 +1,14 @@
+{
+  "date_utc": "2026-10-05T15:31:59.926383+00:00",
+  "result": "PASS Web offline backend-unreachable edit/reload/password reopen/online grant revalidation/same-ID sync",
+  "note": "dc614be4-0545-4489-a6f2-699ee9dab3ad",
+  "revision": 5,
+  "count": 1,
+  "content": "Protected Web offline draft survives reload",
+  "locked_list_fields": [
+    "id",
+    "locked",
+    "revision",
+    "role"
+  ]
+}

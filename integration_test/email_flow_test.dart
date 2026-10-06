@@ -47,12 +47,17 @@ Future<void> submit(WidgetTester tester) async {
 }
 
 Future<String> code(String email, String kind) async {
-  final response = await http.get(
-    Uri.http('127.0.0.1:8026', '/code', {'email': email, 'kind': kind}),
-    headers: {'X-Email-Fixture': 'local-test-only'},
-  );
-  expect(response.statusCode, 200);
-  return (jsonDecode(response.body) as Map)['code'] as String;
+  for (var attempt = 0; attempt < 40; attempt++) {
+    final response = await http.get(
+      Uri.http('127.0.0.1:8026', '/code', {'email': email, 'kind': kind}),
+      headers: {'X-Email-Fixture': 'local-test-only'},
+    );
+    if (response.statusCode == 200) {
+      return (jsonDecode(response.body) as Map)['code'] as String;
+    }
+    await Future<void>.delayed(const Duration(milliseconds: 250));
+  }
+  throw StateError('SMTP fixture did not receive the queued message');
 }
 
 void main() {
@@ -91,7 +96,7 @@ void main() {
         true,
       );
       await idle(c);
-      expect(c.emailDelivery, 'smtp_accepted');
+      expect(c.emailDelivery, 'queued');
       final oldSession = c.token;
       await c.save(
         c.uuid.v4(),
@@ -102,9 +107,16 @@ void main() {
       await tester.pumpWidget(NoteTogetherApp(controller: c));
       await tester.pumpAndSettle();
       expect(find.byType(UnverifiedBanner), findsOneWidget);
+      final verifyCode = await code(email, 'verify');
       await tester.tap(find.text('Xác minh'));
       await tester.pumpAndSettle();
-      await enter(tester, 'email-code', await code(email, 'verify'));
+      await tester.ensureVisible(
+        find.byKey(const Key('email-delivery-status')),
+      );
+      await tester.tap(find.byKey(const Key('email-delivery-status')));
+      await until(tester, () => c.emailDelivery == 'smtp_accepted');
+      await bindingScreenshot(tester, 'email-queue-native-status');
+      await enter(tester, 'email-code', verifyCode);
       await submit(tester);
       await until(
         tester,
@@ -167,4 +179,11 @@ void main() {
       await database.close();
     },
   );
+}
+
+Future<void> bindingScreenshot(WidgetTester tester, String name) async {
+  final binding = IntegrationTestWidgetsFlutterBinding.instance;
+  await binding.convertFlutterSurfaceToImage();
+  await tester.pump();
+  await binding.takeScreenshot(name);
 }

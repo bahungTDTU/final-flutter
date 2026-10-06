@@ -14,9 +14,11 @@ class Note {
     this.sharedByName,
     this.sharedByEmail,
     this.sharedAt,
+    this.protectionVersion = 0,
   });
   final String id, title, content, updatedAt, role;
   final int revision;
+  final int protectionVersion;
   final String? pinnedAt;
   final List<String> labels;
   final Map<String, String> labelNames;
@@ -38,6 +40,7 @@ class Note {
     sharedByName: (json['shared_by'] as Map?)?['name'] as String?,
     sharedByEmail: (json['shared_by'] as Map?)?['email'] as String?,
     sharedAt: json['shared_at'] as String?,
+    protectionVersion: json['protection_version'] as int? ?? 0,
   );
   Map<String, dynamic> toJson() => {
     'id': id,

@@ -1,0 +1,56 @@
+{
+  "date_utc": "2026-10-05T13:56:34.259696+00:00",
+  "base_url": "http://127.0.0.1:8012",
+  "status": {
+    "enabled": true,
+    "provider": "test-double",
+    "model": "fixture-not-an-llm"
+  },
+  "live_llm": false,
+  "results": [
+    "PASS actual HTTP anonymous/stranger/viewer-write/owner-locked ACL",
+    "PASS owner/viewer/editor summary read access and original unchanged",
+    "PASS multi-note sources/open citations/no-data/locked exclusion",
+    "PASS revoke invalidates validation and later summary"
+  ],
+  "summary": "Kết quả fixture kiểm thử, không phải LLM: Dự án Orion nộp báo cáo ngày 20 tháng 11 năm 2026. Hùng chuẩn bị giao diện Flutter.",
+  "answer": {
+    "sufficient": true,
+    "answer": "Kết quả fixture kiểm thử, không phải LLM. Nguồn demo: Ngân sách dự án Orion là 300.000 đồng. Long phụ trách backend và triển khai. | Dự án Orion nộp báo cáo ngày 20 tháng 11 năm 2026. Hùng chuẩn bị giao diện Flutter.",
+    "sources": [
+      {
+        "id": "4ac607b8-241b-4f57-92eb-6718fead29b6",
+        "title": "Dự án Orion — ngân sách",
+        "revision": 1,
+        "locked": false
+      },
+      {
+        "id": "c78ddf36-3443-4c6c-81fc-90526ab58f01",
+        "title": "Dự án Orion — lịch nộp",
+        "revision": 1,
+        "locked": false
+      }
+    ],
+    "context_sources": [
+      {
+        "id": "4ac607b8-241b-4f57-92eb-6718fead29b6",
+        "title": "Dự án Orion — ngân sách",
+        "revision": 1,
+        "locked": false
+      },
+      {
+        "id": "c78ddf36-3443-4c6c-81fc-90526ab58f01",
+        "title": "Dự án Orion — lịch nộp",
+        "revision": 1,
+        "locked": false
+      }
+    ],
+    "provider": "test-double",
+    "model": "fixture-not-an-llm"
+  },
+  "note_ids": [
+    "c78ddf36-3443-4c6c-81fc-90526ab58f01",
+    "4ac607b8-241b-4f57-92eb-6718fead29b6",
+    "3d6a8fb7-ae49-4772-95f7-90d15d472f99"
+  ]
+}

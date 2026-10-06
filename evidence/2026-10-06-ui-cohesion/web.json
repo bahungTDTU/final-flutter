@@ -1,0 +1,36 @@
+{
+  "target": "IAB local debug 127.0.0.1:7363 / API8012",
+  "requestedViewports": [
+    [
+      390,
+      568
+    ],
+    [
+      844,
+      390
+    ],
+    [
+      768,
+      1024
+    ],
+    [
+      1280,
+      900
+    ]
+  ],
+  "desktopObservedDom": {
+    "width": 1280,
+    "height": 900
+  },
+  "templatePreviewResponsive": true,
+  "editorThemeResizeSync": true,
+  "aiQuestionKeptAcrossBreakpoint": true,
+  "protectedActualUnlockRelock": true,
+  "longNoteChars": 100000,
+  "tailSearchSingleResult": true,
+  "cardPreviewBounded": true,
+  "remoteLockEditorAndCachedHomeRedacted": true,
+  "providerRequest": "NOT RUN",
+  "release": "deferred",
+  "date_utc": "2026-10-06T04:21:57.193Z"
+}

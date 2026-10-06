@@ -1,5 +1,20 @@
 # Phục hồi chỉnh sửa khi khóa từ xa
 
+## Bổ sung ghi chú bảo vệ05/10/2026
+
+Protected content đã unlock dùng ProtectedNoteVault riêng, derive từ mật khẩu note qua
+PBKDF2-SHA256600000 + AES-GCM/AAD account+note ID; envelope nằm trong encrypted account
+snapshot field protected_vaults. Password/derived key không lưu. Cache/draft/immutable operation
+không vào notes/drafts/outbox thường. Ghi chú đã tải mở offline bằng mật khẩu, local edit giữ
+được qua DB reopen/Web reload; reconnect yêu cầu server grant/protection version revalidation.
+
+Draft nguồn bị revoke/delete/change-password vẫn giữ bằng mật khẩu cũ, recovery_only; Home
+chỉ thông báo có bản nháp, không title. Unlock recovery không cấp lại source access; explicit
+copy riêng dùng UUID mới bền và không ghi đè copy đã sửa. Hàng đợi field merge/account guard
+giữ ciphertext khi snapshot thường hoặc logout ghi cạnh tranh. Back đợi local writes;
+lỗi ghi vẫn được báo, không bảo đảm crash trước write/quota/eviction. Xem NOTE_PROTECTION.md
+và evidence/2026-10-05-protected-notes/INDEX.md; các mốc dưới đây giữ phạm vi lịch sử.
+
 Đợt02/10/2026 mở rộng recovery cho viewer/permission/revoked: latest local draft/upsert giữ
 trong cùng encrypted snapshot trước bỏ source queue; readonly/hidden editor, reopen offline,
 phục hồi UUID mới. Không archive server content khi người dùng chưa sửa. Reason được giữ theo
@@ -19,7 +34,8 @@ lưu title/content đã có local vào recoveries với source ID và thời gia
 cả khi list request sau đó thất bại, bỏ các operation cùng source khỏi vòng gửi. Trong cùng snapshot transaction,
 loại draft/outbox/conflict của source và thay note bằng metadata khóa. Chỉ cached server content,
 không có draft/upsert, không tạo recovery. Delete operation không tự gửi lại sau khóa.
-Không gộp pin/labels/permission/protection vào recovery. Poll15s/nút sync phát hiện lock, chưa realtime.
+Không gộp pin/labels/permission/protection vào recovery. Ở mốc01/10 dùng poll15s/nút sync;
+SSE/refetch bổ sung02/10, protected reader bổ sung05/10.
 
 Editor đang mở hủy debounce, xóa TextEditingController khi nhận lock và che màn hình. draft/save
 không ghi lại source đã khóa. Home/dialog chỉ hiện số lượng/thời điểm, không hiện title/content
@@ -90,5 +106,5 @@ Key/fault/HTTP adapters ở unit tests là doubles; test AES-GCM và Sembast fil
 Integration Android dùng platform key store và real backend; reopen cùng process, không force-kill.
 Web dùng real browser offline/reload/reconnect và phiên API thứ hai; xem web-lock/verify JSON.
 Online note protection/read UI đã nối sau đợt này; xem NOTE_PROTECTION.md và evidence đợt riêng.
-Không nâng tiêu chí23/24 và offline thành hoàn thành toàn bộ: protected edit, offline note-password unlock,
-key backup/realtime/physical-device/public HTTPS vẫn còn.
+Không nâng tiêu chí23/24 và offline thành hoàn thành toàn bộ: protected edit/offline unlock/realtime
+đã bổ sung05/10; key backup/physical-device/public HTTPS/release acceptance vẫn còn.

@@ -57,6 +57,7 @@ backend/state/
 !.env.example
 *.jks
 *.keystore
+*.mail-key
 android/key.properties
 tmp/
 .playwright-cli/

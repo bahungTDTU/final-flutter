@@ -1,0 +1,846 @@
+Resolving dependencies...
+Downloading packages...
+  code_assets 1.2.1 (2.1.0 available)
+  cross_file 0.3.5+5 (0.4.0 available)
+  hooks 2.0.2 (2.2.0 available)
+  idb_shim 2.9.9 (2.9.10 available)
+  jni_flutter 1.0.4 (retracted)
+  material_color_utilities 0.13.0 (0.13.1 available)
+  meta 1.18.3 (1.19.0 available)
+  objective_c 9.5.0 (9.6.2 available)
+  record_use 0.6.0 (1.1.1 available)
+  test_api 0.7.12 (0.7.14 available)
+  vector_math 2.4.0 (2.4.3 available)
+  video_player 2.14.0 (2.14.1 available)
+Got dependencies!
+11 packages have newer versions incompatible with dependency constraints.
+Try `flutter pub outdated` for more information.
+Running Gradle task 'assembleDebug'...                             20,5s
+√ Built build\app\outputs\flutter-apk\app-debug.apk
+Installing build\app\outputs\flutter-apk\app-debug.apk...          737ms
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/WindowLayoutComponentImpl( 3590): Register WindowLayoutInfoListener on Context=vn.edu.notetogether.note_together.MainActivity@61d4234, of which baseContext=android.app.ContextImpl@7664da0
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+I/r.note_together( 3590): Compiler allocated 5042KB to compile void android.view.ViewRootImpl.performTraversals()
+VMServiceFlutterDriver: Connecting to Flutter application at http://127.0.0.1:62648/LQq7p_QY68s=/
+VMServiceFlutterDriver: Isolate found with number: 2412299885635899
+VMServiceFlutterDriver: Isolate 2412299885635899 is runnable.
+VMServiceFlutterDriver: Isolate is paused at start.
+VMServiceFlutterDriver: Attempting to resume isolate
+I/flutter ( 3590): 00:00 +0: Native UI registration, labels, preferences and stable writing session
+VMServiceFlutterDriver: Connected to Flutter application.
+I/r.note_together( 3590): AssetManager2(0x76586a27c618) locale list changing from [] to [en-US]
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/InsetsController( 3590): hide(ime(), fromIme=false)
+I/ImeTracker( 3590): vn.edu.notetogether.note_together:106a02: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN
+I/ImeTracker( 3590): vn.edu.notetogether.note_together:d95fb977: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+D/InsetsController( 3590): show(ime(), fromIme=false)
+D/InsetsController( 3590): Setting requestedVisibleTypes to -1 (was -9)
+I/ImeTracker( 3590): vn.edu.notetogether.note_together:65987743: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+D/InsetsController( 3590): show(ime(), fromIme=false)
+I/ImeTracker( 3590): vn.edu.notetogether.note_together:65987743: onCancelled at PHASE_CLIENT_REPORT_REQUESTED_VISIBLE_TYPES
+D/InputConnectionAdaptor( 3590): The input method toggled cursor monitoring on
+I/AssistStructure( 3590): Flattened final assist data: 484 bytes, containing 1 windows, 3 views
+I/ImeTracker( 3590): vn.edu.notetogether.note_together:c61d025e: onRequestHide at ORIGIN_CLIENT reason HIDE_SOFT_INPUT fromUser false
+D/InsetsController( 3590): hide(ime(), fromIme=false)
+D/InsetsController( 3590): Setting requestedVisibleTypes to -9 (was -1)
+D/CompatChangeReporter( 3590): Compat change id reported: 395521150; UID 10216; state: ENABLED
+W/RemoteInputConnectionImpl( 3590): getSurroundingText on inactive InputConnection
+W/WindowOnBackDispatcher( 3590): sendCancelIfRunning: isInProgress=false callback=android.view.ImeBackAnimationController@9f51971
+I/ImeTracker( 3590): vn.edu.notetogether.note_together:4a2c9fe5: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+D/InsetsController( 3590): show(ime(), fromIme=false)
+D/InsetsController( 3590): Setting requestedVisibleTypes to -1 (was -9)
+I/ImeTracker( 3590): vn.edu.notetogether.note_together:5aefc7fe: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+D/InsetsController( 3590): show(ime(), fromIme=false)
+I/ImeTracker( 3590): vn.edu.notetogether.note_together:5aefc7fe: onCancelled at PHASE_CLIENT_REPORT_REQUESTED_VISIBLE_TYPES
+I/ImeTracker( 3590): vn.edu.notetogether.note_together:e37d54b3: onRequestHide at ORIGIN_CLIENT reason HIDE_SOFT_INPUT fromUser false
+D/InsetsController( 3590): hide(ime(), fromIme=false)
+D/InsetsController( 3590): Setting requestedVisibleTypes to -9 (was -1)
+I/AssistStructure( 3590): Flattened final assist data: 296 bytes, containing 1 windows, 2 views
+D/ProfileInstaller( 3590): Installing profile for vn.edu.notetogether.note_together
+I/ImeTracker( 3590): vn.edu.notetogether.note_together:1b4993a8: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+D/InsetsController( 3590): show(ime(), fromIme=false)
+D/InsetsController( 3590): Setting requestedVisibleTypes to -1 (was -9)
+I/ImeTracker( 3590): vn.edu.notetogether.note_together:abc390e8: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+D/InsetsController( 3590): show(ime(), fromIme=false)
+I/ImeTracker( 3590): vn.edu.notetogether.note_together:abc390e8: onCancelled at PHASE_CLIENT_REPORT_REQUESTED_VISIBLE_TYPES
+I/AssistStructure( 3590): Flattened final assist data: 480 bytes, containing 1 windows, 3 views
+W/RemoteInputConnectionImpl( 3590): requestCursorUpdates on inactive InputConnection
+I/ImeTracker( 3590): vn.edu.notetogether.note_together:26c8af2e: onRequestHide at ORIGIN_CLIENT reason HIDE_SOFT_INPUT fromUser false
+D/InsetsController( 3590): hide(ime(), fromIme=false)
+D/InsetsController( 3590): Setting requestedVisibleTypes to -9 (was -1)
+I/ImeTracker( 3590): system_server:a6bc5590: onCancelled at PHASE_CLIENT_ANIMATION_CANCEL
+W/InteractionJankMonitor( 3590): Initializing without READ_DEVICE_CONFIG permission. enabled=true, interval=1, missedFrameThreshold=3, frameTimeThreshold=64, package=vn.edu.notetogether.note_together
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+W/RemoteInputConnectionImpl( 3590): getSurroundingText on inactive InputConnection
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+W/WindowOnBackDispatcher( 3590): sendCancelIfRunning: isInProgress=false callback=android.view.ImeBackAnimationController@9f51971
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+W/RemoteInputConnectionImpl( 3590): requestCursorUpdates on inactive InputConnection
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+W/RemoteInputConnectionImpl( 3590): getSurroundingText on inactive InputConnection
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+I/ImeTracker( 3590): vn.edu.notetogether.note_together:1b4993a8: onCancelled at PHASE_CLIENT_ON_CONTROLS_CHANGED
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 10123, 13921523, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 10131, 13244014, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 10146, 10657501, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 10161, 17102405, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 10176, 12915947, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 10198, 15952556, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed App frame:UNKNOWN: 3, 10220, 64831027, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:UNKNOWN: 3, 10220, 64831027, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 10257, 12778567, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 10279, 11922731, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 10301, 11185180, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 10323, 15762662, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 10345, 6561246, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 10367, 15841883, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 10389, 5967469, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 10411, 8467171, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 10433, 17973616, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+V/PerfettoTrigger( 3590): Not triggering com.android.telemetry.interaction-jank-monitor-81 - not enough time since last trigger
+W/WindowOnBackDispatcher( 3590): sendCancelIfRunning: isInProgress=false callback=android.view.ImeBackAnimationController@9f51971
+I/ImeTracker( 3590): vn.edu.notetogether.note_together:3acfb532: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+D/InsetsController( 3590): show(ime(), fromIme=false)
+D/InsetsController( 3590): Setting requestedVisibleTypes to -1 (was -9)
+I/ImeTracker( 3590): vn.edu.notetogether.note_together:98eb7ce6: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+D/InsetsController( 3590): show(ime(), fromIme=false)
+I/ImeTracker( 3590): vn.edu.notetogether.note_together:98eb7ce6: onCancelled at PHASE_CLIENT_APPLY_ANIMATION
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/InputConnectionAdaptor( 3590): The input method toggled cursor monitoring on
+I/AssistStructure( 3590): Flattened final assist data: 480 bytes, containing 1 windows, 3 views
+I/ImeTracker( 3590): system_server:8ee3db87: onCancelled at PHASE_CLIENT_ON_CONTROLS_CHANGED
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+I/ImeTracker( 3590): vn.edu.notetogether.note_together:93f4f1f1: onRequestHide at ORIGIN_CLIENT reason HIDE_SOFT_INPUT fromUser false
+D/InsetsController( 3590): hide(ime(), fromIme=false)
+D/InsetsController( 3590): Setting requestedVisibleTypes to -9 (was -1)
+I/ImeTracker( 3590): vn.edu.notetogether.note_together:3acfb532: onCancelled at PHASE_CLIENT_ANIMATION_CANCEL
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+I/ImeTracker( 3590): system_server:728af20d: onCancelled at PHASE_CLIENT_ON_CONTROLS_CHANGED
+W/WindowOnBackDispatcher( 3590): sendCancelIfRunning: isInProgress=false callback=android.view.ImeBackAnimationController@9f51971
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 10822, 13968712, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 10830, 17401404, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 10873, 12919370, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 10909, 9344916, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 10938, 7884230, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 10967, 6859493, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 10996, 36746653, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 11033, 7653585, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 11062, 10822419, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 11091, 14480931, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 11120, 13363641, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 11149, 8235250, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 11178, 7247617, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 11207, 12226704, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 11236, 16182159, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 11258, 12114197, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 11287, 16202286, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 11316, 13278632, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+V/PerfettoTrigger( 3590): Not triggering com.android.telemetry.interaction-jank-monitor-81 - not enough time since last trigger
+VMServiceFlutterDriver: request_data message is taking a long time to complete...
+V/Configuration( 3590): Updating configuration, locales updated from [en_US] to [en]
+I/r.note_together( 3590): AssetManager2(0x76586a280178) locale list changing from [] to [en]
+V/Configuration( 3590): Updating configuration, locales updated from [en] to [en_US]
+I/r.note_together( 3590): AssetManager2(0x76586a281438) locale list changing from [] to [en-US]
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+E/AccessibilityBridge( 3590): transform has not been initialized for id = 73
+I/AccessibilityBridge( 3590): Semantics tree:SemanticsNode id=0 identifier=null label=null actions=0 flags=0
+I/AccessibilityBridge( 3590): Semantics tree:  +-- headingLevel=0
+I/AccessibilityBridge( 3590): Semantics tree:  +-- textDirection=UNKNOWN
+I/AccessibilityBridge( 3590): Semantics tree:  +-- rect.ltrb=(0.0, 0.0, 720.0, 1280.0)
+I/AccessibilityBridge( 3590): Semantics tree:  +-- transform=[1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0]
+I/AccessibilityBridge( 3590): Semantics tree:  SemanticsNode id=1 identifier=null label=null actions=0 flags=0
+I/AccessibilityBridge( 3590): Semantics tree:    +-- headingLevel=0
+I/AccessibilityBridge( 3590): Semantics tree:    +-- textDirection=LTR
+I/AccessibilityBridge( 3590): Semantics tree:    +-- rect.ltrb=(0.0, 0.0, 480.0, 853.3333)
+I/AccessibilityBridge( 3590): Semantics tree:    +-- transform=[1.5, 0.0, 0.0, 0.0, 0.0, 1.5, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0]
+I/AccessibilityBridge( 3590): Semantics tree:    SemanticsNode id=47 identifier=null label=null actions=0 flags=0
+I/AccessibilityBridge( 3590): Semantics tree:      +-- headingLevel=0
+I/AccessibilityBridge( 3590): Semantics tree:      +-- textDirection=UNKNOWN
+I/AccessibilityBridge( 3590): Semantics tree:      +-- rect.ltrb=(0.0, 0.0, 480.0, 853.3333)
+I/AccessibilityBridge( 3590): Semantics tree:      +-- transform=[1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0]
+I/AccessibilityBridge( 3590): Semantics tree:      SemanticsNode id=48 identifier=null label=null actions=0 flags=0
+I/AccessibilityBridge( 3590): Semantics tree:        +-- headingLevel=0
+I/AccessibilityBridge( 3590): Semantics tree:        +-- textDirection=UNKNOWN
+I/AccessibilityBridge( 3590): Semantics tree:        +-- rect.ltrb=(0.0, 0.0, 480.0, 853.3333)
+I/AccessibilityBridge( 3590): Semantics tree:        +-- transform=[1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0]
+I/AccessibilityBridge( 3590): Semantics tree:        SemanticsNode id=49 identifier=null label=Hộp thoại actions=0 flags=6144
+I/AccessibilityBridge( 3590): Semantics tree:          +-- headingLevel=0
+I/AccessibilityBridge( 3590): Semantics tree:          +-- textDirection=LTR
+I/AccessibilityBridge( 3590): Semantics tree:          +-- rect.ltrb=(0.0, 0.0, 480.0, 853.3333)
+I/AccessibilityBridge( 3590): Semantics tree:          +-- transform=[1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0]
+I/AccessibilityBridge( 3590): Semantics tree:          SemanticsNode id=50 identifier=null label=Bỏ qua actions=1 flags=8
+I/AccessibilityBridge( 3590): Semantics tree:            +-- headingLevel=0
+I/AccessibilityBridge( 3590): Semantics tree:            +-- textDirection=LTR
+I/AccessibilityBridge( 3590): Semantics tree:            +-- rect.ltrb=(0.0, 0.0, 48.0, 48.0)
+I/AccessibilityBridge( 3590): Semantics tree:            +-- transform=[1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 216.0, 55.989582, 0.0, 1.0]
+I/AccessibilityBridge( 3590): Semantics tree:          SemanticsNode id=51 identifier=null label=null actions=8388624 flags=262144
+I/AccessibilityBridge( 3590): Semantics tree:            +-- headingLevel=0
+I/AccessibilityBridge( 3590): Semantics tree:            +-- textDirection=UNKNOWN
+I/AccessibilityBridge( 3590): Semantics tree:            +-- rect.ltrb=(0.0, 0.0, 480.0, 749.34375)
+I/AccessibilityBridge( 3590): Semantics tree:            +-- transform=[1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 103.989586, 0.0, 1.0]
+I/AccessibilityBridge( 3590): Semantics tree:            SemanticsNode id=52 identifier=null label=Hồ sơ và tùy chỉnh actions=0 flags=0
+I/AccessibilityBridge( 3590): Semantics tree:              +-- headingLevel=0
+I/AccessibilityBridge( 3590): Semantics tree:              +-- textDirection=LTR
+I/AccessibilityBridge( 3590): Semantics tree:              +-- rect.ltrb=(0.0, 0.0, 356.0, 27.0)
+I/AccessibilityBridge( 3590): Semantics tree:              +-- transform=[1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 52.0, 28.5, 0.0, 1.0]
+I/AccessibilityBridge( 3590): Semantics tree:            SemanticsNode id=53 identifier=null label=null actions=4194305 flags=2097352
+I/AccessibilityBridge( 3590): Semantics tree:              +-- headingLevel=0
+I/AccessibilityBridge( 3590): Semantics tree:              +-- textDirection=LTR
+I/AccessibilityBridge( 3590): Semantics tree:              +-- rect.ltrb=(0.0, 0.0, 48.0, 48.0)
+I/AccessibilityBridge( 3590): Semantics tree:              +-- transform=[1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 408.0, 24.0, 0.0, 1.0]
+I/AccessibilityBridge( 3590): Semantics tree:            SemanticsNode id=54 identifier=null label=Ảnh đại diện mặc định
+I/AccessibilityBridge( 3590): K
+I/AccessibilityBridge( 3590): Không gian học tập actions=0 flags=268452032
+I/AccessibilityBridge( 3590): Semantics tree:              +-- headingLevel=0
+I/AccessibilityBridge( 3590): Semantics tree:              +-- textDirection=LTR
+I/AccessibilityBridge( 3590): Semantics tree:              +-- rect.ltrb=(0.0, 0.0, 432.0, 72.0)
+I/AccessibilityBridge( 3590): Semantics tree:              +-- transform=[1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 24.0, 72.0, 0.0, 1.0]
+I/AccessibilityBridge( 3590): Semantics tree:              SemanticsNode id=55 identifier=null label=null actions=4194305 flags=2097352
+I/AccessibilityBridge( 3590): Semantics tree:                +-- headingLevel=0
+I/AccessibilityBridge( 3590): Semantics tree:                +-- textDirection=LTR
+I/AccessibilityBridge( 3590): Semantics tree:                +-- rect.ltrb=(0.0, 0.0, 48.0, 48.0)
+I/AccessibilityBridge( 3590): Semantics tree:                +-- transform=[1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 372.0, 12.0, 0.0, 1.0]
+I/AccessibilityBridge( 3590): Semantics tree:            SemanticsNode id=56 identifier=null label=null actions=2 flags=3670032
+I/AccessibilityBridge( 3590): Semantics tree:              +-- headingLevel=0
+I/AccessibilityBridge( 3590): Semantics tree:              +-- textDirection=LTR
+I/AccessibilityBridge( 3590): Semantics tree:              +-- rect.ltrb=(0.0, 0.0, 284.84018, 18.0)
+I/AccessibilityBridge( 3590): Semantics tree:              +-- transform=[1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 24.0, 144.0, 0.0, 1.0]
+I/AccessibilityBridge( 3590): Semantics tree:            SemanticsNode id=57 identifier=null label=Đổi ảnh đại diện actions=4194305 flags=2097352
+I/AccessibilityBridge( 3590): Semantics tree:              +-- headingLevel=0
+I/AccessibilityBridge( 3590): Semantics tree:              +-- textDirection=LTR
+I/AccessibilityBridge( 3590): Semantics tree:              +-- rect.ltrb=(0.0, 0.0, 162.85358, 48.0)
+I/AccessibilityBridge( 3590): Semantics tree:              +-- transform=[1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 24.0, 162.0, 0.0, 1.0]
+I/AccessibilityBridge( 3590): Semantics tree:            SemanticsNode id=58 identifier=null label=Giao diện actions=0 flags=0
+I/AccessibilityBridge( 3590): Semantics tree:              +-- headingLevel=0
+I/AccessibilityBridge( 3590): Semantics tree:              +-- textDirection=LTR
+I/AccessibilityBridge( 3590): Semantics tree:              +-- rect.ltrb=(0.0, 0.0, 404.0, 27.0)
+I/AccessibilityBridge( 3590): Semantics tree:              +-- transform=[1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 52.0, 247.0, 0.0, 1.0]
+I/AccessibilityBridge( 3590): Semantics tree:            SemanticsNode id=59 identifier=null label=Chọn không gian dễ đọc nhất với bạn. actions=0 flags=0
+I/AccessibilityBridge( 3590): Semantics tree:              +-- headingLevel=0
+I/AccessibilityBridge( 3590): Semantics tree:              +-- textDirection=LTR
+I/AccessibilityBridge( 3590): Semantics tree:              +-- rect.ltrb=(0.0, 0.0, 246.03424, 18.0)
+I/AccessibilityBridge( 3590): Semantics tree:              +-- transform=[1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 24.0, 280.0, 0.0, 1.0]
+I/AccessibilityBridge( 3590): Semantics tree:            SemanticsNode id=60 identifier=null label=Giao diện tối actions=4194305 flags=270598336
+I/AccessibilityBridge( 3590): Semantics tree:              +-- headingLevel=0
+I/AccessibilityBridge( 3590): Semantics tree:              +-- textDirection=LTR
+I/AccessibilityBridge( 3590): Semantics tree:              +-- rect.ltrb=(0.0, 0.0, 432.0, 56.0)
+I/AccessibilityBridge( 3590): Semantics tree:              +-- transform=[1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 24.0, 310.0, 0.0, 1.0]
+I/AccessibilityBridge( 3590): Semantics tree:            SemanticsNode id=62 identifier=null label=Ghi chú actions=0 flags=0
+I/AccessibilityBridge( 3590): Semantics tree:              +-- headingLevel=0
+I/AccessibilityBridge( 3590): Semantics tree:              +-- textDirection=LTR
+I/AccessibilityBridge( 3590): Semantics tree:              +-- rect.ltrb=(0.0, 0.0, 404.0, 27.0)
+I/AccessibilityBridge( 3590): Semantics tree:              +-- transform=[1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 52.0, 382.0, 0.0, 1.0]
+I/AccessibilityBridge( 3590): Semantics tree:            SemanticsNode id=63 identifier=null label=Cỡ chữ ghi chú: 16 actions=0 flags=0
+I/AccessibilityBridge( 3590): Semantics tree:              +-- headingLevel=0
+I/AccessibilityBridge( 3590): Semantics tree:              +-- textDirection=LTR
+I/AccessibilityBridge( 3590): Semantics tree:              +-- rect.ltrb=(0.0, 0.0, 134.68594, 22.0)
+I/AccessibilityBridge( 3590): Semantics tree:              +-- transform=[1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 24.0, 429.0, 0.0, 1.0]
+I/AccessibilityBridge( 3590): Semantics tree:            SemanticsNode id=64 identifier=null label=null actions=0 flags=0
+I/AccessibilityBridge( 3590): Semantics tree:              +-- headingLevel=0
+I/AccessibilityBridge( 3590): Semantics tree:              +-- textDirection=UNKNOWN
+I/AccessibilityBridge( 3590): Semantics tree:              +-- rect.ltrb=(0.0, 0.0, 432.0, 48.0)
+I/AccessibilityBridge( 3590): Semantics tree:              +-- transform=[1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 24.0, 451.0, 0.0, 1.0]
+I/AccessibilityBridge( 3590): Semantics tree:              SemanticsNode id=65 identifier=null label=16 actions=4194496 flags=10485952
+I/AccessibilityBridge( 3590): Semantics tree:                +-- headingLevel=0
+I/AccessibilityBridge( 3590): Semantics tree:                +-- textDirection=LTR
+I/AccessibilityBridge( 3590): Semantics tree:                +-- rect.ltrb=(78.0, 0.0, 126.0, 48.0)
+I/AccessibilityBridge( 3590): Semantics tree:                +-- transform=[1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0]
+I/AccessibilityBridge( 3590): Semantics tree:              SemanticsNode id=73 identifier=null label=null actions=0 flags=0
+I/AccessibilityBridge( 3590): Semantics tree:                +-- headingLevel=0
+I/AccessibilityBridge( 3590): Semantics tree:                +-- textDirection=null
+I/AccessibilityBridge( 3590): Semantics tree:                +-- rect.ltrb=(0.0, 0.0, 0.0, 0.0)
+I/AccessibilityBridge( 3590): Semantics tree:                +-- transform=null
+I/AccessibilityBridge( 3590): Semantics tree:            SemanticsNode id=66 identifier=null label=Một ý tưởng đáng giữ. Một ghi chú dễ đọc. actions=0 flags=0
+I/AccessibilityBridge( 3590): Semantics tree:              +-- headingLevel=0
+I/AccessibilityBridge( 3590): Semantics tree:              +-- textDirection=LTR
+I/AccessibilityBridge( 3590): Semantics tree:              +-- rect.ltrb=(0.0, 0.0, 331.24268, 26.0)
+I/AccessibilityBridge( 3590): Semantics tree:              +-- transform=[1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 40.0, 515.0, 0.0, 1.0]
+I/AccessibilityBridge( 3590): Semantics tree:            SemanticsNode id=67 identifier=null label=Tùy chỉnh theo tài khoản; thiết bị khác nhận khi đồng bộ. actions=0 flags=0
+I/AccessibilityBridge( 3590): Semantics tree:              +-- headingLevel=0
+I/AccessibilityBridge( 3590): Semantics tree:              +-- textDirection=LTR
+I/AccessibilityBridge( 3590): Semantics tree:              +-- rect.ltrb=(0.0, 0.0, 413.46283, 22.0)
+I/AccessibilityBridge( 3590): Semantics tree:              +-- transform=[1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 24.0, 573.0, 0.0, 1.0]
+I/AccessibilityBridge( 3590): Semantics tree:            SemanticsNode id=68 identifier=null label=Đồng bộ tùy chỉnh actions=4194305 flags=2097352
+I/AccessibilityBridge( 3590): Semantics tree:              +-- headingLevel=0
+I/AccessibilityBridge( 3590): Semantics tree:              +-- textDirection=LTR
+I/AccessibilityBridge( 3590): Semantics tree:              +-- rect.ltrb=(0.0, 0.0, 176.7855, 48.0)
+I/AccessibilityBridge( 3590): Semantics tree:              +-- transform=[1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 24.0, 595.0, 0.0, 1.0]
+I/AccessibilityBridge( 3590): Semantics tree:            SemanticsNode id=69 identifier=null label=Tài khoản actions=0 flags=0
+I/AccessibilityBridge( 3590): Semantics tree:              +-- headingLevel=0
+I/AccessibilityBridge( 3590): Semantics tree:              +-- textDirection=LTR
+I/AccessibilityBridge( 3590): Semantics tree:              +-- rect.ltrb=(0.0, 0.0, 404.0, 27.0)
+I/AccessibilityBridge( 3590): Semantics tree:              +-- transform=[1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 52.0, 688.0, 0.0, 1.0]
+I/AccessibilityBridge( 3590): Semantics tree:            SemanticsNode id=70 identifier=null label=Email chưa xác minh actions=0 flags=0
+I/AccessibilityBridge( 3590): Semantics tree:              +-- headingLevel=0
+I/AccessibilityBridge( 3590): Semantics tree:              +-- textDirection=LTR
+I/AccessibilityBridge( 3590): Semantics tree:              +-- rect.ltrb=(0.0, 0.0, 149.95102, 22.0)
+I/AccessibilityBridge( 3590): Semantics tree:              +-- transform=[1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 24.0, 727.0, 0.0, 1.0]
+I/AccessibilityBridge( 3590): Semantics tree:            SemanticsNode id=71 identifier=null label=Đăng xuất actions=4194305 flags=2097352
+I/AccessibilityBridge( 3590): Semantics tree:              +-- headingLevel=0
+I/AccessibilityBridge( 3590): Semantics tree:              +-- textDirection=LTR
+I/AccessibilityBridge( 3590): Semantics tree:              +-- rect.ltrb=(0.0, 0.0, 122.84174, 0.34375)
+I/AccessibilityBridge( 3590): Semantics tree:              +-- transform=[1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 24.0, 749.0, 0.0, 1.0]
+I/AccessibilityBridge( 3590): Semantics tree:            SemanticsNode id=72 identifier=null label=Đổi mật khẩu actions=4194305 flags=2105544
+I/AccessibilityBridge( 3590): Semantics tree:              +-- headingLevel=0
+I/AccessibilityBridge( 3590): Semantics tree:              +-- textDirection=LTR
+I/AccessibilityBridge( 3590): Semantics tree:              +-- rect.ltrb=(0.0, 0.0, 113.41365, 48.0)
+I/AccessibilityBridge( 3590): Semantics tree:              +-- transform=[1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 24.0, 797.0, 0.0, 1.0]
+I/AccessibilityBridge( 3590): Semantics tree:    SemanticsNode id=45 identifier=null label=null actions=0 flags=0
+I/AccessibilityBridge( 3590): Semantics tree:      +-- headingLevel=0
+I/AccessibilityBridge( 3590): Semantics tree:      +-- textDirection=UNKNOWN
+I/AccessibilityBridge( 3590): Semantics tree:      +-- rect.ltrb=(0.0, 0.0, 480.0, 853.3333)
+I/AccessibilityBridge( 3590): Semantics tree:      +-- transform=[1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0]
+W/WindowOnBackDispatcher( 3590): sendCancelIfRunning: isInProgress=false callback=io.flutter.embedding.android.FlutterActivity$1@ac1179f
+I/ImeTracker( 3590): vn.edu.notetogether.note_together:f2d7fdef: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+D/InsetsController( 3590): show(ime(), fromIme=false)
+D/InsetsController( 3590): Setting requestedVisibleTypes to -1 (was -9)
+I/ImeTracker( 3590): vn.edu.notetogether.note_together:c8b431b: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+D/InsetsController( 3590): show(ime(), fromIme=false)
+I/ImeTracker( 3590): vn.edu.notetogether.note_together:c8b431b: onCancelled at PHASE_CLIENT_REPORT_REQUESTED_VISIBLE_TYPES
+D/InputConnectionAdaptor( 3590): The input method toggled cursor monitoring on
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+I/ImeTracker( 3590): vn.edu.notetogether.note_together:f2d7fdef: onShown
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 13347, 8335640, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 13383, 6871029, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 13419, 12243424, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed App frame:UNKNOWN: 3, 13441, 38661032, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:UNKNOWN: 3, 13441, 38661032, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 13477, 6035185, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 13506, 13439257, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 13528, 6624729, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 13550, 13506430, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 13572, 5970255, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 13594, 5168711, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 13616, 7694110, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 13638, 53295183, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 13676, 11677718, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 13698, 6889766, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 13720, 10645814, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+V/PerfettoTrigger( 3590): Not triggering com.android.telemetry.interaction-jank-monitor-80 - not enough time since last trigger
+I/ImeTracker( 3590): vn.edu.notetogether.note_together:48aa9c93: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+D/InsetsController( 3590): show(ime(), fromIme=false)
+I/ImeTracker( 3590): vn.edu.notetogether.note_together:48aa9c93: onCancelled at PHASE_CLIENT_APPLY_ANIMATION
+I/ImeTracker( 3590): vn.edu.notetogether.note_together:df1e8254: onRequestHide at ORIGIN_CLIENT reason HIDE_SOFT_INPUT fromUser false
+D/InsetsController( 3590): hide(ime(), fromIme=false)
+W/WindowOnBackDispatcher( 3590): sendCancelIfRunning: isInProgress=false callback=android.view.ImeBackAnimationController@9f51971
+D/InsetsController( 3590): Setting requestedVisibleTypes to -9 (was -1)
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+I/ImeTracker( 3590): system_server:415730f0: onCancelled at PHASE_CLIENT_ON_CONTROLS_CHANGED
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 13888, 13192606, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 13910, 13876588, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 13925, 13276175, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 13940, 5646448, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 13955, 12122830, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 13970, 12359303, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed App frame:UNKNOWN: 3, 13985, 33884611, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:UNKNOWN: 3, 13985, 33884611, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 13992, 7108711, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 14007, 13074686, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 14022, 13111440, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 14037, 5729663, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 14052, 8780719, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 14074, 5105579, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 14096, 6521696, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 14118, 28696584, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 14141, 10996286, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 14163, 10717240, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+V/PerfettoTrigger( 3590): Not triggering com.android.telemetry.interaction-jank-monitor-81 - not enough time since last trigger
+W/WindowOnBackDispatcher( 3590): sendCancelIfRunning: isInProgress=false callback=io.flutter.embedding.android.FlutterActivity$1@ac1179f
+I/r.note_together( 3590): AssetManager2(0x76586a2aef78) locale list changing from [] to [en-US]
+I/ImeTracker( 3590): vn.edu.notetogether.note_together:82babd0b: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+D/InsetsController( 3590): show(ime(), fromIme=false)
+D/InsetsController( 3590): Setting requestedVisibleTypes to -1 (was -9)
+I/ImeTracker( 3590): vn.edu.notetogether.note_together:becd914: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+D/InsetsController( 3590): show(ime(), fromIme=false)
+I/ImeTracker( 3590): vn.edu.notetogether.note_together:becd914: onCancelled at PHASE_CLIENT_REPORT_REQUESTED_VISIBLE_TYPES
+I/AssistStructure( 3590): Flattened final assist data: 536 bytes, containing 1 windows, 3 views
+D/InputConnectionAdaptor( 3590): The input method toggled cursor monitoring on
+I/ImeTracker( 3590): vn.edu.notetogether.note_together:17392ca9: onRequestHide at ORIGIN_CLIENT reason HIDE_SOFT_INPUT fromUser false
+D/InsetsController( 3590): hide(ime(), fromIme=false)
+D/InsetsController( 3590): Setting requestedVisibleTypes to -9 (was -1)
+W/RemoteInputConnectionImpl( 3590): getSurroundingText on inactive InputConnection
+W/WindowOnBackDispatcher( 3590): sendCancelIfRunning: isInProgress=false callback=android.view.ImeBackAnimationController@9f51971
+I/ImeTracker( 3590): system_server:dccd1053: onCancelled at PHASE_CLIENT_ON_CONTROLS_CHANGED
+I/ImeTracker( 3590): vn.edu.notetogether.note_together:b390e65: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+D/InsetsController( 3590): show(ime(), fromIme=false)
+D/InsetsController( 3590): Setting requestedVisibleTypes to -1 (was -9)
+I/ImeTracker( 3590): vn.edu.notetogether.note_together:d05bcfa4: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+D/InsetsController( 3590): show(ime(), fromIme=false)
+I/ImeTracker( 3590): vn.edu.notetogether.note_together:d05bcfa4: onCancelled at PHASE_CLIENT_APPLY_ANIMATION
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/InputConnectionAdaptor( 3590): The input method toggled cursor monitoring on
+I/AssistStructure( 3590): Flattened final assist data: 520 bytes, containing 1 windows, 3 views
+I/ImeTracker( 3590): system_server:6372424d: onCancelled at PHASE_CLIENT_ON_CONTROLS_CHANGED
+I/ImeTracker( 3590): vn.edu.notetogether.note_together:a4eb96f4: onRequestHide at ORIGIN_CLIENT reason HIDE_SOFT_INPUT fromUser false
+D/InsetsController( 3590): hide(ime(), fromIme=false)
+D/InsetsController( 3590): Setting requestedVisibleTypes to -9 (was -1)
+I/ImeTracker( 3590): vn.edu.notetogether.note_together:b390e65: onCancelled at PHASE_CLIENT_ANIMATION_CANCEL
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+W/WindowOnBackDispatcher( 3590): sendCancelIfRunning: isInProgress=false callback=android.view.ImeBackAnimationController@9f51971
+I/ImeTracker( 3590): system_server:62fc1730: onCancelled at PHASE_CLIENT_ON_CONTROLS_CHANGED
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 15592, 21380280, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 15607, 10254006, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 15622, 8943385, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 15637, 14879890, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 15652, 17279026, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 15674, 10853216, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed App frame:UNKNOWN: 3, 15718, 198120063, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:UNKNOWN: 3, 15718, 198120063, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+V/PerfettoTrigger( 3590): Not triggering com.android.telemetry.interaction-jank-monitor-81 - not enough time since last trigger
+I/flutter ( 3590): ══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+I/flutter ( 3590): The following assertion was thrown running a test:
+I/flutter ( 3590): The finder "Found 0 widgets with widget matching predicate: []" (used in a call to "tap()") could
+I/flutter ( 3590): not find any matching widgets.
+I/flutter ( 3590): 
+I/flutter ( 3590): When the exception was thrown, this was the stack:
+I/flutter ( 3590): #0      WidgetController._getElementPoint (package:flutter_test/src/controller.dart:2095:7)
+I/flutter ( 3590): #1      WidgetController.getCenter (package:flutter_test/src/controller.dart:1947:12)
+I/flutter ( 3590): #2      WidgetController.tap (package:flutter_test/src/controller.dart:1080:7)
+I/flutter ( 3590): #3      main.<anonymous closure> (file:///D:/flutter%20cuoi%20ki/integration_test/ui_upgrade_test.dart:118:20)
+I/flutter ( 3590): <asynchronous suspension>
+I/flutter ( 3590): #4      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+I/flutter ( 3590): <asynchronous suspension>
+I/flutter ( 3590): #5      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1953:5)
+I/flutter ( 3590): <asynchronous suspension>
+I/flutter ( 3590): #6      TestWidgetsFlutterBinding._createTestCompletionHandler.<anonymous closure> (package:flutter_test/src/binding.dart:1707:12)
+I/flutter ( 3590): <asynchronous suspension>
+I/flutter ( 3590): 
+I/flutter ( 3590): The test description was:
+I/flutter ( 3590):   Native UI registration, labels, preferences and stable writing session
+I/flutter ( 3590): ════════════════════════════════════════════════════════════════════════════════════════════════════
+I/flutter ( 3590): 00:14 +0: Native UI registration, labels, preferences and stable writing session [E]
+I/flutter ( 3590):   Test failed. See exception logs above.
+I/flutter ( 3590):   The test description was: Native UI registration, labels, preferences and stable writing session
+I/flutter ( 3590):   
+I/flutter ( 3590): 00:14 +0 -1: Native template checklist focus and encrypted offline reopen with real API
+I/r.note_together( 3590): AssetManager2(0x76586a29ba18) locale list changing from [] to [en-US]
+I/ImeTracker( 3590): vn.edu.notetogether.note_together:e7010bed: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+D/InsetsController( 3590): show(ime(), fromIme=false)
+D/InsetsController( 3590): Setting requestedVisibleTypes to -1 (was -9)
+I/ImeTracker( 3590): vn.edu.notetogether.note_together:e2bc0276: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+D/InsetsController( 3590): show(ime(), fromIme=false)
+I/ImeTracker( 3590): vn.edu.notetogether.note_together:e2bc0276: onCancelled at PHASE_CLIENT_REPORT_REQUESTED_VISIBLE_TYPES
+D/InputConnectionAdaptor( 3590): The input method toggled cursor monitoring on
+I/AssistStructure( 3590): Flattened final assist data: 776 bytes, containing 1 windows, 3 views
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+I/ImeTracker( 3590): vn.edu.notetogether.note_together:e7010bed: onShown
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 17413, 9699873, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 17443, 11619913, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 17478, 11502487, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 17507, 12367648, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 17536, 10845488, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 17558, 11165548, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 17580, 10508409, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 17602, 11412600, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 17631, 11346084, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 17653, 14145307, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 17675, 11443269, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 17697, 8340236, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 17719, 12027734, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 17741, 12864377, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 17763, 12203952, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 17785, 11662159, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 17807, 11867498, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 17829, 14138371, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 17851, 10581464, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+V/PerfettoTrigger( 3590): Not triggering com.android.telemetry.interaction-jank-monitor-80 - not enough time since last trigger
+I/ImeTracker( 3590): vn.edu.notetogether.note_together:c8db0b57: onRequestHide at ORIGIN_CLIENT reason HIDE_SOFT_INPUT fromUser false
+D/InsetsController( 3590): hide(ime(), fromIme=false)
+W/WindowOnBackDispatcher( 3590): sendCancelIfRunning: isInProgress=false callback=android.view.ImeBackAnimationController@9f51971
+D/InsetsController( 3590): Setting requestedVisibleTypes to -9 (was -1)
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+I/flutter ( 3590): 00:21 +1 -1: Native protected edits: SSE, frozen base, encrypted offline reopen, unlock revalidation and confirmed delete
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+I/ImeTracker( 3590): system_server:32e1a7fc: onCancelled at PHASE_CLIENT_ON_CONTROLS_CHANGED
+W/FrameTracker( 3590): Missed App frame:UNKNOWN: 3, 19472, 19366672, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:UNKNOWN: 3, 19472, 19366672, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 19486, 18125168, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 19494, 16954219, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed App frame:UNKNOWN: 3, 19509, 34582345, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:UNKNOWN: 3, 19509, 34582345, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 19517, 21278686, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 19531, 30939021, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 19539, 28643149, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 19554, 29875980, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 19562, 29620401, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 19570, 25723902, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 19585, 23609443, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 19593, 27658096, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 19608, 21939785, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 19623, 22396472, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 19645, 21559481, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 19660, 22427414, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 19675, 27984477, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 19697, 23055531, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 19712, 23904936, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+V/PerfettoTrigger( 3590): Not triggering com.android.telemetry.interaction-jank-monitor-81 - not enough time since last trigger
+I/r.note_together( 3590): AssetManager2(0x76586a28b6b8) locale list changing from [] to [en-US]
+I/ImeTracker( 3590): vn.edu.notetogether.note_together:13a5b207: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+D/InsetsController( 3590): show(ime(), fromIme=false)
+D/InsetsController( 3590): Setting requestedVisibleTypes to -1 (was -9)
+I/ImeTracker( 3590): vn.edu.notetogether.note_together:de746aa0: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+D/InsetsController( 3590): show(ime(), fromIme=false)
+I/ImeTracker( 3590): vn.edu.notetogether.note_together:de746aa0: onCancelled at PHASE_CLIENT_REPORT_REQUESTED_VISIBLE_TYPES
+D/InputConnectionAdaptor( 3590): The input method toggled cursor monitoring on
+I/ImeTracker( 3590): vn.edu.notetogether.note_together:dd914674: onRequestHide at ORIGIN_CLIENT reason HIDE_SOFT_INPUT fromUser false
+D/InsetsController( 3590): hide(ime(), fromIme=false)
+W/WindowOnBackDispatcher( 3590): sendCancelIfRunning: isInProgress=false callback=android.view.ImeBackAnimationController@9f51971
+D/InsetsController( 3590): Setting requestedVisibleTypes to -9 (was -1)
+I/ImeTracker( 3590): system_server:bcbf450: onCancelled at PHASE_CLIENT_ON_CONTROLS_CHANGED
+I/ImeTracker( 3590): vn.edu.notetogether.note_together:502f0870: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+D/InsetsController( 3590): show(ime(), fromIme=false)
+D/InsetsController( 3590): Setting requestedVisibleTypes to -1 (was -9)
+D/InputConnectionAdaptor( 3590): The input method toggled cursor monitoring on
+I/AssistStructure( 3590): Flattened final assist data: 544 bytes, containing 1 windows, 3 views
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+I/ImeTracker( 3590): vn.edu.notetogether.note_together:502f0870: onShown
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 21471, 70657390, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 21538, 11131813, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 21560, 10846947, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 21582, 12083227, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 21604, 10349821, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 21626, 7225801, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 21648, 17952065, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 21670, 8495857, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 21685, 12228168, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 21707, 29117076, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 21730, 10860217, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 21752, 12454783, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 21774, 10726712, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 21796, 9798994, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 21818, 10056048, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 21840, 11072138, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 21862, 5904770, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 21884, 18186778, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+V/PerfettoTrigger( 3590): Not triggering com.android.telemetry.interaction-jank-monitor-80 - not enough time since last trigger
+I/ImeTracker( 3590): vn.edu.notetogether.note_together:edf1e509: onRequestHide at ORIGIN_CLIENT reason HIDE_SOFT_INPUT fromUser false
+D/InsetsController( 3590): hide(ime(), fromIme=false)
+W/WindowOnBackDispatcher( 3590): sendCancelIfRunning: isInProgress=false callback=android.view.ImeBackAnimationController@9f51971
+D/InsetsController( 3590): Setting requestedVisibleTypes to -9 (was -1)
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+I/ImeTracker( 3590): vn.edu.notetogether.note_together:fb0ff726: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+D/InsetsController( 3590): show(ime(), fromIme=false)
+D/InsetsController( 3590): Setting requestedVisibleTypes to -1 (was -9)
+I/ImeTracker( 3590): vn.edu.notetogether.note_together:edf1e509: onCancelled at PHASE_CLIENT_ANIMATION_CANCEL
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+W/RemoteInputConnectionImpl( 3590): requestCursorUpdates on inactive InputConnection
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+W/RemoteInputConnectionImpl( 3590): getSurroundingText on inactive InputConnection
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/InputConnectionAdaptor( 3590): The input method toggled cursor monitoring on
+I/ImeTracker( 3590): vn.edu.notetogether.note_together:183c5ded: onRequestHide at ORIGIN_CLIENT reason HIDE_SOFT_INPUT fromUser false
+D/InsetsController( 3590): hide(ime(), fromIme=false)
+W/WindowOnBackDispatcher( 3590): sendCancelIfRunning: isInProgress=false callback=android.view.ImeBackAnimationController@9f51971
+D/InsetsController( 3590): Setting requestedVisibleTypes to -9 (was -1)
+I/ImeTracker( 3590): vn.edu.notetogether.note_together:fb0ff726: onCancelled at PHASE_CLIENT_ANIMATION_CANCEL
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+I/ImeTracker( 3590): system_server:34b4acfb: onCancelled at PHASE_CLIENT_ON_CONTROLS_CHANGED
+W/FrameTracker( 3590): Missed App frame:UNKNOWN: 3, 22895, 41814249, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:UNKNOWN: 3, 22895, 41814249, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 22939, 11759067, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed App frame:UNKNOWN: 3, 22975, 56217793, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:UNKNOWN: 3, 22975, 56217793, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 23048, 9421216, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 23070, 10896626, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed App frame:UNKNOWN: 3, 23092, 44310974, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:UNKNOWN: 3, 23092, 44310974, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 23099, 11630321, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 23136, 12547990, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 23158, 6308898, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 23180, 9961339, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 23195, 9885123, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 23217, 13070420, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 23232, 9798833, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 23254, 10660263, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 23269, 19680272, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+V/PerfettoTrigger( 3590): Not triggering com.android.telemetry.interaction-jank-monitor-81 - not enough time since last trigger
+I/r.note_together( 3590): AssetManager2(0x76586a2771b8) locale list changing from [] to [en-US]
+I/ImeTracker( 3590): vn.edu.notetogether.note_together:61cd523: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+D/InsetsController( 3590): show(ime(), fromIme=false)
+D/InsetsController( 3590): Setting requestedVisibleTypes to -1 (was -9)
+D/InputConnectionAdaptor( 3590): The input method toggled cursor monitoring on
+I/AssistStructure( 3590): Flattened final assist data: 544 bytes, containing 1 windows, 3 views
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+I/ImeTracker( 3590): vn.edu.notetogether.note_together:61cd523: onShown
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 23931, 75801216, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 23998, 13193623, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 24020, 17160840, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 24042, 14715906, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 24064, 11574384, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 24086, 13669907, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 24108, 11764412, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 24130, 21110013, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 24145, 17116833, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed App frame:UNKNOWN: 3, 24167, 45195347, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:UNKNOWN: 3, 24167, 45195347, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 24197, 14888594, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 24219, 16134805, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 24241, 14771922, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 24263, 14666929, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 24285, 13963674, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 24307, 12848901, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 24329, 13134329, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+V/PerfettoTrigger( 3590): Not triggering com.android.telemetry.interaction-jank-monitor-80 - not enough time since last trigger
+I/ImeTracker( 3590): vn.edu.notetogether.note_together:b2d96b8d: onRequestHide at ORIGIN_CLIENT reason HIDE_SOFT_INPUT fromUser false
+D/InsetsController( 3590): hide(ime(), fromIme=false)
+W/WindowOnBackDispatcher( 3590): sendCancelIfRunning: isInProgress=false callback=android.view.ImeBackAnimationController@9f51971
+D/InsetsController( 3590): Setting requestedVisibleTypes to -9 (was -1)
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+D/FlutterJNI( 3590): Sending viewport metrics to the engine.
+I/ImeTracker( 3590): system_server:c1d24593: onCancelled at PHASE_CLIENT_ON_CONTROLS_CHANGED
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 24459, 18848663, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed App frame:UNKNOWN: 3, 24481, 61544808, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:UNKNOWN: 3, 24481, 61544808, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 24497, 12292422, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 24512, 10570716, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 24527, 11780383, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 24542, 14558771, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 24557, 15180583, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 24572, 14902116, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 24587, 14007490, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed App frame:UNKNOWN: 3, 24602, 53109685, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:UNKNOWN: 3, 24602, 53109685, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 24616, 7380840, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 24638, 12588593, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 24660, 11846791, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 3590): Missed SF frame:JANK_COMPOSER, 24682, 12177375, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+V/PerfettoTrigger( 3590): Not triggering com.android.telemetry.interaction-jank-monitor-81 - not enough time since last trigger
+I/ImeTracker( 3590): vn.edu.notetogether.note_together:e5858e63: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+D/InsetsController( 3590): show(ime(), fromIme=false)
+D/InsetsController( 3590): Setting requestedVisibleTypes to -1 (was -9)
+I/ImeTracker( 3590): vn.edu.notetogether.note_together:16d300be: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+D/InsetsController( 3590): show(ime(), fromIme=false)
+I/ImeTracker( 3590): vn.edu.notetogether.note_together:16d300be: onCancelled at PHASE_CLIENT_REPORT_REQUESTED_VISIBLE_TYPES
+D/InputConnectionAdaptor( 3590): The input method toggled cursor monitoring on
+I/ImeTracker( 3590): vn.edu.notetogether.note_together:28686c7a: onRequestHide at ORIGIN_CLIENT reason HIDE_SOFT_INPUT fromUser false
+D/InsetsController( 3590): hide(ime(), fromIme=false)
+W/WindowOnBackDispatcher( 3590): sendCancelIfRunning: isInProgress=false callback=android.view.ImeBackAnimationController@9f51971
+D/InsetsController( 3590): Setting requestedVisibleTypes to -9 (was -1)
+I/ImeTracker( 3590): vn.edu.notetogether.note_together:e5858e63: onCancelled at PHASE_CLIENT_ON_CONTROLS_CHANGED
+I/ImeTracker( 3590): system_server:18cf8e64: onCancelled at PHASE_CLIENT_ON_CONTROLS_CHANGED
+I/flutter ( 3590): 00:41 +2 -1: (tearDownAll)
+I/flutter ( 3590): 00:41 +3 -1: Some tests failed.
+Failure Details:
+Failure in method: Native UI registration, labels, preferences and stable writing session
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞═════════════════
+The following assertion was thrown running a test:
+The finder "Found 0 widgets with widget matching predicate: []"
+(used in a call to "tap()") could not find any matching widgets.
+
+When the exception was thrown, this was the stack:
+#0      WidgetController._getElementPoint (package:flutter_test/src/controller.dart:2095:7)
+#1      WidgetController.getCenter (package:flutter_test/src/controller.dart:1947:12)
+#2      WidgetController.tap (package:flutter_test/src/controller.dart:1080:7)
+#3      main.<anonymous closure> (file:///D:/flutter%20cuoi%20ki/integration_test/ui_upgrade_test.dart:118:20)
+<asynchronous suspension>
+#4      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#5      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1953:5)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._createTestCompletionHandler.<anonymous closure> (package:flutter_test/src/binding.dart:1707:12)
+<asynchronous suspension>
+
+The test description was:
+  Native UI registration, labels, preferences and stable writing
+  session
+═════════════════════════════════════════════════════════════════
+
+end of failure 1
+
+
+

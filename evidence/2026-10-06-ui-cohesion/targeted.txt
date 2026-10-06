@@ -1,0 +1,63 @@
+00:00 +0: loading D:/flutter cuoi ki/test/ui_redesign_test.dart
+00:00 +0: D:/flutter cuoi ki/test/ui_upgrade_test.dart: Offline pending editor suppresses stale live transport badge
+00:00 +1: D:/flutter cuoi ki/test/ui_upgrade_test.dart: Offline pending editor suppresses stale live transport badge
+00:00 +2: D:/flutter cuoi ki/test/ui_upgrade_test.dart: Offline pending editor suppresses stale live transport badge
+00:00 +3: D:/flutter cuoi ki/test/ui_upgrade_test.dart: Offline pending editor suppresses stale live transport badge
+00:00 +4: D:/flutter cuoi ki/test/ui_upgrade_test.dart: Offline pending editor suppresses stale live transport badge
+00:00 +5: D:/flutter cuoi ki/test/ui_upgrade_test.dart: Offline pending editor suppresses stale live transport badge
+00:00 +6: D:/flutter cuoi ki/test/ui_upgrade_test.dart: Offline pending editor suppresses stale live transport badge
+00:00 +7: D:/flutter cuoi ki/test/ui_upgrade_test.dart: Offline pending editor suppresses stale live transport badge
+00:00 +8: D:/flutter cuoi ki/test/ui_redesign_test.dart: Grid accommodates largest note font, long labels and conflict action
+00:01 +9: D:/flutter cuoi ki/test/writing_studio_test.dart: Template cancel is inert; explicit choice persists one editable account draft
+00:01 +10: D:/flutter cuoi ki/test/writing_studio_test.dart: Template cancel is inert; explicit choice persists one editable account draft
+00:01 +11: D:/flutter cuoi ki/test/writing_studio_test.dart: Template cancel is inert; explicit choice persists one editable account draft
+00:01 +12: D:/flutter cuoi ki/test/writing_studio_test.dart: Template cancel is inert; explicit choice persists one editable account draft
+00:01 +13: D:/flutter cuoi ki/test/protected_editing_test.dart: Protected editor autosaves; revoked delete confirmation removes name and disables action
+00:01 +14: D:/flutter cuoi ki/test/protected_editing_test.dart: Protected editor autosaves; revoked delete confirmation removes name and disables action
+00:01 +15: D:/flutter cuoi ki/test/protected_editing_test.dart: Protected editor autosaves; revoked delete confirmation removes name and disables action
+00:01 +16: D:/flutter cuoi ki/test/protected_editing_test.dart: Protected editor autosaves; revoked delete confirmation removes name and disables action
+00:01 +17: D:/flutter cuoi ki/test/ui_upgrade_test.dart: Ctrl F focuses search and clearing labels preserves the query
+00:02 +18: D:/flutter cuoi ki/test/writing_studio_test.dart: Checklist keeps frozen base and selection across peer update, focus, theme and resize
+00:02 +19: D:/flutter cuoi ki/test/writing_studio_test.dart: Checklist keeps frozen base and selection across peer update, focus, theme and resize
+00:02 +20: D:/flutter cuoi ki/test/writing_studio_test.dart: Checklist keeps frozen base and selection across peer update, focus, theme and resize
+00:02 +21: D:/flutter cuoi ki/test/writing_studio_test.dart: Checklist keeps frozen base and selection across peer update, focus, theme and resize
+00:02 +22: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:02 +23: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:02 +24: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:02 +25: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:03 +26: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:03 +27: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:03 +28: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:03 +29: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:03 +30: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:03 +31: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:03 +32: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:03 +33: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:03 +34: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:03 +35: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:03 +36: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:03 +37: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:04 +38: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:04 +39: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:04 +40: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:04 +41: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:04 +42: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:04 +43: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:04 +44: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:05 +45: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:05 +46: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:05 +47: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:05 +48: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:05 +49: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:05 +50: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:06 +51: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:13 +52: D:/flutter cuoi ki/test/protected_editing_test.dart: Delete conflict requires new confirmation and revoked delete hides content
+00:13 +53: D:/flutter cuoi ki/test/protected_editing_test.dart: Offline draft survives encrypted Sembast close/reopen and never enters ordinary outbox
+00:14 +54: D:/flutter cuoi ki/test/protected_editing_test.dart: A copied old-password draft permits new-password unlock without losing the private copy
+00:14 +55: D:/flutter cuoi ki/test/protected_editing_test.dart: Lost acknowledgement replays the same immutable operation after reopen
+00:14 +56: D:/flutter cuoi ki/test/protected_editing_test.dart: Typing while protected operation is inflight keeps newest draft and chains own ack
+00:14 +57: D:/flutter cuoi ki/test/protected_editing_test.dart: Realtime clean content updates keep frozen base; dirty content remains on conflict
+00:14 +58: D:/flutter cuoi ki/test/protected_editing_test.dart: Revoke hides content and preserves password-bound recovery; copy never mutates source
+00:14 +59: D:/flutter cuoi ki/test/protected_editing_test.dart: Encrypted field merge survives ordinary snapshot capture and account switch mid-write
+00:14 +60: D:/flutter cuoi ki/test/protected_editing_test.dart: Delegated picker obscures content and rechecks grant before showing it again
+00:14 +61: All tests passed!

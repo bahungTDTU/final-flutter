@@ -1,0 +1,13 @@
+{
+  "date_utc": "2026-10-06T02:57:31.167348+00:00",
+  "target": "IAB Web debug 127.0.0.1:7362, real API8012",
+  "template": "meeting",
+  "checked_on_server": true,
+  "same_id_reload": true,
+  "revision_after_check": 2,
+  "focus_start_pause": true,
+  "remote_lock_requested": true,
+  "native": "separate API36 debug integration",
+  "release": "NOT RUN",
+  "remote_lock_tools_text_semantics_hidden": true
+}

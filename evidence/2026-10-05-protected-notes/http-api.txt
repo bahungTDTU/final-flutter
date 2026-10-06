@@ -1,0 +1,4 @@
+PASS actual HTTP owner/viewer/editor/stranger locked + grant + minimal list
+PASS protected edit/replay/frozen revision409/viewer and editor-delete denied
+PASS private attachment upload/read/delete role rules
+PASS revoke/password change invalidates grant/owner confirmed delete

@@ -23,6 +23,92 @@ AppController makeController(
 
 void main() {
   testWidgets(
+    'verification queue status updates only after an authenticated check',
+    (tester) async {
+      var state = 'retrying';
+      final c =
+          makeController((request) async {
+              expect(request.url.path, '/auth/email-status');
+              expect(request.headers['Authorization'], 'Bearer A');
+              return reply({'email_delivery': state, 'retry_after': 15});
+            })
+            ..user = {'id': 'A', 'verified': false}
+            ..token = 'A';
+      await tester.pumpWidget(MaterialApp(home: TokenScreen(controller: c)));
+      await tester.ensureVisible(
+        find.byKey(const Key('email-delivery-status')),
+      );
+      await tester.tap(find.byKey(const Key('email-delivery-status')));
+      await tester.pumpAndSettle();
+      expect(find.text(emailDeliveryMessage('retrying')), findsOneWidget);
+      expect(c.emailDelivery, 'retrying');
+      state = 'smtp_accepted';
+      await tester.tap(find.byKey(const Key('email-delivery-status')));
+      await tester.pumpAndSettle();
+      expect(find.text(emailDeliveryMessage('smtp_accepted')), findsOneWidget);
+      expect(c.emailDelivery, 'smtp_accepted');
+      await tester.pumpWidget(const SizedBox());
+      c.dispose();
+    },
+  );
+
+  testWidgets(
+    'public reset can request another code without exposing account delivery status',
+    (tester) async {
+      final requests = <http.Request>[];
+      final c = makeController((request) async {
+        requests.add(request);
+        return reply({'email_delivery': 'requested'});
+      });
+      await tester.pumpWidget(
+        MaterialApp(
+          home: TokenScreen(
+            controller: c,
+            initialReset: true,
+            initialEmail: 'reset@example.test',
+          ),
+        ),
+      );
+      await tester.ensureVisible(find.byKey(const Key('resend-reset-code')));
+      await tester.tap(find.byKey(const Key('resend-reset-code')));
+      await tester.pumpAndSettle();
+      expect(requests.single.url.path, '/auth/forgot');
+      expect(requests.single.headers['Authorization'], isNull);
+      expect(jsonDecode(requests.single.body), {'email': 'reset@example.test'});
+      expect(find.text(emailDeliveryMessage('requested')), findsOneWidget);
+      expect(find.byKey(const Key('email-delivery-status')), findsNothing);
+      expect(find.byKey(const Key('email-reset-password')), findsNothing);
+      await tester.pumpWidget(const SizedBox());
+      c.dispose();
+    },
+  );
+
+  testWidgets(
+    'late email status from account A is ignored after account switch',
+    (tester) async {
+      final delayed = Completer<http.Response>();
+      final c = makeController((_) => delayed.future)
+        ..user = {'id': 'A', 'verified': false}
+        ..token = 'A'
+        ..emailDelivery = 'queued';
+      await tester.pumpWidget(MaterialApp(home: TokenScreen(controller: c)));
+      await tester.ensureVisible(
+        find.byKey(const Key('email-delivery-status')),
+      );
+      await tester.tap(find.byKey(const Key('email-delivery-status')));
+      await tester.pump();
+      c.user = {'id': 'B', 'verified': false};
+      c.token = 'B';
+      delayed.complete(reply({'email_delivery': 'smtp_accepted'}));
+      await tester.pumpAndSettle();
+      expect(c.emailDelivery, 'queued');
+      expect(find.text(emailDeliveryMessage('smtp_accepted')), findsNothing);
+      await tester.pumpWidget(const SizedBox());
+      c.dispose();
+    },
+  );
+
+  testWidgets(
     'reset validates code before showing passwords and returns to manual login',
     (tester) async {
       final requests = <String>[];

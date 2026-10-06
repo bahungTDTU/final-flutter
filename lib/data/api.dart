@@ -82,8 +82,13 @@ class Api {
     String path, {
     String? token,
     Map<String, dynamic>? body,
+    Duration? timeout,
+    Future<void>? cancellation,
   }) async {
     final abort = Completer<void>();
+    cancellation?.then((_) {
+      if (!abort.isCompleted) abort.complete();
+    });
     final request = http.AbortableRequest(
       method,
       Uri.parse('$baseUrl$path'),
@@ -92,7 +97,7 @@ class Api {
     request.headers['Content-Type'] = 'application/json';
     if (token != null) request.headers['Authorization'] = 'Bearer $token';
     if (body != null) request.body = jsonEncode(body);
-    final response = await _send(request, abort, requestTimeout);
+    final response = await _send(request, abort, timeout ?? requestTimeout);
     if (response.statusCode >= 400) {
       _throwError(response);
     }

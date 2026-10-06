@@ -1,0 +1,12 @@
+{
+  "viewport": {
+    "width": 390,
+    "height": 568
+  },
+  "useButton": {
+    "bottom": 552,
+    "height": 40,
+    "top": 512
+  },
+  "scope": "actual old gallery footer, prior to gallery source changes"
+}

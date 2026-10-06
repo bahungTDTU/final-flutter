@@ -1,0 +1,3 @@
+PASS queued registration + private status + actual TLS receipt
+PASS unverified notes + owner/viewer/editor/stranger ACL
+PASS verify one-time + public reset no-enumeration + session revoke/manual login

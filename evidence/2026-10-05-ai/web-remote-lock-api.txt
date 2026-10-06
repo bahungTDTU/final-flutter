@@ -1,0 +1,2 @@
+2026-10-05T14:09:03.509355+00:00
+PASS actual HTTP: protected second Q&A source from a peer session while Web answer visible. No token/content logged.

@@ -55,8 +55,10 @@ def test_environment_is_disabled_by_default_and_rejects_insecure_or_partial_conf
 
 
 def register(client, email='person@example.test'):
-    return client.post('/auth/register', json={'email': email, 'name': 'Test',
+    response = client.post('/auth/register', json={'email': email, 'name': 'Test',
         'password': 'safe-password-123', 'confirmation': 'safe-password-123'})
+    client.app.state.email_queue.run_once()
+    return response
 
 
 def test_api_codes_survive_restart_and_reset_revokes_old_sessions(tls_files, tmp_path):
@@ -64,10 +66,11 @@ def test_api_codes_survive_restart_and_reset_revokes_old_sessions(tls_files, tmp
     database = tmp_path / 'smtp.sqlite3'
     with MailSink(cert, key) as sink:
         transport = SmtpDelivery(SmtpSettings('localhost', sink.port, 'sender@example.test', ca_file=str(cert)))
-        app = create_app(database, email_delivery=transport)
+        app = create_app(database, email_delivery=transport, start_email_worker=False)
         with TestClient(app) as client:
             result = register(client).json()
-            assert result['email_delivery'] == 'smtp_accepted'
+            assert result['email_delivery'] == 'queued'
+            assert client.get('/auth/email-status', headers={'Authorization': 'Bearer ' + result['token']}).json()['email_delivery'] == 'smtp_accepted'
             assert result['user']['verified'] is False
             assert not hasattr(app.state, 'mailbox')
             headers = {'Authorization': 'Bearer ' + result['token']}
@@ -76,11 +79,12 @@ def test_api_codes_survive_restart_and_reset_revokes_old_sessions(tls_files, tmp
             with sqlite3.connect(database) as conn:
                 assert code not in str(conn.execute('SELECT * FROM email_tokens').fetchall())
             assert client.post('/auth/resend', headers=headers).status_code == 429
-        with TestClient(create_app(database, email_delivery=transport)) as client:
+        with TestClient(create_app(database, email_delivery=transport, start_email_worker=False)) as client:
             assert client.post('/auth/verify', json={'token': code}).status_code == 200
             assert client.get('/me', headers=headers).json()['verified'] is True
             assert client.post('/auth/verify', json={'token': code}).status_code == 400
             assert client.post('/auth/forgot', json={'email': 'person@example.test'}).json()['email_delivery'] == 'requested'
+            client.app.state.email_queue.run_once()
             reset = sink.code('person@example.test', 'reset')
             assert client.post('/auth/reset/check', json={'token': code}).status_code == 400
             assert client.post('/auth/reset/check', json={'token': reset}).status_code == 200
@@ -94,10 +98,11 @@ def test_api_codes_survive_restart_and_reset_revokes_old_sessions(tls_files, tmp
 def test_failed_delivery_keeps_account_usable_resend_replaces_code_and_no_enumeration(tmp_path):
     transport = RecordingDelivery()
     transport.fail = True
-    app = create_app(tmp_path / 'failure.sqlite3', email_delivery=transport)
+    app = create_app(tmp_path / 'failure.sqlite3', email_delivery=transport, start_email_worker=False)
     with TestClient(app) as client:
         result = register(client).json()
-        assert result['email_delivery'] == 'delivery_failed'
+        assert result['email_delivery'] == 'queued'
+        assert client.get('/auth/email-status', headers={'Authorization': 'Bearer ' + result['token']}).json()['email_delivery'] == 'retrying'
         headers = {'Authorization': 'Bearer ' + result['token']}
         assert client.get('/notes', headers=headers).status_code == 200
         assert client.post('/auth/forgot', json={'email': 'person@example.test'}).json() == client.post('/auth/forgot', json={'email': 'absent@example.test'}).json()
@@ -106,11 +111,13 @@ def test_failed_delivery_keeps_account_usable_resend_replaces_code_and_no_enumer
         with sqlite3.connect(app.state.database) as conn:
             conn.execute("UPDATE attempts SET blocked_until=0 WHERE scope LIKE 'verify:%'")
         transport.fail = False
-        assert client.post('/auth/resend', headers=headers).json()['email_delivery'] == 'test_only'
+        assert client.post('/auth/resend', headers=headers).json()['email_delivery'] == 'queued'
+        app.state.email_queue.run_once()
         old = transport.messages[-1]['token']
         with sqlite3.connect(app.state.database) as conn:
             conn.execute("UPDATE attempts SET blocked_until=0 WHERE scope LIKE 'verify:%'")
         client.post('/auth/resend', headers=headers)
+        app.state.email_queue.run_once()
         assert client.post('/auth/verify', json={'token': old}).status_code == 400
         assert client.post('/auth/verify', json={'token': transport.messages[-1]['token']}).status_code == 200
         assert client.post('/auth/resend', headers=headers).json()['email_delivery'] == 'already_verified'

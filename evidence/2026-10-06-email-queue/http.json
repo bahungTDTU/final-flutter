@@ -1,0 +1,10 @@
+{
+  "date_utc": "2026-10-06T02:18:33.417204+00:00",
+  "api": "http://127.0.0.1:8011",
+  "transport": "actual SMTP STARTTLS loopback sink, no external delivery",
+  "results": [
+    "PASS queued registration + private status + actual TLS receipt",
+    "PASS unverified notes + owner/viewer/editor/stranger ACL",
+    "PASS verify one-time + public reset no-enumeration + session revoke/manual login"
+  ]
+}

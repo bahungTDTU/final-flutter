@@ -1,0 +1,60 @@
+Resolving dependencies...
+Downloading packages...
+  code_assets 1.2.1 (2.1.0 available)
+  cross_file 0.3.5+5 (0.4.0 available)
+  hooks 2.0.2 (2.2.0 available)
+  idb_shim 2.9.9 (2.9.10 available)
+  jni_flutter 1.0.4 (retracted)
+  material_color_utilities 0.13.0 (0.13.1 available)
+  meta 1.18.3 (1.19.0 available)
+  objective_c 9.5.0 (9.6.2 available)
+  record_use 0.6.0 (1.1.1 available)
+  test_api 0.7.12 (0.7.14 available)
+  vector_math 2.4.0 (2.4.3 available)
+  video_player 2.14.0 (2.14.1 available)
+Got dependencies!
+11 packages have newer versions incompatible with dependency constraints.
+Try `flutter pub outdated` for more information.
+Running Gradle task 'assembleDebug'...                             11,8s
+√ Built build\app\outputs\flutter-apk\app-debug.apk
+Installing build\app\outputs\flutter-apk\app-debug.apk...          642ms
+I/WindowExtensionsImpl( 4825): Initializing Window Extensions, vendor API level=9, activity embedding enabled=true
+D/FlutterRenderer( 4825): Width is zero. 0,0
+D/FlutterJNI( 4825): Sending viewport metrics to the engine.
+D/WindowLayoutComponentImpl( 4825): Register WindowLayoutInfoListener on Context=vn.edu.notetogether.note_together.MainActivity@5ff2a96, of which baseContext=android.app.ContextImpl@5fb5a22
+D/FlutterJNI( 4825): Sending viewport metrics to the engine.
+I/r.note_together( 4825): Compiler allocated 5042KB to compile void android.view.ViewRootImpl.performTraversals()
+VMServiceFlutterDriver: Connecting to Flutter application at http://127.0.0.1:63782/MyDdrQjV-4A=/
+VMServiceFlutterDriver: Isolate found with number: 759179131107711
+VMServiceFlutterDriver: Isolate 759179131107711 is runnable.
+VMServiceFlutterDriver: Isolate is paused at start.
+VMServiceFlutterDriver: Attempting to resume isolate
+I/flutter ( 4825): 00:00 +0: Native AI transport fixture: summary, regeneration, multi-note citations and source open
+VMServiceFlutterDriver: Connected to Flutter application.
+D/InsetsController( 4825): hide(ime(), fromIme=false)
+I/ImeTracker( 4825): vn.edu.notetogether.note_together:2822b823: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN
+V/Configuration( 4825): Updating configuration, locales updated from [en_US] to [en]
+I/r.note_together( 4825): AssetManager2(0x7007358e5958) locale list changing from [] to [en]
+V/Configuration( 4825): Updating configuration, locales updated from [en] to [en_US]
+I/r.note_together( 4825): AssetManager2(0x7007358ed658) locale list changing from [] to [en-US]
+D/ProfileInstaller( 4825): Installing profile for vn.edu.notetogether.note_together
+I/r.note_together( 4825): AssetManager2(0x7007358ebd58) locale list changing from [] to [en-US]
+VMServiceFlutterDriver: request_data message is taking a long time to complete...
+W/WindowOnBackDispatcher( 4825): sendCancelIfRunning: isInProgress=false callback=io.flutter.embedding.android.FlutterActivity$1@f7ea28a
+I/ImeTracker( 4825): vn.edu.notetogether.note_together:2d1846a0: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+D/InsetsController( 4825): show(ime(), fromIme=false)
+D/InsetsController( 4825): Setting requestedVisibleTypes to -1 (was -9)
+I/ImeTracker( 4825): vn.edu.notetogether.note_together:7b08af35: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+D/InsetsController( 4825): show(ime(), fromIme=false)
+I/ImeTracker( 4825): vn.edu.notetogether.note_together:7b08af35: onCancelled at PHASE_CLIENT_REPORT_REQUESTED_VISIBLE_TYPES
+D/InputConnectionAdaptor( 4825): The input method toggled cursor monitoring on
+I/ImeTracker( 4825): vn.edu.notetogether.note_together:b5e758cd: onRequestHide at ORIGIN_CLIENT reason HIDE_SOFT_INPUT fromUser false
+D/InsetsController( 4825): hide(ime(), fromIme=false)
+D/InsetsController( 4825): Setting requestedVisibleTypes to -9 (was -1)
+D/CompatChangeReporter( 4825): Compat change id reported: 395521150; UID 10218; state: ENABLED
+W/RemoteInputConnectionImpl( 4825): getSurroundingText on inactive InputConnection
+I/r.note_together( 4825): AssetManager2(0x700735919ed8) locale list changing from [] to [en-US]
+W/WindowOnBackDispatcher( 4825): sendCancelIfRunning: isInProgress=false callback=android.view.ImeBackAnimationController@dad96ae
+I/flutter ( 4825): 00:08 +1: (tearDownAll)
+I/flutter ( 4825): 00:09 +2: All tests passed!
+All tests passed.

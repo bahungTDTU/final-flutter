@@ -1,4 +1,40 @@
-# UI/UX QA – cập nhật 03/10/2026
+# UI/UX QA – cập nhật 05/10/2026
+
+## Email queue06/10/2026
+
+TokenScreen giữ mã lỗi/input, thêm kiểm tra trạng thái gửi authenticated và email reset/
+request-resend public. Queued/retrying không fake inbox success; account switch bỏ late status.
+Unverified banner không chặn notes. Widget status/reset-resend/late account +320/390 doubled text
+regressions giữ PASS. Full146 Flutter PASS/analyze sạch,88 backend. Actual IAB Web debug7361
+status/verify/banner disappears/reset request-resend/cooldown; API36 debug Skia software full
+verify/reset/status/manual-login với SMTP STARTTLS local PASS. Screenshots/logs ở
+evidence/2026-10-06-email-queue/INDEX.md. Không Gmail/Outlook/public/physical/release claim.
+
+## Ghi chú bảo vệ05/10/2026
+
+NoteTextField chung với editor thường; owner/editor edit/autosave, pin/owner labels; viewer
+read-only. Locked list/home/semantics không title/labels/pin/shared metadata; chỉ sau unlock
+mới render. Confirm delete che title và disable khi revoke. Dirty draft chặn AI/change/delete;
+offline chặn shares/files/AI, báo rõ quyền chưa được xác nhận. Recovery chọn bằng số, password
+gate; copy riêng. SSE clean update giữ base, explicit new-version edit; dirty conflict giữ input.
+
+Host143 Flutter PASS/analyze sạch gồm widget revoke confirmation/viewer metadata, crypto thật/
+durability/lost ack/latest edit/unpin/account field merge/picker gate/delete409/old-password copy then new-password unlock. Actual IAB Web
+release: unlock/edit/API content, peer realtime, TXT filechooser/upload/hash + share list,
+backend mất kết nối → password unlock/edit → reload locked home → reopen → reconnect password
+revalidate → same-ID sync. Screenshots/evidence: evidence/2026-10-05-protected-notes/INDEX.md.
+Android API36 debug real API/platform keys/Sembast/SSE core/offline/reopen/sync/delete trong log
+riêng; không native protected OS picker/media/OS kill/Wi-Fi toggle claim. Provider Gemini thật,
+NVDA/TalkBack/physical/public HTTPS/full release vẫn chưa chạy.
+
+## AI05/10/2026
+
+Summary dialog/regenerate và Q&A/citation integrated với backend. Host viewport320×568/
+text200% có regression. Actual Web local Summary/Q&A2sources/citation/no-data/source-lock
+hide; native API36 debug Skia software Summary/regenerate/Q&A/citation screenshots/flow
+PASS qua explicit provider fixture, không LLM thật. Xem evidence/2026-10-05-ai/INDEX.md.
+AI result RAM-only/gate/lifecycle, thông báo Gemini free-tier data trước gửi; không overwrite.
+Chưa real Gemini/protected UI toàn bộ/screen-reader/public/native release/physical QA.
 
 ## Maintenance03/10/2026
 
@@ -223,3 +259,20 @@ SSE/API/reconnect/conflict/viewer/revoke/reopen đã chạy. Exact Web build bou
 draft/lock/recovery checks và screenshots ở evidence/2026-10-02-realtime/INDEX.md. Browser
 keyboard semantics cần focus/keyboard từng bước; không suy ra NVDA/TalkBack/OS hidden tabs.
 Protected-reader realtime/physical/release functional/load/public HTTPS/video chưa nghiệm thu.
+
+
+## Writing Studio06/10
+
+155 Flutter/88 backend/analyze PASS;9 regression mới và41 selected layout/sharing/studio cases PASS.320px/chữ200%/reduced motion;actual IAB Web debug gallery/check/focus/reload/remote lock che UI-semantics;API36 debug real API/keys/encrypted DB offline close-reopen PASS. Ảnh/log/source hashes ở evidence/2026-10-06-writing-studio/INDEX.md. Không FPS/NVDA/TalkBack/physical/release functional claim.
+
+
+## UI đồng bộ/responsive/performance06/10
+
+ReadingCanvas dùng chung editor/AI/protected, width800/adaptive spacing/Scaffold keyboard resize;
+gallery không backdrop lặp,6tones/compact footer/preview dialog, short landscape/chữ200%.
+Bound card preview480UTF16+ellipsis, source/account/query/role/label-aware view cache, suffix-only
+search input rebuild/literal Unicode search. Locked pin/date/group và semantics được ẩn.
+161 Flutter/88 backend/analyze PASS;native debug3 reused workflows, actual Web gallery/theme/
+AI form breakpoint/protected unlock-relock/tail100000 search/remote lock cached Home PASS.
+Host benchmark NotoSans có phạm vi, không FPS. Xem UI_COHESION_AND_PERFORMANCE.md và
+evidence/2026-10-06-ui-cohesion/INDEX.md;physical/screen-reader/production/release chưa nghiệm thu.

@@ -1,0 +1,3 @@
+PASS secret-pattern check: no Gemini key bytes in tracked/nonignored source/evidence files.
+Key file exists: False
+PASS README == Readme.txt

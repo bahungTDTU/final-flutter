@@ -1,0 +1,189 @@
+Resolving dependencies...
+Downloading packages...
+  code_assets 1.2.1 (2.1.0 available)
+  cross_file 0.3.5+5 (0.4.0 available)
+  hooks 2.0.2 (2.2.0 available)
+  idb_shim 2.9.9 (2.9.10 available)
+  jni_flutter 1.0.4 (retracted)
+  material_color_utilities 0.13.0 (0.13.1 available)
+  meta 1.18.3 (1.19.0 available)
+  objective_c 9.5.0 (9.6.2 available)
+  record_use 0.6.0 (1.1.1 available)
+  test_api 0.7.12 (0.7.14 available)
+  vector_math 2.4.0 (2.4.3 available)
+  video_player 2.14.0 (2.14.1 available)
+Got dependencies!
+11 packages have newer versions incompatible with dependency constraints.
+Try `flutter pub outdated` for more information.
+Running Gradle task 'assembleDebug'...                              7,8s
+√ Built build\app\outputs\flutter-apk\app-debug.apk
+Installing build\app\outputs\flutter-apk\app-debug.apk...          707ms
+W/HWUI    ( 4086): Unknown dataspace 0
+I/WindowExtensionsImpl( 4086): Initializing Window Extensions, vendor API level=9, activity embedding enabled=true
+D/FlutterRenderer( 4086): Width is zero. 0,0
+D/FlutterJNI( 4086): Sending viewport metrics to the engine.
+D/WindowLayoutComponentImpl( 4086): Register WindowLayoutInfoListener on Context=vn.edu.notetogether.note_together.MainActivity@831d5a1, of which baseContext=android.app.ContextImpl@ae0c652
+D/FlutterJNI( 4086): Sending viewport metrics to the engine.
+I/r.note_together( 4086): Compiler allocated 5042KB to compile void android.view.ViewRootImpl.performTraversals()
+VMServiceFlutterDriver: Connecting to Flutter application at http://127.0.0.1:49155/q06dwV9lPLk=/
+VMServiceFlutterDriver: Isolate found with number: 6603222796358455
+VMServiceFlutterDriver: Isolate 6603222796358455 is runnable.
+VMServiceFlutterDriver: Isolate is paused at start.
+VMServiceFlutterDriver: Attempting to resume isolate
+I/flutter ( 4086): 00:00 +0: Native SMTP/TLS received code verifies banner and public reset requires manual login
+VMServiceFlutterDriver: Connected to Flutter application.
+D/InsetsController( 4086): hide(ime(), fromIme=false)
+I/ImeTracker( 4086): vn.edu.notetogether.note_together:232b4c8c: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN
+V/Configuration( 4086): Updating configuration, locales updated from [en_US] to [en]
+I/r.note_together( 4086): AssetManager2(0x76842450e7d8) locale list changing from [] to [en]
+V/Configuration( 4086): Updating configuration, locales updated from [en] to [en_US]
+I/r.note_together( 4086): AssetManager2(0x76842450a638) locale list changing from [] to [en-US]
+D/ProfileInstaller( 4086): Installing profile for vn.edu.notetogether.note_together
+I/r.note_together( 4086): AssetManager2(0x768424522058) locale list changing from [] to [en-US]
+VMServiceFlutterDriver: request_data message is taking a long time to complete...
+I/ImeTracker( 4086): vn.edu.notetogether.note_together:a0369f45: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+D/InsetsController( 4086): show(ime(), fromIme=false)
+D/InsetsController( 4086): Setting requestedVisibleTypes to -1 (was -9)
+I/ImeTracker( 4086): vn.edu.notetogether.note_together:96e0d558: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+D/InsetsController( 4086): show(ime(), fromIme=false)
+I/ImeTracker( 4086): vn.edu.notetogether.note_together:96e0d558: onCancelled at PHASE_CLIENT_REPORT_REQUESTED_VISIBLE_TYPES
+I/ImeTracker( 4086): vn.edu.notetogether.note_together:7f9a3bc: onRequestHide at ORIGIN_CLIENT reason HIDE_SOFT_INPUT fromUser false
+D/InsetsController( 4086): hide(ime(), fromIme=false)
+D/InsetsController( 4086): Setting requestedVisibleTypes to -9 (was -1)
+D/CompatChangeReporter( 4086): Compat change id reported: 395521150; UID 10217; state: ENABLED
+I/ImeTracker( 4086): vn.edu.notetogether.note_together:41fca6e8: onRequestHide at ORIGIN_CLIENT reason HIDE_SOFT_INPUT fromUser false
+D/InsetsController( 4086): hide(ime(), fromIme=false)
+I/ImeTracker( 4086): vn.edu.notetogether.note_together:41fca6e8: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN
+W/RemoteInputConnectionImpl( 4086): requestCursorUpdates on inactive InputConnection
+W/RemoteInputConnectionImpl( 4086): getSurroundingText on inactive InputConnection
+W/WindowOnBackDispatcher( 4086): sendCancelIfRunning: isInProgress=false callback=android.view.ImeBackAnimationController@c67232f
+W/WindowOnBackDispatcher( 4086): sendCancelIfRunning: isInProgress=false callback=io.flutter.embedding.android.FlutterActivity$1@b46d14f
+D/FlutterJNI( 4086): Sending viewport metrics to the engine.
+I/ImeTracker( 4086): vn.edu.notetogether.note_together:7216b8e2: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+D/InsetsController( 4086): show(ime(), fromIme=false)
+D/InsetsController( 4086): Setting requestedVisibleTypes to -1 (was -9)
+I/ImeTracker( 4086): vn.edu.notetogether.note_together:a7764020: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+D/InsetsController( 4086): show(ime(), fromIme=false)
+I/ImeTracker( 4086): vn.edu.notetogether.note_together:a7764020: onCancelled at PHASE_CLIENT_REPORT_REQUESTED_VISIBLE_TYPES
+D/InputConnectionAdaptor( 4086): The input method toggled cursor monitoring on
+W/InteractionJankMonitor( 4086): Initializing without READ_DEVICE_CONFIG permission. enabled=true, interval=1, missedFrameThreshold=3, frameTimeThreshold=64, package=vn.edu.notetogether.note_together
+D/FlutterJNI( 4086): Sending viewport metrics to the engine.
+D/FlutterJNI( 4086): Sending viewport metrics to the engine.
+D/FlutterJNI( 4086): Sending viewport metrics to the engine.
+D/FlutterJNI( 4086): Sending viewport metrics to the engine.
+D/FlutterJNI( 4086): Sending viewport metrics to the engine.
+D/FlutterJNI( 4086): Sending viewport metrics to the engine.
+D/FlutterJNI( 4086): Sending viewport metrics to the engine.
+D/FlutterJNI( 4086): Sending viewport metrics to the engine.
+D/FlutterJNI( 4086): Sending viewport metrics to the engine.
+D/FlutterJNI( 4086): Sending viewport metrics to the engine.
+D/FlutterJNI( 4086): Sending viewport metrics to the engine.
+D/FlutterJNI( 4086): Sending viewport metrics to the engine.
+D/FlutterJNI( 4086): Sending viewport metrics to the engine.
+D/FlutterJNI( 4086): Sending viewport metrics to the engine.
+D/FlutterJNI( 4086): Sending viewport metrics to the engine.
+D/FlutterJNI( 4086): Sending viewport metrics to the engine.
+D/FlutterJNI( 4086): Sending viewport metrics to the engine.
+I/ImeTracker( 4086): vn.edu.notetogether.note_together:7216b8e2: onShown
+D/FlutterJNI( 4086): Sending viewport metrics to the engine.
+D/FlutterJNI( 4086): Sending viewport metrics to the engine.
+I/ImeTracker( 4086): vn.edu.notetogether.note_together:213e6e76: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+D/InsetsController( 4086): show(ime(), fromIme=false)
+I/ImeTracker( 4086): vn.edu.notetogether.note_together:213e6e76: onCancelled at PHASE_CLIENT_APPLY_ANIMATION
+I/ImeTracker( 4086): vn.edu.notetogether.note_together:d2fc340c: onRequestHide at ORIGIN_CLIENT reason HIDE_SOFT_INPUT fromUser false
+D/InsetsController( 4086): hide(ime(), fromIme=false)
+W/WindowOnBackDispatcher( 4086): sendCancelIfRunning: isInProgress=false callback=android.view.ImeBackAnimationController@c67232f
+D/InsetsController( 4086): Setting requestedVisibleTypes to -9 (was -1)
+W/WindowOnBackDispatcher( 4086): sendCancelIfRunning: isInProgress=false callback=io.flutter.embedding.android.FlutterActivity$1@b46d14f
+D/FlutterJNI( 4086): Sending viewport metrics to the engine.
+D/FlutterJNI( 4086): Sending viewport metrics to the engine.
+D/FlutterJNI( 4086): Sending viewport metrics to the engine.
+D/FlutterJNI( 4086): Sending viewport metrics to the engine.
+D/FlutterJNI( 4086): Sending viewport metrics to the engine.
+D/FlutterJNI( 4086): Sending viewport metrics to the engine.
+D/FlutterJNI( 4086): Sending viewport metrics to the engine.
+D/FlutterJNI( 4086): Sending viewport metrics to the engine.
+D/FlutterJNI( 4086): Sending viewport metrics to the engine.
+D/FlutterJNI( 4086): Sending viewport metrics to the engine.
+D/FlutterJNI( 4086): Sending viewport metrics to the engine.
+D/FlutterJNI( 4086): Sending viewport metrics to the engine.
+D/FlutterJNI( 4086): Sending viewport metrics to the engine.
+D/FlutterJNI( 4086): Sending viewport metrics to the engine.
+I/ImeTracker( 4086): system_server:8fded530: onCancelled at PHASE_CLIENT_ON_CONTROLS_CHANGED
+W/FrameTracker( 4086): Missed SF frame:JANK_COMPOSER, 22820, 14064536, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 4086): Missed SF frame:JANK_COMPOSER, 22849, 15269770, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 4086): Missed SF frame:JANK_COMPOSER, 22871, 16618304, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 4086): Missed SF frame:JANK_COMPOSER, 22893, 14784938, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 4086): Missed SF frame:JANK_COMPOSER, 22929, 16172872, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 4086): Missed App frame:UNKNOWN: 3, 22958, 54123206, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 4086): Missed SF frame:UNKNOWN: 3, 22958, 54123206, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 4086): Missed SF frame:JANK_COMPOSER, 22994, 9168408, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 4086): Missed SF frame:JANK_COMPOSER, 23016, 14342342, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 4086): Missed SF frame:JANK_COMPOSER, 23038, 14855776, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 4086): Missed SF frame:JANK_COMPOSER, 23060, 17062110, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 4086): Missed SF frame:JANK_COMPOSER, 23082, 14273044, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 4086): Missed SF frame:JANK_COMPOSER, 23104, 15077778, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 4086): Missed SF frame:JANK_COMPOSER, 23126, 21621312, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 4086): Missed SF frame:JANK_COMPOSER, 23148, 23895346, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 4086): Missed SF frame:JANK_COMPOSER, 23163, 20638680, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 4086): Missed SF frame:JANK_COMPOSER, 23178, 15411514, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 4086): Missed SF frame:JANK_COMPOSER, 23200, 15715948, CUJ=J<IME_INSETS_SHOW_ANIMATION::0@1@vn.edu.notetogether.note_together>
+V/PerfettoTrigger( 4086): Triggering /system/bin/trigger_perfetto com.android.telemetry.interaction-jank-monitor-80
+W/FrameTracker( 4086): Missed SF frame:JANK_COMPOSER, 23377, 15593594, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 4086): Missed App frame:UNKNOWN: 3, 23392, 87274528, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 4086): Missed SF frame:UNKNOWN: 3, 23392, 87274528, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 4086): Missed App frame:UNKNOWN: 3, 23399, 56702898, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 4086): Missed SF frame:UNKNOWN: 3, 23399, 56702898, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 4086): Missed SF frame:JANK_COMPOSER, 23430, 12826368, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 4086): Missed SF frame:JANK_COMPOSER, 23459, 14127802, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 4086): Missed SF frame:JANK_COMPOSER, 23488, 16746736, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 4086): Missed SF frame:JANK_COMPOSER, 23517, 22166070, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 4086): Missed SF frame:JANK_COMPOSER, 23546, 16718704, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 4086): Missed SF frame:JANK_COMPOSER, 23575, 14856538, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 4086): Missed SF frame:JANK_COMPOSER, 23604, 15646872, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 4086): Missed SF frame:JANK_COMPOSER, 23633, 55028706, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+V/PerfettoTrigger( 4086): Triggering /system/bin/trigger_perfetto com.android.telemetry.interaction-jank-monitor-81
+I/ImeTracker( 4086): vn.edu.notetogether.note_together:8f351587: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+D/InsetsController( 4086): show(ime(), fromIme=false)
+D/InsetsController( 4086): Setting requestedVisibleTypes to -1 (was -9)
+I/ImeTracker( 4086): vn.edu.notetogether.note_together:7ff5cb6: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+D/InsetsController( 4086): show(ime(), fromIme=false)
+I/ImeTracker( 4086): vn.edu.notetogether.note_together:7ff5cb6: onCancelled at PHASE_CLIENT_REPORT_REQUESTED_VISIBLE_TYPES
+D/InputConnectionAdaptor( 4086): The input method toggled cursor monitoring on
+I/ImeTracker( 4086): vn.edu.notetogether.note_together:733db118: onRequestHide at ORIGIN_CLIENT reason HIDE_SOFT_INPUT fromUser false
+D/InsetsController( 4086): hide(ime(), fromIme=false)
+D/InsetsController( 4086): Setting requestedVisibleTypes to -9 (was -1)
+I/ImeTracker( 4086): vn.edu.notetogether.note_together:98010abd: onRequestHide at ORIGIN_CLIENT reason HIDE_SOFT_INPUT fromUser false
+D/InsetsController( 4086): hide(ime(), fromIme=false)
+I/ImeTracker( 4086): vn.edu.notetogether.note_together:98010abd: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN
+W/RemoteInputConnectionImpl( 4086): getSurroundingText on inactive InputConnection
+W/WindowOnBackDispatcher( 4086): sendCancelIfRunning: isInProgress=false callback=android.view.ImeBackAnimationController@c67232f
+I/r.note_together( 4086): AssetManager2(0x768424539438) locale list changing from [] to [en-US]
+I/ImeTracker( 4086): vn.edu.notetogether.note_together:43ea761: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+D/InsetsController( 4086): show(ime(), fromIme=false)
+D/InsetsController( 4086): Setting requestedVisibleTypes to -1 (was -9)
+I/ImeTracker( 4086): vn.edu.notetogether.note_together:73ae3e9e: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+D/InsetsController( 4086): show(ime(), fromIme=false)
+I/ImeTracker( 4086): vn.edu.notetogether.note_together:73ae3e9e: onCancelled at PHASE_CLIENT_REPORT_REQUESTED_VISIBLE_TYPES
+D/InputConnectionAdaptor( 4086): The input method toggled cursor monitoring on
+I/ImeTracker( 4086): vn.edu.notetogether.note_together:459bc593: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+D/InsetsController( 4086): show(ime(), fromIme=false)
+I/ImeTracker( 4086): vn.edu.notetogether.note_together:459bc593: onCancelled at PHASE_CLIENT_REPORT_REQUESTED_VISIBLE_TYPES
+I/ImeTracker( 4086): vn.edu.notetogether.note_together:e91b5ff8: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+D/InsetsController( 4086): show(ime(), fromIme=false)
+I/ImeTracker( 4086): vn.edu.notetogether.note_together:e91b5ff8: onCancelled at PHASE_CLIENT_REPORT_REQUESTED_VISIBLE_TYPES
+W/RemoteInputConnectionImpl( 4086): getSurroundingText on inactive InputConnection
+I/ImeTracker( 4086): vn.edu.notetogether.note_together:830a358d: onRequestHide at ORIGIN_CLIENT reason HIDE_SOFT_INPUT fromUser false
+D/InsetsController( 4086): hide(ime(), fromIme=false)
+D/InsetsController( 4086): Setting requestedVisibleTypes to -9 (was -1)
+I/ImeTracker( 4086): vn.edu.notetogether.note_together:d2d96754: onRequestHide at ORIGIN_CLIENT reason HIDE_SOFT_INPUT fromUser false
+D/InsetsController( 4086): hide(ime(), fromIme=false)
+I/ImeTracker( 4086): vn.edu.notetogether.note_together:d2d96754: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN
+W/RemoteInputConnectionImpl( 4086): requestCursorUpdates on inactive InputConnection
+W/RemoteInputConnectionImpl( 4086): getSurroundingText on inactive InputConnection
+W/WindowOnBackDispatcher( 4086): sendCancelIfRunning: isInProgress=false callback=android.view.ImeBackAnimationController@c67232f
+I/ImeTracker( 4086): system_server:8847c74a: onCancelled at PHASE_CLIENT_ON_CONTROLS_CHANGED
+W/WindowOnBackDispatcher( 4086): sendCancelIfRunning: isInProgress=false callback=io.flutter.embedding.android.FlutterActivity$1@b46d14f
+I/flutter ( 4086): 00:13 +1: (tearDownAll)
+I/flutter ( 4086): 00:13 +2: All tests passed!
+All tests passed.

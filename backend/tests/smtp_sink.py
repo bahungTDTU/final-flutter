@@ -119,6 +119,9 @@ class MailSink:
         for record in reversed(self.messages):
             if record['recipient'] == recipient:
                 body = record['message'].get_content()
-                if ('xác minh' if kind == 'verify' else 'đặt lại') in body:
+                # Instructions in both bodies mention reset. Classify by subject,
+                # otherwise async reset lookup can mistake an earlier verify mail.
+                subject = str(record['message']['Subject'])
+                if ('xác minh' if kind == 'verify' else 'đặt lại') in subject:
                     return re.search(r'\n\n([A-Za-z0-9_-]{43})\n', body)[1]
         return None

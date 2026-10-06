@@ -1,10 +1,124 @@
-# NoteTogether - trạng thái 03/10/2026
+# NoteTogether - trạng thái 06/10/2026
+
+## Publication Git —06/10/2026
+
+- Người dùng đã ủy quyền commit/push toàn bộ thay đổi hiện có lên
+  https://github.com/bahungTDTU/final-flutter, nhánh master. Dùng cấu hình Git
+  Bahung <523K0006@student.tdtu.edu.vn>, không thêm GPT/Codex co-author.
+- Bản cập nhật gom AI, protected offline editing/recovery, transaction email outbox,
+  Writing Studio và UI/responsive/performance đã nghiệm thu local ở các mốc bên dưới.
+  Gate gần nhất161 Flutter/88 backend PASS;Web/Android debug có evidence riêng.
+- Các câu “chưa commit/push” bên dưới là trạng thái lúc chạy QA từng đợt. HEAD/remote
+  hiện tại kiểm tra bằng git log và git ls-remote origin refs/heads/master; evidence
+  manifest giữ baseADED41e trước publication và hashes của snapshot, không fake timestamp.
+- Release/HTTPS/signing vẫn hoãn; chưa nghiệm thu Gemini thật/thư Internet/physical.
+
+## UI đồng bộ và performance —06/10/2026
+
+- ReadingCanvas/Prism chung cho ordinary editor, AI Q&A và protected reader; adaptive spacing,
+  không double keyboard inset. Gallery6tone, footer compact/preview dialog/cửa sổ thấp/chữ lớn;
+  bỏ backdrop lặp. Card preview480+ellipsis, không split surrogate; full-text search vẫn đủ.
+- Route-local listing cache invalidates nguồn/account/labels/role/query; suffix-only search rebuild,
+  literal Unicode matching tránh lowercase toàn note; locked pin/date/group/semantics được ẩn.
+  Giữ home scroll/filter và editor ID/frozen base/caret; không đổi schema/controller sync.
+- 161 Flutter/88 backend/analyze PASS;6 regression mới. Native API36 debug3 reused real workflows
+  PASS47s; actual IAB debug gallery/theme/AI form resize/protected unlock/relock/search100000chars/
+  SSE lock cached Home PASS; direct HTTP4roles PASS. Không AI provider call/physical/FPS claim.
+- Benchmark host NotoSans11 medians: paragraph4279→165µs;500note prefix query348926→388µs,
+  cache repeat10µs. Đây là workload kiểm soát, không suy ra FPS/mọiquery. Docs/evidence:
+  docs/UI_COHESION_AND_PERFORMANCE.md; evidence/2026-10-06-ui-cohesion/INDEX.md.
+  Release vẫn hoãn; chưa commit/push/deploy.
+
+## Xưởng ghi chú — 06/10/2026
+
+- Bổ sung sáng tạo liên quan trực tiếp đến note:6 mẫu có preview/durable account draft,
+  dàn ý/checklist tương tác theo text + tiến độ/thời gian đọc, viết tập trung/phiên25 phút.
+  Offline, không dependency/API/table mới; không gọi công cụ xác định này là LLM.
+- Checkbox sửa nội dung qua draft/save/outbox hiện có; giữ frozen base/caret, stale-text guard,
+  viewer/new-base readonly, lock/revoke che panel. Protected reader chưa nối công cụ sáng tạo.
+- 155 Flutter/88 backend PASS/analyze sạch;320px/chữ200%/reduced motion; actual HTTP4roles
+  và IAB Web debug template/check/focus/reload/SSE-lock PASS. API36 debug real API/keys/
+  encrypted Sembast offline close-reopen PASS;1 functional scenario, teardown không thêm case.
+- Hướng dẫn/demo: docs/WRITING_STUDIO.md; evidence/2026-10-06-writing-studio/INDEX.md.
+  Không bảo đảm điểm sáng tạo; không FPS/physical/screen-reader/OS kill claim. Release vẫn hoãn,
+  không push/deploy/commit/Gemini thật/thư Internet; audit cũ giữ snapshot lịch sử.
+
+## Email bền và retry — 06/10/2026
+
+- Theo yêu cầu mới, release để sau cùng; không triển khai signing/Docker/HTTPS trong lượt này.
+  Bổ sung auth email chức năng: transaction outbox, FastAPI lifespan worker, lease120s,
+  backoff/max6, retry/restart cùng mã, invalidation theo token TTL/used/resend. Auth không chờ SMTP.
+- HMAC-SHA256 với nonce32 byte/user/kind và server key riêng; DB không mã thô, private key
+  ngoài SQLite/Git. Key loss fail-closed giữ job; forgot known/unknown vẫn generic khi lỗi key.
+- Authenticated email-status scoped theo account; UI queued/retrying/accepted/failed,
+  check trạng thái; public reset request-resend/email input/cooldown, không status oracle.
+- 146 Flutter PASS/analyze sạch,88 backend PASS (9 queue regressions có real TLS retry;
+  3 widget regressions mới). HTTP owner/viewer/editor/stranger + actual SMTP/TLS receipt +
+  verify/reset/session revoke PASS local. API36 debug Skia software verify/status/banner/
+  reset/manual login PASS; Web debug actual status/verify/public resend/cooldown PASS.
+- Evidence: evidence/2026-10-06-email-queue/INDEX.md, docs/EMAIL_DELIVERY.md. Thư ngoài/Gemini
+  thật/physical/public release/video chưa nghiệm thu. Không commit/push hoặc gọi dịch vụ ngoài.
+  Audit/readiness06/10 trước đợt này giữ snapshot lịch sử; release plan hoãn theo yêu cầu.
+
+## Ghi chú bảo vệ — 05/10/2026
+
+- Protected reader nay có edit/autosave650ms, confirmed owner delete, pin/owner labels,
+  metadata shared/pinned/role sau unlock, editable private files và owner shares. Server
+  role/grant check cho mỗi operation; payload không cấp permission/protection.
+- Password-encrypted cache/draft/immutable operation: PBKDF2-SHA256600000 + AES-GCM,
+  AAD account+note, fresh nonce, nằm trong encrypted account snapshot; không vào ordinary
+  notes/drafts/outbox/search, không persist password/derived key. Device key/storage vẫn cần.
+- Offline password unlock cho bản đã tải; DB reopen/Web reload giữ latest draft. Reconnect
+  che content và cần server unlock trước gửi. Revoke/delete/password change giữ bản nháp
+  bằng mật khẩu cũ để copy ID mới riêng, không mở lại source. Account/field-merge/race guards.
+- SSE cập nhật clean content nhưng freeze base; explicit new-version edit; dirty409 giữ
+  bản local. Lost ack replay cùng payload/op_id, input in-flight nối own ack. Delete409 refetch
+  và xác nhận mới; revoke trong delete dialog che title/vô hiệu hành động.
+- Web local IAB actual unlock/realtime/new-base edit/autosave/private TXT chooser/upload/
+  share list/offline backend-unreachable/reload/password reopen/revalidation/same-ID sync PASS.
+  Actual HTTP owner/viewer/editor/stranger, minimal locked list, private files, replay409/revoke/
+  password change/delete PASS. Android API36 debug real API/SSE/keys/Sembast flow có log riêng.
+- Host143 Flutter/79 backend PASS/analyze sạch; build/source verification kết quả trong
+  evidence/2026-10-05-protected-notes/INDEX.md. Test KDF thực default600000 có timeout2 phút
+  riêng sau lượt chạy song song timeout30s; không giảm KDF production.
+- Final source native integration PASS43s; Web40resources/workeraaf0baf19a213a73 và APK56.2MB
+  build PASS. Served main JS/worker bytes khớp build, actual IAB reload/unlock/edit/API autosave
+  PASS sau build; không claim biết exact browser-cache executable hash. README/Readme equality
+  và source/evidence/artifact SHA-256 trong manifest, không thay rerun mọi historical flow.
+- Docs NOTE_PROTECTION/ENCRYPTED_RECOVERY/README/matrix cập nhật; audit05/10 trước AI/protection
+  vẫn là snapshot lịch sử. Không push/deploy mới. Không E2EE/key backup/OS force-kill/physical/
+  public HTTPS/release functional/all32-criteria claim.
+
+## AI Summary và Q&A — 05/10/2026
+
+- Đã nối Gemini REST backend, authenticated Summary/Questions/Validate API, provider
+  disabled khi không có key; summary/regenerate không mutate note, Q&A BM25 chunk retrieval
+  từ notes authorized/unlocked, synthesis JSON/citations server-validated, no-data/error UI.
+- Recheck mọi context source/session/grant/revision trước gửi và sau inference; không giữ
+  SQLite transaction qua network. Client account/epoch/gate/remote/poll/lifecycle che result;
+  result RAM-only, không lưu vào cache/vault/outbox/history. Frozen editor base giữ nguyên.
+- UI: editor Summary; Home Hỏi ghi chú; protected reader Summary/Hỏi AI sau unlock.
+  Gemini key chỉ backend; config script nhập che ký tự/file local ignored; app budgets bền.
+- 131 Flutter/73 backend PASS, analyze sạch ở check05/10; 17 backend AI cases và8 Flutter
+  AI regressions. Actual HTTP owner/viewer/editor/stranger/locked/revoke/no-data PASS với
+  **provider fixture**; API8000 thiếu key trả503 đúng, không fake success.
+- Actual Web local release Summary/Q&A2sources/citation open/insufficient/remote-lock hide
+  và Android API36 debug Skia software Summary/regenerate/Q&A/citation PASS qua fixture.
+  Scope/commands/logs/screenshots ở evidence/2026-10-05-ai/INDEX.md, docs/AI_FEATURES.md.
+- **Gemini thật chưa chạy**: người dùng chọn hoàn tất mã/local QA trước. Key cũ hiện có
+  đã xuất hiện trong output công cụ do redaction chỉ nhận format cũ; không lưu/sử dụng
+  key đó. Cần người dùng thay/config key mới; không nâng trạng thái27/28 thành full.
+- Không public deploy, physical-device/full release acceptance, video hoặc push mới.
+  Final Web40resources/worker0b3445ebf15f821a và APK55.9MB build PASS, API8000 mặc định;
+  không để final build nối fixture8012; release-functional/HTTPS vẫn chưa nghiệm thu.
+  Audit docs/FINAL_PROJECT_AUDIT_2026-10-05.md giữ snapshot trước triển khai AI.
 
 ## Mốc hiện tại
 
 M0 đã dựng nền tảng và kiểm chứng nhiều spike local; chưa hoàn thành mọi spike dịch vụ.
 M1/M2 đã triển khai một phần. M3 có sync/conflict/protection/ACL backend spine; chưa nghiệm thu đầy đủ.
-M4 sharing/SSE realtime đã có local QA; chưa nghiệm thu mọi gate. M5–M7 chưa hoàn thành.
+M4 sharing/SSE realtime đã có local QA; chưa nghiệm thu mọi gate.
+M5 AI đã có code/local fixture QA, chưa real-provider acceptance; M6–M7 chưa hoàn thành.
 Route editor đã cố định ID/base; remote sạch hiển thị live, chỉnh sửa phiên bản mới phải explicit.
 Không tuyên bố đạt đủ 32 mục hoặc sẵn sàng nộp.
 
@@ -74,11 +188,15 @@ thật, không suy từ cache đã update. Chưa NVDA/TalkBack/physical/history/
 
 ## Chưa làm / blocker / next work
 
-Internet SMTP delivery và durable email outbox; attachment offline queue/full OS/protected reader/release QA;
-protected editing/offline note-password unlock/key backup; protected-reader share/file UI acceptance;
-protected-reader realtime UI acceptance; full distributed/two-device stress races; real LLM Summary/Q&A/citations;
+Internet SMTP delivery/receipt và production mail-worker vận hành; attachment offline queue/full OS/release QA;
+key backup/transfer; protected reader native OS picker/full media/AI real-provider acceptance;
+full distributed/two-device stress races; Gemini key mới/real LLM acceptance;
 production abuse protection/session storage/signing/backups; public HTTPS; clean clone setup;
 GitHub contribution4 tuần/video/Rubric.xlsx/Insights/final ZIP.
+
+Ưu tiên chức năng tiếp: nghiệm thu các UI core còn thiếu (native nhãn/filter, protected
+file/share/media/AI flow), concurrent permission/cache races và lỗi lifecycle. LLM/SMTP ngoài
+khi nhóm sẵn sàng cấu hình; release/signing/hosting/đóng gói để cuối theo yêu cầu06/10.
 
 GitHub repo đã được người dùng cung cấp và ủy quyền push; cloud/domain/budget/LLM key sẽ xử lý sau,
 không tự deploy/tạo phí.
@@ -86,7 +204,7 @@ Ngày deadline chính xác và ngày bắt đầu chính thức/phân công vẫ
 Người dùng xác nhận 2 thành viên Hùng–Long và được dùng AI toàn phần; xem TEAM_CONTRIBUTIONS.
 
 Remote lock nay giữ draft/upsert qua encrypted recovery; chi tiết và lỗi ghi ở ENCRYPTED_RECOVERY.md.
-Rủi ro trước M3 nghiệm thu: Web key provider experimental, key backup/loss, protected edit/offline unlock.
+Rủi ro trước M3 nghiệm thu: Web key provider experimental, key backup/loss, multi-tab/physical/release QA.
 Session local plaintext chưa production hardening.
 Preference/label outbox/cross-session đã triển khai; retry cố định15s chưa backoff.
 

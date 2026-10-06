@@ -10,7 +10,7 @@ from backend.tests.mail_support import RecordingDelivery
 
 @pytest.fixture
 def env(tmp_path):
-    app = create_app(tmp_path / 'test.sqlite3', email_delivery=RecordingDelivery())
+    app = create_app(tmp_path / 'test.sqlite3', email_delivery=RecordingDelivery(), start_email_worker=False)
     with TestClient(app) as client:
         users = []
         for name in ['owner', 'recipient', 'stranger']:
@@ -19,6 +19,7 @@ def env(tmp_path):
                 'password': 'safe-password-123', 'confirmation': 'safe-password-123'})
             assert response.status_code == 201
             users.append(response.json())
+            app.state.email_queue.run_once()
         yield client, app, users
 
 
@@ -64,6 +65,7 @@ def test_auth_guards_logout_and_hashes(env):
 def test_reset_requires_manual_login_and_invalidates_sessions(env):
     client, app, users = env
     client.post('/auth/forgot', json={'email': 'owner@example.com'})
+    app.state.email_queue.run_once()
     token = app.state.email_delivery.messages[-1]['token']
     result = client.post('/auth/reset', json={'token': token,
         'password': 'new-password-123', 'confirmation': 'new-password-123'})

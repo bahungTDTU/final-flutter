@@ -1,0 +1,2 @@
+2026-10-05T14:00:54.409504+00:00
+PASS actual HTTP8000 no key: enabled=false; Summary and Q&A return503 AI_NOT_CONFIGURED, no fake result.

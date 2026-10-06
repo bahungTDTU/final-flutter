@@ -1,0 +1,9 @@
+00:00 +0: loading D:/flutter cuoi ki/test/ui_cohesion_test.dart
+00:00 +0: Listing reuses status-only view but invalidates in-place replacements, tombstones and accounts
+00:00 +1: Card shaping input and semantics are bounded without splitting a surrogate or reading locked content
+00:00 +2: Typing avoids rebuilding note cards until debounce; search still matches beyond bounded preview
+00:01 +3: Compact gallery footer leaves space in landscape at 200 percent; preview is reachable
+00:01 +4: Shared canvas keeps caret and frozen draft base through short landscape/keyboard resize
+00:01 +5: Controlled NotoSans shaping and cached-query benchmark; timings are evidence, not FPS assertions
+UI_BENCHMARK {"target":"host Flutter test engine/NotoSans","iterations":11,"note_chars":100000,"preview_chars":481,"paragraph_full_median_us":4676,"paragraph_preview_median_us":162,"notes":500,"baseline_query_median_us":352742,"optimized_query_median_us":334,"cached_query_median_us":9,"fps_measured":false}
+00:07 +6: All tests passed!
