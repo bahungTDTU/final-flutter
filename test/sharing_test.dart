@@ -300,7 +300,7 @@ void main() {
         ),
       );
       await tester.enterText(
-        find.widgetWithText(TextField, 'Nội dung'),
+        find.byKey(const Key('note-content')),
         'Typed draft',
       );
       await tester.pump();
@@ -310,13 +310,13 @@ void main() {
       expect(c.recoveries.values.single['content'], 'Typed draft');
       expect(
         tester
-            .widget<TextField>(find.widgetWithText(TextField, 'Nội dung'))
+            .widget<TextField>(find.byKey(const Key('note-content')))
             .readOnly,
         true,
       );
       expect(
         tester
-            .widget<TextField>(find.widgetWithText(TextField, 'Nội dung'))
+            .widget<TextField>(find.byKey(const Key('note-content')))
             .controller!
             .text,
         'Current server content',

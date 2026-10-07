@@ -11,6 +11,10 @@ include: package:flutter_lints/flutter.yaml
 
 analyzer:
   exclude:
+    # Generated harnesses and frozen evidence snapshots are not app sources.
+    # lib/test/integration_test/test_driver remain covered by analyze and checks.
+    - tmp/**
+    - evidence/**
     - build/**
     - android/**
     - ios/**

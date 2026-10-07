@@ -1,0 +1,8 @@
+00:00 +0: loading D:/flutter cuoi ki/test/locked_status_test.dart
+00:00 +0: Listing codec keeps only authorized public status; reader codec keeps full password-vault content
+00:00 +1: Protected pins sort with ordinary pins and update after unpin; search/filter exclude private content
+00:00 +2: Account reopen migrates stale locked metadata and persists only public flags
+00:00 +3: Protection cooldown has clear UI error for change and disable
+00:00 +4: Locked status is accessible together in grid without private metadata at 200 percent
+00:01 +5: Locked status is accessible together in list without private metadata at 200 percent
+00:01 +6: All tests passed!

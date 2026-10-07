@@ -1,0 +1,66 @@
+00:00 +0: loading D:/flutter cuoi ki/test/locked_status_test.dart
+00:00 +0: Listing codec keeps only authorized public status; reader codec keeps full password-vault content
+00:00 +1: Protected pins sort with ordinary pins and update after unpin; search/filter exclude private content
+00:00 +2: Account reopen migrates stale locked metadata and persists only public flags
+00:00 +3: Protection cooldown has clear UI error for change and disable
+00:00 +4: Locked status is accessible together in grid without private metadata at 200 percent
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: no matching candidates
+  Actual: _IconWidgetFinder:<Found 1 widget with icon "IconData(U+0E488)": [
+            Icon(IconData(U+0E488), dependencies: [Directionality, IconTheme]),
+          ]>
+   Which: means one was found but none were expected
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///D:/flutter%20cuoi%20ki/test/locked_status_test.dart:212:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1953:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///D:/flutter%20cuoi%20ki/test/locked_status_test.dart line 212
+The test description was:
+  Locked status is accessible together in grid without private metadata at 200 percent
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:01 +4 -1: Locked status is accessible together in grid without private metadata at 200 percent [E]
+  Test failed. See exception logs above.
+  The test description was: Locked status is accessible together in grid without private metadata at 200 percent
+  
+00:01 +4 -1: Locked status is accessible together in list without private metadata at 200 percent
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: no matching candidates
+  Actual: _IconWidgetFinder:<Found 1 widget with icon "IconData(U+0E488)": [
+            Icon(IconData(U+0E488), dependencies: [Directionality, IconTheme]),
+          ]>
+   Which: means one was found but none were expected
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///D:/flutter%20cuoi%20ki/test/locked_status_test.dart:212:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1953:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///D:/flutter%20cuoi%20ki/test/locked_status_test.dart line 212
+The test description was:
+  Locked status is accessible together in list without private metadata at 200 percent
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:01 +4 -2: Locked status is accessible together in list without private metadata at 200 percent [E]
+  Test failed. See exception logs above.
+  The test description was: Locked status is accessible together in list without private metadata at 200 percent
+  
+00:01 +4 -2: Some tests failed.
+
+Failing tests:
+  D:/flutter cuoi ki/test/locked_status_test.dart: Locked status is accessible together in grid without private metadata at 200 percent
+  D:/flutter cuoi ki/test/locked_status_test.dart: Locked status is accessible together in list without private metadata at 200 percent

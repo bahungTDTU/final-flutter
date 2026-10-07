@@ -1051,16 +1051,17 @@ class _HomeScreenState extends State<HomeScreen> {
               spacing: 8,
               runSpacing: 8,
               children: [
-                if (!note.locked && note.pinnedAt != null)
+                if (note.pinnedAt != null)
                   MetadataPill(
                     'Đã ghim',
                     icon: Icons.push_pin_outlined,
                     tone: palette.tones[4],
                   ),
-                if (!note.locked &&
-                    (note.role != 'owner' || note.sharedCount > 0))
+                if (note.isShared)
                   Tooltip(
-                    message: note.role == 'owner'
+                    message: note.locked
+                        ? 'Ghi chú được chia sẻ'
+                        : note.role == 'owner'
                         ? 'Đã chia sẻ cho ${note.sharedCount} người'
                         : 'Được chia sẻ với bạn',
                     child: const Icon(

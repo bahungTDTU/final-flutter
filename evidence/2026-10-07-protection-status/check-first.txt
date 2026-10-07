@@ -1,0 +1,8 @@
+Formatted 80 files (0 changed) in 0.64 seconds.
+Analyzing flutter cuoi ki...                                    
+
+   info - Don't invoke 'print' in production code. Try using a logging framework - evidence\2026-10-07-project-audit\write_amplification_test.dart:62:5 - avoid_print
+warning - Unused import: 'package:note_together/state/app_controller.dart'. Try removing the import directive - test\locked_status_test.dart:7:8 - unused_import
+   info - Don't invoke 'print' in production code. Try using a logging framework - tmp\audit-2026-10-07\write_amplification_test.dart:62:5 - avoid_print
+
+3 issues found. (ran in 4.3s)

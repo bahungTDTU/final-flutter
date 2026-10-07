@@ -44,13 +44,13 @@ def main():
         token = owner['token']
         notes = call('GET', '/notes', token=token)
         if args.action == 'locked-audit':
-            assert len(notes) == 1 and set(notes[0]) == {'id', 'locked', 'revision', 'role'}
+            assert len(notes) == 1 and set(notes[0]) == {'id', 'locked', 'revision', 'role', 'pinned_at', 'shared'}
             assert notes[0]['locked'] and notes[0]['revision'] == 2 and notes[0]['role'] == 'owner'
             note_id = notes[0]['id']
             assert client.get(f'/notes/{note_id}/shares', headers={'Authorization': f'Bearer {token}'}).status_code == 423
             other = login('other')
             other_notes = call('GET', '/notes', token=other['token'])
-            assert len(other_notes) == 1 and set(other_notes[0]) == {'id', 'locked', 'revision', 'role'}
+            assert len(other_notes) == 1 and set(other_notes[0]) == {'id', 'locked', 'revision', 'role', 'pinned_at', 'shared'}
             assert other_notes[0]['role'] == 'viewer'
             assert client.get(f'/notes/{note_id}', headers={'Authorization': f'Bearer {recipient["token"]}'}).status_code == 404
             print(json.dumps({'check': 'PASS locked redaction', 'note_id': note_id, 'content_revision': 2, 'owner_catalogue': 423, 'revoked_recipient': 404, 'owner_list_fields': sorted(notes[0]), 'viewer_list_fields': sorted(other_notes[0])}))

@@ -1,4 +1,43 @@
-# NoteTogether - trạng thái 06/10/2026
+# NoteTogether - trạng thái 07/10/2026
+
+## Publication Git —07/10/2026
+
+Người dùng đã ủy quyền commit/push các thay đổi UI editor, audit và hai sửa F1/F2 lên
+bahungTDTU/final-flutter, nhánh master, bằng author/committer Bahung; không co-author
+GPT/Codex. Gate đã chạy173 Flutter/93 backend PASS, final analyze sạch, actual HTTP/Web/
+native debug có evidence riêng. Trạng thái commit/remote xác minh bằng git log/git ls-remote.
+Các câu “chưa commit/push” ở snapshots bên dưới phản ánh thời điểm QA trước publication;
+không thay hashes/timestamps/logs lịch sử thành kết quả mới. Push source không deploy/release.
+
+## Hai ưu tiên cao: mật khẩu và trạng thái khóa —07/10/2026
+
+- Backend dùng chung durable scope user+note cho unlock/change/disable:5 sai/60s, commit
+  failed attempts, chống vòng qua endpoint/session/restart; hết cooldown reset cửa sổ,
+  đúng password clear counter,429 Retry-After. UI change/disable có thông báo chờ rõ.
+- Người dùng xác nhận cho hiện pinned_at/shared boolean trước unlock; title/content/labels/
+  updated_at/identities/share times/counts vẫn che. Protected pin giữ ordering và3 chỉ báo
+  cùng hiện list/grid; codec danh sách sanitize record cũ/cache, codec password vault giữ riêng.
+- Full gate173 Flutter/93 backend PASS, final81 files format0changes/analyze sạch.
+  New6 Flutter/5 backend regressions; actual HTTP4roles, IAB Web debug list/grid1280/390,
+  reload + SSE unpin/revoke/restore; Android API36 debug1new workflow+teardown PASS7s,
+  grid/list/cooldown/platform keys/encrypted DB close-reopen/socket-offline,4PNG.
+- docs/PROTECTION_STATUS_FIXES.md + evidence/2026-10-07-protection-status/INDEX.md.
+  Basef8ff8fa + working changes, chưa commit/push. Release vẫn cuối; không physical/FPS/
+  NVDA/TalkBack/OS kill/public/Gemini/Internet SMTP claim. Hai mục F1/F2 trong audit là
+  snapshot trước sửa; các mục F3–F6 chưa được xử lý bởi đợt này.
+
+## Phân tách editor và chống chồng chữ —06–07/10/2026
+
+Tiêu đề và nội dung có nhãn cố định bên ngoài vùng nhập, khung/focus riêng và bộ đếm
+ở dòng riêng. Ghim/nhãn nằm trong khối Sắp xếp sau nội dung. Ghi chú bảo vệ dùng cùng
+component và phân nhóm thông tin, công cụ, bảo vệ/quản lý. Thanh công cụ thu vào menu
+khi chữ lớn; heading/hướng dẫn checklist có chiều cao theo nội dung.
+167 Flutter/88 backend PASS;6 regression dùng NotoSans thật, geometry320/390/844/1280
+ở200% và hai theme. IAB Web thực: input→API ack, theme/resize giữ text + selection,
+protected edit→API ack→relock/hết phiên che nội dung. Android API36 debug3 reused
+workflows + teardown PASS46s,8 PNG mới; đây không phải4 feature tests.
+Xem docs/EDITOR_SECTIONS_AND_LAYOUT.md và evidence/2026-10-06-editor-sections/INDEX.md.
+Release/physical/NVDA/TalkBack/FPS/Gemini thật vẫn chưa nghiệm thu ở đợt này.
 
 ## Publication Git —06/10/2026
 

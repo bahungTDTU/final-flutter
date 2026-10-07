@@ -69,7 +69,8 @@ def test_listing_lock_revoke_deleted_labels_and_current_owner_identity(env):
                        json={'password': 'note-password-123'}).status_code == 200
     for user, role in ((owner, 'owner'), (recipient, 'viewer')):
         locked = client.get('/notes', headers=headers(user)).json()[0]
-        assert locked == {'id': note_id, 'locked': True, 'revision': 2, 'role': role}
+        assert locked == {'id': note_id, 'locked': True, 'revision': 2, 'role': role,
+                          'pinned_at': None, 'shared': True}
     assert client.delete(f'/notes/{note_id}/shares/{recipient["user"]["id"]}', headers=headers(owner)).status_code == 200
     assert client.get('/notes', headers=headers(recipient)).json() == []
     assert client.get('/notes', headers=headers(stranger)).json() == []
@@ -77,3 +78,48 @@ def test_listing_lock_revoke_deleted_labels_and_current_owner_identity(env):
         conn.execute('UPDATE notes SET deleted=1 WHERE id=?', (note_id,))
     conn.close()
     assert client.get('/notes', headers=headers(owner)).json() == []
+
+
+def test_locked_public_pin_and_sharing_flags_follow_authorized_changes_without_private_fields(env):
+    client, _, users = env
+    owner, viewer, stranger = users
+    editor = client.post('/auth/register', json={
+        'email': 'listing-editor@example.com', 'name': 'Editor',
+        'password': 'safe-password-123', 'confirmation': 'safe-password-123'}).json()
+    op = operation(pinned_at='2026-10-07T01:00:00Z', labels=['Hidden label'])
+    note = op['note_id']
+    assert client.post('/sync', headers=headers(owner), json=op).status_code == 200
+    for user, role in [(viewer, 'viewer'), (editor, 'editor')]:
+        assert client.post(f'/notes/{note}/shares', headers=headers(owner),
+                           json={'email': user['user']['email'], 'role': role}).status_code == 200
+    assert client.post(f'/notes/{note}/protection', headers=headers(owner), json={
+        'password': 'note-password-123', 'confirmation': 'note-password-123'}).status_code == 200
+
+    def listing(user, role, revision, pin, shared=True):
+        result = client.get('/notes', headers=headers(user)).json()
+        assert result == [{'id': note, 'locked': True, 'revision': revision,
+                           'role': role, 'pinned_at': pin, 'shared': shared}]
+        for secret in ['Private title', 'Confidential content', 'Hidden label', 'owner@example.com']:
+            assert secret not in json.dumps(result)
+        return result[0]
+
+    for user, role in [(owner, 'owner'), (viewer, 'viewer'), (editor, 'editor')]:
+        listing(user, role, 2, op['pinned_at'])
+        assert client.get(f'/notes/{note}', headers=headers(user)).status_code == 423
+    assert client.get('/notes', headers=headers(stranger)).json() == []
+    assert client.get(f'/notes/{note}', headers=headers(stranger)).status_code == 404
+    assert client.post('/sync', headers=headers(viewer), json=operation(note, 2)).status_code == 403
+    for user in [owner, editor]:
+        assert client.post(f'/notes/{note}/unlock', headers=headers(user),
+                           json={'password': 'note-password-123'}).status_code == 200
+    listing(owner, 'owner', 2, op['pinned_at'])  # Unlock never expands a list row.
+    latest_pin = '2026-10-07T02:00:00Z'
+    assert client.post('/sync', headers=headers(owner), json=operation(note, 2, pinned_at=latest_pin)).status_code == 200
+    assert client.post('/sync', headers=headers(editor), json=operation(note, 3, pinned_at='2099-01-01')).status_code == 200
+    listing(owner, 'owner', 4, latest_pin)  # Editor cannot manage the owner's pin.
+    assert client.post('/sync', headers=headers(owner), json=operation(note, 4, pinned_at=None)).status_code == 200
+    listing(owner, 'owner', 5, None)
+    for user in [viewer, editor]:
+        assert client.delete(f'/notes/{note}/shares/{user["user"]["id"]}', headers=headers(owner)).status_code == 200
+        assert client.get('/notes', headers=headers(user)).json() == []
+    listing(owner, 'owner', 5, None, shared=False)

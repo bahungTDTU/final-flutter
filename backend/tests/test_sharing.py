@@ -86,7 +86,7 @@ def test_locked_catalogue_grants_metadata_and_legacy_invalidates_cas(env):
     initial=client.get(url+'/shares',headers=headers(owner)).json()
     client.post(url+'/protection',headers=headers(owner),json={'password':'note-password-123','confirmation':'note-password-123'})
     assert client.get(url+'/shares',headers=headers(owner)).status_code==423
-    assert client.get('/notes',headers=headers(recipient)).json()==[{'id':note,'locked':True,'revision':2,'role':'editor'}]
+    assert client.get('/notes',headers=headers(recipient)).json()==[{'id':note,'locked':True,'revision':2,'role':'editor','pinned_at':None,'shared':True}]
     client.post(url+'/unlock',headers=headers(owner),json={'password':'note-password-123'})
     client.post(url+'/unlock',headers=headers(recipient),json={'password':'note-password-123'})
     stale=mutation(initial['revision'],'role',user_id=recipient['user']['id'],role='viewer')

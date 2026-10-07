@@ -1,0 +1,24 @@
+{
+  "collected_at_utc": "2026-10-06T18:44:30.919435+00:00",
+  "local_date": "2026-10-07 Asia/Saigon",
+  "head": "f8ff8fa427b3d490255c0522699f1a9650a3cb73",
+  "remote_master": "f8ff8fa427b3d490255c0522699f1a9650a3cb73",
+  "existing_ui_working_changes_preserved": true,
+  "criteria_rows": 32,
+  "readme_byte_identity": true,
+  "helper_copies_byte_identity": true,
+  "full_suite_rerun": false,
+  "browser_native_rerun": false,
+  "real_gemini_or_internet_smtp": false,
+  "application_source_changes_by_audit": false,
+  "files_sha256": {
+    "docs/PROJECT_AUDIT_2026-10-07.md": "0db97834221fefeeba552564925ea4ca7d600b6136c02c6b74d2f0e1c46c5d1c",
+    "evidence/2026-10-07-project-audit/collect.py": "d968a5f32c240cebf5dc68569490ddb41dfd739e57bbc1ddbc408479edf36084",
+    "evidence/2026-10-07-project-audit/INDEX.md": "8f3832a58cc639ed2fe5d40788df100062788ac79fb29ec9d199888f8ae573d0",
+    "evidence/2026-10-07-project-audit/probe.json": "bf5b446d60495c6fffd55cd5b0e62bd0f5a8f5fe971df11777426dff1e8856fb",
+    "evidence/2026-10-07-project-audit/probe.py": "d28167d13320af1fb3dd84f24646662ccc09599a5a49ee97c4b062d2a00453db",
+    "evidence/2026-10-07-project-audit/write-volume.json": "07d1db0540380091631efb9029d82d46923fb04242a069d77e3aa85392427d0b",
+    "evidence/2026-10-07-project-audit/write-volume.txt": "fc11a06f16b637c47a84d6fff24b1df9bb4904a8218137cdac38833d03e737e8",
+    "evidence/2026-10-07-project-audit/write_amplification_test.dart": "8f0f7a411f5a5b02c1a50aaea50fcdd6e17a7a318ef194ba7130cd765de55578"
+  }
+}

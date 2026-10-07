@@ -1,16 +1,18 @@
-# Ghi chú bảo vệ — cập nhật 05/10/2026
+# Ghi chú bảo vệ — cập nhật 07/10/2026
 
 ## Sử dụng
 
 Menu ghi chú của mình → **Bật khóa ghi chú**, nhập mật khẩu riêng 10–128 ký tự hai lần.
 Hoàn tất bản nháp và outbox trước khi bật/đổi/tắt khóa. Backend xác nhận owner; payload
 không thể đổi owner, role, protection hoặc tự cấp grant. Home/list/search của ghi chú khóa
-chỉ có ID, revision, locked và role; không lộ tiêu đề, nội dung, nhãn, ghim hoặc người chia sẻ.
+trả ID, revision, locked, role, pinned_at và shared boolean. Theo lựa chọn người dùng07/10,
+ghim/chia sẻ/khóa hiện đồng thời và giữ thứ tự ghim; không trả title/content/labels/updated_at,
+số người nhận, danh tính hoặc thời điểm chia sẻ. Search/filter vẫn loại nội dung note khóa.
 
 Chạm thẻ khóa → nhập mật khẩu → mở phiên tối đa 5 phút. Sau mở khóa mới hiển thị nội dung,
 nhãn, shared/pinned/role, người chia sẻ và thời gian nếu có. Owner/editor chọn **Chỉnh sửa**;
 tiêu đề/nội dung dùng cùng NoteTextField với editor thường, autosave650ms và lưu bản nháp
-mã hóa ngay khi nhập. Owner sửa nhãn, owner/editor ghim; viewer chỉ đọc. **Đồng bộ bản nháp**
+mã hóa ngay khi nhập. Owner sửa nhãn/ghim; editor sửa title/content; viewer chỉ đọc. **Đồng bộ bản nháp**
 retry khi có kết nối/grant. Không đưa protected content/draft/operation vào notes/drafts/outbox
 thường hoặc tìm kiếm; route giữ dữ liệu giải mã trong RAM.
 
@@ -22,6 +24,16 @@ và nguồn; AI vẫn cần backend provider được cấu hình, không có k�
 Sau mở khóa online, owner/editor chọn/tải lên/xóa tệp riêng tư; viewer chỉ tải/xem tệp.
 Quản lý chia sẻ chỉ dành owner. Mọi request vẫn qua API permission + grant, không phụ thuộc
 việc nút có hiện trên client. Đính kèm/chia sẻ/AI không hoạt động trong phiên mở offline.
+
+Mọi kiểm tra mật khẩu note hiện tại (unlock/change/disable) dùng chung counter bền theo
+user+note, cả khi đăng nhập phiên khác hoặc backend restart.5 lần sai tạo cooldown60s;
+trong cooldown cả mật khẩu đúng cũng nhận429 + Retry-After. Hết cooldown có cửa sổ5 lần
+mới; đúng mật khẩu xóa counter. Failed attempts commit trước trả403, không mất do rollback.
+Enable note chưa có password không cần đoán mật khẩu hiện tại; quyền owner vẫn bắt buộc.
+
+Note.fromListingJson/toListingJson chỉ giữ public flags trong cache danh sách, kể cả record
+cũ có private metadata. Reader codec đầy đủ vẫn dành cho phiên có grant/password vault.
+Kiểm chứng mới: [PROTECTION_STATUS_FIXES.md](PROTECTION_STATUS_FIXES.md).
 
 ## Cache và bản nháp offline
 

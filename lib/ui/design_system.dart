@@ -11,9 +11,15 @@ abstract final class Space {
 /// Shared reading/writing surface. Padding is derived from available space,
 /// including short landscape windows; controllers stay owned by the route.
 class ReadingCanvas extends StatelessWidget {
-  const ReadingCanvas({super.key, required this.child, this.controller});
+  const ReadingCanvas({
+    super.key,
+    required this.child,
+    this.controller,
+    this.panel = true,
+  });
   final Widget child;
   final ScrollController? controller;
+  final bool panel;
   @override
   Widget build(BuildContext context) => SafeArea(
     child: LayoutBuilder(
@@ -27,10 +33,12 @@ class ReadingCanvas extends StatelessWidget {
             child: SingleChildScrollView(
               controller: controller,
               padding: EdgeInsets.all(inset),
-              child: SurfacePanel(
-                padding: EdgeInsets.all(compact ? 16 : 28),
-                child: child,
-              ),
+              child: panel
+                  ? SurfacePanel(
+                      padding: EdgeInsets.all(compact ? 16 : 28),
+                      child: child,
+                    )
+                  : child,
             ),
           ),
         );

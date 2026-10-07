@@ -11,6 +11,7 @@ class Note {
     this.role = 'owner',
     this.locked = false,
     this.sharedCount = 0,
+    this.shared = false,
     this.sharedByName,
     this.sharedByEmail,
     this.sharedAt,
@@ -24,6 +25,8 @@ class Note {
   final Map<String, String> labelNames;
   final bool locked;
   final int sharedCount;
+  final bool shared;
+  bool get isShared => shared || role != 'owner' || sharedCount > 0;
   final String? sharedByName, sharedByEmail, sharedAt;
   factory Note.fromJson(Map<String, dynamic> json) => Note(
     id: json['id'] as String,
@@ -37,6 +40,7 @@ class Note {
     role: json['role'] as String? ?? 'viewer',
     locked: json['locked'] as bool? ?? false,
     sharedCount: json['shared_count'] as int? ?? 0,
+    shared: json['shared'] as bool? ?? false,
     sharedByName: (json['shared_by'] as Map?)?['name'] as String?,
     sharedByEmail: (json['shared_by'] as Map?)?['email'] as String?,
     sharedAt: json['shared_at'] as String?,
@@ -53,12 +57,42 @@ class Note {
     'label_names': labelNames,
     'role': role,
     'locked': locked,
+    'shared': isShared,
     if (!locked) ...{
       'shared_count': sharedCount,
       'shared_by': {'name': sharedByName, 'email': sharedByEmail},
       'shared_at': sharedAt,
     },
   };
+
+  /// Home/cache projection. Full protected content belongs only to a live
+  /// reader and its password-encrypted envelope, never ordinary list records.
+  Map<String, dynamic> toListingJson() => locked
+      ? {
+          'id': id,
+          'locked': true,
+          'revision': revision,
+          'role': role,
+          'pinned_at': pinnedAt,
+          'shared': isShared,
+        }
+      : toJson();
+
+  factory Note.fromListingJson(Map<String, dynamic> json) => Note.fromJson(
+    json['locked'] == true
+        ? {
+            'id': json['id'],
+            'locked': true,
+            'revision': json['revision'],
+            'role': json['role'],
+            'pinned_at': json['pinned_at'],
+            // Legacy caches may carry the old owner count. Keep only the flag.
+            'shared':
+                json['shared'] == true ||
+                (json['shared_count'] as int? ?? 0) > 0,
+          }
+        : json,
+  );
 
   /// Preserve the optimistic content/base while accepting server permissions.
   Note withAccessFrom(Note remote) => Note(
@@ -72,6 +106,7 @@ class Note {
     labelNames: labelNames,
     role: remote.role,
     sharedCount: remote.sharedCount,
+    shared: remote.isShared,
     sharedByName: remote.sharedByName,
     sharedByEmail: remote.sharedByEmail,
     sharedAt: remote.sharedAt,

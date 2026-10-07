@@ -1,0 +1,90 @@
+00:00 +0: loading D:/flutter cuoi ki/test/locked_status_test.dart
+00:00 +0: D:/flutter cuoi ki/test/locked_status_test.dart: Listing codec keeps only authorized public status; reader codec keeps full password-vault content
+00:00 +1: D:/flutter cuoi ki/test/locked_status_test.dart: Protected pins sort with ordinary pins and update after unpin; search/filter exclude private content
+00:00 +2: D:/flutter cuoi ki/test/locked_status_test.dart: Account reopen migrates stale locked metadata and persists only public flags
+00:00 +3: D:/flutter cuoi ki/test/locked_status_test.dart: Protection cooldown has clear UI error for change and disable
+00:00 +4: D:/flutter cuoi ki/test/locked_status_test.dart: Locked status is accessible together in grid without private metadata at 200 percent
+00:00 +5: D:/flutter cuoi ki/test/locked_status_test.dart: Locked status is accessible together in grid without private metadata at 200 percent
+00:00 +6: D:/flutter cuoi ki/test/locked_status_test.dart: Locked status is accessible together in grid without private metadata at 200 percent
+00:00 +7: D:/flutter cuoi ki/test/locked_status_test.dart: Locked status is accessible together in grid without private metadata at 200 percent
+00:00 +8: D:/flutter cuoi ki/test/locked_status_test.dart: Locked status is accessible together in grid without private metadata at 200 percent
+00:00 +9: D:/flutter cuoi ki/test/locked_status_test.dart: Locked status is accessible together in grid without private metadata at 200 percent
+00:00 +10: D:/flutter cuoi ki/test/locked_status_test.dart: Locked status is accessible together in grid without private metadata at 200 percent
+00:00 +11: D:/flutter cuoi ki/test/locked_status_test.dart: Locked status is accessible together in grid without private metadata at 200 percent
+00:01 +12: D:/flutter cuoi ki/test/locked_status_test.dart: Locked status is accessible together in grid without private metadata at 200 percent
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: exactly one matching candidate
+  Actual: _KeyWidgetFinder:<Found 0 widgets with key [<'card-protected'>]: []>
+   Which: means none were found but one was expected
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///D:/flutter%20cuoi%20ki/test/locked_status_test.dart:157:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1953:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///D:/flutter%20cuoi%20ki/test/locked_status_test.dart line 157
+The test description was:
+  Locked status is accessible together in grid without private metadata at 200 percent
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:01 +12 -1: D:/flutter cuoi ki/test/protected_editing_test.dart: Protected editor autosaves; revoked delete confirmation removes name and disables action
+00:01 +12 -1: D:/flutter cuoi ki/test/locked_status_test.dart: Locked status is accessible together in grid without private metadata at 200 percent [E]
+  Test failed. See exception logs above.
+  The test description was: Locked status is accessible together in grid without private metadata at 200 percent
+  
+00:01 +13 -1: D:/flutter cuoi ki/test/protected_editing_test.dart: Protected editor autosaves; revoked delete confirmation removes name and disables action
+00:01 +13 -1: D:/flutter cuoi ki/test/locked_status_test.dart: Locked status is accessible together in list without private metadata at 200 percent
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: exactly one matching candidate
+  Actual: _KeyWidgetFinder:<Found 0 widgets with key [<'card-protected'>]: []>
+   Which: means none were found but one was expected
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///D:/flutter%20cuoi%20ki/test/locked_status_test.dart:157:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1953:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///D:/flutter%20cuoi%20ki/test/locked_status_test.dart line 157
+The test description was:
+  Locked status is accessible together in list without private metadata at 200 percent
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:01 +13 -2: D:/flutter cuoi ki/test/protected_editing_test.dart: Protected editor autosaves; revoked delete confirmation removes name and disables action
+00:01 +13 -2: D:/flutter cuoi ki/test/locked_status_test.dart: Locked status is accessible together in list without private metadata at 200 percent [E]
+  Test failed. See exception logs above.
+  The test description was: Locked status is accessible together in list without private metadata at 200 percent
+  
+00:01 +14 -2: D:/flutter cuoi ki/test/ui_cohesion_test.dart: Typing avoids rebuilding note cards until debounce; search still matches beyond bounded preview
+00:01 +15 -2: D:/flutter cuoi ki/test/protected_editing_test.dart: Protected viewer keeps metadata visible after unlock and has no mutation controls
+00:01 +16 -2: D:/flutter cuoi ki/test/ui_cohesion_test.dart: Compact gallery footer leaves space in landscape at 200 percent; preview is reachable
+00:01 +17 -2: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:02 +18 -2: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:08 +18 -2: D:/flutter cuoi ki/test/ui_cohesion_test.dart: Controlled NotoSans shaping and cached-query benchmark; timings are evidence, not FPS assertions
+UI_BENCHMARK {"target":"host Flutter test engine/NotoSans","iterations":11,"note_chars":100000,"preview_chars":481,"paragraph_full_median_us":4807,"paragraph_preview_median_us":160,"notes":500,"baseline_query_median_us":374799,"optimized_query_median_us":352,"cached_query_median_us":10,"fps_measured":false}
+00:08 +19 -2: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:14 +20 -2: D:/flutter cuoi ki/test/protected_editing_test.dart: Delete conflict requires new confirmation and revoked delete hides content
+00:14 +21 -2: D:/flutter cuoi ki/test/protected_editing_test.dart: Offline draft survives encrypted Sembast close/reopen and never enters ordinary outbox
+00:14 +22 -2: D:/flutter cuoi ki/test/protected_editing_test.dart: A copied old-password draft permits new-password unlock without losing the private copy
+00:14 +23 -2: D:/flutter cuoi ki/test/protected_editing_test.dart: Lost acknowledgement replays the same immutable operation after reopen
+00:14 +24 -2: D:/flutter cuoi ki/test/protected_editing_test.dart: Typing while protected operation is inflight keeps newest draft and chains own ack
+00:14 +25 -2: D:/flutter cuoi ki/test/protected_editing_test.dart: Realtime clean content updates keep frozen base; dirty content remains on conflict
+00:14 +26 -2: D:/flutter cuoi ki/test/protected_editing_test.dart: Revoke hides content and preserves password-bound recovery; copy never mutates source
+00:14 +27 -2: D:/flutter cuoi ki/test/protected_editing_test.dart: Encrypted field merge survives ordinary snapshot capture and account switch mid-write
+00:14 +28 -2: D:/flutter cuoi ki/test/protected_editing_test.dart: Delegated picker obscures content and rechecks grant before showing it again
+00:14 +29 -2: Some tests failed.
+
+Failing tests:
+  D:/flutter cuoi ki/test/locked_status_test.dart: Locked status is accessible together in grid without private metadata at 200 percent
+  D:/flutter cuoi ki/test/locked_status_test.dart: Locked status is accessible together in list without private metadata at 200 percent

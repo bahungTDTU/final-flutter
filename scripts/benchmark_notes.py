@@ -62,7 +62,7 @@ def measure(count, repeats):
                         assert len(notes) == count
                         for note in notes:
                             if note['locked']:
-                                assert set(note) == {'id', 'locked', 'revision', 'role'}
+                                assert set(note) == {'id', 'locked', 'revision', 'role', 'pinned_at', 'shared'}
                             else:
                                 assert len(note['labels']) == 3
                                 assert note['role'] == role

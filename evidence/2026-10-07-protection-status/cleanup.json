@@ -1,0 +1,7 @@
+{
+  "qa_services": {
+    "7365": "stopped",
+    "8016": "stopped"
+  },
+  "fixture_credential_files_removed": true
+}

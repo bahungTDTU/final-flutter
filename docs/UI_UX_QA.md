@@ -1,5 +1,17 @@
 # UI/UX QA – cập nhật 05/10/2026
 
+## Trạng thái khóa và password cooldown —07/10/2026
+
+173 Flutter/93 backend PASS;6 Flutter mới kiểm tra public codec/cache legacy/reopen/ordering,
+search-filter redaction/cooldown copy và list-grid390px/chữ200%/semantics;5 backend mới
+kiểm tra mixed attempts/session/restart/elapsed window/ACL/public flag mutations.
+Actual HTTP4roles/API8016; IAB Web debug7365 grid/list1280×900/list390×844/reload/SSE
+unpin-revoke-restore, locked card không private title/identities/counts. Android API36 debug
+Skia software1new scenario+teardown PASS7s: grid/list/429 UI/platform keys/encrypted Sembast
+close/reopen/socket65530 offline,4PNG. Đây không phải OS kill/physical/default renderer/
+NVDA/TalkBack/FPS/public release. Evidence:2026-10-07-protection-status/INDEX.md.
+Người dùng cho hiện pin/shared trước unlock; các đoạn privacy cũ bên dưới giữ scope lịch sử.
+
 ## Email queue06/10/2026
 
 TokenScreen giữ mã lỗi/input, thêm kiểm tra trạng thái gửi authenticated và email reset/
@@ -276,3 +288,16 @@ search input rebuild/literal Unicode search. Locked pin/date/group và semantics
 AI form breakpoint/protected unlock-relock/tail100000 search/remote lock cached Home PASS.
 Host benchmark NotoSans có phạm vi, không FPS. Xem UI_COHESION_AND_PERFORMANCE.md và
 evidence/2026-10-06-ui-cohesion/INDEX.md;physical/screen-reader/production/release chưa nghiệm thu.
+
+## Phân tách editor và chống chồng chữ —06–07/10/2026
+
+Tiêu đề và nội dung có nhãn cố định bên ngoài vùng nhập, khung/focus riêng và bộ đếm
+ở dòng riêng. Ghim/nhãn nằm trong khối Sắp xếp sau nội dung. Ghi chú bảo vệ dùng cùng
+component và phân nhóm thông tin, công cụ, bảo vệ/quản lý. Thanh công cụ thu vào menu
+khi chữ lớn; heading/hướng dẫn checklist có chiều cao theo nội dung.
+167 Flutter/88 backend PASS;6 regression dùng NotoSans thật, geometry320/390/844/1280
+ở200% và hai theme. IAB Web thực: input→API ack, theme/resize giữ text + selection,
+protected edit→API ack→relock/hết phiên che nội dung. Android API36 debug3 reused
+workflows + teardown PASS46s,8 PNG mới; đây không phải4 feature tests.
+Xem docs/EDITOR_SECTIONS_AND_LAYOUT.md và evidence/2026-10-06-editor-sections/INDEX.md.
+Release/physical/NVDA/TalkBack/FPS/Gemini thật vẫn chưa nghiệm thu ở đợt này.

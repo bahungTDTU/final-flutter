@@ -335,6 +335,10 @@ class _EditorScreenState extends State<EditorScreen>
         : note != null && note.revision > 0
         ? 'Đã đồng bộ'
         : 'Bắt đầu ghi chú mới';
+    final compactTools =
+        MediaQuery.sizeOf(context).width < 600 ||
+        MediaQuery.textScalerOf(context).scale(18) > 24 ||
+        focusMode;
     return PopScope(
       canPop: canLeave,
       onPopInvokedWithResult: (didPop, _) {
@@ -373,7 +377,7 @@ class _EditorScreenState extends State<EditorScreen>
                 }
               },
             ),
-            if (MediaQuery.sizeOf(context).width < 600 || focusMode)
+            if (compactTools)
               PopupMenuButton<String>(
                 key: const Key('editor-tools-menu'),
                 tooltip: 'Công cụ ghi chú',
@@ -409,7 +413,7 @@ class _EditorScreenState extends State<EditorScreen>
                   const PopupMenuItem(value: 'sync', child: Text('Đồng bộ')),
                 ],
               ),
-            if (MediaQuery.sizeOf(context).width >= 600 && !focusMode) ...[
+            if (!compactTools) ...[
               IconButton(
                 tooltip: 'Dàn ý & checklist',
                 onPressed: () {
@@ -486,6 +490,7 @@ class _EditorScreenState extends State<EditorScreen>
         ),
         body: ReadingCanvas(
           controller: editorScroll,
+          panel: false,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -493,45 +498,55 @@ class _EditorScreenState extends State<EditorScreen>
                 FocusBar(session: focusSession),
                 const SizedBox(height: 16),
               ],
-              if (!focusMode)
-                const SectionHeading(
-                  'Một điều đáng ghi nhớ',
-                  detail:
-                      'Viết theo cách của bạn. Các thay đổi được tự động lưu.',
-                  icon: Icons.edit_note_outlined,
-                ),
               Semantics(
                 liveRegion: true,
-                child: Wrap(
-                  spacing: 8,
-                  runSpacing: 8,
-                  crossAxisAlignment: WrapCrossAlignment.center,
-                  children: [
-                    Icon(
-                      saveFailed
-                          ? Icons.error_outline
-                          : dirty || c.drafts.containsKey(widget.id)
-                          ? Icons.edit_note_outlined
-                          : c.hasPending(widget.id)
-                          ? Icons.cloud_upload_outlined
-                          : Icons.check_circle_outline,
-                      size: 20,
-                      color: saveFailed
-                          ? Theme.of(context).colorScheme.error
-                          : Theme.of(context).colorScheme.primary,
-                    ),
-                    Text(status, style: Theme.of(context).textTheme.bodySmall),
-                    if (c.realtime != null && c.online)
-                      Text(c.realtimeLive ? 'Trực tiếp' : 'Đang nối lại'),
-                    if (saveFailed)
-                      TextButton(
-                        onPressed: () async {
-                          saveFailed = false;
-                          await flush();
-                        },
-                        child: const Text('Thử lại'),
+                child: SurfacePanel(
+                  padding: const EdgeInsets.all(16),
+                  child: Wrap(
+                    spacing: 8,
+                    runSpacing: 8,
+                    crossAxisAlignment: WrapCrossAlignment.center,
+                    children: [
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Icon(
+                            saveFailed
+                                ? Icons.error_outline
+                                : dirty || c.drafts.containsKey(widget.id)
+                                ? Icons.edit_note_outlined
+                                : c.hasPending(widget.id)
+                                ? Icons.cloud_upload_outlined
+                                : Icons.check_circle_outline,
+                            size: 20,
+                            color: saveFailed
+                                ? Theme.of(context).colorScheme.error
+                                : Theme.of(context).colorScheme.primary,
+                          ),
+                          const SizedBox(width: 8),
+                          Expanded(
+                            child: Text(
+                              status,
+                              style: Theme.of(context).textTheme.bodySmall,
+                            ),
+                          ),
+                        ],
                       ),
-                  ],
+                      if (c.realtime != null && c.online)
+                        MetadataPill(
+                          c.realtimeLive ? 'Trực tiếp' : 'Đang nối lại',
+                          icon: Icons.cloud_outlined,
+                        ),
+                      if (saveFailed)
+                        TextButton(
+                          onPressed: () async {
+                            saveFailed = false;
+                            await flush();
+                          },
+                          child: const Text('Thử lại'),
+                        ),
+                    ],
+                  ),
                 ),
               ),
               if (!editable)
@@ -566,7 +581,7 @@ class _EditorScreenState extends State<EditorScreen>
                     ],
                   ),
                 ),
-              const SizedBox(height: 32),
+              const SizedBox(height: 16),
               NoteTextField(
                 key: const Key('editor-title-control'),
                 fieldKey: const Key('note-title'),
@@ -576,77 +591,7 @@ class _EditorScreenState extends State<EditorScreen>
                 fontSize: c.fontSize,
                 onChanged: (_) => unawaited(input()),
               ),
-              const SizedBox(height: 8),
-              if (!focusMode && note != null && note.role == 'owner')
-                Wrap(
-                  spacing: 8,
-                  runSpacing: 8,
-                  children: [
-                    ActionChip(
-                      avatar: Icon(
-                        note.pinnedAt == null
-                            ? Icons.push_pin_outlined
-                            : Icons.push_pin,
-                        size: 18,
-                      ),
-                      label: Text(
-                        note.pinnedAt == null ? 'Ghim ghi chú' : 'Đã ghim',
-                      ),
-                      onPressed: requiresReopen
-                          ? null
-                          : () async {
-                              await flush();
-                              await c.save(
-                                note.id,
-                                title.text,
-                                content.text,
-                                baseRevision: baseRevision,
-                                updatePin: true,
-                                pinnedAt: note.pinnedAt == null
-                                    ? DateTime.now().toUtc().toIso8601String()
-                                    : null,
-                              );
-                              baseRevision =
-                                  c.notes
-                                      .where((n) => n.id == widget.id)
-                                      .firstOrNull
-                                      ?.revision ??
-                                  baseRevision;
-                            },
-                    ),
-                    ...c.labels.map(
-                      (label) => FilterChip(
-                        label: Text(c.labelName(label)),
-                        selected: note.labels.contains(label),
-                        onSelected: requiresReopen
-                            ? null
-                            : (v) async {
-                                await flush();
-                                await c.save(
-                                  note.id,
-                                  title.text,
-                                  content.text,
-                                  baseRevision: baseRevision,
-                                  noteLabels: v
-                                      ? [...note.labels, label]
-                                      : note.labels
-                                            .where((l) => l != label)
-                                            .toList(),
-                                );
-                                baseRevision =
-                                    c.notes
-                                        .where((n) => n.id == widget.id)
-                                        .firstOrNull
-                                        ?.revision ??
-                                    baseRevision;
-                              },
-                      ),
-                    ),
-                  ],
-                ),
-              const SizedBox(height: 24),
-              const Divider(),
-              const SizedBox(height: 24),
+              const SizedBox(height: 16),
               NoteTextField(
                 key: const Key('editor-content-control'),
                 fieldKey: const Key('note-content'),
@@ -657,7 +602,86 @@ class _EditorScreenState extends State<EditorScreen>
                 fontSize: c.fontSize,
                 onChanged: (_) => unawaited(input()),
               ),
-              const SizedBox(height: 24),
+              if (!focusMode && note != null && note.role == 'owner') ...[
+                const SizedBox(height: 16),
+                NoteSection(
+                  label: 'Sắp xếp',
+                  icon: Icons.label_outline,
+                  child: Wrap(
+                    spacing: 8,
+                    runSpacing: 8,
+                    children: [
+                      ActionChip(
+                        avatar: Icon(
+                          note.pinnedAt == null
+                              ? Icons.push_pin_outlined
+                              : Icons.push_pin,
+                          size: 18,
+                        ),
+                        label: Text(
+                          note.pinnedAt == null ? 'Ghim ghi chú' : 'Đã ghim',
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        onPressed: requiresReopen
+                            ? null
+                            : () async {
+                                await flush();
+                                await c.save(
+                                  note.id,
+                                  title.text,
+                                  content.text,
+                                  baseRevision: baseRevision,
+                                  updatePin: true,
+                                  pinnedAt: note.pinnedAt == null
+                                      ? DateTime.now().toUtc().toIso8601String()
+                                      : null,
+                                );
+                                baseRevision =
+                                    c.notes
+                                        .where((n) => n.id == widget.id)
+                                        .firstOrNull
+                                        ?.revision ??
+                                    baseRevision;
+                              },
+                      ),
+                      ...c.labels.map(
+                        (label) => FilterChip(
+                          label: Text(
+                            c.labelName(label),
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          selected: note.labels.contains(label),
+                          onSelected: requiresReopen
+                              ? null
+                              : (v) async {
+                                  await flush();
+                                  await c.save(
+                                    note.id,
+                                    title.text,
+                                    content.text,
+                                    baseRevision: baseRevision,
+                                    noteLabels: v
+                                        ? [...note.labels, label]
+                                        : note.labels
+                                              .where((l) => l != label)
+                                              .toList(),
+                                  );
+                                  baseRevision =
+                                      c.notes
+                                          .where((n) => n.id == widget.id)
+                                          .firstOrNull
+                                          ?.revision ??
+                                      baseRevision;
+                                },
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+              const SizedBox(height: 16),
               WritingToolsPanel(
                 key: toolsKey,
                 controller: content,

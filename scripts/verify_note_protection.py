@@ -34,7 +34,7 @@ def main():
     assert status('/notes/' + original, token) == 423
     result['original_still_locked'] = True
     if mode == 'changed':
-        assert set(copy) == {'id', 'locked', 'revision', 'role'}
+        assert set(copy) == {'id', 'locked', 'revision', 'role', 'pinned_at', 'shared'}
         assert copy['revision'] == 3 and copy['role'] == 'owner'
         assert status(url, token) == 423
         assert status(url + '/unlock', token, 'POST', {'password': 'web-note-password-123'}) == 403

@@ -1,0 +1,101 @@
+[
+  {
+    "file": "after-checklist-mobile-light.jpg",
+    "imageSize": {
+      "width": 390,
+      "height": 844
+    },
+    "lastWrittenAtUtc": "2026-10-06T18:02:28.226166+00:00",
+    "timestampSource": "filesystem final screenshot write; not a separately logged capture timestamp"
+  },
+  {
+    "file": "after-editor-desktop.jpg",
+    "imageSize": {
+      "width": 1280,
+      "height": 900
+    },
+    "lastWrittenAtUtc": "2026-10-06T17:56:29.568378+00:00",
+    "timestampSource": "filesystem final screenshot write; not a separately logged capture timestamp"
+  },
+  {
+    "file": "after-editor-mobile-dark.jpg",
+    "imageSize": {
+      "width": 390,
+      "height": 844
+    },
+    "lastWrittenAtUtc": "2026-10-06T18:17:24.044285+00:00",
+    "timestampSource": "filesystem final screenshot write; not a separately logged capture timestamp"
+  },
+  {
+    "file": "after-editor-mobile-light.jpg",
+    "imageSize": {
+      "width": 390,
+      "height": 844
+    },
+    "lastWrittenAtUtc": "2026-10-06T18:14:24.745090+00:00",
+    "timestampSource": "filesystem final screenshot write; not a separately logged capture timestamp"
+  },
+  {
+    "file": "after-protected-editor-desktop.jpg",
+    "imageSize": {
+      "width": 1280,
+      "height": 900
+    },
+    "lastWrittenAtUtc": "2026-10-06T18:10:10.779133+00:00",
+    "timestampSource": "filesystem final screenshot write; not a separately logged capture timestamp"
+  },
+  {
+    "file": "after-protected-editor-mobile.jpg",
+    "imageSize": {
+      "width": 390,
+      "height": 844
+    },
+    "lastWrittenAtUtc": "2026-10-06T18:10:04.856914+00:00",
+    "timestampSource": "filesystem final screenshot write; not a separately logged capture timestamp"
+  },
+  {
+    "file": "after-protected-expired-desktop.jpg",
+    "imageSize": {
+      "width": 1280,
+      "height": 900
+    },
+    "lastWrittenAtUtc": "2026-10-06T18:09:11.348910+00:00",
+    "timestampSource": "filesystem final screenshot write; not a separately logged capture timestamp"
+  },
+  {
+    "file": "after-protected-reader-mobile.jpg",
+    "imageSize": {
+      "width": 390,
+      "height": 844
+    },
+    "lastWrittenAtUtc": "2026-10-06T18:04:59.675836+00:00",
+    "timestampSource": "filesystem final screenshot write; not a separately logged capture timestamp"
+  },
+  {
+    "file": "after-protected-relocked.jpg",
+    "imageSize": {
+      "width": 1280,
+      "height": 900
+    },
+    "lastWrittenAtUtc": "2026-10-06T18:11:27.652789+00:00",
+    "timestampSource": "filesystem final screenshot write; not a separately logged capture timestamp"
+  },
+  {
+    "file": "after-protected-tools-desktop.jpg",
+    "imageSize": {
+      "width": 1280,
+      "height": 900
+    },
+    "lastWrittenAtUtc": "2026-10-06T18:10:17.864235+00:00",
+    "timestampSource": "filesystem final screenshot write; not a separately logged capture timestamp"
+  },
+  {
+    "file": "after-sections-checklist-mobile.jpg",
+    "imageSize": {
+      "width": 390,
+      "height": 844
+    },
+    "lastWrittenAtUtc": "2026-10-06T18:17:23.715278+00:00",
+    "timestampSource": "filesystem final screenshot write; not a separately logged capture timestamp"
+  }
+]

@@ -34,7 +34,8 @@ def test_protected_mutations_require_both_grant_and_current_role(env, role, edit
         assert client.post('/sync',headers=headers(actor),json=operation(key,2,content='Before unlock')).status_code==423
     if role!='stranger': unlock(client,actor,key)
     before=client.get('/notes',headers=headers(owner)).json()[0]
-    assert set(before)=={'id','locked','revision','role'}
+    assert set(before)=={'id','locked','revision','role','pinned_at','shared'}
+    assert before['shared'] is True and before['pinned_at'] is None
     result=client.post('/sync',headers=headers(actor),json=operation(key,2,content='Protected edit',pinned_at='2026-10-05',labels=[]))
     assert result.status_code==edit_status
     revision=3 if edit_status==200 else 2

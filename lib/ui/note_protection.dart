@@ -9,6 +9,7 @@ import 'note_text_field.dart';
 import '../state/app_controller.dart';
 import '../state/protected_reader.dart';
 import '../data/protected_note_vault.dart';
+import '../data/api.dart';
 import 'app.dart';
 import 'design_system.dart';
 import 'attachments.dart';
@@ -17,6 +18,9 @@ import 'sharing.dart';
 enum ProtectionAction { enable, change, disable }
 
 String protectionError(Object error) {
+  if (error is ApiException && error.status == 429) {
+    return 'Bạn đã thử nhiều lần. Đợi một phút rồi mở khóa hoặc đổi/tắt bảo vệ lại.';
+  }
   final text = '$error';
   if (text.contains('Current note password incorrect')) {
     return 'Mật khẩu ghi chú hiện tại chưa đúng.';
@@ -454,6 +458,7 @@ class _ProtectedNoteScreenState extends State<ProtectedNoteScreen>
           ],
         ),
         body: ReadingCanvas(
+          panel: note == null,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
@@ -527,6 +532,10 @@ class _ProtectedNoteScreenState extends State<ProtectedNoteScreen>
                     message: reader.error!,
                     icon: Icons.info_outline,
                   ),
+                const SectionHeading(
+                  'Thông tin ghi chú',
+                  icon: Icons.info_outline,
+                ),
                 Wrap(
                   spacing: 12,
                   runSpacing: 8,
@@ -668,6 +677,7 @@ class _ProtectedNoteScreenState extends State<ProtectedNoteScreen>
                     readOnly: reader.requiresReopen,
                     onChanged: (_) => unawaited(input()),
                   ),
+                  const SizedBox(height: 16),
                   NoteTextField(
                     controller: content,
                     titleMode: false,
@@ -676,6 +686,7 @@ class _ProtectedNoteScreenState extends State<ProtectedNoteScreen>
                     fontSize: c.fontSize,
                     onChanged: (_) => unawaited(input()),
                   ),
+                  const SizedBox(height: 12),
                   Text(
                     reader.saving
                         ? 'Đang đồng bộ…'
@@ -685,16 +696,25 @@ class _ProtectedNoteScreenState extends State<ProtectedNoteScreen>
                     key: const Key('protected-save-status'),
                   ),
                 ] else ...[
-                  SelectableText(
-                    reader.draft?['title'] as String? ?? note.title,
-                    key: const Key('protected-title'),
-                    style: Theme.of(context).textTheme.headlineMedium,
+                  NoteSection(
+                    label: 'Tiêu đề',
+                    icon: Icons.title,
+                    child: SelectableText(
+                      reader.draft?['title'] as String? ?? note.title,
+                      key: const Key('protected-title'),
+                      style: Theme.of(context).textTheme.headlineSmall
+                          ?.copyWith(height: 1.35),
+                    ),
                   ),
                   const SizedBox(height: 16),
-                  SelectableText(
-                    reader.draft?['content'] as String? ?? note.content,
-                    key: const Key('protected-content'),
-                    style: TextStyle(fontSize: c.fontSize, height: 1.6),
+                  NoteSection(
+                    label: 'Nội dung',
+                    icon: Icons.notes_outlined,
+                    child: SelectableText(
+                      reader.draft?['content'] as String? ?? note.content,
+                      key: const Key('protected-content'),
+                      style: TextStyle(fontSize: c.fontSize, height: 1.6),
+                    ),
                   ),
                 ],
                 if (reader.dirty &&
@@ -731,6 +751,11 @@ class _ProtectedNoteScreenState extends State<ProtectedNoteScreen>
                     ),
                 ],
                 const SizedBox(height: 24),
+                if (!widget.recoveryMode || reader.serverGate)
+                  const SectionHeading(
+                    'Công cụ ghi chú',
+                    icon: Icons.tune_outlined,
+                  ),
                 if (!widget.recoveryMode)
                   Wrap(
                     spacing: 12,
@@ -806,7 +831,12 @@ class _ProtectedNoteScreenState extends State<ProtectedNoteScreen>
                       icon: const Icon(Icons.people_outline),
                       label: const Text('Quản lý chia sẻ'),
                     ),
-                  if (note.role == 'owner')
+                  if (note.role == 'owner') ...[
+                    const SizedBox(height: 16),
+                    const SectionHeading(
+                      'Bảo vệ & quản lý',
+                      icon: Icons.security_outlined,
+                    ),
                     Wrap(
                       spacing: 12,
                       runSpacing: 8,
@@ -833,6 +863,7 @@ class _ProtectedNoteScreenState extends State<ProtectedNoteScreen>
                         ),
                       ],
                     ),
+                  ],
                 ],
               ],
             ],

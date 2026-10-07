@@ -1,0 +1,15 @@
+00:00 +0: loading D:/flutter cuoi ki/tmp/audit-2026-10-07/write_amplification_test.dart
+00:00 +0: Audit records whole-account encrypted write volume during typing
+{
+  "measured_at_utc": "2026-10-06T18:38:44.259082Z",
+  "target": "Flutter host / real EncryptedAccountStore AES-GCM / in-memory records and keys",
+  "notes": 500,
+  "content_chars_per_note": 1000,
+  "draft_updates": 20,
+  "account_envelope_writes": 20,
+  "total_encoded_envelope_bytes": 16686660,
+  "bytes_per_write": 834333,
+  "disk_latency_or_fps_measured": false,
+  "network_requests": 0
+}
+00:03 +1: All tests passed!

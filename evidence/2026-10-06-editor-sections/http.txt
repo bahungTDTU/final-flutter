@@ -1,0 +1,1 @@
+{"date_utc": "2026-10-06T11:00:17.355675+00:00", "target": "http://127.0.0.1:8015", "result": "PASS", "owner": "stale409/locked423", "editor": "check then revoke404", "viewer": "403", "stranger": "404", "locked_metadata": "only id/role/revision/locked", "release": "not built; debug local only"}

@@ -133,7 +133,7 @@ def test_lock_and_session_revocation_redact_and_terminate_existing_stream(live):
                 event, data = await stream()
                 assert event == 'changed' and set(data) == {'version'}
                 assert (await client.get('/notes', headers=headers(editor))).json() == [
-                    {'id': note, 'locked': True, 'role': 'editor', 'revision': 2}]
+                    {'id': note, 'locked': True, 'role': 'editor', 'revision': 2, 'pinned_at': None, 'shared': True}]
                 assert (await client.get(f'/notes/{note}', headers=headers(editor))).status_code == 423
                 assert (await client.post('/auth/logout', headers=headers(editor))).status_code == 200
                 assert await stream() == ('expired', {})

@@ -32,9 +32,13 @@ def list_visible_notes(conn, user_id):
     result = []
     for note in rows:
         if note['password']:
-            # Even a valid unlock grant never expands list/cache metadata.
+            # Public status policy confirmed by the user: pin order and a
+            # sharing flag are visible; content/labels/identities stay redacted,
+            # even when the listing caller has a live unlock grant.
             result.append({'id': note['id'], 'locked': True,
-                           'revision': note['revision'], 'role': note['role']})
+                           'revision': note['revision'], 'role': note['role'],
+                           'pinned_at': note['pinned_at'],
+                           'shared': note['role'] != 'owner' or note['shared_count'] > 0})
             continue
         ids, names = labels.get(note['id'], ([], {}))
         item = {'id': note['id'], 'owner_id': note['owner_id'], 'title': note['title'],

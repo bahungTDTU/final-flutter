@@ -207,6 +207,8 @@ class AppController extends ChangeNotifier {
           updatedAt: '',
           role: 'owner',
           locked: true,
+          pinnedAt: note?.pinnedAt,
+          shared: note?.isShared ?? false,
         ),
       );
       notifyListeners();
@@ -269,7 +271,7 @@ class AppController extends ChangeNotifier {
     await _writes.catchError((_) {});
     final cached = await local.read(accountKey) ?? {};
     notes = (cached['notes'] as List? ?? [])
-        .map((n) => Note.fromJson(Map<String, dynamic>.from(n as Map)))
+        .map((n) => Note.fromListingJson(Map<String, dynamic>.from(n as Map)))
         .toList();
     pending = (cached['pending'] as List? ?? [])
         .map((op) => Map<String, dynamic>.from(op as Map))
@@ -328,7 +330,7 @@ class AppController extends ChangeNotifier {
     final key = accountKey;
     final protectedSnapshot = Map<String, dynamic>.from(protectedVaults);
     final snapshot = {
-      'notes': notes.map((n) => n.toJson()).toList(),
+      'notes': notes.map((n) => n.toListingJson()).toList(),
       'pending': pending.map((op) => Map<String, dynamic>.from(op)).toList(),
       'drafts': Map<String, dynamic>.from(drafts),
       'recoveries': Map<String, dynamic>.from(recoveries),
@@ -371,7 +373,7 @@ class AppController extends ChangeNotifier {
     final key = 'account:$account';
     final fallback = user?['id'] == account
         ? {
-            'notes': notes.map((n) => n.toJson()).toList(),
+            'notes': notes.map((n) => n.toListingJson()).toList(),
             'pending': pending,
             'drafts': drafts,
             'recoveries': recoveries,
@@ -661,6 +663,7 @@ class AppController extends ChangeNotifier {
         labelNames: existing?.labelNames ?? {},
         role: existing?.role ?? 'owner',
         sharedCount: existing?.sharedCount ?? 0,
+        shared: existing?.isShared ?? false,
         sharedByName: existing?.sharedByName,
         sharedByEmail: existing?.sharedByEmail,
         sharedAt: existing?.sharedAt,
@@ -775,6 +778,8 @@ class AppController extends ChangeNotifier {
                 updatedAt: '',
                 role: previous?.role ?? 'viewer',
                 locked: true,
+                pinnedAt: previous?.pinnedAt,
+                shared: previous?.isShared ?? false,
               ),
             );
             notifyListeners();
@@ -799,7 +804,7 @@ class AppController extends ChangeNotifier {
           await api.call('GET', '/notes', token: sessionToken) as List;
       if (!active()) return;
       final incoming = remote
-          .map((n) => Note.fromJson(Map<String, dynamic>.from(n as Map)))
+          .map((n) => Note.fromListingJson(Map<String, dynamic>.from(n as Map)))
           .toList();
       final incomingById = {for (final note in incoming) note.id: note};
       final localStateIds = {

@@ -27,5 +27,8 @@ HTTPS/release signing và submission. Giữ README.md/Readme.txt/STATUS/matrix k
 UI: đọc docs/UI_UX_DESIGN.md và UI_UX_QA.md. Tokens/theme ở design_system.dart,
 font NotoSans bundled/OFL; previews.dart chỉ fixture, không nối production navigation.
 Giữ home scroll/filter, editor ID/base revision/selection khi theme/resize. Banner mobile gọn;
-metadata locked không trong visual/semantics. Không claim screen reader/history/deep link từ widget test.
+Trước unlock, title/content/labels/date và danh tính/thời điểm/người nhận chia sẻ không trong
+visual/semantics/cache danh sách. Người dùng xác nhận07/10 cho hiện pinned_at (giữ thứ tự ghim)
+và shared boolean khi khóa; không hiện số người chia sẻ. Full protected content chỉ trong
+reader có grant và password-encrypted vault. Không claim screen reader/history/deep link từ widget test.
 Evidence UI ở evidence/2026-10-01-ui; repeat checks chỉ khi có thay đổi/rủi ro mới.

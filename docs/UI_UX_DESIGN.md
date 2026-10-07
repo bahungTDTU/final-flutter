@@ -1,5 +1,14 @@
 # NoteTogether – UI/UX design, cập nhật 03/10/2026
 
+## Chỉ báo khi khóa —07/10/2026
+
+Theo lựa chọn người dùng, thẻ khóa vẫn trung tính và che title/content/labels/date/identity,
+nhưng hiện chip ghim, icon chia sẻ và icon khóa đồng thời; semantics có nhãn từng trạng thái.
+Tooltip chia sẻ khi khóa không có số người nhận. Pinned section/comparator dùng public pin time,
+cache chỉ6 fields cho note khóa. Search và label filter không đọc protected content.
+Unlock/change/disable bị429 đều báo đợi một phút. Policy mới thay phần ẩn cả pin/shared ở
+các mốc cũ dưới đây; không đổi typography/editor/base revision. Xem PROTECTION_STATUS_FIXES.md.
+
 Maintenance03/10 giữ giao diện prism; bỏ PaperIllustration không còn caller và dependency
 cupertino_icons không dùng. Theme/motion/metadata vẫn theo spec dưới; HTTP/lifecycle/sync
 fixes và cleanup có regression ở docs/PERFORMANCE_AND_MAINTENANCE.md.
@@ -151,3 +160,16 @@ search input rebuild/literal Unicode search. Locked pin/date/group và semantics
 AI form breakpoint/protected unlock-relock/tail100000 search/remote lock cached Home PASS.
 Host benchmark NotoSans có phạm vi, không FPS. Xem UI_COHESION_AND_PERFORMANCE.md và
 evidence/2026-10-06-ui-cohesion/INDEX.md;physical/screen-reader/production/release chưa nghiệm thu.
+
+## Phân tách editor và chống chồng chữ —06–07/10/2026
+
+Tiêu đề và nội dung có nhãn cố định bên ngoài vùng nhập, khung/focus riêng và bộ đếm
+ở dòng riêng. Ghim/nhãn nằm trong khối Sắp xếp sau nội dung. Ghi chú bảo vệ dùng cùng
+component và phân nhóm thông tin, công cụ, bảo vệ/quản lý. Thanh công cụ thu vào menu
+khi chữ lớn; heading/hướng dẫn checklist có chiều cao theo nội dung.
+167 Flutter/88 backend PASS;6 regression dùng NotoSans thật, geometry320/390/844/1280
+ở200% và hai theme. IAB Web thực: input→API ack, theme/resize giữ text + selection,
+protected edit→API ack→relock/hết phiên che nội dung. Android API36 debug3 reused
+workflows + teardown PASS46s,8 PNG mới; đây không phải4 feature tests.
+Xem docs/EDITOR_SECTIONS_AND_LAYOUT.md và evidence/2026-10-06-editor-sections/INDEX.md.
+Release/physical/NVDA/TalkBack/FPS/Gemini thật vẫn chưa nghiệm thu ở đợt này.

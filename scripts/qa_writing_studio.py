@@ -46,13 +46,13 @@ with httpx.Client(base_url=BASE, timeout=15) as api:
          {'password': 'Studio-note-password!', 'confirmation': 'Studio-note-password!'})
     call('POST', '/sync', users['owner'], op(3, original), status=423)
     listed = call('GET', '/notes', users['owner'])
-    assert len(listed) == 1 and set(listed[0]) == {'id', 'locked', 'role', 'revision'}
+    assert len(listed) == 1 and set(listed[0]) == {'id', 'locked', 'role', 'revision', 'pinned_at', 'shared'}
     Path('tmp/studio-browser-account.json').write_text(json.dumps({
         'email': users['owner']['user']['email'], 'password': PASSWORD,
         'token': users['owner']['token'], 'locked_note': note_id}), encoding='utf-8')
     evidence = {'date_utc': datetime.now(timezone.utc).isoformat(), 'target': BASE,
         'result': 'PASS', 'owner': 'stale409/locked423', 'editor': 'check then revoke404',
-        'viewer': '403', 'stranger': '404', 'locked_metadata': 'only id/role/revision/locked',
+        'viewer': '403', 'stranger': '404', 'locked_metadata': 'id/role/revision/locked/pinned_at/shared; no private fields',
         'release': 'not built; debug local only'}
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(

@@ -45,9 +45,9 @@ def main():
             for role in ['owner', 'editor', 'viewer']:
                 rows = call('GET', '/notes', token=users[role]['token'])
                 locked = next(n for n in rows if n['id'] == note_id)
-                assert set(locked) == {'id', 'locked', 'revision', 'role'} and locked['locked'] and locked['revision'] == 2
+                assert set(locked) == {'id', 'locked', 'revision', 'role', 'pinned_at', 'shared'} and locked['locked'] and locked['revision'] == 2
                 assert client.get(f'/notes/{note_id}', headers={'Authorization': 'Bearer ' + users[role]['token']}).status_code == 423
-            print(json.dumps({'action': 'locked-audit', 'revision': 2, 'fields': ['id', 'locked', 'revision', 'role'], 'owner_editor_viewer_read': 423}))
+            print(json.dumps({'action': 'locked-audit', 'revision': 2, 'fields': ['id', 'locked', 'revision', 'role', 'pinned_at', 'shared'], 'owner_editor_viewer_read': 423}))
             return
         note = call('GET', f'/notes/{note_id}', token=owner)
         if args.action in ['peer', 'reconnect', 'concurrent']:

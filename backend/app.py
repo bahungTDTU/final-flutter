@@ -246,6 +246,26 @@ def create_app(db_path=None, *, email_delivery=None, ai_provider=None, start_ema
                 raise HTTPException(423, 'Unlock required')
         return note, role
 
+    def verify_note_password(conn, note, identity, password):
+        # Keep the existing durable scope so old unlock cooldowns also protect
+        # change/disable, across sessions of the same account. Callers must
+        # commit a false result before returning 403, otherwise attempts vanish.
+        scope = 'unlock:' + identity[0] + ':' + note['id']
+        timestamp = time.time()
+        attempt = conn.execute('SELECT * FROM attempts WHERE scope=?', (scope,)).fetchone()
+        if attempt and attempt['blocked_until'] > timestamp:
+            raise HTTPException(429, 'Try again later', headers={
+                'Retry-After': str(max(1, int(attempt['blocked_until'] - timestamp) + 1))})
+        valid = bool(note['password']) and check_password(note['password'], password)
+        if valid:
+            conn.execute('DELETE FROM attempts WHERE scope=?', (scope,))
+        else:
+            # An elapsed cooldown starts a fresh five-attempt window.
+            failures = (attempt['failures'] if attempt and not attempt['blocked_until'] else 0) + 1
+            conn.execute('INSERT OR REPLACE INTO attempts VALUES (?,?,?)',
+                         (scope, failures, timestamp + 60 if failures >= 5 else 0))
+        return valid
+
     def serialize(conn, note, role, identity=None):
         ids, names = note_labels(conn, note)
         result = {'id': note['id'], 'owner_id': note['owner_id'], 'title': note['title'],
@@ -504,30 +524,23 @@ def create_app(db_path=None, *, email_delivery=None, ai_provider=None, start_ema
             raise HTTPException(422, 'Passwords do not match')
         with db() as conn:
             note, _ = access(conn, note_id, identity, 'owner', unlocked=False)
-            if note['password'] and not check_password(note['password'], body.current_password):
-                raise HTTPException(403, 'Current note password incorrect')
-            conn.execute('UPDATE notes SET password=?,protection_version=protection_version+1,revision=revision+1,updated_at=? WHERE id=?',
-                         (hasher.hash(body.password) if body.password is not None else None, now(), note_id))
-            conn.execute('DELETE FROM grants WHERE note_id=?', (note_id,))
+            valid = not note['password'] or verify_note_password(conn, note, identity, body.current_password)
+            if valid:
+                conn.execute('UPDATE notes SET password=?,protection_version=protection_version+1,revision=revision+1,updated_at=? WHERE id=?',
+                             (hasher.hash(body.password) if body.password is not None else None, now(), note_id))
+                conn.execute('DELETE FROM grants WHERE note_id=?', (note_id,))
+        if not valid:
+            raise HTTPException(403, 'Current note password incorrect')
         return {'ok': True, 'revision': note['revision'] + 1, 'locked': body.password is not None}
 
     @app.post('/notes/{note_id}/unlock')
     def unlock(note_id: str, body: Unlock, identity=Depends(authenticate)):
         with db() as conn:
             note, _ = access(conn, note_id, identity, unlocked=False)
-            scope = 'unlock:' + identity[0] + ':' + note_id
-            attempt = conn.execute('SELECT * FROM attempts WHERE scope=?', (scope,)).fetchone()
-            if attempt and attempt['blocked_until'] > time.time():
-                raise HTTPException(429, 'Try again later')
-            valid = bool(note['password']) and check_password(note['password'], body.password)
+            valid = verify_note_password(conn, note, identity, body.password)
             if valid:
-                conn.execute('DELETE FROM attempts WHERE scope=?', (scope,))
                 conn.execute('INSERT OR REPLACE INTO grants VALUES (?,?,?,?)',
                              (identity[1], note_id, note['protection_version'], time.time() + 300))
-            else:
-                failures = (attempt['failures'] if attempt else 0) + 1
-                conn.execute('INSERT OR REPLACE INTO attempts VALUES (?,?,?)',
-                             (scope, failures, time.time() + 60 if failures >= 5 else 0))
         if not valid:
             raise HTTPException(403, 'Note password incorrect')
         return {'ok': True, 'expires_in': 300}

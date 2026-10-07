@@ -1,0 +1,69 @@
+00:00 +0: loading D:/flutter cuoi ki/test/editor_sections_test.dart
+00:00 +0: D:/flutter cuoi ki/test/editor_sections_test.dart: (setUpAll)
+00:00 +0: D:/flutter cuoi ki/test/editor_sections_test.dart: Writing labels, text and counters never overlap at Size(320.0, 568.0) / 200 percent
+00:00 +1: D:/flutter cuoi ki/test/editor_sections_test.dart: Writing labels, text and counters never overlap at Size(320.0, 568.0) / 200 percent
+00:00 +2: D:/flutter cuoi ki/test/editor_sections_test.dart: Writing labels, text and counters never overlap at Size(320.0, 568.0) / 200 percent
+00:00 +3: D:/flutter cuoi ki/test/editor_sections_test.dart: Writing labels, text and counters never overlap at Size(320.0, 568.0) / 200 percent
+00:01 +4: D:/flutter cuoi ki/test/editor_sections_test.dart: Writing labels, text and counters never overlap at Size(320.0, 568.0) / 200 percent
+00:01 +5: D:/flutter cuoi ki/test/editor_sections_test.dart: Writing labels, text and counters never overlap at Size(320.0, 568.0) / 200 percent
+00:01 +6: D:/flutter cuoi ki/test/editor_sections_test.dart: Writing labels, text and counters never overlap at Size(320.0, 568.0) / 200 percent
+00:01 +7: D:/flutter cuoi ki/test/editor_sections_test.dart: Writing labels, text and counters never overlap at Size(320.0, 568.0) / 200 percent
+00:01 +8: D:/flutter cuoi ki/test/ui_cohesion_test.dart: Typing avoids rebuilding note cards until debounce; search still matches beyond bounded preview
+00:01 +9: D:/flutter cuoi ki/test/ui_cohesion_test.dart: Typing avoids rebuilding note cards until debounce; search still matches beyond bounded preview
+00:01 +10: D:/flutter cuoi ki/test/ui_cohesion_test.dart: Typing avoids rebuilding note cards until debounce; search still matches beyond bounded preview
+00:01 +11: D:/flutter cuoi ki/test/ui_cohesion_test.dart: Typing avoids rebuilding note cards until debounce; search still matches beyond bounded preview
+00:01 +12: D:/flutter cuoi ki/test/ui_cohesion_test.dart: Typing avoids rebuilding note cards until debounce; search still matches beyond bounded preview
+00:01 +13: D:/flutter cuoi ki/test/ui_cohesion_test.dart: Typing avoids rebuilding note cards until debounce; search still matches beyond bounded preview
+00:01 +14: D:/flutter cuoi ki/test/ui_cohesion_test.dart: Typing avoids rebuilding note cards until debounce; search still matches beyond bounded preview
+00:01 +15: D:/flutter cuoi ki/test/writing_studio_test.dart: Template cancel is inert; explicit choice persists one editable account draft
+00:02 +16: D:/flutter cuoi ki/test/writing_studio_test.dart: Template cancel is inert; explicit choice persists one editable account draft
+00:02 +17: D:/flutter cuoi ki/test/writing_studio_test.dart: Template cancel is inert; explicit choice persists one editable account draft
+00:02 +18: D:/flutter cuoi ki/test/writing_studio_test.dart: Template cancel is inert; explicit choice persists one editable account draft
+00:02 +19: D:/flutter cuoi ki/test/writing_studio_test.dart: Template cancel is inert; explicit choice persists one editable account draft
+00:02 +20: D:/flutter cuoi ki/test/protected_editing_test.dart: Protected editor autosaves; revoked delete confirmation removes name and disables action
+00:02 +21: D:/flutter cuoi ki/test/protected_editing_test.dart: Protected editor autosaves; revoked delete confirmation removes name and disables action
+00:02 +22: D:/flutter cuoi ki/test/protected_editing_test.dart: Protected editor autosaves; revoked delete confirmation removes name and disables action
+00:02 +23: D:/flutter cuoi ki/test/sharing_test.dart: Share form validation and remote lock hide revoke confirmation at scale2
+00:02 +24: D:/flutter cuoi ki/test/sharing_test.dart: Share form validation and remote lock hide revoke confirmation at scale2
+00:02 +25: D:/flutter cuoi ki/test/sharing_test.dart: Share form validation and remote lock hide revoke confirmation at scale2
+00:02 +26: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(360.0, 800.0) at scale 1.0
+00:03 +27: D:/flutter cuoi ki/test/ui_cohesion_test.dart: Controlled NotoSans shaping and cached-query benchmark; timings are evidence, not FPS assertions
+00:03 +28: D:/flutter cuoi ki/test/ui_cohesion_test.dart: Controlled NotoSans shaping and cached-query benchmark; timings are evidence, not FPS assertions
+00:03 +29: D:/flutter cuoi ki/test/ui_cohesion_test.dart: Controlled NotoSans shaping and cached-query benchmark; timings are evidence, not FPS assertions
+00:03 +30: D:/flutter cuoi ki/test/ui_cohesion_test.dart: Controlled NotoSans shaping and cached-query benchmark; timings are evidence, not FPS assertions
+00:03 +31: D:/flutter cuoi ki/test/ui_cohesion_test.dart: Controlled NotoSans shaping and cached-query benchmark; timings are evidence, not FPS assertions
+00:04 +32: D:/flutter cuoi ki/test/ui_cohesion_test.dart: Controlled NotoSans shaping and cached-query benchmark; timings are evidence, not FPS assertions
+00:04 +33: D:/flutter cuoi ki/test/ui_cohesion_test.dart: Controlled NotoSans shaping and cached-query benchmark; timings are evidence, not FPS assertions
+00:04 +34: D:/flutter cuoi ki/test/ui_cohesion_test.dart: Controlled NotoSans shaping and cached-query benchmark; timings are evidence, not FPS assertions
+00:04 +35: D:/flutter cuoi ki/test/ui_cohesion_test.dart: Controlled NotoSans shaping and cached-query benchmark; timings are evidence, not FPS assertions
+00:04 +36: D:/flutter cuoi ki/test/ui_cohesion_test.dart: Controlled NotoSans shaping and cached-query benchmark; timings are evidence, not FPS assertions
+00:04 +37: D:/flutter cuoi ki/test/ui_cohesion_test.dart: Controlled NotoSans shaping and cached-query benchmark; timings are evidence, not FPS assertions
+00:04 +38: D:/flutter cuoi ki/test/ui_cohesion_test.dart: Controlled NotoSans shaping and cached-query benchmark; timings are evidence, not FPS assertions
+00:04 +39: D:/flutter cuoi ki/test/ui_cohesion_test.dart: Controlled NotoSans shaping and cached-query benchmark; timings are evidence, not FPS assertions
+00:04 +40: D:/flutter cuoi ki/test/ui_cohesion_test.dart: Controlled NotoSans shaping and cached-query benchmark; timings are evidence, not FPS assertions
+00:05 +41: D:/flutter cuoi ki/test/ui_cohesion_test.dart: Controlled NotoSans shaping and cached-query benchmark; timings are evidence, not FPS assertions
+00:05 +42: D:/flutter cuoi ki/test/ui_cohesion_test.dart: Controlled NotoSans shaping and cached-query benchmark; timings are evidence, not FPS assertions
+00:05 +43: D:/flutter cuoi ki/test/ui_cohesion_test.dart: Controlled NotoSans shaping and cached-query benchmark; timings are evidence, not FPS assertions
+00:05 +44: D:/flutter cuoi ki/test/ui_cohesion_test.dart: Controlled NotoSans shaping and cached-query benchmark; timings are evidence, not FPS assertions
+00:05 +45: D:/flutter cuoi ki/test/ui_cohesion_test.dart: Controlled NotoSans shaping and cached-query benchmark; timings are evidence, not FPS assertions
+00:05 +46: D:/flutter cuoi ki/test/ui_cohesion_test.dart: Controlled NotoSans shaping and cached-query benchmark; timings are evidence, not FPS assertions
+00:06 +47: D:/flutter cuoi ki/test/ui_cohesion_test.dart: Controlled NotoSans shaping and cached-query benchmark; timings are evidence, not FPS assertions
+00:06 +48: D:/flutter cuoi ki/test/ui_cohesion_test.dart: Controlled NotoSans shaping and cached-query benchmark; timings are evidence, not FPS assertions
+00:06 +49: D:/flutter cuoi ki/test/ui_cohesion_test.dart: Controlled NotoSans shaping and cached-query benchmark; timings are evidence, not FPS assertions
+00:06 +50: D:/flutter cuoi ki/test/ui_cohesion_test.dart: Controlled NotoSans shaping and cached-query benchmark; timings are evidence, not FPS assertions
+00:06 +51: D:/flutter cuoi ki/test/ui_cohesion_test.dart: Controlled NotoSans shaping and cached-query benchmark; timings are evidence, not FPS assertions
+00:06 +52: D:/flutter cuoi ki/test/ui_cohesion_test.dart: Controlled NotoSans shaping and cached-query benchmark; timings are evidence, not FPS assertions
+00:07 +53: D:/flutter cuoi ki/test/ui_cohesion_test.dart: Controlled NotoSans shaping and cached-query benchmark; timings are evidence, not FPS assertions
+00:07 +54: D:/flutter cuoi ki/test/ui_cohesion_test.dart: Controlled NotoSans shaping and cached-query benchmark; timings are evidence, not FPS assertions
+UI_BENCHMARK {"target":"host Flutter test engine/NotoSans","iterations":11,"note_chars":100000,"preview_chars":481,"paragraph_full_median_us":9323,"paragraph_preview_median_us":193,"notes":500,"baseline_query_median_us":384654,"optimized_query_median_us":361,"cached_query_median_us":9,"fps_measured":false}
+00:09 +55: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:24 +56: D:/flutter cuoi ki/test/protected_editing_test.dart: Delete conflict requires new confirmation and revoked delete hides content
+00:24 +57: D:/flutter cuoi ki/test/protected_editing_test.dart: Offline draft survives encrypted Sembast close/reopen and never enters ordinary outbox
+00:24 +58: D:/flutter cuoi ki/test/protected_editing_test.dart: A copied old-password draft permits new-password unlock without losing the private copy
+00:24 +59: D:/flutter cuoi ki/test/protected_editing_test.dart: Lost acknowledgement replays the same immutable operation after reopen
+00:24 +60: D:/flutter cuoi ki/test/protected_editing_test.dart: Typing while protected operation is inflight keeps newest draft and chains own ack
+00:24 +61: D:/flutter cuoi ki/test/protected_editing_test.dart: Realtime clean content updates keep frozen base; dirty content remains on conflict
+00:24 +62: D:/flutter cuoi ki/test/protected_editing_test.dart: Revoke hides content and preserves password-bound recovery; copy never mutates source
+00:24 +63: D:/flutter cuoi ki/test/protected_editing_test.dart: Encrypted field merge survives ordinary snapshot capture and account switch mid-write
+00:24 +64: D:/flutter cuoi ki/test/protected_editing_test.dart: Delegated picker obscures content and rechecks grant before showing it again
+00:24 +65: All tests passed!

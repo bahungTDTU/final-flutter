@@ -5,12 +5,8 @@ import '../domain/note.dart';
 class NoteListing {
   NoteListing(List<Note> notes)
     : all = List.unmodifiable(notes),
-      pinned = List.unmodifiable(
-        notes.where((n) => !n.locked && n.pinnedAt != null),
-      ),
-      remaining = List.unmodifiable(
-        notes.where((n) => n.locked || n.pinnedAt == null),
-      );
+      pinned = List.unmodifiable(notes.where((n) => n.pinnedAt != null)),
+      remaining = List.unmodifiable(notes.where((n) => n.pinnedAt == null));
   final List<Note> all, pinned, remaining;
 }
 
@@ -98,11 +94,10 @@ class NoteListingCache {
 }
 
 int _compareVisibleNotes(Note a, Note b) {
-  final aPin = a.locked ? null : a.pinnedAt,
-      bPin = b.locked ? null : b.pinnedAt;
+  final aPin = a.pinnedAt, bPin = b.pinnedAt;
   if ((aPin != null) != (bPin != null)) return aPin != null ? -1 : 1;
-  final aTime = a.locked ? '' : aPin ?? a.updatedAt;
-  final bTime = b.locked ? '' : bPin ?? b.updatedAt;
+  final aTime = aPin ?? (a.locked ? '' : a.updatedAt);
+  final bTime = bPin ?? (b.locked ? '' : b.updatedAt);
   final time = bTime.compareTo(aTime);
   return time != 0 ? time : a.id.compareTo(b.id);
 }

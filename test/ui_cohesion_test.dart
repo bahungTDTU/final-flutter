@@ -123,7 +123,7 @@ void main() {
       await tester.tap(find.byTooltip('Xóa tìm kiếm'));
       await tester.pumpAndSettle();
       expect(find.text('Ghi chú đã khóa'), findsOneWidget);
-      expect(find.text('Đã ghim'), findsNothing);
+      expect(find.text('Đã ghim'), findsWidgets);
       expect(find.text('06/10/2026'), findsNothing);
       await tester.pumpWidget(const SizedBox());
       c.dispose();

@@ -31,7 +31,7 @@ with httpx.Client(base_url='http://127.0.0.1:8000',timeout=15) as api:
     detail=call('GET',f'/notes/{key}',owner)
     assert detail['protection_version']==1 and detail['pinned_at'] and detail['shared_count']==2
     listed=call('GET','/notes',owner)[0]
-    assert set(listed)=={'id','locked','revision','role'}
+    assert set(listed)=={'id','locked','revision','role','pinned_at','shared'}
     call('POST','/sync',users['viewer'],op(2,'Illegal viewer'),status=403)
     edit=op(2,'Edited by authorized editor')
     call('POST','/sync',users['editor'],edit)

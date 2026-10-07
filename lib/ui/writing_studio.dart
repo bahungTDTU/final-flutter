@@ -341,9 +341,18 @@ class _WritingToolsPanelState extends State<WritingToolsPanel> {
         padding: EdgeInsets.zero,
         child: ExpansionTile(
           key: const Key('writing-outline'),
-          title: const Text('Dàn ý & checklist'),
+          title: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text('Dàn ý & checklist'),
+              const SizedBox(height: 6),
+              Text(
+                'Dùng # tiêu đề và - [ ] việc cần làm',
+                style: Theme.of(context).textTheme.bodySmall,
+              ),
+            ],
+          ),
           leading: const Icon(Icons.account_tree_outlined),
-          subtitle: const Text('Dùng # tiêu đề và - [ ] việc cần làm'),
           childrenPadding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
           expandedCrossAxisAlignment: CrossAxisAlignment.start,
           children: [

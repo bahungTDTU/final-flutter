@@ -13,7 +13,9 @@
 | AI/realtime | Chưa có endpoint; cần kế thừa read/edit/unlock | Chưa triển khai | Chưa triển khai | Chưa triển khai |
 
 `access()` kiểm tra session đang còn hiệu lực trong cùng mutation transaction, quyền và grant.
-List note khóa chỉ trả ID, locked, revision và role do server xác định: không trả title/content/labels/pin.
+List note khóa chỉ trả ID, locked, revision, role, pinned_at và shared boolean do server xác định.
+Người dùng xác nhận07/10 cho hiện trạng thái ghim/chia sẻ khi khóa. Không trả title/content/labels,
+updated_at, owner/recipient identity, share timestamps hoặc số người nhận; unlock không mở rộng list.
 Grant bind session (gián tiếp user), note, protection version, TTL 5 phút.
 Đổi/tắt/bật password xóa grant; role change/revoke xóa grant của recipient; logout/reset/change
 password xóa session và grant cascade. Owner không bypass unlock. API sync kiểm tra quyền
@@ -21,10 +23,13 @@ trước replay; operation result chỉ metadata, không lưu/replay content.
 
 Mật khẩu tài khoản/note Argon2id qua thư viện chuẩn. Token 32-byte ngẫu nhiên chỉ lưu digest server.
 Auth chưa bắt buộc verified để dùng app. Endpoint activation/reset public và one-time.
-Login/unlock có cooldown 5 lần sai/60s; resend/forgot có60s theo user/email digest.
-Rate limiting registration/reset/protection, phân phối
+Login có cooldown5 lần sai/60s; unlock/change/disable note dùng chung durable user+note scope
+5 lỗi/60s qua nhiều session/restart, đúng cũng bị429 trong cooldown và có Retry-After.
+Hết cooldown note bắt đầu cửa sổ5 lần mới; đúng password xóa counter. Resend/forgot có60s.
+Rate limiting registration/reset/account-password, phân phối
 attempts theo thời gian và chống enumeration là việc cần hoàn thiện trước public deployment.
-Password-change/protection hiện kiểm tra old password nhưng chưa throttle riêng.
+Account-password change hiện kiểm tra old password nhưng chưa throttle riêng. Protection note
+đã dùng chung throttle với unlock; xem PROTECTION_STATUS_FIXES.md và test_note_password_limits.py.
 
 SMTP/TLS verify certificate/hostname, auth sau TLS; thiếu STARTTLS không gửi plaintext.
 Email code random32-byte, digest/TTL/kind/used kiểm tra atomic; reset/check public không tiêu thụ

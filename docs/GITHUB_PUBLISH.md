@@ -40,3 +40,13 @@ git ls-remote origin refs/heads/master
 
 Push chỉ được coi là hoàn tất khi remote refs/heads/master bằng local HEAD. Upload source
 không triển khai app, không tạo release artifact/HTTPS hoặc nộp bài.
+
+## Publication07/10/2026
+
+Người dùng yêu cầu push sau sửa hai ưu tiên cao. Phạm vi: UI editor tách title/content,
+audit snapshot, shared note-password throttle và public pinned_at/shared status theo lựa chọn
+người dùng, tests/integration/docs/evidence đã chạy.173 Flutter/93 backend/analyze PASS;
+Web/HTTP/API36 debug có evidence scoped, không suy thành production acceptance.
+Author/committer tiếp tục Bahung, không GPT/Codex/co-author trailer hoặc thay lịch sử cũ.
+Một commit có nội dung rõ; không chia nhỏ/backdate để tạo contribution giả. Snapshot
+manifests giữ basef8ff8fa/timestamps của QA. Publication kiểm tra refs thực theo lệnh ở trên.

@@ -1,0 +1,39 @@
+{
+  "measured_at_utc": "2026-10-06T18:34:48.903632+00:00",
+  "target": "FastAPI TestClient / disposable SQLite / real Argon2; no network/mail/LLM",
+  "base_commit": "f8ff8fa427b3d490255c0522699f1a9650a3cb73 + existing UI working changes",
+  "locked_metadata": {
+    "before_has_pin": true,
+    "before_shared_count": 1,
+    "after_fields": [
+      "id",
+      "locked",
+      "revision",
+      "role"
+    ],
+    "pin_shared_removed": true
+  },
+  "protection_rate_limit": {
+    "unlock_wrong_statuses": [
+      403,
+      403,
+      403,
+      403,
+      403,
+      429
+    ],
+    "protection_wrong_statuses_during_block": [
+      403,
+      403,
+      403,
+      403,
+      403,
+      403
+    ],
+    "correct_protection_during_block": 200,
+    "other_roles": {
+      "viewer": 403,
+      "stranger": 404
+    }
+  }
+}

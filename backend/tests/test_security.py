@@ -139,7 +139,8 @@ def test_locked_owner_no_content_and_session_bound_grants(env):
     assert client.get(url, headers=headers(owner)).status_code == 423
     assert client.post('/sync', json=operation(note_id, 2), headers=headers(owner)).status_code == 423
     metadata = client.get('/notes', headers=headers(owner)).json()
-    assert metadata == [{'id': note_id, 'locked': True, 'revision': 2, 'role': 'owner'}]
+    assert metadata == [{'id': note_id, 'locked': True, 'revision': 2, 'role': 'owner',
+                         'pinned_at': None, 'shared': False}]
     assert client.post(url + '/unlock', json={'password': 'wrong'}, headers=headers(owner)).status_code == 403
     assert client.post(url + '/unlock', json={'password': 'note-password-123'}, headers=headers(owner)).status_code == 200
     assert client.get(url, headers=headers(owner)).json()['content'] == 'Confidential content'
@@ -203,12 +204,12 @@ def test_shared_locked_and_replay_does_not_leak_content(env):
     assert client.post('/sync', json=op, headers=headers(owner)).status_code == 423
     assert client.get('/notes/' + note_id, headers=headers(recipient)).status_code == 423
     assert client.get('/notes', headers=headers(recipient)).json() == [
-        {'id': note_id, 'locked': True, 'revision': 2, 'role': 'editor'}]
+        {'id': note_id, 'locked': True, 'revision': 2, 'role': 'editor', 'pinned_at': None, 'shared': True}]
     assert client.get('/notes', headers=headers(users[2])).json() == []
     assert client.post('/notes/' + note_id + '/unlock', json={'password': 'note-password-123'}, headers=headers(owner)).status_code == 200
     assert client.post('/notes/' + note_id + '/shares', json={'email': 'recipient@example.com', 'role': 'viewer'}, headers=headers(owner)).status_code == 200
     assert client.get('/notes', headers=headers(recipient)).json() == [
-        {'id': note_id, 'locked': True, 'revision': 2, 'role': 'viewer'}]
+        {'id': note_id, 'locked': True, 'revision': 2, 'role': 'viewer', 'pinned_at': None, 'shared': True}]
 
 
 def test_preferences_profile_persist(env):

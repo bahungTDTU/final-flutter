@@ -5,6 +5,19 @@ chưa có ngày/giờ cụ thể. Repository: https://github.com/bahungTDTU/fina
 Initial import dùng danh tính Git của người dùng theo yêu cầu; không thay bằng chứng teamwork4 tuần.
 Đọc STATUS.md trước claim hoàn thành.
 
+## Sửa hai ưu tiên cao —07/10/2026
+
+Unlock/đổi/tắt bảo vệ dùng chung giới hạn5 mật khẩu sai/60s theo user+note, bền qua phiên
+khác/restart; lỗi403 được commit, cooldown trả429 và thông báo rõ. Ghi chú khóa giữ ghim
+trước/đúng thời điểm và hiện ghim–chia sẻ–khóa đồng thời trong list/grid theo lựa chọn người dùng.
+List/cache chỉ có id/locked/revision/role/pinned_at/shared; không title/content/labels/danh tính/
+thời điểm chia sẻ/số người nhận. Reader/password vault vẫn dùng codec nội dung riêng.
+173 Flutter/93 backend PASS, analyzer sạch; HTTP4roles/Web debug + Android API36 debug
+1 workflow mới (và teardown) PASS, gồm encrypted cache close/reopen với socket backend không
+truy cập được. [Chi tiết](docs/PROTECTION_STATUS_FIXES.md) ·
+[Bằng chứng](evidence/2026-10-07-protection-status/INDEX.md). Release/LLM/mail thật vẫn hoãn.
+Các đoạn UI theo ngày trước07/10 giữ policy lịch sử; phần này và STATUS là hiện trạng mới.
+
 ## Công nghệ và hiện trạng
 
 Flutter 3.47.1, Dart 3.13.1; Android SDK 36/JDK 21, Python 3.12.
@@ -360,3 +373,16 @@ thật vào output/native-ui (không phải golden hoặc mock):
 ```
 
 NVDA/TalkBack, thiết bị vật lý và kiểm thử đầy đủ APK release vẫn chưa nghiệm thu.
+
+## Phân tách editor và chống chồng chữ —06–07/10/2026
+
+Tiêu đề và nội dung có nhãn cố định bên ngoài vùng nhập, khung/focus riêng và bộ đếm
+ở dòng riêng. Ghim/nhãn nằm trong khối Sắp xếp sau nội dung. Ghi chú bảo vệ dùng cùng
+component và phân nhóm thông tin, công cụ, bảo vệ/quản lý. Thanh công cụ thu vào menu
+khi chữ lớn; heading/hướng dẫn checklist có chiều cao theo nội dung.
+167 Flutter/88 backend PASS;6 regression dùng NotoSans thật, geometry320/390/844/1280
+ở200% và hai theme. IAB Web thực: input→API ack, theme/resize giữ text + selection,
+protected edit→API ack→relock/hết phiên che nội dung. Android API36 debug3 reused
+workflows + teardown PASS46s,8 PNG mới; đây không phải4 feature tests.
+Xem docs/EDITOR_SECTIONS_AND_LAYOUT.md và evidence/2026-10-06-editor-sections/INDEX.md.
+Release/physical/NVDA/TalkBack/FPS/Gemini thật vẫn chưa nghiệm thu ở đợt này.
