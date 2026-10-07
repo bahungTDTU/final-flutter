@@ -5,6 +5,10 @@ chưa có ngày/giờ cụ thể. Repository: https://github.com/bahungTDTU/fina
 Initial import dùng danh tính Git của người dùng theo yêu cầu; không thay bằng chứng teamwork4 tuần.
 Đọc STATUS.md trước claim hoàn thành.
 
+Từ yêu cầu07/10, chỉ push branch làm việc và tạo PR vào master; merge cần checks CI đạt ở
+code mới nhất và1 approval hợp lệ từ người khác. Xem docs/BRANCH_WORKFLOW.md và
+.github/rulesets/master.json; những đợt direct push phía dưới là lịch sử.
+
 Người dùng đã ủy quyền publication performance và session07/10 lên nhánh master bằng
 danh tính Git Bahung. Xem docs/GITHUB_PUBLISH.md; các trạng thái “chưa commit/push” trong
 snapshots QA theo ngày phản ánh thời điểm trước publication, không thay raw evidence.

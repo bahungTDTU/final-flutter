@@ -9,6 +9,14 @@ Không biến mock/email memory thành claim production. Không fake AI/Git/comm
 Không push/deploy/tốn phí/nộp bài khi chưa được ủy quyền. Git đã có initial import35ee911
 lên bahungTDTU/final-flutter; author/committer Bahung theo người dùng, không giả teamwork/authorship.
 
+Quy trình Git người dùng yêu cầu07/10: từ giờ chỉ push branch làm việc, mặc định codex/<mô-tả>;
+không push trực tiếp master/default branch, không force-push hoặc bypass ruleset. Tạo PR vào
+master và attach PR vào task. Trước merge: local checks phù hợp PASS, ba required CI checks
+Flutter quality/Backend tests/Build smoke PASS trên code mới nhất, branch cập nhật với master,
+mọi review thread giải quyết và1 approval từ người khác sau push cuối. Giữ merge commit để
+không squash mất lịch sử contribution; không tự approve bằng tài khoản người khác. Yêu cầu
+“push” chỉ xuất bản branch/PR; không coi là yêu cầu merge ngay. Xem docs/BRANCH_WORKFLOW.md.
+
 Lệnh thật: `scripts/setup.ps1`, `scripts/check.ps1`, `scripts/start_backend.ps1`, `scripts/start_web.ps1`,
 `scripts/build.ps1`. Flutter executable discovery trong toolchain.ps1, Python dependency versions pinned
 backend/requirements.txt. Đọc README trước chạy integration (cần backend và thiết bị thật/emulator).

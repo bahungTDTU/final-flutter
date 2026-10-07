@@ -1,5 +1,18 @@
 # NoteTogether - trạng thái 07/10/2026
 
+## Ruleset và quy trình branch/PR —07/10/2026
+
+Người dùng yêu cầu từ giờ chỉ push branch làm việc và chỉ merge sau kiểm tra. Repository
+API xác nhận public,2 collaborators có quyền ghi, chưa có ruleset/workflow trước đợt này.
+Ruleset24651991 đã Active, master protected, bypass list trống: PR +1approval từ người khác
+sau push cuối, dismiss stale reviews, resolve threads, strict latest-base và3 required checks
+GitHub Actions (Flutter quality/Backend tests/Build smoke); cấm xóa/force-push master/default.
+Local đã chuyển codex/repository-guardrails; pipeline/template/AGENTS/docs nằm trên branch.
+CI hosted chưa có kết quả tại thời điểm ghi snapshot; xem PR và Actions cho kết quả thực.
+Không direct push/merge/bypass để bootstrap. Build smoke compile Web/Android debug, không
+production signing/release/deploy. App source giữ gate188Flutter/94backend đã có; quy trình
+mới không biến quyền collaborator thành contribution/review đã làm. docs/BRANCH_WORKFLOW.md.
+
 ## Publication performance/session —07/10/2026
 
 Người dùng đã ủy quyền commit/push performance F3/F4 và session storage F5 lên
