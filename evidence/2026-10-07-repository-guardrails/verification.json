@@ -1,0 +1,9 @@
+{
+  "result": "PASS",
+  "ruleset_id": 24651991,
+  "enforcement": "active",
+  "bypass_actors": [],
+  "master_protected": true,
+  "feature_branch_rules": [],
+  "ruleset_url": "https://github.com/bahungTDTU/final-flutter/rules/24651991"
+}

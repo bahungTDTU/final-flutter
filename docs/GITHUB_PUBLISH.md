@@ -1,5 +1,9 @@
 # GitHub initial import — 02/10/2026
 
+Từ yêu cầu07/10/2026, quy trình hiện tại là feature branch → PR → checks/review → merge.
+Không direct push master/default hoặc force/bypass. docs/BRANCH_WORKFLOW.md mô tả ruleset
+Active và required CI; các direct-push commands/đợt publication bên dưới là lịch sử.
+
 Người dùng đã cung cấp https://github.com/bahungTDTU/final-flutter và ủy quyền commit/push.
 Remote kiểm tra bằng git ls-remote trước import không có branch/tag/HEAD.
 Nhánh local hiện có là master; giữ nhánh này. Không rewrite/force-push hoặc backdate.
