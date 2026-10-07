@@ -5,6 +5,31 @@ chưa có ngày/giờ cụ thể. Repository: https://github.com/bahungTDTU/fina
 Initial import dùng danh tính Git của người dùng theo yêu cầu; không thay bằng chứng teamwork4 tuần.
 Đọc STATUS.md trước claim hoàn thành.
 
+Người dùng đã ủy quyền publication performance và session07/10 lên nhánh master bằng
+danh tính Git Bahung. Xem docs/GITHUB_PUBLISH.md; các trạng thái “chưa commit/push” trong
+snapshots QA theo ngày phản ánh thời điểm trước publication, không thay raw evidence.
+
+## Session mã hóa và migration —07/10/2026
+
+Token/profile được mã hóa bằng device key riêng, nonce/AAD riêng; session legacy được chuyển
+và compact trước mở Home. Lỗi khóa/ghi giữ dữ liệu, không fallback plaintext. Logout dùng
+tombstone bền, vẫn thử revoke server khi cleanup lỗi; có nút thử lại và giữ account/drafts.
+188 Flutter/94 backend PASS/analyze sạch; actual Web debug offline reload/logout/login/profile
+roundtrip và Android API36 debug migration/file reopen/logout401/manual login giữ draft PASS.
+[Thiết kế và giới hạn Web](docs/SESSION_STORAGE.md) ·
+[Bằng chứng](evidence/2026-10-07-session-storage/INDEX.md). Release vẫn để cuối.
+
+## Performance bản nháp và đính kèm —07/10/2026
+
+Gõ bản nháp thường ghi record mã hóa nhỏ và đợi transaction; full save/sync gộp root +
+drafts nguyên tử. List/replay đính kèm chỉ SELECT metadata, download giữ ACL/private bytes.
+180 Flutter/94 backend PASS/analyze sạch; actual HTTP4roles và Android API36 debug encrypted
+reopen/offline/reconnect PASS; IAB Web debug offline reload/restored draft/same-ID ACK PASS.
+Workload500notes/20updates: encoded JSON16.886.608→4.848B;
+list10×5MiB: peak Python allocations10.536.155→52.505B. Đây là host probes, không FPS/RSS.
+[Thiết kế và giới hạn](docs/PERFORMANCE_DRAFTS_AND_ATTACHMENTS.md) ·
+[Bằng chứng](evidence/2026-10-07-performance/INDEX.md). Chưa commit/push/release đợt này.
+
 ## Sửa hai ưu tiên cao —07/10/2026
 
 Unlock/đổi/tắt bảo vệ dùng chung giới hạn5 mật khẩu sai/60s theo user+note, bền qua phiên
@@ -149,7 +174,8 @@ Web integration automated driver chưa chạy; browser manual automation evidenc
 Draft lưu transaction ngay khi input; valid notes debounce 650ms; outbox UUID/payload immutable,
 revision conflict bảo toàn bản local và cho chọn remote/copy. Retry interval 15s, chưa backoff.
 Account namespace + generation guard; account snapshots mã hóa AES-GCM bằng khóa device riêng,
-session/profile vẫn plaintext, cần hardening. Khóa remote giữ local edit trong encrypted recovery,
+session/profile cũng mã hóa bằng device key riêng và migrate/compact legacy trước mở Home;
+chi tiết/giới hạn Web ở docs/SESSION_STORAGE.md. Khóa remote giữ local edit trong encrypted recovery,
 Phục hồi tạo draft UUID mới rồi auto-save khi hợp lệ, không mở source. Xem docs/ENCRYPTED_RECOVERY.md.
 Web key store experimental; không chống XSS/browser-profile reader. Key loss/clear storage có thể mất
 recovery; chưa backup/export key. Ghi chú bảo vệ đã tải có password-encrypted cache/draft,

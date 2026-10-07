@@ -1,0 +1,6 @@
+Formatted 83 files (0 changed) in 0.69 seconds.
+Analyzing flutter cuoi ki...                                    
+
+warning - The '!' will have no effect because the receiver can't be null. Try removing the '!' operator - test\draft_projection_test.dart:192:46 - unnecessary_non_null_assertion
+
+1 issue found. (ran in 4.8s)

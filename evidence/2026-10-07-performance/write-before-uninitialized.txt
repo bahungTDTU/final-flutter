@@ -1,0 +1,3 @@
+00:00 +0: loading D:/flutter cuoi ki/tmp/performance-2026-10-07/write_probe_test.dart
+00:00 +0: Real encrypted Sembast write-volume probe; not an FPS test
+00:13 +1: All tests passed!

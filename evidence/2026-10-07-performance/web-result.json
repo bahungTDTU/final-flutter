@@ -1,0 +1,15 @@
+{
+  "result": "PASS",
+  "date_utc": "2026-10-07T02:31:14.193586+00:00",
+  "target": "IAB Web debug7366 / real loopback API8017 / IndexedDB + platform WebCrypto keys",
+  "backend_stopped_after_login": true,
+  "reload_while_backend_unreachable": true,
+  "restored_title": " ",
+  "restored_content": "Web overlay survives reload",
+  "completed_title": "Web optimized draft",
+  "note_id": "31318b66-245a-4273-9c41-efd990946c6e",
+  "revision_before": 3,
+  "revision_after": 4,
+  "note_count": 1,
+  "limits": "Static Flutter debug server remained online; not Wi-Fi toggle/OS kill/physical/FPS/cold-first-load."
+}

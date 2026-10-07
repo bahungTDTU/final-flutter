@@ -50,3 +50,14 @@ Web/HTTP/API36 debug có evidence scoped, không suy thành production acceptanc
 Author/committer tiếp tục Bahung, không GPT/Codex/co-author trailer hoặc thay lịch sử cũ.
 Một commit có nội dung rõ; không chia nhỏ/backdate để tạo contribution giả. Snapshot
 manifests giữ basef8ff8fa/timestamps của QA. Publication kiểm tra refs thực theo lệnh ở trên.
+
+## Publication performance và session07/10/2026
+
+Theo yêu cầu push mới, xuất bản F3/F4 (encrypted draft projection/atomic fold và metadata
+attachment queries) cùng F5 (session encryption/legacy migration/durable logout/retry).
+Giữ author/committer Bahung và nhánh master, một commit có nội dung rõ; không force/rewrite,
+thêm GPT/Codex co-author hoặc giả đóng góp nhóm. Source188 Flutter/94 backend/analyze PASS;
+actual Web/HTTP/API36 debug có evidence ở performance và session-storage, scope riêng.
+Manifest vẫn ghi base5b82996/timestamps thật lúc QA. Ghi nhận publication ở STATUS/README
+là thay đổi docs sau QA; source khác và toàn bộ evidence được kiểm tra hash trước commit.
+Remote master phải bằng local HEAD trước báo push hoàn tất. Không tạo release/deploy/nộp bài.

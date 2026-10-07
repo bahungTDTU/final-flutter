@@ -1,0 +1,1 @@
+PASS profile/note retained; independent API login/logout token returns401; no credential values recorded.

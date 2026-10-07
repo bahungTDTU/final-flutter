@@ -1,0 +1,87 @@
+Resolving dependencies...
+Downloading packages...
+  code_assets 1.2.1 (2.1.0 available)
+  cross_file 0.3.5+5 (0.4.0 available)
+  hooks 2.0.2 (2.2.0 available)
+  idb_shim 2.9.9 (2.9.10 available)
+  jni_flutter 1.0.4 (retracted)
+  material_color_utilities 0.13.0 (0.13.1 available)
+  meta 1.18.3 (1.19.0 available)
+  objective_c 9.5.0 (9.6.2 available)
+  record_use 0.6.0 (1.1.1 available)
+  test_api 0.7.12 (0.7.14 available)
+  vector_math 2.4.0 (2.4.3 available)
+  video_player 2.14.0 (2.14.1 available)
+Got dependencies!
+11 packages have newer versions incompatible with dependency constraints.
+Try `flutter pub outdated` for more information.
+Running Gradle task 'assembleDebug'...                          
+Warning: SDK processing. This version only understands SDK XML versions up to 3 but an SDK XML file of version 4 was encountered. This can happen if you use versions of Android Studio and the command-line tools that were released at different times.
+Running Gradle task 'assembleDebug'...                             45,5s
+√ Built build\app\outputs\flutter-apk\app-debug.apk
+Installing build\app\outputs\flutter-apk\app-debug.apk...        1.265ms
+D/nativeloader( 3716): Load /data/app/~~ngutf4T77cIPPACmc8rbBQ==/vn.edu.notetogether.note_together-jDxIOKlL_V4bI7_Yuo28EA==/base.apk!/lib/x86_64/libdartjni.so using class loader ns clns-9 (caller=/data/app/~~ngutf4T77cIPPACmc8rbBQ==/vn.edu.notetogether.note_together-jDxIOKlL_V4bI7_Yuo28EA==/base.apk!classes7.dex): ok
+I/r.note_together( 3716): hiddenapi: Accessing hidden method Landroid/view/accessibility/AccessibilityNodeInfo;->getSourceNodeId()J (runtime_flags=0, domain=platform, api=unsupported,test-api) from Lio/flutter/view/AccessibilityViewEmbedder$ReflectionAccessors; (domain=app) using reflection: allowed
+I/r.note_together( 3716): hiddenapi: Accessing hidden method Landroid/view/accessibility/AccessibilityRecord;->getSourceNodeId()J (runtime_flags=0, domain=platform, api=unsupported) from Lio/flutter/view/AccessibilityViewEmbedder$ReflectionAccessors; (domain=app) using reflection: allowed
+I/r.note_together( 3716): hiddenapi: Accessing hidden field Landroid/view/accessibility/AccessibilityNodeInfo;->mChildNodeIds:Landroid/util/LongArray; (runtime_flags=0, domain=platform, api=unsupported) from Lio/flutter/view/AccessibilityViewEmbedder$ReflectionAccessors; (domain=app) using reflection: allowed
+I/r.note_together( 3716): hiddenapi: Accessing hidden method Landroid/util/LongArray;->get(I)J (runtime_flags=0, domain=platform, api=unsupported) from Lio/flutter/view/AccessibilityViewEmbedder$ReflectionAccessors; (domain=app) using reflection: allowed
+D/AccessibilityBridge( 3716): Setting not found: accessibility_display_inversion_enabled, using default: 0
+D/FlutterRenderer( 3716): Width is zero. 0,0
+D/CompatChangeReporter( 3716): Compat change id reported: 377864165; UID 10216; state: ENABLED
+W/HWUI    ( 3716): Unknown dataspace 0
+I/Choreographer( 3716): Skipped 104 frames!  The application may be doing too much work on its main thread.
+I/WindowExtensionsImpl( 3716): Initializing Window Extensions, vendor API level=9, activity embedding enabled=true
+D/FlutterRenderer( 3716): Width is zero. 0,0
+D/FlutterJNI( 3716): Sending viewport metrics to the engine.
+D/WindowLayoutComponentImpl( 3716): Register WindowLayoutInfoListener on Context=vn.edu.notetogether.note_together.MainActivity@7a54870, of which baseContext=android.app.ContextImpl@adc59a5
+D/FlutterJNI( 3716): Sending viewport metrics to the engine.
+I/r.note_together( 3716): Compiler allocated 5042KB to compile void android.view.ViewRootImpl.performTraversals()
+VMServiceFlutterDriver: Connecting to Flutter application at http://127.0.0.1:58615/6D2Kj0nrGYY=/
+VMServiceFlutterDriver: Isolate found with number: 4184643328253755
+VMServiceFlutterDriver: Isolate 4184643328253755 is runnable.
+VMServiceFlutterDriver: Isolate is paused at start.
+VMServiceFlutterDriver: Attempting to resume isolate
+I/flutter ( 3716): 00:00 +0: Native legacy session migration, offline reopen, server logout and manual re-login preserve encrypted drafts
+VMServiceFlutterDriver: Connected to Flutter application.
+D/InsetsController( 3716): hide(ime(), fromIme=false)
+I/ImeTracker( 3716): vn.edu.notetogether.note_together:575d660b: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN
+V/Configuration( 3716): Updating configuration, locales updated from [en_US] to [en]
+I/r.note_together( 3716): AssetManager2(0x7e524f43c9b8) locale list changing from [] to [en]
+V/Configuration( 3716): Updating configuration, locales updated from [en] to [en_US]
+I/r.note_together( 3716): AssetManager2(0x7e524f442778) locale list changing from [] to [en-US]
+I/r.note_together( 3716): AssetManager2(0x7e524f458bb8) locale list changing from [] to [en-US]
+D/FlutterJNI( 3716): Sending viewport metrics to the engine.
+I/ImeTracker( 3716): vn.edu.notetogether.note_together:717df53a: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+D/InsetsController( 3716): show(ime(), fromIme=false)
+D/InsetsController( 3716): Setting requestedVisibleTypes to -1 (was -9)
+I/ImeTracker( 3716): vn.edu.notetogether.note_together:beccab69: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+D/InsetsController( 3716): show(ime(), fromIme=false)
+I/ImeTracker( 3716): vn.edu.notetogether.note_together:beccab69: onCancelled at PHASE_CLIENT_REPORT_REQUESTED_VISIBLE_TYPES
+D/InputConnectionAdaptor( 3716): The input method toggled cursor monitoring on
+D/ProfileInstaller( 3716): Installing profile for vn.edu.notetogether.note_together
+I/AssistStructure( 3716): Flattened final assist data: 484 bytes, containing 1 windows, 3 views
+I/ImeTracker( 3716): vn.edu.notetogether.note_together:bb3358f6: onRequestHide at ORIGIN_CLIENT reason HIDE_SOFT_INPUT fromUser false
+D/InsetsController( 3716): hide(ime(), fromIme=false)
+D/InsetsController( 3716): Setting requestedVisibleTypes to -9 (was -1)
+D/CompatChangeReporter( 3716): Compat change id reported: 395521150; UID 10216; state: ENABLED
+W/RemoteInputConnectionImpl( 3716): getSurroundingText on inactive InputConnection
+I/ImeTracker( 3716): vn.edu.notetogether.note_together:3c18c918: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+D/InsetsController( 3716): show(ime(), fromIme=false)
+D/InsetsController( 3716): Setting requestedVisibleTypes to -1 (was -9)
+I/ImeTracker( 3716): vn.edu.notetogether.note_together:58b19603: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+D/InsetsController( 3716): show(ime(), fromIme=false)
+I/ImeTracker( 3716): vn.edu.notetogether.note_together:58b19603: onCancelled at PHASE_CLIENT_REPORT_REQUESTED_VISIBLE_TYPES
+I/AssistStructure( 3716): Flattened final assist data: 476 bytes, containing 1 windows, 3 views
+I/ImeTracker( 3716): vn.edu.notetogether.note_together:eac47a71: onRequestHide at ORIGIN_CLIENT reason HIDE_SOFT_INPUT fromUser false
+D/InsetsController( 3716): hide(ime(), fromIme=false)
+W/WindowOnBackDispatcher( 3716): sendCancelIfRunning: isInProgress=false callback=android.view.ImeBackAnimationController@5ccd653
+D/InsetsController( 3716): Setting requestedVisibleTypes to -9 (was -1)
+W/RemoteInputConnectionImpl( 3716): requestCursorUpdates on inactive InputConnection
+W/RemoteInputConnectionImpl( 3716): getSurroundingText on inactive InputConnection
+W/WindowOnBackDispatcher( 3716): sendCancelIfRunning: isInProgress=false callback=android.view.ImeBackAnimationController@5ccd653
+I/ImeTracker( 3716): system_server:e7820c5a: onCancelled at PHASE_CLIENT_ON_CONTROLS_CHANGED
+VMServiceFlutterDriver: request_data message is taking a long time to complete...
+D/FlutterJNI( 3716): Sending viewport metrics to the engine.
+I/flutter ( 3716): 00:05 +1: (tearDownAll)
+I/flutter ( 3716): 00:05 +2: All tests passed!
+All tests passed.

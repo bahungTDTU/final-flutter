@@ -281,6 +281,15 @@ class _AuthScreenState extends State<AuthScreen> {
                               icon: Icons.error_outline,
                             ),
                           ),
+                        if (widget.controller.sessionRemovalFailed)
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 16),
+                            child: OutlinedButton.icon(
+                              onPressed: () async => widget.controller.logout(),
+                              icon: const Icon(Icons.refresh),
+                              label: const Text('Thử xóa phiên trên thiết bị'),
+                            ),
+                          ),
                         PrismAction(
                           key: const Key('auth-submit'),
                           onPressed: widget.controller.busy ? null : submit,
@@ -760,6 +769,14 @@ void showMessage(BuildContext context, String message) =>
 
 String friendlyError(Object error) {
   final text = '$error';
+  if (text.contains('phiên đăng nhập trên thiết bị')) return text;
+  if (text.contains('Thiếu khóa') ||
+      text.contains('kho phục hồi mã hóa') ||
+      text.contains('khóa phiên đăng nhập') ||
+      text.contains('Kho phiên đăng nhập') ||
+      text.contains('Phiên đăng nhập đã lưu')) {
+    return 'Không thể mở hoặc lưu phiên trên thiết bị. Phiên đã lưu và dữ liệu ghi chú vẫn được giữ. Kiểm tra bộ nhớ thiết bị rồi thử lại.';
+  }
   if (text.contains('Invalid email or password')) {
     return 'Email hoặc mật khẩu chưa đúng.';
   }

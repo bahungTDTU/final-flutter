@@ -1,0 +1,120 @@
+Resolving dependencies...
+Downloading packages...
+  code_assets 1.2.1 (2.1.0 available)
+  cross_file 0.3.5+5 (0.4.0 available)
+  hooks 2.0.2 (2.2.0 available)
+  idb_shim 2.9.9 (2.9.10 available)
+  jni_flutter 1.0.4 (retracted)
+  material_color_utilities 0.13.0 (0.13.1 available)
+  meta 1.18.3 (1.19.0 available)
+  objective_c 9.5.0 (9.6.2 available)
+  record_use 0.6.0 (1.1.1 available)
+  test_api 0.7.12 (0.7.14 available)
+  vector_math 2.4.0 (2.4.3 available)
+  video_player 2.14.0 (2.14.1 available)
+Got dependencies!
+11 packages have newer versions incompatible with dependency constraints.
+Try `flutter pub outdated` for more information.
+Running Gradle task 'assembleDebug'...                             11,5s
+√ Built build\app\outputs\flutter-apk\app-debug.apk
+Installing build\app\outputs\flutter-apk\app-debug.apk...          751ms
+I/r.note_together( 4338): Compiler allocated 5042KB to compile void android.view.ViewRootImpl.performTraversals()
+VMServiceFlutterDriver: Connecting to Flutter application at http://127.0.0.1:63267/m0R8Ok_FEyg=/
+VMServiceFlutterDriver: Isolate found with number: 3458115356641551
+VMServiceFlutterDriver: Isolate 3458115356641551 is runnable.
+VMServiceFlutterDriver: Isolate is paused at start.
+VMServiceFlutterDriver: Attempting to resume isolate
+I/flutter ( 4338): 00:00 +0: Native encrypted draft projection survives offline file reopen then folds/syncs same ID
+VMServiceFlutterDriver: Connected to Flutter application.
+D/InsetsController( 4338): hide(ime(), fromIme=false)
+I/ImeTracker( 4338): vn.edu.notetogether.note_together:95502dd9: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN
+V/Configuration( 4338): Updating configuration, locales updated from [en_US] to [en]
+I/r.note_together( 4338): AssetManager2(0x725b3246c978) locale list changing from [] to [en]
+V/Configuration( 4338): Updating configuration, locales updated from [en] to [en_US]
+I/r.note_together( 4338): AssetManager2(0x725b32463ff8) locale list changing from [] to [en-US]
+I/r.note_together( 4338): AssetManager2(0x725b3247f258) locale list changing from [] to [en-US]
+D/ProfileInstaller( 4338): Installing profile for vn.edu.notetogether.note_together
+I/ImeTracker( 4338): vn.edu.notetogether.note_together:9766c4e4: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+D/InsetsController( 4338): show(ime(), fromIme=false)
+D/InsetsController( 4338): Setting requestedVisibleTypes to -1 (was -9)
+I/ImeTracker( 4338): vn.edu.notetogether.note_together:ce8a3687: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+D/InsetsController( 4338): show(ime(), fromIme=false)
+I/ImeTracker( 4338): vn.edu.notetogether.note_together:ce8a3687: onCancelled at PHASE_CLIENT_REPORT_REQUESTED_VISIBLE_TYPES
+D/InputConnectionAdaptor( 4338): The input method toggled cursor monitoring on
+I/AssistStructure( 4338): Flattened final assist data: 556 bytes, containing 1 windows, 3 views
+W/RemoteInputConnectionImpl( 4338): getSurroundingText on inactive InputConnection
+I/ImeTracker( 4338): vn.edu.notetogether.note_together:9af0a748: onRequestHide at ORIGIN_CLIENT reason HIDE_SOFT_INPUT fromUser false
+D/InsetsController( 4338): hide(ime(), fromIme=false)
+D/InsetsController( 4338): Setting requestedVisibleTypes to -9 (was -1)
+D/CompatChangeReporter( 4338): Compat change id reported: 395521150; UID 10218; state: ENABLED
+W/RemoteInputConnectionImpl( 4338): getSurroundingText on inactive InputConnection
+W/RemoteInputConnectionImpl( 4338): getTextBeforeCursor on inactive InputConnection
+W/WindowOnBackDispatcher( 4338): sendCancelIfRunning: isInProgress=false callback=android.view.ImeBackAnimationController@fcbaffd
+I/ImeTracker( 4338): system_server:86ed9578: onCancelled at PHASE_CLIENT_ON_CONTROLS_CHANGED
+I/ImeTracker( 4338): vn.edu.notetogether.note_together:3c41b601: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+D/InsetsController( 4338): show(ime(), fromIme=false)
+D/InsetsController( 4338): Setting requestedVisibleTypes to -1 (was -9)
+I/ImeTracker( 4338): vn.edu.notetogether.note_together:1342281: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+D/InsetsController( 4338): show(ime(), fromIme=false)
+I/ImeTracker( 4338): vn.edu.notetogether.note_together:1342281: onCancelled at PHASE_CLIENT_APPLY_ANIMATION
+W/InteractionJankMonitor( 4338): Initializing without READ_DEVICE_CONFIG permission. enabled=true, interval=1, missedFrameThreshold=3, frameTimeThreshold=64, package=vn.edu.notetogether.note_together
+D/FlutterJNI( 4338): Sending viewport metrics to the engine.
+D/InputConnectionAdaptor( 4338): The input method toggled cursor monitoring on
+I/AssistStructure( 4338): Flattened final assist data: 560 bytes, containing 1 windows, 3 views
+I/ImeTracker( 4338): system_server:76e39fa8: onCancelled at PHASE_CLIENT_ON_CONTROLS_CHANGED
+D/FlutterJNI( 4338): Sending viewport metrics to the engine.
+I/ImeTracker( 4338): vn.edu.notetogether.note_together:faa28d4a: onRequestHide at ORIGIN_CLIENT reason HIDE_SOFT_INPUT fromUser false
+D/InsetsController( 4338): hide(ime(), fromIme=false)
+D/InsetsController( 4338): Setting requestedVisibleTypes to -9 (was -1)
+I/ImeTracker( 4338): vn.edu.notetogether.note_together:3c41b601: onCancelled at PHASE_CLIENT_ANIMATION_CANCEL
+D/FlutterJNI( 4338): Sending viewport metrics to the engine.
+D/FlutterJNI( 4338): Sending viewport metrics to the engine.
+D/FlutterJNI( 4338): Sending viewport metrics to the engine.
+D/FlutterJNI( 4338): Sending viewport metrics to the engine.
+D/FlutterJNI( 4338): Sending viewport metrics to the engine.
+D/FlutterJNI( 4338): Sending viewport metrics to the engine.
+D/FlutterJNI( 4338): Sending viewport metrics to the engine.
+D/FlutterJNI( 4338): Sending viewport metrics to the engine.
+D/FlutterJNI( 4338): Sending viewport metrics to the engine.
+D/FlutterJNI( 4338): Sending viewport metrics to the engine.
+D/FlutterJNI( 4338): Sending viewport metrics to the engine.
+D/FlutterJNI( 4338): Sending viewport metrics to the engine.
+D/FlutterJNI( 4338): Sending viewport metrics to the engine.
+D/FlutterJNI( 4338): Sending viewport metrics to the engine.
+D/FlutterJNI( 4338): Sending viewport metrics to the engine.
+D/FlutterJNI( 4338): Sending viewport metrics to the engine.
+I/ImeTracker( 4338): system_server:1cd5ee72: onCancelled at PHASE_CLIENT_ON_CONTROLS_CHANGED
+W/FrameTracker( 4338): Missed SF frame:JANK_COMPOSER, 19584, 9150037, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 4338): Missed SF frame:JANK_COMPOSER, 19606, 14703262, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 4338): Missed App frame:UNKNOWN: 3, 19628, 17022268, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 4338): Missed SF frame:UNKNOWN: 3, 19628, 17022268, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 4338): Missed SF frame:JANK_COMPOSER, 19642, 5455934, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 4338): Missed SF frame:JANK_COMPOSER, 19664, 30013276, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 4338): Missed SF frame:JANK_COMPOSER, 19700, 23913135, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 4338): Missed SF frame:JANK_COMPOSER, 19736, 113720373, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 4338): Missed SF frame:JANK_COMPOSER, 19833, 7239075, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 4338): Missed SF frame:JANK_COMPOSER, 19855, 6328361, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 4338): Missed SF frame:JANK_COMPOSER, 19884, 4935359, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 4338): Missed SF frame:JANK_COMPOSER, 19906, 7616830, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 4338): Missed SF frame:JANK_COMPOSER, 19928, 8394227, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+W/FrameTracker( 4338): Missed SF frame:JANK_COMPOSER, 19950, 12094075, CUJ=J<IME_INSETS_HIDE_ANIMATION::1@1@vn.edu.notetogether.note_together>
+V/PerfettoTrigger( 4338): Triggering /system/bin/trigger_perfetto com.android.telemetry.interaction-jank-monitor-81
+W/WindowOnBackDispatcher( 4338): sendCancelIfRunning: isInProgress=false callback=android.view.ImeBackAnimationController@fcbaffd
+VMServiceFlutterDriver: request_data message is taking a long time to complete...
+W/WindowOnBackDispatcher( 4338): sendCancelIfRunning: isInProgress=false callback=io.flutter.embedding.android.FlutterActivity$1@21c8865
+I/ImeTracker( 4338): vn.edu.notetogether.note_together:ab8354e: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+D/InsetsController( 4338): show(ime(), fromIme=false)
+D/InsetsController( 4338): Setting requestedVisibleTypes to -1 (was -9)
+I/ImeTracker( 4338): vn.edu.notetogether.note_together:27884245: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+D/InsetsController( 4338): show(ime(), fromIme=false)
+I/ImeTracker( 4338): vn.edu.notetogether.note_together:27884245: onCancelled at PHASE_CLIENT_REPORT_REQUESTED_VISIBLE_TYPES
+D/InputConnectionAdaptor( 4338): The input method toggled cursor monitoring on
+I/AssistStructure( 4338): Flattened final assist data: 536 bytes, containing 1 windows, 3 views
+I/ImeTracker( 4338): vn.edu.notetogether.note_together:25244e82: onRequestHide at ORIGIN_CLIENT reason HIDE_SOFT_INPUT fromUser false
+D/InsetsController( 4338): hide(ime(), fromIme=false)
+D/InsetsController( 4338): Setting requestedVisibleTypes to -9 (was -1)
+W/RemoteInputConnectionImpl( 4338): getSurroundingText on inactive InputConnection
+W/WindowOnBackDispatcher( 4338): sendCancelIfRunning: isInProgress=false callback=android.view.ImeBackAnimationController@fcbaffd
+I/flutter ( 4338): 00:07 +1: (tearDownAll)
+I/flutter ( 4338): 00:08 +2: All tests passed!
+All tests passed.

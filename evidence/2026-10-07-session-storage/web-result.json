@@ -1,0 +1,15 @@
+{
+  "result": "PASS",
+  "date_utc": "2026-10-07T05:39:01.786219+00:00",
+  "target": "IAB Web debug7366 / actual loopback API8017",
+  "fixture_from_previous_version_restored": true,
+  "encrypted_session_offline_reload": true,
+  "logout_reload_showed_auth": true,
+  "manual_login_restored_same_note": true,
+  "profile_name": "Session vault Web",
+  "note_count": 1,
+  "note_id": "31318b66-245a-4273-9c41-efd990946c6e",
+  "note_revision": 4,
+  "independent_server_logout_status": 401,
+  "limits": "Browser storage/token not read through automation; native/host verify opaque records and compaction. No public/physical/OS kill/XSS-immunity claim."
+}

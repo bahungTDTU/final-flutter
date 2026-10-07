@@ -1,0 +1,43 @@
+{
+  "measured_at_utc": "2026-10-07T02:10:05.616612Z",
+  "target": "Windows Flutter host / real AES-GCM / file Sembast / memory key provider",
+  "notes": 500,
+  "chars_per_note": 1000,
+  "draft_updates": 20,
+  "repetitions": 5,
+  "seed_excluded": true,
+  "reopen_latest_draft": true,
+  "fps_or_native_latency_measured": false,
+  "runs": [
+    {
+      "encoded_write_bytes": 4848,
+      "publish_transactions": 20,
+      "full_account_writes": 0,
+      "elapsed_ms": 146.843
+    },
+    {
+      "encoded_write_bytes": 4848,
+      "publish_transactions": 20,
+      "full_account_writes": 0,
+      "elapsed_ms": 175.464
+    },
+    {
+      "encoded_write_bytes": 4848,
+      "publish_transactions": 20,
+      "full_account_writes": 0,
+      "elapsed_ms": 124.13
+    },
+    {
+      "encoded_write_bytes": 4848,
+      "publish_transactions": 20,
+      "full_account_writes": 0,
+      "elapsed_ms": 129.047
+    },
+    {
+      "encoded_write_bytes": 4848,
+      "publish_transactions": 20,
+      "full_account_writes": 0,
+      "elapsed_ms": 127.818
+    }
+  ]
+}

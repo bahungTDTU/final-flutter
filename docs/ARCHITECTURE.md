@@ -11,9 +11,14 @@ Không dùng shared_preferences cho note quan trọng vì package không bảo �
 
 Controller quản lý session, notes, drafts, preferences, labels, immutable outbox, conflict và recovery.
 EncryptedAccountStore mã hóa snapshot key `account:<user UUID>` chứa cả notes/outbox/drafts/recovery
-trong một transaction, device key riêng. Xem ENCRYPTED_RECOVERY.md cho migration/key lifecycle.
-`session` riêng giữ token và profile để khôi phục offline. Hiện session store chưa được mã hóa;
-đây là giới hạn bản local, cần hardening trước public release. Server note khóa chỉ giữ metadata;
+trong một transaction, device key riêng. Từ07/10, nhập ordinary drafts dùng projection mã hóa
+`drafts:account:<UUID>` với AAD riêng; read gộp, full publish ghi root + xóa projection nguyên tử.
+Không đổi password vault/immutable outbox. Xem PERFORMANCE_DRAFTS_AND_ATTACHMENTS.md và
+ENCRYPTED_RECOVERY.md cho capability/fallback/migration/key lifecycle.
+`session` riêng giữ token/profile trong AES-GCM envelope với device key/AAD riêng, migrate và
+compact legacy trước controller mở Home. Logout tombstone không revive session khi compact
+bị ngắt; account/drafts giữ riêng. Web provider chưa chống XSS/full-profile reader; xem
+SESSION_STORAGE.md cho scope/giới hạn. Server note khóa chỉ giữ metadata;
 recovery giữ local edit trước khóa trong envelope, không tải source content hoặc tạo unlock grant.
 
 FastAPI dùng SQLite, foreign keys và transaction `BEGIN IMMEDIATE` bao quanh quyền + mutation.

@@ -1,5 +1,50 @@
 # NoteTogether - trạng thái 07/10/2026
 
+## Publication performance/session —07/10/2026
+
+Người dùng đã ủy quyền commit/push performance F3/F4 và session storage F5 lên
+bahungTDTU/final-flutter, nhánh master. Author/committer Bahung, không GPT/Codex/co-author.
+Gate source đã chốt188 Flutter/94 backend/analyze PASS, Web/HTTP/API36 debug có evidence
+riêng. Publication chỉ cập nhật ghi nhận Git/docs; không chạy lại để giả kết quả mới.
+Các câu “chưa commit/push” trong snapshots bên dưới phản ánh lúc QA trước publication;
+manifest/timestamp/raw logs giữ nguyên. Kết quả push xác minh local HEAD bằng remote master.
+Release/HTTPS/signing/physical/Gemini/thư Internet tiếp tục hoãn như phạm vi đã ghi.
+
+## Session mã hóa và migration —07/10/2026
+
+- F5: token/profile trong envelope AES-GCM/device key riêng, nonce/AAD riêng; legacy migrate
+  + compact trước mở Home. Thiếu/hỏng key/cipher hoặc ghi lỗi giữ dữ liệu, không plaintext fallback.
+- Login persist lỗi không vào Home và cố revoke token vừa cấp. Logout publish tombstone bền,
+  compact/remove; lỗi cleanup vẫn revoke server và hiện nút retry, không mất account/drafts.
+- Full gate188 Flutter/94 backend PASS/analyze sạch,85files format0changes.8 regressions mới
+  gồm file history/reopen/key/AAD/rollback/compaction/rejected login/account race/tombstone/UI retry.
+- Actual HTTP4roles PASS; API36 debug1workflow+teardown PASS5s: platform keys/legacy migration/
+  file token opaque/offline reopen/logout401/manual UI login giữ draft,3PNG. Web debug7366 có
+  encrypted-session offline reload/logout-reload/manual login/profile update/API roundtrip PASS;
+  profile mới khôi phục khi reload offline, session evidence ghi scope riêng.
+- docs/SESSION_STORAGE.md + evidence/2026-10-07-session-storage/INDEX.md. Base5b82996 +
+  performance/session working changes, chưa commit/push. Web provider không chống XSS/full
+  browser-profile/key reader; không public/physical/OS kill/secure-erase/key-backup claim. Release hoãn.
+
+## Performance bản nháp và đính kèm —07/10/2026
+
+- F3: ordinary typing ghi projection drafts mã hóa nhỏ, capture account trước async;
+  đọc gộp root + projection, full save/sync gộp và xóa projection trong một transaction.
+  Không giảm durability bằng debounce; protected vault/immutable ops/frozen base giữ riêng.
+- F4: list/replay/upload response SELECT metadata, không materialize attachment BLOB;
+  download vẫn đọc byte, ACL/grant/quota/idempotency giữ nguyên.
+- Workload500notes×1000chars/20updates: encoded JSON write16.886.608→4.848B,
+  median5lần2530,732→129,047ms. List10×5MiB: peak Python allocations10.536.155→52.505B,
+  median7warmrequests203,092→5,055ms. Local host, không FPS/native latency/RSS/disk IO claim.
+- Final gate180 Flutter/94 backend PASS/analyze sạch;7 durability/race/crypto regressions
+  và1 cursor/BLOB regression. Actual HTTP4roles PASS; Android API36 debug1workflow+teardown
+  PASS8s: platform keys/file reopen/failed socket/reconnect revision1→2/same ID.
+- Actual IAB Web debug7366/API8017: draft offline/reload/restored text/autosave ACK PASS;
+  API revision3→4/cùng ID/chỉ1note. Static debug server online, không cold first-load/Wi-Fi toggle.
+- Chi tiết docs/PERFORMANCE_DRAFTS_AND_ATTACHMENTS.md và evidence/2026-10-07-performance.
+  Base5b82996 + working changes; chưa commit/push. Full save/sync còn full snapshot;
+  projection chứa tất cả drafts của account, chưa per-note shards/delta sync. Release hoãn.
+
 ## Publication Git —07/10/2026
 
 Người dùng đã ủy quyền commit/push các thay đổi UI editor, audit và hai sửa F1/F2 lên

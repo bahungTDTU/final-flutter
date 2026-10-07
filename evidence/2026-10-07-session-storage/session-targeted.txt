@@ -1,0 +1,10 @@
+00:00 +0: loading D:/flutter cuoi ki/test/session_storage_test.dart
+00:00 +0: Legacy migration compacts token/profile history before offline file reopen and preserves drafts
+00:00 +1: Fresh session nonces and independent key/AAD authenticate token and complete profile
+00:00 +2: Key publication/readback and failed transaction leave legacy credentials untouched
+00:00 +3: Interrupted migration retries compaction before releasing a token or calling any API
+00:00 +4: Missing or tampered session key/envelope fails closed and rejected login cannot enter Home or overwrite it
+00:00 +5: Logout tombstone survives interrupted compaction, still revokes server, never resurrects session on reopen
+00:00 +6: Blocked encrypted session refresh then logout/login B cannot send A queue or revive A session
+00:00 +7: Failed local logout shows safe notice and retry removes only session, preserving account draft
+00:01 +8: All tests passed!

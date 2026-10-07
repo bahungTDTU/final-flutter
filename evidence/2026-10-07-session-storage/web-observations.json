@@ -1,0 +1,16 @@
+{
+  "source": "Manual QA observations retained from actual CUA responses; this is not a raw AX snapshot",
+  "profile_offline_reload": {
+    "observed_button_name": "Ảnh đại diện mặc định S Session vault Web Hồ sơ và tùy chỉnh",
+    "observed_status_button": "Offline · 0 thay đổi chờ",
+    "observed_note_count": 1,
+    "observed_note": "Web optimized draft Web overlay survives reload",
+    "backend_running": false
+  },
+  "logout_reload": {
+    "observed_heading": "Chào mừng trở lại",
+    "observed_button": "Đăng nhập",
+    "fields_empty": true
+  },
+  "limits": "AX files saved immediately after observation contain diffs. Original raw captures preserved; screenshot, CUA full response and independent API profile result support these observations."
+}

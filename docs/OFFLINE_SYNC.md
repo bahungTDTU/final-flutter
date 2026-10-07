@@ -1,5 +1,9 @@
 # Offline và revision sync
 
+Session07/10: user/token cũng persist encrypted, legacy migrate/compact trước account load;
+offline reopen không cần gọi server để giải mã record. Logout tombstone retire session bền,
+account/drafts vẫn giữ; server revoke best-effort khi offline. Xem SESSION_STORAGE.md.
+
 Chia sẻ02/10/2026: role/owner/time/count cập nhật qua server nhưng giữ immutable pending note
 và frozen editor base. Viewer/revoke chuyển latest draft/upsert vào encrypted recovery, source
 queue bỏ cùng snapshot; restore sang UUID mới. Share mutations online-only/RAM retry với
@@ -9,6 +13,9 @@ không cache; mất mạng không thể phát hiện revoke ngay. Xem SHARING_AN
 ## Đã code
 
 Sembast transaction lưu snapshot `account:<UUID>` gồm notes + immutable operations + drafts.
+Từ07/10, typing đã có root dùng projection encrypted `drafts:account:<UUID>`; read gộp,
+full save/sync ghi snapshot và retire projection nguyên tử. First root/non-atomic store giữ
+snapshot path. Xem PERFORMANCE_DRAFTS_AND_ATTACHMENTS.md; không thêm debounce local writes.
 Web IndexedDB, native application support file. Local write chạy ngay khi gõ; debounce 650ms
 chuyển draft hợp lệ thành note/outbox. Draft thiếu title/content giữ riêng; không sinh note rác.
 Home có chip khôi phục draft. Editor flush trước Back và khi inactive/paused; không hứa async

@@ -1,0 +1,8 @@
+Formatted 83 files (0 changed) in 0.65 seconds.
+Analyzing flutter cuoi ki...                                    
+
+  error - The name 'Finder' is defined in the libraries 'package:flutter_test/src/finders.dart (via package:flutter_test/flutter_test.dart)' and 'package:sembast/src/api/finder.dart (via package:sembast/sembast_io.dart)'. Try using 'as prefix' for one of the import directives, or hiding the name from all but one of the imports - integration_test\draft_projection_test.dart:95:25 - ambiguous_import
+   info - Statements in an if should be enclosed in a block. Try wrapping the statement in a block - lib\state\app_controller.dart:382:7 - curly_braces_in_flow_control_structures
+   info - Statements in an if should be enclosed in a block. Try wrapping the statement in a block - test\draft_projection_test.dart:271:11 - curly_braces_in_flow_control_structures
+
+3 issues found. (ran in 34.9s)

@@ -1,0 +1,1 @@
+PASS final source/evidence integrity and README identity; no QA rerun/release claim.

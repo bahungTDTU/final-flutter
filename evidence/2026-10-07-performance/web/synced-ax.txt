@@ -1,0 +1,37 @@
+Browser tab: 1, Title: "NoteTogether", URL: "http://127.0.0.1:7366/".
+1 AXWebArea NoteTogether, URL: 127.0.0.1:7366/
+	2 container
+		4 container Quay lại Không gian viết Viết tập trung Dàn ý & checklist Tóm tắt bằng AI Chia sẻ ghi chú Đính kèm Đổi giao diện Đồng bộ
+			5 container flt-semantic-node-35
+				6 container flt-semantic-node-50
+					7 button Quay lại, ID: flt-semantic-node-51
+					8 heading Không gian viết, Value: 2, ID: flt-semantic-node-52
+						9 text Không gian viết
+					10 button Viết tập trung, ID: flt-semantic-node-53
+					11 button Dàn ý & checklist, ID: flt-semantic-node-54
+					12 button Tóm tắt bằng AI, ID: flt-semantic-node-55
+					13 button Chia sẻ ghi chú, ID: flt-semantic-node-56
+					14 button Đính kèm, ID: flt-semantic-node-57
+					36 button Đổi giao diện, ID: flt-semantic-node-60
+					37 button Đồng bộ, ID: flt-semantic-node-61
+				17 container flt-semantic-node-36
+					38 text Đã đồng bộ Trực tiếp
+					19 heading Tiêu đề, Value: 2, ID: flt-semantic-node-38
+						20 text Tiêu đề
+					21 container flt-semantic-node-39
+						22 text entry area (settable) Description: Tiêu đề, Value: Web optimized draft
+						23 text 19 / 200 ký tự
+					24 heading Nội dung, Value: 2, ID: flt-semantic-node-41
+						25 text Nội dung
+					26 container flt-semantic-node-42
+						27 text entry area (settable) Description: Nội dung, Value: Web overlay survives reload
+						28 text 27 / 100.000 ký tự
+					29 heading Sắp xếp, Value: 2, ID: flt-semantic-node-44
+						30 text Sắp xếp
+					31 checkbox Description: Ghim ghi chú, Value: 0, ID: flt-semantic-node-45
+					32 text 4 từ · 27 ký tự
+					33 text Đọc khoảng 1 phút
+					34 button Dàn ý & checklist Dùng # tiêu đề và - [ ] việc cần làm, ID: flt-semantic-node-48
+					35 text Tự động lưu. Nhập tiêu đề và nội dung để tạo ghi chú; bản nháp chưa hoàn chỉnh được giữ riêng.
+
+The focused UI element is 4 container Quay lại Không gian viết Viết tập trung Dàn ý & checklist Tóm tắt bằng AI Chia sẻ ghi chú Đính kèm Đổi giao diện Đồng bộ

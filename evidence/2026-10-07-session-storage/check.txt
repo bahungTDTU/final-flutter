@@ -1,0 +1,8 @@
+Formatted 85 files (0 changed) in 1.03 seconds.
+Analyzing flutter cuoi ki...                                    
+
+   info - Statements in an if should be enclosed in a block. Try wrapping the statement in a block - test\session_storage_test.dart:313:11 - curly_braces_in_flow_control_structures
+   info - Statements in an if should be enclosed in a block. Try wrapping the statement in a block - test\session_storage_test.dart:315:11 - curly_braces_in_flow_control_structures
+   info - Statements in an if should be enclosed in a block. Try wrapping the statement in a block - test\session_storage_test.dart:318:11 - curly_braces_in_flow_control_structures
+
+3 issues found. (ran in 43.3s)

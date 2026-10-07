@@ -2,7 +2,11 @@
 evidence/2026-10-06-editor-sections/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 evidence/2026-10-07-project-audit/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 evidence/2026-10-07-protection-status/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+evidence/2026-10-07-performance/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+evidence/2026-10-07-session-storage/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 # Captured CLI output intentionally contains spacing and blank lines.
 evidence/2026-10-06-editor-sections/*.txt -whitespace
 evidence/2026-10-07-project-audit/*.txt -whitespace
 evidence/2026-10-07-protection-status/*.txt -whitespace
+evidence/2026-10-07-performance/*.txt -whitespace
+evidence/2026-10-07-session-storage/*.txt -whitespace

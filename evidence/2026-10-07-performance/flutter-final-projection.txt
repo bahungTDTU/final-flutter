@@ -1,0 +1,9 @@
+00:00 +0: loading D:/flutter cuoi ki/test/draft_projection_test.dart
+00:00 +0: Typing changes only encrypted draft record; file reopen retains newest text and original base/vault
+00:00 +1: A failed root fold rolls back both writes and deletes; retry folds latest draft once
+00:00 +2: Failure publishing a draft preserves the previous durable draft and exposes local write error
+00:00 +3: Rotate and remove account include its draft projection; AAD/key binding rejects swapped data
+00:00 +4: Missing root/key never recreates credentials or discards orphaned encrypted draft
+00:00 +5: Captured draft cannot write account B when logout/switch races with its transaction
+00:00 +6: Save/lost ACK keeps immutable operation; remote lock archives latest overlay draft and retires it
+00:00 +7: All tests passed!

@@ -12,6 +12,7 @@ from fastapi.concurrency import run_in_threadpool
 from PIL import Image, ImageOps, UnidentifiedImageError
 
 MAX_BYTES = 20 * 1024 * 1024
+METADATA_COLUMNS = 'id,name,kind,media_type,size,created_at'
 FILE_TYPES = {'.pdf': 'application/pdf', '.txt': 'text/plain', '.csv': 'text/csv', '.zip': 'application/zip'}
 
 
@@ -96,7 +97,8 @@ def install_attachment_routes(app, db, authenticate, access, now):
     def listing(note_id: str, identity=Depends(authenticate)):
         with db() as conn:
             access(conn, note_id, identity)
-            return [metadata(row) for row in conn.execute('SELECT * FROM attachments WHERE note_id=? AND data IS NOT NULL ORDER BY created_at,id', (note_id,))]
+            return [metadata(row) for row in conn.execute(
+                f'SELECT {METADATA_COLUMNS} FROM attachments WHERE note_id=? AND data IS NOT NULL ORDER BY created_at,id', (note_id,))]
 
     @app.post('/notes/{note_id}/attachments/{attachment_id}')
     async def upload(note_id: str, attachment_id: str, request: Request,
@@ -118,11 +120,11 @@ def install_attachment_routes(app, db, authenticate, access, now):
         canonical, media_type = await run_in_threadpool(normalize, bytes(data), name, kind, content_type)
         with db() as conn:
             access(conn, note_id, identity, 'edit')
-            old = conn.execute('SELECT * FROM attachments WHERE id=?', (attachment_id,)).fetchone()
+            old = conn.execute(f'SELECT {METADATA_COLUMNS},note_id,created_by,fingerprint,data IS NOT NULL AS present FROM attachments WHERE id=?', (attachment_id,)).fetchone()
             if old:
                 if old['note_id'] != note_id or old['created_by'] != identity[0] or old['fingerprint'] != fingerprint:
                     raise HTTPException(409, 'Attachment ID reused with different data')
-                if old['data'] is None:
+                if not old['present']:
                     raise HTTPException(409, 'Attachment was deleted; refresh before retrying')
                 return metadata(old)
             count, size = conn.execute('SELECT COUNT(*),COALESCE(SUM(size),0) FROM attachments WHERE note_id=? AND data IS NOT NULL', (note_id,)).fetchone()
@@ -130,7 +132,7 @@ def install_attachment_routes(app, db, authenticate, access, now):
                 raise HTTPException(413, 'Note limit is 10 attachments / 100 MiB')
             conn.execute('INSERT INTO attachments VALUES (?,?,?,?,?,?,?,?,?,?,?)',
                          (attachment_id, note_id, identity[0], name, kind, media_type, len(canonical), now(), fingerprint, canonical, 0))
-            return metadata(conn.execute('SELECT * FROM attachments WHERE id=?', (attachment_id,)).fetchone())
+            return metadata(conn.execute(f'SELECT {METADATA_COLUMNS} FROM attachments WHERE id=?', (attachment_id,)).fetchone())
 
     @app.get('/notes/{note_id}/attachments/{attachment_id}')
     def download(note_id: str, attachment_id: str, request: Request, identity=Depends(authenticate)):

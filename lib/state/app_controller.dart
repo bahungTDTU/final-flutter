@@ -102,6 +102,8 @@ class AppController extends ChangeNotifier {
   bool _disposed = false;
   bool _localWriteFailed = false;
   bool _accountLoaded = true;
+  bool _hasAccountSnapshot = false;
+  bool sessionRemovalFailed = false;
   int _generation = 0;
   List<Note> notes = [];
   List<Map<String, dynamic>> pending = [];
@@ -252,6 +254,7 @@ class AppController extends ChangeNotifier {
   Future<void> _loadAccount() async {
     accessUnavailable.clear();
     _accountLoaded = false;
+    _hasAccountSnapshot = false;
     notes = [];
     pending = [];
     pendingPreferences = [];
@@ -269,7 +272,9 @@ class AppController extends ChangeNotifier {
     avatarError = null;
     preferences = {'grid': true, 'dark': false, 'font_size': 16.0};
     await _writes.catchError((_) {});
-    final cached = await local.read(accountKey) ?? {};
+    final durable = await local.read(accountKey);
+    _hasAccountSnapshot = durable != null;
+    final cached = durable ?? {};
     notes = (cached['notes'] as List? ?? [])
         .map((n) => Note.fromListingJson(Map<String, dynamic>.from(n as Map)))
         .toList();
@@ -362,7 +367,26 @@ class AppController extends ChangeNotifier {
       snapshot['protected_vaults'] =
           durable?['protected_vaults'] ?? protectedSnapshot;
       await local.write(key, snapshot);
+      if (user != null && accountKey == key) _hasAccountSnapshot = true;
     });
+  }
+
+  Future<void> _persistDrafts() {
+    final storage = local;
+    if (storage is! DraftLocalStore ||
+        !storage.supportsDraftWrites ||
+        !_hasAccountSnapshot) {
+      return _persist(); // First publish and legacy test stores keep snapshot semantics.
+    }
+    if (user == null) return Future.value();
+    if (!_accountLoaded) {
+      throw StateError('Kho tài khoản chưa mở được; không ghi đè dữ liệu.');
+    }
+    final key = accountKey;
+    final projection = Map<String, dynamic>.from(
+      jsonDecode(jsonEncode(drafts)) as Map,
+    );
+    return _queueWrite(() => storage.writeDrafts(key, projection));
   }
 
   Future<void> storeProtectedEnvelope(
@@ -511,6 +535,8 @@ class AppController extends ChangeNotifier {
     String name = '',
     String confirmation = '',
   }) async {
+    var accepted = false;
+    String? issuedToken;
     busy = true;
     error = null;
     notifyListeners();
@@ -525,24 +551,35 @@ class AppController extends ChangeNotifier {
           if (register) 'confirmation': confirmation,
         },
       );
+      accepted = true;
+      issuedToken = result['token'] as String;
       _generation++;
       realtime?.stop();
       _realtimeRefresh?.cancel();
       _realtimeDirty = false;
       user = Map<String, dynamic>.from(result['user'] as Map);
-      token = result['token'] as String;
+      token = issuedToken;
       emailDelivery = register ? result['email_delivery'] as String? : null;
       await _loadAccount();
       final session = {'user': user, 'token': token};
       await _queueWrite(() => local.write('session', session));
+      sessionRemovalFailed = false;
       online = true;
       _startRealtime();
       unawaited(synchronize());
       return true;
     } catch (e) {
-      if (!_accountLoaded) {
+      if (accepted || !_accountLoaded) {
         user = null;
         token = null;
+        _accountLoaded = false;
+      }
+      if (accepted && issuedToken != null) {
+        try {
+          await api.call('POST', '/auth/logout', token: issuedToken);
+        } catch (_) {
+          // The newly issued session still expires server-side if unreachable.
+        }
       }
       error = 'Không thể đăng nhập/đăng ký: $e';
       return false;
@@ -553,6 +590,7 @@ class AppController extends ChangeNotifier {
   }
 
   Future<void> logout() async {
+    sessionRemovalFailed = false;
     accessUnavailable.clear();
     final oldToken = token;
     _generation++;
@@ -562,6 +600,7 @@ class AppController extends ChangeNotifier {
     realtimeStatus = RealtimeStatus.idle;
     user = null;
     token = null;
+    _hasAccountSnapshot = false;
     notes = [];
     pending = [];
     pendingPreferences = [];
@@ -581,7 +620,13 @@ class AppController extends ChangeNotifier {
     error = null;
     emailDelivery = null;
     notifyListeners();
-    await _queueWrite(() => local.remove('session'));
+    try {
+      await _queueWrite(() => local.remove('session'));
+    } catch (_) {
+      sessionRemovalFailed = true;
+      error = 'Chưa xóa được phiên đăng nhập trên thiết bị. Hãy thử đăng xuất lại trước khi đóng ứng dụng.';
+      notifyListeners();
+    }
     if (oldToken != null) {
       try {
         await api.call('POST', '/auth/logout', token: oldToken);
@@ -602,11 +647,11 @@ class AppController extends ChangeNotifier {
         saved.title == title.trim() &&
         saved.content == content) {
       drafts.remove(id);
-      await _persist();
+      await _persistDrafts();
       return;
     }
     drafts[id] = {'title': title, 'content': content};
-    await _persist();
+    await _persistDrafts();
   }
 
   Future<void> save(

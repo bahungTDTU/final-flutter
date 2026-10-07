@@ -1,5 +1,15 @@
 # Phục hồi chỉnh sửa khi khóa từ xa
 
+## Projection bản nháp07/10/2026
+
+Ordinary typing không còn publish whole account mỗi lần: record `drafts:account:<UUID>`
+mã hóa cùng device key với nonce/AAD riêng. Read xác thực/gộp drafts vào snapshot; full
+save/sync/recovery ghi root và xóa projection trong cùng transaction Sembast. Remote lock
+vẫn lấy latest draft rồi archive trước retire queue, password vault giữ đường riêng.
+Rotate/remove xử lý cả projection; lỗi ghi/root/key/AAD giữ ciphertext và báo lỗi.
+7 regressions/file reopen + actual Web/Android scope ở PERFORMANCE_DRAFTS_AND_ATTACHMENTS.md.
+Các đoạn snapshot theo mốc dưới đây giữ hành vi lịch sử; dữ liệu logical không đổi schema.
+
 ## Bổ sung ghi chú bảo vệ05/10/2026
 
 Protected content đã unlock dùng ProtectedNoteVault riêng, derive từ mật khẩu note qua
@@ -27,7 +37,8 @@ Production main và hai integration harness dùng EncryptedAccountStore bọc Se
 Mỗi record account:<user UUID> là envelope AES-256-GCM: vault_version, key_id, nonce, ciphertext,
 mac. JSON bên trong chứa notes/drafts/outbox/conflicts/preferences/labels/recoveries. Nonce mới
 mỗi lần encrypt; AAD bind account key và phiên bản. Không tự viết thuật toán mã hóa.
-Session token/profile vẫn lưu riêng theo hiện trạng, chưa được hardening cùng đợt này.
+Session token/profile cũng có encrypted envelope/device key riêng từ07/10; migrate/compact
+legacy và durable logout tombstone. Xem SESSION_STORAGE.md; không đổi key account/password vault.
 
 Khi GET /notes nhận locked hoặc POST /sync trả423, controller đọc draft mới nhất hoặc upsert cuối của note,
 lưu title/content đã có local vào recoveries với source ID và thời gian thực. 423 che source ngay

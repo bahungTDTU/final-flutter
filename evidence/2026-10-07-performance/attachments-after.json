@@ -1,0 +1,38 @@
+{
+  "measured_at_utc": "2026-10-07T02:10:08.405908+00:00",
+  "target": "local ASGI TestClient / real temporary SQLite / warm request / tracemalloc",
+  "attachments": 10,
+  "blob_bytes_each": 5242880,
+  "warmup_excluded": 1,
+  "runs": [
+    {
+      "elapsed_ms": 5.488500000410568,
+      "python_peak_allocated_bytes": 54299
+    },
+    {
+      "elapsed_ms": 5.055099999935919,
+      "python_peak_allocated_bytes": 53346
+    },
+    {
+      "elapsed_ms": 5.330299999968702,
+      "python_peak_allocated_bytes": 53185
+    },
+    {
+      "elapsed_ms": 4.977199999757431,
+      "python_peak_allocated_bytes": 52505
+    },
+    {
+      "elapsed_ms": 4.969300000084331,
+      "python_peak_allocated_bytes": 52394
+    },
+    {
+      "elapsed_ms": 5.1680000001397275,
+      "python_peak_allocated_bytes": 51948
+    },
+    {
+      "elapsed_ms": 4.984599999716011,
+      "python_peak_allocated_bytes": 51337
+    }
+  ],
+  "network_or_rss_or_native_latency_measured": false
+}

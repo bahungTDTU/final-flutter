@@ -1,0 +1,22 @@
+Browser tab: 2, Title: "NoteTogether", URL: "http://127.0.0.1:7366/".
+1 AXWebArea NoteTogether, URL: 127.0.0.1:7366/
+	2 container
+		3 container flt-semantic-node-3
+			4 container GHI LẠI · SẮP XẾP · CHIA SẺ
+				5 text GHI LẠI · SẮP XẾP · CHIA SẺ
+			6 text Một nơi cho những ý tưởng đáng giữ.
+			7 text Từ ghi chú buổi học đến kế hoạch của nhóm. Giữ mọi điều quan trọng trong một không gian.
+			8 container flt-semantic-node-8
+				9 text NoteTogether
+				10 text Chào mừng trở lại
+				11 text Ghi lại hôm nay. Dễ dàng tìm lại ngày mai.
+				12 text field (settable) Email
+				13 container flt-semantic-node-13
+					14 text field (settable) Mật khẩu
+					15 button Hiện mật khẩu, ID: flt-semantic-node-14
+				16 button Đăng nhập, ID: flt-semantic-node-15
+				17 button Chưa có tài khoản? Đăng ký, ID: flt-semantic-node-16
+				18 button Quên mật khẩu, ID: flt-semantic-node-17
+				19 button Kích hoạt / đặt lại, ID: flt-semantic-node-18
+
+The focused UI element is 4 container GHI LẠI · SẮP XẾP · CHIA SẺ

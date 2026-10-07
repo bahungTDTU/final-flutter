@@ -1,0 +1,27 @@
+{
+  "write": {
+    "before": {
+      "encoded_write_bytes": 16886608,
+      "elapsed_ms": 2530.732,
+      "full_account_writes": 20
+    },
+    "after": {
+      "encoded_write_bytes": 4848,
+      "elapsed_ms": 129.047,
+      "full_account_writes": 0
+    },
+    "reduction_percent": 99.971
+  },
+  "attachments": {
+    "before": {
+      "elapsed_ms": 203.092,
+      "python_peak_allocated_bytes": 10536155
+    },
+    "after": {
+      "elapsed_ms": 5.055,
+      "python_peak_allocated_bytes": 52505
+    },
+    "reduction_percent": 99.502
+  },
+  "limits": "Warm local host probes only; no FPS, UI frame, network, physical-device latency or RSS claim."
+}

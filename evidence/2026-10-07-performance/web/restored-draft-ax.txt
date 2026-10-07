@@ -1,0 +1,4 @@
+Browser tab: 1, Title: "NoteTogether", URL: "http://127.0.0.1:7366/".
+The following is a diff from the previous accessibility tree with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.
+Removed element IDs: 3
+The focused UI element is 26 text entry area (settable) Description: Nội dung, Value: Web overlay survives reload
