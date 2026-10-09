@@ -1,5 +1,22 @@
 # NoteTogether – UI/UX design, cập nhật 03/10/2026
 
+## Dashboard màu sắc theo phản hồi —09/10/2026
+
+Sidebar indigo/navy và header tím-xanh là vùng màu chính; search giữ nền đọc sáng, toolbar
+lavender-blue, note cards rich pastel có facet tĩnh. Notice amber riêng trong hero. Màu mới
+opt-in theo surface, không đổi theme của editor/dialog. NotoSans/copy/nav giữ nguyên; thẻ
+khóa trung tính. DashboardColors ở design_system.dart, components ở dashboard.dart.
+Xem DASHBOARD_COLOR_REFRESH.md và evidence/2026-10-09-dashboard-color cho concept/QA ledger.
+
+## Home cải tiến —09/10/2026
+
+Giữ palette/rim Prism và NotoSans. Vùng search, kiểu xem và nhãn tách rõ; thẻ có separator
+giữa title và preview. Chỉ6 nhãn nhanh, ưu tiên nhãn chọn, bộ lọc đầy đủ có tìm kiếm/lazy/AND/
+Apply/Cancel. CTA tạo trên app bar mobile để không phủ chữ/menu. Text scale>=150% dùng thẻ
+cao tự nhiên, giữ lựa chọn grid khi resize. Shell/themes không rebuild vì sync pulses;
+Home bị che chỉ bỏ qua pulses không đổi source; source/account đổi vẫn xóa cache và dựng lại
+ngay để bỏ widgets riêng tư cũ khi khóa/thu hồi. HOME_UI_UX_PERFORMANCE.md.
+
 ## Chỉ báo khi khóa —07/10/2026
 
 Theo lựa chọn người dùng, thẻ khóa vẫn trung tính và che title/content/labels/date/identity,

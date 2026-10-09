@@ -13,6 +13,34 @@ Người dùng đã ủy quyền publication performance và session07/10 lên n
 danh tính Git Bahung. Xem docs/GITHUB_PUBLISH.md; các trạng thái “chưa commit/push” trong
 snapshots QA theo ngày phản ánh thời điểm trước publication, không thay raw evidence.
 
+Publication UI/performance09/10 được ủy quyền trên branch `codex/ui-ux-performance`, PR
+vào master. Gate trước push chạy lại:198 Flutter/94 backend PASS, format90files0changes và
+analyze sạch; nhánh cập nhật với master `285af64`. Xem
+[evidence publication](evidence/2026-10-09-github-publication/INDEX.md); các snapshot QA bên dưới
+giữ trạng thái tại thời điểm đo. CI/approval trên PR tiếp tục là điều kiện merge.
+
+## Đo FPS và chạy Android —09/10/2026
+
+Đã chạy3 workflows native API36 và đo profile500 ghi chú/30 nhãn. GPU host Impeller/OpenGLES:
+lưới54.4–56.7FPS, danh sách52.6–54.4FPS; raster p95=23–28ms, chưa60FPS đều trên emulator.
+Web profile có12 samples desktop/mobile và5search/filter PASS; rAF chỉ nhịp callback Chrome.
+Search325–334ms gồm debounce300ms; HTTP500notes p50/p95=36/56ms. Đây không phải FPS điện thoại
+thật/peak memory/release acceptance. [Phương pháp, lệnh chạy lại và evidence](docs/PERFORMANCE_BENCHMARK.md).
+
+## Home UI/UX và performance —09/10/2026
+
+Dashboard được chỉnh màu theo phản hồi: sidebar indigo/navy, header chuyển sắc tím-xanh,
+thẻ pastel rõ hơn, notice amber và nền lăng kính tĩnh. [Ảnh và phạm vi](docs/DASHBOARD_COLOR_REFRESH.md).
+
+Vùng tìm kiếm/kiểu xem/nhãn tách rõ; thẻ phân cách tiêu đề, nội dung và metadata. Bộ lọc có
+tìm nhãn, danh sách lazy, Apply/Cancel và AND; Home chỉ dựng6 chip nhanh. Nút tạo mobile
+đặt trên app bar để không phủ chữ/menu. Chữ lớn dùng thẻ cao tự nhiên, giữ grid preference.
+App shell/themes và Home bị editor che giảm rebuild20→0 lần trong probe20 notifications/
+500notes không đổi source. Khi note/account đổi, Home vẫn dựng lại ngay để xóa nội dung
+riêng tư cũ sau khóa/thu hồi từ xa.198 Flutter/94 backend/analyze PASS; Web/APK debug compile PASS; native UI đợt này
+chưa chạy, không FPS claim. [Chi tiết và bằng chứng](docs/HOME_UI_UX_PERFORMANCE.md).
+Working changes trên branch codex/ui-ux-performance, chưa commit/push/merge; release để cuối.
+
 ## Session mã hóa và migration —07/10/2026
 
 Token/profile được mã hóa bằng device key riêng, nonce/AAD riêng; session legacy được chuyển

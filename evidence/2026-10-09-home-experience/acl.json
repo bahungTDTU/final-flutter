@@ -1,0 +1,22 @@
+{
+  "date_utc": "2026-10-09T05:13:18.707230+00:00",
+  "target": "http://127.0.0.1:8020",
+  "result": "PASS",
+  "owner": "mixed-password attempts persisted; all three actions429; unpin/re-pin/share/revoke",
+  "editor": "content edit200; owner pin preserved",
+  "viewer": "write403",
+  "stranger": "read404/list empty",
+  "locked_fields": [
+    "id",
+    "locked",
+    "pinned_at",
+    "revision",
+    "role",
+    "shared"
+  ],
+  "fixture_note": "aa8dcb06-772a-4e7e-8f91-1dbee65c5e6a",
+  "ordinary_pin": "e089df3e-ee6a-4858-95c7-61f4ae1f50ff",
+  "privacy": "no title/content/labels/identities/counts in locked list; direct content423",
+  "mail_or_llm_calls": false,
+  "release": false
+}

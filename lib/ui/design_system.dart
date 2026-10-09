@@ -8,6 +8,25 @@ abstract final class Space {
   static const double sidebar = 248, reading = 800;
 }
 
+/// Dashboard chrome colors. Reading surfaces keep their semantic theme ink.
+abstract final class DashboardColors {
+  static const sidebar = [Color(0xff191d50), Color(0xff2e2c7b)];
+  static const header = [Color(0xff5c43c9), Color(0xff2468a7)];
+  static const darkHeader = [Color(0xff433284), Color(0xff204d75)];
+  static const canvas = Color(0xffeceefb);
+  static const darkCanvas = Color(0xff12182d);
+  static const sidebarMuted = Color(0xffccd3f2);
+  static const selected = Color(0xffd0c4ff);
+  static const selectedInk = Color(0xff2d2269);
+  static const heroMuted = Color(0xfffaf8ff);
+  static const action = Color(0xffe8e0ff);
+  static const actionInk = Color(0xff31246f);
+  static const notice = Color(0xfffff3dc);
+  static const noticeInk = Color(0xff744813);
+  static const darkNotice = Color(0xff3b3025);
+  static const darkNoticeInk = Color(0xffffdcaa);
+}
+
 /// Shared reading/writing surface. Padding is derived from available space,
 /// including short landscape windows; controllers stay owned by the route.
 class ReadingCanvas extends StatelessWidget {
@@ -343,13 +362,20 @@ class SurfacePanel extends StatelessWidget {
     required this.child,
     this.padding = const EdgeInsets.all(20),
     this.tinted = false,
+    this.backgroundColors,
   });
   final Widget child;
   final EdgeInsetsGeometry padding;
   final bool tinted;
+  final List<Color>? backgroundColors;
   @override
   Widget build(BuildContext context) {
-    return PrismSurface(padding: padding, tinted: tinted, child: child);
+    return PrismSurface(
+      padding: padding,
+      tinted: tinted,
+      backgroundColors: backgroundColors,
+      child: child,
+    );
   }
 }
 

@@ -1,4 +1,51 @@
-# NoteTogether - trạng thái 07/10/2026
+# NoteTogether - trạng thái 09/10/2026
+
+## Gate trước publication UI/performance —09/10/2026
+
+Người dùng đã ủy quyền push UI/UX, dashboard màu sắc và benchmark lên branch
+`codex/ui-ux-performance`, PR vào master. Nhánh cập nhật với master `285af64` (merge ruleset).
+Chạy lại `scripts/check.ps1`: format90files0changes, analyze sạch,198 Flutter/94 backend PASS;
+1 warning deprecation từ Starlette/httpx. Source hashes của benchmark vẫn khớp working tree.
+Xem evidence/2026-10-09-github-publication; trạng thái push/PR/CI tra GitHub của nhánh.
+Các đoạn “chưa commit/push” dưới đây là snapshot QA trước publication; giữ raw evidence.
+Merge vẫn cần3 CI checks mới nhất và approval hợp lệ từ người khác; release để cuối.
+
+## Đo FPS/performance và Android —09/10/2026, bổ sung sau dashboard
+
+Android API36 emulator đã chạy3 workflows UI/studio/protected PASS và2 lượt profile500notes/
+30labels (mỗi lượt6 đoạn đo). GPU host/Impeller OpenGLES: lưới54.4–56.7FPS, list52.6–54.4FPS;
+build p95<1.5ms nhưng raster p95=23–28ms, chưa60FPS ổn định. Software32–34FPS, điều kiện RAM/
+renderer khác nên không dùng làm FPS điện thoại thật. Web profile Chrome desktop/mobile12
+samples không long task>50ms; rAF chỉ scheduler, không GPU FPS. Search325–334ms gồm debounce300ms,
+HTTP500notes p50/p95=36/56ms;4roles PASS. Test đăng ký sửa busy wait/cleanup, không sửa code app.
+Xem docs/PERFORMANCE_BENCHMARK.md và evidence/2026-10-09-frame-performance.198Flutter/94backend
+là snapshot trước; native/profile chạy mới, physical/TalkBack/GPU presentation chưa chạy.
+Các đoạn “chưa native/FPS” phía dưới giữ phạm vi snapshot trước phép đo. Chưa commit/push/merge.
+
+## Dashboard màu sắc theo phản hồi —09/10/2026
+
+Sidebar indigo/navy, hero tím-xanh, notice amber, nền lavender và thẻ rich pastel/facet tĩnh.
+Theme giới hạn sidebar/notice; Material sửa selected tile/Brand, CTA chữ lớn thu gọn icon.
+Thẻ khóa vẫn trung tính.198 Flutter PASS/analyze sạch/format88files0changes/HTTP4roles PASS,
+Web compile/offline40resources + Chrome6viewport/filter/search/autosave/resize/dark PASS.
+Không chạy native UI/APK/FPS/backend94 lần mới trong đợt chỉ màu/layout; snapshot trước còn nguyên.
+Xem docs/DASHBOARD_COLOR_REFRESH.md và evidence/2026-10-09-dashboard-color. Working changes
+trên codex/ui-ux-performance, chưa commit/push/merge; release để cuối.
+
+## Home UI/UX và performance —09/10/2026
+
+Tách vùng tìm kiếm, kiểu xem và nhãn; thẻ có phân cách title/preview/metadata. Home chỉ dựng
+6 chip nhanh (ưu tiên nhãn chọn), sheet catalogue lazy/search/AND/apply/cancel/account guard.
+Nút tạo mobile ở app bar để không che thẻ; chữ>=150% dùng thẻ cao tự nhiên, giữ grid preference.
+App shell chỉ rebuild khi readiness/account/dark đổi, themes tạo một lần. Home bị editor che
+không rebuild vì controller pulses khi source giữ nguyên. Khi source/account đổi, Home bị che
+vẫn invalidate cache và dựng lại ngay để xóa widgets riêng tư cũ sau khóa/thu hồi từ xa.
+198 Flutter/94 backend PASS, format87files0changes/analyze sạch, HTTP4roles PASS; Web compile/
+offline40resources/APK debug compile PASS. Probe500notes/20notifications: shell/theme/thẻ Home
+bị che20→0 lần thay widget khi source không đổi; không FPS/native latency claim.10 regression mới
+gồm1000labels lazy, apply/cancel/AND, remote deletion/lock, keyboard/chữ200% và4viewport/hai theme. Chưa có device/emulator
+kết nối để chạy native UI đợt này. Xem docs/HOME_UI_UX_PERFORMANCE.md và evidence09/10.
+Branch codex/ui-ux-performance, baseef2ece0 + working changes; chưa commit/push/merge/release.
 
 ## Ruleset và quy trình branch/PR —07/10/2026
 

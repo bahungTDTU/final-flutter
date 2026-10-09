@@ -7,6 +7,8 @@ import '../domain/note.dart';
 import '../domain/writing_tools.dart';
 import '../state/app_controller.dart';
 import '../state/note_listing.dart';
+import 'note_filters.dart';
+import 'dashboard.dart';
 import 'app.dart';
 import 'editor.dart';
 import 'design_system.dart';
@@ -68,28 +70,59 @@ class _HomeScreenState extends State<HomeScreen> {
   int destination = 0;
   Timer? searchDelay;
   final listingCache = NoteListingCache();
+  bool routeCurrent = true;
   AppController get c => widget.controller;
   @override
   void initState() {
     super.initState();
-    c.addListener(invalidateListing);
+    c.addListener(controllerChanged);
   }
 
-  void invalidateListing() =>
-      listingCache.invalidateSource(c.user?['id'] as String?, c.notes);
+  void controllerChanged() {
+    // Source changes also purge private widgets retained behind a route.
+    final sourceChanged = listingCache.invalidateSource(
+      c.user?['id'] as String?,
+      c.notes,
+    );
+    if (mounted && (routeCurrent || sourceChanged)) setState(() {});
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    routeCurrent = ModalRoute.isCurrentOf(context) ?? true;
+  }
+
+  Future<void> filterLabels() async {
+    final account = c.user?['id'];
+    final result = await showModalBottomSheet<Set<String>>(
+      context: context,
+      isScrollControlled: true,
+      showDragHandle: true,
+      constraints: const BoxConstraints(maxWidth: 600),
+      builder: (_) => NoteLabelFilter(controller: c, selected: selectedLabels),
+    );
+    if (!mounted || result == null || account != c.user?['id']) return;
+    setState(() {
+      selectedLabels
+        ..clear()
+        ..addAll(result.where(c.labels.contains));
+    });
+  }
+
   @override
   void didUpdateWidget(covariant HomeScreen oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.controller != c) {
-      oldWidget.controller.removeListener(invalidateListing);
+      oldWidget.controller.removeListener(controllerChanged);
       listingCache.clear();
-      c.addListener(invalidateListing);
+      c.addListener(controllerChanged);
     }
   }
 
   @override
   void dispose() {
-    c.removeListener(invalidateListing);
+    c.removeListener(controllerChanged);
     listingCache.clear();
     search.dispose();
     searchFocus.dispose();
@@ -143,12 +176,225 @@ class _HomeScreenState extends State<HomeScreen> {
     Icons.auto_awesome_outlined,
   ];
 
-  Widget createButton() => PrismAction(
-    key: const Key('new-note'),
-    onPressed: () => open(),
-    icon: const Icon(Icons.add),
-    child: const Text('Ghi chú mới'),
-  );
+  Widget createButton({bool compact = false}) => compact
+      ? IconButton.filled(
+          key: const Key('new-note'),
+          tooltip: 'Ghi chú mới',
+          onPressed: () => open(),
+          style: IconButton.styleFrom(
+            backgroundColor: DashboardColors.action,
+            foregroundColor: DashboardColors.actionInk,
+          ),
+          icon: const Icon(Icons.add),
+        )
+      : FilledButton.icon(
+          key: const Key('new-note'),
+          onPressed: () => open(),
+          style: FilledButton.styleFrom(
+            backgroundColor: DashboardColors.action,
+            foregroundColor: DashboardColors.actionInk,
+          ),
+          icon: const Icon(Icons.add),
+          label: const Text('Ghi chú mới'),
+        );
+
+  Widget dashboardHeader(bool small, int count, String syncLabel) =>
+      DashboardHeader(
+        key: const Key('dashboard-header'),
+        title: destination == 1
+            ? (small ? 'Được chia sẻ' : 'Được chia sẻ với bạn')
+            : 'Ghi chú của bạn',
+        detail: destination == 1
+            ? 'Cùng theo dõi những điều quan trọng của nhóm.'
+            : 'Ý tưởng, bài học và kế hoạch — gọn trong một nơi.',
+        count: count,
+        syncLabel: syncLabel,
+        online: c.online,
+        onSync: c.synchronize,
+        action: small
+            ? null
+            : createButton(
+                compact:
+                    MediaQuery.textScalerOf(context).scale(1) >= 1.5 ||
+                    MediaQuery.sizeOf(context).width < 900,
+              ),
+        notice: c.user?['verified'] == true && c.error == null
+            ? null
+            : Column(
+                children: [
+                  if (c.user?['verified'] != true)
+                    UnverifiedBanner(
+                      delivery: c.emailDelivery,
+                      onCheck: () => Navigator.of(context).push(
+                        MaterialPageRoute<void>(
+                          builder: (_) => TokenScreen(controller: c),
+                        ),
+                      ),
+                    ),
+                  if (c.error != null) ...[
+                    if (c.user?['verified'] != true) const SizedBox(height: 12),
+                    StatusNotice(
+                      message: c.localWriteFailed
+                          ? c.error!
+                          : c.online
+                          ? 'Chưa thể đồng bộ. Hãy thử lại.'
+                          : 'Đang offline. Các thay đổi đã lưu trên thiết bị đang chờ kết nối.',
+                      icon: Icons.cloud_off_outlined,
+                      action: TextButton(
+                        onPressed: c.synchronize,
+                        child: const Text('Thử lại'),
+                      ),
+                    ),
+                  ],
+                ],
+              ),
+      );
+
+  Widget filterToolbar(bool small, bool sidebar) {
+    final colors = Theme.of(context).colorScheme;
+    final palette = PrismPalette.of(context);
+    // Keep the first viewport useful even with hundreds of labels.
+    final visibleLabels = selectedLabels
+        .followedBy(c.labels.where((id) => !selectedLabels.contains(id)))
+        .take(6);
+    return SurfacePanel(
+      key: const Key('note-filter-toolbar'),
+      backgroundColors: [
+        Color.alphaBlend(
+          palette.tones[0].light.withValues(
+            alpha: Theme.of(context).brightness == Brightness.dark ? .10 : .20,
+          ),
+          colors.surface,
+        ),
+        Color.alphaBlend(
+          palette.tones[1].light.withValues(
+            alpha: Theme.of(context).brightness == Brightness.dark ? .07 : .10,
+          ),
+          colors.surface,
+        ),
+      ],
+      padding: EdgeInsets.symmetric(
+        horizontal: 12,
+        vertical: c.labels.isEmpty ? 0 : 12,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Wrap(
+            spacing: 12,
+            runSpacing: 8,
+            crossAxisAlignment: WrapCrossAlignment.center,
+            children: [
+              SegmentedButton<bool>(
+                showSelectedIcon: false,
+                style: SegmentedButton.styleFrom(
+                  minimumSize: const Size(48, 48),
+                ),
+                segments: const [
+                  ButtonSegment(
+                    value: true,
+                    icon: Icon(Icons.grid_view),
+                    label: Text('Lưới'),
+                  ),
+                  ButtonSegment(
+                    value: false,
+                    icon: Icon(Icons.view_list_outlined),
+                    label: Text('Danh sách'),
+                  ),
+                ],
+                selected: {c.grid},
+                onSelectionChanged: (values) =>
+                    c.setPreferences({'grid': values.single}),
+              ),
+              if (!small)
+                TextButton.icon(
+                  key: const Key('note-templates'),
+                  onPressed: createFromTemplate,
+                  icon: const Icon(Icons.auto_awesome_mosaic_outlined),
+                  label: const Text('Xưởng ghi chú'),
+                ),
+              if (!sidebar)
+                IconButton(
+                  tooltip: 'Quản lý nhãn',
+                  onPressed: manageLabels,
+                  icon: const Icon(Icons.label_outline),
+                ),
+            ],
+          ),
+          if (c.labels.isNotEmpty) ...[
+            const SizedBox(height: 12),
+            const Divider(),
+            const SizedBox(height: 12),
+            Wrap(
+              spacing: 8,
+              runSpacing: 8,
+              crossAxisAlignment: WrapCrossAlignment.center,
+              children: [
+                for (final label in visibleLabels)
+                  ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: 190),
+                    child: FilterChip(
+                      backgroundColor: Color.alphaBlend(
+                        palette.tone(label).light.withValues(alpha: .08),
+                        colors.surface,
+                      ),
+                      selectedColor: Color.alphaBlend(
+                        palette.tone(label).light.withValues(alpha: .22),
+                        colors.surface,
+                      ),
+                      labelStyle: TextStyle(color: palette.tone(label).ink),
+                      checkmarkColor: palette.tone(label).ink,
+                      tooltip: c.labelName(label),
+                      label: Text(
+                        c.labelName(label),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      selected: selectedLabels.contains(label),
+                      onSelected: (value) => setState(() {
+                        if (value) {
+                          selectedLabels.add(label);
+                        } else {
+                          selectedLabels.remove(label);
+                        }
+                      }),
+                    ),
+                  ),
+                OutlinedButton.icon(
+                  key: const Key('all-label-filters'),
+                  onPressed: filterLabels,
+                  icon: const Icon(Icons.tune, size: 18),
+                  label: Text(
+                    selectedLabels.isEmpty
+                        ? 'Bộ lọc nhãn'
+                        : 'Bộ lọc (${selectedLabels.length})',
+                  ),
+                ),
+              ],
+            ),
+          ],
+          if (selectedLabels.isNotEmpty) ...[
+            const SizedBox(height: 8),
+            Wrap(
+              crossAxisAlignment: WrapCrossAlignment.center,
+              spacing: 8,
+              runSpacing: 4,
+              children: [
+                Text(
+                  'Khớp tất cả ${selectedLabels.length} nhãn đã chọn',
+                  style: Theme.of(context).textTheme.bodySmall,
+                ),
+                TextButton(
+                  onPressed: () => setState(selectedLabels.clear),
+                  child: const Text('Bỏ bộ lọc nhãn'),
+                ),
+              ],
+            ),
+          ],
+        ],
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) => LayoutBuilder(
@@ -186,6 +432,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 ? AppBar(
                     title: const Brand(),
                     actions: [
+                      if (destination != 2)
+                        IconButton.filled(
+                          key: const Key('new-note'),
+                          tooltip: 'Ghi chú mới',
+                          onPressed: () => open(),
+                          icon: const Icon(Icons.add),
+                        ),
                       IconButton(
                         key: const Key('note-templates'),
                         tooltip: 'Xưởng ghi chú',
@@ -214,627 +467,365 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   )
                 : null,
-            floatingActionButton: small && destination != 2
-                ? DecoratedBox(
-                    decoration: BoxDecoration(
-                      gradient: const LinearGradient(
-                        colors: PrismPalette.actionColors,
-                      ),
-                      borderRadius: BorderRadius.circular(18),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Theme.of(context).colorScheme.primary
-                              .withValues(alpha: .18),
-                          blurRadius: 20,
-                          offset: const Offset(0, 6),
-                        ),
-                      ],
-                    ),
-                    child: FloatingActionButton.extended(
-                      key: const Key('new-note'),
-                      onPressed: () => open(),
-                      icon: const Icon(Icons.add),
-                      label: const Text('Ghi chú mới'),
-                      foregroundColor: Colors.white,
-                      backgroundColor: Colors.transparent,
-                      elevation: 0,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(18),
-                      ),
-                    ),
-                  )
-                : null,
             body: SafeArea(
-              child: Row(
-                children: [
-                  if (!small)
-                    sidebar
-                        ? SizedBox(
-                            width: Space.sidebar,
-                            child: Material(
-                              color: Theme.of(context).colorScheme.surface,
-                              child: Padding(
-                                padding: const EdgeInsets.all(20),
-                                child: Column(
-                                  children: [
-                                    const Padding(
-                                      padding: EdgeInsets.symmetric(
-                                        vertical: 16,
-                                      ),
-                                      child: Brand(),
-                                    ),
-                                    const SizedBox(height: 32),
-                                    SurfacePanel(
-                                      tinted: true,
-                                      padding: const EdgeInsets.all(12),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          const Text(
-                                            'KHÔNG GIAN CỦA BẠN',
-                                            style: TextStyle(
-                                              fontSize: 11,
-                                              fontWeight: FontWeight.w700,
-                                              letterSpacing: .8,
-                                            ),
-                                          ),
-                                          const SizedBox(height: 8),
-                                          Text(
-                                            '${c.notes.where((n) => n.role == 'owner').length} ghi chú · ${c.labels.length} nhãn',
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .bodySmall,
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    const SizedBox(height: 24),
-                                    ...List.generate(
-                                      3,
-                                      (i) => Padding(
-                                        padding: const EdgeInsets.only(
-                                          bottom: 8,
+              child: DashboardBackdrop(
+                child: Row(
+                  children: [
+                    if (!small)
+                      sidebar
+                          ? SizedBox(
+                              width: Space.sidebar,
+                              child: DashboardSidebar(
+                                builder: (context) => Padding(
+                                  padding: const EdgeInsets.all(20),
+                                  child: Column(
+                                    children: [
+                                      const Padding(
+                                        padding: EdgeInsets.symmetric(
+                                          vertical: 16,
                                         ),
-                                        child: ListTile(
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(
-                                              12,
+                                        child: Brand(),
+                                      ),
+                                      const SizedBox(height: 32),
+                                      SurfacePanel(
+                                        tinted: true,
+                                        padding: const EdgeInsets.all(12),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            const Text(
+                                              'KHÔNG GIAN CỦA BẠN',
+                                              style: TextStyle(
+                                                fontSize: 11,
+                                                fontWeight: FontWeight.w700,
+                                                letterSpacing: .8,
+                                              ),
                                             ),
-                                          ),
-                                          selected: destination == i,
-                                          selectedTileColor: Theme.of(context)
-                                              .colorScheme
-                                              .secondaryContainer,
-                                          leading: Icon(icons[i]),
-                                          title: Text(destinations[i]),
-                                          onTap: () =>
-                                              setState(() => destination = i),
+                                            const SizedBox(height: 8),
+                                            Text(
+                                              '${c.notes.where((n) => n.role == 'owner').length} ghi chú · ${c.labels.length} nhãn',
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .bodySmall,
+                                            ),
+                                          ],
                                         ),
                                       ),
-                                    ),
-                                    const SizedBox(height: 16),
-                                    ListTile(
-                                      leading: const Icon(Icons.label_outline),
-                                      title: const Text('Quản lý nhãn'),
-                                      onTap: manageLabels,
-                                    ),
-                                    const Spacer(),
-                                    const Divider(),
-                                    const SizedBox(height: 12),
-                                    ListTile(
-                                      leading: AccountAvatar(
-                                        controller: c,
-                                        radius: 18,
+                                      const SizedBox(height: 24),
+                                      ...List.generate(
+                                        3,
+                                        (i) => Padding(
+                                          padding: const EdgeInsets.only(
+                                            bottom: 8,
+                                          ),
+                                          child: ListTile(
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(12),
+                                            ),
+                                            selected: destination == i,
+                                            selectedTileColor: Theme.of(context)
+                                                .colorScheme
+                                                .secondaryContainer,
+                                            leading: Icon(icons[i]),
+                                            title: Text(destinations[i]),
+                                            onTap: () =>
+                                                setState(() => destination = i),
+                                          ),
+                                        ),
                                       ),
-                                      title: Text(
-                                        c.user?['name'] as String? ?? 'Hồ sơ',
-                                        maxLines: 1,
-                                        overflow: TextOverflow.ellipsis,
+                                      const SizedBox(height: 16),
+                                      ListTile(
+                                        leading: const Icon(
+                                          Icons.label_outline,
+                                        ),
+                                        title: const Text('Quản lý nhãn'),
+                                        onTap: manageLabels,
                                       ),
-                                      subtitle: const Text(
-                                        'Hồ sơ và tùy chỉnh',
+                                      const Spacer(),
+                                      const Divider(),
+                                      const SizedBox(height: 12),
+                                      ListTile(
+                                        leading: AccountAvatar(
+                                          controller: c,
+                                          radius: 18,
+                                        ),
+                                        title: Text(
+                                          c.user?['name'] as String? ?? 'Hồ sơ',
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                        subtitle: const Text(
+                                          'Hồ sơ và tùy chỉnh',
+                                        ),
+                                        onTap: settings,
                                       ),
-                                      onTap: settings,
-                                    ),
-                                    TextButton.icon(
-                                      onPressed: logout,
-                                      icon: const Icon(Icons.logout),
-                                      label: const Text('Đăng xuất'),
-                                    ),
-                                  ],
+                                      TextButton.icon(
+                                        onPressed: logout,
+                                        icon: const Icon(Icons.logout),
+                                        label: const Text('Đăng xuất'),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            )
+                          : NavigationRail(
+                              selectedIndex: destination,
+                              labelType: NavigationRailLabelType.all,
+                              leading: const Padding(
+                                padding: EdgeInsets.all(8),
+                                child: Brand(compact: true),
+                              ),
+                              trailing: IconButton(
+                                tooltip: 'Hồ sơ và tùy chỉnh',
+                                onPressed: settings,
+                                icon: const Icon(Icons.account_circle_outlined),
+                              ),
+                              onDestinationSelected: (v) =>
+                                  setState(() => destination = v),
+                              destinations: List.generate(
+                                3,
+                                (i) => NavigationRailDestination(
+                                  icon: Icon(icons[i]),
+                                  label: Text(destinations[i]),
                                 ),
                               ),
                             ),
-                          )
-                        : NavigationRail(
-                            selectedIndex: destination,
-                            labelType: NavigationRailLabelType.all,
-                            leading: const Padding(
-                              padding: EdgeInsets.all(8),
-                              child: Brand(compact: true),
-                            ),
-                            trailing: IconButton(
-                              tooltip: 'Hồ sơ và tùy chỉnh',
-                              onPressed: settings,
-                              icon: const Icon(Icons.account_circle_outlined),
-                            ),
-                            onDestinationSelected: (v) =>
-                                setState(() => destination = v),
-                            destinations: List.generate(
-                              3,
-                              (i) => NavigationRailDestination(
-                                icon: Icon(icons[i]),
-                                label: Text(destinations[i]),
-                              ),
-                            ),
-                          ),
-                  if (!small) const VerticalDivider(width: 1),
-                  Expanded(
-                    child: destination == 2
-                        ? AiQuestionsPanel(controller: c)
-                        : LayoutBuilder(
-                            builder: (context, area) {
-                              final padding = small ? 16.0 : 32.0;
-                              final scale = MediaQuery.textScalerOf(context)
-                                  .scale(1);
-                              final listing = listingCache.select(
-                                account: c.user?['id'] as String?,
-                                notes: c.notes,
-                                query: query,
-                                shared: destination == 1,
-                                labels: selectedLabels,
-                                deletedLabels: c.labelCatalogue.entries
-                                    .where(
-                                      (entry) => entry.value['deleted'] == true,
-                                    )
-                                    .map((entry) => entry.key)
-                                    .toSet(),
-                              );
-                              final list = listing.all,
-                                  pinned = listing.pinned,
-                                  remaining = listing.remaining;
-                              return CustomScrollView(
-                                key: PageStorageKey('notes-$destination'),
-                                slivers: [
-                                  SliverPadding(
-                                    padding: EdgeInsets.fromLTRB(
-                                      padding,
-                                      small ? 12 : 32,
-                                      padding,
-                                      small ? 12 : 24,
-                                    ),
-                                    sliver: SliverToBoxAdapter(
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          if (!small) ...[
-                                            Row(
-                                              children: [
-                                                Expanded(
-                                                  child: Text(
-                                                    destination == 1
-                                                        ? 'Được chia sẻ với bạn'
-                                                        : 'Ghi chú của bạn',
-                                                    style: Theme.of(context)
-                                                        .textTheme
-                                                        .headlineLarge,
-                                                  ),
+                    if (!small) const VerticalDivider(width: 1),
+                    Expanded(
+                      child: destination == 2
+                          ? AiQuestionsPanel(controller: c)
+                          : LayoutBuilder(
+                              builder: (context, area) {
+                                final padding = small ? 16.0 : 24.0;
+                                final scale = MediaQuery.textScalerOf(context)
+                                    .scale(1);
+                                final listing = listingCache.select(
+                                  account: c.user?['id'] as String?,
+                                  notes: c.notes,
+                                  query: query,
+                                  shared: destination == 1,
+                                  labels: selectedLabels,
+                                  deletedLabels: c.labelCatalogue.entries
+                                      .where(
+                                        (entry) =>
+                                            entry.value['deleted'] == true,
+                                      )
+                                      .map((entry) => entry.key)
+                                      .toSet(),
+                                );
+                                final list = listing.all,
+                                    pinned = listing.pinned,
+                                    remaining = listing.remaining;
+                                return CustomScrollView(
+                                  key: PageStorageKey('notes-$destination'),
+                                  slivers: [
+                                    SliverPadding(
+                                      padding: EdgeInsets.fromLTRB(
+                                        padding,
+                                        small ? 12 : 16,
+                                        padding,
+                                        small ? 12 : 24,
+                                      ),
+                                      sliver: SliverToBoxAdapter(
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            dashboardHeader(
+                                              small,
+                                              list.length,
+                                              syncLabel,
+                                            ),
+                                            const SizedBox(height: 24),
+                                            TextField(
+                                              key: const Key('note-search'),
+                                              controller: search,
+                                              focusNode: searchFocus,
+                                              decoration: InputDecoration(
+                                                prefixIcon: const Icon(
+                                                  Icons.search,
                                                 ),
-                                                createButton(),
-                                              ],
-                                            ),
-                                            const SizedBox(height: 8),
-                                          ],
-                                          if (small)
-                                            Text(
-                                              destination == 1
-                                                  ? 'Được chia sẻ'
-                                                  : 'Ghi chú của bạn',
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .headlineSmall,
-                                            ),
-                                          const SizedBox(height: 8),
-                                          Text(
-                                            destination == 1
-                                                ? 'Cùng theo dõi những điều quan trọng của nhóm.'
-                                                : 'Ý tưởng, bài học và kế hoạch — gọn trong một nơi.',
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .bodyMedium
-                                                ?.copyWith(
-                                                  color: Theme.of(context)
-                                                      .colorScheme
-                                                      .onSurfaceVariant,
-                                                ),
-                                          ),
-                                          Wrap(
-                                            spacing: 12,
-                                            runSpacing: 4,
-                                            crossAxisAlignment:
-                                                WrapCrossAlignment.center,
-                                            children: [
-                                              Text(
-                                                '${list.length} ghi chú',
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .bodySmall,
-                                              ),
-                                              TextButton.icon(
-                                                onPressed: c.synchronize,
-                                                icon: Icon(
-                                                  c.online
-                                                      ? Icons
-                                                            .cloud_done_outlined
-                                                      : Icons
-                                                            .cloud_off_outlined,
-                                                  size: 18,
-                                                ),
-                                                label: Text(syncLabel),
-                                              ),
-                                            ],
-                                          ),
-                                          if (c.user?['verified'] != true) ...[
-                                            const SizedBox(height: 12),
-                                            UnverifiedBanner(
-                                              delivery: c.emailDelivery,
-                                              onCheck: () =>
-                                                  Navigator.of(context).push(
-                                                    MaterialPageRoute<void>(
-                                                      builder: (_) =>
-                                                          TokenScreen(
-                                                            controller: c,
-                                                          ),
-                                                    ),
-                                                  ),
-                                            ),
-                                          ],
-                                          if (c.error != null) ...[
-                                            const SizedBox(height: 12),
-                                            StatusNotice(
-                                              message: c.localWriteFailed
-                                                  ? c.error!
-                                                  : c.online
-                                                  ? 'Chưa thể đồng bộ. Hãy thử lại.'
-                                                  : 'Đang offline. Các thay đổi đã lưu trên thiết bị đang chờ kết nối.',
-                                              icon: Icons.cloud_off_outlined,
-                                              action: TextButton(
-                                                onPressed: c.synchronize,
-                                                child: const Text('Thử lại'),
-                                              ),
-                                            ),
-                                          ],
-                                          const SizedBox(height: 24),
-                                          TextField(
-                                            key: const Key('note-search'),
-                                            controller: search,
-                                            focusNode: searchFocus,
-                                            decoration: InputDecoration(
-                                              prefixIcon: const Icon(
-                                                Icons.search,
-                                              ),
-                                              hintText: 'Tìm trong tiêu đề và nội dung',
-                                              labelText: 'Tìm ghi chú',
-                                              helperText: area.maxWidth < 800
-                                                  ? null
-                                                  : 'Tìm ngay khi nhập · Ctrl + F để đến ô tìm kiếm',
-                                              suffixIcon:
-                                                  ValueListenableBuilder<
-                                                    TextEditingValue
-                                                  >(
-                                                    valueListenable: search,
-                                                    builder: (_, value, _) =>
-                                                        value.text.isEmpty
-                                                        ? const SizedBox.shrink()
-                                                        : IconButton(
-                                                            tooltip:
-                                                                'Xóa tìm kiếm',
-                                                            icon: const Icon(
-                                                              Icons.close,
+                                                hintText: 'Tìm trong tiêu đề và nội dung',
+                                                labelText: 'Tìm ghi chú',
+                                                helperText: area.maxWidth < 800
+                                                    ? null
+                                                    : 'Tìm ngay khi nhập · Ctrl + F để đến ô tìm kiếm',
+                                                suffixIcon:
+                                                    ValueListenableBuilder<
+                                                      TextEditingValue
+                                                    >(
+                                                      valueListenable: search,
+                                                      builder: (_, value, _) =>
+                                                          value.text.isEmpty
+                                                          ? const SizedBox.shrink()
+                                                          : IconButton(
+                                                              tooltip: 'Xóa tìm kiếm',
+                                                              icon: const Icon(
+                                                                Icons.close,
+                                                              ),
+                                                              onPressed: () {
+                                                                searchDelay
+                                                                    ?.cancel();
+                                                                search.clear();
+                                                                setState(
+                                                                  () => query =
+                                                                      '',
+                                                                );
+                                                              },
                                                             ),
-                                                            onPressed: () {
-                                                              searchDelay
-                                                                  ?.cancel();
-                                                              search.clear();
-                                                              setState(
-                                                                () =>
-                                                                    query = '',
-                                                              );
-                                                            },
-                                                          ),
+                                                    ),
+                                              ),
+                                              onChanged: (v) {
+                                                searchDelay?.cancel();
+                                                searchDelay = Timer(
+                                                  const Duration(
+                                                    milliseconds: 300,
                                                   ),
+                                                  () {
+                                                    if (mounted) {
+                                                      setState(
+                                                        () => query = v
+                                                            .trim()
+                                                            .toLowerCase(),
+                                                      );
+                                                    }
+                                                  },
+                                                );
+                                              },
                                             ),
-                                            onChanged: (v) {
-                                              searchDelay?.cancel();
-                                              searchDelay = Timer(
-                                                const Duration(
-                                                  milliseconds: 300,
-                                                ),
-                                                () {
-                                                  if (mounted) {
-                                                    setState(
-                                                      () => query = v
-                                                          .trim()
-                                                          .toLowerCase(),
-                                                    );
-                                                  }
-                                                },
-                                              );
-                                            },
-                                          ),
-                                          const SizedBox(height: 12),
-                                          Wrap(
-                                            spacing: 8,
-                                            runSpacing: 8,
-                                            crossAxisAlignment:
-                                                WrapCrossAlignment.center,
-                                            children: [
-                                              if (!small)
-                                                IconButton(
-                                                  key: const Key(
-                                                    'note-templates',
-                                                  ),
-                                                  tooltip: 'Xưởng ghi chú',
-                                                  onPressed: createFromTemplate,
-                                                  icon: const Icon(
-                                                    Icons
-                                                        .auto_awesome_mosaic_outlined,
-                                                  ),
-                                                ),
-                                              SegmentedButton<bool>(
-                                                showSelectedIcon: false,
-                                                style:
-                                                    SegmentedButton.styleFrom(
-                                                      minimumSize: const Size(
-                                                        48,
-                                                        48,
-                                                      ),
-                                                    ),
-                                                segments: const [
-                                                  ButtonSegment(
-                                                    value: true,
-                                                    icon: Icon(Icons.grid_view),
-                                                    label: Text('Lưới'),
-                                                  ),
-                                                  ButtonSegment(
-                                                    value: false,
-                                                    icon: Icon(
-                                                      Icons.view_list_outlined,
-                                                    ),
-                                                    label: Text('Danh sách'),
-                                                  ),
-                                                ],
-                                                selected: {c.grid},
-                                                onSelectionChanged: (values) =>
-                                                    c.setPreferences({
-                                                      'grid': values.single,
-                                                    }),
-                                              ),
-                                              if (small)
-                                                IconButton(
-                                                  tooltip: 'Quản lý nhãn',
-                                                  onPressed: manageLabels,
-                                                  icon: const Icon(
-                                                    Icons.label_outline,
-                                                  ),
-                                                ),
-                                              if (!small && !sidebar)
-                                                Tooltip(
-                                                  message: 'Quản lý nhãn',
-                                                  child: TextButton.icon(
-                                                    onPressed: manageLabels,
-                                                    icon: const Icon(
-                                                      Icons.label_outline,
-                                                    ),
-                                                    label: const Text(
-                                                      'Quản lý nhãn',
-                                                    ),
-                                                  ),
-                                                ),
-                                              ...c.labels.map(
-                                                (label) => FilterChip(
-                                                  backgroundColor:
-                                                      Color.alphaBlend(
-                                                        PrismPalette.of(context)
-                                                            .tone(label)
-                                                            .light
-                                                            .withValues(
-                                                              alpha: .08,
-                                                            ),
-                                                        Theme.of(context)
-                                                            .colorScheme
-                                                            .surface,
-                                                      ),
-                                                  selectedColor:
-                                                      Color.alphaBlend(
-                                                        PrismPalette.of(context)
-                                                            .tone(label)
-                                                            .light
-                                                            .withValues(
-                                                              alpha: .22,
-                                                            ),
-                                                        Theme.of(context)
-                                                            .colorScheme
-                                                            .surface,
-                                                      ),
-                                                  labelStyle: TextStyle(
-                                                    color: PrismPalette.of(
-                                                      context,
-                                                    ).tone(label).ink,
-                                                  ),
-                                                  checkmarkColor:
-                                                      PrismPalette.of(context)
-                                                          .tone(label)
-                                                          .ink,
-                                                  label: Text(
-                                                    c.labelName(label),
-                                                  ),
-                                                  selected: selectedLabels
-                                                      .contains(label),
-                                                  onSelected: (v) =>
-                                                      setState(() {
-                                                        if (v) {
-                                                          selectedLabels.add(
-                                                            label,
-                                                          );
-                                                        } else {
-                                                          selectedLabels.remove(
-                                                            label,
-                                                          );
-                                                        }
-                                                      }),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                          if (selectedLabels.isNotEmpty)
-                                            Padding(
-                                              padding: EdgeInsets.only(top: 8),
-                                              child: Wrap(
-                                                crossAxisAlignment:
-                                                    WrapCrossAlignment.center,
+                                            const SizedBox(height: 16),
+                                            filterToolbar(small, sidebar),
+                                            if (c.drafts.isNotEmpty)
+                                              Wrap(
                                                 spacing: 8,
-                                                children: [
-                                                  const Text(
-                                                    'Khớp tất cả nhãn đã chọn',
-                                                  ),
-                                                  TextButton(
-                                                    onPressed: () => setState(
-                                                      selectedLabels.clear,
+                                                children: c.drafts.keys
+                                                    .map(
+                                                      (id) => ActionChip(
+                                                        avatar: const Icon(
+                                                          Icons.edit_note,
+                                                        ),
+                                                        label: const Text(
+                                                          'Khôi phục bản nháp',
+                                                        ),
+                                                        onPressed: () =>
+                                                            open(draftId: id),
+                                                      ),
+                                                    )
+                                                    .toList(),
+                                              ),
+                                            if (c.protectedVaults.values.any(
+                                              (r) => r['dirty'] == true,
+                                            ))
+                                              Padding(
+                                                padding: const EdgeInsets.only(
+                                                  top: 12,
+                                                ),
+                                                child: StatusNotice(
+                                                  icon: Icons.lock_outline,
+                                                  message: 'Có bản nháp bảo vệ được giữ mã hóa trên thiết bị.',
+                                                  action: TextButton(
+                                                    key: const Key(
+                                                      'open-protected-recovery',
                                                     ),
+                                                    onPressed:
+                                                        protectedRecovery,
                                                     child: const Text(
-                                                      'Bỏ bộ lọc nhãn',
+                                                      'Bản nháp bảo vệ',
                                                     ),
                                                   ),
-                                                ],
+                                                ),
                                               ),
-                                            ),
-                                          if (c.drafts.isNotEmpty)
-                                            Wrap(
-                                              spacing: 8,
-                                              children: c.drafts.keys
-                                                  .map(
-                                                    (id) => ActionChip(
-                                                      avatar: const Icon(
-                                                        Icons.edit_note,
-                                                      ),
-                                                      label: const Text(
-                                                        'Khôi phục bản nháp',
-                                                      ),
-                                                      onPressed: () =>
-                                                          open(draftId: id),
+                                            if (c.recoveries.isNotEmpty)
+                                              Padding(
+                                                padding: const EdgeInsets.only(
+                                                  top: 12,
+                                                ),
+                                                child: StatusNotice(
+                                                  icon: Icons
+                                                      .enhanced_encryption_outlined,
+                                                  message:
+                                                      '${c.recoveries.length} bản chỉnh sửa đã được giữ an toàn trên thiết bị.',
+                                                  action: TextButton(
+                                                    key: const Key(
+                                                      'open-recovery',
                                                     ),
-                                                  )
-                                                  .toList(),
-                                            ),
-                                          if (c.protectedVaults.values.any(
-                                            (r) => r['dirty'] == true,
-                                          ))
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                top: 12,
-                                              ),
-                                              child: StatusNotice(
-                                                icon: Icons.lock_outline,
-                                                message: 'Có bản nháp bảo vệ được giữ mã hóa trên thiết bị.',
-                                                action: TextButton(
-                                                  key: const Key(
-                                                    'open-protected-recovery',
+                                                    onPressed: recovery,
+                                                    child: const Text(
+                                                      'Phục hồi',
+                                                    ),
                                                   ),
-                                                  onPressed: protectedRecovery,
+                                                ),
+                                              ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    if (list.isEmpty)
+                                      SliverToBoxAdapter(
+                                        child: EmptyNotes(
+                                          title:
+                                              query.isNotEmpty ||
+                                                  selectedLabels.isNotEmpty
+                                              ? 'Không tìm thấy ghi chú phù hợp'
+                                              : destination == 1
+                                              ? 'Chưa có ghi chú được chia sẻ'
+                                              : 'Bắt đầu với ghi chú đầu tiên',
+                                          detail:
+                                              query.isNotEmpty ||
+                                                  selectedLabels.isNotEmpty
+                                              ? 'Thử từ khóa khác hoặc bỏ bớt nhãn.'
+                                              : destination == 1
+                                              ? 'Ghi chú được chia sẻ với tài khoản của bạn sẽ xuất hiện ở đây.'
+                                              : 'Một ý tưởng, một bài học, một điều cần nhớ.',
+                                          action:
+                                              query.isNotEmpty ||
+                                                  selectedLabels.isNotEmpty
+                                              ? TextButton(
+                                                  onPressed: () {
+                                                    search.clear();
+                                                    setState(() {
+                                                      query = '';
+                                                      selectedLabels.clear();
+                                                    });
+                                                  },
                                                   child: const Text(
-                                                    'Bản nháp bảo vệ',
+                                                    'Xóa tìm kiếm và bộ lọc',
                                                   ),
-                                                ),
-                                              ),
-                                            ),
-                                          if (c.recoveries.isNotEmpty)
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                top: 12,
-                                              ),
-                                              child: StatusNotice(
-                                                icon: Icons
-                                                    .enhanced_encryption_outlined,
-                                                message:
-                                                    '${c.recoveries.length} bản chỉnh sửa đã được giữ an toàn trên thiết bị.',
-                                                action: TextButton(
-                                                  key: const Key(
-                                                    'open-recovery',
-                                                  ),
-                                                  onPressed: recovery,
-                                                  child: const Text('Phục hồi'),
-                                                ),
-                                              ),
-                                            ),
-                                        ],
+                                                )
+                                              : null,
+                                        ),
                                       ),
-                                    ),
-                                  ),
-                                  if (list.isEmpty)
-                                    SliverToBoxAdapter(
-                                      child: EmptyNotes(
-                                        title:
-                                            query.isNotEmpty ||
-                                                selectedLabels.isNotEmpty
-                                            ? 'Không tìm thấy ghi chú phù hợp'
-                                            : destination == 1
-                                            ? 'Chưa có ghi chú được chia sẻ'
-                                            : 'Bắt đầu với ghi chú đầu tiên',
-                                        detail:
-                                            query.isNotEmpty ||
-                                                selectedLabels.isNotEmpty
-                                            ? 'Thử từ khóa khác hoặc bỏ bớt nhãn.'
-                                            : destination == 1
-                                            ? 'Ghi chú được chia sẻ với tài khoản của bạn sẽ xuất hiện ở đây.'
-                                            : 'Một ý tưởng, một bài học, một điều cần nhớ.',
-                                        action:
-                                            query.isNotEmpty ||
-                                                selectedLabels.isNotEmpty
-                                            ? TextButton(
-                                                onPressed: () {
-                                                  search.clear();
-                                                  setState(() {
-                                                    query = '';
-                                                    selectedLabels.clear();
-                                                  });
-                                                },
-                                                child: const Text(
-                                                  'Xóa tìm kiếm và bộ lọc',
-                                                ),
-                                              )
-                                            : null,
+                                    if (pinned.isNotEmpty)
+                                      ...section(
+                                        'Đã ghim',
+                                        pinned,
+                                        area.maxWidth,
+                                        padding,
+                                        scale,
                                       ),
+                                    if (remaining.isNotEmpty)
+                                      ...section(
+                                        pinned.isEmpty
+                                            ? 'Tất cả ghi chú'
+                                            : 'Các ghi chú khác',
+                                        remaining,
+                                        area.maxWidth,
+                                        padding,
+                                        scale,
+                                      ),
+                                    const SliverToBoxAdapter(
+                                      child: SizedBox(height: 32),
                                     ),
-                                  if (pinned.isNotEmpty)
-                                    ...section(
-                                      'Đã ghim',
-                                      pinned,
-                                      area.maxWidth,
-                                      padding,
-                                      scale,
-                                    ),
-                                  if (remaining.isNotEmpty)
-                                    ...section(
-                                      pinned.isEmpty
-                                          ? 'Tất cả ghi chú'
-                                          : 'Các ghi chú khác',
-                                      remaining,
-                                      area.maxWidth,
-                                      padding,
-                                      scale,
-                                    ),
-                                  const SliverToBoxAdapter(
-                                    child: SizedBox(height: 104),
-                                  ),
-                                ],
-                              );
-                            },
-                          ),
-                  ),
-                ],
+                                  ],
+                                );
+                              },
+                            ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -849,73 +840,78 @@ class _HomeScreenState extends State<HomeScreen> {
     double width,
     double padding,
     double scale,
-  ) => [
-    SliverPadding(
-      padding: EdgeInsets.fromLTRB(padding, 8, padding, 16),
-      sliver: SliverToBoxAdapter(
-        child: Row(
-          children: [
-            if (title == 'Đã ghim') ...[
-              Icon(
-                Icons.push_pin_outlined,
-                size: 18,
-                color: Theme.of(context).colorScheme.primary,
+  ) {
+    // At large text scales use naturally sized cards instead of guessing a
+    // fixed tile height. The saved grid preference is preserved on resize.
+    final tiles = c.grid && scale < 1.5;
+    return [
+      SliverPadding(
+        padding: EdgeInsets.fromLTRB(padding, 8, padding, 16),
+        sliver: SliverToBoxAdapter(
+          child: Row(
+            children: [
+              if (title == 'Đã ghim') ...[
+                Icon(
+                  Icons.push_pin_outlined,
+                  size: 18,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+                const SizedBox(width: 8),
+              ],
+              Expanded(
+                child: Text(
+                  title,
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
               ),
-              const SizedBox(width: 8),
+              Text(
+                '${notes.length}',
+                style: Theme.of(context).textTheme.bodySmall,
+              ),
             ],
-            Expanded(
-              child: Text(
-                title,
-                style: Theme.of(context).textTheme.titleMedium,
-              ),
-            ),
-            Text(
-              '${notes.length}',
-              style: Theme.of(context).textTheme.bodySmall,
-            ),
-          ],
+          ),
         ),
       ),
-    ),
-    SliverPadding(
-      padding: EdgeInsets.symmetric(horizontal: padding),
-      sliver: c.grid && title == 'Đã ghim' && notes.length == 1
-          ? SliverToBoxAdapter(child: noteCard(notes.single, compact: true))
-          : c.grid
-          ? SliverGrid(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: ((width - padding * 2) / (260 * scale))
-                    .floor()
-                    .clamp(1, 4),
-                mainAxisExtent:
-                    (320 +
-                        (notes.any((n) => !n.locked && n.role != 'owner')
-                            ? 48
-                            : 0) +
-                        (c.fontSize - 16).clamp(0, 8) * 10 +
-                        (c.conflicts.isNotEmpty ? 64 : 0)) *
-                    scale,
-                crossAxisSpacing: 16,
-                mainAxisSpacing: 16,
-              ),
-              delegate: SliverChildBuilderDelegate(
-                (_, i) => noteCard(notes[i]),
-                childCount: notes.length,
-              ),
-            )
-          : SliverList(
-              delegate: SliverChildBuilderDelegate(
-                (_, i) => Padding(
-                  padding: const EdgeInsets.only(bottom: 12),
-                  child: noteCard(notes[i]),
+      SliverPadding(
+        padding: EdgeInsets.symmetric(horizontal: padding),
+        sliver: tiles && title == 'Đã ghim' && notes.length == 1
+            ? SliverToBoxAdapter(child: noteCard(notes.single, compact: true))
+            : tiles
+            ? SliverGrid(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: ((width - padding * 2) / (260 * scale))
+                      .floor()
+                      .clamp(1, 4),
+                  mainAxisExtent:
+                      (320 +
+                          (notes.any((n) => !n.locked && n.role != 'owner')
+                              ? 48
+                              : 0) +
+                          (c.fontSize - 16).clamp(0, 8) * 10 +
+                          (c.conflicts.isNotEmpty ? 64 : 0)) *
+                      scale,
+                  crossAxisSpacing: 16,
+                  mainAxisSpacing: 16,
                 ),
-                childCount: notes.length,
+                delegate: SliverChildBuilderDelegate(
+                  (_, i) => noteCard(notes[i], tile: true),
+                  childCount: notes.length,
+                ),
+              )
+            : SliverList(
+                delegate: SliverChildBuilderDelegate(
+                  (_, i) => Padding(
+                    padding: const EdgeInsets.only(bottom: 12),
+                    child: noteCard(notes[i]),
+                  ),
+                  childCount: notes.length,
+                ),
               ),
-            ),
-    ),
-  ];
+      ),
+    ];
+  }
 
-  Widget noteCard(Note note, {bool compact = false}) {
+  Widget noteCard(Note note, {bool compact = false, bool tile = false}) {
     final colors = Theme.of(context).colorScheme;
     final palette = PrismPalette.of(context);
     final tone = note.locked ? null : palette.tone(note.id);
@@ -925,17 +921,17 @@ class _HomeScreenState extends State<HomeScreen> {
     final dateText = date == null
         ? ''
         : '${date.day.toString().padLeft(2, '0')}/${date.month.toString().padLeft(2, '0')}/${date.year}';
+    final labelIds = note.locked ? const <String>[] : c.noteLabelIds(note);
     return PrismCard(
       key: ValueKey('card-${note.id}'),
       tone: tone,
+      rich: true,
       onTap: () => open(note: note),
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: c.grid && !compact
-              ? MainAxisSize.max
-              : MainAxisSize.min,
+          mainAxisSize: tile ? MainAxisSize.max : MainAxisSize.min,
           children: [
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -1027,10 +1023,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
               ],
             ),
-            const SizedBox(height: 8),
+            const SizedBox(height: 12),
+            const Divider(),
+            const SizedBox(height: 12),
             Text(
               noteCardPreview(note),
-              maxLines: c.grid && !compact ? 4 : 2,
+              maxLines: tile ? 4 : 2,
               overflow: TextOverflow.ellipsis,
               style: TextStyle(
                 fontSize: c.fontSize,
@@ -1039,7 +1037,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             const SizedBox(height: 16),
-            if (c.grid && !compact) const Spacer(),
+            if (tile) const Spacer(),
             if (!note.locked && note.role != 'owner')
               Text(
                 'Từ ${note.sharedByName ?? note.sharedByEmail ?? 'Chủ sở hữu'} · ${sharingDate(note.sharedAt ?? '')}',
@@ -1082,8 +1080,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
                 if (!note.locked)
-                  ...c
-                      .noteLabelIds(note)
+                  ...labelIds
                       .take(2)
                       .map(
                         (l) => MetadataPill(
@@ -1091,9 +1088,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           tone: palette.tone(l),
                         ),
                       ),
-                if (!note.locked && c.noteLabelIds(note).length > 2)
+                if (!note.locked && labelIds.length > 2)
                   Text(
-                    '+${c.noteLabelIds(note).length - 2} nhãn',
+                    '+${labelIds.length - 2} nhãn',
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
               ],

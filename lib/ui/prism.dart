@@ -245,10 +245,12 @@ class PrismSurface extends StatelessWidget {
     required this.child,
     this.padding = const EdgeInsets.all(20),
     this.tinted = false,
+    this.backgroundColors,
   });
   final Widget child;
   final EdgeInsetsGeometry padding;
   final bool tinted;
+  final List<Color>? backgroundColors;
   @override
   Widget build(BuildContext context) {
     final p = PrismPalette.of(context);
@@ -280,17 +282,19 @@ class PrismSurface extends StatelessWidget {
               gradient: LinearGradient(
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
-                colors: [
-                  Color.alphaBlend(
-                    p.tones[0].light.withValues(alpha: tinted ? .10 : .025),
-                    surface,
-                  ),
-                  surface,
-                  Color.alphaBlend(
-                    p.tones[2].light.withValues(alpha: tinted ? .06 : .015),
-                    surface,
-                  ),
-                ],
+                colors:
+                    backgroundColors ??
+                    [
+                      Color.alphaBlend(
+                        p.tones[0].light.withValues(alpha: tinted ? .10 : .025),
+                        surface,
+                      ),
+                      surface,
+                      Color.alphaBlend(
+                        p.tones[2].light.withValues(alpha: tinted ? .06 : .015),
+                        surface,
+                      ),
+                    ],
               ),
             ),
             child: Padding(padding: padding, child: child),
@@ -307,10 +311,12 @@ class PrismCard extends StatefulWidget {
     required this.child,
     required this.onTap,
     this.tone,
+    this.rich = false,
   });
   final Widget child;
   final VoidCallback onTap;
   final PrismTone? tone; // null is neutral for locked notes.
+  final bool rich;
   @override
   State<PrismCard> createState() => _PrismCardState();
 }
@@ -324,6 +330,8 @@ class _PrismCardState extends State<PrismCard> {
     final tone = widget.tone;
     final active = hovered || focused;
     final accent = tone?.light ?? colors.outlineVariant;
+    final dark = Theme.of(context).brightness == Brightness.dark;
+    final rich = widget.rich && tone != null;
     return RepaintBoundary(
       child: AnimatedContainer(
         duration: PrismMotion.duration(context, PrismMotion.hover),
@@ -368,12 +376,21 @@ class _PrismCardState extends State<PrismCard> {
                 end: Alignment.bottomRight,
                 colors: [
                   Color.alphaBlend(
-                    accent.withValues(alpha: tone == null ? .025 : .13),
+                    accent.withValues(
+                      alpha: tone == null
+                          ? .025
+                          : rich
+                          ? (dark ? .16 : .30)
+                          : .13,
+                    ),
                     colors.surface,
                   ),
-                  colors.surface,
+                  Color.alphaBlend(
+                    accent.withValues(alpha: rich ? (dark ? .09 : .17) : 0),
+                    colors.surface,
+                  ),
                 ],
-                stops: const [0, .72],
+                stops: [0, rich ? 1 : .72],
               ),
             ),
             child: InkWell(
@@ -385,6 +402,14 @@ class _PrismCardState extends State<PrismCard> {
               borderRadius: BorderRadius.circular(21),
               child: Stack(
                 children: [
+                  if (rich)
+                    Positioned.fill(
+                      child: ExcludeSemantics(
+                        child: IgnorePointer(
+                          child: CustomPaint(painter: _CardFacet(accent)),
+                        ),
+                      ),
+                    ),
                   if (tone != null)
                     Positioned(
                       top: 0,
@@ -413,6 +438,27 @@ class _PrismCardState extends State<PrismCard> {
       ),
     );
   }
+}
+
+class _CardFacet extends CustomPainter {
+  const _CardFacet(this.color);
+  final Color color;
+  @override
+  void paint(Canvas canvas, Size size) {
+    final w = size.width, h = size.height;
+    canvas.drawPath(
+      Path()..addPolygon([
+        Offset(w * .67, h),
+        Offset(w, h * .55),
+        Offset(w, h),
+      ], true),
+      Paint()..color = color.withValues(alpha: .09),
+    );
+  }
+
+  @override
+  bool shouldRepaint(covariant _CardFacet oldDelegate) =>
+      color != oldDelegate.color;
 }
 
 class PrismAction extends StatelessWidget {

@@ -1,0 +1,16 @@
+{
+  "date_utc": "2026-10-09T11:43:24.444427+00:00",
+  "target": "Windows local working branch codex/ui-ux-performance",
+  "base_commit": "285af64da90f6dc65bced38c4912ccbea072c95a",
+  "command": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/check.ps1",
+  "exit_code": 0,
+  "format": "90 files / 0 changes",
+  "analyze": "No issues found!",
+  "flutter_tests": 198,
+  "backend_tests": 94,
+  "backend_warning": "1 upstream Starlette/httpx TestClient deprecation warning",
+  "performance_source_hashes_verified": 95,
+  "ci": "Not run at local gate; requires creation of PR and GitHub Actions results",
+  "merge": "Not authorized or performed",
+  "whitespace_check": "PASS for all staged files except two raw dumpsys meminfo captures, whose original column padding is preserved"
+}

@@ -511,6 +511,7 @@ void main() {
           ),
         ),
       );
+      await revealHome(tester, find.widgetWithText(FilterChip, 'Học'));
       await tester.tap(find.widgetWithText(FilterChip, 'Học'));
       await tester.pumpAndSettle();
       expect(find.text('Other note'), findsNothing);
