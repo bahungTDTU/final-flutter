@@ -1,0 +1,25 @@
+{
+  "date": "2026-10-09T06:19:58.764Z",
+  "phase": "after",
+  "url": "http://127.0.0.1:7357/",
+  "title": "NoteTogether",
+  "viewports": [
+    "1440x960",
+    "1536x1024",
+    "390x844",
+    "1280x900",
+    "768x1024",
+    "844x390"
+  ],
+  "notes": 9,
+  "labels": 16,
+  "errors": [],
+  "warnings": [],
+  "interactions": [
+    "Label search/apply -> 2 matching notes",
+    "Live search -> empty state -> clear -> 9 notes",
+    "Mobile editor -> type -> autosave -> GET content matches",
+    "Resize 390 -> 1280 + dark theme retains editor text",
+    "Tablet/short landscape renders and Home refreshes after return"
+  ]
+}

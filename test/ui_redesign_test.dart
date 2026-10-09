@@ -179,12 +179,14 @@ void main() {
       ];
       await tester.pumpWidget(NoteTogetherApp(controller: c));
       await tester.pumpAndSettle();
+      await revealHome(tester, find.byKey(const ValueKey('card-secret')));
       expect(find.textContaining('SECRET'), findsNothing);
       expect(find.byTooltip('Thao tác ghi chú'), findsNothing);
       final dump = tester.getSemantics(find.byType(Scaffold)).toStringDeep();
       expect(dump, isNot(contains('SECRET')));
       await tester.tap(find.text('Được chia sẻ'));
       await tester.pumpAndSettle();
+      await revealHome(tester, find.byKey(const ValueKey('card-view')));
       expect(find.text('Chỉ xem'), findsOneWidget);
       expect(find.byTooltip('Thao tác ghi chú'), findsNothing);
       await tester.pumpWidget(const SizedBox());
@@ -217,7 +219,10 @@ void main() {
       ];
       await tester.pumpWidget(NoteTogetherApp(controller: c));
       await tester.pumpAndSettle();
+      await revealHome(tester, find.widgetWithText(FilterChip, 'Học tập'));
       await tester.tap(find.widgetWithText(FilterChip, 'Học tập'));
+      await tester.pumpAndSettle();
+      await revealHome(tester, find.widgetWithText(FilterChip, 'Nhóm'));
       await tester.tap(find.widgetWithText(FilterChip, 'Nhóm'));
       await tester.pump();
       await tester.scrollUntilVisible(
@@ -265,7 +270,7 @@ void main() {
       ];
       await tester.pumpWidget(NoteTogetherApp(controller: c));
       await tester.pumpAndSettle();
-      await tester.ensureVisible(find.text('Title'));
+      await revealHome(tester, find.byKey(const ValueKey('card-n')));
       await tester.pumpAndSettle();
       await tester.tap(find.text('Title'));
       await tester.pumpAndSettle();

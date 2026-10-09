@@ -1,0 +1,34 @@
+Log: android-ui.log
+Running Gradle task 'assembleDebug'...                             27,7s
+I/flutter ( 3878): 00:00 +0: Native UI registration, labels, preferences and stable writing session
+I/flutter ( 3878): #3      main.<anonymous closure> (file:///D:/flutter%20cuoi%20ki/integration_test/ui_upgrade_test.dart:84:20)
+I/flutter ( 3878): 00:08 +0: Native UI registration, labels, preferences and stable writing session [E]
+I/flutter ( 3878): 00:08 +0 -1: Native template checklist focus and encrypted offline reopen with real API
+I/flutter ( 3878): #1      main.<anonymous closure> (file:///D:/flutter%20cuoi%20ki/integration_test/writing_studio_test.dart:114:28)
+I/flutter ( 3878): 00:17 +0 -1: Native template checklist focus and encrypted offline reopen with real API [E]
+I/flutter ( 3878): 00:17 +0 -2: Native protected edits: SSE, frozen base, encrypted offline reopen, unlock revalidation and confirmed delete
+I/flutter ( 3878): 00:48 +1 -2: (tearDownAll)
+I/flutter ( 3878): 00:48 +2 -2: Some tests failed.
+Failure in method: Native UI registration, labels, preferences and stable writing session
+#3      main.<anonymous closure> (file:///D:/flutter%20cuoi%20ki/integration_test/ui_upgrade_test.dart:84:20)
+Failure in method: Native template checklist focus and encrypted offline reopen with real API
+#1      main.<anonymous closure> (file:///D:/flutter%20cuoi%20ki/integration_test/writing_studio_test.dart:114:28)
+Log: android-ui-rerun.log
+Running Gradle task 'assembleDebug'...                             12,9s
+I/flutter ( 4614): 00:00 +0: Native UI registration, labels, preferences and stable writing session
+I/flutter ( 4614): 00:24 +1: Native template checklist focus and encrypted offline reopen with real API
+I/flutter ( 4614): 00:33 +2: Native protected edits: SSE, frozen base, encrypted offline reopen, unlock revalidation and confirmed delete
+I/flutter ( 4614): 01:03 +3: (tearDownAll)
+I/flutter ( 4614): 01:03 +4: All tests passed!
+All tests passed.
+Log: android-profile.log
+Running Gradle task 'assembleProfile'...                          287,0s
+I/flutter ( 5071): 00:00 +0: Profile continuous scroll with 500 server notes
+I/flutter ( 5071): 01:19 +1: (tearDownAll)
+I/flutter ( 5071): 01:19 +2: All tests passed!
+All tests passed.
+Log: android-profile-gpu.log
+I/flutter ( 3853): 00:00 +0: Profile continuous scroll with 500 server notes
+I/flutter ( 3853): 01:18 +1: (tearDownAll)
+I/flutter ( 3853): 01:18 +2: All tests passed!
+All tests passed.

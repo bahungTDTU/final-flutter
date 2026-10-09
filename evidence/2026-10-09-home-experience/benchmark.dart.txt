@@ -1,0 +1,64 @@
+import 'dart:convert';
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:note_together/domain/note.dart';
+import 'package:note_together/ui/app.dart';
+import 'package:note_together/ui/design_system.dart';
+import 'file:///D:/flutter%20cuoi%20ki/test/support.dart';
+import 'ui-2026-10-09-legacy-app.dart' as legacy;
+
+void main() {
+  testWidgets('Controlled shell and hidden Home notification probe', (tester) async {
+    final results = <String, Object>{};
+    for (final before in [true, false]) {
+      final c = offlineController()
+        ..user!['verified'] = true
+        ..notes = List.generate(500, (i) => Note(
+          id: 'n${i.toString().padLeft(4, '0')}', title: 'Ghi chú $i',
+          content: 'Nội dung kiểm tra ' * 100, revision: 1, updatedAt: '2026-10-09',
+        ));
+      await tester.pumpWidget(before
+        ? legacy.LegacyNoteTogetherApp(controller: c)
+        : NoteTogetherApp(controller: c));
+      await tester.pumpAndSettle();
+      var shell = tester.widget<MaterialApp>(find.byType(MaterialApp));
+      var shellReplacements = 0;
+      var themes = 0;
+      for (var i = 0; i < 20; i++) {
+        c.online = i.isEven;
+        c.notifyListeners();
+        await tester.pump();
+        final next = tester.widget<MaterialApp>(find.byType(MaterialApp));
+        if (!identical(next, shell)) shellReplacements++;
+        if (!identical(next.theme, shell.theme)) themes++;
+        shell = next;
+      }
+      await tester.tap(find.byKey(const Key('new-note')));
+      await tester.pumpAndSettle();
+      final hiddenCard = find.byType(PrismCard, skipOffstage: false).first;
+      var card = tester.widget<PrismCard>(hiddenCard);
+      var replacements = 0;
+      for (var i = 0; i < 20; i++) {
+        c.notifyListeners();
+        await tester.pump();
+        final next = tester.widget<PrismCard>(hiddenCard);
+        if (!identical(next, card)) replacements++;
+        card = next;
+      }
+      results[before ? 'baseline_root' : 'current_root'] = {
+        'shell_replacements': shellReplacements,
+        'light_theme_replacements': themes,
+        'hidden_home_card_replacements': replacements,
+      };
+      await tester.pumpWidget(const SizedBox());
+      c.dispose();
+    }
+    // ignore: avoid_print
+    print('ROOT_NOTIFICATION_BENCHMARK ${jsonEncode({
+      'target': 'Flutter test engine host', 'notes': 500, 'pulses_per_case': 20,
+      'baseline_commit': 'ef2ece00386b879f6ebb72b4636c42911aa07ca3',
+      'method': 'archived app shell with same current Home/fixture; widget identity',
+      'results': results, 'fps_measured': false,
+    })}');
+  });
+}

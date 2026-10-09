@@ -31,6 +31,11 @@ void main() {
           const DeviceRecoveryKeys(),
         ),
       );
+      addTearDown(() async {
+        await tester.pumpWidget(const SizedBox());
+        c.dispose();
+        await db.close();
+      });
       await c.initialize();
       await c.logout();
       Future<void> until(bool Function() ready) async {
@@ -78,7 +83,7 @@ void main() {
       await type(find.byKey(const Key('auth-confirmation')), password);
       await tester.ensureVisible(find.byKey(const Key('auth-submit')));
       await tester.tap(find.byKey(const Key('auth-submit')));
-      await until(() => c.user != null && !c.syncing);
+      await until(() => c.user != null && !c.busy && !c.syncing);
       expect(c.user!['email'], email);
       expect(c.user!['verified'], false);
       await tester.tap(find.byTooltip('Hồ sơ và tùy chỉnh'));
@@ -147,9 +152,6 @@ void main() {
       await tester.pumpAndSettle();
       await picture('android-home-dark');
       expect(tester.takeException(), isNull);
-      await tester.pumpWidget(const SizedBox());
-      c.dispose();
-      await db.close();
     },
   );
 }

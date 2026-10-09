@@ -141,7 +141,7 @@ void main() {
       ];
       await tester.pumpWidget(NoteTogetherApp(controller: c));
       await tester.pumpAndSettle();
-      await tester.ensureVisible(find.text('Before lock'));
+      await revealHome(tester, find.byKey(const ValueKey('card-n')));
       await tester.pumpAndSettle();
       await tester.tap(find.text('Before lock'));
       await tester.pumpAndSettle();

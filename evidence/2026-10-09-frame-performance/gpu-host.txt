@@ -1,0 +1,4 @@
+INFO         | Graphics backend: gfxstream
+  Model: NVIDIA GeForce RTX 3060 Laptop GPU
+INFO         | Selecting Vulkan device: NVIDIA GeForce RTX 3060 Laptop GPU, Version: 1.4.329
+INFO         | Boot completed in 27569 ms

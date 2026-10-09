@@ -403,6 +403,7 @@ void main() {
       await tester.pumpAndSettle();
       await tester.tap(find.text('Được chia sẻ'));
       await tester.pumpAndSettle();
+      await revealHome(tester, find.textContaining('Từ Original owner'));
       expect(find.textContaining('Từ Original owner'), findsOneWidget);
       c.notes = [
         Note.fromJson({...shared.toJson(), 'locked': true}),

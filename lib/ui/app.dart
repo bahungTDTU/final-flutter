@@ -17,10 +17,34 @@ class NoteTogetherApp extends StatefulWidget {
 class _NoteTogetherAppState extends State<NoteTogetherApp>
     with WidgetsBindingObserver {
   AppController get controller => widget.controller;
+  late (bool, String?, bool) shellState;
+  late final lightTheme = noteTheme(Brightness.light);
+  late final darkTheme = noteTheme(Brightness.dark);
+  (bool, String?, bool) get currentShellState =>
+      (controller.ready, controller.user?['id'] as String?, controller.dark);
+
+  void shellChanged() {
+    final next = currentShellState;
+    if (next == shellState) return;
+    setState(() => shellState = next);
+  }
+
   @override
   void initState() {
     super.initState();
+    shellState = currentShellState;
+    controller.addListener(shellChanged);
     WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
+  void didUpdateWidget(covariant NoteTogetherApp oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.controller != controller) {
+      oldWidget.controller.removeListener(shellChanged);
+      shellState = currentShellState;
+      controller.addListener(shellChanged);
+    }
   }
 
   @override
@@ -30,50 +54,52 @@ class _NoteTogetherAppState extends State<NoteTogetherApp>
 
   @override
   void dispose() {
+    controller.removeListener(shellChanged);
     WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
 
   @override
-  Widget build(BuildContext context) => AnimatedBuilder(
-    animation: controller,
-    builder: (context, _) {
-      return MaterialApp(
-        title: 'NoteTogether',
-        locale: const Locale('vi'),
-        supportedLocales: const [Locale('vi')],
-        localizationsDelegates: GlobalMaterialLocalizations.delegates,
-        themeAnimationDuration:
-            WidgetsBinding
-                .instance
-                .platformDispatcher
-                .accessibilityFeatures
-                .disableAnimations
-            ? Duration.zero
-            : const Duration(milliseconds: 300),
-        themeAnimationCurve: Curves.easeInOutCubic,
-        debugShowCheckedModeBanner: false,
-        theme: noteTheme(Brightness.light),
-        darkTheme: noteTheme(Brightness.dark),
-        themeMode: controller.dark ? ThemeMode.dark : ThemeMode.light,
-        builder: (context, child) => PrismBackdrop(
-          child: Theme(
-            data: Theme.of(context).copyWith(
-              scaffoldBackgroundColor: Colors.transparent,
-              splashFactory: MediaQuery.disableAnimationsOf(context)
-                  ? NoSplash.splashFactory
-                  : InkRipple.splashFactory,
-            ),
-            child: child ?? const SizedBox(),
-          ),
+  Widget build(BuildContext context) => MaterialApp(
+    title: 'NoteTogether',
+    locale: const Locale('vi'),
+    supportedLocales: const [Locale('vi')],
+    localizationsDelegates: GlobalMaterialLocalizations.delegates,
+    themeAnimationDuration:
+        WidgetsBinding
+            .instance
+            .platformDispatcher
+            .accessibilityFeatures
+            .disableAnimations
+        ? Duration.zero
+        : const Duration(milliseconds: 300),
+    themeAnimationCurve: Curves.easeInOutCubic,
+    debugShowCheckedModeBanner: false,
+    theme: lightTheme,
+    darkTheme: darkTheme,
+    themeMode: controller.dark ? ThemeMode.dark : ThemeMode.light,
+    builder: (context, child) => PrismBackdrop(
+      child: Theme(
+        data: Theme.of(context).copyWith(
+          scaffoldBackgroundColor: Colors.transparent,
+          splashFactory: MediaQuery.disableAnimationsOf(context)
+              ? NoSplash.splashFactory
+              : InkRipple.splashFactory,
         ),
-        home: !controller.ready
-            ? const Scaffold(body: Center(child: CircularProgressIndicator()))
-            : controller.user == null
-            ? AuthScreen(controller: controller)
-            : HomeScreen(controller: controller),
-      );
-    },
+        child: child ?? const SizedBox(),
+      ),
+    ),
+    home: !controller.ready
+        ? const Scaffold(body: Center(child: CircularProgressIndicator()))
+        : controller.user == null
+        ? AnimatedBuilder(
+            animation: controller,
+            builder: (_, _) => AuthScreen(controller: controller),
+          )
+        : HomeScreen(
+            key: ValueKey(controller.user!['id']),
+            controller: controller,
+          ),
   );
 }
 

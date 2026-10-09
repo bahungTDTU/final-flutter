@@ -18,8 +18,10 @@ class NoteListingCache {
   String? _account, _query;
   bool _shared = false;
   NoteListing? _result;
-  void invalidateSource(String? account, List<Note> notes) {
-    if (_account != account || !listEquals(_notes, notes)) clear();
+  bool invalidateSource(String? account, List<Note> notes) {
+    final changed = _account != account || !listEquals(_notes, notes);
+    if (changed) clear();
+    return changed;
   }
 
   NoteListing select({

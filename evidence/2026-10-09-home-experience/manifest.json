@@ -1,0 +1,96 @@
+{
+  "date_utc": "2026-10-09T05:52:26.500287+00:00",
+  "base_commit": "ef2ece00386b879f6ebb72b4636c42911aa07ca3",
+  "branch": "codex/ui-ux-performance",
+  "commit": null,
+  "source_state": "working changes; not committed, pushed or merged",
+  "toolchain": {
+    "flutter": "3.47.1",
+    "dart": "3.13.1",
+    "python": "3.12.14"
+  },
+  "results": {
+    "flutter": 198,
+    "backend": 94,
+    "new_regressions": 10,
+    "format": "87 files / 0 changes",
+    "analyze": "PASS",
+    "direct_http_4_roles": "PASS",
+    "web_compile": "PASS",
+    "android_debug_compile": "PASS",
+    "native_feature_acceptance": "NOT RUN"
+  },
+  "browser": {
+    "date": "2026-10-09T05:46:22.973Z",
+    "phase": "after",
+    "url": "http://127.0.0.1:7357/",
+    "title": "NoteTogether",
+    "viewports": [
+      "1440x960",
+      "390x844",
+      "1280x900",
+      "768x1024",
+      "844x390"
+    ],
+    "notes": 9,
+    "labels": 16,
+    "errors": [],
+    "interactions": [
+      "Label search/apply -> 2 matching notes",
+      "Live search -> empty state -> clear -> 9 notes",
+      "Mobile editor -> type -> autosave -> GET content matches",
+      "Resize 390 -> 1280 + dark theme retains editor text",
+      "Tablet/short landscape renders and Home refreshes after return"
+    ]
+  },
+  "qa_artifact_config": "Web API_URL=http://127.0.0.1:8020; disposable SQLite/accounts. Android debug API_URL=http://127.0.0.1:8000; compile only.",
+  "qa_web_bundle_sha256": "276e19f37806eb7675b5ba33c10948e3c179a9d7adf8e8eb30a0dfc77f2083d9",
+  "qa_web_worker_sha256": "dbfbe64ae5be5b462abb97338eb9af783ed4ed57a8c73a53c2a44488a26f6416",
+  "qa_debug_apk_sha256": "0ebd4e16584753b76e2992f09f52a78fdc60f553abcd7eae50fec37c7be2d9cb",
+  "source_sha256": {
+    "lib/ui/app.dart": "68bfacd8060a4c255f0818a8d247271487db7e89c5de70aaa4eaa3516d012bf7",
+    "lib/ui/home.dart": "3d45b4ee014d9ba5bb9db4aebb2f9822f1e415656f18aa40a693f9462a76a4f5",
+    "lib/ui/note_filters.dart": "eef204a5298534b1493d0b7aae3124788b2f793594b076cdac0441329f17cfb5",
+    "lib/state/note_listing.dart": "255ed9841af051d5ffd6cd77e6a2dcdcac962840829fe9a60f0a37bd4e32af56",
+    "test/home_experience_test.dart": "ea040a2f7bd26385a71b2b014656921f742d28d9e45abe97d4a70318e0368102"
+  },
+  "artifact_sha256": {
+    "acl.json": "a69b4fa283405a74b3ec4cb2098e14b28edb8e67ce0dcc6f903bb099d07e87bb",
+    "after-desktop.png": "3154c993323f9412776f632f0c28aae65254c8c10d4c8430cc50fb9350f53552",
+    "after-editor-dark.png": "575021d154605e9423f7e3abe91b359958d893ffdb577aa554d897832ce3e277",
+    "after-label-filter.png": "b3750a0d23ebcd39daed6f38e2584214e42258c755ea2e2e5eab9f00598fd6ab",
+    "after-landscape.png": "0d3b3a6f69ca2a03487881974c6ae54e985cc8e3aa555d24d38bec7631614ce8",
+    "after-list.png": "bf3a1b30db3d761e0dccd6b3d3b6a5998253839bbbf3d91bd804ae0d1f8f815e",
+    "after-mobile.png": "060f94df4905a76692c6854f229790b14597124884897c79d388658253ad285f",
+    "after-qa.json": "6446decf0a424e3b0d4812ef2d1f0f3a8710dcbdd21cc896f005527430be3243",
+    "after-tablet-dark.png": "75c18918e5092d8419e19fc9d50cbcd84b2c6899649c72b4352a3812b8704256",
+    "analyze-final.log": "35e046cd503fb081e10bd6389def4002c9181edb377bc9beaad1a7d5aa6e39f7",
+    "android-debug.log": "700853e473cd7f100e3c590f1d75dec9cbd3f0c72955041be029c2bba171df1a",
+    "backend-final.log": "bdb469e8eb84bef7189db42ead1d36cd36f0087a95ed3680df0615fdc7e6d04b",
+    "before-desktop.png": "e9bebfbf6b408504731dbf09c575bb1f6770e056db61a79ff5b87e6456bd38dc",
+    "before-mobile.png": "9c944a14f5b26dc33cda28a257daa89fe8a1e149e9439e3838eb79dd77fe8cf6",
+    "before-qa.json": "bd710b42cbac8d3ca72364ec59224e34e0c2538caaa8ad308ad10798d73b0357",
+    "benchmark.dart.txt": "328ae4c17d2b8debb6c1a76411f3594d28ee5b537b36e10f8d123b451d924866",
+    "benchmark.log": "1b58c70b968e363b5f2f1f945a5de164c7edbfafc6867f12d732606ad46c0fd9",
+    "flutter-final.log": "46273af0effdbe3976d5226aaaf650203fd84d5f415cd4fe5e4db5ccc5513d8e",
+    "format.log": "83381aa47b8a2c40142f5282816c1d33e4875d6e46c1030e183bd56a12adb6e1",
+    "INDEX.md": "a3a4525f2bd160d845ecb41d90da9c892b9aec78647e9e844d89a405aac0c336",
+    "qa.cjs": "2783ea8ccf8832e63a18d33025dcb9b2c0cbca7ee4fee76a1164200af7342287",
+    "web-final.log": "81395f9d3c14a8204044f2ac47fc9f65e8f5ceaa22366f87575e6491bcbf98ba",
+    "default-web.log": "1999a80d48b28070e0acacb7561395dc16c32ebf7e80565c292e51388ab49f90"
+  },
+  "limits": [
+    "No FPS/native latency measurement",
+    "No connected Android device/AVD",
+    "No public deployment/signing/release/LLM/email Internet acceptance"
+  ],
+  "android_debug_config": "API_URL=http://127.0.0.1:8000; debug compile only; no native UI acceptance",
+  "local_default_web_build": {
+    "command": "scripts/build.ps1 -Target web",
+    "api_url": "http://127.0.0.1:8000",
+    "result": "PASS compile + offline shell; QA browser used the separately hashed API8020 bundle",
+    "date_utc": "2026-10-09T05:53:57.530864+00:00",
+    "main_dart_js_sha256": "4c4f9238190f9089c6500bb311d65265fc6da02656703e9ecb6564de6eda3a0a",
+    "worker_sha256": "dbfbe64ae5be5b462abb97338eb9af783ed4ed57a8c73a53c2a44488a26f6416"
+  }
+}

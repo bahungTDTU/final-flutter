@@ -1,5 +1,24 @@
 # Ma trận yêu cầu 32 tiêu chí
 
+Benchmark bổ sung09/10 sau dashboard:3 native workflows API36 debug và2 profile workflows
+500notes/30labels PASS. GPU host Impeller OpenGLES52.6–56.7FPS, raster p95=23–28ms; target
+60FPS chưa đạt đều, physical/native presentation chưa chạy. Web12samples/5search/filter
+và HTTP4roles PASS, rAF không GPU FPS. Bổ sung bằng chứng tiêu chí9/10/19/22/29/30, không
+đóng release/submission gates. Xem PERFORMANCE_BENCHMARK.md/evidence2026-10-09-frame-performance.
+
+Dashboard color09/10 theo phản hồi ảnh: indigo sidebar/gradient header/rich pastel cards/amber
+notice/static facets, opt-in; locked neutral/copy/state giữ nguyên.198Flutter/analyze/HTTP4roles
+PASS, Chrome6viewport + Web compile/offline PASS; không native/APK/FPS claim mới. Các tiêu chí
+9/10/19/22/30 cải thiện visual/responsive; xem DASHBOARD_COLOR_REFRESH.md và evidence mới.
+
+UI/performance09/10: Home/search/view/labels tách vùng,6 chips nhanh + lazy filter sheet/
+search/AND/apply/cancel; CTA mobile không phủ thẻ; chữ200%/keyboard. Shell/theme/hidden Home
+20→0 replacements trong probe500notes/20pulses không đổi source; source đổi vẫn purge widgets
+riêng tư ở Home bị che ngay khi khóa/thu hồi.198Flutter/94backend/analyze/HTTP4roles PASS,
+Web compile/offline40static/APK debug compile PASS.9/10/19/22/29/30 cải tiến; native UI đợt
+này chưa chạy, không full rubric/FPS/release claim. Xem HOME_UI_UX_PERFORMANCE.md và evidence
+2026-10-09-home-experience; baseef2ece0 + working changes trên codex/ui-ux-performance.
+
 Session07/10(F5): AES-GCM token/profile/device key riêng, legacy migration/compaction trước
 Home, durable logout tombstone/retry và rejected-login guard.188Flutter/94backend/analyze
 PASS; actual HTTP4roles/API36 debug1workflow+teardown PASS5s/platform keys/legacy/file reopen/

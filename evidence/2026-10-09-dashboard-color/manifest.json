@@ -1,0 +1,106 @@
+{
+  "date_utc": "2026-10-09T06:21:30.767705+00:00",
+  "branch": "codex/ui-ux-performance",
+  "base_commit": "ef2ece00386b879f6ebb72b4636c42911aa07ca3",
+  "commit": null,
+  "source_state": "Working changes, includes earlier Home changes; not committed/pushed/merged",
+  "results": {
+    "flutter": 198,
+    "format": "88 files / 0 changes",
+    "analyze": "PASS",
+    "direct_http_4_roles": "PASS",
+    "web_compile": "PASS",
+    "offline_resources": 40,
+    "native_ui": "NOT RUN",
+    "fps": "NOT RUN",
+    "backend_tests": "Not rerun in color-only phase; earlier 94 PASS snapshot"
+  },
+  "browser": {
+    "date": "2026-10-09T06:19:58.764Z",
+    "phase": "after",
+    "url": "http://127.0.0.1:7357/",
+    "title": "NoteTogether",
+    "viewports": [
+      "1440x960",
+      "1536x1024",
+      "390x844",
+      "1280x900",
+      "768x1024",
+      "844x390"
+    ],
+    "notes": 9,
+    "labels": 16,
+    "errors": [],
+    "warnings": [],
+    "interactions": [
+      "Label search/apply -> 2 matching notes",
+      "Live search -> empty state -> clear -> 9 notes",
+      "Mobile editor -> type -> autosave -> GET content matches",
+      "Resize 390 -> 1280 + dark theme retains editor text",
+      "Tablet/short landscape renders and Home refreshes after return"
+    ]
+  },
+  "browser_method": "Browser plugin absent; bundled Playwright via shell, Chrome headless",
+  "concept_method": "Built-in ImageGen preview from user reference; vector/widget implementation, not shipped as UI bitmap",
+  "qa_api_url": "http://127.0.0.1:8020",
+  "qa_web_sha256": {
+    "main.dart.js": "61815f99e2ab564da6a42db4edc78b9eb62fdfb440ad0b31767c63cfc3f330ff",
+    "offline_worker.js": "52951d114c75229a5e6f66c943a2c7a32cb740616ddf6b8846adf3bd60f70e8f",
+    "flutter_service_worker.js": "dbfbe64ae5be5b462abb97338eb9af783ed4ed57a8c73a53c2a44488a26f6416"
+  },
+  "source_sha256": {
+    "lib/ui/dashboard.dart": "8f91000fa0bdb8f0e44f087d5c16c113df8768034bacea36c9c05758edc07502",
+    "lib/ui/design_system.dart": "603af7bfe369e72b488480f03f44b8cd4206821ef9e4e0f52df2d3091866dad6",
+    "lib/ui/prism.dart": "1bb93891453f7b47934f1aab8df1ff705ba6240a3b60e712997fcddf34821344",
+    "lib/ui/home.dart": "fe902c786b236e288ffa29d0c51c00f3592fe2fdf492af6ac5a0623cced2cc59",
+    "lib/ui/app.dart": "68bfacd8060a4c255f0818a8d247271487db7e89c5de70aaa4eaa3516d012bf7",
+    "lib/state/note_listing.dart": "255ed9841af051d5ffd6cd77e6a2dcdcac962840829fe9a60f0a37bd4e32af56",
+    "lib/ui/note_filters.dart": "eef204a5298534b1493d0b7aae3124788b2f793594b076cdac0441329f17cfb5",
+    "test/support.dart": "b8fdef1cc22fece9b237eba640fc6cced0335673e0008eece87ed2a8da7a115c",
+    "test/ui_redesign_test.dart": "daa1230e855c42a2c742bb5e8f4b70d922fb37405dd70b30e0d5a54f6717a6fe",
+    "test/avatar_labels_test.dart": "010c7a9660e02d97d45d8131bbe4eddbee460a6b68a0d283f615a337e1854802",
+    "test/encrypted_recovery_test.dart": "fc6f5371746159f07ef74ecb04c42bb163fc3a3267ab2f5786ddd967cd969865",
+    "test/sharing_test.dart": "7dfe52aeeb529d6daf8e2db170e37d1596eaa21ee27b0f3544fbf6088ccf2cac",
+    "test/home_experience_test.dart": "ea040a2f7bd26385a71b2b014656921f742d28d9e45abe97d4a70318e0368102",
+    "backend/app.py": "06c2d4bfb5374623f3d84e9a547e52b5a2d578b126a97acba5cdad034c39661a"
+  },
+  "artifact_sha256": {
+    "acl.json": "afc8cf67321bea94871f8000f0c854ef679c472cc7cde8036dd508454094ecee",
+    "analyze.log": "cf536849be496347efebac5de6274fa0ec9fe6f4cd4574a26a9e2383ff1af91e",
+    "concept.png": "482e913afd49b767b09599a9f2db7d49bdb7b1a84280021ffacbc910146230db",
+    "desktop-dark.png": "9a5239058e4bad7ca42de6b61e366717ba51f7d44c63f8f30081915c3cfe0433",
+    "desktop.png": "5d253f614f7e7542afd026507bdea61dbc5b7f7db45332cbc43e4d98d8e81a34",
+    "editor-dark.png": "d130c30dc81b61cac7ea4f80e0ff0d19e70ad7dab5a05632fc4f4800e9100f13",
+    "flutter.log": "f1d1d1a24bad54600a9adc0fe72159e215d145e9c0c9ded041e0b968ffe915c5",
+    "format.log": "c33be59824be5bd8cf6e90b4aaaa4b279e2f44c296b6587dae2ed3b95698430a",
+    "INDEX.md": "53b87d07fd54ab182384c933b7c9f933aa1d300c2effee17db286a061c0a8a09",
+    "label-filter.png": "70842e3b93b81de1b442e055c44796b639c96e3a13618b68a8f00037ec58da9d",
+    "landscape.png": "b9e89ea43d93d955fe03790183ae54f6a7cfc0d1ef5fc5e7d479e7bc0178b1a7",
+    "list.png": "7c6236c7928f85bb90b787731e22f81ae2e0f163b63b1bf405ba30a4344fa923",
+    "mobile.png": "5525f8d52ac050b4ffbd61e0dd90be8d407225a9cd65aaa8d267a565160b1f32",
+    "native.png": "0a72be2c64ba262d076f719d5bb1de8bc4a365603c77a3d870d9bfd3d62229b3",
+    "palette-contrast.json": "512404161dceca2b15a716ad15750054f19d4cd62ce67e9e2fbdceb23937eee3",
+    "qa.cjs": "f45e0eaa8d1c7d659d76f9e71c90362d1a36c3d068f6477923cadd5eabbf96e2",
+    "qa.json": "7396c0b0f9d8a1d6ea9c02c9006a810f274ac554a18142d01881bf51c741b7f3",
+    "reference.png": "4dc347af6c9fe0cfeca869df0cb83760ca9d5f8ac61e9dbb4918c29cc5aa1dc7",
+    "tablet-dark.png": "fe2025554512326a118fb8579e7bad075b298423e2970255803bd8ef2f34527e",
+    "web.log": "1d40831acf377ea3517babbb12162c747bce905db92e39463571872cc8584b92",
+    "default-web.log": "36f8564c4a87484c98e9aae2ac5bc5923b9e43362bd7dc14b6599a7b77e334ac"
+  },
+  "limits": [
+    "No native UI/APK build in color-only phase",
+    "No FPS/frame-time/assistive-technology claims",
+    "No release/deploy/signing/AI/mail Internet calls"
+  ],
+  "local_default_web_build": {
+    "command": "scripts/build.ps1 -Target web",
+    "api_url": "http://127.0.0.1:8000",
+    "result": "PASS compile + offline shell; browser QA used separately hashed API8020 bundle",
+    "date_utc": "2026-10-09T06:23:29.991642+00:00",
+    "bundle_sha256": {
+      "main.dart.js": "6a810b595ee8ef0a435747e7eb2121bc4be543cca09f09532d6d2cd69b61a63d",
+      "offline_worker.js": "8572eecff1e7c5676a1a2ce69a84ce6c07fdbc13fe8f7b39be4c724f56390c56",
+      "flutter_service_worker.js": "dbfbe64ae5be5b462abb97338eb9af783ed4ed57a8c73a53c2a44488a26f6416"
+    }
+  }
+}

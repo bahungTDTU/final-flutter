@@ -1,10 +1,28 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
 import 'package:note_together/data/api.dart';
 import 'package:note_together/data/local_store.dart';
 import 'package:note_together/state/app_controller.dart';
+
+/// Exercise the visible UI even when a lazy Home card has not been built yet.
+Future<void> revealHome(WidgetTester tester, Finder target) async {
+  await tester.scrollUntilVisible(
+    target,
+    160,
+    scrollable: find
+        .descendant(
+          of: find.byType(CustomScrollView).first,
+          matching: find.byType(Scrollable),
+        )
+        .first,
+  );
+  await tester.pumpAndSettle();
+}
 
 class MemoryStore implements LocalStore {
   final values = <String, Map<String, dynamic>>{};

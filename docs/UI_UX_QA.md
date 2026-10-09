@@ -1,4 +1,39 @@
-# UI/UX QA – cập nhật 05/10/2026
+# UI/UX QA – cập nhật 09/10/2026
+
+## FPS/performance và Android —09/10/2026, bổ sung sau dashboard
+
+3 native workflows debug API36 Skia software PASS (registration/editor/studio/protected),
+2 profile workflows500notes/30labels PASS với12 đoạn đo; GPU Impeller/OpenGLES mặc định
+52.6–56.7FPS, raster p95=23–28ms, target60FPS chưa đạt đều trên emulator. Không physical claim.
+Web profile Chrome154/Playwright fallback:12 samples1440×960/390×844, rAF scheduler riêng,
+0 long task>50ms; search5lượt/filter17→500 PASS bằng click/key events, console errors/warnings0.
+Snapshot memory và scope retry ghi riêng. Ảnh native/Web xem trực tiếp; URL/title/content đúng.
+Evidence và source hashes:2026-10-09-frame-performance/INDEX.md; phương pháp/giới hạn ở
+PERFORMANCE_BENCHMARK.md. Giữ các snapshot trước bên dưới, không sửa số liệu lịch sử.
+
+## Dashboard màu sắc theo phản hồi —09/10/2026
+
+198 Flutter PASS/analyze sạch/format88files0changes, HTTP owner/editor/viewer/stranger PASS.
+Chrome/Playwright tại7357/API8020:6viewport gồm native concept1536×1024 và reference1440×960,
+mobile390×844/tablet768×1024/1280×900/landscape844×390; filter/search/autosave GET/resize/dark.
+View_image so concept/reference và ảnh app thật; sửa layer Material selected/Brand và CTA
+tablet/chữ200%. Palette sampling ghi riêng, không phải rendered pixel/accessibility acceptance.
+Ảnh/lệnh/hashes: evidence/2026-10-09-dashboard-color/INDEX.md. Backend tests94 là snapshot trước;
+chưa native/APK/FPS/release trong đợt này. Các test cũ cuộn tới thẻ lazy, assertions giữ nguyên.
+
+## Home UI/UX và performance —09/10/2026
+
+198 Flutter/94 backend PASS; format87files0changes/analyze sạch.10 regression mới có real
+NotoSans,1000labels lazy/Apply/Cancel/AND, keyboard200%,320/390/844/1280/hai theme và hidden Home.
+Khóa từ xa xóa cả widgets nội dung cũ ở Home đang bị editor che; pulse giữ source không rebuild.
+Direct HTTP4roles PASS; Web compile/offline40static/APK debug compile PASS.
+Chrome headless bằng Playwright: URL/title/content đúng, không blank/error overlay/pageerror/
+console error;1440×960/390×844/1280×900/768×1024/844×390. Bộ lọc→2notes, live search→empty→clear,
+list/editor→keyboard input→GET API trùng nội dung, resize/dark giữ text, back→Home cập nhật PASS.
+Ảnh baseline/final và logs: evidence/2026-10-09-home-experience/INDEX.md. Browser plugin absent;
+Node REPL import bị EPERM, dùng Playwright bundled qua shell. Native UI chưa chạy do không có
+device/AVD; không FPS/TalkBack/NVDA/release/public/email/LLM acceptance.10 test mới không bao
+gồm probe baseline bổ sung. Giữ raw snapshots lịch sử dưới đây.
 
 ## Trạng thái khóa và password cooldown —07/10/2026
 
