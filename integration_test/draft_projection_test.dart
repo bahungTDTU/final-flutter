@@ -1,3 +1,7 @@
+import '../test_driver/editor_input.dart';
+
+import 'package:note_together/ui/rich_note_field.dart';
+
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -101,7 +105,7 @@ void main() {
         tester.binding.focusedEditable = null;
         await tester.ensureVisible(field);
         await tester.pumpAndSettle();
-        await tester.enterText(field, value);
+        await enterNoteField(tester, field, value);
         FocusManager.instance.primaryFocus?.unfocus();
         await tester.pumpAndSettle();
       }
@@ -175,8 +179,8 @@ void main() {
       await tester.pumpAndSettle();
       expect(
         tester
-            .widget<TextField>(find.byKey(const Key('note-content')))
-            .controller!
+            .widget<NoteRichTextField>(find.byKey(const Key('note-content')))
+            .document
             .text,
         'Native overlay survives reopen',
       );

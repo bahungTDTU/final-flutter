@@ -1,5 +1,9 @@
 # Nhóm và đóng góp thật
 
+Người dùng xác nhận09/10/2026: editor PC cần định dạng trực tiếp như Word, PC và điện thoại
+phải có bố cục khác nhau. Implementation do agent hỗ trợ; không tự gán thành contribution
+độc lập của một thành viên. Đợt editor/theme hiện tại chưa được yêu cầu commit/push.
+
 Thông tin người dùng xác nhận 01/10/2026:
 - 523K0006 – Nguyễn Bá Hùng.
 - 523K0014 – Nguyễn Bảo Long.

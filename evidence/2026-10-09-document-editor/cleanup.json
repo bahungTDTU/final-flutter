@@ -1,0 +1,8 @@
+{
+  "date_utc": "2026-10-09T14:49:44.5027560Z",
+  "default_web_api": "http://127.0.0.1:8000",
+  "stopped_task_qa_processes": [
+    68044,
+    31560
+  ]
+}

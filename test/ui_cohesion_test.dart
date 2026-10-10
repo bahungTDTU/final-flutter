@@ -1,5 +1,8 @@
 import 'dart:convert';
 
+import 'package:note_together/ui/rich_note_field.dart';
+import 'package:note_together/ui/document_workspace.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -180,18 +183,19 @@ void main() {
         ),
       );
       await tester.pumpAndSettle();
-      await tester.enterText(
+      await enterDocumentText(
+        tester,
         find.byKey(const Key('note-content')),
         'Bản nháp qua resize',
       );
       final content = tester
-          .widget<TextField>(find.byKey(const Key('note-content')))
-          .controller!;
+          .widget<NoteRichTextField>(find.byKey(const Key('note-content')))
+          .document;
       content.selection = const TextSelection(baseOffset: 1, extentOffset: 4);
       tester.view.viewInsets = const FakeViewPadding(bottom: 160);
       addTearDown(tester.view.resetViewInsets);
       await tester.pump(const Duration(milliseconds: 100));
-      expect(find.byType(ReadingCanvas), findsOneWidget);
+      expect(find.byType(DocumentWorkspace), findsOneWidget);
       expect(
         content.selection,
         const TextSelection(baseOffset: 1, extentOffset: 4),

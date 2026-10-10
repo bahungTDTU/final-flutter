@@ -1,3 +1,6 @@
+import '../test_driver/editor_input.dart';
+
+import 'package:note_together/ui/rich_note_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
@@ -95,7 +98,8 @@ void main() {
       await tester.pumpAndSettle();
       await tester.tap(find.text('Hỏi ghi chú'));
       await tester.pumpAndSettle();
-      await tester.enterText(
+      await enterNoteField(
+        tester,
         find.byKey(const Key('ai-question')),
         'Dự án Orion nộp khi nào và ngân sách bao nhiêu?',
       );
@@ -122,8 +126,8 @@ void main() {
       );
       expect(
         tester
-            .widget<TextField>(find.byKey(const Key('note-content')))
-            .controller!
+            .widget<NoteRichTextField>(find.byKey(const Key('note-content')))
+            .document
             .text,
         original['content'],
       );

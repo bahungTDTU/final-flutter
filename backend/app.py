@@ -15,7 +15,7 @@ from argon2.exceptions import VerificationError, InvalidHashError
 from fastapi import Depends, FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
-from pydantic import BaseModel, Field, ConfigDict, model_validator
+from pydantic import BaseModel, Field, ConfigDict, model_validator, field_validator
 
 from backend.email_delivery import delivery_from_environment, valid_email
 from backend.email_queue import EmailQueue
@@ -26,6 +26,7 @@ from backend.realtime import install_tracking, install_realtime_routes
 from backend.catalogue import migrate, install_label_routes, normalize_labels, note_labels
 from backend.note_listing import list_visible_notes
 from backend.ai import provider_from_environment, install_ai_routes
+from backend.note_document import validate_content, plain_content
 
 hasher = PasswordHasher()
 bearer = HTTPBearer(auto_error=False)
@@ -112,6 +113,11 @@ class Operation(BaseModel):
     pinned_at: str | None = None
     labels: list[str] = Field(default_factory=list, max_length=30)
     labels_format: str = Field(default='legacy', pattern='^(legacy|ids)$')
+
+    @field_validator('content')
+    @classmethod
+    def valid_content(cls, value):
+        return validate_content(value)
 
 
 class Protection(BaseModel):
@@ -502,7 +508,7 @@ def create_app(db_path=None, *, email_delivery=None, ai_provider=None, start_ema
                 conn.execute('DELETE FROM grants WHERE note_id=?', (body.note_id,))
                 conn.execute('UPDATE attachments SET data=NULL,size=0,deleted=1 WHERE note_id=?', (body.note_id,))
             else:
-                if not body.title.strip() or not body.content.strip():
+                if not body.title.strip() or not plain_content(body.content).strip():
                     raise HTTPException(422, 'Title and content required')
                 if old:
                     # Editor may change title/content only; owner manages pins/labels.

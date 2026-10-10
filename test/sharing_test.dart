@@ -1,4 +1,7 @@
 import 'dart:async';
+
+import 'package:note_together/ui/rich_note_field.dart';
+
 import 'dart:convert';
 import 'dart:io';
 
@@ -299,7 +302,8 @@ void main() {
           home: EditorScreen(controller: c, id: 'n'),
         ),
       );
-      await tester.enterText(
+      await enterDocumentText(
+        tester,
         find.byKey(const Key('note-content')),
         'Typed draft',
       );
@@ -310,14 +314,14 @@ void main() {
       expect(c.recoveries.values.single['content'], 'Typed draft');
       expect(
         tester
-            .widget<TextField>(find.byKey(const Key('note-content')))
+            .widget<NoteRichTextField>(find.byKey(const Key('note-content')))
             .readOnly,
         true,
       );
       expect(
         tester
-            .widget<TextField>(find.byKey(const Key('note-content')))
-            .controller!
+            .widget<NoteRichTextField>(find.byKey(const Key('note-content')))
+            .document
             .text,
         'Current server content',
       );

@@ -19,6 +19,27 @@ analyze sạch; nhánh cập nhật với master `285af64`. Xem
 [evidence publication](evidence/2026-10-09-github-publication/INDEX.md); các snapshot QA bên dưới
 giữ trạng thái tại thời điểm đo. CI/approval trên PR tiếp tục là điều kiện merge.
 
+## Editor trực tiếp trên PC và điện thoại —09/10/2026
+
+PC có thanh định dạng, trang viết, mục lục và bảng công cụ riêng; điện thoại dùng một cột
+với toolbar dưới. Định dạng trực tiếp như Word: đậm/nghiêng, tiêu đề, cỡ/màu chữ, căn lề,
+lists/checklist, liên kết, trích dẫn/mã, undo/redo, tìm-thay thế, zoom và chế độ đọc/tập trung.
+Định dạng lưu qua server và encrypted draft; note cũ không bị migration chỉ vì mở.
+[Thiết kế, tương thích và giới hạn](docs/ADAPTIVE_DOCUMENT_EDITOR.md),
+[ảnh và gate hiện tại](evidence/2026-10-09-document-editor/INDEX.md).
+Các kết quả theme/FPS dưới đây là snapshot trước editor mới. Chưa commit/push đợt này;
+native runtime/FPS của editor mới và release vẫn chưa nghiệm thu.
+
+## Theme toàn ứng dụng —09/10/2026
+
+App bar, auth, editor, ghi chú bảo vệ, AI/studio, dialog, sheet, form và controls dùng chung
+theme tím-xanh/lavender cùng dashboard, có bản dark navy. Tiêu đề/nội dung giữ khối riêng;
+field dễ đọc và selected state rõ. Không thêm animation nền lặp hay font mạng.
+198 Flutter/94 backend/analyze/HTTP4roles PASS; Chrome12luồng/4viewport/24ảnh không lỗi console.
+Web build/offline và APK debug compile PASS; native UI/FPS cho theme mới chưa chạy.
+[Thiết kế và ảnh kiểm tra](docs/THEME_WIDGET_COHESION.md).
+Working changes sau717f0ab trên codex/ui-ux-performance; chưa commit/push đợt theme mới.
+
 ## Đo FPS và chạy Android —09/10/2026
 
 Đã chạy3 workflows native API36 và đo profile500 ghi chú/30 nhãn. GPU host Impeller/OpenGLES:

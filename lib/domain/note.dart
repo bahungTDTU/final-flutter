@@ -1,3 +1,5 @@
+import 'note_document.dart';
+
 class Note {
   const Note({
     required this.id,
@@ -27,6 +29,7 @@ class Note {
   final int sharedCount;
   final bool shared;
   bool get isShared => shared || role != 'owner' || sharedCount > 0;
+  String get plainContent => plainNoteContent(content);
   final String? sharedByName, sharedByEmail, sharedAt;
   factory Note.fromJson(Map<String, dynamic> json) => Note(
     id: json['id'] as String,
@@ -122,4 +125,4 @@ int compareNotes(Note a, Note b) {
 }
 
 bool validNote(String title, String content) =>
-    title.trim().isNotEmpty && content.trim().isNotEmpty;
+    title.trim().isNotEmpty && plainNoteContent(content).trim().isNotEmpty;

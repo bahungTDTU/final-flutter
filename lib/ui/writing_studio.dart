@@ -64,7 +64,7 @@ class _TemplateGalleryState extends State<TemplateGallery> {
   );
   @override
   Widget build(BuildContext context) => Scaffold(
-    appBar: AppBar(
+    appBar: noteAppBar(
       title: const Text(
         'Xưởng ghi chú',
         maxLines: 1,
@@ -269,11 +269,13 @@ class WritingToolsPanel extends StatefulWidget {
     required this.readOnly,
     required this.onToggle,
     required this.onHeading,
+    this.documentSource,
   });
   final TextEditingController controller;
   final bool readOnly;
   final void Function(String expected, WritingTask task) onToggle;
   final ValueChanged<int> onHeading;
+  final String Function()? documentSource;
   @override
   State<WritingToolsPanel> createState() => _WritingToolsPanelState();
 }
@@ -291,7 +293,7 @@ class _WritingToolsPanelState extends State<WritingToolsPanel> {
 
   void refresh() {
     source = widget.controller.text;
-    snapshot = WritingSnapshot(source);
+    snapshot = WritingSnapshot(widget.documentSource?.call() ?? source);
   }
 
   void changed() {
@@ -347,7 +349,7 @@ class _WritingToolsPanelState extends State<WritingToolsPanel> {
               const Text('Dàn ý & checklist'),
               const SizedBox(height: 6),
               Text(
-                'Dùng # tiêu đề và - [ ] việc cần làm',
+                'Tiêu đề đoạn và danh sách công việc',
                 style: Theme.of(context).textTheme.bodySmall,
               ),
             ],

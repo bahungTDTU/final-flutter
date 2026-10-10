@@ -17,7 +17,14 @@ class NoteSection extends StatelessWidget {
     final theme = Theme.of(context);
     return Container(
       decoration: BoxDecoration(
-        color: theme.colorScheme.surface,
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [
+            theme.colorScheme.surfaceContainerLow,
+            theme.colorScheme.surface,
+          ],
+        ),
         border: Border.all(color: theme.colorScheme.outlineVariant),
         borderRadius: BorderRadius.circular(18),
       ),
@@ -100,7 +107,7 @@ class NoteTextField extends StatelessWidget {
               color: theme.colorScheme.onSurfaceVariant,
             ),
             filled: true,
-            fillColor: theme.colorScheme.surfaceContainerLow,
+            fillColor: theme.colorScheme.surfaceContainerLowest,
             border: OutlineInputBorder(borderRadius: radius),
             enabledBorder: OutlineInputBorder(
               borderRadius: radius,

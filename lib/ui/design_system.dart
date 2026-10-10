@@ -8,7 +8,7 @@ abstract final class Space {
   static const double sidebar = 248, reading = 800;
 }
 
-/// Dashboard chrome colors. Reading surfaces keep their semantic theme ink.
+/// Brand chrome shared by dashboard, routes and account surfaces.
 abstract final class DashboardColors {
   static const sidebar = [Color(0xff191d50), Color(0xff2e2c7b)];
   static const header = [Color(0xff5c43c9), Color(0xff2468a7)];
@@ -25,6 +25,72 @@ abstract final class DashboardColors {
   static const noticeInk = Color(0xff744813);
   static const darkNotice = Color(0xff3b3025);
   static const darkNoticeInk = Color(0xffffdcaa);
+}
+
+/// Uses the same static gradient as the dashboard, without a new animation layer.
+class BrandGradient extends StatelessWidget {
+  const BrandGradient({super.key, required this.child, this.radius = 0});
+  final Widget child;
+  final double radius;
+  @override
+  Widget build(BuildContext context) => DecoratedBox(
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(radius),
+      gradient: LinearGradient(
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+        colors: Theme.of(context).brightness == Brightness.dark
+            ? DashboardColors.darkHeader
+            : DashboardColors.header,
+      ),
+    ),
+    child: child,
+  );
+}
+
+/// AppBar remains the framework widget so navigation, focus and menus keep their behavior.
+AppBar noteAppBar({Widget? title, Widget? leading, List<Widget>? actions}) =>
+    AppBar(
+      title: title,
+      leading: leading,
+      actions: actions,
+      flexibleSpace: const BrandGradient(child: SizedBox.expand()),
+    );
+
+class BrandPanel extends StatelessWidget {
+  const BrandPanel({
+    super.key,
+    required this.child,
+    this.padding = const EdgeInsets.all(32),
+  });
+  final Widget child;
+  final EdgeInsetsGeometry padding;
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return BrandGradient(
+      radius: 22,
+      child: Theme(
+        data: theme.copyWith(
+          colorScheme: theme.colorScheme.copyWith(
+            onSurface: Colors.white,
+            onSurfaceVariant: DashboardColors.heroMuted,
+            onPrimaryContainer: Colors.white,
+            surfaceContainerHighest: Colors.white.withValues(alpha: .08),
+          ),
+          textTheme: theme.textTheme.apply(
+            bodyColor: Colors.white,
+            displayColor: Colors.white,
+          ),
+          iconTheme: theme.iconTheme.copyWith(color: Colors.white),
+        ),
+        child: DefaultTextStyle.merge(
+          style: theme.textTheme.bodyMedium?.copyWith(color: Colors.white),
+          child: Padding(padding: padding, child: child),
+        ),
+      ),
+    );
+  }
 }
 
 /// Shared reading/writing surface. Padding is derived from available space,
@@ -68,26 +134,34 @@ class ReadingCanvas extends StatelessWidget {
 
 ThemeData noteTheme(Brightness brightness) {
   final dark = brightness == Brightness.dark;
-  final palette = PrismPalette.forBrightness(brightness);
+  final palette = PrismPalette.forBrightness(brightness).copyWith(
+    canvas: dark ? DashboardColors.darkCanvas : DashboardColors.canvas,
+  );
   final canvas = palette.canvas;
-  final surface = Color(dark ? 0xff191e33 : 0xffffffff);
-  final primary = Color(dark ? 0xffc8bdff : 0xff5b50d0);
+  final surface = Color(dark ? 0xff191e33 : 0xfffbfaff);
+  final primary = dark ? const Color(0xffc8bdff) : DashboardColors.header.first;
   final ink = Color(dark ? 0xffeef0ff : 0xff19223b);
   final muted = Color(dark ? 0xffb8bfd6 : 0xff55617d);
   final outline = Color(dark ? 0xff8996b8 : 0xff717b9d);
   final scheme =
       ColorScheme.fromSeed(seedColor: primary, brightness: brightness).copyWith(
         primary: primary,
+        secondary: Color(dark ? 0xffa6cdff : 0xff2468a7),
+        onSecondary: Color(dark ? 0xff163454 : 0xffffffff),
+        tertiary: Color(dark ? 0xffa0eed1 : 0xff126b54),
         primaryContainer: Color(dark ? 0xff352e59 : 0xffeeebff),
         onPrimaryContainer: Color(dark ? 0xffded5ff : 0xff33296e),
-        secondaryContainer: Color(dark ? 0xff293751 : 0xffe9efff),
-        onSecondaryContainer: ink,
+        secondaryContainer: Color(dark ? 0xff293751 : 0xffe5ecff),
+        onSecondaryContainer: Color(dark ? 0xffd6e4ff : 0xff263e73),
         onPrimary: dark ? const Color(0xff251850) : Colors.white,
         surface: surface,
         onSurface: ink,
         onSurfaceVariant: muted,
-        surfaceContainerLow: canvas,
-        surfaceContainerHighest: Color(dark ? 0xff242b44 : 0xffeff0fa),
+        surfaceContainerLowest: Color(dark ? 0xff151b2e : 0xffffffff),
+        surfaceContainerLow: Color(dark ? 0xff20263b : 0xfff3f1fc),
+        surfaceContainer: Color(dark ? 0xff252c45 : 0xffeef0fb),
+        surfaceContainerHigh: Color(dark ? 0xff2c3450 : 0xffe8ebf9),
+        surfaceContainerHighest: Color(dark ? 0xff343e5e : 0xffe0e5f4),
         outline: outline,
         outlineVariant: Color(dark ? 0xff414b6b : 0xffdce0ef),
         error: Color(dark ? 0xffffb4ab : 0xffa52b24),
@@ -131,19 +205,20 @@ ThemeData noteTheme(Brightness brightness) {
         .apply(fontFamily: 'NotoSans'),
     appBarTheme: AppBarTheme(
       backgroundColor: Colors.transparent,
-      foregroundColor: ink,
+      foregroundColor: Colors.white,
+      surfaceTintColor: Colors.transparent,
       scrolledUnderElevation: 0,
       centerTitle: false,
       titleTextStyle: TextStyle(
         fontFamily: 'NotoSans',
         fontSize: 18,
         fontWeight: FontWeight.w700,
-        color: ink,
+        color: Colors.white,
       ),
     ),
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
-      fillColor: surface,
+      fillColor: scheme.surfaceContainerLowest,
       contentPadding: const EdgeInsets.all(Space.lg),
       border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
       enabledBorder: OutlineInputBorder(
@@ -158,7 +233,7 @@ ThemeData noteTheme(Brightness brightness) {
     cardTheme: CardThemeData(
       elevation: 0,
       margin: EdgeInsets.zero,
-      color: surface,
+      color: scheme.surfaceContainerLow,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
         side: BorderSide(color: scheme.outlineVariant),
@@ -166,6 +241,9 @@ ThemeData noteTheme(Brightness brightness) {
     ),
     filledButtonTheme: FilledButtonThemeData(
       style: FilledButton.styleFrom(
+        backgroundColor: primary,
+        foregroundColor: scheme.onPrimary,
+        elevation: 0,
         minimumSize: const Size(48, 48),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
       ),
@@ -177,12 +255,17 @@ ThemeData noteTheme(Brightness brightness) {
       style: IconButton.styleFrom(minimumSize: const Size(48, 48)),
     ),
     dialogTheme: DialogThemeData(
-      backgroundColor: surface,
+      backgroundColor: scheme.surfaceContainerLow,
       surfaceTintColor: Colors.transparent,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(24),
+        side: BorderSide(color: scheme.outlineVariant),
+      ),
     ),
     bottomSheetTheme: BottomSheetThemeData(
-      backgroundColor: surface,
+      backgroundColor: scheme.surfaceContainerLow,
+      surfaceTintColor: Colors.transparent,
+      dragHandleColor: scheme.outline,
       showDragHandle: true,
       constraints: const BoxConstraints(maxWidth: 640),
       shape: const RoundedRectangleBorder(
@@ -190,24 +273,81 @@ ThemeData noteTheme(Brightness brightness) {
       ),
     ),
     navigationBarTheme: NavigationBarThemeData(
-      backgroundColor: surface,
+      backgroundColor: scheme.surfaceContainerLow,
+      surfaceTintColor: Colors.transparent,
+      indicatorColor: scheme.primaryContainer,
+      iconTheme: WidgetStateProperty.fromMap({
+        WidgetState.selected: IconThemeData(color: primary),
+        WidgetState.any: IconThemeData(color: muted),
+      }),
+      labelTextStyle: WidgetStateProperty.fromMap({
+        WidgetState.selected: TextStyle(
+          fontFamily: 'NotoSans',
+          fontSize: 14,
+          fontWeight: FontWeight.w700,
+          color: primary,
+        ),
+        WidgetState.any: TextStyle(
+          fontFamily: 'NotoSans',
+          fontSize: 14,
+          fontWeight: FontWeight.w500,
+          color: muted,
+        ),
+      }),
       height: 80,
     ),
-    navigationRailTheme: NavigationRailThemeData(backgroundColor: canvas),
+    navigationRailTheme: NavigationRailThemeData(
+      backgroundColor: canvas,
+      indicatorColor: scheme.primaryContainer,
+      selectedIconTheme: IconThemeData(color: primary),
+      unselectedIconTheme: IconThemeData(color: muted),
+      selectedLabelTextStyle: TextStyle(
+        color: primary,
+        fontWeight: FontWeight.w700,
+      ),
+      unselectedLabelTextStyle: TextStyle(color: muted),
+    ),
+    segmentedButtonTheme: SegmentedButtonThemeData(
+      style: ButtonStyle(
+        minimumSize: const WidgetStatePropertyAll(Size(48, 48)),
+        backgroundColor: WidgetStateProperty.fromMap({
+          WidgetState.selected: scheme.secondaryContainer,
+          WidgetState.any: scheme.surfaceContainerLowest,
+        }),
+        foregroundColor: WidgetStateProperty.fromMap({
+          WidgetState.disabled: scheme.onSurface.withValues(alpha: .38),
+          WidgetState.selected: scheme.onSecondaryContainer,
+          WidgetState.any: muted,
+        }),
+        side: WidgetStatePropertyAll(BorderSide(color: scheme.outline)),
+      ),
+    ),
+    listTileTheme: ListTileThemeData(
+      iconColor: primary,
+      selectedColor: scheme.onPrimaryContainer,
+      selectedTileColor: scheme.primaryContainer,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+    ),
     chipTheme: base.chipTheme.copyWith(
-      backgroundColor: surface,
+      backgroundColor: scheme.surfaceContainerLowest,
       selectedColor: scheme.primaryContainer,
       side: BorderSide(color: scheme.outlineVariant),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
     ),
     popupMenuTheme: PopupMenuThemeData(
-      color: surface,
+      color: scheme.surfaceContainerLow,
       surfaceTintColor: Colors.transparent,
+      textStyle: TextStyle(fontFamily: 'NotoSans', fontSize: 15, color: ink),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
     ),
     snackBarTheme: SnackBarThemeData(
       behavior: SnackBarBehavior.floating,
+      backgroundColor: scheme.inverseSurface,
+      contentTextStyle: TextStyle(
+        fontFamily: 'NotoSans',
+        color: scheme.onInverseSurface,
+      ),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
     ),
     outlinedButtonTheme: OutlinedButtonThemeData(
@@ -217,6 +357,22 @@ ThemeData noteTheme(Brightness brightness) {
       ),
     ),
     dividerTheme: DividerThemeData(color: scheme.outlineVariant, space: 1),
+    progressIndicatorTheme: ProgressIndicatorThemeData(
+      color: primary,
+      linearTrackColor: scheme.primaryContainer,
+    ),
+    tooltipTheme: TooltipThemeData(
+      decoration: BoxDecoration(
+        color: scheme.inverseSurface,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      textStyle: TextStyle(
+        fontFamily: 'NotoSans',
+        fontSize: 13,
+        color: scheme.onInverseSurface,
+      ),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+    ),
     pageTransitionsTheme: const PageTransitionsTheme(
       builders: {
         TargetPlatform.android: PrismPageTransitions(),
@@ -280,6 +436,11 @@ class StatusNotice extends StatelessWidget {
       decoration: BoxDecoration(
         color: error ? colors.errorContainer : colors.surfaceContainerHighest,
         borderRadius: BorderRadius.circular(12),
+        border: Border.all(
+          color: error
+              ? colors.error.withValues(alpha: .4)
+              : colors.outlineVariant,
+        ),
       ),
       child: Builder(
         builder: (context) {

@@ -1,3 +1,4 @@
+import 'package:note_together/ui/rich_note_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
@@ -120,14 +121,16 @@ void main() {
         tester,
         () =>
             tester
-                .widget<TextField>(find.byKey(const Key('note-content')))
-                .controller!
+                .widget<NoteRichTextField>(
+                  find.byKey(const Key('note-content')),
+                )
+                .document
                 .text ==
             'Peer content arrives live',
       );
       expect(
         tester
-            .widget<TextField>(find.byKey(const Key('note-content')))
+            .widget<NoteRichTextField>(find.byKey(const Key('note-content')))
             .readOnly,
         true,
       );
@@ -158,8 +161,10 @@ void main() {
         () =>
             c.realtimeLive &&
             tester
-                    .widget<TextField>(find.byKey(const Key('note-content')))
-                    .controller!
+                    .widget<NoteRichTextField>(
+                      find.byKey(const Key('note-content')),
+                    )
+                    .document
                     .text ==
                 'Changed while stream disconnected',
       );
@@ -176,8 +181,8 @@ void main() {
       await until(tester, () => c.notes.single.revision == 5);
       expect(
         tester
-            .widget<TextField>(find.byKey(const Key('note-content')))
-            .controller!
+            .widget<NoteRichTextField>(find.byKey(const Key('note-content')))
+            .document
             .text,
         'Native unsent concurrent text',
       );
@@ -206,7 +211,7 @@ void main() {
       expect(c.pending, isEmpty);
       expect(
         tester
-            .widget<TextField>(find.byKey(const Key('note-content')))
+            .widget<NoteRichTextField>(find.byKey(const Key('note-content')))
             .readOnly,
         true,
       );

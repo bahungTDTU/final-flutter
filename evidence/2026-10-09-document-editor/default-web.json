@@ -1,0 +1,11 @@
+{
+  "date_utc": "2026-10-09T14:49:40.250080+00:00",
+  "api_url": "http://127.0.0.1:8000",
+  "offline_cache": "notetogether-static-11c8f5dfd000a1dc",
+  "files": {
+    "main.dart.js": "c181abf3955477fc1a66474dc35b761557979a2539ce00da8e7cda3b91793f4e",
+    "index.html": "ed31aecc1251e1584fbaf9395ec36c3a61ebbe4af9239300764756ffcb788bed",
+    "flutter_bootstrap.js": "a728122cce45fc4fd7107b9dc10b18277abd6d96fec7a1c78f1539f53e317200",
+    "offline_worker.js": "b44537ae391be9f2a131aeb9ffaa9a4cc97fd7062af747e7c4d5661cd0c7188e"
+  }
+}

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:note_together/ui/rich_note_field.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:note_together/domain/note.dart';
@@ -140,7 +141,7 @@ void main() {
       await tester.pumpAndSettle();
       final title = tester.getRect(find.text('Dàn ý & checklist'));
       final guide = tester.getRect(
-        find.text('Dùng # tiêu đề và - [ ] việc cần làm'),
+        find.text('Tiêu đề đoạn và danh sách công việc'),
       );
       expect(title.bottom + 5, lessThanOrEqualTo(guide.top));
       expect(title.overlaps(guide), false);
@@ -185,14 +186,15 @@ void main() {
       await tester.pumpAndSettle();
       expect(find.byKey(const Key('editor-tools-menu')), findsOneWidget);
       await tester.ensureVisible(find.byKey(const Key('note-content')));
-      await tester.enterText(
+      await enterDocumentText(
+        tester,
         find.byKey(const Key('note-content')),
         'Bản nháp được giữ khi đổi giao diện',
       );
-      final field = tester.widget<TextField>(
+      final field = tester.widget<NoteRichTextField>(
         find.byKey(const Key('note-content')),
       );
-      field.controller!.selection = const TextSelection(
+      field.document.selection = const TextSelection(
         baseOffset: 2,
         extentOffset: 8,
       );
@@ -201,12 +203,12 @@ void main() {
       tester.view.viewInsets = const FakeViewPadding(bottom: 240);
       addTearDown(tester.view.resetViewInsets);
       await tester.pump(const Duration(milliseconds: 800));
-      final current = tester.widget<TextField>(
+      final current = tester.widget<NoteRichTextField>(
         find.byKey(const Key('note-content')),
       );
-      expect(identical(current.controller, field.controller), true);
+      expect(identical(current.document, field.document), true);
       expect(
-        current.controller!.selection,
+        current.document.selection,
         const TextSelection(baseOffset: 2, extentOffset: 8),
       );
       expect(c.pending.single['base_revision'], 7);

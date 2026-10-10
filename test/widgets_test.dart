@@ -56,7 +56,8 @@ void main() {
           updatedAt: '2026-10-02',
         ),
       ];
-      await tester.enterText(
+      await enterDocumentText(
+        tester,
         find.byKey(const Key('note-content')),
         'Local edit',
       );
@@ -93,7 +94,8 @@ void main() {
           home: EditorScreen(controller: c, id: 'new'),
         ),
       );
-      await tester.enterText(
+      await enterDocumentText(
+        tester,
         find.byKey(const Key('note-content')),
         'Remember this',
       );

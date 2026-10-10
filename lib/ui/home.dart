@@ -429,7 +429,7 @@ class _HomeScreenState extends State<HomeScreen> {
           autofocus: true,
           child: Scaffold(
             appBar: small
-                ? AppBar(
+                ? noteAppBar(
                     title: const Brand(),
                     actions: [
                       if (destination != 2)
@@ -1255,7 +1255,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 const Text('Bản trên thiết bị'),
                 Text(local.title),
                 Text(
-                  local.content,
+                  local.plainContent,
                   maxLines: 6,
                   overflow: TextOverflow.ellipsis,
                 ),

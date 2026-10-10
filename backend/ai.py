@@ -11,6 +11,7 @@ from pathlib import Path
 import httpx
 from fastapi import Depends, HTTPException, Response
 from pydantic import BaseModel, ConfigDict, Field
+from backend.note_document import plain_content
 
 MAX_CONTEXT = 24000
 MAX_OUTPUT = 8000
@@ -132,7 +133,7 @@ def retrieve(question, notes):
         return []
     chunks = []
     for note in notes:
-        body = note['content']
+        body = plain_content(note['content'])
         for start in range(0, len(body), 1400):
             context = body[start:start + 1800]
             tokens = terms(note['title'] + ' ' + note['title'] + ' ' + context)
@@ -250,9 +251,9 @@ def install_ai_routes(app, db, authenticate, validate_session, access):
         with db() as conn:
             note, _ = access(conn, note_id, identity)
             source = dict(note)
-        if len(source['title']) + len(source['content']) > MAX_CONTEXT:
+        if len(source['title']) + len(plain_content(source['content'])) > MAX_CONTEXT:
             raise HTTPException(413, 'AI_NOTE_TOO_LONG')
-        source['context'] = source['content']
+        source['context'] = plain_content(source['content'])
         result = infer('summary', '', [source], identity)
         return {'summary': output_text(result.get('summary')), 'sources': [source_metadata(source)],
                 'provider': app.state.ai_provider.mode, 'model': app.state.ai_provider.model}

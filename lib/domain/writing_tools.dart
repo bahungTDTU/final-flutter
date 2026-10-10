@@ -1,3 +1,5 @@
+import 'note_document.dart';
+
 /// Optional, editable starter text. No note IDs, permissions or user data.
 class NoteTemplate {
   const NoteTemplate(this.id, this.title, this.description, this.content);
@@ -49,10 +51,11 @@ class WritingHeading {
 }
 
 class WritingTask {
-  const WritingTask(this.text, this.markerOffset, this.done);
+  const WritingTask(this.text, this.markerOffset, this.done, {this.documentOp});
   final String text;
   final int markerOffset;
   final bool done;
+  final int? documentOp;
 }
 
 /// Linear, local analysis of plain text. UTF-16 offsets match TextSelection.
@@ -65,6 +68,46 @@ class WritingSnapshot {
   static final _headingSuffix = RegExp(r'\s+#+\s*$');
   static final _task = RegExp(r'^\s*[-*+]\s+\[([ xX])\]\s+(.+?)\s*$');
   WritingSnapshot(String text) {
+    final ops = storedDocumentDelta(text);
+    if (ops != null) {
+      final plain = documentText(ops);
+      characters = plain.runes.length;
+      words = plain
+          .split(_whitespace)
+          .where((word) => _word.hasMatch(word))
+          .length;
+      var offset = 0;
+      var lineStart = 0;
+      final line = StringBuffer();
+      for (var i = 0; i < ops.length; i++) {
+        final insert = ops[i]['insert'] as String;
+        final attrs = ops[i]['attributes'] as Map? ?? const {};
+        for (final unit in insert.codeUnits) {
+          if (unit == 10) {
+            final title = line.toString();
+            if (attrs['header'] is int && headings.length < 100) {
+              headings.add(
+                WritingHeading(title, lineStart, attrs['header'] as int),
+              );
+            }
+            if (attrs['list'] == 'checked' || attrs['list'] == 'unchecked') {
+              taskCount++;
+              final done = attrs['list'] == 'checked';
+              if (done) completed++;
+              if (tasks.length < 100) {
+                tasks.add(WritingTask(title, lineStart, done, documentOp: i));
+              }
+            }
+            line.clear();
+            lineStart = offset + 1;
+          } else {
+            line.writeCharCode(unit);
+          }
+          offset++;
+        }
+      }
+      return;
+    }
     characters = text.runes.length;
     words = text
         .split(_whitespace)
@@ -120,6 +163,38 @@ class WritingSnapshot {
 
 /// Refuse a click rendered from stale text; never edit the wrong line.
 String? toggleWritingTask(String expected, String current, WritingTask task) {
+  if (task.documentOp != null) {
+    if (expected != current) return null;
+    final ops = storedDocumentDelta(current);
+    if (ops == null || task.documentOp! >= ops.length) return null;
+    final op = ops[task.documentOp!];
+    final attrs = Map<String, dynamic>.from(op['attributes'] as Map? ?? {});
+    if (attrs['list'] != (task.done ? 'checked' : 'unchecked')) return null;
+    final insert = op['insert'] as String;
+    final opStart = ops
+        .take(task.documentOp!)
+        .fold<int>(
+          0,
+          (length, value) => length + (value['insert'] as String).length,
+        );
+    final lineEnd = insert.indexOf(
+      '\n',
+      (task.markerOffset - opStart).clamp(0, insert.length),
+    );
+    if (lineEnd < 0) return null;
+    final oldAttrs = Map<String, dynamic>.from(attrs);
+    attrs['list'] = task.done ? 'unchecked' : 'checked';
+    // Delta can combine several checklist lines into one operation. Split only
+    // the clicked newline so neighbouring rows retain their checked state.
+    ops.replaceRange(task.documentOp!, task.documentOp! + 1, [
+      if (lineEnd > 0)
+        {'insert': insert.substring(0, lineEnd), 'attributes': oldAttrs},
+      {'insert': '\n', 'attributes': attrs},
+      if (lineEnd + 1 < insert.length)
+        {'insert': insert.substring(lineEnd + 1), 'attributes': oldAttrs},
+    ]);
+    return storeDocumentDelta(ops);
+  }
   if (expected != current || task.markerOffset >= current.length) return null;
   return current.replaceRange(
     task.markerOffset,

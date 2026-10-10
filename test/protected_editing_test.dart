@@ -134,7 +134,8 @@ void main() {
       await tester.ensureVisible(find.text('Chỉnh sửa'));
       await tester.tap(find.text('Chỉnh sửa'));
       await tester.pumpAndSettle();
-      await tester.enterText(
+      await enterDocumentText(
+        tester,
         find.byKey(const Key('protected-content-editor')),
         'Protected widget latest',
       );

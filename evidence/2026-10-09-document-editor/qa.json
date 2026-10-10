@@ -1,0 +1,46 @@
+{
+  "date_utc": "2026-10-09T14:44:04.112Z",
+  "browser": "154.0.8037.99",
+  "target": "http://127.0.0.1:7361",
+  "base_commit": "717f0ab6b04b6f63ad7f921a82b91cd2f4b41319",
+  "working_tree": true,
+  "steps": [
+    "Legacy document opens styled without migration write",
+    "Actual keyboard input, toolbar bold, durable server formatting",
+    "Heading and outline navigation",
+    "Visible text find and replace, save and reload formatting",
+    "Responsive, theme and focus retain the same document",
+    "Viewer cannot mutate, editor writes using CAS, stranger denied",
+    "Rich cards and search exclude format metadata",
+    "Protected rich reader, actual editing and relock redaction"
+  ],
+  "shots": [
+    "desktop-light.png",
+    "desktop-formatted.png",
+    "desktop-reloaded.png",
+    "desktop-reading.png",
+    "desktop-dark.png",
+    "desktop-1000-dark.png",
+    "tablet-dark.png",
+    "mobile-dark.png",
+    "landscape-dark.png",
+    "mobile-light.png",
+    "mobile-focus.png",
+    "protected-reader.png",
+    "protected-editor.png",
+    "protected-relocked.png"
+  ],
+  "errors": [],
+  "warnings": [],
+  "viewports": [
+    "1536x1024",
+    "1000x800",
+    "768x1024",
+    "390x844",
+    "844x390"
+  ],
+  "browser_plugin": "Absent; bundled Playwright fallback",
+  "ai": "Fixture only; no live provider call",
+  "native_runtime": "NOT RUN",
+  "fps": "NOT RUN"
+}

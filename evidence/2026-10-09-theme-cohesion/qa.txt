@@ -1,0 +1,13 @@
+PASS auth brand panel + real login
+PASS settings + avatar + disabled upload
+PASS labels + input dialog cancel
+PASS filter sheet apply
+PASS studio gallery + preview
+PASS editor + real autosave + content across theme/resize
+PASS share dialog real recipient + role control
+PASS attachment picker + private upload
+PASS summary fixture + regenerate dialog
+PASS Q&A real UI with explicit provider fixture
+PASS protected unlock + relock and redaction
+PASS dark settings + phone/tablet/landscape navigation
+{"date_utc":"2026-10-09T12:43:03.600Z","url":"http://127.0.0.1:7360/","title":"NoteTogether","browser":"154.0.8037.99","fixture":{"email":"theme-c41aada7-c334-4afd-99bb-3b8b09080ede@example.test","note_id":"854de1e2-9bcb-4268-86dd-07ecc08f1d6d","locked_id":"c123487d-ea54-42f1-b42a-2153772add23"},"viewports":["1440x960","390x844","768x1024","844x390"],"browser_plugin":"Absent; regular bundled Playwright","steps":["auth brand panel + real login","settings + avatar + disabled upload","labels + input dialog cancel","filter sheet apply","studio gallery + preview","editor + real autosave + content across theme/resize","share dialog real recipient + role control","attachment picker + private upload","summary fixture + regenerate dialog","Q&A real UI with explicit provider fixture","protected unlock + relock and redaction","dark settings + phone/tablet/landscape navigation"],"shots":["auth-desktop.png","home-desktop.png","settings-light.png","avatar-light.png","password-light.png","labels-light.png","label-input-light.png","filter-light.png","studio-light.png","studio-preview-light.png","editor-light.png","editor-mobile-dark.png","share-light.png","files-light.png","summary-light.png","questions-light.png","protected-unlock-light.png","protected-reader-light.png","protected-editor-light.png","settings-dark.png","home-tablet-dark.png","home-mobile-dark.png","settings-mobile-dark.png","home-landscape-dark.png"],"errors":[],"warnings":[],"ai":"Explicit fixture-not-an-llm; no Gemini call","physical_native":"NOT RUN","release":"NOT RUN"}
