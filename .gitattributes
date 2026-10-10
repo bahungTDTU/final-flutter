@@ -10,3 +10,19 @@ evidence/2026-10-07-project-audit/*.txt -whitespace
 evidence/2026-10-07-protection-status/*.txt -whitespace
 evidence/2026-10-07-performance/*.txt -whitespace
 evidence/2026-10-07-session-storage/*.txt -whitespace
+
+# Keep the original bytes of the new 10/10 QA snapshots and their manifests.
+evidence/2026-10-10-ordering-and-docs/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+evidence/2026-10-10-productivity-workspace/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+evidence/2026-10-10-workspace-polish/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+evidence/2026-10-10-planner-motion/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+evidence/2026-10-10-rubric-audit/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+evidence/2026-10-10-workspace-publication/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+# Captured CLI output and browser scripts retain their original padding/blank lines.
+evidence/2026-10-10-ordering-and-docs/*.txt -whitespace
+evidence/2026-10-10-productivity-workspace/*.txt -whitespace
+evidence/2026-10-10-workspace-polish/*.txt -whitespace
+evidence/2026-10-10-workspace-polish/*.js -whitespace
+evidence/2026-10-10-planner-motion/*.txt -whitespace
+evidence/2026-10-10-planner-motion/*.js -whitespace
+evidence/2026-10-10-rubric-audit/*.txt -whitespace

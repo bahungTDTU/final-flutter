@@ -1,0 +1,12 @@
+{
+  "date_utc": "2026-10-10T05:31:43.682906+00:00",
+  "status": "PASS",
+  "action": "Protected editor update via independent actual HTTP session",
+  "ids": [
+    "old-protected",
+    "z-protected-new",
+    "ordinary-older",
+    "pinned-fixture"
+  ],
+  "private_fields": "redacted"
+}

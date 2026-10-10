@@ -1,0 +1,14 @@
+{
+  "target": "http://127.0.0.1:8033",
+  "before_count": 7,
+  "after_count": 9,
+  "imported_count": 2,
+  "new_ids": [
+    "f10fda26-62b8-483f-88e8-8f5fee254a00",
+    "f0e5aa9c-2655-457e-b531-53a52acb782b"
+  ],
+  "exact_content_match": true,
+  "new_owner_revision_one": true,
+  "same_day_journals_distinct_ids": true,
+  "export_sha256": "01e262630354bff3faefab1ad1145b7ac17163315b29d7725c72a046657445f2"
+}

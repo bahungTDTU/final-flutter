@@ -1,0 +1,9 @@
+warning: in the working copy of 'backend/note_listing.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'backend/tests/test_note_listing.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'lib/state/app_controller.dart', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'lib/state/note_listing.dart', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'lib/ui/prism.dart', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'scripts/prepare_web_offline.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'test/prism_motion_test.dart', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'web/flutter_bootstrap.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'web/offline_worker_template.js', LF will be replaced by CRLF the next time Git touches it

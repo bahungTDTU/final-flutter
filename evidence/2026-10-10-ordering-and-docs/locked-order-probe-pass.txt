@@ -1,0 +1,3 @@
+00:00 +0: loading D:/flutter cuoi ki/tmp/audit-2026-10-10/locked_order_probe_test.dart
+00:00 +0: Rubric 17: newest unpinned protected note retains date order
+00:00 +1: All tests passed!

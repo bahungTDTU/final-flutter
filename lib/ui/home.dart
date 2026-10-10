@@ -18,6 +18,7 @@ import 'avatar_editor.dart';
 import 'sharing.dart';
 import 'ai.dart';
 import 'writing_studio.dart';
+import 'workspace.dart';
 
 class UnverifiedBanner extends StatelessWidget {
   const UnverifiedBanner({super.key, required this.onCheck, this.delivery});
@@ -140,6 +141,9 @@ class _HomeScreenState extends State<HomeScreen> {
       return;
     }
     final editorId = note?.id ?? draftId ?? c.uuid.v4();
+    if (note != null) {
+      unawaited(c.recordRecent(note.id).catchError((Object _) {}));
+    }
     Navigator.of(context).push(
       MaterialPageRoute<void>(
         builder: (_) => EditorScreen(controller: c, id: editorId),
@@ -313,6 +317,21 @@ class _HomeScreenState extends State<HomeScreen> {
                   icon: const Icon(Icons.auto_awesome_mosaic_outlined),
                   label: const Text('Xưởng ghi chú'),
                 ),
+              TextButton.icon(
+                key: const Key('open-workspace'),
+                onPressed: () => Navigator.of(context).push<void>(
+                  MaterialPageRoute(
+                    builder: (_) => WorkspaceScreen(controller: c),
+                  ),
+                ),
+                icon: const Icon(Icons.space_dashboard_outlined),
+                label: const Text('Không gian làm việc'),
+              ),
+              IconButton(
+                tooltip: 'Tìm nhanh · Ctrl+K',
+                onPressed: () => showQuickFind(context, c),
+                icon: const Icon(Icons.manage_search),
+              ),
               if (!sidebar)
                 IconButton(
                   tooltip: 'Quản lý nhãn',
@@ -424,6 +443,10 @@ class _HomeScreenState extends State<HomeScreen> {
         bindings: {
           const SingleActivator(LogicalKeyboardKey.keyF, control: true): () =>
               searchFocus.requestFocus(),
+          const SingleActivator(LogicalKeyboardKey.keyK, control: true): () =>
+              showQuickFind(context, c),
+          const SingleActivator(LogicalKeyboardKey.keyK, meta: true): () =>
+              showQuickFind(context, c),
         },
         child: Focus(
           autofocus: true,
@@ -476,97 +499,129 @@ class _HomeScreenState extends State<HomeScreen> {
                           ? SizedBox(
                               width: Space.sidebar,
                               child: DashboardSidebar(
-                                builder: (context) => Padding(
-                                  padding: const EdgeInsets.all(20),
-                                  child: Column(
-                                    children: [
-                                      const Padding(
-                                        padding: EdgeInsets.symmetric(
-                                          vertical: 16,
-                                        ),
-                                        child: Brand(),
+                                builder: (context) => LayoutBuilder(
+                                  builder: (context, limits) => SingleChildScrollView(
+                                    child: ConstrainedBox(
+                                      constraints: BoxConstraints(
+                                        minHeight: limits.maxHeight,
                                       ),
-                                      const SizedBox(height: 32),
-                                      SurfacePanel(
-                                        tinted: true,
-                                        padding: const EdgeInsets.all(12),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(20),
                                         child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
                                           children: [
-                                            const Text(
-                                              'KHÔNG GIAN CỦA BẠN',
-                                              style: TextStyle(
-                                                fontSize: 11,
-                                                fontWeight: FontWeight.w700,
-                                                letterSpacing: .8,
+                                            const Padding(
+                                              padding: EdgeInsets.symmetric(
+                                                vertical: 16,
+                                              ),
+                                              child: Brand(),
+                                            ),
+                                            const SizedBox(height: 32),
+                                            SurfacePanel(
+                                              tinted: true,
+                                              padding: const EdgeInsets.all(12),
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  const Text(
+                                                    'KHÔNG GIAN CỦA BẠN',
+                                                    style: TextStyle(
+                                                      fontSize: 11,
+                                                      fontWeight:
+                                                          FontWeight.w700,
+                                                      letterSpacing: .8,
+                                                    ),
+                                                  ),
+                                                  const SizedBox(height: 8),
+                                                  Text(
+                                                    '${c.notes.where((n) => n.role == 'owner').length} ghi chú · ${c.labels.length} nhãn',
+                                                    style: Theme.of(context)
+                                                        .textTheme
+                                                        .bodySmall,
+                                                  ),
+                                                ],
                                               ),
                                             ),
-                                            const SizedBox(height: 8),
-                                            Text(
-                                              '${c.notes.where((n) => n.role == 'owner').length} ghi chú · ${c.labels.length} nhãn',
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .bodySmall,
+                                            const SizedBox(height: 24),
+                                            ...List.generate(
+                                              3,
+                                              (i) => Padding(
+                                                padding: const EdgeInsets.only(
+                                                  bottom: 8,
+                                                ),
+                                                child: ListTile(
+                                                  shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                          12,
+                                                        ),
+                                                  ),
+                                                  selected: destination == i,
+                                                  selectedTileColor:
+                                                      Theme.of(context)
+                                                          .colorScheme
+                                                          .secondaryContainer,
+                                                  leading: Icon(icons[i]),
+                                                  title: Text(destinations[i]),
+                                                  onTap: () => setState(
+                                                    () => destination = i,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            const SizedBox(height: 16),
+                                            ListTile(
+                                              leading: const Icon(
+                                                Icons.label_outline,
+                                              ),
+                                              title: const Text('Quản lý nhãn'),
+                                              onTap: manageLabels,
+                                            ),
+                                            ListTile(
+                                              leading: const Icon(
+                                                Icons.space_dashboard_outlined,
+                                              ),
+                                              title: const Text(
+                                                'Không gian làm việc',
+                                              ),
+                                              onTap: () => Navigator.of(context)
+                                                  .push<void>(
+                                                    MaterialPageRoute(
+                                                      builder: (_) =>
+                                                          WorkspaceScreen(
+                                                            controller: c,
+                                                          ),
+                                                    ),
+                                                  ),
+                                            ),
+                                            const SizedBox(height: 24),
+                                            const Divider(),
+                                            const SizedBox(height: 12),
+                                            ListTile(
+                                              leading: AccountAvatar(
+                                                controller: c,
+                                                radius: 18,
+                                              ),
+                                              title: Text(
+                                                c.user?['name'] as String? ??
+                                                    'Hồ sơ',
+                                                maxLines: 1,
+                                                overflow: TextOverflow.ellipsis,
+                                              ),
+                                              subtitle: const Text(
+                                                'Hồ sơ và tùy chỉnh',
+                                              ),
+                                              onTap: settings,
+                                            ),
+                                            TextButton.icon(
+                                              onPressed: logout,
+                                              icon: const Icon(Icons.logout),
+                                              label: const Text('Đăng xuất'),
                                             ),
                                           ],
                                         ),
                                       ),
-                                      const SizedBox(height: 24),
-                                      ...List.generate(
-                                        3,
-                                        (i) => Padding(
-                                          padding: const EdgeInsets.only(
-                                            bottom: 8,
-                                          ),
-                                          child: ListTile(
-                                            shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(12),
-                                            ),
-                                            selected: destination == i,
-                                            selectedTileColor: Theme.of(context)
-                                                .colorScheme
-                                                .secondaryContainer,
-                                            leading: Icon(icons[i]),
-                                            title: Text(destinations[i]),
-                                            onTap: () =>
-                                                setState(() => destination = i),
-                                          ),
-                                        ),
-                                      ),
-                                      const SizedBox(height: 16),
-                                      ListTile(
-                                        leading: const Icon(
-                                          Icons.label_outline,
-                                        ),
-                                        title: const Text('Quản lý nhãn'),
-                                        onTap: manageLabels,
-                                      ),
-                                      const Spacer(),
-                                      const Divider(),
-                                      const SizedBox(height: 12),
-                                      ListTile(
-                                        leading: AccountAvatar(
-                                          controller: c,
-                                          radius: 18,
-                                        ),
-                                        title: Text(
-                                          c.user?['name'] as String? ?? 'Hồ sơ',
-                                          maxLines: 1,
-                                          overflow: TextOverflow.ellipsis,
-                                        ),
-                                        subtitle: const Text(
-                                          'Hồ sơ và tùy chỉnh',
-                                        ),
-                                        onTap: settings,
-                                      ),
-                                      TextButton.icon(
-                                        onPressed: logout,
-                                        icon: const Icon(Icons.logout),
-                                        label: const Text('Đăng xuất'),
-                                      ),
-                                    ],
+                                    ),
                                   ),
                                 ),
                               ),

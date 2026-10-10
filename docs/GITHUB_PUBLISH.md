@@ -1,5 +1,14 @@
 # GitHub initial import — 02/10/2026
 
+## Publication workspace/planner —10/10/2026
+
+Người dùng yêu cầu push sau ordering fix và workspace/focus/Kanban/motion. Branch mới
+`codex/workspace-planner` từ master13e0ffc sau PR#3, giữ các working changes và không sửa
+nhánh mặc định. Source250 Flutter/109 backend/analyze/format PASS;24code hashes khớp gate
+cuối, base tree không đổi. Author/committer Bahung, không co-author trailer/backdate.
+[Gate và phạm vi](../evidence/2026-10-10-workspace-publication/INDEX.md); trạng thái remote/CI
+phải tra head thực tại PR mới, không gọi local PASS là status CI. Chỉ branch/PR, không merge.
+
 Từ yêu cầu07/10/2026, quy trình hiện tại là feature branch → PR → checks/review → merge.
 Không direct push master/default hoặc force/bypass. docs/BRANCH_WORKFLOW.md mô tả ruleset
 Active và required CI; các direct-push commands/đợt publication bên dưới là lịch sử.

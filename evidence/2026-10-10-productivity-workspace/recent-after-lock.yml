@@ -1,0 +1,22 @@
+- generic [ref=f2e4] [cursor=pointer]:
+  - generic:
+    - generic:
+      - generic:
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - button "Quay lại" [ref=f2e106]
+                - heading "Không gian làm việc" [level=2] [ref=f2e107]
+                - button "Tìm nhanh · Ctrl+K" [ref=f2e108]
+              - generic:
+                - group:
+                  - checkbox "Tổng quan" [ref=f2e109]
+                  - checkbox "Yêu thích" [ref=f2e110]
+                  - checkbox "Gần đây" [checked] [active] [ref=f2e111]
+                  - checkbox "Bộ sưu tập" [ref=f2e112]
+                  - checkbox "Công việc" [ref=f2e113]
+                  - checkbox "Mẫu riêng" [ref=f2e114]
+                  - checkbox "Nhập / xuất" [ref=f2e115]
+                  - button "Kế hoạch sáng tạo Ghi chú của bạn" [ref=f2e122]:
+                    - button "Bỏ yêu thích" [ref=f2e123]

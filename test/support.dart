@@ -50,6 +50,8 @@ Future<void> revealHome(WidgetTester tester, Finder target) async {
         .first,
   );
   await tester.pumpAndSettle();
+  await tester.ensureVisible(target);
+  await tester.pumpAndSettle();
 }
 
 class MemoryStore implements LocalStore {

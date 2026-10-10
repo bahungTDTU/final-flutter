@@ -81,7 +81,7 @@ void main() {
     await tester.pumpWidget(NoteTogetherApp(controller: c));
     await tester.pumpAndSettle();
     final card = find.byKey(const ValueKey('card-n'));
-    await tester.scrollUntilVisible(card, 120, scrollable: homeScroll());
+    await revealHome(tester, card);
     await tester.tap(card);
     await tester.pumpAndSettle();
     final hidden = find.byKey(const ValueKey('card-n'), skipOffstage: false);
@@ -96,7 +96,7 @@ void main() {
     await tester.pump();
     await tester.tap(find.byTooltip('Quay lại'));
     await tester.pumpAndSettle();
-    await tester.scrollUntilVisible(card, 120, scrollable: homeScroll());
+    await revealHome(tester, card);
     expect(find.text('Phiên bản mới nhận từ server'), findsOneWidget);
     expect(tester.takeException(), isNull);
     await tester.pumpWidget(const SizedBox());
@@ -247,7 +247,7 @@ void main() {
     await tester.pumpWidget(NoteTogetherApp(controller: c));
     await tester.pumpAndSettle();
     final card = find.byKey(const ValueKey('card-n'));
-    await tester.scrollUntilVisible(card, 120, scrollable: homeScroll());
+    await revealHome(tester, card);
     await tester.tap(card);
     await tester.pumpAndSettle();
     expect(

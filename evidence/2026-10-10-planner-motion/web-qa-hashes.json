@@ -1,0 +1,9 @@
+{
+  "observedAt": "2026-10-10T18:42:35.9816355+07:00",
+  "target": "Chrome http://127.0.0.1:7371; API8051",
+  "cache": "notetogether-static-2d7c6fb7d9f140cd",
+  "staticResources": 40,
+  "mainSha256": "342c083f2bc0ee6759e36b65a7b9db2aa66ea490407aaca86e0e5a3bb239d5c5",
+  "bootstrapSha256": "e07103b3fb416699695bce1f717060ca248f425b8245d8773c19597e95a90869",
+  "scope": "QA build before restoring default API; no private API cache"
+}

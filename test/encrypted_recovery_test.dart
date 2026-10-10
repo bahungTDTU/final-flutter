@@ -254,7 +254,7 @@ void main() {
       await tester.pumpWidget(NoteTogetherApp(controller: c));
       await tester.pumpAndSettle();
       expect(find.textContaining('Private'), findsNothing);
-      await tester.ensureVisible(find.byKey(const Key('open-recovery')));
+      await revealHome(tester, find.byKey(const Key('open-recovery')));
       await tester.tap(find.byKey(const Key('open-recovery')));
       await tester.pumpAndSettle();
       expect(find.textContaining('Private'), findsNothing);

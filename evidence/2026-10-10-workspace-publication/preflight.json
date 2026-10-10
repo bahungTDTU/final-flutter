@@ -1,0 +1,91 @@
+{
+  "observedAt": "2026-10-10T20:12:18.499165+07:00",
+  "branch": "codex/workspace-planner",
+  "priorHead": "13e0ffc70b4dba97e907df7039ef7672896d4e3d",
+  "remoteMaster": "13e0ffc70b4dba97e907df7039ef7672896d4e3d",
+  "baseTreeEqual": true,
+  "verifiedCodeInputs": 24,
+  "codeMatchesTestedSource": true,
+  "testedGate": {
+    "flutter": 250,
+    "backend": 109,
+    "analyze": "PASS",
+    "format": "105 files, 0 changes"
+  },
+  "gateEvidence": "../2026-10-10-planner-motion/INDEX.md",
+  "testedCodeSha256": {
+    "backend/note_listing.py": "baf9da1ca71f4454f874caeafc71ef4d39539f89a8a083ce4b7ee1b31f104412",
+    "backend/tests/test_note_listing.py": "0ad091935ec73fc1ea3f788553b48f09bbedd86156b56dfe178c03094568d370",
+    "lib/domain/focus_session.dart": "36e98064794ac662b849ecdae92cc908c49532f966fe060120d1b2a3764a090c",
+    "lib/domain/note_plan.dart": "462b657012dfa86c0e7b616d7c4da1e7bebe9a9ecaaa23af0949bbb9380b2ee5",
+    "lib/domain/workspace.dart": "49e33f1a455fdb588eac94faf93fdac3fe11e15fab0e160e2e2c80a37f0c45e9",
+    "lib/state/app_controller.dart": "90bf101486f4bd33e0e7f03662a4623d09cd9b2fcfebb957094e4a0f15b401e0",
+    "lib/state/note_listing.dart": "d3c850429dc1f95a7b731a87a22d6684a15c455b4722a3afcae3d7d879bd2310",
+    "lib/ui/focus_panel.dart": "ac14c234975b0db1e2d43a99020e26341123bb9866b80fc3a69f7c37f5ed712c",
+    "lib/ui/home.dart": "75de9a4d8dd4708e53ecc3d5d565bc027d246a8af40464d5323bd2c7dd187170",
+    "lib/ui/planner.dart": "14e6e73dea28c2ed9c44447f985d4ac2203bc66b554f380500a972eecb53ee4b",
+    "lib/ui/prism.dart": "6f3bf789b3addce22fff619ea10360e58620ebbeac99ab982d13baf83417d427",
+    "lib/ui/workspace.dart": "d4c9423585b1c09744215a76975e2f79b5761c49f8d682e89fe2d43bb1b2380e",
+    "scripts/prepare_web_offline.py": "9b302f0d6844d47ecbc2f5536e4e4630fc039e6c2ec2a2dc66e3a0cb93779eca",
+    "test/encrypted_recovery_test.dart": "96be43c4dfba9d84870bd693f6c47613ba625c388eba33422cc0d53b5eeba053",
+    "test/home_experience_test.dart": "569ddcd06ac35c50c109226913b5b65108f08f2a8df004f0394b2b72a4e93480",
+    "test/note_ordering_test.dart": "5d40adcfc1981d00189ffd486bda4599984bbab391e359578b9f0103fba7d21a",
+    "test/planner_test.dart": "e0605cbca27acd9da9100d82ab39a752acbe729718a20b87a61548711e1122bf",
+    "test/prism_motion_test.dart": "17e2a18ec268609be8186a6ff3d864b5714cfed635a12ab7a7e25901e25fdc9f",
+    "test/support.dart": "5c4e41c662ebbba5c7f5664941011eb49a988fd148b8e35b1cdc65db4946858e",
+    "test/ui_upgrade_test.dart": "cf09d0b24742e615b606f49552c9816f33672cf3567478dc40786b171d8979fb",
+    "test/workspace_polish_test.dart": "7ce15d4f4f829faf123fc9cdee6f147f8b08d744a5ae7b61ce94ab720ddd4370",
+    "test/workspace_test.dart": "855e294c11b2ff31ade03079e7865c65d60e56d446190b4cfc128fd160f2361b",
+    "web/flutter_bootstrap.js": "7d4895ce01fe35d4e93b0699a34761e438afd72daa3405c084751529920e508f",
+    "web/offline_worker_template.js": "2d6b6d99c88bfa4a847fa3e6f93854bc6012f6c0d0be04be70d31a03ca802d5b"
+  },
+  "candidateFiles": 224,
+  "candidateBytes": 16642253,
+  "suffixCounts": {
+    "": 1,
+    ".md": 20,
+    ".txt": 56,
+    ".py": 8,
+    ".json": 32,
+    ".yml": 9,
+    ".png": 58,
+    ".js": 20,
+    ".dart": 20
+  },
+  "secretPatternMatches": 0,
+  "scope": "Changed source/docs/evidence, excluding private config, databases, build and credentials",
+  "largestCandidates": [
+    [
+      "evidence/2026-10-10-planner-motion/07-kanban-desktop-dark.png",
+      534684
+    ],
+    [
+      "evidence/2026-10-10-planner-motion/14-board-remote-lock-dark.png",
+      522141
+    ],
+    [
+      "evidence/2026-10-10-productivity-workspace/before-appbar-fix/08-offline-import-reopen.png",
+      486698
+    ],
+    [
+      "evidence/2026-10-10-planner-motion/02-kanban-desktop-light.png",
+      457809
+    ],
+    [
+      "evidence/2026-10-10-planner-motion/04-kanban-reload-light.png",
+      454624
+    ],
+    [
+      "evidence/2026-10-10-ordering-and-docs/offline-reload-list.png",
+      436737
+    ],
+    [
+      "evidence/2026-10-10-ordering-and-docs/reconnected-list.png",
+      434072
+    ],
+    [
+      "evidence/2026-10-10-ordering-and-docs/desktop-list.png",
+      427844
+    ]
+  ]
+}

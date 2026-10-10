@@ -1,0 +1,8 @@
+a5e5ec6|2026-10-10T11:56:31+07:00|Bahung|523K0006@student.tdtu.edu.vn|Add adaptive rich text editor and unify application theme
+717f0ab|2026-10-09T18:45:00+07:00|Bahung|523K0006@student.tdtu.edu.vn|Improve dashboard styling, responsive filters and performance diagnostics
+ef2ece0|2026-10-07T19:42:18+07:00|Bahung|523K0006@student.tdtu.edu.vn|Require reviewed pull requests and CI for master
+50f204a|2026-10-07T19:26:53+07:00|Bahung|523K0006@student.tdtu.edu.vn|Reduce draft writes and encrypt persisted sessions
+5b82996|2026-10-07T08:38:47+07:00|Bahung|523K0006@student.tdtu.edu.vn|Clarify editor layout and fix protected note limits and status
+f8ff8fa|2026-10-06T11:33:13+07:00|Bahung|523K0006@student.tdtu.edu.vn|Add AI, protected editing, durable email and writing studio
+aded41e|2026-10-03T21:25:54+07:00|Bahung|523K0006@student.tdtu.edu.vn|Improve note sync performance and fix request lifecycle
+35ee911|2026-10-02T21:14:01+07:00|Bahung|523K0006@student.tdtu.edu.vn|Initial NoteTogether application with prismatic UI

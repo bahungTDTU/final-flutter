@@ -1,0 +1,59 @@
+### Result
+{"passed":true,"plans":3,"completed":1,"priorityEdit":true,"deadlineEdit":true,"cancelRemove":true,"reloadMetadata":true,"searchAndFilters":true}
+### Ran Playwright code
+```js
+await (async page => {
+ const root='D:/flutter cuoi ki/evidence/2026-10-10-planner-motion/';
+ const shot=async name=>{const v=page.viewportSize();await page.mouse.move(5,v.height-5);await page.waitForTimeout(650);await page.screenshot({path:root+name,scale:'css'});};
+ await page.setViewportSize({width:1440,height:1080});
+ await page.reload();
+ await page.waitForFunction(async expected=>{
+   const names=(await caches.keys()).filter(n=>n.startsWith('notetogether-static-'));
+   if(names.length!==1||names[0]!=='notetogether-static-2d7c6fb7d9f140cd')return false;
+   const cache=await caches.open(names[0]);
+   if((await cache.keys()).length!==40)return false;
+   const response=await cache.match('main.dart.js');
+   const hash=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',await response.arrayBuffer()))).map(b=>b.toString(16).padStart(2,'0')).join('');
+   const reg=await navigator.serviceWorker.getRegistration();
+   return hash===expected && !reg.installing && !reg.waiting && reg.active?.state==='activated';
+ },'342c083f2bc0ee6759e36b65a7b9db2aa66ea490407aaca86e0e5a3bb239d5c5');
+ await page.reload();
+ await page.locator('flt-semantics-placeholder').evaluate(el=>el.click());
+ await page.getByRole('button',{name:'Không gian làm việc',exact:true}).first().click();
+ await page.getByRole('checkbox',{name:'Kế hoạch',exact:true}).click();
+ await page.getByText('3 ghi chú trong kế hoạch',{exact:true}).waitFor();
+ await page.getByRole('group',{name:/^Kế hoạch sáng tạo[\s\S]*Ưu tiên cao[\s\S]*Hạn/}).waitFor();
+ await shot('04-kanban-reload-light.png');
+ const menu=page.getByRole('button',{name:'Thao tác kế hoạch Kế hoạch sáng tạo',exact:true});
+ await menu.click(); await page.getByRole('menuitem',{name:'Ưu tiên và ngày hạn',exact:true}).click();
+ await page.getByRole('button',{name:'Mức ưu tiên Cao',exact:true}).click();
+ await page.getByRole('menuitem',{name:'Thấp',exact:true}).click();
+ await page.getByRole('button',{name:'Lưu kế hoạch',exact:true}).click();
+ await page.getByRole('group',{name:/^Kế hoạch sáng tạo[\s\S]*Ưu tiên thấp/}).waitFor();
+ await menu.click(); await page.getByRole('menuitem',{name:'Ưu tiên và ngày hạn',exact:true}).click();
+ await page.getByRole('button',{name:'Mức ưu tiên Thấp',exact:true}).click();
+ await page.getByRole('menuitem',{name:'Cao',exact:true}).click();
+ await page.getByRole('button',{name:'Hôm nay',exact:true}).click();
+ await shot('01-plan-form-light.png');
+ await page.getByRole('button',{name:'Lưu kế hoạch',exact:true}).click();
+ await menu.click(); await page.getByRole('menuitem',{name:'Bỏ khỏi kế hoạch',exact:true}).click();
+ await page.getByRole('button',{name:'Hủy',exact:true}).click();
+ await page.getByText('3 ghi chú trong kế hoạch',{exact:true}).waitFor();
+ await shot('02-kanban-desktop-light.png');
+ await page.getByRole('checkbox',{name:'Ưu tiên cao',exact:true}).click();
+ await page.getByRole('checkbox',{name:'Hôm nay',exact:true}).click();
+ await page.getByRole('textbox',{name:'Tìm trong kế hoạch',exact:true}).click(); await page.keyboard.type('sáng');
+ if(await page.getByRole('button',{name:'Thao tác kế hoạch Vườn ý tưởng',exact:true}).count())throw new Error('Filtered normal-priority card remained');
+ await menu.waitFor(); await shot('03-kanban-filter-light.png');
+ await page.getByRole('button',{name:'Xóa tìm kế hoạch',exact:true}).click();
+ await page.getByRole('checkbox',{name:'Tất cả ngày',exact:true}).click();
+ await page.getByRole('checkbox',{name:'Ưu tiên cao',exact:true}).click();
+ await page.setViewportSize({width:390,height:844});
+ await shot('05-planner-mobile-top-light.png');
+ return {passed:true,plans:3,completed:1,priorityEdit:true,deadlineEdit:true,cancelRemove:true,reloadMetadata:true,searchAndFilters:true};
+}
+
+
+
+)(page);
+```

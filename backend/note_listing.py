@@ -10,6 +10,7 @@ def list_visible_notes(conn, user_id):
         JOIN users u ON u.id=n.owner_id
         LEFT JOIN shares s ON s.note_id=n.id AND s.user_id=?
         WHERE n.deleted=0 AND (n.owner_id=? OR s.user_id IS NOT NULL)
+        ORDER BY n.updated_at DESC, n.id ASC
     ''', (user_id, user_id, user_id)).fetchall()
     if not rows:
         return []

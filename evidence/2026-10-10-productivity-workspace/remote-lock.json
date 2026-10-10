@@ -1,0 +1,15 @@
+{
+  "result": {
+    "ok": true,
+    "revision": 2,
+    "locked": true
+  },
+  "public_fields": [
+    "id",
+    "locked",
+    "pinned_at",
+    "revision",
+    "role",
+    "shared"
+  ]
+}

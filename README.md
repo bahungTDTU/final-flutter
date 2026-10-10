@@ -1,5 +1,38 @@
 # NoteTogether - nền tảng triển khai local
 
+## Publication workspace/planner —10/10/2026
+
+Theo yêu cầu push mới, source được chuẩn bị trên `codex/workspace-planner`, từ master
+`13e0ffc` sau PR#3. Gate250 Flutter/109 backend/analyzer/format PASS, source hashes khớp
+bản đã test. [Gate publication](evidence/2026-10-10-workspace-publication/INDEX.md).
+Các đoạn “chưa commit/push” theo ngày bên dưới là snapshot trước publication; không sửa
+raw evidence cũ. Push branch/PR không phải merge hoặc public deployment.
+
+## Bảng kế hoạch và animation —10/10/2026
+
+Workspace → Kế hoạch: Kanban ba chặng, ưu tiên, ngày hạn, tìm/lọc quá hạn/hôm nay/7 ngày.
+PC ba cột; mobile/chữ lớn một danh sách và menu chọn chặng. Kế hoạch local encrypted theo
+account; không sửa nội dung/quyền note, không nhắc OS hoặc cloud sync kế hoạch. Fade/lift
+chuyển phần, press thẻ và progress ngắn, hỗ trợ giảm chuyển động; lock/revoke bỏ nội dung ngay.
+[Hướng dẫn](docs/WORKSPACE_PLANNER_AND_MOTION.md), [ảnh và nghiệm thu](evidence/2026-10-10-planner-motion/INDEX.md).
+
+PASS:250 Flutter/109 backend, analyzer sạch; Chrome4viewport sáng/tối, lọc/sửa/reload và
+calendar lock từ xa.15ảnh trực tiếp; Web mặc định API8000/APK debug compile PASS. Native UI/
+IME/FPS source mới chưa chạy. Source local chưa commit/push trong đợt nâng cấp này.
+
+## Tập trung và checklist nâng cao —10/10/2026
+
+Workspace có Pomodoro/pause/resume, mục tiêu theo ngày và thống kê7 ngày; checklist
+có tìm kiếm, lọc nguồn/trạng thái và progress. Mobile/chữ lớn dùng menu chọn gọn;
+form giữ input khi lưu lỗi, xóa mẫu/bộ sưu tập cần xác nhận. Timer/goal/history local
+mã hóa theo account, tiếp tục sau reload; không có thông báo OS khi đóng ứng dụng.
+[Hướng dẫn và giới hạn](docs/WORKSPACE_FOCUS_AND_UX.md).
+
+Nghiệm thu mới: 242 Flutter/109 backend PASS, analyze sạch; Chrome kiểm tra timer reload,
+checklist lưu server, form/confirmation và 4 viewport sáng/tối. Sửa cache Web tải mã cũ
+khi nâng cấp; SHA256 cache cuối khớp build, chỉ 40 tài nguyên tĩnh. Web/APK debug compile
+PASS; Android UI/IME/FPS mới chưa chạy. [Ảnh và kết quả](evidence/2026-10-10-workspace-polish/INDEX.md).
+
 Nhóm: 523K0006 Nguyễn Bá Hùng; 523K0014 Nguyễn Bảo Long. Deadline trước tháng 12/2026,
 chưa có ngày/giờ cụ thể. Repository: https://github.com/bahungTDTU/final-flutter; cloud chờ nhóm bổ sung. Đây là source do agent hỗ trợ;
 Initial import dùng danh tính Git của người dùng theo yêu cầu; không thay bằng chứng teamwork4 tuần.
@@ -19,6 +52,35 @@ analyze sạch; nhánh cập nhật với master `285af64`. Xem
 [evidence publication](evidence/2026-10-09-github-publication/INDEX.md); các snapshot QA bên dưới
 giữ trạng thái tại thời điểm đo. CI/approval trên PR tiếp tục là điều kiện merge.
 
+## Không gian làm việc cá nhân —10/10/2026
+
+Mở từ dashboard/thanh bên: Ctrl+K tìm nhanh, yêu thích, ghi chú gần đây, bộ sưu tập thông
+minh, bảng công việc từ checklist, mẫu riêng, nhật ký ngày và nhập/xuất NoteTogether JSON.
+Có UI PC/phone cùng theme mới. Tổ chức cá nhân mã hóa theo tài khoản trên thiết bị; notes/
+checklist vẫn đồng bộ server. Import tạo bản mới, không mang quyền/ID cũ; export chỉ gồm
+owner notes chưa khóa, không attachments và file xuất không mã hóa.
+234 Flutter/109 backend/analyze PASS; Chrome file roundtrip offline/reload/reconnect đúng2
+UUID mới/nội dung giữ nguyên; Web/APK debug compile PASS. Native runtime/SAF/FPS mới và
+workspace cloud sync chưa nghiệm thu. [Chức năng và giới hạn](docs/PRODUCTIVITY_WORKSPACE.md),
+[ảnh và nghiệm thu](evidence/2026-10-10-productivity-workspace/INDEX.md).
+
+## Hiện trạng ngày10/10/2026
+
+Editor/theme đã được xuất bản ở commit `a5e5ec6`, branch `codex/adaptive-word-editor`,
+[PR#3](https://github.com/bahungTDTU/final-flutter/pull/3); yêu cầu push không tự cho phép merge.
+Bản sửa mới cho tiêu chí17 giữ unpinned locked notes theo thứ tự cập nhật từ server,
+vẫn chỉ sáu public fields trong list/cache. Ordinary edit pending được ưu tiên và cache
+mã hóa giữ thứ tự qua reopen. [Quy tắc và giới hạn](docs/NOTE_LIST_ORDERING.md).
+
+Architecture và matrix đã đối chiếu với code hiện tại; Summary/Q&A, protected edit/offline
+unlock/realtime và SMTP outbox đã triển khai. Gemini thật, inbox Internet, native editor
+runtime/IME/FPS, public HTTPS/signing/video/teamwork vẫn cần nghiệm thu riêng.
+[Bằng chứng bản sửa](evidence/2026-10-10-ordering-and-docs/INDEX.md).
+Gate10/10: format/analyze sạch,215 Flutter/109 backend tests PASS; direct HTTP4roles,
+Chrome grid/list/offline reload/reconnect/mobile390px và Web build PASS trong phạm vi bản sửa.
+Các mục theo ngày phía dưới là snapshots QA; số test/FPS và trạng thái publication giữ
+phạm vi thời điểm đo. Bản sửa10/10 hiện là working changes, chưa commit/push.
+
 ## Editor trực tiếp trên PC và điện thoại —09/10/2026
 
 PC có thanh định dạng, trang viết, mục lục và bảng công cụ riêng; điện thoại dùng một cột
@@ -27,8 +89,8 @@ lists/checklist, liên kết, trích dẫn/mã, undo/redo, tìm-thay thế, zoom
 Định dạng lưu qua server và encrypted draft; note cũ không bị migration chỉ vì mở.
 [Thiết kế, tương thích và giới hạn](docs/ADAPTIVE_DOCUMENT_EDITOR.md),
 [ảnh và gate hiện tại](evidence/2026-10-09-document-editor/INDEX.md).
-Các kết quả theme/FPS dưới đây là snapshot trước editor mới. Chưa commit/push đợt này;
-native runtime/FPS của editor mới và release vẫn chưa nghiệm thu.
+Các kết quả theme/FPS dưới đây là snapshot trước editor mới. Editor được publication10/10
+ở a5e5ec6/PR#3; native runtime/FPS của editor mới và release vẫn chưa nghiệm thu.
 
 ## Theme toàn ứng dụng —09/10/2026
 
@@ -38,7 +100,7 @@ field dễ đọc và selected state rõ. Không thêm animation nền lặp hay
 198 Flutter/94 backend/analyze/HTTP4roles PASS; Chrome12luồng/4viewport/24ảnh không lỗi console.
 Web build/offline và APK debug compile PASS; native UI/FPS cho theme mới chưa chạy.
 [Thiết kế và ảnh kiểm tra](docs/THEME_WIDGET_COHESION.md).
-Working changes sau717f0ab trên codex/ui-ux-performance; chưa commit/push đợt theme mới.
+QA theme đo trên working changes sau717f0ab; source đã publication10/10 trong a5e5ec6/PR#3.
 
 ## Đo FPS và chạy Android —09/10/2026
 
@@ -60,7 +122,7 @@ App shell/themes và Home bị editor che giảm rebuild20→0 lần trong probe
 500notes không đổi source. Khi note/account đổi, Home vẫn dựng lại ngay để xóa nội dung
 riêng tư cũ sau khóa/thu hồi từ xa.198 Flutter/94 backend/analyze PASS; Web/APK debug compile PASS; native UI đợt này
 chưa chạy, không FPS claim. [Chi tiết và bằng chứng](docs/HOME_UI_UX_PERFORMANCE.md).
-Working changes trên branch codex/ui-ux-performance, chưa commit/push/merge; release để cuối.
+QA Home đo trên branch codex/ui-ux-performance trước publication; release vẫn để cuối.
 
 ## Session mã hóa và migration —07/10/2026
 
@@ -250,8 +312,9 @@ backend/Dockerfile chuẩn bị một service với SQLite persistent disk cần
 image và chưa public deploy. Không hứa free tier. WEB_ORIGINS/API_URL phải dùng HTTPS origin thật.
 SMTP/Gemini variables đã được code đọc; thiếu cấu hình thì disabled. Không dán secrets vào chat hoặc commit.
 source nộp phải clone GitHub và giữ .git; local git init không chứng minh teamwork.
-Read docs/SUBMISSION_CHECKLIST.md; chưa tạo ZIP nộp vì thiếu repo/video/Rubric/URL/release-final.
-Readme.txt được giữ cùng nội dung cốt lõi với README.md. Tài khoản chấm chỉ đưa riêng trong bộ nộp.
+Read docs/SUBMISSION_CHECKLIST.md; repo đã có. Chưa tạo ZIP nộp vì thiếu clean-clone acceptance,
+video/Rubric.xlsx gốc/public URLs/native release-final và đủ lịch sử contribution theo đề.
+Readme.txt được giữ cùng nội dung với README.md. Tài khoản chấm chỉ đưa riêng trong bộ nộp.
 
 ## Bảo trì và hiệu năng03/10/2026
 
@@ -280,8 +343,8 @@ trong design_system.dart và PrismPalette extension trong prism.dart.
 Home đổi sidebar/rail/bottom navigation theo logical width; lưới/danh sách có selected state,
 ghim thành nhóm, search clear/AND filters và thẻ khóa neutral. Editor giữ ID/revision/draft,
 vùng viết thoáng và status local/server khác nhau; settings có preview cỡ chữ.
-Password dialog có validation/loading và error giữ input. Chức năng chưa có dịch vụ thật chỉ
-có spec/component fixtures; Hỏi ghi chú trong app báo chưa khả dụng, không trả AI giả.
+Password dialog có validation/loading và error giữ input. Tại snapshot02/10, Hỏi ghi chú chưa khả dụng. Từ05/10 Summary/Q&A đã nối backend Gemini;
+thiếu key báo chưa cấu hình, fixture chỉ dùng QA, chưa nghiệm thu Gemini thật.
 
 Chạy/xem bằng scripts/start_backend.ps1 và scripts/start_web.ps1 như trên; build lại Web sau
 sửa code. docs/UI_UX_DESIGN.md là spec/component map, docs/UI_UX_QA.md là phạm vi kiểm chứng,
@@ -305,7 +368,8 @@ chỉ là flags của lệnh QA này, không cấu hình sản phẩm. Chưa phy
 Menu ghi chú của mình → Bật khóa ghi chú (mật khẩu2x, ghi chú đã đồng bộ). Chạm thẻ khóa → nhập
 mật khẩu → phiên tối đa5 phút. Owner/editor sửa và autosave; owner xóa-confirm, gắn nhãn,
 đổi/tắt mật khẩu, quản lý chia sẻ. Viewer chỉ đọc. Tệp riêng tư và AI cần online/grant;
-AI chặn khi draft chưa đồng bộ. Ghim/shared/role/nhãn chỉ hiển thị sau unlock.
+AI chặn khi draft chưa đồng bộ. Policy từ07/10 cho hiện public pin/shared status trước unlock;
+title/content/nhãn/date/share identities/time/count chỉ hiện trong reader sau unlock.
 Nội dung không vào ordinary cache/search/outbox; cache/draft AES-GCM dẫn xuất từ mật khẩu
 ghi chú (PBKDF2-SHA256600000), nằm trong encrypted account snapshot. Không persist password/key.
 Ghi chú đã tải mở offline được trên thiết bị/origin này; reconnect yêu cầu server unlock trước sync.
@@ -440,7 +504,8 @@ Home có sidebar/rail/bottom navigation, ngữ cảnh tài khoản, thẻ/metada
 Ctrl+F đưa focus vào tìm kiếm. Editor có mặt giấy, trạng thái lưu thật và số ký tự; theme/resize
 giữ ID/base/selection. Auth và các flow hồ sơ/nhãn/avatar/chia sẻ/tệp/bảo vệ/mã email dùng cùng
 components; Material được Việt hóa cả feedback mặc định. Chữ200% và màn hình320px có regression.
-AI Q&A vẫn báo chưa khả dụng. Xem docs/UI_UX_DESIGN.md, docs/UI_UX_QA.md và
+Tại snapshot02/10 AI Q&A chưa khả dụng; implementation05/10 đã thay trạng thái đó. Xem
+docs/AI_FEATURES.md, docs/UI_UX_DESIGN.md, docs/UI_UX_QA.md và
 evidence/2026-10-02-ui-upgrade/INDEX.md cho ảnh trước/sau và phạm vi QA thật.
 
 Native UI integration dùng backend local và emulator như hướng dẫn trên; driver sau xuất ảnh

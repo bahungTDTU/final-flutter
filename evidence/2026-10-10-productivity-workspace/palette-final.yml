@@ -1,0 +1,24 @@
+- generic [ref=f6e28]:
+  - dialog:
+    - generic:
+      - group:
+        - generic [ref=f6e29]: Tìm nhanh Tối đa 30 kết quả. Chỉ tìm trong ghi chú chưa khóa.
+        - generic [ref=f6e30]:
+          - textbox "Tên hoặc nội dung ghi chú" [active] [ref=f6e31]
+          - generic [ref=f6e32]: Còn lại 200 ký tự
+        - button "Mở không gian làm việc" [ref=f6e33]
+        - button "Viết nhật ký hôm nay" [ref=f6e34]
+        - button "Kế hoạch sáng tạo Ghi chú của bạn" [ref=f6e36]:
+          - button "Yêu thích" [ref=f6e37]
+        - button "Cuộc họp sáng tạo Ghi chú của bạn" [ref=f6e38]:
+          - button "Yêu thích" [ref=f6e39]
+        - button "Nhật ký 10/10/2026 Ghi chú của bạn" [ref=f6e40]:
+          - button "Yêu thích" [ref=f6e41]
+        - button "Nhật ký 10/10/2026 Ghi chú của bạn" [ref=f6e42]:
+          - button "Yêu thích" [ref=f6e43]
+        - button "Cuộc họp sáng tạo Ghi chú của bạn" [ref=f6e44]:
+          - button "Yêu thích" [ref=f6e45]
+        - button "Kế hoạch sáng tạo Ghi chú của bạn" [ref=f6e46]:
+          - button "Bỏ yêu thích" [ref=f6e47]
+        - button "Vườn ý tưởng Ghi chú của bạn" [ref=f6e48]:
+          - button "Yêu thích" [ref=f6e49]

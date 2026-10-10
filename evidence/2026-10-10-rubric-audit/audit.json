@@ -1,0 +1,67 @@
+{
+  "date_utc": "2026-10-10T05:08:44.432108+00:00",
+  "timezone": "Asia/Saigon",
+  "head": "a5e5ec60568b7ee2b0c50290a3e6502a4d490110",
+  "branch": "codex/adaptive-word-editor",
+  "master": "efbb8e7edda8b5cd7c3771e6ced1a43b416b6e40",
+  "pdf": {
+    "path": "C:\\Users\\LENOVO\\Downloads\\503107-FinalProject-V1.pdf",
+    "pages": 19,
+    "sha256": "63ea45a11778b4b60bd71ae79038b991cda54f90d429365345fe488cb5c6f907",
+    "rendered_pages": [
+      1,
+      5,
+      6,
+      7,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18
+    ],
+    "visually_inspected_pages": [
+      13,
+      14,
+      16,
+      17
+    ]
+  },
+  "source_integrity": {
+    "inputs": 192,
+    "mismatches": [
+      "STATUS.md"
+    ],
+    "expected_documentation_change": [
+      "STATUS.md"
+    ],
+    "readme_mirror": true
+  },
+  "local_suites": {
+    "date": "2026-10-09",
+    "flutter": 210,
+    "backend": 108,
+    "rerun_today": false
+  },
+  "new_probe": {
+    "target": "Flutter host unit fixture",
+    "result": "FAIL",
+    "exit_code": 1,
+    "case": "unpinned locked note date order",
+    "counted_in_full_suite": false
+  },
+  "missing_workspace_submission_paths": [
+    "Rubric.xlsx",
+    "demo.mp4",
+    "Screenshot.png",
+    "release/web-url.txt",
+    "release/app-release.apk",
+    "source"
+  ],
+  "native_editor_today": "NOT RUN",
+  "live_llm_today": "NOT RUN",
+  "internet_mailbox_today": "NOT RUN",
+  "report_sha256": "68cd6acd84b1fce3590c16ea25eb0e1dd1e6bfeb3f7688ba2e938d0b408a62ff",
+  "application_source_changed": false,
+  "committed_or_pushed_audit": false
+}

@@ -1,4 +1,35 @@
-# NoteTogether – UI/UX design, cập nhật 09/10/2026
+# NoteTogether – UI/UX design, cập nhật 10/10/2026
+
+## Kế hoạch và chuyển động —10/10/2026
+
+PC ba cột với thẻ tím/xanh/mint; mobile/chữ lớn một danh sách lazy + dropdown chặng. Header,
+query và filter đứng riêng; title/preview/metadata trong thẻ tách cấp. Navigation PC gọn.
+Incoming fade/lift220ms, press180ms và progress220ms; reduced-motion hiện ngay/geometry cố định.
+Không exit retention hoặc motion loop; private widgets bị loại ngay khi lock/revoke. Các form
+và lịch cũng che metadata khi quyền đổi. WORKSPACE_PLANNER_AND_MOTION.md và evidence planner-motion.
+
+## Tập trung và UX workspace —10/10/2026
+
+PC chips; mobile<600px/chữ>=150% dropdown có label, scroll mỗi phần riêng. Timer lớn,
+CTA start/pause/resume, daily progress và7-day pills dùng tokens light/dark hiện có.
+Task search/status/source/progress tách trước lazy rows. Form error inline giữ input,
+save busy/confirm delete/account guard; không đóng form trước durable success.
+Xem WORKSPACE_FOCUS_AND_UX.md.
+
+Quy tắc hiện tại: unpinned locked notes giữ updated order từ server array; grid/list/filter
+không đẩy note khóa xuống cuối. List/cache vẫn sáu public fields, không private date;
+NOTE_LIST_ORDERING.md. Protected editor dùng DocumentWorkspace sau unlock. Những đoạn
+theo ngày phía dưới là snapshots; policy pin/shared07/10 thay policy ẩn cả hai trước đó.
+
+## Workspace cá nhân —10/10/2026
+
+Dashboard/filter toolbar/thanh bên có lối vào workspace; Ctrl+K trên Home/workspace, editor
+Ctrl+K giữ chèn link. Choice chips wrap, nội dung/controls chia section; note/task/export rows
+lazy slivers, label picker search/lazy. Mobile dùng một cột, dialogs cuộn ở320px/200%; sidebar
+cuộn khi thêm mục làm chiều cao vượt viewport. Theme dùng cùng light/dark tokens. Nội dung
+locked/revoked bị loại khỏi palette/favorites/recent/views/tasks/export, giữ IDs trong vault.
+Xem PRODUCTIVITY_WORKSPACE.md và evidence/2026-10-10-productivity-workspace.
+
 
 ## Editor trực tiếp —09/10/2026
 
@@ -161,7 +192,7 @@ theme animation tắt khi disableAnimations, không animation danh sách lúc se
 | Labels empty/validation | add/rename/delete-confirm; pending/conflict/remote; note còn; AND IDs | Server catalogue/revisions/outbox + SSE invalidation integrated |
 | Settings/profile | groups, verified, font preview, name/password; choose/upload/default avatar | Private avatar API/canonical encrypted cache; online changes |
 | Share owner flow | email batch1–20 + viewer/editor, recipient list/change/revoke | Real ShareSession + ACL/revision/idempotency integrated; protected-reader full acceptance chưa đủ |
-| Lock/unlock flow | password2x/current/new, pending/network/errors/rate-limit | Enable/read/edit/autosave/delete/relock + cached offline unlock; metadata chỉ sau unlock; server grant trước sync |
+| Lock/unlock flow | password2x/current/new, pending/network/errors/rate-limit | Enable/read/edit/autosave/delete/relock + cached offline unlock; private metadata chỉ sau unlock, public pin/shared theo policy07/10; server grant trước sync |
 | Attachments | picker→validate→upload/private list→image/video preview/download/delete-confirm | Private API/RAM session integrated; online-only, retry trong route, ACL/grant/epoch guards |
 | AI summary/Q&A | note scope, source cards, loading/error/no sources, regenerate/copy | Production AiSession/Gemini adapter/citations; fixture QA local, Gemini thật chưa chạy |
 

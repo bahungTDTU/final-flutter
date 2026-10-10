@@ -1,0 +1,16 @@
+{
+  "observedAt": "2026-10-10T18:47:34.4763232+07:00",
+  "closedBrowserSession": "nt-planner",
+  "stoppedVerifiedTestProcesses": [
+    21068,
+    21040,
+    18532,
+    19132
+  ],
+  "ports": [
+    8051,
+    7371
+  ],
+  "remainingTestListeners": 0,
+  "scope": "Only QA browser/API/static server started for planner verification"
+}
