@@ -172,7 +172,7 @@ class AiQuestionsScreen extends StatelessWidget {
   final Listenable gateChanges;
   @override
   Widget build(BuildContext context) => Scaffold(
-    appBar: AppBar(title: const Text('Hỏi ghi chú')),
+    appBar: noteAppBar(title: const Text('Hỏi ghi chú')),
     body: SafeArea(
       child: AiQuestionsPanel(
         controller: controller,

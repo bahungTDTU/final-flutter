@@ -53,16 +53,17 @@ class NoteListingCache {
     bool contains(Note note) {
       if (pattern == null) return true;
       if (note.locked) return false;
-      if (pattern.hasMatch(note.title) || pattern.hasMatch(note.content)) {
+      final content = note.plainContent;
+      if (pattern.hasMatch(note.title) || pattern.hasMatch(content)) {
         return true;
       }
       final start = (note.title.length - query.length).clamp(
         0,
         note.title.length,
       );
-      final end = query.length.clamp(0, note.content.length);
+      final end = query.length.clamp(0, content.length);
       return pattern.hasMatch(
-        '${note.title.substring(start)} ${note.content.substring(0, end)}',
+        '${note.title.substring(start)} ${content.substring(0, end)}',
       );
     }
 
@@ -109,8 +110,9 @@ int _compareVisibleNotes(Note a, Note b) {
 String noteCardPreview(Note note) {
   if (note.locked) return 'Mở khóa để xem nội dung.';
   const limit = 480;
-  if (note.content.length <= limit) return note.content;
-  final unit = note.content.codeUnitAt(limit - 1);
+  final content = note.plainContent;
+  if (content.length <= limit) return content;
+  final unit = content.codeUnitAt(limit - 1);
   final end = unit >= 0xd800 && unit <= 0xdbff ? limit - 1 : limit;
-  return '${note.content.substring(0, end)}…';
+  return '${content.substring(0, end)}…';
 }

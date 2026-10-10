@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:note_together/ui/rich_note_field.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
@@ -243,7 +244,11 @@ void main() {
       );
       await tester.tap(find.byKey(const Key('unlock-note')));
       await tester.pumpAndSettle();
-      expect(find.text('Private body'), findsOneWidget);
+      final body = tester.widget<NoteRichTextField>(
+        find.byKey(const Key('protected-content')),
+      );
+      expect(body.document.text, 'Private body');
+      expect(body.readOnly, true);
       expect(find.text('Đổi mật khẩu ghi chú'), findsNothing);
       for (final state in [
         AppLifecycleState.inactive,
@@ -257,6 +262,8 @@ void main() {
       tester.binding.handleAppLifecycleStateChanged(AppLifecycleState.resumed);
       await tester.pumpAndSettle();
       expect(find.text('Private body'), findsNothing);
+      expect(find.byType(NoteRichTextField), findsNothing);
+      expect(body.document.text, isEmpty);
       await tester.pumpWidget(const SizedBox());
       c.dispose();
     },

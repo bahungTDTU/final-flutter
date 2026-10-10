@@ -1,5 +1,11 @@
 import 'dart:async';
+
+import 'package:note_together/ui/rich_note_field.dart';
+
 import 'dart:convert';
+
+import 'package:note_together/domain/note_document.dart';
+
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -81,13 +87,20 @@ Api lockedApi({Future<http.Response>? notes, void Function()? onNotes}) => Api(
 
 void main() {
   test('423 archives latest queued edit even when the following list request fails', () async {
+    final richLatest = storeDocumentDelta([
+      {
+        'insert': 'latest queued edit',
+        'attributes': {'bold': true},
+      },
+      {'insert': '\n'},
+    ]);
     final raw = MemoryStore(), keys = TestKeys();
     final store = EncryptedAccountStore(raw, keys);
     final seed = AppController(offlineApi(), store)
       ..user = {'id': 'A'}
       ..token = 'token';
     await seed.save('n', 'First', 'first edit');
-    await seed.save('n', 'Latest', 'latest queued edit');
+    await seed.save('n', 'Latest', richLatest);
     await idle(seed);
     await store.write('session', {'user': seed.user, 'token': seed.token});
     seed.dispose();
@@ -115,7 +128,11 @@ void main() {
     expect(sent, 1);
     expect(c.notes.single.locked, true);
     expect(c.pending, isEmpty);
-    expect(c.recoveries.values.single['content'], 'latest queued edit');
+    expect(c.recoveries.values.single['content'], richLatest);
+    expect(
+      plainNoteContent(c.recoveries.values.single['content'] as String),
+      'latest queued edit',
+    );
     expect((await store.read('account:A'))!['recoveries'], hasLength(1));
     await c.synchronize();
     expect(sent, 1);
@@ -149,9 +166,10 @@ void main() {
           .widget<TextField>(find.byKey(const Key('note-title')))
           .controller!;
       final content = tester
-          .widget<TextField>(find.byKey(const Key('note-content')))
-          .controller!;
-      await tester.enterText(
+          .widget<NoteRichTextField>(find.byKey(const Key('note-content')))
+          .document;
+      await enterDocumentText(
+        tester,
         find.byKey(const Key('note-content')),
         'Unfinished editor edit',
       );
@@ -246,8 +264,8 @@ void main() {
       expect(id, isNot('locked'));
       expect(
         tester
-            .widget<TextField>(find.byKey(const Key('note-content')))
-            .controller!
+            .widget<NoteRichTextField>(find.byKey(const Key('note-content')))
+            .document
             .text,
         'Private unfinished content',
       );

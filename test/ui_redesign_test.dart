@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:note_together/ui/rich_note_field.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:note_together/domain/note.dart';
 import 'package:note_together/ui/app.dart';
@@ -274,14 +275,15 @@ void main() {
       await tester.pumpAndSettle();
       await tester.tap(find.text('Title'));
       await tester.pumpAndSettle();
-      await tester.enterText(
+      await enterDocumentText(
+        tester,
         find.byKey(const Key('note-content')),
         'Ý tưởng đang viết',
       );
-      final field = tester.widget<TextField>(
+      final field = tester.widget<NoteRichTextField>(
         find.byKey(const Key('note-content')),
       );
-      final selection = field.controller!.selection;
+      final selection = field.document.selection;
       await c.setPreferences({'dark': true});
       tester.view.physicalSize = const Size(390, 844);
       tester.view.devicePixelRatio = 1;
@@ -291,8 +293,8 @@ void main() {
       await tester.pump(const Duration(milliseconds: 700));
       await tester.pump();
       expect(tester.widget<EditorScreen>(find.byType(EditorScreen)).id, 'n');
-      expect(field.controller!.text, 'Ý tưởng đang viết');
-      expect(field.controller!.selection, selection);
+      expect(field.document.text, 'Ý tưởng đang viết');
+      expect(field.document.selection, selection);
       expect(c.pending.single['base_revision'], 1);
       expect(tester.takeException(), isNull);
       await tester.pumpWidget(const SizedBox());

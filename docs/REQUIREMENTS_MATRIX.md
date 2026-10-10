@@ -1,5 +1,21 @@
 # Ma trận yêu cầu 32 tiêu chí
 
+Editor trực tiếp09/10 sau theme: PC và phone bố cục riêng; rich formatting được lưu qua
+content string versioned, không đổi ACL/revision/immutable outbox. Projection visible text
+cho search/card/AI, protected reader dùng cùng workspace sau unlock. Cải thiện trải nghiệm
+các tiêu chí9/10/19/22/30; đây là nâng cấp sáng tạo do người dùng yêu cầu. Không đóng gate
+teamwork, native runtime/FPS/IME, Gemini thật, release/signing/HTTPS hay submission.
+Kết quả source hiện tại: ADAPTIVE_DOCUMENT_EDITOR.md và evidence/2026-10-09-document-editor.
+Các số đo/số test trong snapshots dưới đây thuộc các phiên bản trước.
+
+Theme cohesion09/10, sau publication UI/performance: app bar/auth/editor/protected/AI/
+studio/dialog/sheet/form/navigation/feedback cùng palette dashboard light/dark.198 Flutter/
+94 backend/analyze/HTTP4roles PASS, Chrome12luồng/4viewport/24ảnh,0console errors/warnings.
+Web compile/offline40static/APK debug compile PASS. Cải thiện evidence UI các tiêu chí
+9/10/19/22/30; không đóng gate native UI/FPS/Gemini thật/release/submission của source mới.
+Xem THEME_WIDGET_COHESION.md và evidence/2026-10-09-theme-cohesion; base717f0ab + working changes.
+Các kết quả benchmark bên dưới thuộc source trước khi đổi theme toàn app.
+
 Benchmark bổ sung09/10 sau dashboard:3 native workflows API36 debug và2 profile workflows
 500notes/30labels PASS. GPU host Impeller OpenGLES52.6–56.7FPS, raster p95=23–28ms; target
 60FPS chưa đạt đều, physical/native presentation chưa chạy. Web12samples/5search/filter

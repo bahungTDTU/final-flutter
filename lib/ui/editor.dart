@@ -12,6 +12,9 @@ import 'sharing.dart';
 import 'ai.dart';
 import 'note_text_field.dart';
 import 'writing_studio.dart';
+import 'rich_note_field.dart';
+import 'document_workspace.dart';
+import 'note_protection.dart';
 
 class EditorScreen extends StatefulWidget {
   const EditorScreen({super.key, required this.controller, required this.id});
@@ -24,6 +27,7 @@ class EditorScreen extends StatefulWidget {
 class _EditorScreenState extends State<EditorScreen>
     with WidgetsBindingObserver {
   late final TextEditingController title, content;
+  late final NoteDocumentController document;
   late final String account;
   Timer? debounce;
   String feedback = 'Sẵn sàng';
@@ -60,6 +64,15 @@ class _EditorScreenState extends State<EditorScreen>
     content = TextEditingController(
       text: draft?['content'] as String? ?? note?.content ?? '',
     );
+    document = NoteDocumentController(
+      source: content,
+      canEdit: () =>
+          authorized &&
+          editable &&
+          !requiresReopen &&
+          c.notes.where((n) => n.id == widget.id).firstOrNull?.locked != true,
+      onChanged: () => unawaited(input()),
+    );
     dirty = draft != null;
     if (dirty) {
       feedback = validNote(title.text, content.text)
@@ -72,6 +85,12 @@ class _EditorScreenState extends State<EditorScreen>
   void changed() {
     final note = c.notes.where((n) => n.id == widget.id).firstOrNull;
     if (!authorized || !editable || note?.locked == true) focusSession.pause();
+    if (!authorized) {
+      debounce?.cancel();
+      dirty = false;
+      title.clear();
+      content.clear();
+    }
     if (authorized &&
         (note?.locked == true || (existedAtOpen && note == null))) {
       debounce?.cancel();
@@ -121,6 +140,7 @@ class _EditorScreenState extends State<EditorScreen>
     debounce?.cancel();
     c.removeListener(changed);
     WidgetsBinding.instance.removeObserver(this);
+    document.dispose();
     title.dispose();
     content.dispose();
     contentFocus.dispose();
@@ -173,19 +193,14 @@ class _EditorScreenState extends State<EditorScreen>
     if (!authorized || !editable || requiresReopen || note?.locked == true) {
       return;
     }
-    final updated = toggleWritingTask(expected, content.text, task);
-    if (updated == null) return;
-    content.value = content.value.copyWith(
-      text: updated,
-      composing: TextRange.empty,
-    );
-    unawaited(input());
+    if (expected != content.text) return;
+    document.setTask(task.markerOffset, !task.done);
   }
 
   void jumpToHeading(int offset) {
-    if (!authorized || offset > content.text.length) return;
+    if (!authorized || offset > document.text.length) return;
     contentFocus.requestFocus();
-    content.selection = TextSelection.collapsed(offset: offset);
+    document.select(offset);
     final field = contentFocus.context;
     if (field != null) Scrollable.ensureVisible(field, duration: Duration.zero);
   }
@@ -292,6 +307,22 @@ class _EditorScreenState extends State<EditorScreen>
             canEdit: editable,
           ),
         );
+      case 'protect':
+        if (note?.role != 'owner' ||
+            dirty ||
+            c.hasPending(widget.id) ||
+            c.drafts.containsKey(widget.id) ||
+            requiresReopen) {
+          return;
+        }
+        await showDialog<void>(
+          context: context,
+          builder: (_) => NoteProtectionDialog(
+            controller: c,
+            id: widget.id,
+            action: ProtectionAction.enable,
+          ),
+        );
     }
   }
 
@@ -299,21 +330,21 @@ class _EditorScreenState extends State<EditorScreen>
   Widget build(BuildContext context) {
     if (!authorized) {
       return Scaffold(
-        appBar: AppBar(),
+        appBar: noteAppBar(),
         body: const Center(child: Text('Phiên tài khoản đã kết thúc.')),
       );
     }
     final note = c.notes.where((n) => n.id == widget.id).firstOrNull;
     if (note?.locked == true) {
       return Scaffold(
-        appBar: AppBar(),
+        appBar: noteAppBar(),
         body: const Center(child: Text('Ghi chú đã bị khóa.')),
       );
     }
 
     if (existedAtOpen && note == null && !c.hasPending(widget.id)) {
       return Scaffold(
-        appBar: AppBar(),
+        appBar: noteAppBar(),
         body: const EmptyNotes(
           title: 'Bạn không còn quyền truy cập ghi chú này.',
           detail: 'Quay lại danh sách để tiếp tục.',
@@ -345,7 +376,7 @@ class _EditorScreenState extends State<EditorScreen>
         if (!didPop) unawaited(leave());
       },
       child: Scaffold(
-        appBar: AppBar(
+        appBar: noteAppBar(
           leading: IconButton(
             tooltip: 'Quay lại',
             onPressed: leave,
@@ -488,11 +519,19 @@ class _EditorScreenState extends State<EditorScreen>
             ],
           ],
         ),
-        body: ReadingCanvas(
-          controller: editorScroll,
-          panel: false,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+        body: DocumentWorkspace(
+          title: title,
+          document: document,
+          contentFocus: contentFocus,
+          scrollController: editorScroll,
+          readOnly: !editable || requiresReopen,
+          titleKey: const Key('note-title'),
+          contentKey: const Key('note-content'),
+          fontSize: c.fontSize,
+          focusMode: focusMode,
+          onTitleChanged: () => unawaited(input()),
+          leading: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               if (focusMode) ...[
                 FocusBar(session: focusSession),
@@ -581,27 +620,11 @@ class _EditorScreenState extends State<EditorScreen>
                     ],
                   ),
                 ),
-              const SizedBox(height: 16),
-              NoteTextField(
-                key: const Key('editor-title-control'),
-                fieldKey: const Key('note-title'),
-                controller: title,
-                titleMode: true,
-                readOnly: !editable || requiresReopen,
-                fontSize: c.fontSize,
-                onChanged: (_) => unawaited(input()),
-              ),
-              const SizedBox(height: 16),
-              NoteTextField(
-                key: const Key('editor-content-control'),
-                fieldKey: const Key('note-content'),
-                focusNode: contentFocus,
-                controller: content,
-                titleMode: false,
-                readOnly: !editable || requiresReopen,
-                fontSize: c.fontSize,
-                onChanged: (_) => unawaited(input()),
-              ),
+            ],
+          ),
+          organisation: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
               if (!focusMode && note != null && note.role == 'owner') ...[
                 const SizedBox(height: 16),
                 NoteSection(
@@ -681,21 +704,49 @@ class _EditorScreenState extends State<EditorScreen>
                   ),
                 ),
               ],
-              const SizedBox(height: 16),
-              WritingToolsPanel(
-                key: toolsKey,
-                controller: content,
-                readOnly: !editable || requiresReopen,
-                onToggle: toggleTask,
-                onHeading: jumpToHeading,
-              ),
-              const SizedBox(height: 8),
-              Text(
-                'Tự động lưu. Nhập tiêu đề và nội dung để tạo ghi chú; bản nháp chưa hoàn chỉnh được giữ riêng.',
-                style: Theme.of(context).textTheme.bodySmall,
-              ),
             ],
           ),
+          tools: WritingToolsPanel(
+            key: toolsKey,
+            controller: content,
+            documentSource: () => document.snapshotSource,
+            readOnly: !editable || requiresReopen,
+            onToggle: toggleTask,
+            onHeading: jumpToHeading,
+          ),
+          actions: [
+            if (note != null)
+              ListTile(
+                leading: const Icon(Icons.attach_file),
+                title: const Text('Đính kèm'),
+                onTap: !c.hasPending(widget.id)
+                    ? () => unawaited(toolAction('files'))
+                    : null,
+              ),
+            if (note != null)
+              ListTile(
+                leading: const Icon(Icons.auto_awesome_outlined),
+                title: const Text('Tóm tắt AI'),
+                onTap:
+                    !dirty &&
+                        !c.hasPending(widget.id) &&
+                        !c.drafts.containsKey(widget.id)
+                    ? () => unawaited(toolAction('ai'))
+                    : null,
+              ),
+            if (note?.role == 'owner')
+              ListTile(
+                leading: const Icon(Icons.lock_outline),
+                title: const Text('Bảo vệ ghi chú'),
+                onTap:
+                    !dirty &&
+                        !c.hasPending(widget.id) &&
+                        !c.drafts.containsKey(widget.id) &&
+                        !requiresReopen
+                    ? () => unawaited(toolAction('protect'))
+                    : null,
+              ),
+          ],
         ),
       ),
     );

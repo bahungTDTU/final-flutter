@@ -44,6 +44,8 @@ dependencies:
   file_selector: 1.1.0
   video_player: 2.14.0
   web: 1.1.1
+  flutter_quill: 11.6.0
+  markdown: 7.3.0
 
 dev_dependencies:
   flutter_test:

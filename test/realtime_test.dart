@@ -1,4 +1,7 @@
 import 'dart:async';
+
+import 'package:note_together/ui/rich_note_field.dart';
+
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -319,25 +322,29 @@ void main() {
           home: EditorScreen(controller: c, id: 'n'),
         ),
       );
-      final field = tester.widget<TextField>(
+      final field = tester.widget<NoteRichTextField>(
         find.byKey(const Key('note-content')),
       );
-      field.controller!.selection = const TextSelection.collapsed(offset: 3);
+      field.document.selection = const TextSelection.collapsed(offset: 3);
       c.notes = [note(2, 'Updated remotely')];
       c.notifyListeners();
       await tester.pump();
-      expect(field.controller!.text, 'Updated remotely');
-      expect(field.controller!.selection.baseOffset, 3);
+      expect(field.document.text, 'Updated remotely');
+      expect(field.document.selection.baseOffset, 3);
       expect(
         tester
-            .widget<TextField>(find.byKey(const Key('note-content')))
+            .widget<NoteRichTextField>(find.byKey(const Key('note-content')))
             .readOnly,
         true,
       );
       expect(sent, isEmpty);
       await tester.tap(find.text('Chỉnh sửa phiên bản mới'));
       await tester.pumpAndSettle();
-      await tester.enterText(find.byKey(const Key('note-content')), 'My edit');
+      await enterDocumentText(
+        tester,
+        find.byKey(const Key('note-content')),
+        'My edit',
+      );
       await tester.pump(const Duration(seconds: 1));
       await tester.pumpAndSettle();
       expect(sent.single['base_revision'], 2);
@@ -355,7 +362,8 @@ void main() {
         ),
       );
       await tester.enterText(find.byKey(const Key('note-title')), '');
-      await tester.enterText(
+      await enterDocumentText(
+        tester,
         find.byKey(const Key('note-content')),
         'Local unsent',
       );
@@ -365,8 +373,8 @@ void main() {
       await tester.pump();
       expect(
         tester
-            .widget<TextField>(find.byKey(const Key('note-content')))
-            .controller!
+            .widget<NoteRichTextField>(find.byKey(const Key('note-content')))
+            .document
             .text,
         'Local unsent',
       );

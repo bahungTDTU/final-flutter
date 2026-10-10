@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:note_together/ui/rich_note_field.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:note_together/domain/note.dart';
@@ -52,8 +53,8 @@ void main() {
     expect(find.text('Đang nối lại'), findsNothing);
     expect(
       tester
-          .widget<TextField>(find.byKey(const Key('note-content')))
-          .controller!
+          .widget<NoteRichTextField>(find.byKey(const Key('note-content')))
+          .document
           .text,
       'Chưa gửi lên server',
     );
@@ -148,8 +149,8 @@ void main() {
       expect(find.text('Đã đồng bộ'), findsNothing);
       expect(
         tester
-            .widget<TextField>(find.byKey(const Key('note-content')))
-            .controller!
+            .widget<NoteRichTextField>(find.byKey(const Key('note-content')))
+            .document
             .text,
         'Nội dung đã giữ',
       );

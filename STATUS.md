@@ -1,4 +1,42 @@
-# NoteTogether - trạng thái 09/10/2026
+# NoteTogether - trạng thái 10/10/2026
+
+## Xuất bản editor/theme theo yêu cầu —10/10/2026
+
+Người dùng đã ủy quyền push. PR trước (#2) đã merge; branch mới
+`codex/adaptive-word-editor` bắt đầu từ `origin/master` efbb8e7, cùng source tree
+với base717f0ab đã nghiệm thu. Preflight xác minh192 source hashes khớp evidence,
+patch sạch và không phát hiện secret trong các file chuẩn bị xuất bản.
+Local gates210 Flutter/108 backend, Web/APK build và Chrome QA là kết quả09/10
+trên source đã xác minh, không ghi là chạy lại10/10. CI hiện hành tra trên PR mới;
+không merge trong yêu cầu push này. Xem evidence/2026-10-10-github-publication/INDEX.md.
+Các đoạn “chưa commit/push” dưới đây giữ trạng thái tại thời điểm QA trước publication.
+
+## Editor định dạng trực tiếp như Word —09/10/2026
+
+PASS: format95files0changes, analyze sạch,210 Flutter tests/108 backend tests; Chrome8luồng/5viewport/14ảnh,0console errors/warnings. Web release local/offline40static và APK debug compile PASS.
+
+Theo lựa chọn người dùng, PC/phone dùng bố cục khác nhau: PC ribbon/trang viết/inspector,
+mục lục từ1350px; phone một cột và toolbar dưới. Định dạng/save thật, đọc/zoom/tập trung,
+tìm-thay thế, plain projection search/AI, encrypted recovery và frozen base giữ nguyên.
+Khắc phục nhập Web/accessibility và Select All xóa newline cấu trúc gây vùng viết trống.
+Không có bảng/DOCX/PDF export. Source mới trên codex/ui-ux-performance + working changes;
+không commit/push. Gate và14 ảnh Chrome: evidence/2026-10-09-document-editor/INDEX.md.
+Native runtime/FPS/IME/screen reader/Gemini thật/release chưa chạy cho editor mới.
+Các benchmark và số test ở các đoạn phía dưới là snapshot trước bước này.
+
+## Đồng bộ toàn bộ widget theo theme dashboard —09/10/2026
+
+Theme chung đã phủ app bar, auth, editor/reader bảo vệ, AI/studio, dialog, sheet,
+navigation, chips, form, menu và feedback. Tím-xanh/lavender ở light; navy ở dark;
+title/content vẫn tách khối, vùng đọc dùng nền nhẹ. Không thêm ticker/blur lặp.
+Sửa theme value equality để tránh animation thừa và tương phản mô tả auth.
+Format90files0changes/analyze sạch,198 Flutter/94 backend PASS; HTTP4roles PASS.
+Chrome154/Playwright tại7360/API8022:12 luồng,4viewport,24 ảnh,0 console errors/warnings;
+autosave GET, theme/resize giữ nội dung, shares/upload và unlock/relock che metadata PASS.
+AI dùng fixture tường minh. Web compile/offline40static và APK debug compile PASS;
+không chạy lại native UI/FPS/screen reader/Gemini/release acceptance cho theme này.
+Base717f0ab trên codex/ui-ux-performance + working changes, chưa commit/push đợt mới.
+Xem docs/THEME_WIDGET_COHESION.md và evidence/2026-10-09-theme-cohesion/INDEX.md.
 
 ## Gate trước publication UI/performance —09/10/2026
 

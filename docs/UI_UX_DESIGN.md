@@ -1,4 +1,26 @@
-# NoteTogether – UI/UX design, cập nhật 03/10/2026
+# NoteTogether – UI/UX design, cập nhật 09/10/2026
+
+## Editor trực tiếp —09/10/2026
+
+PC từ1000px dùng ribbon + document + inspector, từ1350px có mục lục; mobile/tablet
+và chữ trên150% chuyển một cột, toolbar dưới. Trang viết nền nhẹ, title lớn, nhãn ngoài
+và divider tách nội dung, toolbar selected state rõ. Controller/focus/caret giữ qua resize.
+Word formatting lưu thật; note Markdown cũ chỉ đổi view khi mở. Checklist và counters dùng
+văn bản hiển thị. Reader bảo vệ dùng cùng workspace nhưng bỏ editor hoàn toàn khi relock.
+Xem ADAPTIVE_DOCUMENT_EDITOR.md và evidence/2026-10-09-document-editor; thiết kế NoteSection
+và ảnh theme dưới đây phản ánh snapshot trước khi chuyển sang trang viết trực tiếp.
+
+## Theme toàn ứng dụng —09/10/2026, sau dashboard
+
+Palette dashboard trở thành theme chung: canvas light #ECEEFB, dark #12182D;
+primary indigo #5C43C9/#C8BDFF, secondary blue và tertiary mint. Các cấp semantic surface
+được định nghĩa riêng để panel/dialog/sheet/control phân biệt rõ, field giữ nền đọc được.
+App bar dùng BrandGradient cùng header; auth dùng BrandPanel với chữ/icon trắng.
+Title/content NoteSection giữ nhãn và counter riêng, gradient nhẹ, không nền màu đậm sau chữ.
+Navigation/chips/segmented controls có selected state; error/disabled giữ semantic colors.
+State mapping có value equality; không thêm ticker, shader, blur hoặc font tải mạng.
+Xem THEME_WIDGET_COHESION.md và evidence/2026-10-09-theme-cohesion cho ảnh light/dark.
+Đây là bước tiếp theo của opt-in dashboard ở snapshot dưới đây.
 
 ## Dashboard màu sắc theo phản hồi —09/10/2026
 

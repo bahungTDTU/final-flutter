@@ -1,3 +1,7 @@
+import '../test_driver/editor_input.dart';
+
+import 'package:note_together/ui/rich_note_field.dart';
+
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -50,7 +54,7 @@ void main() {
         tester.binding.focusedEditable = null;
         await tester.ensureVisible(field);
         await tester.pumpAndSettle();
-        await tester.enterText(field, value);
+        await enterNoteField(tester, field, value);
         FocusManager.instance.primaryFocus?.unfocus();
         await tester.pumpAndSettle();
       }
@@ -116,10 +120,10 @@ void main() {
       );
       await until(() => c.notes.length == 1 && !c.syncing && c.pending.isEmpty);
       final id = c.notes.single.id;
-      final field = tester.widget<TextField>(
+      final field = tester.widget<NoteRichTextField>(
         find.byKey(const Key('note-content')),
       );
-      final selection = field.controller!.selection;
+      final selection = field.document.selection;
       final themeAction = find.byTooltip('Đổi giao diện');
       if (themeAction.evaluate().isNotEmpty) {
         await tester.tap(themeAction);
@@ -131,11 +135,11 @@ void main() {
       }
       await until(() => !c.dark && !c.syncing && c.pendingPreferences.isEmpty);
       expect(tester.widget<EditorScreen>(find.byType(EditorScreen)).id, id);
-      expect(field.controller!.text, 'Giữ ý tưởng và cùng nhau phát triển.');
-      expect(field.controller!.selection, selection);
+      expect(field.document.text, 'Giữ ý tưởng và cùng nhau phát triển.');
+      expect(field.document.selection, selection);
       await picture('android-editor-light');
       final remote = await api.call('GET', '/notes/$id', token: c.token);
-      expect(remote['content'], field.controller!.text);
+      expect(remote['content'], field.document.text);
       await tester.tap(find.byTooltip('Quay lại'));
       await tester.pumpAndSettle();
       await tester.ensureVisible(find.text('Danh sách'));

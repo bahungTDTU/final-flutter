@@ -7,7 +7,7 @@ class DependencyPreview extends StatelessWidget {
   const DependencyPreview({super.key});
   @override
   Widget build(BuildContext context) => Scaffold(
-    appBar: AppBar(title: const Text('PREVIEW · dữ liệu minh họa')),
+    appBar: noteAppBar(title: const Text('PREVIEW · dữ liệu minh họa')),
     body: SingleChildScrollView(
       padding: const EdgeInsets.all(24),
       child: Column(

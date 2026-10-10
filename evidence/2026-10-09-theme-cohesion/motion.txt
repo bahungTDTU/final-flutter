@@ -1,0 +1,6 @@
+00:00 +0: loading D:/flutter cuoi ki/test/prism_motion_test.dart
+00:00 +0: Hover lifts only the card, settles, and returns without a loop
+00:00 +1: Reduced motion keeps hover geometry fixed and reveal immediately readable
+00:00 +2: Controller refresh does not restart decorative or theme animation
+00:01 +3: Prism text, tinted surfaces and controls retain measured contrast
+00:01 +4: All tests passed!

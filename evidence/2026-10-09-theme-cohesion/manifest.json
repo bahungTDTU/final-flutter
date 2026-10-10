@@ -1,0 +1,92 @@
+{
+  "date_utc": "2026-10-09T12:50:21.135258+00:00",
+  "branch": "codex/ui-ux-performance",
+  "base_commit": "717f0ab6b04b6f63ad7f921a82b91cd2f4b41319",
+  "source_state": "uncommitted theme working changes",
+  "published": false,
+  "merged": false,
+  "local": {
+    "flutter_tests": 198,
+    "backend_tests": 94,
+    "analyze": "PASS",
+    "format_files": 90,
+    "format_changes": 0,
+    "motion_tests": 4
+  },
+  "browser": {
+    "date_utc": "2026-10-09T12:43:03.600Z",
+    "version": "154.0.8037.99",
+    "scenarios": 12,
+    "screenshots": 24,
+    "console_errors": 0,
+    "console_warnings": 0,
+    "viewport_scope": "Not all scenarios ran at every viewport; see INDEX.md"
+  },
+  "ai": "Explicit fixture-not-an-llm; no Google request",
+  "artifacts": {
+    "build/web/main.dart.js": {
+      "sha256": "68ef18d71792b61e21682f750027a2ed6e08c1cb81de57233c4ecb0f5a1a4bdd",
+      "size": 3852934
+    },
+    "build/web/offline_worker.js": {
+      "sha256": "599c83a214a1a8c4ae575fae3fca010fed6c4ce606448605452570daf444d0e4",
+      "size": 2728
+    },
+    "build/app/outputs/flutter-apk/app-debug.apk": {
+      "sha256": "a94921939c822f36f95e71717b5e955ff418048a7bac63409359d703dc0f9059",
+      "size": 167180611
+    }
+  },
+  "artifact_api": "http://127.0.0.1:8000",
+  "browser_qa_api": "http://127.0.0.1:8022",
+  "offline_cache": "notetogether-static-096a4dfd86918f16",
+  "static_resources": 40,
+  "not_run": [
+    "new-theme native runtime",
+    "physical device",
+    "new-theme FPS",
+    "TalkBack/NVDA",
+    "Gemini acceptance",
+    "signing/HTTPS/release acceptance/submission"
+  ],
+  "evidence_sha256": {
+    "acl.json": "2dae31dab7991662474bb63d9e907fc4b45ef0d723eaf7b784b9b764def8b82d",
+    "analyze.txt": "496fa81928d2aa4dcbe738aa2e9836e8b2d998d600bdf597ad6bfd58b277a08a",
+    "android-debug-build.txt": "b54d18a50edc887ced472e221344b639332777a0ed683c3905e5c0d9d28dd066",
+    "auth-desktop.png": "6dae23532279932c299ae5eb9fb18184d9de6749c92e015a57219cebfaa15c1a",
+    "avatar-light.png": "b0ac3b71c8fd7aebadce6b0c15cf83f752b78c524dabcd2ce4172b2287a0fa8b",
+    "checks-before-auth-contrast.txt": "61550f716bcfbda76c0b6e404f5afd3e6dc5b1ce588ad6e533de1d7042f8caab",
+    "editor-light.png": "68baae22bf3a0b09665e315bd21d64107c336a900e89ccc79923a4a9561639c5",
+    "editor-mobile-dark.png": "522ee013fd1342c879d31d06fd64d2dd2cd420cec46bf6b78d8c5baa00442b99",
+    "files-light.png": "5137e8e7b9245947a9b89473fe6f3324a4c6ddba24f3fb4dd078cfb3694916f3",
+    "filter-light.png": "6f0cb1707996b74800c7b27e45fd484ca3acfe8c4baeb25645add3e6007d96d6",
+    "flutter-final.txt": "a259acf6c3aea430593340c37cf8c035bd8b221a167e1381cd4473cae9e7f740",
+    "home-desktop.png": "6b8969d82c9f738ec70f7a8842e816bccd2cca9772e5b025b5b590292bb4811f",
+    "home-landscape-dark.png": "8822afcd20293a73547a5d06f12651027c9751bc393be6d591db81f06862578d",
+    "home-mobile-dark.png": "28a41f22f2711c6bd497140260546ccbecb1c57456c2ca8a58b2730bff736dbb",
+    "home-tablet-dark.png": "04d369f75bb51cd2b880c4bd3f76b7eda84ce676682c29761ee242636819c0ba",
+    "INDEX.md": "a66ef3893934368340527fb13d969cdaaeb460861a19a21ade79e062fa0d2308",
+    "label-input-light.png": "8408671c5c3e56b3303fb59032291b14a5ef0f2510dfc86ca87507dc1b277bbe",
+    "labels-light.png": "63c660633da14755aca944bd444385f23b90c6b26f6f5698a1f5b397b837b66f",
+    "motion.txt": "076a787c6652d3f73b647ab9e22d3b3944af2e2d71570aab713e5f1891fb3381",
+    "password-light.png": "f84db056646a076416d4bef51be127c644b37b270740af52c85a4f6a8a447bde",
+    "protected-editor-light.png": "8eb7e64d5f632bd0da6852d4e5cb56ac3a08fa6ecf7ef449d47de9a6235af046",
+    "protected-reader-light.png": "7eeee169fdd5ae70f491ceb204b4ba469e5b158d5f8f5ae960015e2fa3e7cb2f",
+    "protected-unlock-light.png": "37900a580c7b48442a2cfe904775447292b771fe65bf5d2ba711313018649e7c",
+    "qa-fixture.py": "c3c4c4feb408420a4a3163ff798f935afd2ca1aaa3b9ff641c6e117d9c253d99",
+    "qa.cjs": "fd629e58147b7642211bbae235582cf95169752699a4e92e5bde8000209ebf52",
+    "qa.json": "3427e5ce7ef6291a28f30fb96b3319a98828c34beda972e23131a27a68a69b41",
+    "qa.txt": "3d6f944d05bb8642081a5cabc689ee25562a4fb61936c939327871e32eb240b1",
+    "questions-light.png": "1a1f9bceb00a21cfbab143b9cefae751c2dec4f6d521d014bc5a3982ac696082",
+    "settings-dark.png": "e7f88553ca9b04c89d56464dc42663d4b09675dbfcb223b27477164dff883219",
+    "settings-light.png": "941e8ad51f2246bac1f0b6233443fdbcd424420b2c156028190bbb7c989222cb",
+    "settings-mobile-dark.png": "38db0ec93b174b61cb7ef5e49eb0018cbae5f47980fd978a14c543b4f47a0ba3",
+    "share-light.png": "d1a92273f1a2adea8aa11b1bf51098548a4edf6f99aa2ee6dc5fdd207e75bda6",
+    "source-hashes.json": "b27936d62d989c0f6516ee1a9d4acd954ae45e6b5f4bfc45ee4df07a5b43ba98",
+    "studio-light.png": "af4641307c846ea8e31e5bfa90b554c632c44634d51da72fd843ae864d4a6074",
+    "studio-preview-light.png": "d27c0a6226410fba96a23f9ea73c0dfaf9d186b9a1291d416ac71c83569808a6",
+    "summary-light.png": "08da0c7ce6ad3a78f2a88501cf9cc3e9be98f84b574628130acc19faeb7c3a1c",
+    "web-normal-build.txt": "293ec6f4cb5e8d0f73b0f8c0e906d76b0a1529c4c377907f4da64e72b8905812",
+    "web-qa-build.txt": "a6f6d43765a4dccffd3f0bc8c6551a8e36ccf8cda4fb08de6ad565ac703ac83a"
+  }
+}

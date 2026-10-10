@@ -286,12 +286,12 @@ class PrismSurface extends StatelessWidget {
                     backgroundColors ??
                     [
                       Color.alphaBlend(
-                        p.tones[0].light.withValues(alpha: tinted ? .10 : .025),
+                        p.tones[0].light.withValues(alpha: tinted ? .20 : .07),
                         surface,
                       ),
                       surface,
                       Color.alphaBlend(
-                        p.tones[2].light.withValues(alpha: tinted ? .06 : .015),
+                        p.tones[1].light.withValues(alpha: tinted ? .12 : .05),
                         surface,
                       ),
                     ],

@@ -1,3 +1,6 @@
+import '../test_driver/editor_input.dart';
+
+import 'package:note_together/ui/rich_note_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -28,7 +31,7 @@ Future<void> until(WidgetTester tester, bool Function() ready) async {
 Future<void> type(WidgetTester tester, Finder field, String value) async {
   tester.binding.focusedEditable = null;
   await tester.ensureVisible(field);
-  await tester.enterText(field, value);
+  await enterNoteField(tester, field, value);
   FocusManager.instance.primaryFocus?.unfocus();
   await SystemChannels.textInput.invokeMethod<void>('TextInput.hide');
   await tester.pumpAndSettle();
@@ -197,7 +200,7 @@ void main() {
       await tester.pumpAndSettle();
       expect(
         tester
-            .widget<TextField>(find.byKey(const Key('note-content')))
+            .widget<NoteRichTextField>(find.byKey(const Key('note-content')))
             .readOnly,
         false,
       );
@@ -249,14 +252,14 @@ void main() {
       await tester.pumpAndSettle();
       expect(
         tester
-            .widget<TextField>(find.byKey(const Key('note-content')))
+            .widget<NoteRichTextField>(find.byKey(const Key('note-content')))
             .readOnly,
         true,
       );
       expect(
         tester
-            .widget<TextField>(find.byKey(const Key('note-content')))
-            .controller!
+            .widget<NoteRichTextField>(find.byKey(const Key('note-content')))
+            .document
             .text,
         'Saved by native editor',
       );
@@ -315,8 +318,8 @@ void main() {
       expect(find.byType(EditorScreen), findsOneWidget);
       expect(
         tester
-            .widget<TextField>(find.byKey(const Key('note-content')))
-            .controller!
+            .widget<NoteRichTextField>(find.byKey(const Key('note-content')))
+            .document
             .text,
         'Draft before native revoke',
       );

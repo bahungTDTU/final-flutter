@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:note_together/ui/rich_note_field.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:note_together/domain/note.dart';
 import 'package:note_together/domain/writing_tools.dart';
@@ -119,14 +120,15 @@ void main() {
         ),
       );
       await tester.pumpAndSettle();
-      final field = tester.widget<TextField>(
+      final field = tester.widget<NoteRichTextField>(
         find.byKey(const Key('note-content')),
       );
-      await tester.enterText(
+      await enterDocumentText(
+        tester,
         find.byKey(const Key('note-content')),
-        '${field.controller!.text}\nBản nháp',
+        '${field.document.text}\nBản nháp',
       );
-      field.controller!.selection = const TextSelection(
+      field.document.selection = const TextSelection(
         baseOffset: 2,
         extentOffset: 7,
       );
@@ -135,13 +137,20 @@ void main() {
       await c.setPreferences({'dark': true});
       await tester.pump(const Duration(milliseconds: 190));
       await expandTools(tester);
-      await tester.ensureVisible(find.byType(CheckboxListTile));
-      await tester.tap(find.byType(CheckboxListTile));
+      final task = find.byWidgetPredicate(
+        (w) =>
+            w is CheckboxListTile &&
+            w.title is Text &&
+            (w.title as Text).data == 'Việc thật',
+      );
+      await tester.ensureVisible(task);
+      await tester.tap(task);
       await tester.pump(const Duration(milliseconds: 190));
-      expect(field.controller!.text, contains('- [x] Việc thật'));
-      expect(field.controller!.text, contains('Bản nháp'));
+      expect(WritingSnapshot(field.document.source.text).completed, 1);
+      expect(field.document.text, contains('Việc thật'));
+      expect(field.document.text, contains('Bản nháp'));
       expect(
-        field.controller!.selection,
+        field.document.selection,
         const TextSelection(baseOffset: 2, extentOffset: 7),
       );
       await tester.tap(find.byKey(const Key('focus-mode')));
@@ -152,7 +161,7 @@ void main() {
       addTearDown(tester.view.resetDevicePixelRatio);
       await tester.pump();
       expect(
-        field.controller!.selection,
+        field.document.selection,
         const TextSelection(baseOffset: 2, extentOffset: 7),
       );
       await tester.tap(find.byKey(const Key('focus-mode')));
@@ -315,12 +324,14 @@ void main() {
     await tester.ensureVisible(find.widgetWithText(TextButton, 'Ý chính'));
     await tester.tap(find.widgetWithText(TextButton, 'Ý chính'));
     await tester.pump();
-    final field = tester.widget<TextField>(
+    final field = tester.widget<NoteRichTextField>(
       find.byKey(const Key('note-content')),
     );
-    expect(field.focusNode!.hasFocus, true);
-    expect(field.controller!.selection.baseOffset, 0);
-    expect(field.controller!.text, note().content);
+    expect(field.focusNode.hasFocus, true);
+    expect(field.document.selection.baseOffset, 0);
+    expect(field.document.source.text, note().content);
+    expect(field.document.text, contains('Ý chính'));
+    expect(field.document.text, isNot(contains('# Ý chính')));
     expect(c.pending, isEmpty);
     await tester.pumpWidget(const SizedBox());
     c.dispose();

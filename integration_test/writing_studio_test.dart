@@ -1,4 +1,8 @@
+import '../test_driver/editor_input.dart';
+
 import 'package:flutter/material.dart';
+import 'package:note_together/ui/rich_note_field.dart';
+import 'package:note_together/domain/note_document.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
 import 'package:note_together/data/api.dart';
@@ -54,10 +58,13 @@ void main() {
       await tester.tap(find.byKey(const Key('use-template')));
       await tester.pumpAndSettle();
       final id = c.drafts.keys.single;
-      final template = NoteTemplate.all.firstWhere((t) => t.id == 'meeting');
-      await tester.enterText(
+      final body = tester.widget<NoteRichTextField>(
         find.byKey(const Key('note-content')),
-        '${template.content}\nNghiệm thu trên Android.',
+      );
+      await enterNoteField(
+        tester,
+        find.byKey(const Key('note-content')),
+        '${body.document.text}\nNghiệm thu trên Android.',
       );
       await tester.pump(const Duration(milliseconds: 900));
       await tester.pumpAndSettle();
@@ -85,7 +92,16 @@ void main() {
       }
       expect(c.pending, isEmpty);
       final remote = await api.call('GET', '/notes/$id', token: c.token);
-      expect(remote['content'], contains('- [x] Phân công người phụ trách'));
+      expect(
+        plainNoteContent(remote['content'] as String),
+        contains('Nghiệm thu trên Android.'),
+      );
+      expect(
+        WritingSnapshot(remote['content'] as String).tasks
+            .singleWhere((task) => task.text == 'Phân công người phụ trách')
+            .done,
+        true,
+      );
       expect(remote['id'], id);
       expect(remote['revision'], 2);
       await binding.takeScreenshot('native-studio-checklist');

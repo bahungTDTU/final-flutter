@@ -1,3 +1,5 @@
+import '../test_driver/editor_input.dart';
+
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -104,7 +106,8 @@ void main() {
       Future<void> open() async {
         await tester.tap(find.text('Ghi chú đã khóa'));
         await tester.pumpAndSettle();
-        await tester.enterText(
+        await enterNoteField(
+          tester,
           find.byKey(const Key('unlock-note-password')),
           notePassword,
         );
@@ -152,7 +155,8 @@ void main() {
       await tester.ensureVisible(find.text('Chỉnh sửa phiên bản mới'));
       await tester.tap(find.text('Chỉnh sửa phiên bản mới'));
       await tester.pumpAndSettle();
-      await tester.enterText(
+      await enterNoteField(
+        tester,
         find.byKey(const Key('protected-content-editor')),
         'Native protected autosave',
       );
@@ -177,7 +181,8 @@ void main() {
       await c.synchronize();
       await tester.pumpAndSettle();
       expect(c.online, false);
-      await tester.enterText(
+      await enterNoteField(
+        tester,
         find.byKey(const Key('unlock-note-password')),
         notePassword,
       );
@@ -188,7 +193,8 @@ void main() {
       await tester.ensureVisible(find.text('Chỉnh sửa'));
       await tester.tap(find.text('Chỉnh sửa'));
       await tester.pumpAndSettle();
-      await tester.enterText(
+      await enterNoteField(
+        tester,
         find.byKey(const Key('protected-content-editor')),
         'Protected offline survives encrypted reopen',
       );

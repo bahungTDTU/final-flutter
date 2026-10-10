@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_quill/flutter_quill.dart';
 
 import '../state/app_controller.dart';
 import 'home.dart';
@@ -64,7 +65,10 @@ class _NoteTogetherAppState extends State<NoteTogetherApp>
     title: 'NoteTogether',
     locale: const Locale('vi'),
     supportedLocales: const [Locale('vi')],
-    localizationsDelegates: GlobalMaterialLocalizations.delegates,
+    localizationsDelegates: const [
+      ...GlobalMaterialLocalizations.delegates,
+      FlutterQuillLocalizations.delegate,
+    ],
     themeAnimationDuration:
         WidgetsBinding
             .instance
@@ -148,8 +152,7 @@ class _AuthScreenState extends State<AuthScreen> {
             child: Padding(
               padding: const EdgeInsets.all(24),
               child: PrismReveal(
-                child: SurfacePanel(
-                  tinted: true,
+                child: BrandPanel(
                   padding: const EdgeInsets.all(48),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -163,12 +166,7 @@ class _AuthScreenState extends State<AuthScreen> {
                       Text(
                         "Một nơi cho những\ný tưởng đáng giữ.",
                         style: Theme.of(context).textTheme.headlineLarge
-                            ?.copyWith(
-                              fontSize: 40,
-                              color: Theme.of(context)
-                                  .colorScheme
-                                  .onPrimaryContainer,
-                            ),
+                            ?.copyWith(fontSize: 40, color: Colors.white),
                       ),
                       const SizedBox(height: 16),
                       const Text(
@@ -566,7 +564,7 @@ class _TokenScreenState extends State<TokenScreen> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-    appBar: AppBar(title: const Text('Kích hoạt / đặt lại mật khẩu')),
+    appBar: noteAppBar(title: const Text('Kích hoạt / đặt lại mật khẩu')),
     body: Center(
       child: SingleChildScrollView(
         padding: const EdgeInsets.all(24),

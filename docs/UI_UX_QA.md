@@ -1,5 +1,35 @@
 # UI/UX QA – cập nhật 09/10/2026
 
+## Editor PC/phone trực tiếp —09/10/2026
+
+PASS: format95files0changes, analyze sạch,210 Flutter tests/108 backend tests; Chrome8luồng/5viewport/14ảnh,0console errors/warnings. Web release local/offline40static và APK debug compile PASS.
+
+Gate mới, ảnh và commands: evidence/2026-10-09-document-editor/INDEX.md. Chrome fixture
+thao tác keyboard/format, heading, find-replace, reload, theme/resize, read/focus/zoom,
+search, HTTP4roles và protected unlock/edit/save/relock. Grant kiểm tra trong đúng session
+đã unlock; không xuất token vào evidence. Browser plugin absent, dùng Playwright bundled.
+Ảnh đối chiếu concept và actual bằng view_image; layout/spacing không dùng mockup làm UI.
+Regression giữ revision lúc mở, durable/encrypted draft/outbox/races, lock/account/role guards;
+thêm Select All không làm trống vùng viết, undo/redo/limits và Ctrl F không tạo draft.
+Native integration harness compile/analyze là preparation; runtime/FPS/IME/TalkBack chưa chạy.
+Các kết quả số lượng và benchmark phía dưới là snapshot của source trước editor mới.
+
+## Theme toàn ứng dụng —09/10/2026, sau publication
+
+Format90files0changes, analyze sạch,198 Flutter/94 backend PASS; theme reduced-motion
+regression giữ nguyên sau sửa state resolver/value equality. HTTP owner/editor/viewer/stranger
+PASS. Web release-optimized compile/offline40static và Android APK debug compile PASS.
+Chrome154.0.8037.99 headless/Playwright bundled, Browser plugin absent:12 luồng tại7360/API8022,
+1440×960/390×844/768×1024/844×390,24 PNG;0console errors/warnings. Auth/settings/avatar/password/
+labels/filter/studio/editor/share/attachment/AI/protection/dark navigation được thao tác thật.
+GET xác nhận autosave, recipient viewer và upload; unlock→reader→edit→relock che metadata.
+Theme/resize giữ nội dung editor; không suy ra caret hay screen-reader từ lần browser này.
+AI provider fixture tường minh; password dialog cancel, chưa password-change acceptance.
+Các lần driver đầu sửa locator/focus/readonly expectation; final run đạt, raw retries giữ ngoài repo.
+View_image kiểm tra concept/dashboard và ảnh thực auth/editor/dialog/protected/light/dark.
+Không chạy lại native UI/FPS/TalkBack/Gemini thật; benchmark trước chỉ thuộc source trước theme.
+Lệnh, ảnh, hashes và scope: evidence/2026-10-09-theme-cohesion/INDEX.md.
+
 ## FPS/performance và Android —09/10/2026, bổ sung sau dashboard
 
 3 native workflows debug API36 Skia software PASS (registration/editor/studio/protected),
