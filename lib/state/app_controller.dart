@@ -8,6 +8,10 @@ import '../data/api.dart';
 import '../data/local_store.dart';
 import '../data/realtime_feed.dart';
 import '../domain/note.dart';
+import '../domain/workspace.dart';
+import '../domain/note_plan.dart';
+import '../domain/focus_session.dart';
+import '../domain/writing_tools.dart';
 
 class AppController extends ChangeNotifier {
   AppController(this.api, this.local, {this.realtime});
@@ -106,6 +110,8 @@ class AppController extends ChangeNotifier {
   bool sessionRemovalFailed = false;
   int _generation = 0;
   List<Note> notes = [];
+  WorkspaceData workspace = WorkspaceData();
+  final _importCommits = <String, Completer<bool>>{};
   List<Map<String, dynamic>> pending = [];
   List<Map<String, dynamic>> pendingPreferences = [];
   Map<String, dynamic> drafts = {}, conflicts = {}, recoveries = {};
@@ -256,6 +262,7 @@ class AppController extends ChangeNotifier {
     _accountLoaded = false;
     _hasAccountSnapshot = false;
     notes = [];
+    workspace = WorkspaceData();
     pending = [];
     pendingPreferences = [];
     drafts = {};
@@ -275,6 +282,7 @@ class AppController extends ChangeNotifier {
     final durable = await local.read(accountKey);
     _hasAccountSnapshot = durable != null;
     final cached = durable ?? {};
+    workspace = WorkspaceData.fromJson(cached['workspace'] as Map?);
     notes = (cached['notes'] as List? ?? [])
         .map((n) => Note.fromListingJson(Map<String, dynamic>.from(n as Map)))
         .toList();
@@ -334,6 +342,7 @@ class AppController extends ChangeNotifier {
     }
     final key = accountKey;
     final protectedSnapshot = Map<String, dynamic>.from(protectedVaults);
+    final workspaceSnapshot = workspace.toJson();
     final snapshot = {
       'notes': notes.map((n) => n.toListingJson()).toList(),
       'pending': pending.map((op) => Map<String, dynamic>.from(op)).toList(),
@@ -366,6 +375,8 @@ class AppController extends ChangeNotifier {
       final durable = await local.read(key);
       snapshot['protected_vaults'] =
           durable?['protected_vaults'] ?? protectedSnapshot;
+      // Independently serialized personal workspace must survive older captures.
+      snapshot['workspace'] = durable?['workspace'] ?? workspaceSnapshot;
       await local.write(key, snapshot);
       if (user != null && accountKey == key) _hasAccountSnapshot = true;
     });
@@ -403,6 +414,7 @@ class AppController extends ChangeNotifier {
             'recoveries': recoveries,
             'preferences': preferences,
             'protected_vaults': protectedVaults,
+            'workspace': workspace.toJson(),
           }
         : <String, dynamic>{};
     final write = _queueWrite(() async {
@@ -602,6 +614,7 @@ class AppController extends ChangeNotifier {
     token = null;
     _hasAccountSnapshot = false;
     notes = [];
+    workspace = WorkspaceData();
     pending = [];
     pendingPreferences = [];
     drafts = {};
@@ -634,6 +647,346 @@ class AppController extends ChangeNotifier {
         /* Expires in 24h. */
       }
     }
+  }
+
+  /// Serialize personal organization independently of ordinary note captures.
+  /// Reading the durable record here preserves drafts/vault writes queued first.
+  Future<void> _editWorkspace(
+    WorkspaceData Function(WorkspaceData) edit,
+  ) async {
+    if (user == null || !_accountLoaded) {
+      throw StateError('Tài khoản chưa sẵn sàng.');
+    }
+    final key = accountKey;
+    final generation = _generation;
+    bool active() =>
+        !_disposed &&
+        user != null &&
+        accountKey == key &&
+        generation == _generation;
+    if (!_hasAccountSnapshot) await _persist();
+    await _queueWrite(() async {
+      if (!active()) throw StateError('Tài khoản đã thay đổi.');
+      final root = await local.read(key);
+      if (!active() || root == null) {
+        throw StateError('Kho tài khoản chưa sẵn sàng.');
+      }
+      final next = edit(WorkspaceData.fromJson(root['workspace'] as Map?));
+      root['workspace'] = next.toJson();
+      await local.write(key, root);
+      if (active()) {
+        workspace = next;
+        notifyListeners();
+      }
+    });
+    if (!active()) throw StateError('Tài khoản đã thay đổi.');
+  }
+
+  List<Note> get workspaceNotes => notes
+      .where((n) => !n.locked && !accessUnavailable.contains(n.id))
+      .toList();
+
+  Future<void> saveNotePlan(
+    String id, {
+    PlanStage stage = PlanStage.planned,
+    PlanPriority priority = PlanPriority.normal,
+    String? dueDay,
+  }) => _editWorkspace((current) {
+    if (!workspaceNotes.any((n) => n.id == id)) {
+      throw StateError('Ghi chú không còn khả dụng.');
+    }
+    if (!validPlanDay(dueDay)) throw StateError('Ngày hạn không hợp lệ.');
+    if (!current.plans.containsKey(id) && current.plans.length >= 500) {
+      throw StateError('Tối đa 500 ghi chú trong kế hoạch.');
+    }
+    return current.copy(
+      plans: {
+        ...current.plans,
+        id: NotePlan(id, stage: stage, priority: priority, dueDay: dueDay),
+      },
+    );
+  });
+
+  Future<void> moveNotePlan(String id, PlanStage stage) =>
+      _editWorkspace((current) {
+        if (!workspaceNotes.any((n) => n.id == id)) {
+          throw StateError('Ghi chú không còn khả dụng.');
+        }
+        final plan = current.plans[id];
+        if (plan == null) throw StateError('Ghi chú đã được bỏ khỏi kế hoạch.');
+        return current.copy(plans: {...current.plans, id: plan.move(stage)});
+      });
+
+  Future<void> removeNotePlan(String id) => _editWorkspace(
+    (current) => current.copy(plans: {...current.plans}..remove(id)),
+  );
+
+  Future<void> startFocus(
+    int minutes, {
+    bool breakTime = false,
+    DateTime? now,
+  }) => _editWorkspace((current) {
+    if (![5, 15, 25, 50].contains(minutes) || (breakTime && minutes != 5)) {
+      throw StateError('Thời lượng không hợp lệ.');
+    }
+    if (current.focus.session != null) {
+      throw StateError('Hãy kết thúc phiên hiện tại trước khi bắt đầu.');
+    }
+    final clock = now ?? DateTime.now();
+    final session = FocusSession(
+      id: uuid.v4(),
+      breakTime: breakTime,
+      seconds: minutes * 60,
+      remainingSeconds: minutes * 60,
+      endsAtMs: clock.millisecondsSinceEpoch + minutes * 60000,
+    );
+    return current.copy(focus: current.focus.copy(session: session));
+  });
+
+  Future<void> changeFocus(
+    String id,
+    String action, {
+    DateTime? now,
+  }) => _editWorkspace((current) {
+    final focus = current.focus;
+    final session = focus.session;
+    if (session == null || session.id != id) return current;
+    final clock = now ?? DateTime.now();
+    if (action == 'reset') {
+      return current.copy(focus: focus.copy(clearSession: true));
+    }
+    if (session.running && session.remaining(clock) == 0) {
+      // Use the deadline, not the later reopen time, for daily statistics.
+      final records =
+          !session.breakTime && !focus.completed.any((v) => v.id == id)
+          ? [
+              FocusCompletion(id, session.endsAtMs!, session.seconds),
+              ...focus.completed,
+            ].take(100).toList()
+          : focus.completed;
+      return current.copy(
+        focus: focus.copy(clearSession: true, completed: records),
+      );
+    }
+    if (action == 'pause' && session.running) {
+      return current.copy(focus: focus.copy(session: session.pause(clock)));
+    }
+    if (action == 'resume' && !session.running) {
+      return current.copy(focus: focus.copy(session: session.resume(clock)));
+    }
+    if (action != 'finish') throw StateError('Thao tác đồng hồ không hợp lệ.');
+    return current;
+  });
+
+  Future<void> setFocusGoal(int goal) => _editWorkspace((current) {
+    if (goal < 1 || goal > 12) throw StateError('Mục tiêu từ 1 đến 12 phiên.');
+    return current.copy(focus: current.focus.copy(dailyGoal: goal));
+  });
+
+  Future<void> recordRecent(String id) => _editWorkspace((current) {
+    if (!workspaceNotes.any((n) => n.id == id)) return current;
+    return current.copy(
+      recent: [id, ...current.recent.where((v) => v != id)].take(20).toList(),
+    );
+  });
+
+  Future<void> toggleFavorite(String id) => _editWorkspace((current) {
+    if (!workspaceNotes.any((n) => n.id == id)) {
+      throw StateError('Ghi chú không còn khả dụng.');
+    }
+    final ids = {...current.favorites};
+    if (!ids.remove(id)) {
+      if (ids.length >= 500) {
+        throw StateError('Bạn đã có 500 ghi chú yêu thích.');
+      }
+      ids.add(id);
+    }
+    return current.copy(favorites: ids);
+  });
+
+  Future<void> saveWorkspaceView(
+    String name,
+    String query,
+    Set<String> selectedLabels, {
+    bool shared = false,
+    String? id,
+  }) => _editWorkspace((current) {
+    if (name.trim().isEmpty ||
+        name.trim().length > 60 ||
+        query.length > 200 ||
+        selectedLabels.length > 30 ||
+        !selectedLabels.every(labels.contains)) {
+      throw StateError('Tên, từ khóa hoặc nhãn không hợp lệ.');
+    }
+    if (id == null && current.views.length >= 20) {
+      throw StateError('Tối đa 20 bộ sưu tập.');
+    }
+    if (id != null && !current.views.any((v) => v.id == id)) {
+      throw StateError('Bộ sưu tập đã bị xóa.');
+    }
+    final value = WorkspaceView(
+      id ?? uuid.v4(),
+      name.trim(),
+      query.trim(),
+      labels: selectedLabels,
+      shared: shared,
+    );
+    return current.copy(
+      views: [value, ...current.views.where((v) => v.id != value.id)],
+    );
+  });
+
+  Future<void> deleteWorkspaceView(String id) => _editWorkspace(
+    (current) =>
+        current.copy(views: current.views.where((v) => v.id != id).toList()),
+  );
+
+  Future<void> savePersonalTemplate(
+    String title,
+    String description,
+    String content, {
+    String? id,
+  }) => _editWorkspace((current) {
+    if (!validPortable(title, content) || description.trim().length > 140) {
+      throw StateError(
+        'Mẫu cần tiêu đề, nội dung hợp lệ và mô tả tối đa 140 ký tự.',
+      );
+    }
+    if (id == null && current.templates.length >= 30) {
+      throw StateError('Tối đa 30 mẫu riêng.');
+    }
+    if (id != null && !current.templates.any((v) => v.id == id)) {
+      throw StateError('Mẫu đã bị xóa.');
+    }
+    final value = NoteTemplate(
+      id ?? uuid.v4(),
+      title.trim(),
+      description.trim(),
+      content,
+    );
+    return current.copy(
+      templates: [value, ...current.templates.where((v) => v.id != value.id)],
+    );
+  });
+
+  Future<void> deletePersonalTemplate(String id) => _editWorkspace(
+    (current) => current.copy(
+      templates: current.templates.where((v) => v.id != id).toList(),
+    ),
+  );
+
+  Future<void> toggleWorkspaceTask(WorkspaceTask row) async {
+    final current = workspaceNotes
+        .where((n) => n.id == row.note.id)
+        .firstOrNull;
+    if (current == null ||
+        current.role == 'viewer' ||
+        hasPending(current.id) ||
+        drafts.containsKey(current.id) ||
+        conflicts.containsKey(current.id) ||
+        current.revision != row.note.revision ||
+        current.title != row.note.title ||
+        current.content != row.note.content) {
+      throw StateError(
+        'Ghi chú đã thay đổi hoặc đang chờ lưu. Hãy mở ghi chú để xử lý trước.',
+      );
+    }
+    final content = toggleWritingTask(
+      row.note.content,
+      current.content,
+      row.task,
+    );
+    if (content == null) {
+      throw StateError('Công việc đã thay đổi. Hãy thử lại.');
+    }
+    await save(
+      current.id,
+      current.title,
+      content,
+      baseRevision: row.note.revision,
+    );
+  }
+
+  /// Publish one local transaction before sending any immutable operation.
+  Future<List<String>> importNotes(List<PortableNote> imported) async {
+    if (user == null ||
+        !_accountLoaded ||
+        imported.isEmpty ||
+        imported.length > 50 ||
+        imported.any((n) => !validPortable(n.title, n.content)) ||
+        utf8
+                .encode(jsonEncode(imported.map((n) => n.toJson()).toList()))
+                .length >
+            5 * 1024 * 1024) {
+      throw StateError('Không thể nhập các ghi chú này.');
+    }
+    final generation = _generation;
+    final key = accountKey;
+    final created = imported
+        .map(
+          (n) => Note(
+            id: uuid.v4(),
+            title: n.title.trim(),
+            content: n.content,
+            revision: 1,
+            updatedAt: DateTime.now().toUtc().toIso8601String(),
+          ),
+        )
+        .toList();
+    final ops = created
+        .map(
+          (n) => <String, dynamic>{
+            'op_id': uuid.v4(),
+            'note_id': n.id,
+            'kind': 'upsert',
+            'base_revision': 0,
+            'title': n.title,
+            'content': n.content,
+            'pinned_at': null,
+            'labels': <String>[],
+            'labels_format': 'ids',
+          },
+        )
+        .toList();
+    final ids = created.map((n) => n.id).toSet();
+    final opIds = ops.map((op) => op['op_id']).toSet();
+    final commit = Completer<bool>();
+    for (final op in ops) {
+      _importCommits[op['op_id'] as String] = commit;
+    }
+    notes = [...created, ...notes];
+    pending = [...pending, ...ops];
+    try {
+      await _persist();
+    } catch (_) {
+      if (user != null && accountKey == key && generation == _generation) {
+        notes = notes.where((n) => !ids.contains(n.id)).toList();
+        pending = pending.where((op) => !opIds.contains(op['op_id'])).toList();
+        notifyListeners();
+        // A concurrent ordinary capture might have included the unpublished batch.
+        // Publish its rollback after those queued captures, without sending it.
+        try {
+          await _persist();
+        } catch (_) {
+          /* Original storage failure is reported. */
+        }
+      }
+      commit.complete(false);
+      for (final op in ops) {
+        _importCommits.remove(op['op_id']);
+      }
+      rethrow;
+    }
+    commit.complete(true);
+    for (final op in ops) {
+      _importCommits.remove(op['op_id']);
+    }
+    if (user == null || accountKey != key || generation != _generation) {
+      throw StateError('Tài khoản đã thay đổi.');
+    }
+    notifyListeners();
+    unawaited(synchronize());
+    return created.map((n) => n.id).toList();
   }
 
   Future<void> draft(String id, String title, String content) async {
@@ -696,7 +1049,6 @@ class AppController extends ChangeNotifier {
       },
     ];
     notes = [
-      ...notes.where((n) => n.id != id),
       Note(
         id: id,
         title: title.trim(),
@@ -713,6 +1065,7 @@ class AppController extends ChangeNotifier {
         sharedByEmail: existing?.sharedByEmail,
         sharedAt: existing?.sharedAt,
       ),
+      ...notes.where((n) => n.id != id),
     ];
     drafts.remove(id);
     await _persist();
@@ -786,6 +1139,8 @@ class AppController extends ChangeNotifier {
         if (!active()) return;
       }
       for (final op in List<Map<String, dynamic>>.from(pending)) {
+        final importing = _importCommits[op['op_id']];
+        if (importing != null && !await importing.future) continue;
         if (!active()) return;
         final id = op['note_id'] as String;
         if (conflicts.containsKey(id) ||
@@ -877,18 +1232,24 @@ class AppController extends ChangeNotifier {
       accessUnavailable.removeAll(incoming.map((n) => n.id));
       // Recovery may retire operations above; index only the surviving queue.
       final pendingIds = pending.map((op) => op['note_id']).toSet();
+      final pendingNotes =
+          notes
+              .where(
+                (n) =>
+                    pendingIds.contains(n.id) &&
+                    incomingById[n.id]?.locked != true,
+              )
+              .map((n) {
+                final metadata = incomingById[n.id];
+                return metadata == null ? n : n.withAccessFrom(metadata);
+              })
+              .toList()
+            ..sort(compareNotes);
       notes = [
+        // Optimistic local edits precede the accepted server array until ACK.
+        // Their immutable operations/base revisions are unchanged.
+        ...pendingNotes,
         ...incoming.where((n) => n.locked || !pendingIds.contains(n.id)),
-        ...notes
-            .where(
-              (n) =>
-                  pendingIds.contains(n.id) &&
-                  incomingById[n.id]?.locked != true,
-            )
-            .map((n) {
-              final metadata = incomingById[n.id];
-              return metadata == null ? n : n.withAccessFrom(metadata);
-            }),
       ];
       online = true;
       error = null;
@@ -945,7 +1306,9 @@ class AppController extends ChangeNotifier {
     drafts = Map<String, dynamic>.from(drafts)..remove(id);
     pending = pending.where((op) => op['note_id'] != id).toList();
     conflicts = Map<String, dynamic>.from(conflicts)..remove(id);
-    notes = [...notes.where((n) => n.id != id), locked];
+    notes = notes.any((n) => n.id == id)
+        ? notes.map((n) => n.id == id ? locked : n).toList()
+        : [...notes, locked];
   }
 
   /// Keep only the user's unsent edit in the existing encrypted recovery vault.
@@ -969,7 +1332,11 @@ class AppController extends ChangeNotifier {
     drafts = Map<String, dynamic>.from(drafts)..remove(id);
     pending = pending.where((op) => op['note_id'] != id).toList();
     conflicts = Map<String, dynamic>.from(conflicts)..remove(id);
-    notes = [...notes.where((n) => n.id != id), ?remote];
+    notes = remote == null
+        ? notes.where((n) => n.id != id).toList()
+        : notes.any((n) => n.id == id)
+        ? notes.map((n) => n.id == id ? remote : n).toList()
+        : [...notes, remote];
     if (remote == null) accessUnavailable.add(id);
   }
 
@@ -1008,7 +1375,6 @@ class AppController extends ChangeNotifier {
           },
         ];
         notes = [
-          ...notes,
           Note(
             id: copyId,
             title: copyTitle,
@@ -1016,6 +1382,7 @@ class AppController extends ChangeNotifier {
             revision: 1,
             updatedAt: DateTime.now().toUtc().toIso8601String(),
           ),
+          ...notes,
         ];
       } else {
         drafts[copyId] = {'title': title, 'content': content};

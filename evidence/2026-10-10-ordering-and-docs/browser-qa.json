@@ -1,0 +1,66 @@
+{
+  "date_utc": "2026-10-10T05:40:29.278191+00:00",
+  "target": "http://127.0.0.1:7362",
+  "api": "http://127.0.0.1:8031",
+  "browser": "HeadlessChrome154, Playwright CLI",
+  "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+  "steps": [
+    "PASS desktop grid locked newest before ordinary older",
+    "PASS desktop list locked newest before ordinary older",
+    "PASS offline reload retains encrypted session/cache/list order",
+    "PASS reconnect independent editor update reorders Home",
+    "PASS grid toggle after reconnect + mobile390px scroll preserves order and privacy"
+  ],
+  "viewports": [
+    "1440x1000",
+    "1440x1320",
+    "1440x1440",
+    "390x844"
+  ],
+  "shots": [
+    "desktop-grid.png",
+    "desktop-list.png",
+    "mobile-grid-scrolled.png",
+    "mobile-grid-top.png",
+    "offline-reload-list.png",
+    "reconnected-grid.png",
+    "reconnected-list.png"
+  ],
+  "initial_bounds": {
+    "grid": {
+      "locked": [
+        273,
+        740
+      ],
+      "ordinary": [
+        562.75,
+        740
+      ]
+    },
+    "list": {
+      "locked": [
+        273,
+        752
+      ],
+      "ordinary": [
+        273,
+        949
+      ]
+    }
+  },
+  "console": {
+    "before_offline": {
+      "errors": 0,
+      "warnings": 0
+    },
+    "raw_expected_disconnected_entries": 14,
+    "cli_reported_errors": 13,
+    "other_logged_errors": 0,
+    "warnings": 0
+  },
+  "native_runtime": "NOT RUN",
+  "fps": "NOT RUN",
+  "providers": "disabled",
+  "cleanup": "Own Chrome session/API/web fixture closed, Web API8000 restored",
+  "date_note": "Metadata packaged after observed runs; screenshot filenames correspond to actual CLI operations"
+}

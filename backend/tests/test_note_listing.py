@@ -123,3 +123,53 @@ def test_locked_public_pin_and_sharing_flags_follow_authorized_changes_without_p
         assert client.delete(f'/notes/{note}/shares/{user["user"]["id"]}', headers=headers(owner)).status_code == 200
         assert client.get('/notes', headers=headers(user)).json() == []
     listing(owner, 'owner', 5, None, shared=False)
+
+
+def test_listing_orders_hidden_modified_dates_across_roles_and_updates_without_expanding_locked_rows(env):
+    client, app, users = env
+    owner, viewer, stranger = users
+    editor = client.post('/auth/register', json={
+        'email': 'date-editor@example.com', 'name': 'Editor',
+        'password': 'safe-password-123', 'confirmation': 'safe-password-123'}).json()
+    fixtures = [
+        ('z-locked-new', '2025-03-01', True, None),
+        ('ordinary-mid', '2025-02-01', False, None),
+        ('a-locked-tie', '2025-01-01', True, '2025-01-01'),
+        ('b-ordinary-tie', '2025-01-01', False, None),
+        ('old-locked', '2024-01-01', True, None),
+    ]
+    # Reverse insertion proves the query uses dates and deterministic IDs, not row order.
+    for note_id, date, locked, pin in reversed(fixtures):
+        op = operation(note_id, pinned_at=pin)
+        assert client.post('/sync', headers=headers(owner), json=op).status_code == 200
+        for user, role in [(viewer, 'viewer'), (editor, 'editor')]:
+            assert client.post(f'/notes/{note_id}/shares', headers=headers(owner), json={
+                'email': user['user']['email'], 'role': role}).status_code == 200
+        if locked:
+            assert client.post(f'/notes/{note_id}/protection', headers=headers(owner), json={
+                'password': 'note-password-123', 'confirmation': 'note-password-123'}).status_code == 200
+        with sqlite3.connect(app.state.database) as conn:
+            conn.execute('UPDATE notes SET updated_at=? WHERE id=?', (date, note_id))
+
+    expected = [row[0] for row in fixtures]
+    def assert_listing(user, role, order):
+        rows = client.get('/notes', headers=headers(user)).json()
+        assert [row['id'] for row in rows] == order
+        for row in rows:
+            if row['locked']:
+                assert set(row) == {'id', 'locked', 'revision', 'role', 'pinned_at', 'shared'}
+                assert row['role'] == role
+        return rows
+
+    for user, role in [(owner, 'owner'), (viewer, 'viewer'), (editor, 'editor')]:
+        assert_listing(user, role, expected)
+    assert client.get('/notes', headers=headers(stranger)).json() == []
+    assert client.get('/notes/old-locked', headers=headers(stranger)).status_code == 404
+    assert client.post('/sync', headers=headers(viewer), json=operation('old-locked', 2)).status_code == 403
+    for user in [owner, editor]:
+        assert client.post('/notes/old-locked/unlock', headers=headers(user),
+                           json={'password': 'note-password-123'}).status_code == 200
+    assert_listing(owner, 'owner', expected)  # An active grant does not reveal dates.
+    assert client.post('/sync', headers=headers(editor), json=operation('old-locked', 2)).status_code == 200
+    for user, role in [(owner, 'owner'), (viewer, 'viewer'), (editor, 'editor')]:
+        assert_listing(user, role, ['old-locked', *expected[:-1]])

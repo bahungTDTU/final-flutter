@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "screenshots": 10,
+  "viewports": [
+    "1440x960",
+    "390x844",
+    "844x390",
+    "768x1024"
+  ],
+  "themes": [
+    "light",
+    "dark"
+  ],
+  "command": "playwright-cli -s=nt-polish run-code --filename=gallery-clean.js"
+}

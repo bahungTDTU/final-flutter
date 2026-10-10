@@ -115,7 +115,7 @@ void main() {
     await tester.pump(const Duration(milliseconds: 350));
     await tester.tap(find.widgetWithText(FilterChip, 'Học tập'));
     await tester.pump();
-    await tester.ensureVisible(find.text('Bỏ bộ lọc nhãn'));
+    await revealHome(tester, find.text('Bỏ bộ lọc nhãn'));
     await tester.tap(find.text('Bỏ bộ lọc nhãn'));
     await tester.pump();
     expect(search.controller!.text, 'Flutter');

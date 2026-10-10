@@ -1,0 +1,26 @@
+- generic [ref=f2e4]:
+  - generic:
+    - generic:
+      - generic:
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - button "Quay lại" [ref=f2e106]
+                - heading "Không gian làm việc" [level=2] [ref=f2e107]
+                - button "Tìm nhanh · Ctrl+K" [ref=f2e108]
+              - generic:
+                - group:
+                  - checkbox "Tổng quan" [ref=f2e109]
+                  - checkbox "Yêu thích" [ref=f2e110]
+                  - checkbox "Gần đây" [ref=f2e111]
+                  - checkbox "Bộ sưu tập" [ref=f2e112]
+                  - checkbox "Công việc" [ref=f2e113]
+                  - checkbox "Mẫu riêng" [ref=f2e114]
+                  - checkbox "Nhập / xuất" [checked] [ref=f2e115]
+                  - generic [ref=f2e116]: Mang ghi chú theo bạn
+                  - generic [ref=f2e117]: File NoteTogether JSON giữ nội dung và định dạng soạn thảo. Tối đa 50 ghi chú / 5 MiB một lần.
+                  - generic [ref=f2e118]: Bản xuất không mã hóa, không gồm ghi chú khóa, ghi chú được chia sẻ hoặc tệp đính kèm. Nhập sẽ tạo ID mới và không thay đổi quyền hay ghi đè ghi chú hiện có.
+                  - button "Nhập file" [ref=f2e119]
+                  - button "Xuất ghi chú" [active] [ref=f2e120]
+              - generic [ref=f2e121]: Quyền truy cập đã thay đổi. Hãy chọn lại.

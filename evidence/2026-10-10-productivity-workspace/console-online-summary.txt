@@ -1,0 +1,5 @@
+Recorded Playwright CLI console result after gallery-more.js, before closing nt-workspace:
+Total messages: 1 (Errors: 0, Warnings: 0)
+Returning 0 messages for level "info"
+
+This is the current-page CLI summary. The complete session log (including deliberate offline failures before reload) is console-all-pages.txt.

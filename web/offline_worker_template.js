@@ -5,7 +5,8 @@ const allowed = new Set(RESOURCES);
 self.addEventListener('install', event => {
   event.waitUntil((async () => {
     const cache = await caches.open(CACHE_NAME);
-    await cache.addAll(RESOURCES);
+    // Do not fill a new release cache with stale browser HTTP-cache bytes.
+    await cache.addAll(RESOURCES.map(resource => new Request(resource, {cache: 'reload'})));
     await self.skipWaiting();
   })());
 });
@@ -32,6 +33,7 @@ self.addEventListener('fetch', event => {
   } else if (allowed.has(relative)) {
     // Static allowlist only: no API, session, note or user-file responses.
     event.respondWith((async () => {
+      if (request.cache === 'reload' || request.cache === 'no-store') return fetch(request);
       const cached = await (await caches.open(CACHE_NAME)).match(relative);
       return cached || fetch(request);
     })());

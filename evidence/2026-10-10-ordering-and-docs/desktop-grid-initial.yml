@@ -1,0 +1,38 @@
+- generic [ref=e4]:
+  - generic:
+    - generic:
+      - generic:
+        - generic:
+          - generic:
+            - group "NoteTogether KHÔNG GIAN CỦA BẠN 4 ghi chú · 0 nhãn" [active]:
+              - button "Ghi chú" [ref=e20]
+              - button "Được chia sẻ" [ref=e21]
+              - button "Hỏi ghi chú" [ref=e22]
+              - button "Quản lý nhãn" [ref=e23]
+              - button "Ảnh đại diện mặc định O Ordering owner Hồ sơ và tùy chỉnh" [ref=e24]
+              - button "Đăng xuất" [ref=e25]
+              - generic:
+                - group:
+                  - generic [ref=e26]: Ghi chú của bạn
+                  - button "Ghi chú mới" [ref=e27]
+                  - generic [ref=e28]: Ý tưởng, bài học và kế hoạch — gọn trong một nơi.
+                  - generic [ref=e29]: 4 ghi chú
+                  - button "Trực tiếp" [ref=e30]
+                  - generic [ref=e31]: Email của bạn chưa được xác minh.
+                  - button "Xác minh" [ref=e32]
+                  - generic [ref=e33]:
+                    - textbox "Tìm ghi chú" [ref=e34]
+                    - generic [ref=e35]: Tìm ngay khi nhập · Ctrl + F để đến ô tìm kiếm
+                  - button "Lưới" [ref=e36]
+                  - button "Danh sách" [ref=e37]
+                  - button "Xưởng ghi chú" [ref=e38]
+                  - generic [ref=e39]: Đã ghim
+                  - generic [ref=e40]: "1"
+                  - group "Đã chia sẻ cho 2 người pinned-fixture Ordering visible fixture Đã ghim Ghi chú được chia sẻ 01/01/2025" [ref=e41]:
+                    - button "Thao tác ghi chú" [ref=e42]
+                  - generic [ref=e43]: Các ghi chú khác
+                  - generic [ref=e44]: "3"
+                  - button "Ghi chú được chia sẻ Ghi chú đã khóa Mở khóa để xem nội dung. Ghi chú được chia sẻ Đã khóa" [ref=e45]
+                  - group "Đã chia sẻ cho 2 người ordinary-older Ordering visible fixture Ghi chú được chia sẻ 01/02/2025" [ref=e46]:
+                    - button "Thao tác ghi chú" [ref=e47]
+                  - button "Ghi chú được chia sẻ Ghi chú đã khóa Mở khóa để xem nội dung. Ghi chú được chia sẻ Đã khóa" [ref=e48]

@@ -67,6 +67,11 @@ class NoteListingCache {
       );
     }
 
+    // The API array carries last-modified order without exposing locked dates.
+    // Persisted account arrays preserve it; local pending edits are prepended.
+    // Never derive locked ordering from redacted/legacy private timestamps.
+    final sourceOrder = {for (var i = 0; i < notes.length; i++) notes[i].id: i};
+    final hasHiddenDates = notes.any((n) => n.locked && n.pinnedAt == null);
     final matches =
         notes
             .where(
@@ -82,7 +87,9 @@ class NoteListingCache {
                           )),
             )
             .toList()
-          ..sort(_compareVisibleNotes);
+          ..sort(
+            (a, b) => _compareVisibleNotes(a, b, sourceOrder, hasHiddenDates),
+          );
     return _result = NoteListing(matches);
   }
 
@@ -96,11 +103,19 @@ class NoteListingCache {
   }
 }
 
-int _compareVisibleNotes(Note a, Note b) {
+int _compareVisibleNotes(
+  Note a,
+  Note b,
+  Map<String, int> sourceOrder,
+  bool hasHiddenDates,
+) {
   final aPin = a.pinnedAt, bPin = b.pinnedAt;
   if ((aPin != null) != (bPin != null)) return aPin != null ? -1 : 1;
-  final aTime = aPin ?? (a.locked ? '' : a.updatedAt);
-  final bTime = bPin ?? (b.locked ? '' : b.updatedAt);
+  if (aPin == null && hasHiddenDates) {
+    return sourceOrder[a.id]!.compareTo(sourceOrder[b.id]!);
+  }
+  final aTime = aPin ?? a.updatedAt;
+  final bTime = bPin ?? b.updatedAt;
   final time = bTime.compareTo(aTime);
   return time != 0 ? time : a.id.compareTo(b.id);
 }

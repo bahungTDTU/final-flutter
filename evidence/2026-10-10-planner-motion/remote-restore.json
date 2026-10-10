@@ -1,0 +1,5 @@
+{
+  "target": "http://127.0.0.1:8051",
+  "restoreStatus": 200,
+  "action": "QA owner disabled protection with current password"
+}

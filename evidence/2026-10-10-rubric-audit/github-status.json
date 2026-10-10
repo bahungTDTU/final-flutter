@@ -1,0 +1,62 @@
+{
+  "repository": "bahungTDTU/final-flutter",
+  "default_branch": "master",
+  "open_prs": [
+    {
+      "number": 3,
+      "html_url": "https://github.com/bahungTDTU/final-flutter/pull/3",
+      "state": "open",
+      "title": "Add adaptive rich text editor and unify application theme",
+      "draft": false,
+      "head": "codex/adaptive-word-editor",
+      "head_sha": "a5e5ec60568b7ee2b0c50290a3e6502a4d490110",
+      "base": "master",
+      "base_sha": "efbb8e7edda8b5cd7c3771e6ced1a43b416b6e40",
+      "merged": null,
+      "mergeable_state": null
+    }
+  ],
+  "pull_request": {
+    "number": 3,
+    "html_url": "https://github.com/bahungTDTU/final-flutter/pull/3",
+    "state": "open",
+    "title": "Add adaptive rich text editor and unify application theme",
+    "draft": false,
+    "head": "codex/adaptive-word-editor",
+    "head_sha": "a5e5ec60568b7ee2b0c50290a3e6502a4d490110",
+    "base": "master",
+    "base_sha": "efbb8e7edda8b5cd7c3771e6ced1a43b416b6e40",
+    "merged": false,
+    "mergeable_state": "clean"
+  },
+  "checks": [
+    {
+      "name": "Build smoke",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-10-10T04:57:32Z",
+      "completed_at": "2026-10-10T05:03:20Z",
+      "html_url": "https://github.com/bahungTDTU/final-flutter/actions/runs/38025853299/job/114136422341",
+      "head_sha": "a5e5ec60568b7ee2b0c50290a3e6502a4d490110"
+    },
+    {
+      "name": "Backend tests",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-10-10T04:57:32Z",
+      "completed_at": "2026-10-10T04:58:46Z",
+      "html_url": "https://github.com/bahungTDTU/final-flutter/actions/runs/38025853299/job/114136422295",
+      "head_sha": "a5e5ec60568b7ee2b0c50290a3e6502a4d490110"
+    },
+    {
+      "name": "Flutter quality",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-10-10T04:57:32Z",
+      "completed_at": "2026-10-10T04:59:29Z",
+      "html_url": "https://github.com/bahungTDTU/final-flutter/actions/runs/38025853299/job/114136422252",
+      "head_sha": "a5e5ec60568b7ee2b0c50290a3e6502a4d490110"
+    }
+  ],
+  "reviews": []
+}

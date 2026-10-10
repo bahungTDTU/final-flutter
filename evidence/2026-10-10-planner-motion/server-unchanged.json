@@ -1,0 +1,24 @@
+{
+  "target": "http://127.0.0.1:8051",
+  "planningMutatesNotes": false,
+  "notes": {
+    "plan": {
+      "status": 200,
+      "revision": 1,
+      "contentSha256": "c12f2aa05e55ec67ee527b23740d406c7fe0b656c8a93aa5a3c4b4a987c6687e",
+      "contentMatchesFixture": true
+    },
+    "idea": {
+      "status": 200,
+      "revision": 1,
+      "contentSha256": "525b5c961dceb237187aaa9d683ce3a884317a4c1cf481d7265c8c81c10d4449",
+      "contentMatchesFixture": true
+    },
+    "private": {
+      "status": 200,
+      "revision": 1,
+      "contentSha256": "063a71b1e95d40af456eeac5d921749124f18f02cd6bfae85192f5a7ae489282",
+      "contentMatchesFixture": true
+    }
+  }
+}

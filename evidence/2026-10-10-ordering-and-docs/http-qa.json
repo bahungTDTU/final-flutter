@@ -1,0 +1,22 @@
+{
+  "date_utc": "2026-10-10T05:26:29.525740+00:00",
+  "api": "http://127.0.0.1:8031",
+  "base_commit": "a5e5ec60568b7ee2b0c50290a3e6502a4d490110",
+  "working_changes": true,
+  "roles": [
+    "owner",
+    "viewer",
+    "editor",
+    "stranger"
+  ],
+  "steps": [
+    "PASS real HTTP: owner/viewer/editor date order + exact six-field locked projection",
+    "PASS stranger excluded, viewer write denied, editor requires grant",
+    "PASS protected editor update moves newest row first without exposing timestamp",
+    "PASS grant-gated share revoke removes recipient access"
+  ],
+  "status": "PASS",
+  "fixture_dates": "Explicit deterministic QA seed dates, not production observations",
+  "provider": "disabled; no external call",
+  "tokens": "held only in process memory"
+}

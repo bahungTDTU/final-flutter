@@ -1,0 +1,12 @@
+{
+  "target": "http://127.0.0.1:8051",
+  "remoteLockStatus": 200,
+  "lockedFields": [
+    "id",
+    "locked",
+    "pinned_at",
+    "revision",
+    "role",
+    "shared"
+  ]
+}

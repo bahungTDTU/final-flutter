@@ -1,0 +1,45 @@
+### Page
+- Page URL: http://127.0.0.1:7362/
+- Page Title: NoteTogether
+- Console: 13 errors, 0 warnings
+### Snapshot
+```yaml
+- generic [ref=f1e4]:
+  - generic:
+    - generic:
+      - generic:
+        - generic:
+          - generic:
+            - group "NoteTogether KHÔNG GIAN CỦA BẠN 4 ghi chú · 0 nhãn":
+              - button "Ghi chú" [ref=f1e58]
+              - button "Được chia sẻ" [ref=f1e59]
+              - button "Hỏi ghi chú" [ref=f1e60]
+              - button "Quản lý nhãn" [ref=f1e61]
+              - button "Ảnh đại diện mặc định O Ordering owner Hồ sơ và tùy chỉnh" [ref=f1e62]
+              - button "Đăng xuất" [ref=f1e63]
+              - generic:
+                - group:
+                  - generic [ref=f1e64]: Ghi chú của bạn
+                  - button "Ghi chú mới" [ref=f1e65]
+                  - generic [ref=f1e66]: Ý tưởng, bài học và kế hoạch — gọn trong một nơi.
+                  - generic [ref=f1e67]: 4 ghi chú
+                  - button "Trực tiếp" [ref=f1e68]
+                  - generic [ref=f1e69]: Email của bạn chưa được xác minh.
+                  - button "Xác minh" [ref=f1e70]
+                  - generic [ref=f1e71]:
+                    - textbox "Tìm ghi chú" [ref=f1e72]
+                    - generic [ref=f1e73]: Tìm ngay khi nhập · Ctrl + F để đến ô tìm kiếm
+                  - button "Lưới" [active] [ref=f1e74]
+                  - button "Danh sách" [ref=f1e75]
+                  - button "Xưởng ghi chú" [ref=f1e76]
+                  - generic [ref=f1e77]: Đã ghim
+                  - generic [ref=f1e78]: "1"
+                  - group "Đã chia sẻ cho 2 người pinned-fixture Ordering visible fixture Đã ghim Ghi chú được chia sẻ 01/01/2025" [ref=f1e40]:
+                    - button "Thao tác ghi chú" [ref=f1e41]
+                  - generic [ref=f1e30]: Các ghi chú khác
+                  - generic [ref=f1e31]: "3"
+                  - button "Ghi chú được chia sẻ Ghi chú đã khóa Mở khóa để xem nội dung. Ghi chú được chia sẻ Đã khóa" [ref=f1e42]
+                  - button "Ghi chú được chia sẻ Ghi chú đã khóa Mở khóa để xem nội dung. Ghi chú được chia sẻ Đã khóa" [ref=f1e55]
+                  - group "Đã chia sẻ cho 2 người ordinary-older Ordering visible fixture Ghi chú được chia sẻ 01/02/2025" [ref=f1e56]:
+                    - button "Thao tác ghi chú" [ref=f1e57]
+```

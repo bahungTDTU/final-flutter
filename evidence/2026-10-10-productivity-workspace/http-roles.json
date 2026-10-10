@@ -1,0 +1,33 @@
+{
+  "target": "http://127.0.0.1:8033",
+  "provider": "disabled",
+  "roles": {
+    "owner": {
+      "read": 200,
+      "task_edit": 409
+    },
+    "viewer": {
+      "read": 200,
+      "task_edit": 403
+    },
+    "editor": {
+      "read": 200,
+      "task_edit": 200
+    },
+    "stranger": {
+      "read": 404,
+      "task_edit": 404
+    }
+  },
+  "owner_current_revision_edit": 200,
+  "locked_fields": [
+    "id",
+    "locked",
+    "pinned_at",
+    "revision",
+    "role",
+    "shared"
+  ],
+  "locked_task_edit": 423,
+  "revoked_listing_empty": true
+}

@@ -1,5 +1,87 @@
 # NoteTogether - trạng thái 10/10/2026
 
+## Publication workspace/planner —10/10/2026
+
+Người dùng ủy quyền push source hiện tại. Branch `codex/workspace-planner` từ master
+`13e0ffc` (PR#3 đã merged), tree base không đổi; giữ working changes ordering/workspace/
+focus/planner. Gate local250 Flutter/109 backend/format105files0changes/analyzer PASS;
+24code hashes khớp source nghiệm thu cuối. Snapshot trước push và giới hạn:
+[publication gate](evidence/2026-10-10-workspace-publication/INDEX.md).
+CI hosted/remote SHA tra PR/branch thực; không thay bằng local PASS. Các snapshot “chưa
+commit/push” bên dưới giữ thời điểm lịch sử; publication không merge/deploy/release.
+
+## Kế hoạch cá nhân và motion —10/10/2026
+
+IMPLEMENTED: Kanban Dự kiến/Đang làm/Hoàn thành, ưu tiên/ngày hạn, tìm/lọc ngày và priority,
+menu move/edit/remove-confirm; PC ba cột/mobile dropdown + lazy rows, retain route filters.
+Local encrypted per account, durable merge/draft/focus/account guards; no server note mutation.
+Motion entrance220ms/press180ms/progress220ms, reduced motion, không private exit retention;
+lock/revoke bỏ card/picker/form/calendar ngay. Navigation PC gọn theo ảnh QA.
+Gate250 Flutter/109 backend/analyzer sạch/format105files0changes PASS; source cuối kiểm lại
+Flutter/analyze/format sau navigation và privacy guards, backend không đổi. Chrome thật4viewport
+sáng/tối, metadata reload/filter/edit, remote calendar lock, cache SHA256/40static PASS;
+15ảnh, console phiên cuối0errors/warnings. Web API8000/APK debug compile PASS. Chi tiết:
+[WORKSPACE_PLANNER_AND_MOTION](docs/WORKSPACE_PLANNER_AND_MOTION.md), evidence/2026-10-10-planner-motion.
+Source local base a5e5ec6 + working changes, chưa commit/push. Native runtime/FPS/cloud planner/
+OS reminder/provider/release chưa nghiệm thu; không thay gates rubric/publication.
+
+## Tập trung và rà soát UX —10/10/2026
+
+IMPLEMENTED: Pomodoro 5/15/25/50 phút + nghỉ, pause/resume/reopen; mục tiêu ngày và
+thống kê7 ngày local encrypted. Checklist tìm task/title, lọc nguồn/trạng thái và
+progress. Form giữ input/lỗi inline khi save thất bại; xóa mẫu/views có confirmation;
+mobile/chữ lớn dùng dropdown, scroll riêng. Không thay ACL/base revision/draft/vault.
+PASS:242 Flutter/109 backend/analyze sạch;8 regression mới,27 workspace tests tổng.
+Chrome thật: timer reload/resume/goal, checklist GET revision2, form validation/retry,
+cancel delete/collection chọn ngay và4viewports sáng/tối PASS; phiên cuối0errors/warnings.
+Sửa stale HTTP cache khi worker upgrade; cache cuối khớp SHA256 main/bootstrap,40static.
+Web release API mặc định8000 và APK debug compile PASS. Format cuối102files0changes.
+Native runtime/cloud timer/system alarm chưa nghiệm thu/không triển khai. Xem
+[chi tiết](docs/WORKSPACE_FOCUS_AND_UX.md) và evidence/2026-10-10-workspace-polish.
+Source local trên codex/adaptive-word-editor, base a5e5ec6 + working changes; chưa push.
+
+## Không gian làm việc sáng tạo —10/10/2026
+
+IMPLEMENTED: Ctrl+K tìm nhanh, yêu thích, 20 ghi chú mở gần đây, bộ sưu tập thông minh
+(query/AND nhãn/nguồn), bảng checklist Markdown/Quill, mẫu riêng, nhật ký theo ngày và
+nhập/xuất JSON. Workspace cá nhân mã hóa theo account trên thiết bị; note mới và checklist
+vẫn lưu thật qua sync hiện có. Không thêm endpoint quyền hoặc snapshot nội dung protected.
+Import fresh IDs/base0/immutable outbox, durable local batch trước network, có preview;
+export owner/unprotected/content-only, đọc lại quyền sau xác nhận. Xem
+[thiết kế và giới hạn](docs/PRODUCTIVITY_WORKSPACE.md).
+
+PASS: format99files0changes/analyze sạch/234 Flutter (19 workspace mới)/109 backend;
+file encryption/reopen, storage failure/account switch, workspace/draft/vault races, frozen
+checklist base, payload rejection, rich roundtrip, UI320px/200%, lazy20.000rows/labeled targets.
+Chrome loopback + real backend: tìm/yêu thích/view/template/journal, export download/import
+preview/offline reload2ops/reconnect đúng2UUID mới/nội dung khớp server. HTTP4roles vẫn giữ
+ACL/six-field locked projection. Web release compile40static và APK debug compile PASS.
+Workspace cross-device sync, native runtime/SAF/IME/FPS mới, screen reader thực/public release/
+provider thật/video chưa nghiệm thu. Source base a5e5ec6 + working changes, chưa commit/push;
+release vẫn để cuối. [Ảnh/logs/commands](evidence/2026-10-10-productivity-workspace/INDEX.md).
+
+## Sửa thứ tự ghi chú khóa và đồng bộ tài liệu —10/10/2026
+
+Base a5e5ec6 + working changes trên codex/adaptive-word-editor. Tiêu chí17: backend sắp
+updated_at DESC/id ASC trước projection; client giữ source array cho unpinned locked notes
+và cache mã hóa. Ghim vẫn đứng trước theo public pin time. Ordinary pending edits/new note/
+recovery copy ưu tiên trước ACK, in-flight refresh không đẩy xuống cuối. Locked list vẫn
+đúng sáu public fields, không private date/title/content/labels/share identities/counts.
+Cache cũ cần một successful refresh để sửa canonical order, offline giữ order gần nhất.
+
+PASS mới: scripts/check.ps1 format96files0changes/analyze sạch/215 Flutter/109 backend;
+probe audit trước FAIL nay PASS; direct HTTP8031 owner/viewer/editor/stranger/update/revoke;
+Chrome local7362 grid/list/order/privacy/offline reload/reconnect và responsive390px.
+Web release compile/static-only40resources PASS. Chrome offline có ERR_INTERNET_DISCONNECTED
+có chủ đích, ghi riêng trong evidence; không gọi chúng là zero console errors. Native/FPS/IME/
+provider thật/public release chưa chạy trong đợt sửa này. Xem docs/NOTE_LIST_ORDERING.md và
+evidence/2026-10-10-ordering-and-docs/INDEX.md.
+
+ARCHITECTURE/matrix/README/Readme/UI guides/protection/team publication đã khớp code; không
+còn ghi protected editing/offline unlock/mail outbox/AI là chưa triển khai. Các gates còn thiếu
+được tách khỏi implementation. Giữ audit/evidence FAIL trước sửa và snapshots lịch sử.
+Bản sửa mới chưa commit/push; CI PASS của a5e5ec6 không đại diện working changes hiện tại.
+
 ## Xuất bản editor/theme theo yêu cầu —10/10/2026
 
 Người dùng đã ủy quyền push. PR trước (#2) đã merge; branch mới

@@ -111,25 +111,51 @@ class PrismPalette extends ThemeExtension<PrismPalette> {
 abstract final class PrismMotion {
   static const hover = Duration(milliseconds: 180);
   static const reveal = Duration(milliseconds: 420);
+  static const section = Duration(milliseconds: 220);
   static Duration duration(BuildContext context, Duration value) =>
       MediaQuery.disableAnimationsOf(context) ? Duration.zero : value;
 }
 
 /// One entrance only, never an exit retaining stale private content.
 class PrismReveal extends StatelessWidget {
-  const PrismReveal({super.key, required this.child});
+  const PrismReveal({
+    super.key,
+    required this.child,
+    this.duration = PrismMotion.reveal,
+    this.distance = 12,
+  });
   final Widget child;
+  final Duration duration;
+  final double distance;
   @override
   Widget build(BuildContext context) => TweenAnimationBuilder<double>(
     tween: Tween(begin: 0, end: 1),
-    duration: PrismMotion.duration(context, PrismMotion.reveal),
+    duration: PrismMotion.duration(context, duration),
     curve: Curves.easeOutCubic,
     child: child,
     builder: (_, value, child) => Opacity(
       opacity: value,
       child: Transform.translate(
-        offset: Offset(0, 12 * (1 - value)),
+        offset: Offset(0, distance * (1 - value)),
         child: child,
+      ),
+    ),
+  );
+}
+
+/// Animates only the bar; its semantics always describe the current value.
+class PrismProgress extends StatelessWidget {
+  const PrismProgress({super.key, required this.value});
+  final double value;
+  @override
+  Widget build(BuildContext context) => Semantics(
+    value: '${(value.clamp(0, 1) * 100).round()}%',
+    child: ExcludeSemantics(
+      child: TweenAnimationBuilder<double>(
+        tween: Tween(begin: 0, end: value.clamp(0, 1)),
+        duration: PrismMotion.duration(context, PrismMotion.section),
+        curve: Curves.easeOutCubic,
+        builder: (_, progress, _) => LinearProgressIndicator(value: progress),
       ),
     ),
   );
@@ -336,13 +362,19 @@ class _PrismCardState extends State<PrismCard> {
       child: AnimatedContainer(
         duration: PrismMotion.duration(context, PrismMotion.hover),
         curve: Curves.easeOutCubic,
-        transform: Matrix4.translationValues(
-          0,
-          active && !pressed && !MediaQuery.disableAnimationsOf(context)
-              ? -2
-              : 0,
-          0,
-        ),
+        transformAlignment: Alignment.center,
+        transform:
+            Matrix4.diagonal3Values(
+              pressed && !MediaQuery.disableAnimationsOf(context) ? .985 : 1,
+              pressed && !MediaQuery.disableAnimationsOf(context) ? .985 : 1,
+              1,
+            )..setTranslationRaw(
+              0,
+              active && !pressed && !MediaQuery.disableAnimationsOf(context)
+                  ? -2
+                  : 0,
+              0,
+            ),
         padding: const EdgeInsets.all(1),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(22),

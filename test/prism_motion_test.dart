@@ -96,6 +96,41 @@ void main() {
     },
   );
 
+  testWidgets(
+    'Press feedback settles and respects reduced motion without changing the tap target',
+    (tester) async {
+      for (final reduced in [false, true]) {
+        await tester.pumpWidget(card(reduced: reduced));
+        await tester.pumpAndSettle();
+        final material = find
+            .descendant(
+              of: find.byType(PrismCard),
+              matching: find.byType(Material),
+            )
+            .first;
+        final before = tester.getRect(material);
+        final gesture = await tester.startGesture(
+          tester.getCenter(find.text('Một ý tưởng')),
+        );
+        await tester.pump();
+        await tester.pump(const Duration(milliseconds: 240));
+        final pressed = tester.getRect(material);
+        if (reduced) {
+          expect(pressed, before);
+        } else {
+          expect(pressed.height, lessThan(before.height));
+        }
+        expect(tester.getSize(find.byType(PrismCard)), const Size(300, 200));
+        await tester.pump(const Duration(seconds: 2));
+        expect(tester.binding.transientCallbackCount, 0);
+        await gesture.up();
+        await tester.pumpAndSettle();
+        expect(tester.getRect(material), before);
+        await tester.pumpWidget(const SizedBox());
+      }
+    },
+  );
+
   test('Prism text, tinted surfaces and controls retain measured contrast', () {
     double ratio(Color a, Color b) {
       final x = a.computeLuminance(), y = b.computeLuminance();

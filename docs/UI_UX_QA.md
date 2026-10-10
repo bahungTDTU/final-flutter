@@ -1,4 +1,42 @@
-# UI/UX QA – cập nhật 09/10/2026
+# UI/UX QA – cập nhật 10/10/2026
+
+## Planner/motion —10/10/2026
+
+250 Flutter/109 backend/format105files0changes/analyze PASS;8 tests mới + encrypted file/reopen
+test mở rộng. Deadline boundaries, queued guards/durable merges, form retry/remove confirm,
+calendar/entry remote-lock privacy, mobile320px/200%/keyboard, lazy500rows/retained query và
+press/reduced motion/no loop. Sau ảnh QA điều chỉnh navigation padding và reset progress source/
+picker query privacy; Flutter/analyze/format source cuối kiểm lại PASS. Chrome thật4viewport
+sáng/tối, edit/filter/reload, calendar lock remote, cache SHA256/40static PASS;15ảnh viewport.
+Console reload cuối0errors/warnings, Web mặc định API8000 và APK debug compile PASS.
+Chrome/build/ảnh/limits nằm ở evidence/2026-10-10-planner-motion/INDEX.md. Native UI/IME/FPS,
+screen reader thật, cloud planner/OS alarm/provider/release chưa nghiệm thu.
+
+## Rà soát workspace và tập trung —10/10/2026
+
+242 Flutter/109 backend/analyze PASS,8 regression mới. Đã sửa overflow menu goal
+103px ở320px/chữ200%, giữ form khi storage fail và thêm delete confirmation. Test
+mobile dropdown+keyboard, task search/source/protection và ticker không pulse root.
+Chrome/build/ảnh và phạm vi: evidence/2026-10-10-workspace-polish/INDEX.md.
+Chrome thật4viewport/light-dark: timer pause/reload/resume + goal, task save GETrevision2,
+form validation giữ input/retry, cancel delete và collection chọn ngay PASS. Sửa checkmark
+đè icon navigation và cache Web dùng mã cũ; cache build cuối khớp SHA256/40static. Phiên
+Chrome cuối0console errors/warnings, Web/APK debug compile PASS; native runtime mới NOT RUN.
+
+Nghiệm thu sửa thứ tự locked notes nằm ở evidence/2026-10-10-ordering-and-docs; logs/ảnh
+theo ngày bên dưới giữ nguyên phạm vi source trước đó. Policy hiện tại: public pin/shared
+trước unlock, private title/content/labels/date/share identities/time/count bị che;
+protected editing/offline unlock/AI đã có mã, nghiệm thu riêng theo provider/target.
+
+## Workspace cá nhân —10/10/2026
+
+PASS:234 Flutter/109 backend/analyze,19workspace tests gồm320px/200%, labeled task targets,
+20.000task rows lazy, 1000label picker lazy, encryption file/reopen/races/account switch và
+immutable import/frozen revision. Chrome actual Ctrl+K/favorites/collections/templates/journal/
+export download/offline import-reload-reconnect exact server roundtrip; Web/APK debug compile.
+Ảnh/logs/source manifest: evidence/2026-10-10-productivity-workspace/INDEX.md. Offline network
+console errors có chủ đích ghi riêng; không screen reader/native runtime/FPS/release claim.
+
 
 ## Editor PC/phone trực tiếp —09/10/2026
 
@@ -90,8 +128,9 @@ evidence/2026-10-06-email-queue/INDEX.md. Không Gmail/Outlook/public/physical/r
 ## Ghi chú bảo vệ05/10/2026
 
 NoteTextField chung với editor thường; owner/editor edit/autosave, pin/owner labels; viewer
-read-only. Locked list/home/semantics không title/labels/pin/shared metadata; chỉ sau unlock
-mới render. Confirm delete che title và disable khi revoke. Dirty draft chặn AI/change/delete;
+read-only. Policy tại snapshot05/10: locked list/home/semantics ẩn title/labels/pin/shared; từ07/10
+public pin/shared được phép hiện, private metadata vẫn chỉ render trong reader sau unlock.
+Confirm delete che title và disable khi revoke. Dirty draft chặn AI/change/delete;
 offline chặn shares/files/AI, báo rõ quyền chưa được xác nhận. Recovery chọn bằng số, password
 gate; copy riêng. SSE clean update giữ base, explicit new-version edit; dirty conflict giữ input.
 
@@ -168,7 +207,7 @@ Các mục 01/10 bên dưới là lịch sử kiểm chứng; không tự nâng 
 | Chia sẻ | Chrome owner dialog mobile/empty email validation; Android real batch/editor/viewer/revoke/encrypted DB reopen/recovery UI; ACL owner/viewer/editor/stranger direct HTTP PASS |
 | Tệp/bảo vệ | Chrome private attachment empty state và giới hạn; host layout/locked metadata/role guards; direct API locked423/minimal metadata; picker/upload/protected-reader full flow không rerun |
 | Mã email | Material tiếng Việt và form/token320px/landscape200% qua widget; SMTP/inbox ngoài không nghiệm thu mới |
-| AI | Production Q&A báo chưa khả dụng; không có kết quả hoặc submit giả |
+| AI | Snapshot02/10: Q&A chưa khả dụng; từ05/10 adapter/UI/citations đã có, live Gemini chưa nghiệm thu |
 
 `scripts/check.ps1`: format/analyze sạch, **114 Flutter/53 backend PASS**, một deprecation warning
 TestClient. Responsive regression320/360/390/768/desktop/landscape và200%; kiểm thử hành vi

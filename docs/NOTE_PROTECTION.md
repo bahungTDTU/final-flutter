@@ -1,4 +1,4 @@
-# Ghi chú bảo vệ — cập nhật 07/10/2026
+# Ghi chú bảo vệ — cập nhật 10/10/2026
 
 ## Sử dụng
 
@@ -7,11 +7,12 @@ Hoàn tất bản nháp và outbox trước khi bật/đổi/tắt khóa. Backen
 không thể đổi owner, role, protection hoặc tự cấp grant. Home/list/search của ghi chú khóa
 trả ID, revision, locked, role, pinned_at và shared boolean. Theo lựa chọn người dùng07/10,
 ghim/chia sẻ/khóa hiện đồng thời và giữ thứ tự ghim; không trả title/content/labels/updated_at,
-số người nhận, danh tính hoặc thời điểm chia sẻ. Search/filter vẫn loại nội dung note khóa.
+số người nhận, danh tính hoặc thời điểm chia sẻ. Unpinned locked notes giữ thứ tự updated_at
+từ array server, không hiện timestamp; NOTE_LIST_ORDERING.md. Search/filter vẫn loại nội dung note khóa.
 
 Chạm thẻ khóa → nhập mật khẩu → mở phiên tối đa 5 phút. Sau mở khóa mới hiển thị nội dung,
 nhãn, shared/pinned/role, người chia sẻ và thời gian nếu có. Owner/editor chọn **Chỉnh sửa**;
-tiêu đề/nội dung dùng cùng NoteTextField với editor thường, autosave650ms và lưu bản nháp
+tiêu đề/nội dung dùng cùng DocumentWorkspace với editor thường (từ09/10), autosave650ms và lưu bản nháp
 mã hóa ngay khi nhập. Owner sửa nhãn/ghim; editor sửa title/content; viewer chỉ đọc. **Đồng bộ bản nháp**
 retry khi có kết nối/grant. Không đưa protected content/draft/operation vào notes/drafts/outbox
 thường hoặc tìm kiếm; route giữ dữ liệu giải mã trong RAM.

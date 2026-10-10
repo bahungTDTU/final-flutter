@@ -14,8 +14,9 @@ fingerprint = hashlib.sha256()
 for resource in resources:
     fingerprint.update(resource.encode())
     fingerprint.update((build / resource).read_bytes())
-name = 'notetogether-static-' + fingerprint.hexdigest()[:16]
 template = (root / 'web' / 'offline_worker_template.js').read_text(encoding='utf-8')
+fingerprint.update(template.encode('utf-8'))
+name = 'notetogether-static-' + fingerprint.hexdigest()[:16]
 worker = template.replace('__CACHE_NAME__', name).replace('__RESOURCES__', json.dumps(resources))
 (build / 'offline_worker.js').write_text(worker, encoding='utf-8')
 print(f'Prepared {name}: {len(resources)} static resources. No API/private content cache.')
