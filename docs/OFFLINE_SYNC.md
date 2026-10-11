@@ -58,7 +58,7 @@ trên Windows host không phải force-kill Android/browser. Evidence: evidence/
 
 Full offline force-kill/quota hai target (reload/reopen/reconnect phạm vi đã pass xem STATUS);
 mid-flight account switching/race test đầy đủ (8 regression mới chỉ bao phủ trường hợp đã liệt kê);
-full conflict hai thiết bị; remote delete-vs-local draft UI; backoff; offline note unlock/key backup;
+full conflict hai thiết bị; remote delete-vs-local draft UI; backoff; key backup/transfer;
 full race khi editor đang gõ (đã giữ TextEditingController và capture base revision lúc mở editor;
 widget regression chứng minh không nâng base revision theo remote refresh).
 Labels có catalogue server + immutable outbox riêng, CAS/conflicts/tombstones; gửi labels trước notes,
@@ -73,9 +73,11 @@ revoke/lỗi mạng/account-switch che preview theo epoch/poll. Không làm đ�
 base editor. Avatar cache khác attachment; PRIVATE_ATTACHMENTS.md ghi rõ. AI cloud không có chế độ offline. Browser có thể xóa
 site storage, quota/eviction và private-mode cần test riêng; local storage không phải backup.
 
-Online protected reader không đi vào cache/outbox và che nội dung khi mất kết nối. Mật khẩu note
-chưa mở được nội dung offline. Vault recovery chỉ bảo toàn local edit đã có trước khóa, không mở
-source. Xem NOTE_PROTECTION.md; protection mutation chặn khi draft/outbox nguồn chưa hoàn tất.
+Protected content không vào ordinary cache/outbox. Từ05/10, note đã tải hợp lệ có
+password-encrypted cache/draft riêng để đọc/sửa offline; reconnect cần xác nhận quyền/grant
+server trước sync. Recovery_only giữ draft khi source bị revoke/delete/password change và
+chỉ phục hồi sang ID mới. Xem NOTE_PROTECTION.md; protection mutation chặn khi draft/outbox
+nguồn chưa hoàn tất. Offline không có attachments/share/AI và không bảo đảm quyền server còn nguyên.
 
 ## App shell Web
 

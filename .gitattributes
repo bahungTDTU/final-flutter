@@ -26,3 +26,7 @@ evidence/2026-10-10-workspace-polish/*.js -whitespace
 evidence/2026-10-10-planner-motion/*.txt -whitespace
 evidence/2026-10-10-planner-motion/*.js -whitespace
 evidence/2026-10-10-rubric-audit/*.txt -whitespace
+
+# Preserve baseline logs from the new machine without normalizing captured CLI bytes.
+evidence/2026-10-12-local-baseline/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+evidence/2026-10-12-local-baseline/*.txt -whitespace

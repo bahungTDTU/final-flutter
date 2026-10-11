@@ -1,0 +1,63 @@
+Requirement already satisfied: annotated-doc==0.0.5 in c:\users\nguyen long\documents\codex\2026-10-11\https-github-com-bahungtdtu-final-flutter\final-flutter\.venv\lib\site-packages (from -r backend\requirements.txt (line 1)) (0.0.5)
+Requirement already satisfied: annotated-types==0.8.0 in c:\users\nguyen long\documents\codex\2026-10-11\https-github-com-bahungtdtu-final-flutter\final-flutter\.venv\lib\site-packages (from -r backend\requirements.txt (line 2)) (0.8.0)
+Requirement already satisfied: anyio==4.15.1 in c:\users\nguyen long\documents\codex\2026-10-11\https-github-com-bahungtdtu-final-flutter\final-flutter\.venv\lib\site-packages (from -r backend\requirements.txt (line 3)) (4.15.1)
+Requirement already satisfied: argon2-cffi==25.1.0 in c:\users\nguyen long\documents\codex\2026-10-11\https-github-com-bahungtdtu-final-flutter\final-flutter\.venv\lib\site-packages (from -r backend\requirements.txt (line 4)) (25.1.0)
+Requirement already satisfied: argon2-cffi-bindings==26.1.0 in c:\users\nguyen long\documents\codex\2026-10-11\https-github-com-bahungtdtu-final-flutter\final-flutter\.venv\lib\site-packages (from -r backend\requirements.txt (line 5)) (26.1.0)
+Requirement already satisfied: certifi==2026.7.22 in c:\users\nguyen long\documents\codex\2026-10-11\https-github-com-bahungtdtu-final-flutter\final-flutter\.venv\lib\site-packages (from -r backend\requirements.txt (line 6)) (2026.7.22)
+Requirement already satisfied: cffi==2.1.1 in c:\users\nguyen long\documents\codex\2026-10-11\https-github-com-bahungtdtu-final-flutter\final-flutter\.venv\lib\site-packages (from -r backend\requirements.txt (line 7)) (2.1.1)
+Requirement already satisfied: click==8.5.0 in c:\users\nguyen long\documents\codex\2026-10-11\https-github-com-bahungtdtu-final-flutter\final-flutter\.venv\lib\site-packages (from -r backend\requirements.txt (line 8)) (8.5.0)
+Requirement already satisfied: colorama==0.4.6 in c:\users\nguyen long\documents\codex\2026-10-11\https-github-com-bahungtdtu-final-flutter\final-flutter\.venv\lib\site-packages (from -r backend\requirements.txt (line 9)) (0.4.6)
+Requirement already satisfied: fastapi==0.142.2 in c:\users\nguyen long\documents\codex\2026-10-11\https-github-com-bahungtdtu-final-flutter\final-flutter\.venv\lib\site-packages (from -r backend\requirements.txt (line 10)) (0.142.2)
+Requirement already satisfied: h11==0.16.0 in c:\users\nguyen long\documents\codex\2026-10-11\https-github-com-bahungtdtu-final-flutter\final-flutter\.venv\lib\site-packages (from -r backend\requirements.txt (line 11)) (0.16.0)
+Requirement already satisfied: httpcore==1.0.9 in c:\users\nguyen long\documents\codex\2026-10-11\https-github-com-bahungtdtu-final-flutter\final-flutter\.venv\lib\site-packages (from -r backend\requirements.txt (line 12)) (1.0.9)
+Requirement already satisfied: httpx==0.28.1 in c:\users\nguyen long\documents\codex\2026-10-11\https-github-com-bahungtdtu-final-flutter\final-flutter\.venv\lib\site-packages (from -r backend\requirements.txt (line 13)) (0.28.1)
+Requirement already satisfied: idna==3.20 in c:\users\nguyen long\documents\codex\2026-10-11\https-github-com-bahungtdtu-final-flutter\final-flutter\.venv\lib\site-packages (from -r backend\requirements.txt (line 14)) (3.20)
+Requirement already satisfied: iniconfig==2.3.0 in c:\users\nguyen long\documents\codex\2026-10-11\https-github-com-bahungtdtu-final-flutter\final-flutter\.venv\lib\site-packages (from -r backend\requirements.txt (line 15)) (2.3.0)
+Requirement already satisfied: opentelemetry-api==1.45.0 in c:\users\nguyen long\documents\codex\2026-10-11\https-github-com-bahungtdtu-final-flutter\final-flutter\.venv\lib\site-packages (from -r backend\requirements.txt (line 16)) (1.45.0)
+Requirement already satisfied: packaging==26.3 in c:\users\nguyen long\documents\codex\2026-10-11\https-github-com-bahungtdtu-final-flutter\final-flutter\.venv\lib\site-packages (from -r backend\requirements.txt (line 17)) (26.3)
+Requirement already satisfied: pillow==12.3.0 in c:\users\nguyen long\documents\codex\2026-10-11\https-github-com-bahungtdtu-final-flutter\final-flutter\.venv\lib\site-packages (from -r backend\requirements.txt (line 18)) (12.3.0)
+Requirement already satisfied: pluggy==1.6.0 in c:\users\nguyen long\documents\codex\2026-10-11\https-github-com-bahungtdtu-final-flutter\final-flutter\.venv\lib\site-packages (from -r backend\requirements.txt (line 19)) (1.6.0)
+Requirement already satisfied: pycparser==3.0 in c:\users\nguyen long\documents\codex\2026-10-11\https-github-com-bahungtdtu-final-flutter\final-flutter\.venv\lib\site-packages (from -r backend\requirements.txt (line 20)) (3.0)
+Requirement already satisfied: pydantic==2.13.5 in c:\users\nguyen long\documents\codex\2026-10-11\https-github-com-bahungtdtu-final-flutter\final-flutter\.venv\lib\site-packages (from -r backend\requirements.txt (line 21)) (2.13.5)
+Requirement already satisfied: pydantic_core==2.46.5 in c:\users\nguyen long\documents\codex\2026-10-11\https-github-com-bahungtdtu-final-flutter\final-flutter\.venv\lib\site-packages (from -r backend\requirements.txt (line 22)) (2.46.5)
+Requirement already satisfied: Pygments==2.21.0 in c:\users\nguyen long\documents\codex\2026-10-11\https-github-com-bahungtdtu-final-flutter\final-flutter\.venv\lib\site-packages (from -r backend\requirements.txt (line 23)) (2.21.0)
+Requirement already satisfied: pytest==9.1.1 in c:\users\nguyen long\documents\codex\2026-10-11\https-github-com-bahungtdtu-final-flutter\final-flutter\.venv\lib\site-packages (from -r backend\requirements.txt (line 24)) (9.1.1)
+Requirement already satisfied: starlette==1.7.0 in c:\users\nguyen long\documents\codex\2026-10-11\https-github-com-bahungtdtu-final-flutter\final-flutter\.venv\lib\site-packages (from -r backend\requirements.txt (line 25)) (1.7.0)
+Requirement already satisfied: typing-inspection==0.4.4 in c:\users\nguyen long\documents\codex\2026-10-11\https-github-com-bahungtdtu-final-flutter\final-flutter\.venv\lib\site-packages (from -r backend\requirements.txt (line 26)) (0.4.4)
+Requirement already satisfied: typing_extensions==4.16.0 in c:\users\nguyen long\documents\codex\2026-10-11\https-github-com-bahungtdtu-final-flutter\final-flutter\.venv\lib\site-packages (from -r backend\requirements.txt (line 27)) (4.16.0)
+Requirement already satisfied: uvicorn==0.54.0 in c:\users\nguyen long\documents\codex\2026-10-11\https-github-com-bahungtdtu-final-flutter\final-flutter\.venv\lib\site-packages (from -r backend\requirements.txt (line 28)) (0.54.0)
+
+[notice] A new release of pip is available: 25.0.1 -> 26.2.1
+[notice] To update, run: C:\Users\Nguyen Long\Documents\Codex\2026-10-11\https-github-com-bahungtdtu-final-flutter\final-flutter\.venv\Scripts\python.exe -m pip install --upgrade pip
+[1/10] Material Fonts                                              712ms
+[2/10] Gradle Wrapper                                               68ms
+[3/10] Flutter SDK
+  ├─ [1/5] sky_engine                                            2,691ms
+  ├─ [2/5] flutter_gpu                                           1,091ms
+  ├─ [3/5] flutter_patched_sdk                                     472ms
+  ├─ [4/5] flutter_patched_sdk_product                             356ms
+  └─ [5/5] windows-x64                                              5.5s
+[10/10] windows-x64/font-subset                                  1,894ms
+Resolving dependencies...
+Downloading packages...
+  code_assets 1.2.1 (2.1.0 available)
+  cross_file 0.3.5+5 (0.4.0 available)
+  flutter_keyboard_visibility_linux 1.0.0 (2.0.0 available)
+  flutter_keyboard_visibility_macos 1.0.0 (2.0.0 available)
+  flutter_keyboard_visibility_platform_interface 2.0.0 (3.0.0 available)
+  flutter_keyboard_visibility_windows 1.0.0 (2.0.0 available)
+  hooks 2.0.2 (2.2.0 available)
+  idb_shim 2.9.9 (2.9.11 available)
+  jni_flutter 1.0.4 (retracted, 1.0.4+1 available)
+  markdown 7.3.0 (7.3.1 available)
+  material_color_utilities 0.13.0 (0.13.1 available)
+  meta 1.18.3 (1.19.0 available)
+  objective_c 9.5.0 (9.6.2 available)
+  record_use 0.6.0 (1.1.1 available)
+  test_api 0.7.12 (0.7.15 available)
+  vector_math 2.4.0 (2.4.3 available)
+  video_player 2.14.0 (2.14.1 available)
+  video_player_avfoundation 2.12.0 (2.12.1 available)
+Got dependencies!
+18 packages have newer versions incompatible with dependency constraints.
+Try `flutter pub outdated` for more information.

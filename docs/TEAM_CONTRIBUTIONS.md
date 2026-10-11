@@ -1,5 +1,12 @@
 # Nhóm và đóng góp thật
 
+12/10 Nguyễn Bảo Long yêu cầu thực hiện chặng1 trên máy mới và commit/push dưới
+danh tính của mình: Nguyễn Bảo Long <523k0014@student.tdtu.edu.vn>, GitHub Long-D176.
+Phạm vi setup portable/baseline/current docs/backlog; có AI hỗ trợ, không tự gán thành
+đóng góp độc lập hoặc chứng nhận4tuần. Không kế thừa author Bahung cho thay đổi này.
+Branch/PR cần CI và review người khác; không tự merge.
+
+
 10/10 người dùng yêu cầu push toàn bộ source mới trên `codex/workspace-planner`, từ master
 13e0ffc sau PR#3. Dùng author/committer Bahung theo cấu hình được xác nhận, không co-author
 trailer hoặc giả contribution của Long. Gate250 Flutter/109 backend và code-hash preflight
