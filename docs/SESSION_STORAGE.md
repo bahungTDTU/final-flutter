@@ -1,5 +1,9 @@
 # Session storage và migration — 07/10/2026
 
+Bổ sung11–12/10: session catalogue RAM-only, UUID server handle riêng, revoke bằng password
+không thay envelope/key/migration hoặc xóa account drafts.401 nghỉ phiên vẫn giữ bản nháp
+mã hóa để manual login mở lại; xem SECURITY_CENTER_AND_AUTH_PERFORMANCE.md.
+
 F5 trong audit ghi nhận record `session` chứa token/profile plaintext. Hiện
 EncryptedAccountStore mã hóa cả record này, dùng AES-256-GCM v1 và **khóa thiết bị riêng**
 với namespace `notetogether.vault.v1:session:device`. Sembast chỉ giữ vault_version/key_id/

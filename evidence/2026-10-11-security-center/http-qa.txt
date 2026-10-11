@@ -1,0 +1,19 @@
+{
+  "result": "PASS",
+  "roles": [
+    "owner",
+    "viewer",
+    "editor",
+    "stranger"
+  ],
+  "checks": [
+    "owner-only session handles",
+    "foreign target no-op",
+    "wrong password 403",
+    "remote token/grant 401",
+    "idempotent retry",
+    "six-field locked projection",
+    "editor allowed/viewer denied/stranger hidden",
+    "API no-store headers"
+  ]
+}

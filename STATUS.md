@@ -1,4 +1,17 @@
-# NoteTogether - trạng thái 10/10/2026
+# NoteTogether - trạng thái 12/10/2026
+
+## Trung tâm bảo mật và xác thực —11–12/10/2026
+
+IMPLEMENTED: catalogue phiên theo account, thu hồi một/all-other bằng password, cap20 và
+migration legacy ổn định/không giả date; shared account reauth cooldown5/60s, bounds auth,
+sanitized422 và API private headers. RAM-only route, cancel HTTP/epoch/lifecycle, retry form;
+read-only authentication tránh reservation ghi, mutation vẫn revalidate atomic.
+Không xóa offline data máy khác. Source trên codex/security-center từ master35db810, chưa
+commit/push. Chi tiết/gates/ảnh tại docs/SECURITY_CENTER_AND_AUTH_PERFORMANCE.md và
+evidence/2026-10-11-security-center/INDEX.md; release/native runtime/FPS/IME mới chưa nghiệm thu.
+PASS cuối:258 Flutter/118 backend, analyzer sạch/format108files0changes; HTTP4roles,
+Chrome4viewport/light-dark/revoke/offline/remote-expiry và cache40static SHA256 khớp.
+Web API8000/APK debug compile PASS; read authentication không reserve writer, không claim FPS mới.
 
 ## Publication workspace/planner —10/10/2026
 

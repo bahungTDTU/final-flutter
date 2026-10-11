@@ -1,0 +1,64 @@
+async page => {
+  page.securityFinal = {errors: [], consoleErrors: []};
+  page.on('pageerror', e => page.securityFinal.errors.push(String(e)));
+  page.on('console', m => { if (m.type() === 'error') page.securityFinal.consoleErrors.push(m.text()); });
+  await page.reload();
+  let ready = false;
+  for (let attempt = 0; attempt < 80; attempt++) {
+    ready = await page.evaluate(async () => {
+      const names = (await caches.keys()).filter(n => n.startsWith('notetogether-static-'));
+      const registration = await navigator.serviceWorker.getRegistration();
+      return names.length === 1 && names[0] === 'notetogether-static-90358c5797dcbbed'
+        && registration?.active?.state === 'activated' && !registration.installing && !registration.waiting;
+    });
+    if (ready) break;
+    await page.waitForTimeout(250);
+  }
+  if (!ready) throw Error('New worker did not activate');
+  await page.reload();
+  const accessibility = page.getByRole('button', {name:'Enable accessibility', exact:true});
+  await accessibility.waitFor();
+  await accessibility.evaluate(el => el.click());
+  await page.getByRole('button', {name:/Hồ sơ và tùy chỉnh$/}).waitFor();
+  const cache = await page.evaluate(async () => {
+    const names = (await caches.keys()).filter(n => n.startsWith('notetogether-static-'));
+    if (names.length !== 1 || names[0] !== 'notetogether-static-90358c5797dcbbed') throw Error('Unexpected static cache');
+    const store = await caches.open(names[0]);
+    const resources = (await store.keys()).map(r => new URL(r.url).pathname);
+    if (resources.length !== 40 || resources.some(p => p.includes('/me/') || p.includes('/auth/') || p.includes('/notes')))
+      throw Error('Cache must contain only 40 static assets');
+    async function hash(response) {
+      const digest = await crypto.subtle.digest('SHA-256', await response.arrayBuffer());
+      return Array.from(new Uint8Array(digest), b => b.toString(16).padStart(2,'0')).join('');
+    }
+    const hashes = {};
+    for (const file of ['main.dart.js', 'flutter_bootstrap.js']) {
+      const cached = await hash(await store.match(file));
+      const network = await hash(await fetch(file, {cache:'no-store'}));
+      if (cached !== network) throw Error('Stale cache bytes: ' + file);
+      hashes[file] = cached;
+    }
+    return {name: names[0], count: resources.length, hashes};
+  });
+  await page.getByRole('button', {name:/Hồ sơ và tùy chỉnh$/}).click();
+  const center = page.getByRole('button', {name:'Trung tâm bảo mật',exact:true});
+  await center.waitFor();
+  await page.waitForTimeout(400);
+  const box = await center.boundingBox();
+  await page.mouse.click(box.x + box.width/2, box.y + box.height/2);
+  await page.getByText('1 phiên hoạt động', {exact:true}).waitFor();
+  await page.mouse.move(0,0);
+  await page.waitForTimeout(650);
+  const prefix = 'D:/flutter cuoi ki/evidence/2026-10-11-security-center/';
+  await page.screenshot({path:prefix+'desktop-light.png'});
+  for (const [name,width,height] of [['phone-light',390,844],['small-phone-light',320,740],['tablet-light',900,1100]]) {
+    await page.setViewportSize({width,height});
+    await page.mouse.move(0,0);
+    await page.waitForTimeout(650);
+    await page.screenshot({path:prefix+name+'.png'});
+  }
+  await page.setViewportSize({width:1440,height:1000});
+  await page.waitForTimeout(650);
+  return {result:'PASS', cache, viewports:[[1440,1000],[390,844],[320,740],[900,1100]],
+    events:page.securityFinal};
+}

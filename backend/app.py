@@ -12,8 +12,10 @@ from uuid import uuid4
 
 from argon2 import PasswordHasher
 from argon2.exceptions import VerificationError, InvalidHashError
-from fastapi import Depends, FastAPI, HTTPException
+from fastapi import Depends, FastAPI, HTTPException, Request
+from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from pydantic import BaseModel, Field, ConfigDict, model_validator, field_validator
 
@@ -27,6 +29,8 @@ from backend.catalogue import migrate, install_label_routes, normalize_labels, n
 from backend.note_listing import list_visible_notes
 from backend.ai import provider_from_environment, install_ai_routes
 from backend.note_document import validate_content, plain_content
+from backend.session_security import (install_session_catalogue, install_session_routes,
+                                      record_session, failure_window, verify_account_password)
 
 hasher = PasswordHasher()
 bearer = HTTPBearer(auto_error=False)
@@ -51,12 +55,12 @@ class Registration(BaseModel):
     email: str = Field(max_length=254)
     name: str = Field(min_length=1, max_length=100)
     password: str = Field(min_length=10, max_length=128)
-    confirmation: str
+    confirmation: str = Field(max_length=128)
 
 
 class Login(BaseModel):
-    email: str
-    password: str
+    email: str = Field(min_length=3, max_length=254)
+    password: str = Field(min_length=1, max_length=128)
 
 
 class EmailRequest(BaseModel):
@@ -69,13 +73,13 @@ class TokenRequest(BaseModel):
 
 class ResetRequest(TokenRequest):
     password: str = Field(min_length=10, max_length=128)
-    confirmation: str
+    confirmation: str = Field(max_length=128)
 
 
 class ChangePassword(BaseModel):
-    current_password: str
+    current_password: str = Field(min_length=1, max_length=128)
     password: str = Field(min_length=10, max_length=128)
-    confirmation: str
+    confirmation: str = Field(max_length=128)
 
 
 class ProfileUpdate(BaseModel):
@@ -121,13 +125,13 @@ class Operation(BaseModel):
 
 
 class Protection(BaseModel):
-    current_password: str = ''
+    current_password: str = Field(default='', max_length=128)
     password: str | None = Field(default=None, min_length=10, max_length=128)
-    confirmation: str | None = None
+    confirmation: str | None = Field(default=None, max_length=128)
 
 
 class Unlock(BaseModel):
-    password: str
+    password: str = Field(min_length=1, max_length=128)
 
 
 class Share(BaseModel):
@@ -155,11 +159,23 @@ def create_app(db_path=None, *, email_delivery=None, ai_provider=None, start_ema
         finally:
             conn.close()
 
+    @contextmanager
+    def read_db():
+        conn = sqlite3.connect(database, timeout=10)
+        conn.row_factory = sqlite3.Row
+        try:
+            conn.execute('PRAGMA query_only=ON')
+            conn.execute('BEGIN')
+            yield conn
+        finally:
+            conn.close()
+
     with db() as conn:
         conn.executescript(Path(__file__).with_name('schema.sql').read_text())
         conn.execute('BEGIN IMMEDIATE')
         migrate(conn)
         install_tracking(conn)
+        install_session_catalogue(conn, digest)
 
     @asynccontextmanager
     async def lifespan(app):
@@ -173,6 +189,14 @@ def create_app(db_path=None, *, email_delivery=None, ai_provider=None, start_ema
                 await anyio.to_thread.run_sync(app.state.email_queue.stop)
 
     app = FastAPI(title='NoteTogether', version='0.2.0', lifespan=lifespan)
+    @app.exception_handler(RequestValidationError)
+    async def invalid_request(request, error):
+        # FastAPI's default validation response echoes `input`, including passwords
+        # or the complete body for model validators. Keep useful field diagnostics only.
+        return JSONResponse(status_code=422, content={'detail': [
+            {key: value[key] for key in ('loc', 'msg', 'type')}
+            for value in error.errors()]})
+
     app.state.database = database
     app.state.email_delivery = email_delivery if email_delivery is not None else delivery_from_environment(os.environ)
     app.state.email_queue = EmailQueue(db, app.state.email_delivery,
@@ -181,13 +205,23 @@ def create_app(db_path=None, *, email_delivery=None, ai_provider=None, start_ema
     origins = [value.strip() for value in os.environ.get('WEB_ORIGINS', 'http://localhost:7357,http://127.0.0.1:7357').split(',')]
     app.add_middleware(CORSMiddleware,
         allow_origins=origins,
-        allow_methods=['GET', 'POST', 'PATCH', 'DELETE'], allow_headers=['Authorization', 'Content-Type'])
+        allow_methods=['GET', 'POST', 'PATCH', 'DELETE'], allow_headers=['Authorization', 'Content-Type'],
+        expose_headers=['Retry-After'])
+
+    @app.middleware('http')
+    async def private_responses(request, call_next):
+        response = await call_next(request)
+        response.headers['Cache-Control'] = 'private, no-store'
+        response.headers['X-Content-Type-Options'] = 'nosniff'
+        response.headers['Referrer-Policy'] = 'no-referrer'
+        return response
 
     def authenticate(credentials: HTTPAuthorizationCredentials | None = Depends(bearer)):
-        if not credentials or credentials.scheme.lower() != 'bearer':
+        if (not credentials or credentials.scheme.lower() != 'bearer'
+                or len(credentials.credentials) > 512):
             raise HTTPException(401, 'Authentication required')
         session_digest = digest(credentials.credentials)
-        with db() as conn:
+        with read_db() as conn:
             row = conn.execute('SELECT user_id FROM sessions WHERE digest=? AND expires>?',
                                (session_digest, time.time())).fetchone()
         if not row:
@@ -206,9 +240,10 @@ def create_app(db_path=None, *, email_delivery=None, ai_provider=None, start_ema
                 'verified': bool(row['verified']), 'preferences': json.loads(row['preferences']),
                 'avatar_revision': avatar['revision'] if avatar else 0, 'has_avatar': bool(avatar and avatar['present']), 'schema_version': 2}
 
-    def session(conn, user_id):
+    def session(conn, user_id, user_agent):
         token = secrets.token_urlsafe(32)
         conn.execute('INSERT INTO sessions VALUES (?,?,?)', (digest(token), user_id, time.time() + 86400))
+        record_session(conn, digest(token), user_id, user_agent)
         return {'token': token, 'user': profile(conn, user_id)}
 
     def email_token(conn, user_id, kind):
@@ -297,9 +332,10 @@ def create_app(db_path=None, *, email_delivery=None, ai_provider=None, start_ema
     install_share_routes(app, db, authenticate, access, now)
     install_realtime_routes(app, authenticate, origins)
     install_ai_routes(app, db, authenticate, validate_session, access)
+    install_session_routes(app, db, read_db, authenticate, validate_session, check_password)
 
     @app.post('/auth/register', status_code=201)
-    def register(body: Registration):
+    def register(body: Registration, request: Request):
         email = body.email.strip().lower()
         if not valid_email(email) or not body.name.strip():
             raise HTTPException(422, 'Invalid email or display name')
@@ -313,28 +349,26 @@ def create_app(db_path=None, *, email_delivery=None, ai_provider=None, start_ema
                          (user_id, email, body.name.strip(), hasher.hash(body.password)))
             code = email_token(conn, user_id, 'verify')
             email_cooldown(conn, 'verify:' + user_id)
-            result = session(conn, user_id)
+            result = session(conn, user_id, request.headers.get('user-agent', ''))
         result['email_delivery'] = code
         return result
 
     @app.post('/auth/login')
-    def login(body: Login):
-        scope = 'login:' + body.email.strip().lower()
+    def login(body: Login, request: Request):
+        scope = 'login:' + digest(body.email.strip().lower())
         with db() as conn:
-            attempt = conn.execute('SELECT * FROM attempts WHERE scope=?', (scope,)).fetchone()
-            if attempt and attempt['blocked_until'] > time.time():
-                raise HTTPException(429, 'Try again later')
+            prior_failures = failure_window(conn, scope)
             user = conn.execute('SELECT * FROM users WHERE email=?', (body.email.strip().lower(),)).fetchone()
             valid = check_password(user['password'], body.password) if user else check_password(dummy_hash, body.password)
             if not user or not valid:
-                failures = (attempt['failures'] if attempt else 0) + 1
+                failures = prior_failures + 1
                 conn.execute('INSERT OR REPLACE INTO attempts VALUES (?,?,?)',
                              (scope, failures, time.time() + 60 if failures >= 5 else 0))
                 # Return after commit so failed attempts survive the response.
                 result = None
             else:
                 conn.execute('DELETE FROM attempts WHERE scope=?', (scope,))
-                result = session(conn, user['id'])
+                result = session(conn, user['id'], request.headers.get('user-agent', ''))
         if result is None:
             raise HTTPException(401, 'Invalid email or password')
         return result
@@ -456,11 +490,12 @@ def create_app(db_path=None, *, email_delivery=None, ai_provider=None, start_ema
             raise HTTPException(422, 'Passwords do not match')
         with db() as conn:
             validate_session(conn, identity)
-            user = conn.execute('SELECT password FROM users WHERE id=?', (identity[0],)).fetchone()
-            if not check_password(user['password'], body.current_password):
-                raise HTTPException(403, 'Current password incorrect')
-            conn.execute('UPDATE users SET password=? WHERE id=?', (hasher.hash(body.password), identity[0]))
-            conn.execute('DELETE FROM sessions WHERE user_id=?', (identity[0],))
+            valid = verify_account_password(conn, identity[0], body.current_password, check_password)
+            if valid:
+                conn.execute('UPDATE users SET password=? WHERE id=?', (hasher.hash(body.password), identity[0]))
+                conn.execute('DELETE FROM sessions WHERE user_id=?', (identity[0],))
+        if not valid:
+            raise HTTPException(403, 'Current password incorrect')
         return {'ok': True, 'login_required': True}
 
     @app.get('/notes')

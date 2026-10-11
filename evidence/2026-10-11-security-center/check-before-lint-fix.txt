@@ -1,0 +1,6 @@
+Formatted 108 files (0 changed) in 1.14 seconds.
+Analyzing flutter cuoi ki...                                    
+
+   info - Statements in an if should be enclosed in a block. Try wrapping the statement in a block - lib\ui\security_center.dart:292:7 - curly_braces_in_flow_control_structures
+
+1 issue found. (ran in 4.9s)

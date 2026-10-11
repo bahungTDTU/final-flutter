@@ -1,5 +1,9 @@
 # Quyền và giới hạn bảo mật
 
+11–12/10: session catalogue/revoke own-account, password confirmation shared cooldown,
+private validation errors và read authentication. Xem SECURITY_CENTER_AND_AUTH_PERFORMANCE.md
+và evidence/2026-10-11-security-center; native runtime/public deployment phần mới chưa nghiệm thu.
+
 | Operation | Owner | Editor | Viewer | Stranger / anonymous |
 |---|---|---|---|---|
 | List/read | Có; content khóa cần grant | Có; content khóa cần grant | Có; content khóa cần grant | Không |
@@ -10,7 +14,8 @@
 | Delete/protection/share/revoke | Owner; delete/share/catalogue cần unlock | 403 | 403 | 404 / 401 |
 | Files list/read | read/grant; không bypass lock | read/grant | read/grant | 404 / 401 |
 | Files upload/delete | edit/grant | edit/grant | 403 | 404 / 401 |
-| AI/realtime | Chưa có endpoint; cần kế thừa read/edit/unlock | Chưa triển khai | Chưa triển khai | Chưa triển khai |
+| AI read/realtime | Read/grant; write giữ ACL riêng | Read/grant; write giữ ACL riêng | Read/grant; không được sửa note | Không đọc note người khác; feed own-account/authenticated |
+| Sessions list/revoke | Chỉ session account; revoke cần account password | Tài khoản riêng | Tài khoản riêng | Không target session account khác; anonymous401 |
 
 `access()` kiểm tra session đang còn hiệu lực trong cùng mutation transaction, quyền và grant.
 List note khóa chỉ trả ID, locked, revision, role, pinned_at và shared boolean do server xác định.
@@ -26,16 +31,17 @@ Auth chưa bắt buộc verified để dùng app. Endpoint activation/reset publ
 Login có cooldown5 lần sai/60s; unlock/change/disable note dùng chung durable user+note scope
 5 lỗi/60s qua nhiều session/restart, đúng cũng bị429 trong cooldown và có Retry-After.
 Hết cooldown note bắt đầu cửa sổ5 lần mới; đúng password xóa counter. Resend/forgot có60s.
-Rate limiting registration/reset/account-password, phân phối
-attempts theo thời gian và chống enumeration là việc cần hoàn thiện trước public deployment.
-Account-password change hiện kiểm tra old password nhưng chưa throttle riêng. Protection note
+Đổi password/thu hồi session dùng chung account counter5/60s, persistent/restart-safe;
+hết cooldown bắt đầu cửa sổ mới. Login scope dùng hash email và giữ cooldown khi migration.
+Registration/reset, distributed abuse limits và timing enumeration còn cần hoàn thiện trước public deployment. Protection note
 đã dùng chung throttle với unlock; xem PROTECTION_STATUS_FIXES.md và test_note_password_limits.py.
 
 SMTP/TLS verify certificate/hostname, auth sau TLS; thiếu STARTTLS không gửi plaintext.
 Email code random32-byte, digest/TTL/kind/used kiểm tra atomic; reset/check public không tiêu thụ
 mã, reset cuối kiểm tra lại và revoke mọi session. Main không giữ mailbox/token thô/log.
 Forgot response/cooldown known/unknown giống nhau; chưa bảo đảm chống timing enumeration.
-SMTP accepted không chứng minh inbox receipt; chưa mail outbox/worker. Xem EMAIL_DELIVERY.md.
+SMTP accepted không chứng minh inbox receipt; mail outbox/worker đã có encrypted token,
+lease/retry/cancel. Xem EMAIL_DELIVERY.md.
 
 Avatar input PNG/JPEG≤2 MiB/dimensions bounded; backend decode/EXIF orientation rồi tạo PNG mới
 ≤512×512 không metadata. BLOB replace/delete atomic, authenticated download private/no-store;
@@ -55,10 +61,10 @@ PRIVATE_ATTACHMENTS.md; quota/rate limits/codec breadth/public release còn cầ
 
 Backend local DB chứa note plaintext, cần quyền file/backups server phù hợp khi deploy.
 Client account snapshot (notes/drafts/outbox/recovery) mã hóa AES-GCM với device key riêng;
-session/profile vẫn plaintext. Web key provider experimental/localStorage không chống người đọc
+session/profile cũng dùng encrypted envelope/key/AAD riêng. Web key provider experimental/localStorage không chống người đọc
 browser profile hay XSS. Migration legacy theo account, có compaction retry. Chi tiết ở ENCRYPTED_RECOVERY.md.
-Client có online temporary read/unlock và owner protection UI; protected edit/offline note-password
-unlock chưa có. Reader không đưa protected content vào ordinary cache/snapshot; background/expiry/
+Client có online read/unlock, owner protection, protected edit và password-encrypted vault cho
+offline unlock. Reader không đưa protected content vào ordinary cache/snapshot; background/expiry/
 network/role loss che nội dung, polling quyền mỗi15s. Xem NOTE_PROTECTION.md.
 Không đánh dấu mục 23/24 hoàn thành chỉ vì spike backend pass.
 

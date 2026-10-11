@@ -26,3 +26,8 @@ evidence/2026-10-10-workspace-polish/*.js -whitespace
 evidence/2026-10-10-planner-motion/*.txt -whitespace
 evidence/2026-10-10-planner-motion/*.js -whitespace
 evidence/2026-10-10-rubric-audit/*.txt -whitespace
+
+# Preserve the 11-12/10 security QA snapshot bytes and captured CLI spacing.
+evidence/2026-10-11-security-center/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+evidence/2026-10-11-security-center/*.txt -whitespace
+evidence/2026-10-11-security-center/*.js -whitespace

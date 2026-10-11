@@ -19,6 +19,7 @@ import 'sharing.dart';
 import 'ai.dart';
 import 'writing_studio.dart';
 import 'workspace.dart';
+import 'security_center.dart';
 
 class UnverifiedBanner extends StatelessWidget {
   const UnverifiedBanner({super.key, required this.onCheck, this.delivery});
@@ -1647,6 +1648,18 @@ class _HomeScreenState extends State<HomeScreen> {
                   },
                   icon: const Icon(Icons.logout),
                   label: const Text('Đăng xuất'),
+                ),
+                TextButton.icon(
+                  onPressed: () {
+                    Navigator.pop(context);
+                    Navigator.of(this.context).push(
+                      MaterialPageRoute<void>(
+                        builder: (_) => SecurityCenterScreen(controller: c),
+                      ),
+                    );
+                  },
+                  icon: const Icon(Icons.shield_outlined),
+                  label: const Text('Trung tâm bảo mật'),
                 ),
                 TextButton(
                   onPressed: () {

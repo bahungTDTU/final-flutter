@@ -1,5 +1,12 @@
 # Ma trận yêu cầu 32 tiêu chí
 
+Trung tâm bảo mật11–12/10 là chức năng nâng cao ngoài rubric: active-session catalogue,
+password-confirmed revoke, bounded/auth private errors, shared reauth cooldown, RAM-only
+lifecycle/cancellation và SQLite read authentication. Hỗ trợ trải nghiệm/bảo mật/sáng tạo,
+không tự tăng điểm hay đóng release/native/provider gates. Chi tiết và kết quả thực:
+SECURITY_CENTER_AND_AUTH_PERFORMANCE.md, evidence/2026-10-11-security-center/INDEX.md.
+Source codex/security-center/master35db810 + working changes, chưa commit/push.
+
 Publication workspace/planner10/10 được người dùng ủy quyền trên `codex/workspace-planner`,
 base master13e0ffc sau merge PR#3;250 Flutter/109 backend/local gate PASS, code hashes khớp.
 Xem evidence/2026-10-10-workspace-publication. Các trạng thái chưa push trong snapshots sau là

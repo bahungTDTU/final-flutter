@@ -1,5 +1,15 @@
 # NoteTogether - nền tảng triển khai local
 
+## Trung tâm bảo mật —11–12/10/2026
+
+Hồ sơ → Trung tâm bảo mật: xem phiên đăng nhập, thu hồi từng phiên/các phiên khác bằng
+mật khẩu. API giới hạn đầu vào, cooldown xác nhận password bền vững, bỏ password/token
+khỏi lỗi422; catalogue RAM-only, che/abort khi background hoặc đổi phiên. Xác thực SQLite
+dùng read transaction để giảm tranh chấp writer; mutation vẫn recheck quyền trong transaction.
+Không xóa dữ liệu offline của máy khác. [Thiết kế/giới hạn](docs/SECURITY_CENTER_AND_AUTH_PERFORMANCE.md),
+[nghiệm thu](evidence/2026-10-11-security-center/INDEX.md). Source local trên
+`codex/security-center` từ master35db810; chưa commit/push, release vẫn để sau.
+
 ## Publication workspace/planner —10/10/2026
 
 Theo yêu cầu push mới, source được chuẩn bị trên `codex/workspace-planner`, từ master

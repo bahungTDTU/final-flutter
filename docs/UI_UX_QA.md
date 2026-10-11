@@ -1,4 +1,9 @@
-# UI/UX QA – cập nhật 10/10/2026
+# UI/UX QA – cập nhật 12/10/2026
+
+Security Center: widget test320px/200%/keyboard, retry input/resize/background clear và
+actual HTTP cancellation PASS. Chrome xác nhận mật khẩu sai/đúng, revoke one/all-others,
+offline hide/reload PASS; AppBar tương phản sửa theo theme chung. Ảnh/cache/source cuối
+và giới hạn native/screen reader/FPS: evidence/2026-10-11-security-center/INDEX.md.
 
 ## Planner/motion —10/10/2026
 

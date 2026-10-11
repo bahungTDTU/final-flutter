@@ -1,5 +1,10 @@
 # Nhóm và đóng góp thật
 
+11–12/10 người dùng yêu cầu thêm chức năng nâng cao/bảo mật/hiệu năng. Security Center,
+reauth throttling/private validation/read authentication do agent hỗ trợ, chưa commit/push/
+merge. Base master35db810 sau PR#4 đã được merge ngoài lượt này; không gán approval hoặc
+contribution độc lập cho thành viên. Evidence local không thay teamwork4tuần.
+
 10/10 người dùng yêu cầu push toàn bộ source mới trên `codex/workspace-planner`, từ master
 13e0ffc sau PR#3. Dùng author/committer Bahung theo cấu hình được xác nhận, không co-author
 trailer hoặc giả contribution của Long. Gate250 Flutter/109 backend và code-hash preflight

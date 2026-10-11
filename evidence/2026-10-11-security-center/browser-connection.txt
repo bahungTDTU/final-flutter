@@ -1,0 +1,26 @@
+### Result
+{"result":"PASS","offlineHidesRows":true,"onlineReload":true,"events":{"responses":[{"path":"/me/sessions","status":200},{"path":"/me/sessions/revoke","status":403},{"path":"/me/sessions/revoke","status":200},{"path":"/me/sessions","status":200},{"path":"/me/sessions/revoke","status":200},{"path":"/me/sessions","status":200},{"path":"/me/sessions","status":200}],"errors":[]}}
+### Ran Playwright code
+```js
+await (async page => {
+  await page.context().setOffline(true);
+  await page.getByRole('button', {name: 'Tải lại phiên', exact: true}).click();
+  await page.getByText('Thông tin phiên chỉ hiển thị khi đã kết nối và xác thực.', {exact: true}).waitFor();
+  if (await page.getByRole('button', {name: 'Thu hồi các phiên khác', exact: true}).isEnabled())
+    throw Error('Offline stale actions must be disabled');
+  await page.mouse.move(0, 0);
+  await page.waitForTimeout(650);
+  await page.screenshot({path: 'D:/flutter cuoi ki/evidence/2026-10-11-security-center/offline-hidden.png'});
+  await page.context().setOffline(false);
+  await page.getByRole('button', {name: 'Tải lại phiên', exact: true}).click();
+  await page.getByText('1 phiên hoạt động', {exact: true}).waitFor();
+  return {result:'PASS', offlineHidesRows:true, onlineReload:true, events:page.securityEvents};
+}
+)(page);
+```
+### Page
+- Page URL: http://127.0.0.1:7372/
+- Page Title: NoteTogether
+- Console: 2 errors, 0 warnings
+### Events
+- New console entries: .playwright-cli\console-2026-10-11T16-44-57-846Z.log#L4

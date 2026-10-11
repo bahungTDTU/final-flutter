@@ -1,0 +1,12 @@
+
+┌─────────────────────────────────────────────────────────┐
+│ A new version of Flutter is available!                  │
+│                                                         │
+│ To update to the latest version, run "flutter upgrade". │
+└─────────────────────────────────────────────────────────┘
+Analyzing flutter cuoi ki...                                    
+
+   info - Statements in an if should be enclosed in a block. Try wrapping the statement in a block - lib\state\security_session.dart:173:7 - curly_braces_in_flow_control_structures
+   info - Use the null-aware marker '?' rather than a null check via an 'if'. Try using '?' - lib\state\security_session.dart:185:11 - use_null_aware_elements
+
+2 issues found. (ran in 61.7s)

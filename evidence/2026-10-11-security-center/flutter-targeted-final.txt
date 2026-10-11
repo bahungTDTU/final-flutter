@@ -1,0 +1,10 @@
+00:00 +0: loading D:/flutter cuoi ki/test/security_center_test.dart
+00:00 +0: online session controls never write metadata/password to draft/outbox or local store
+00:00 +1: wrong password permits retry; timeout hides stale actions until a successful reload
+00:00 +2: invalid, duplicated or oversized catalogue fails closed and can recover
+00:00 +3: background cancels requests and ignores late responses; resume fetches once
+00:00 +4: background aborts the actual HTTP request rather than only dropping the result
+00:00 +5: same-account token switch and route disposal cancel and discard results
+00:00 +6: expired token retires encrypted session while durable encrypted drafts remain
+00:00 +7: confirmation keeps retry input on resize, clears on background, and handles 320px/200%/keyboard
+00:01 +8: All tests passed!
