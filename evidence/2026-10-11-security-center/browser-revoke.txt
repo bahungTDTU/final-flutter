@@ -1,0 +1,35 @@
+### Ran Playwright code
+```js
+await (async page => {
+  const password = page.getByRole('textbox', {name: 'Mật khẩu tài khoản', exact: true});
+  await password.click();
+  await page.keyboard.type('wrong-password');
+  await page.getByRole('button', {name: 'Xác nhận thu hồi', exact: true}).click();
+  await page.getByText('Mật khẩu tài khoản chưa đúng. Hãy kiểm tra và thử lại.', {exact: true}).waitFor();
+  await page.screenshot({path: 'D:/flutter cuoi ki/evidence/2026-10-11-security-center/password-retry.png'});
+  await password.click();
+  await page.keyboard.press('Control+A');
+  await page.keyboard.type('safe-password-123');
+  await page.getByRole('button', {name: 'Xác nhận thu hồi', exact: true}).click();
+  await page.getByText('2 phiên hoạt động', {exact: true}).waitFor();
+  await page.getByRole('button', {name: 'Thu hồi các phiên khác', exact: true}).click();
+  await page.getByRole('textbox', {name: 'Mật khẩu tài khoản', exact: true}).click();
+  await page.keyboard.type('safe-password-123');
+  await page.getByRole('button', {name: 'Xác nhận thu hồi', exact: true}).click();
+  await page.getByText('1 phiên hoạt động', {exact: true}).waitFor();
+  if (await page.getByRole('button', {name: 'Thu hồi các phiên khác', exact: true}).isEnabled())
+    throw Error('No other sessions; action must be disabled');
+  await page.mouse.move(0, 0);
+  await page.waitForTimeout(650);
+  await page.screenshot({path: 'D:/flutter cuoi ki/evidence/2026-10-11-security-center/revoked-others.png'});
+  console.log(JSON.stringify({result:'PASS', wrongPasswordRetry:true, oneThenOthers:true,
+    currentSessionRetained:true, events:page.securityEvents}));
+}
+)(page);
+```
+### Page
+- Page URL: http://127.0.0.1:7372/
+- Page Title: NoteTogether
+- Console: 1 errors, 0 warnings
+### Events
+- New console entries: .playwright-cli\console-2026-10-11T16-44-57-846Z.log#L2-L3

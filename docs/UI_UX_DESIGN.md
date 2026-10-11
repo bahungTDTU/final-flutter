@@ -1,4 +1,9 @@
-# NoteTogether – UI/UX design, cập nhật 10/10/2026
+# NoteTogether – UI/UX design, cập nhật 12/10/2026
+
+Trung tâm bảo mật dùng noteAppBar gradient/SurfacePanel/MetadataPill/PrismReveal từ theme
+chung. Header/trạng thái/action tách vùng; PC≥900px thẻ ngang, phone/chữ≥150% thẻ dọc,
+lazy≤20 rows. Password confirmation scrollable, validation inline/retry, che/xóa input khi
+background/đổi session; busy khóa thao tác trùng. SECURITY_CENTER_AND_AUTH_PERFORMANCE.md.
 
 ## Kế hoạch và chuyển động —10/10/2026
 

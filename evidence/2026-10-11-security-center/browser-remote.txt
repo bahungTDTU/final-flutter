@@ -1,0 +1,26 @@
+### Result
+{"result":"PASS","remoteSseLogout":true,"metadataHidden":true,"manualLoginRequired":true,"events":{"errors":[],"consoleErrors":["Failed to load resource: the server responded with a status of 401 (Unauthorized)","Failed to load resource: the server responded with a status of 401 (Unauthorized)"]}}
+### Ran Playwright code
+```js
+await (async page => {
+  await page.getByText('Thông tin phiên chỉ hiển thị khi đã kết nối và xác thực.',{exact:true}).waitFor();
+  if (await page.getByText('1 phiên hoạt động',{exact:true}).count() !== 0)
+    throw Error('Session metadata still shown after remote revocation');
+  if (await page.getByRole('button',{name:'Thu hồi các phiên khác',exact:true}).isEnabled())
+    throw Error('Remote expired session can still manage sessions');
+  await page.mouse.move(0,0);
+  await page.waitForTimeout(650);
+  await page.screenshot({path:'D:/flutter cuoi ki/evidence/2026-10-11-security-center/remote-session-hidden.png'});
+  await page.getByRole('button',{name:'Quay lại',exact:true}).click();
+  await page.getByRole('textbox',{name:'Email',exact:true}).waitFor();
+  return {result:'PASS', remoteSseLogout:true, metadataHidden:true, manualLoginRequired:true,
+    events:page.securityFinal};
+}
+)(page);
+```
+### Page
+- Page URL: http://127.0.0.1:7372/
+- Page Title: NoteTogether
+- Console: 1 errors, 0 warnings
+### Events
+- New console entries: .playwright-cli\console-2026-10-11T16-44-57-846Z.log#L6

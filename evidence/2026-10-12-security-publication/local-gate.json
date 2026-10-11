@@ -1,0 +1,55 @@
+{
+  "observedAt": "2026-10-12T01:05:14.201770+07:00",
+  "branch": "codex/security-center",
+  "featureCommit": "0fccdc8e79c30454604d5ec473040a3e06a860eb",
+  "integratedMaster": "3eb76e5d22b4804c4607968307b378ea272708f1",
+  "state": "completed local gate; merge commit/push/PR not yet recorded",
+  "command": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/check.ps1",
+  "format": "PASS 108 files, 0 changes",
+  "analyze": "PASS",
+  "flutterTests": 258,
+  "backendTests": 118,
+  "verifiedCodeHashes": [
+    {
+      "path": "backend/app.py",
+      "sha256": "0c010b5c05c7160431f2196738007fe175fc300b982758a2e0c44581a433cb42"
+    },
+    {
+      "path": "backend/schema.sql",
+      "sha256": "1f51a35a56a0d0c69395927b470766609703ae3355b7b4e28d81c5b1a958945c"
+    },
+    {
+      "path": "backend/session_security.py",
+      "sha256": "f1b672d87125206bc0002b21d1834f96e1b4e4f59342d6ca1d3c35a5908598eb"
+    },
+    {
+      "path": "backend/tests/test_session_security.py",
+      "sha256": "74b0b4142a632adb8455627028fe2122332dd2f0edce3274f677b67a4f672e6b"
+    },
+    {
+      "path": "lib/ui/home.dart",
+      "sha256": "5aa01fbd4907fdf6a00e0849e14eb87b301c4fec83d54bd547de2c47f8aff523"
+    },
+    {
+      "path": "lib/state/security_session.dart",
+      "sha256": "aa79416d97711a7078c877d017c9da74858a9b95f0354863eb69726229569a3c"
+    },
+    {
+      "path": "lib/ui/security_center.dart",
+      "sha256": "cb9f33401160eb2c1f2fe5f1ea6da59fff24783d72989cebbf9ce9b55faa721e"
+    },
+    {
+      "path": "test/security_center_test.dart",
+      "sha256": "c5c79f4279fd3ffe85ca06284b482222f574fbc15299ea434c7efbfece93f91f"
+    }
+  ],
+  "verifiedOriginalEvidenceCount": 56,
+  "runtimeSourceUnchangedDuringIntegration": true,
+  "readmeCopiesEqual": true,
+  "checkLogSha256": "0cac7464414058d97733d7104e04c2ea112655733e21464b7b0c1cafb824f9a1",
+  "originalQAManifestSha256": "f87e2dab4278932cf0a5fe6a7192c5ea02ae156b0f642617bbe2418209798082",
+  "hostedCI": "NOT RUN at local pre-publication snapshot",
+  "humanApproval": "NOT RECORDED",
+  "nativeRuntimeFPSIME": "NOT RUN for this feature",
+  "scope": "branch/PR publication; no merge or release"
+}

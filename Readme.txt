@@ -1,5 +1,23 @@
 # NoteTogether - nền tảng triển khai local
 
+## Publication Trung tâm bảo mật —12/10/2026
+
+Người dùng ủy quyền push trên `codex/security-center`. Source bảo mật commit `0fccdc8`
+được tích hợp với master `3eb76e5` sau PR#5, giữ setup portable và contribution baseline.
+[Gate trước publication](evidence/2026-10-12-security-publication/INDEX.md) ghi kiểm tra
+trên nhánh đã cập nhật; raw QA11–12/10 giữ nguyên. Các đoạn “chưa commit/push” bên dưới
+là snapshot trước publication. CI/approval xem PR thực trên GitHub; không tự merge/release.
+
+## Trung tâm bảo mật —11–12/10/2026
+
+Hồ sơ → Trung tâm bảo mật: xem phiên đăng nhập, thu hồi từng phiên/các phiên khác bằng
+mật khẩu. API giới hạn đầu vào, cooldown xác nhận password bền vững, bỏ password/token
+khỏi lỗi422; catalogue RAM-only, che/abort khi background hoặc đổi phiên. Xác thực SQLite
+dùng read transaction để giảm tranh chấp writer; mutation vẫn recheck quyền trong transaction.
+Không xóa dữ liệu offline của máy khác. [Thiết kế/giới hạn](docs/SECURITY_CENTER_AND_AUTH_PERFORMANCE.md),
+[nghiệm thu](evidence/2026-10-11-security-center/INDEX.md). Source local trên
+`codex/security-center` từ master35db810; chưa commit/push, release vẫn để sau.
+
 ## Baseline máy mới —12/10/2026
 
 Source `35db810` đã chứa merge PR#4 (workspace/planner); các đoạn chưa push/PR open

@@ -1,0 +1,5 @@
+warning: in the working copy of '.gitattributes', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'backend/app.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'backend/schema.sql', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docs/SECURITY_AND_PERMISSIONS.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docs/SESSION_STORAGE.md', LF will be replaced by CRLF the next time Git touches it

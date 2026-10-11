@@ -1,5 +1,13 @@
 # Kiến trúc NoteTogether
 
+11–12/10 SecurityCenterScreen → route-owned SecuritySession → /me/sessions(GET) và
+/me/sessions/revoke(POST). Catalogue/password RAM-only, cancellable HTTP + account/token/
+lifecycle epoch; không qua durable outbox. UUID handle riêng/session_details FK cascade,
+cap20 khi login, startup backfill legacy/dateNULL. Account reauth throttle dùng chung với
+/auth/password; lỗi schema bỏ input/ctx. Authenticate/read catalogue dùng query-only BEGIN,
+mutation giữ BEGIN IMMEDIATE + session/ACL/grant recheck. Không đổi frozen editor base,
+drafts/vault/recovery hoặc sáu public fields note khóa. SECURITY_CENTER_AND_AUTH_PERFORMANCE.md.
+
 Planner10/10: NotePlan ID/stage/priority/calendar-date trong workspace encrypted, không note
 snapshot/server endpoint. save/move/remove dùng _editWorkspace durable serialization; move
 merge trường deadline/priority mới nhất, không tạo sync op. PlannerSliver derive workspaceNotes,
@@ -16,7 +24,8 @@ Web worker upgrade lấy static bytes với cache:reload, tôn trọng reload/no
 fingerprint bao gồm worker template, bootstrap updateViaCache:none. Allowlist vẫn chỉ
 40 tài nguyên build, không API/session/private files. SHA256 cache cuối khớp release QA.
 
-Ngày đối chiếu: 10/10/2026, source base `a5e5ec6` + ordering và workspace cá nhân.
+Ngày đối chiếu nền workspace:10/10/2026, source base `a5e5ec6` + ordering và workspace cá nhân.
+Phần session mới11–12/10 trên master35db810 + working changes codex/security-center.
 Đây là kiến trúc đã triển khai local; nghiệm thu provider thật, native editor mới và release
 còn các gate riêng trong STATUS.md và REQUIREMENTS_MATRIX.md.
 

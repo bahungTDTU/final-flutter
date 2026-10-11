@@ -1,5 +1,9 @@
 # Quyền và giới hạn bảo mật
 
+11–12/10: session catalogue/revoke own-account, password confirmation shared cooldown,
+private validation errors và read authentication. Xem SECURITY_CENTER_AND_AUTH_PERFORMANCE.md
+và evidence/2026-10-11-security-center; native runtime/public deployment phần mới chưa nghiệm thu.
+
 Đối chiếu tài liệu chuyên đề12/10/2026 trên source35db810. Đây là mô tả thiết kế,
 không phải chứng nhận security audit hoặc nghiệm thu public deployment.
 
@@ -15,6 +19,7 @@ không phải chứng nhận security audit hoặc nghiệm thu public deploymen
 | Files upload/delete | edit/grant | edit/grant | 403 | 404 / 401 |
 | AI đọc nội dung | Read ACL + grant khi khóa | Read ACL + grant khi khóa | Read ACL + grant khi khóa | 404 / 401 |
 | Realtime | SSE phiên hợp lệ, chỉ counter; refetch kiểm tra ACL | Tương tự | Tương tự | Không nhận stream tài khoản khác / 401 |
+| Sessions list/revoke | Chỉ session account; revoke cần account password | Tài khoản riêng | Tài khoản riêng | Không target session account khác; anonymous401 |
 
 `access()` kiểm tra session đang còn hiệu lực trong cùng mutation transaction, quyền và grant.
 List note khóa chỉ trả ID, locked, revision, role, pinned_at và shared boolean do server xác định.
@@ -30,17 +35,18 @@ Auth chưa bắt buộc verified để dùng app. Endpoint activation/reset publ
 Login có cooldown5 lần sai/60s; unlock/change/disable note dùng chung durable user+note scope
 5 lỗi/60s qua nhiều session/restart, đúng cũng bị429 trong cooldown và có Retry-After.
 Hết cooldown note bắt đầu cửa sổ5 lần mới; đúng password xóa counter. Resend/forgot có60s.
-Rate limiting registration/reset/account-password, phân phối
-attempts theo thời gian và chống enumeration là việc cần hoàn thiện trước public deployment.
-Account-password change hiện kiểm tra old password nhưng chưa throttle riêng. Protection note
+Đổi password/thu hồi session dùng chung account counter5/60s, persistent/restart-safe;
+hết cooldown bắt đầu cửa sổ mới. Login scope dùng hash email và giữ cooldown khi migration.
+Registration/reset, distributed abuse limits và timing enumeration còn cần hoàn thiện trước public deployment. Protection note
 đã dùng chung throttle với unlock; xem PROTECTION_STATUS_FIXES.md và test_note_password_limits.py.
 
 SMTP/TLS verify certificate/hostname, auth sau TLS; thiếu STARTTLS không gửi plaintext.
 Email code random32-byte, digest/TTL/kind/used kiểm tra atomic; reset/check public không tiêu thụ
 mã, reset cuối kiểm tra lại và revoke mọi session. Main không giữ mailbox/token thô/log.
 Forgot response/cooldown known/unknown giống nhau; chưa bảo đảm chống timing enumeration.
-SMTP accepted không chứng minh inbox receipt; transactional mail outbox và worker đã có.
-Retry/lease/key lifecycle và giới hạn nghiệm thu Internet xem EMAIL_DELIVERY.md.
+SMTP accepted không chứng minh inbox receipt; transactional mail outbox/worker
+đã có encrypted token, lease/retry/cancel. Key lifecycle và giới hạn nghiệm thu Internet
+xem EMAIL_DELIVERY.md.
 
 Avatar input PNG/JPEG≤2 MiB/dimensions bounded; backend decode/EXIF orientation rồi tạo PNG mới
 ≤512×512 không metadata. BLOB replace/delete atomic, authenticated download private/no-store;
@@ -60,7 +66,7 @@ PRIVATE_ATTACHMENTS.md; quota/rate limits/codec breadth/public release còn cầ
 
 Backend local DB chứa note plaintext, cần quyền file/backups server phù hợp khi deploy.
 Client account snapshot (notes/drafts/outbox/recovery) mã hóa AES-GCM với device key riêng;
-session/profile cũng mã hóa bằng device key riêng từ07/10; xem SESSION_STORAGE.md. Web key provider experimental/localStorage không chống người đọc
+session/profile cũng mã hóa bằng envelope/device key/AAD riêng từ07/10; xem SESSION_STORAGE.md. Web key provider experimental/localStorage không chống người đọc
 browser profile hay XSS. Migration legacy theo account, có compaction retry. Chi tiết ở ENCRYPTED_RECOVERY.md.
 Client có protected edit và offline note-password unlock cho dữ liệu đã tải hợp lệ.
 Protected content/draft/operations chỉ nằm trong password-encrypted vault, không ordinary cache/

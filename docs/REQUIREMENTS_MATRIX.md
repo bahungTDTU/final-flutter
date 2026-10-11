@@ -1,5 +1,17 @@
 # Ma trận yêu cầu 32 tiêu chí
 
+Publication12/10 được ủy quyền trên `codex/security-center`: source `0fccdc8`,
+tích hợp master `3eb76e5` sau PR#5. Gate nhánh cập nhật và source/evidence hashes:
+evidence/2026-10-12-security-publication/INDEX.md. Các dòng chưa push dưới đây là snapshots
+trước publication; CI/approval vẫn cần tại PR thực, không tự merge hoặc đóng release gates.
+
+Trung tâm bảo mật11–12/10 là chức năng nâng cao ngoài rubric: active-session catalogue,
+password-confirmed revoke, bounded/auth private errors, shared reauth cooldown, RAM-only
+lifecycle/cancellation và SQLite read authentication. Hỗ trợ trải nghiệm/bảo mật/sáng tạo,
+không tự tăng điểm hay đóng release/native/provider gates. Chi tiết và kết quả thực:
+SECURITY_CENTER_AND_AUTH_PERFORMANCE.md, evidence/2026-10-11-security-center/INDEX.md.
+Source codex/security-center/master35db810 + working changes, chưa commit/push.
+
 ## Baseline máy mới —12/10/2026
 
 Source master35db810 đã merge PR#4; source snapshots trước publication giữ lịch sử.
@@ -7,7 +19,6 @@ Setup portable và current security/offline/realtime docs được đồng bộ,
 logic. [Baseline và backlog nghiệm thu](LOCAL_BASELINE_AND_ROADMAP.md). Kết quả lệnh máy mới xem
 ../evidence/2026-10-12-local-baseline/INDEX.md. Native source mới/provider/public release/video/teamwork
 vẫn là các gates riêng; không suy hoàn tất từ baseline local.
-
 
 Publication workspace/planner10/10 được người dùng ủy quyền trên `codex/workspace-planner`,
 base master13e0ffc sau merge PR#3;250 Flutter/109 backend/local gate PASS, code hashes khớp.

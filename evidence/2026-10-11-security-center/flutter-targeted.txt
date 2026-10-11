@@ -1,0 +1,37 @@
+00:00 +0: loading D:/flutter cuoi ki/test/security_center_test.dart
+00:00 +0: online session controls never write metadata/password to draft/outbox or local store
+00:00 +1: wrong password permits retry; timeout hides stale actions until a successful reload
+00:00 +2: invalid, duplicated or oversized catalogue fails closed and can recover
+00:00 +3: background cancels requests and ignores late responses; resume fetches once
+00:00 +4: same-account token switch and route disposal cancel and discard results
+00:00 +5: expired token retires encrypted session while durable encrypted drafts remain
+00:00 +6: confirmation keeps retry input on resize, clears on background, and handles 320px/200%/keyboard
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: exactly one matching candidate
+  Actual: _TextWidgetFinder:<Found 0 widgets with text "Đang dùng": []>
+   Which: means none were found but one was expected
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///D:/flutter%20cuoi%20ki/test/security_center_test.dart:314:7)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1953:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///D:/flutter%20cuoi%20ki/test/security_center_test.dart line 314
+The test description was:
+  confirmation keeps retry input on resize, clears on background, and handles 320px/200%/keyboard
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:01 +6 -1: confirmation keeps retry input on resize, clears on background, and handles 320px/200%/keyboard [E]
+  Test failed. See exception logs above.
+  The test description was: confirmation keeps retry input on resize, clears on background, and handles 320px/200%/keyboard
+  
+00:01 +6 -1: Some tests failed.
+
+Failing tests:
+  D:/flutter cuoi ki/test/security_center_test.dart: confirmation keeps retry input on resize, clears on background, and handles 320px/200%/keyboard

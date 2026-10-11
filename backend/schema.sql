@@ -7,6 +7,12 @@ CREATE TABLE IF NOT EXISTS users (
 CREATE TABLE IF NOT EXISTS sessions (
  digest TEXT PRIMARY KEY, user_id TEXT NOT NULL REFERENCES users(id), expires REAL NOT NULL
 );
+CREATE INDEX IF NOT EXISTS sessions_user_expiry ON sessions(user_id,expires);
+CREATE INDEX IF NOT EXISTS sessions_expiry ON sessions(expires);
+CREATE TABLE IF NOT EXISTS session_details (
+ id TEXT PRIMARY KEY, session_digest TEXT NOT NULL UNIQUE REFERENCES sessions(digest) ON DELETE CASCADE,
+ label TEXT NOT NULL, created_at REAL
+);
 CREATE TABLE IF NOT EXISTS email_tokens (
  digest TEXT PRIMARY KEY, user_id TEXT NOT NULL REFERENCES users(id),
  kind TEXT NOT NULL, expires REAL NOT NULL, used INTEGER NOT NULL DEFAULT 0
