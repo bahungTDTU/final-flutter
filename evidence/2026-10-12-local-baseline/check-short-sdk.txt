@@ -1,0 +1,316 @@
+The network path was not found.
+Formatted 105 files (0 changed) in 1.24 seconds.
+The network path was not found.
+Resolving dependencies...
+Downloading packages...
+  code_assets 1.2.1 (2.1.0 available)
+  cross_file 0.3.5+5 (0.4.0 available)
+  flutter_keyboard_visibility_linux 1.0.0 (2.0.0 available)
+  flutter_keyboard_visibility_macos 1.0.0 (2.0.0 available)
+  flutter_keyboard_visibility_platform_interface 2.0.0 (3.0.0 available)
+  flutter_keyboard_visibility_windows 1.0.0 (2.0.0 available)
+  hooks 2.0.2 (2.2.0 available)
+  idb_shim 2.9.9 (2.9.11 available)
+  jni_flutter 1.0.4 (retracted, 1.0.4+1 available)
+  markdown 7.3.0 (7.3.1 available)
+  material_color_utilities 0.13.0 (0.13.1 available)
+  meta 1.18.3 (1.19.0 available)
+  objective_c 9.5.0 (9.6.2 available)
+  record_use 0.6.0 (1.1.1 available)
+  test_api 0.7.12 (0.7.15 available)
+  vector_math 2.4.0 (2.4.3 available)
+  video_player 2.14.0 (2.14.1 available)
+  video_player_avfoundation 2.12.0 (2.12.1 available)
+Got dependencies!
+18 packages have newer versions incompatible with dependency constraints.
+Try `flutter pub outdated` for more information.
+Analyzing final-flutter...                                      
+No issues found! (ran in 54.1s)
+The network path was not found.
+Resolving dependencies...
+Downloading packages...
+  code_assets 1.2.1 (2.1.0 available)
+  cross_file 0.3.5+5 (0.4.0 available)
+  flutter_keyboard_visibility_linux 1.0.0 (2.0.0 available)
+  flutter_keyboard_visibility_macos 1.0.0 (2.0.0 available)
+  flutter_keyboard_visibility_platform_interface 2.0.0 (3.0.0 available)
+  flutter_keyboard_visibility_windows 1.0.0 (2.0.0 available)
+  hooks 2.0.2 (2.2.0 available)
+  idb_shim 2.9.9 (2.9.11 available)
+  jni_flutter 1.0.4 (retracted, 1.0.4+1 available)
+  markdown 7.3.0 (7.3.1 available)
+  material_color_utilities 0.13.0 (0.13.1 available)
+  meta 1.18.3 (1.19.0 available)
+  objective_c 9.5.0 (9.6.2 available)
+  record_use 0.6.0 (1.1.1 available)
+  test_api 0.7.12 (0.7.15 available)
+  vector_math 2.4.0 (2.4.3 available)
+  video_player 2.14.0 (2.14.1 available)
+  video_player_avfoundation 2.12.0 (2.12.1 available)
+Got dependencies!
+18 packages have newer versions incompatible with dependency constraints.
+Try `flutter pub outdated` for more information.
+00:00 +0: loading C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/ai_test.dart
+00:00 +0: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/ai_test.dart: Summary regeneration stays RAM-only and cannot overwrite notes or outbox
+00:00 +1: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/ai_test.dart: Unsent draft blocks summary of stale server version
+00:00 +2: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/ai_test.dart: Removing an uncited context source clears the whole answer
+00:00 +3: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/ai_test.dart: Account switch during inference discards late answer and source metadata
+00:00 +4: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/ai_test.dart: Validation failure and citation open both enforce current server permission
+00:00 +5: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/ai_test.dart: Protected gate expiry and background hide output immediately
+00:00 +6: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:00 +7: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:00 +8: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:00 +9: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:00 +10: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:00 +11: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:00 +12: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:00 +13: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:00 +14: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:00 +15: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:00 +16: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:00 +17: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:01 +18: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:01 +19: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:01 +20: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:01 +21: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:01 +22: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:01 +23: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:01 +24: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:02 +25: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:02 +26: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:02 +27: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:02 +28: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:02 +29: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:02 +30: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:02 +31: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:02 +32: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:02 +33: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/editor_sections_test.dart: Writing labels, text and counters never overlap at Size(320.0, 568.0) / 200 percent
+00:02 +34: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/editor_sections_test.dart: Writing labels, text and counters never overlap at Size(320.0, 568.0) / 200 percent
+00:02 +35: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/editor_sections_test.dart: Writing labels, text and counters never overlap at Size(320.0, 568.0) / 200 percent
+00:02 +36: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/editor_sections_test.dart: Writing labels, text and counters never overlap at Size(320.0, 568.0) / 200 percent
+00:02 +37: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/editor_sections_test.dart: Writing labels, text and counters never overlap at Size(320.0, 568.0) / 200 percent
+00:03 +38: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/editor_sections_test.dart: Writing labels, text and counters never overlap at Size(320.0, 568.0) / 200 percent
+00:03 +39: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/editor_sections_test.dart: Writing labels, text and counters never overlap at Size(320.0, 568.0) / 200 percent
+00:03 +40: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/editor_sections_test.dart: Writing labels, text and counters never overlap at Size(320.0, 568.0) / 200 percent
+00:03 +41: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/editor_sections_test.dart: Writing labels, text and counters never overlap at Size(320.0, 568.0) / 200 percent
+00:03 +42: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/email_flow_test.dart: verification queue status updates only after an authenticated check
+00:03 +43: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/email_flow_test.dart: verification queue status updates only after an authenticated check
+00:03 +44: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/email_flow_test.dart: verification queue status updates only after an authenticated check
+00:03 +45: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/avatar_labels_test.dart: Renaming keeps selected AND filter; deleting clears it without removing notes
+00:03 +46: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/avatar_labels_test.dart: Renaming keeps selected AND filter; deleting clears it without removing notes
+00:03 +47: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/avatar_labels_test.dart: Renaming keeps selected AND filter; deleting clears it without removing notes
+00:03 +48: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/avatar_labels_test.dart: Renaming keeps selected AND filter; deleting clears it without removing notes
+00:04 +49: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/avatar_labels_test.dart: Renaming keeps selected AND filter; deleting clears it without removing notes
+00:04 +50: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/avatar_labels_test.dart: Renaming keeps selected AND filter; deleting clears it without removing notes
+00:04 +51: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:04 +52: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:04 +53: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:04 +54: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:04 +55: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:04 +56: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:04 +57: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:04 +58: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:04 +59: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:04 +60: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:04 +61: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:04 +62: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:05 +63: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:05 +64: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:05 +65: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:05 +66: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:05 +67: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:06 +68: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:06 +69: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:06 +70: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:06 +71: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:06 +72: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:06 +73: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:06 +74: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:06 +75: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:06 +76: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:06 +77: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:06 +78: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:07 +79: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:07 +80: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:07 +81: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/home_experience_test.dart: Controller pulses update Home without rebuilding the app shell
+00:07 +82: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/home_experience_test.dart: Controller pulses update Home without rebuilding the app shell
+00:07 +83: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/home_experience_test.dart: Controller pulses update Home without rebuilding the app shell
+00:07 +84: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/home_experience_test.dart: Controller pulses update Home without rebuilding the app shell
+00:07 +85: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/home_experience_test.dart: Controller pulses update Home without rebuilding the app shell
+00:07 +86: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/home_experience_test.dart: Controller pulses update Home without rebuilding the app shell
+00:07 +87: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/home_experience_test.dart: Controller pulses update Home without rebuilding the app shell
+00:07 +88: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/home_experience_test.dart: Controller pulses update Home without rebuilding the app shell
+SHELL_PROBE {"pulses":20,"shell_replacements":0,"fps_measured":false}
+00:08 +89: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:08 +90: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:08 +91: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:08 +92: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:08 +93: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:08 +94: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:08 +95: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:08 +96: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:08 +97: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:08 +98: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:08 +99: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:08 +100: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:08 +101: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:09 +102: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:09 +103: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:09 +104: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:09 +105: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:09 +106: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:09 +107: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:09 +108: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:09 +109: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:09 +110: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:09 +111: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:09 +112: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:09 +113: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:09 +114: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:09 +115: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:09 +116: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:09 +117: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:09 +118: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/note_document_test.dart: Desktop formats directly, saves frozen base, and retains controller/caret on phone resize
+00:09 +119: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/note_document_test.dart: Desktop formats directly, saves frozen base, and retains controller/caret on phone resize
+00:10 +120: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/note_document_test.dart: Desktop formats directly, saves frozen base, and retains controller/caret on phone resize
+00:10 +121: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/note_document_test.dart: Desktop formats directly, saves frozen base, and retains controller/caret on phone resize
+00:10 +122: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/note_document_test.dart: Desktop formats directly, saves frozen base, and retains controller/caret on phone resize
+00:10 +123: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/note_document_test.dart: Desktop formats directly, saves frozen base, and retains controller/caret on phone resize
+00:10 +124: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/home_experience_test.dart: Hidden Home skips rebuilds and refreshes after editor return
+00:10 +125: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/home_experience_test.dart: Hidden Home skips rebuilds and refreshes after editor return
+00:10 +126: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/home_experience_test.dart: Hidden Home skips rebuilds and refreshes after editor return
+00:10 +127: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/home_experience_test.dart: Hidden Home skips rebuilds and refreshes after editor return
+00:10 +128: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/home_experience_test.dart: Hidden Home skips rebuilds and refreshes after editor return
+00:11 +129: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/home_experience_test.dart: Hidden Home skips rebuilds and refreshes after editor return
+00:11 +130: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/home_experience_test.dart: Hidden Home skips rebuilds and refreshes after editor return
+00:11 +131: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/home_experience_test.dart: Hidden Home skips rebuilds and refreshes after editor return
+00:11 +132: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/home_experience_test.dart: Hidden Home skips rebuilds and refreshes after editor return
+00:11 +133: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/home_experience_test.dart: Hidden Home skips rebuilds and refreshes after editor return
+00:11 +134: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/home_experience_test.dart: Hidden Home skips rebuilds and refreshes after editor return
+00:11 +135: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/home_experience_test.dart: Hidden Home skips rebuilds and refreshes after editor return
+00:11 +136: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/home_experience_test.dart: Hidden Home skips rebuilds and refreshes after editor return
+00:11 +137: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/home_experience_test.dart: Hidden Home skips rebuilds and refreshes after editor return
+00:11 +138: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/home_experience_test.dart: Hidden Home skips rebuilds and refreshes after editor return
+00:11 +139: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/home_experience_test.dart: Hidden Home skips rebuilds and refreshes after editor return
+00:11 +140: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/home_experience_test.dart: Hidden Home skips rebuilds and refreshes after editor return
+00:11 +141: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/home_experience_test.dart: Hidden Home skips rebuilds and refreshes after editor return
+00:11 +142: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/home_experience_test.dart: Hidden Home skips rebuilds and refreshes after editor return
+00:11 +143: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/home_experience_test.dart: Hidden Home skips rebuilds and refreshes after editor return
+00:11 +144: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/home_experience_test.dart: Hidden Home skips rebuilds and refreshes after editor return
+00:12 +145: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/home_experience_test.dart: Hidden Home skips rebuilds and refreshes after editor return
+00:12 +146: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/home_experience_test.dart: Hidden Home skips rebuilds and refreshes after editor return
+00:13 +147: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/home_experience_test.dart: Hidden Home skips rebuilds and refreshes after editor return
+00:13 +148: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/home_experience_test.dart: Hidden Home skips rebuilds and refreshes after editor return
+00:13 +149: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/home_experience_test.dart: Hidden Home skips rebuilds and refreshes after editor return
+00:13 +150: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/ui_cohesion_test.dart: Typing avoids rebuilding note cards until debounce; search still matches beyond bounded preview
+00:13 +151: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:13 +152: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:14 +153: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:14 +154: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:14 +155: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:14 +156: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:14 +157: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:14 +158: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:14 +159: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:14 +160: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:14 +161: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:14 +162: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:15 +163: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:15 +164: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:15 +165: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:15 +166: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:15 +167: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:16 +168: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:16 +169: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:16 +170: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:16 +171: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:16 +172: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:16 +173: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:17 +174: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:17 +175: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:17 +176: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:17 +177: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:17 +178: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:18 +179: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:18 +180: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:19 +181: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:19 +182: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:19 +183: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:19 +184: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:19 +185: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:19 +186: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:19 +187: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:19 +188: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:19 +189: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:19 +190: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:20 +191: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:20 +192: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:20 +193: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:20 +194: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:20 +195: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:20 +196: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:20 +197: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:20 +198: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:20 +199: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:20 +200: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:20 +201: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:21 +202: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:21 +203: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:21 +204: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:22 +205: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:22 +206: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:22 +207: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:23 +208: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:23 +209: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:23 +210: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:24 +211: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:24 +212: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:24 +213: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:24 +214: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:24 +215: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:24 +216: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:24 +217: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:24 +218: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:25 +219: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:25 +220: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:25 +221: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:25 +222: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:25 +223: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:26 +224: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:26 +225: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:26 +226: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:26 +227: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:26 +228: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:27 +229: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:27 +230: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:28 +231: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:28 +232: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:29 +233: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:29 +234: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:30 +235: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:30 +236: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:31 +237: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:31 +238: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:32 +239: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:34 +239: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/ui_cohesion_test.dart: Controlled NotoSans shaping and cached-query benchmark; timings are evidence, not FPS assertions
+UI_BENCHMARK {"target":"host Flutter test engine/NotoSans","iterations":11,"note_chars":100000,"preview_chars":481,"paragraph_full_median_us":22703,"paragraph_preview_median_us":543,"notes":500,"baseline_query_median_us":898367,"optimized_query_median_us":974,"cached_query_median_us":19,"fps_measured":false}
+00:34 +240: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:48 +241: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Delete conflict requires new confirmation and revoked delete hides content
+00:48 +242: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Offline draft survives encrypted Sembast close/reopen and never enters ordinary outbox
+00:48 +243: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: A copied old-password draft permits new-password unlock without losing the private copy
+00:48 +244: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Lost acknowledgement replays the same immutable operation after reopen
+00:48 +245: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Typing while protected operation is inflight keeps newest draft and chains own ack
+00:48 +246: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Realtime clean content updates keep frozen base; dirty content remains on conflict
+00:48 +247: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Revoke hides content and preserves password-bound recovery; copy never mutates source
+00:48 +248: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Encrypted field merge survives ordinary snapshot capture and account switch mid-write
+00:48 +249: C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/test/protected_editing_test.dart: Delegated picker obscures content and rechecks grant before showing it again
+00:48 +250: All tests passed!
+........................................................................ [ 66%]
+.....................................                                    [100%]
+============================== warnings summary ===============================
+.venv\Lib\site-packages\fastapi\testclient.py:1
+  C:\Users\Nguyen Long\Documents\Codex\2026-10-11\https-github-com-bahungtdtu-final-flutter\final-flutter\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+109 passed, 1 warning in 124.38s (0:02:04)

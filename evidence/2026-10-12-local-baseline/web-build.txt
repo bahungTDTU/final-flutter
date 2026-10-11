@@ -1,0 +1,47 @@
+[1/1] Web SDK                                                       3.9s
+Resolving dependencies...
+Downloading packages...
+  code_assets 1.2.1 (2.1.0 available)
+  cross_file 0.3.5+5 (0.4.0 available)
+  flutter_keyboard_visibility_linux 1.0.0 (2.0.0 available)
+  flutter_keyboard_visibility_macos 1.0.0 (2.0.0 available)
+  flutter_keyboard_visibility_platform_interface 2.0.0 (3.0.0 available)
+  flutter_keyboard_visibility_windows 1.0.0 (2.0.0 available)
+  hooks 2.0.2 (2.2.0 available)
+  idb_shim 2.9.9 (2.9.11 available)
+  jni_flutter 1.0.4 (retracted, 1.0.4+1 available)
+  markdown 7.3.0 (7.3.1 available)
+  material_color_utilities 0.13.0 (0.13.1 available)
+  meta 1.18.3 (1.19.0 available)
+  objective_c 9.5.0 (9.6.2 available)
+  record_use 0.6.0 (1.1.1 available)
+  test_api 0.7.12 (0.7.15 available)
+  vector_math 2.4.0 (2.4.3 available)
+  video_player 2.14.0 (2.14.1 available)
+  video_player_avfoundation 2.12.0 (2.12.1 available)
+Got dependencies!
+18 packages have newer versions incompatible with dependency constraints.
+Try `flutter pub outdated` for more information.
+Compiling lib\main.dart for the Web...                          
+'C:\Users\Nguyen' is not recognized as an internal or external command,
+operable program or batch file.
+
+Building native assets for package:objective_c failed.
+Compilation of hook returned with exit code: 1.
+To reproduce run:
+C:\Users\Nguyen Long\Documents\Codex\2026-10-11\https-github-com-bahungtdtu-final-flutter\work\flutter-sdk-3.47.1\bin\cache\dart-sdk\bin\dart compile kernel '--packages=C:\Users\Nguyen Long\Documents\Codex\2026-10-11\https-github-com-bahungtdtu-final-flutter\final-flutter\.dart_tool\package_config.json' '--output=C:\Users\Nguyen Long\Documents\Codex\2026-10-11\https-github-com-bahungtdtu-final-flutter\final-flutter\.dart_tool\hooks_runner\objective_c\6782ff62a0\hook.dill' '--depfile=C:\Users\Nguyen Long\Documents\Codex\2026-10-11\https-github-com-bahungtdtu-final-flutter\final-flutter\.dart_tool\hooks_runner\objective_c\6782ff62a0\hook.dill.d' 'C:\Users\Nguyen Long\AppData\Local\Pub\Cache\hosted\pub.dev\objective_c-9.5.0\hook\build.dart'
+stderr:
+'C:\Users\Nguyen' is not recognized as an internal or external command,
+operable program or batch file.
+
+stdout:
+
+
+Release build failed with exit code -1
+At C:\Users\Nguyen 
+Long\Documents\Codex\2026-10-11\https-github-com-bahungtdtu-final-flutter\final-flutter\scripts\toolchain.ps1:4 char:66
++ ... ITCODE -ne 0) { throw "$Step failed with exit code $LASTEXITCODE" } }
++                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (Release build failed with exit code -1:String) [], RuntimeException
+    + FullyQualifiedErrorId : Release build failed with exit code -1
+ 

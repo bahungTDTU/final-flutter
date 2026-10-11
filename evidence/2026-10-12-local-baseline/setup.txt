@@ -1,0 +1,109 @@
+Collecting annotated-doc==0.0.5 (from -r backend\requirements.txt (line 1))
+  Downloading annotated_doc-0.0.5-py3-none-any.whl.metadata (6.5 kB)
+Collecting annotated-types==0.8.0 (from -r backend\requirements.txt (line 2))
+  Downloading annotated_types-0.8.0-py3-none-any.whl.metadata (15 kB)
+Collecting anyio==4.15.1 (from -r backend\requirements.txt (line 3))
+  Downloading anyio-4.15.1-py3-none-any.whl.metadata (4.7 kB)
+Collecting argon2-cffi==25.1.0 (from -r backend\requirements.txt (line 4))
+  Downloading argon2_cffi-25.1.0-py3-none-any.whl.metadata (4.1 kB)
+Collecting argon2-cffi-bindings==26.1.0 (from -r backend\requirements.txt (line 5))
+  Downloading argon2_cffi_bindings-26.1.0-cp310-abi3-win_amd64.whl.metadata (7.5 kB)
+Collecting certifi==2026.7.22 (from -r backend\requirements.txt (line 6))
+  Downloading certifi-2026.7.22-py3-none-any.whl.metadata (2.5 kB)
+Collecting cffi==2.1.1 (from -r backend\requirements.txt (line 7))
+  Downloading cffi-2.1.1-cp312-cp312-win_amd64.whl.metadata (2.6 kB)
+Collecting click==8.5.0 (from -r backend\requirements.txt (line 8))
+  Downloading click-8.5.0-py3-none-any.whl.metadata (2.6 kB)
+Collecting colorama==0.4.6 (from -r backend\requirements.txt (line 9))
+  Downloading colorama-0.4.6-py2.py3-none-any.whl.metadata (17 kB)
+Collecting fastapi==0.142.2 (from -r backend\requirements.txt (line 10))
+  Downloading fastapi-0.142.2-py3-none-any.whl.metadata (27 kB)
+Collecting h11==0.16.0 (from -r backend\requirements.txt (line 11))
+  Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+Collecting httpcore==1.0.9 (from -r backend\requirements.txt (line 12))
+  Downloading httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+Collecting httpx==0.28.1 (from -r backend\requirements.txt (line 13))
+  Downloading httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+Collecting idna==3.20 (from -r backend\requirements.txt (line 14))
+  Downloading idna-3.20-py3-none-any.whl.metadata (7.2 kB)
+Collecting iniconfig==2.3.0 (from -r backend\requirements.txt (line 15))
+  Downloading iniconfig-2.3.0-py3-none-any.whl.metadata (2.5 kB)
+Collecting opentelemetry-api==1.45.0 (from -r backend\requirements.txt (line 16))
+  Downloading opentelemetry_api-1.45.0-py3-none-any.whl.metadata (1.4 kB)
+Collecting packaging==26.3 (from -r backend\requirements.txt (line 17))
+  Downloading packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+Collecting pillow==12.3.0 (from -r backend\requirements.txt (line 18))
+  Downloading pillow-12.3.0-cp312-cp312-win_amd64.whl.metadata (9.3 kB)
+Collecting pluggy==1.6.0 (from -r backend\requirements.txt (line 19))
+  Downloading pluggy-1.6.0-py3-none-any.whl.metadata (4.8 kB)
+Collecting pycparser==3.0 (from -r backend\requirements.txt (line 20))
+  Downloading pycparser-3.0-py3-none-any.whl.metadata (8.2 kB)
+Collecting pydantic==2.13.5 (from -r backend\requirements.txt (line 21))
+  Downloading pydantic-2.13.5-py3-none-any.whl.metadata (110 kB)
+Collecting pydantic_core==2.46.5 (from -r backend\requirements.txt (line 22))
+  Downloading pydantic_core-2.46.5-cp312-cp312-win_amd64.whl.metadata (6.7 kB)
+Collecting Pygments==2.21.0 (from -r backend\requirements.txt (line 23))
+  Downloading pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+Collecting pytest==9.1.1 (from -r backend\requirements.txt (line 24))
+  Downloading pytest-9.1.1-py3-none-any.whl.metadata (7.6 kB)
+Collecting starlette==1.7.0 (from -r backend\requirements.txt (line 25))
+  Downloading starlette-1.7.0-py3-none-any.whl.metadata (6.6 kB)
+Collecting typing-inspection==0.4.4 (from -r backend\requirements.txt (line 26))
+  Downloading typing_inspection-0.4.4-py3-none-any.whl.metadata (2.6 kB)
+Collecting typing_extensions==4.16.0 (from -r backend\requirements.txt (line 27))
+  Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting uvicorn==0.54.0 (from -r backend\requirements.txt (line 28))
+  Downloading uvicorn-0.54.0-py3-none-any.whl.metadata (6.6 kB)
+Downloading annotated_doc-0.0.5-py3-none-any.whl (5.3 kB)
+Downloading annotated_types-0.8.0-py3-none-any.whl (13 kB)
+Downloading anyio-4.15.1-py3-none-any.whl (132 kB)
+Downloading argon2_cffi-25.1.0-py3-none-any.whl (14 kB)
+Downloading argon2_cffi_bindings-26.1.0-cp310-abi3-win_amd64.whl (25 kB)
+Downloading certifi-2026.7.22-py3-none-any.whl (136 kB)
+Downloading cffi-2.1.1-cp312-cp312-win_amd64.whl (185 kB)
+Downloading click-8.5.0-py3-none-any.whl (125 kB)
+Downloading colorama-0.4.6-py2.py3-none-any.whl (25 kB)
+Downloading fastapi-0.142.2-py3-none-any.whl (144 kB)
+Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+Downloading httpcore-1.0.9-py3-none-any.whl (78 kB)
+Downloading httpx-0.28.1-py3-none-any.whl (73 kB)
+Downloading idna-3.20-py3-none-any.whl (69 kB)
+Downloading iniconfig-2.3.0-py3-none-any.whl (7.5 kB)
+Downloading opentelemetry_api-1.45.0-py3-none-any.whl (60 kB)
+Downloading packaging-26.3-py3-none-any.whl (129 kB)
+Downloading pillow-12.3.0-cp312-cp312-win_amd64.whl (7.2 MB)
+   ---------------------------------------- 7.2/7.2 MB 12.1 MB/s eta 0:00:00
+Downloading pluggy-1.6.0-py3-none-any.whl (20 kB)
+Downloading pycparser-3.0-py3-none-any.whl (48 kB)
+Downloading pydantic-2.13.5-py3-none-any.whl (472 kB)
+Downloading pydantic_core-2.46.5-cp312-cp312-win_amd64.whl (2.0 MB)
+   ---------------------------------------- 2.0/2.0 MB 6.0 MB/s eta 0:00:00
+Downloading pygments-2.21.0-py3-none-any.whl (1.3 MB)
+   ---------------------------------------- 1.3/1.3 MB 30.9 MB/s eta 0:00:00
+Downloading pytest-9.1.1-py3-none-any.whl (386 kB)
+Downloading starlette-1.7.0-py3-none-any.whl (78 kB)
+Downloading typing_inspection-0.4.4-py3-none-any.whl (14 kB)
+Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+Downloading uvicorn-0.54.0-py3-none-any.whl (87 kB)
+Installing collected packages: typing_extensions, Pygments, pycparser, pluggy, pillow, packaging, iniconfig, idna, h11, colorama, click, certifi, annotated-types, annotated-doc, uvicorn, typing-inspection, pytest, pydantic_core, opentelemetry-api, httpcore, cffi, anyio, starlette, pydantic, httpx, argon2-cffi-bindings, fastapi, argon2-cffi
+Successfully installed Pygments-2.21.0 annotated-doc-0.0.5 annotated-types-0.8.0 anyio-4.15.1 argon2-cffi-25.1.0 argon2-cffi-bindings-26.1.0 certifi-2026.7.22 cffi-2.1.1 click-8.5.0 colorama-0.4.6 fastapi-0.142.2 h11-0.16.0 httpcore-1.0.9 httpx-0.28.1 idna-3.20 iniconfig-2.3.0 opentelemetry-api-1.45.0 packaging-26.3 pillow-12.3.0 pluggy-1.6.0 pycparser-3.0 pydantic-2.13.5 pydantic_core-2.46.5 pytest-9.1.1 starlette-1.7.0 typing-inspection-0.4.4 typing_extensions-4.16.0 uvicorn-0.54.0
+
+[notice] A new release of pip is available: 25.0.1 -> 26.2.1
+[notice] To update, run: C:\Users\Nguyen Long\Documents\Codex\2026-10-11\https-github-com-bahungtdtu-final-flutter\final-flutter\.venv\Scripts\python.exe -m pip install --upgrade pip
+Resolving dependencies...
+The current Dart SDK version is 3.13.0.
+
+Because note_together requires SDK version ^3.13.1, version solving failed.
+
+
+You can try the following suggestion to make the pubspec resolve:
+* Try using the Flutter SDK version: 3.47.7. 
+Failed to update packages.
+Flutter dependencies failed with exit code 1
+At C:\Users\Nguyen 
+Long\Documents\Codex\2026-10-11\https-github-com-bahungtdtu-final-flutter\final-flutter\scripts\toolchain.ps1:4 char:66
++ ... ITCODE -ne 0) { throw "$Step failed with exit code $LASTEXITCODE" } }
++                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (Flutter depende...ith exit code 1:String) [], RuntimeException
+    + FullyQualifiedErrorId : Flutter dependencies failed with exit code 1
+ 

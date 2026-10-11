@@ -1,5 +1,13 @@
 # NoteTogether - nền tảng triển khai local
 
+## Publication Trung tâm bảo mật —12/10/2026
+
+Người dùng ủy quyền push trên `codex/security-center`. Source bảo mật commit `0fccdc8`
+được tích hợp với master `3eb76e5` sau PR#5, giữ setup portable và contribution baseline.
+[Gate trước publication](evidence/2026-10-12-security-publication/INDEX.md) ghi kiểm tra
+trên nhánh đã cập nhật; raw QA11–12/10 giữ nguyên. Các đoạn “chưa commit/push” bên dưới
+là snapshot trước publication. CI/approval xem PR thực trên GitHub; không tự merge/release.
+
 ## Trung tâm bảo mật —11–12/10/2026
 
 Hồ sơ → Trung tâm bảo mật: xem phiên đăng nhập, thu hồi từng phiên/các phiên khác bằng
@@ -9,6 +17,13 @@ dùng read transaction để giảm tranh chấp writer; mutation vẫn recheck 
 Không xóa dữ liệu offline của máy khác. [Thiết kế/giới hạn](docs/SECURITY_CENTER_AND_AUTH_PERFORMANCE.md),
 [nghiệm thu](evidence/2026-10-11-security-center/INDEX.md). Source local trên
 `codex/security-center` từ master35db810; chưa commit/push, release vẫn để sau.
+
+## Baseline máy mới —12/10/2026
+
+Source `35db810` đã chứa merge PR#4 (workspace/planner); các đoạn chưa push/PR open
+bên dưới là snapshots lịch sử. Baseline và backlog nghiệm thu hiện hành:
+[LOCAL_BASELINE_AND_ROADMAP](docs/LOCAL_BASELINE_AND_ROADMAP.md).
+Không dùng kết quả tests lịch sử thay kết quả máy mới hoặc nghiệm thu release.
 
 ## Publication workspace/planner —10/10/2026
 
@@ -235,9 +250,13 @@ Hai AI routes chỉ đọc bản server; summary không overwrite/autosave vào 
 bị chặn. Q&A retrieval lọc quyền/unlock trước prompt, recheck mọi nguồn sau inference;
 result ở RAM, citation mở note thật với recheck. Hạn mức/giới hạn ở AI_FEATURES.md.
 
-Flutter SDK cần có trên PATH hoặc đặt FLUTTER_BIN (đường dẫn flutter.bat).
-Python 3.12 cần sẵn; trên máy hiện tại setup script dùng bundled runtime Codex.
-Máy khác truyền -Python đường dẫn Python thật, không dùng WindowsApps stub.
+Flutter3.47.1/Dart3.13.1 là phiên bản CI đã chốt; SDK Dart phải thỏa ^3.13.1.
+Flutter3.47.0/Dart3.13.0 không đủ. Đặt Flutter phù hợp trên PATH hoặc FLUTTER_BIN
+(đường dẫn flutter.bat); có thể dùng SDK riêng để không đổi SDK của dự án khác.
+Python 3.12 cần sẵn, cùng phiên bản minor với CI. Khi tạo .venv, setup ưu tiên
+-Python, rồi PYTHON_BIN, rồi py -3.12, cuối cùng python trên PATH. Script kiểm tra
+đúng Python 3.12 trước cài dependencies; không tự tải runtime hoặc xóa .venv cũ.
+Máy dùng runtime ngoài PATH truyền -Python với đường dẫn thật, không dùng WindowsApps stub.
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File scripts/setup.ps1
@@ -253,16 +272,21 @@ powershell -ExecutionPolicy Bypass -File scripts/start_backend.ps1
 powershell -ExecutionPolicy Bypass -File scripts/start_web.ps1
 ```
 
-Backend http://127.0.0.1:8000, /health, /docs. Web port 7357; start_web phục vụ release local,
+Nếu7357 đã có server khác, dùng scripts/start_web.ps1 -Port 7358, không dừng server đó.
+Khi dùng port khác, đặt WEB_ORIGINS gồm origin mới trước khi khởi động backend (ví dụ
+http://127.0.0.1:7358,http://localhost:7358); không dùng wildcard.
+
+Backend http://127.0.0.1:8000, /health, /docs. Web port7357 mặc định; start_web phục vụ release local,
 tự build nếu chưa có worker. Sau sửa source chạy scripts/build.ps1 -Target web rồi reload.
 Backend đọc NOTETOGETHER_DB và WEB_ORIGINS từ process environment. .env.example là template;
 code không tự load .env. CORS cần origin chính xác. API_URL chỉ là public URL, không secret.
 Tạo tài khoản test email/display name/password≥10 ký tự hai lần, tự login và giữ banner unverified.
 Không có grading account/public credentials preloaded; production email/AI không được giả success.
 
-## Exact commands đã có
+## Exact commands lịch sử trên máy triển khai cũ
 
-Trên máy này Flutter không nằm trên PATH, dùng executable đầy đủ:
+Các đường dẫn LENOVO dưới đây thuộc máy cũ. Trên máy mới dùng scripts phía trên
+với Flutter trên PATH hoặc FLUTTER_BIN; không chép nguyên đường dẫn này:
 
 ```powershell
 & 'C:\Users\LENOVO\flutter-sdk\bin\flutter.bat' analyze

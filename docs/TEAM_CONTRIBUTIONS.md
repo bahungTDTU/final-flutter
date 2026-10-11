@@ -1,9 +1,22 @@
 # Nhóm và đóng góp thật
 
+12/10 người dùng máy hiện tại ủy quyền push Security Center trên `codex/security-center`.
+Commit chức năng `0fccdc8` dùng author/committer Bahung <523K0006@student.tdtu.edu.vn>
+theo cấu hình đã xác nhận; không co-author trailer, không gán contribution độc lập cho Long.
+Tích hợp PR#5/master `3eb76e5` giữ nguyên lịch sử/tác giả baseline của Long; raw QA cũ
+không sửa. Gate mới tại evidence/2026-10-12-security-publication/INDEX.md. Các dòng chưa
+commit/push dưới đây là thời điểm trước publication; không tự merge/approve hoặc giả teamwork.
+
 11–12/10 người dùng yêu cầu thêm chức năng nâng cao/bảo mật/hiệu năng. Security Center,
 reauth throttling/private validation/read authentication do agent hỗ trợ, chưa commit/push/
 merge. Base master35db810 sau PR#4 đã được merge ngoài lượt này; không gán approval hoặc
 contribution độc lập cho thành viên. Evidence local không thay teamwork4tuần.
+
+12/10 Nguyễn Bảo Long yêu cầu thực hiện chặng1 trên máy mới và commit/push dưới
+danh tính của mình: Nguyễn Bảo Long <523k0014@student.tdtu.edu.vn>, GitHub Long-D176.
+Phạm vi setup portable/baseline/current docs/backlog; có AI hỗ trợ, không tự gán thành
+đóng góp độc lập hoặc chứng nhận4tuần. Không kế thừa author Bahung cho thay đổi này.
+Branch/PR cần CI và review người khác; không tự merge.
 
 10/10 người dùng yêu cầu push toàn bộ source mới trên `codex/workspace-planner`, từ master
 13e0ffc sau PR#3. Dùng author/committer Bahung theo cấu hình được xác nhận, không co-author

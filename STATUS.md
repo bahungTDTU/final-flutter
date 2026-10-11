@@ -1,5 +1,14 @@
 # NoteTogether - trạng thái 12/10/2026
 
+## Publication Trung tâm bảo mật —12/10/2026
+
+Người dùng ủy quyền xuất bản `codex/security-center`; commit chức năng `0fccdc8`,
+tích hợp master `3eb76e5` (PR#5). Giữ setup portable, docs/baseline và tác giả commit của Long.
+Kiểm tra lại nhánh sau tích hợp tại evidence/2026-10-12-security-publication/INDEX.md;
+source/evidence hashes đối chiếu QA cũ, không ghi đè snapshots. Các trạng thái chưa push
+bên dưới thuộc snapshot trước publication. CI mới nhất/approval kiểm tại PR thực;
+không merge/deploy/release, không suy native runtime/FPS từ debug compile.
+
 ## Trung tâm bảo mật và xác thực —11–12/10/2026
 
 IMPLEMENTED: catalogue phiên theo account, thu hồi một/all-other bằng password, cap20 và
@@ -12,6 +21,15 @@ evidence/2026-10-11-security-center/INDEX.md; release/native runtime/FPS/IME m�
 PASS cuối:258 Flutter/118 backend, analyzer sạch/format108files0changes; HTTP4roles,
 Chrome4viewport/light-dark/revoke/offline/remote-expiry và cache40static SHA256 khớp.
 Web API8000/APK debug compile PASS; read authentication không reserve writer, không claim FPS mới.
+
+## Baseline máy mới —12/10/2026
+
+Source master35db810 đã merge PR#4; source snapshots trước publication giữ lịch sử.
+Setup portable và current security/offline/realtime docs được đồng bộ, không sửa business
+logic. [Baseline và backlog nghiệm thu](docs/LOCAL_BASELINE_AND_ROADMAP.md). Kết quả lệnh máy mới xem
+evidence/2026-10-12-local-baseline/INDEX.md. Native source mới/provider/public release/video/teamwork
+vẫn là các gates riêng; không suy hoàn tất từ baseline local.
+
 
 ## Publication workspace/planner —10/10/2026
 

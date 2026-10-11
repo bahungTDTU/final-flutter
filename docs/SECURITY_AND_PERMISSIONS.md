@@ -4,6 +4,9 @@
 private validation errors và read authentication. Xem SECURITY_CENTER_AND_AUTH_PERFORMANCE.md
 và evidence/2026-10-11-security-center; native runtime/public deployment phần mới chưa nghiệm thu.
 
+Đối chiếu tài liệu chuyên đề12/10/2026 trên source35db810. Đây là mô tả thiết kế,
+không phải chứng nhận security audit hoặc nghiệm thu public deployment.
+
 | Operation | Owner | Editor | Viewer | Stranger / anonymous |
 |---|---|---|---|---|
 | List/read | Có; content khóa cần grant | Có; content khóa cần grant | Có; content khóa cần grant | Không |
@@ -14,7 +17,8 @@ và evidence/2026-10-11-security-center; native runtime/public deployment phần
 | Delete/protection/share/revoke | Owner; delete/share/catalogue cần unlock | 403 | 403 | 404 / 401 |
 | Files list/read | read/grant; không bypass lock | read/grant | read/grant | 404 / 401 |
 | Files upload/delete | edit/grant | edit/grant | 403 | 404 / 401 |
-| AI read/realtime | Read/grant; write giữ ACL riêng | Read/grant; write giữ ACL riêng | Read/grant; không được sửa note | Không đọc note người khác; feed own-account/authenticated |
+| AI đọc nội dung | Read ACL + grant khi khóa | Read ACL + grant khi khóa | Read ACL + grant khi khóa | 404 / 401 |
+| Realtime | SSE phiên hợp lệ, chỉ counter; refetch kiểm tra ACL | Tương tự | Tương tự | Không nhận stream tài khoản khác / 401 |
 | Sessions list/revoke | Chỉ session account; revoke cần account password | Tài khoản riêng | Tài khoản riêng | Không target session account khác; anonymous401 |
 
 `access()` kiểm tra session đang còn hiệu lực trong cùng mutation transaction, quyền và grant.
@@ -40,8 +44,9 @@ SMTP/TLS verify certificate/hostname, auth sau TLS; thiếu STARTTLS không gử
 Email code random32-byte, digest/TTL/kind/used kiểm tra atomic; reset/check public không tiêu thụ
 mã, reset cuối kiểm tra lại và revoke mọi session. Main không giữ mailbox/token thô/log.
 Forgot response/cooldown known/unknown giống nhau; chưa bảo đảm chống timing enumeration.
-SMTP accepted không chứng minh inbox receipt; mail outbox/worker đã có encrypted token,
-lease/retry/cancel. Xem EMAIL_DELIVERY.md.
+SMTP accepted không chứng minh inbox receipt; transactional mail outbox/worker
+đã có encrypted token, lease/retry/cancel. Key lifecycle và giới hạn nghiệm thu Internet
+xem EMAIL_DELIVERY.md.
 
 Avatar input PNG/JPEG≤2 MiB/dimensions bounded; backend decode/EXIF orientation rồi tạo PNG mới
 ≤512×512 không metadata. BLOB replace/delete atomic, authenticated download private/no-store;
@@ -61,11 +66,12 @@ PRIVATE_ATTACHMENTS.md; quota/rate limits/codec breadth/public release còn cầ
 
 Backend local DB chứa note plaintext, cần quyền file/backups server phù hợp khi deploy.
 Client account snapshot (notes/drafts/outbox/recovery) mã hóa AES-GCM với device key riêng;
-session/profile cũng dùng encrypted envelope/key/AAD riêng. Web key provider experimental/localStorage không chống người đọc
+session/profile cũng mã hóa bằng envelope/device key/AAD riêng từ07/10; xem SESSION_STORAGE.md. Web key provider experimental/localStorage không chống người đọc
 browser profile hay XSS. Migration legacy theo account, có compaction retry. Chi tiết ở ENCRYPTED_RECOVERY.md.
-Client có online read/unlock, owner protection, protected edit và password-encrypted vault cho
-offline unlock. Reader không đưa protected content vào ordinary cache/snapshot; background/expiry/
-network/role loss che nội dung, polling quyền mỗi15s. Xem NOTE_PROTECTION.md.
+Client có protected edit và offline note-password unlock cho dữ liệu đã tải hợp lệ.
+Protected content/draft/operations chỉ nằm trong password-encrypted vault, không ordinary cache/
+outbox; background/expiry/role loss che nội dung. Reconnect cần server revalidation trước sync.
+SSE và polling15s bổ trợ kiểm tra quyền. Xem NOTE_PROTECTION.md cho TTL/cache/recovery và giới hạn.
 Không đánh dấu mục 23/24 hoàn thành chỉ vì spike backend pass.
 
 Khi reconnect phát hiện lock, client chuyển draft/upsert chưa sync vào encrypted recovery trong cùng

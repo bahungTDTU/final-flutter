@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import sys; assert sys.version_info[:2] == (3, 12), Python
+                                                        ^^^^^^
+NameError: name 'Python' is not defined
+Python 3.12 discovery (install Python 3.12 or pass -Python) failed with exit code 1
+At C:\Users\Nguyen Long\Documents\Codex\2026-10-11\https-github-com-bahungtdtu-final-flutter\final-flutter\tmp\setup-ve
+rsion-probe\scripts\toolchain.ps1:4 char:66
++ ... ITCODE -ne 0) { throw "$Step failed with exit code $LASTEXITCODE" } }
++                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (Python 3.12 dis...ith exit code 1:String) [], RuntimeException
+    + FullyQualifiedErrorId : Python 3.12 discovery (install Python 3.12 or pass -Python) failed with exit code 1
+ 
+PASS Python3.13 rejected before venv/dependency installation
