@@ -1,0 +1,17 @@
+{
+  "date": "2026-10-12",
+  "base": "35db810",
+  "backend": {
+    "status": "ok",
+    "email_delivery": "not_configured",
+    "ai": "not_configured"
+  },
+  "web_url": "http://127.0.0.1:7358",
+  "web_status": 200,
+  "web_has_flutter_bootstrap": true,
+  "worker_status": 200,
+  "worker_matches_build": true,
+  "ui": "NOT RUN: in-app browser ERR_BLOCKED_BY_CLIENT for loopback; Chrome browser unavailable to CUA",
+  "native": "NOT RUN: no connected Android device; license status unknown",
+  "original_port": "7357 occupied by existing unrelated http.server; kept untouched, QA uses -Port 7358"
+}

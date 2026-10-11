@@ -39,8 +39,9 @@ không đổi schema2/immutable journals/last-server-accepted policy riêng củ
   encrypted recovery, xóa source queue trong snapshot. Revoked/locked UI che nội dung; bản
   phục hồi là dữ liệu local đã có hợp lệ, tạo UUID mới khi người dùng chọn.
 - ProtectedReader vẫn giữ grant/TTL/RAM-only; controller refresh lock/role/revision che route
-  không còn hợp lệ. Realtime không cấp grant hay gửi protected content. Actual protected-reader
-  realtime flows chưa nghiệm thu đợt này; protected edit/offline unlock vẫn chưa triển khai.
+  không còn hợp lệ. Realtime không cấp grant hay gửi protected content. Protected-reader
+  realtime/edit/offline unlock được bổ sung05/10; xem NOTE_PROTECTION.md và evidence tương ứng.
+  Evidence02/10 bên dưới chỉ mô tả source tại thời điểm đó; native rich editor mới vẫn cần QA.
 
 ## Kết nối, lifecycle và vận hành
 

@@ -1,5 +1,14 @@
 # NoteTogether - trạng thái 10/10/2026
 
+## Baseline máy mới —12/10/2026
+
+Source master35db810 đã merge PR#4; source snapshots trước publication giữ lịch sử.
+Setup portable và current security/offline/realtime docs được đồng bộ, không sửa business
+logic. [Baseline và backlog nghiệm thu](docs/LOCAL_BASELINE_AND_ROADMAP.md). Kết quả lệnh máy mới xem
+evidence/2026-10-12-local-baseline/INDEX.md. Native source mới/provider/public release/video/teamwork
+vẫn là các gates riêng; không suy hoàn tất từ baseline local.
+
+
 ## Publication workspace/planner —10/10/2026
 
 Người dùng ủy quyền push source hiện tại. Branch `codex/workspace-planner` từ master

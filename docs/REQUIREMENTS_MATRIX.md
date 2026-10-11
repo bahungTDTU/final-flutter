@@ -1,5 +1,14 @@
 # Ma trận yêu cầu 32 tiêu chí
 
+## Baseline máy mới —12/10/2026
+
+Source master35db810 đã merge PR#4; source snapshots trước publication giữ lịch sử.
+Setup portable và current security/offline/realtime docs được đồng bộ, không sửa business
+logic. [Baseline và backlog nghiệm thu](LOCAL_BASELINE_AND_ROADMAP.md). Kết quả lệnh máy mới xem
+../evidence/2026-10-12-local-baseline/INDEX.md. Native source mới/provider/public release/video/teamwork
+vẫn là các gates riêng; không suy hoàn tất từ baseline local.
+
+
 Publication workspace/planner10/10 được người dùng ủy quyền trên `codex/workspace-planner`,
 base master13e0ffc sau merge PR#3;250 Flutter/109 backend/local gate PASS, code hashes khớp.
 Xem evidence/2026-10-10-workspace-publication. Các trạng thái chưa push trong snapshots sau là
