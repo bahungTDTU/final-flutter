@@ -1,3 +1,5 @@
+import 'package:note_together/ui/rich_note_field.dart';
+
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -127,7 +129,14 @@ void main() {
             .evaluate()
             .isNotEmpty,
       );
-      expect(find.text('Native private body'), findsNothing);
+      expect(
+        find.byWidgetPredicate(
+          (widget) =>
+              widget is NoteRichTextField &&
+              widget.document.text == 'Native private body',
+        ),
+        findsNothing,
+      );
       expect(
         find.text('Mật khẩu ghi chú chưa đúng hoặc quyền đã thay đổi.'),
         findsOneWidget,
@@ -149,9 +158,23 @@ void main() {
       await pressUnlock(tester);
       await until(
         tester,
-        () => find.text('Native private body').evaluate().isNotEmpty,
+        () => find
+            .byWidgetPredicate(
+              (widget) =>
+                  widget is NoteRichTextField &&
+                  widget.document.text == 'Native private body',
+            )
+            .evaluate()
+            .isNotEmpty,
       );
-      expect(find.text('Native private body'), findsOneWidget);
+      expect(
+        find.byWidgetPredicate(
+          (widget) =>
+              widget is NoteRichTextField &&
+              widget.document.text == 'Native private body',
+        ),
+        findsOneWidget,
+      );
       expect(c.notes.single.content, isEmpty);
       for (final state in [
         AppLifecycleState.inactive,
@@ -164,7 +187,14 @@ void main() {
       }
       tester.binding.handleAppLifecycleStateChanged(AppLifecycleState.resumed);
       await tester.pumpAndSettle();
-      expect(find.text('Native private body'), findsNothing);
+      expect(
+        find.byWidgetPredicate(
+          (widget) =>
+              widget is NoteRichTextField &&
+              widget.document.text == 'Native private body',
+        ),
+        findsNothing,
+      );
       tester.binding.focusedEditable = null;
       await tester.enterText(
         find.byKey(const Key('unlock-note-password')),
@@ -173,7 +203,14 @@ void main() {
       await pressUnlock(tester);
       await until(
         tester,
-        () => find.text('Native private body').evaluate().isNotEmpty,
+        () => find
+            .byWidgetPredicate(
+              (widget) =>
+                  widget is NoteRichTextField &&
+                  widget.document.text == 'Native private body',
+            )
+            .evaluate()
+            .isNotEmpty,
       );
       await tester.ensureVisible(find.text('Đổi mật khẩu ghi chú'));
       await tester.tap(find.text('Đổi mật khẩu ghi chú'));
@@ -196,7 +233,14 @@ void main() {
         () => find.byType(NoteProtectionDialog).evaluate().isEmpty,
       );
       await SystemChannels.textInput.invokeMethod<void>('TextInput.hide');
-      expect(find.text('Native private body'), findsNothing);
+      expect(
+        find.byWidgetPredicate(
+          (widget) =>
+              widget is NoteRichTextField &&
+              widget.document.text == 'Native private body',
+        ),
+        findsNothing,
+      );
       await expectLater(
         api.call(
           'POST',
@@ -220,7 +264,14 @@ void main() {
       await pressUnlock(tester);
       await until(
         tester,
-        () => find.text('Native private body').evaluate().isNotEmpty,
+        () => find
+            .byWidgetPredicate(
+              (widget) =>
+                  widget is NoteRichTextField &&
+                  widget.document.text == 'Native private body',
+            )
+            .evaluate()
+            .isNotEmpty,
       );
       await tester.ensureVisible(find.text('Tắt khóa ghi chú'));
       await tester.tap(find.text('Tắt khóa ghi chú'));

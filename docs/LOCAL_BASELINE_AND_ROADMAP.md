@@ -1,5 +1,22 @@
 # Baseline máy mới và lộ trình nghiệm thu —12/10/2026
 
+## Chuẩn bị release và phục hồi state —12/10/2026
+
+Đã thêm production HTTPS origin guard và signing Android riêng, không fallback debug.
+Backup SQLite nhất quán + mail key, restore vào thư mục mới có integrity/FK/hash checks.
+142 backend tests PASS; HTTP restore riêng8043 giữ rich Delta/UUID/file bytes/ACL;
+Android debug build PASS, release thiếu key bị từ chối đúng. Native session-storage
+PASS migration mã hóa/offline DB reopen/logout401/manual re-login giữ draft.
+Native protection enable/change/disable và injected lifecycle relock PASS; không thay
+nghiệm thu OS background/TTL thật.
+Compose persistent volume/context filtering đã cấu hình; Docker engine chưa khả dụng
+sau thử khởi động Desktop, chưa nghiệm thu image/recreate. Xem
+[runbook release](RELEASE_AND_BACKUP.md),
+[evidence](../evidence/2026-10-12-release-preparation/INDEX.md).
+R01 code guard đã kiểm tra; signing certificate thật/HTTPS/providers/video/Rubric và
+IME/OS relaunch/picker/two-UI còn gate mở. PR#8 thiếu approval người khác trước merge.
+
+
 ## Tiến độ tiếp tục sau bàn giao —12/10/2026
 
 PR#5 đã merge; master hiện46df286 còn chứa PR#6 security center và PR#7 Deskbook.

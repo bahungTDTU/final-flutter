@@ -1,0 +1,32 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    ports:
+      - "127.0.0.1:${BACKEND_PORT:-8000}:8000"
+    environment:
+      NOTETOGETHER_DB: /app/backend/state/app.sqlite3
+      MAIL_OUTBOX_KEY_FILE: /app/backend/state/app.sqlite3.mail-key
+      WEB_ORIGINS: ${WEB_ORIGINS:-http://localhost:7357,http://127.0.0.1:7357}
+      SMTP_HOST: ${SMTP_HOST:-}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_SECURITY: ${SMTP_SECURITY:-starttls}
+      SMTP_USERNAME: ${SMTP_USERNAME:-}
+      SMTP_PASSWORD: ${SMTP_PASSWORD:-}
+      SMTP_FROM: ${SMTP_FROM:-}
+      SMTP_TIMEOUT: ${SMTP_TIMEOUT:-3}
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+      GEMINI_MODEL: ${GEMINI_MODEL:-gemini-2.5-flash-lite}
+    volumes:
+      - backend-state:/app/backend/state
+    restart: unless-stopped
+    stop_grace_period: 20s
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=3).close()"]
+      interval: 30s
+      timeout: 5s
+      start_period: 15s
+      retries: 3
+volumes:
+  backend-state:

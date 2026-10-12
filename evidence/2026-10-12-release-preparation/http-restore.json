@@ -1,0 +1,12 @@
+{
+  "date_utc": "2026-10-12T13:46:37.768648+00:00",
+  "source_base": "8307b4c",
+  "scope": "working backend.backup.py; live localHTTP restore, not container/public release",
+  "attachment_sha256": "6f18f14ad1889a4c11ed4d448cc2e26ae9f12f67f9bfe39a4259ff47a4b39223",
+  "results": [
+    "PASS restored protected owner/viewer/editor grants and content",
+    "PASS private attachment exact bytes/SHA256; viewer delete403; stranger note/file404",
+    "PASS Web note sameUUID/revision5/rich Delta bold after server backup/restore",
+    "PASS restored backend realHTTP on8043; original8042/state kept"
+  ]
+}
