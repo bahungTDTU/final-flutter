@@ -1,5 +1,27 @@
 # NoteTogether - nền tảng triển khai local
 
+## Nghiệm thu tiếp tục trên source mới —12/10/2026
+
+Sau merge PR#5/#6/#7, tiếp tục từ master46df286 trên nhánh codex/current-source-acceptance.
+Native API36 note_flow/sharing/realtime/protected_editing và Web release local autosave/rich text/offline
+reload/reconnect đã chạy; xem [evidence hiện hành](evidence/2026-10-12-current-source-acceptance/INDEX.md).
+Không đóng toàn chặng2: IME native thật, OS relaunch, hai UI độc lập, protected picker/
+TTL/background còn riêng. SMTP/Gemini thật chờ nhóm cấu hình; release để sau core.
+
+[Runbook](docs/CURRENT_SOURCE_ACCEPTANCE.md) có lệnh native máy mới. Đặt FLUTTER_BIN
+đúng SDK3.47.1, emulator QA đã boot và backend dùng DB disposable/port riêng:
+
+```powershell
+& scripts/qa_native.ps1 -Device emulator-5554 -ApiUrl http://10.0.2.2:8042 `
+  -JvmSocketDirectory C:\Temp\notetogether-jvm -SoftwareRendering
+& .\.venv\Scripts\python.exe scripts/qa_protected_notes.py --url http://127.0.0.1:8042 `
+  --output output/protected-http-new-run.json
+```
+
+Probe HTTP chỉ nhận backend loopback, từ chối output đã tồn tại để giữ evidence cũ;
+default output là file UUID mới trong output/, session QA riêng ở tmp/ ignored.
+Native driver dùng injected input/DB reopen, không thay real IME/OS restart.
+
 ## Publication UI / Deskbook —12/10/2026
 
 Người dùng ủy quyền push bản UI trên `codex/ui-system-refresh`, PR vào `master`.

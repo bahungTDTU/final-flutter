@@ -1,5 +1,26 @@
 # NoteTogether - trạng thái 12/10/2026
 
+## Tiếp tục chặng 2 trên master mới —12/10/2026
+
+Đã fetch và tạo `codex/current-source-acceptance` từ `46df286`; PR#5/#6/#7 đã
+merge, ba required checks của từng head đều success. Tác giả lượt này Nguyễn Bảo Long
+<523k0014@student.tdtu.edu.vn>, có AI hỗ trợ. Không sửa business logic hoặc evidence cũ.
+Native note_flow/sharing/realtime qua driver API36 + socket backend8042 PASS;
+sharing test đi qua menu phone Deskbook, giữ nguyên kiểm tra ACL/recovery.
+Protected native PASS SSE/frozen base/autosave/encrypted offline DB reopen/revalidation/
+confirmed delete; helper chờ chuyển focus khỏi password trước khi inject vào Quill.
+Web release local7364: tiếng Việt/đậm/undo-redo, autosave, reload cùng UUID/Delta,
+backend unreachable→offline edit→reload→reconnect PASS. HTTP4roles/protected/files/
+revoke/change-password/conflict409 PASS. Source và log:
+[nghiệm thu hiện hành](evidence/2026-10-12-current-source-acceptance/INDEX.md),
+[cách tái lập/gates](docs/CURRENT_SOURCE_ACCEPTANCE.md).
+
+Chặng2 chưa hoàn tất: IME native thật, OS force-stop/relaunch, hai UI độc lập và
+protected picker/cancel/TTL/background trên artifact cuối còn gate riêng.
+Người dùng xác nhận chưa cấu hình SMTP/Gemini; chặng3 chờ provider, tiếp tục local.
+Release/signing/HTTPS/video/Rubric/teamwork chưa hoàn tất. Không suy PASS toàn chặng
+từ database reopen, injected input, fixture hoặc compile.
+
 ## Publication UI / Deskbook —12/10/2026
 
 Người dùng ủy quyền push bản UI trên `codex/ui-system-refresh`, PR vào `master`.

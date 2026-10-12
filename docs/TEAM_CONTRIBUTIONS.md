@@ -1,5 +1,13 @@
 # Nhóm và đóng góp thật
 
+12/10 Nguyễn Bảo Long yêu cầu cập nhật GitHub và tiếp tục lộ trình, commit/push từng
+chặng dưới Nguyễn Bảo Long <523k0014@student.tdtu.edu.vn> (Long-D176). Lượt này bắt đầu
+từ master46df286 sạch: tái lập native QA máy mới, sửa integration selectors theo
+Deskbook/Quill, script native có evidence và workaround JVM theo process, probe HTTP
+không ghi đè snapshot lịch sử, Web/native/API acceptance và tài liệu. Có AI hỗ trợ;
+không chứng minh độc lập/teamwork4tuần hoặc approval. Chặng2 còn gate native thủ công;
+không tự merge, dùng branch/PR và required checks trên head mới.
+
 12/10 người dùng ủy quyền push UI/Deskbook trên `codex/ui-system-refresh`, PR vào master.
 Thay đổi UI được agent hỗ trợ, author/committer cấu hình Bahung <523K0006@student.tdtu.edu.vn>
 theo người dùng; không thêm AI co-author hoặc giả contribution/review. Nhánh cập nhật

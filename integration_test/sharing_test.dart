@@ -104,7 +104,16 @@ void main() {
       await tester.pumpAndSettle();
       await tester.tap(find.text('Native sharing fixture'));
       await tester.pumpAndSettle();
-      await tester.tap(find.byTooltip('Chia sẻ ghi chú'));
+      // Deskbook places secondary editor actions in the compact phone menu.
+      // Exercise that route instead of assuming the desktop icon is present.
+      final sharingAction = find.byTooltip('Chia sẻ ghi chú');
+      if (sharingAction.evaluate().isEmpty) {
+        await tester.tap(find.byKey(const Key('editor-tools-menu')));
+        await tester.pumpAndSettle();
+        await tester.tap(find.text('Chia sẻ ghi chú'));
+      } else {
+        await tester.tap(sharingAction);
+      }
       await until(
         tester,
         () => find.byKey(const Key('share-emails')).evaluate().isNotEmpty,

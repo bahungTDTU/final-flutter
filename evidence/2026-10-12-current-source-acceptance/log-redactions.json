@@ -1,0 +1,14 @@
+{
+  "kind": "temporary local VM-service capabilities only",
+  "files": [
+    "20261012-195954-326-note_flow.txt",
+    "20261012-195954-326-sharing.txt",
+    "20261012-200306-322-realtime.txt",
+    "20261012-200306-322-sharing.txt",
+    "native-protected-editing-durability.txt",
+    "native-protected-editing-final.txt",
+    "native-protected-editing-quill.txt",
+    "native-protected-editing-retry.txt",
+    "native-protected-editing.txt"
+  ]
+}
