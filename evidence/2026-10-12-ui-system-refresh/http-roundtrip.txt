@@ -1,0 +1,1 @@
+{"result": "PASS", "exactEditedTitleOnServer": true, "storedContentFormat": "legacy Markdown", "originalContentRetained": true, "pinAndShareRetained": true, "lockedPublicProjection": ["id", "locked", "pinned_at", "revision", "role", "shared"], "tokensRecorded": false}

@@ -1,5 +1,35 @@
 # NoteTogether – UI/UX design, cập nhật 12/10/2026
 
+## Deskbook — bố cục hiện hành12/10/2026
+
+Kế thừa tokens Editorial Atelier; đổi tổ chức không gian: masthead ngang, bookmark
+cho tiêu đề thư viện, drawer244dp bên phải, catalog ở trung tâm. Full desk từ1180×700,
+text scale<1.5; cửa sổ hẹp/thấp dùng rail, phone điều hướng dưới/menu công cụ.
+Editor dùng tab Trang viết và mục lục/thông tin đóng mở riêng. Giữ controller/caret/
+frozen revision/filter/scroll; không thêm dependency hoặc animation liên tục.
+[UI_DESKBOOK](UI_DESKBOOK.md), [MASTER](../design-system/notetogether-deskbook/MASTER.md).
+Các phần dưới ghi lại bố cục trước Deskbook; palette Atelier vẫn là tokens hiện hành.
+
+## Editorial Atelier — snapshot trước Deskbook
+
+Paper #F4F1EA/#FCFAF5, obsidian #272B25, sage/brass; dark #171A17/#242822.
+Library indexed, title/CTA tách count plate, pinned7:5, paper folio trên PC; phone gọn,
+large text natural height. Auth publication, theme/radius/rules/forms/focus dùng chung.
+Cache theme sáng/tối, bỏ decorative glow/facet, giữ press/reduced-motion/lazy và private
+purge ngay khi lock/revoke. [UI_ATELIER](UI_ATELIER.md),
+[MASTER](../design-system/notetogether-atelier/MASTER.md). Các bố cục/palette dưới đây
+là snapshots trước Atelier, không phải tokens hiện hành.
+
+## UI toàn ứng dụng theo ui-ux-pro-max —12/10/2026
+
+Palette snapshot trước Atelier: canvas #F1F3FA/#101625, indigo→blue→teal chrome, navy sidebar và
+surfaces đọc rõ ở hai theme. PageIntro đặt mô tả toàn chiều rộng/action xuống dòng khi
+hẹp/chữ lớn; dashboard phone/short window gọn. Input labels cố định, focus border,
+section icon/heading, dialog/sheet/empty state dùng tokens chung. Editor giữ paper/ribbon/
+outline PC và toolbar dưới phone. Không thêm blur/loop/ticker hoặc private exit retention.
+[UI_SYSTEM_REFRESH](UI_SYSTEM_REFRESH.md) ghi quyết định skill, phạm vi và nghiệm thu.
+Palette và ảnh theo ngày phía dưới phản ánh snapshots trước cập nhật này.
+
 Trung tâm bảo mật dùng noteAppBar gradient/SurfacePanel/MetadataPill/PrismReveal từ theme
 chung. Header/trạng thái/action tách vùng; PC≥900px thẻ ngang, phone/chữ≥150% thẻ dọc,
 lazy≤20 rows. Password confirmation scrollable, validation inline/retry, che/xóa input khi

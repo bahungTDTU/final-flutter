@@ -142,10 +142,12 @@ class _SecurityCenterScreenState extends State<SecurityCenterScreen> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const SectionHeading(
-                                'Bạn kiểm soát phiên đăng nhập',
+                              const PageIntro(
+                                title: 'Bạn kiểm soát phiên đăng nhập',
                                 icon: Icons.shield_outlined,
                                 detail: 'Xem các phiên đang hoạt động và kết thúc phiên bạn không còn sử dụng.',
+                                eyebrow: 'TRUNG TÂM BẢO MẬT',
+                                panel: false,
                               ),
                               const SizedBox(height: 20),
                               Wrap(
@@ -304,7 +306,10 @@ class _RevokeDialogState extends State<_RevokeDialog> {
         canPop: !s.busy,
         child: AlertDialog(
           scrollable: true,
-          title: const Text('Xác nhận thu hồi phiên'),
+          title: const DialogHeading(
+            'Xác nhận thu hồi phiên',
+            icon: Icons.shield_outlined,
+          ),
           content: !s.active
               ? const Text('Phiên đã đóng hoặc ứng dụng đang ở nền.')
               : SizedBox(

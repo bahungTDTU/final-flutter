@@ -39,3 +39,20 @@ evidence/2026-10-12-local-baseline/*.txt -whitespace
 # Keep the new security publication gate independent of earlier QA snapshots.
 evidence/2026-10-12-security-publication/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 evidence/2026-10-12-security-publication/*.txt -whitespace
+
+# Preserve this UI refresh's logs, screenshots and SHA-256 evidence bytes.
+evidence/2026-10-12-ui-system-refresh/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+evidence/2026-10-12-ui-system-refresh/*.txt -whitespace
+evidence/2026-10-12-ui-system-refresh/*.js -whitespace
+
+# Atelier is a separate UI acceptance snapshot.
+evidence/2026-10-12-atelier-ui/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+evidence/2026-10-12-atelier-ui/*.txt -whitespace
+evidence/2026-10-12-atelier-ui/*.js -whitespace
+
+# Deskbook and its publication record preserve captured bytes and padding.
+evidence/2026-10-12-deskbook-layout/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+evidence/2026-10-12-deskbook-layout/*.txt -whitespace
+evidence/2026-10-12-deskbook-layout/*.js -whitespace
+evidence/2026-10-12-ui-publication/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+evidence/2026-10-12-ui-publication/*.txt -whitespace

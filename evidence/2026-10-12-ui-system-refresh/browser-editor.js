@@ -1,0 +1,18 @@
+async page => {
+  const field = page.getByRole('textbox', {name: 'Tiêu đề', exact: true});
+  await field.fill('Thiết kế NoteTogether · UI mới');
+  await page.waitForTimeout(1100);
+  const before = await field.inputValue();
+  await page.getByRole('button', {name: 'Đổi giao diện', exact: true}).click();
+  await page.waitForTimeout(400);
+  if (await field.inputValue() !== before) throw Error('Theme change lost the title');
+  await page.screenshot({path: 'output/playwright/ui-system-refresh/editor-desktop-dark.png'});
+  await page.setViewportSize({width: 390, height: 844});
+  await page.waitForTimeout(350);
+  if (await field.inputValue() !== before) throw Error('Responsive layout lost the title');
+  await page.screenshot({path: 'output/playwright/ui-system-refresh/editor-phone-dark.png'});
+  const accepted = page.uiRefresh.writes.some(value => value.path === '/sync' && value.status === 200);
+  if (!accepted) throw Error('No successful autosave observed');
+  return {themeRetainedTitle: true, resizeRetainedTitle: true, autosaveHTTP200: accepted,
+          appErrors: page.uiRefresh.errors, consoleErrors: page.uiRefresh.consoleErrors};
+}

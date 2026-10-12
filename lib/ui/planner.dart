@@ -332,11 +332,14 @@ class _PlannerSliverState extends State<PlannerSliver>
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        const SectionHeading(
-                          'Từ ý tưởng đến hoàn thành',
+                        const PageIntro(
+                          title: 'Từ ý tưởng đến hoàn thành',
                           detail: 'Chọn ghi chú, đặt ưu tiên và chia công việc thành ba chặng rõ ràng.',
                           icon: Icons.view_kanban_outlined,
+                          eyebrow: 'KẾ HOẠCH CÁ NHÂN',
+                          panel: false,
                         ),
+                        const SizedBox(height: 20),
                         Wrap(
                           spacing: 12,
                           runSpacing: 12,

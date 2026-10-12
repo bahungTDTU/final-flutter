@@ -10,17 +10,25 @@ abstract final class Space {
 
 /// Brand chrome shared by dashboard, routes and account surfaces.
 abstract final class DashboardColors {
-  static const sidebar = [Color(0xff191d50), Color(0xff2e2c7b)];
-  static const header = [Color(0xff5c43c9), Color(0xff2468a7)];
-  static const darkHeader = [Color(0xff433284), Color(0xff204d75)];
-  static const canvas = Color(0xffeceefb);
-  static const darkCanvas = Color(0xff12182d);
-  static const sidebarMuted = Color(0xffccd3f2);
-  static const selected = Color(0xffd0c4ff);
-  static const selectedInk = Color(0xff2d2269);
-  static const heroMuted = Color(0xfffaf8ff);
-  static const action = Color(0xffe8e0ff);
-  static const actionInk = Color(0xff31246f);
+  static const sidebar = [Color(0xff242622), Color(0xff333630)];
+  static const header = [
+    Color(0xff242622),
+    Color(0xff394a40),
+    Color(0xff536453),
+  ];
+  static const darkHeader = [
+    Color(0xff242622),
+    Color(0xff30352f),
+    Color(0xff39443a),
+  ];
+  static const canvas = Color(0xfff4f1ea);
+  static const darkCanvas = Color(0xff171a17);
+  static const sidebarMuted = Color(0xff67685e);
+  static const selected = Color(0xffe5e8dd);
+  static const selectedInk = Color(0xff293b31);
+  static const heroMuted = Color(0xfff3efe4);
+  static const action = Color(0xffe5e8dd);
+  static const actionInk = Color(0xff293b31);
   static const notice = Color(0xfffff3dc);
   static const noticeInk = Color(0xff744813);
   static const darkNotice = Color(0xff3b3025);
@@ -54,7 +62,10 @@ AppBar noteAppBar({Widget? title, Widget? leading, List<Widget>? actions}) =>
       title: title,
       leading: leading,
       actions: actions,
-      flexibleSpace: const BrandGradient(child: SizedBox.expand()),
+      toolbarHeight: 64,
+      shape: const Border(
+        bottom: BorderSide(color: Color(0xff858a7d), width: .5),
+      ),
     );
 
 class BrandPanel extends StatelessWidget {
@@ -69,7 +80,7 @@ class BrandPanel extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return BrandGradient(
-      radius: 22,
+      radius: 12,
       child: Theme(
         data: theme.copyWith(
           colorScheme: theme.colorScheme.copyWith(
@@ -132,38 +143,44 @@ class ReadingCanvas extends StatelessWidget {
   );
 }
 
-ThemeData noteTheme(Brightness brightness) {
+// Immutable themes are shared by the app shell and contrasting editorial covers.
+// A controller pulse must not regenerate seeded colors and typography per cover.
+final _noteThemes = <Brightness, ThemeData>{};
+ThemeData noteTheme(Brightness brightness) =>
+    _noteThemes.putIfAbsent(brightness, () => _buildNoteTheme(brightness));
+
+ThemeData _buildNoteTheme(Brightness brightness) {
   final dark = brightness == Brightness.dark;
   final palette = PrismPalette.forBrightness(brightness).copyWith(
     canvas: dark ? DashboardColors.darkCanvas : DashboardColors.canvas,
   );
   final canvas = palette.canvas;
-  final surface = Color(dark ? 0xff191e33 : 0xfffbfaff);
-  final primary = dark ? const Color(0xffc8bdff) : DashboardColors.header.first;
-  final ink = Color(dark ? 0xffeef0ff : 0xff19223b);
-  final muted = Color(dark ? 0xffb8bfd6 : 0xff55617d);
-  final outline = Color(dark ? 0xff8996b8 : 0xff717b9d);
+  final surface = Color(dark ? 0xff242822 : 0xfffcfaf5);
+  final primary = dark ? const Color(0xffd7b87f) : DashboardColors.header.first;
+  final ink = Color(dark ? 0xfff4f0e6 : 0xff272b25);
+  final muted = Color(dark ? 0xffc4c5b8 : 0xff555b51);
+  final outline = Color(dark ? 0xffa6ac9a : 0xff858a7d);
   final scheme =
       ColorScheme.fromSeed(seedColor: primary, brightness: brightness).copyWith(
         primary: primary,
-        secondary: Color(dark ? 0xffa6cdff : 0xff2468a7),
-        onSecondary: Color(dark ? 0xff163454 : 0xffffffff),
-        tertiary: Color(dark ? 0xffa0eed1 : 0xff126b54),
-        primaryContainer: Color(dark ? 0xff352e59 : 0xffeeebff),
-        onPrimaryContainer: Color(dark ? 0xffded5ff : 0xff33296e),
-        secondaryContainer: Color(dark ? 0xff293751 : 0xffe5ecff),
-        onSecondaryContainer: Color(dark ? 0xffd6e4ff : 0xff263e73),
-        onPrimary: dark ? const Color(0xff251850) : Colors.white,
+        secondary: Color(dark ? 0xffbed0b7 : 0xff394a40),
+        onSecondary: Color(dark ? 0xff203022 : 0xffffffff),
+        tertiary: Color(dark ? 0xffd9bd9b : 0xff73552b),
+        primaryContainer: Color(dark ? 0xff3a392b : 0xffe8e3d4),
+        onPrimaryContainer: Color(dark ? 0xffe9d9b5 : 0xff4f452c),
+        secondaryContainer: Color(dark ? 0xff343e32 : 0xffe4e9df),
+        onSecondaryContainer: Color(dark ? 0xffdce7d7 : 0xff314735),
+        onPrimary: dark ? const Color(0xff302919) : Colors.white,
         surface: surface,
         onSurface: ink,
         onSurfaceVariant: muted,
-        surfaceContainerLowest: Color(dark ? 0xff151b2e : 0xffffffff),
-        surfaceContainerLow: Color(dark ? 0xff20263b : 0xfff3f1fc),
-        surfaceContainer: Color(dark ? 0xff252c45 : 0xffeef0fb),
-        surfaceContainerHigh: Color(dark ? 0xff2c3450 : 0xffe8ebf9),
-        surfaceContainerHighest: Color(dark ? 0xff343e5e : 0xffe0e5f4),
+        surfaceContainerLowest: Color(dark ? 0xff1b201a : 0xffffffff),
+        surfaceContainerLow: Color(dark ? 0xff2b3027 : 0xffeeeadf),
+        surfaceContainer: Color(dark ? 0xff30362c : 0xffe7e4d8),
+        surfaceContainerHigh: Color(dark ? 0xff383e33 : 0xffdfdecf),
+        surfaceContainerHighest: Color(dark ? 0xff42493b : 0xffd8dacb),
         outline: outline,
-        outlineVariant: Color(dark ? 0xff414b6b : 0xffdce0ef),
+        outlineVariant: Color(dark ? 0xff505747 : 0xffd2d2c4),
         error: Color(dark ? 0xffffb4ab : 0xffa52b24),
       );
   final base = ThemeData(
@@ -178,7 +195,7 @@ ThemeData noteTheme(Brightness brightness) {
         .copyWith(
           headlineLarge: TextStyle(
             fontSize: 32,
-            fontWeight: FontWeight.w700,
+            fontWeight: FontWeight.w500,
             color: ink,
             height: 1.25,
           ),
@@ -204,38 +221,41 @@ ThemeData noteTheme(Brightness brightness) {
         )
         .apply(fontFamily: 'NotoSans'),
     appBarTheme: AppBarTheme(
-      backgroundColor: Colors.transparent,
-      foregroundColor: Colors.white,
+      backgroundColor: surface,
+      foregroundColor: ink,
       surfaceTintColor: Colors.transparent,
       scrolledUnderElevation: 0,
       centerTitle: false,
       titleTextStyle: TextStyle(
         fontFamily: 'NotoSans',
         fontSize: 18,
-        fontWeight: FontWeight.w700,
-        color: Colors.white,
+        fontWeight: FontWeight.w600,
+        color: ink,
       ),
     ),
     inputDecorationTheme: InputDecorationTheme(
+      floatingLabelBehavior: FloatingLabelBehavior.always,
+      hintStyle: TextStyle(color: muted),
+      labelStyle: TextStyle(color: muted, fontWeight: FontWeight.w500),
       filled: true,
       fillColor: scheme.surfaceContainerLowest,
       contentPadding: const EdgeInsets.all(Space.lg),
-      border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+      border: OutlineInputBorder(borderRadius: BorderRadius.circular(8.0)),
       enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(8.0),
         borderSide: BorderSide(color: outline),
       ),
       focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(8.0),
         borderSide: BorderSide(color: primary, width: 2),
       ),
     ),
     cardTheme: CardThemeData(
       elevation: 0,
       margin: EdgeInsets.zero,
-      color: scheme.surfaceContainerLow,
+      color: scheme.surfaceContainerLowest,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(12.0),
         side: BorderSide(color: scheme.outlineVariant),
       ),
     ),
@@ -245,25 +265,39 @@ ThemeData noteTheme(Brightness brightness) {
         foregroundColor: scheme.onPrimary,
         elevation: 0,
         minimumSize: const Size(48, 48),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
       ),
     ),
     textButtonTheme: TextButtonThemeData(
-      style: TextButton.styleFrom(minimumSize: const Size(48, 48)),
+      style: TextButton.styleFrom(
+        minimumSize: const Size(48, 48),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
+      ),
     ),
     iconButtonTheme: IconButtonThemeData(
-      style: IconButton.styleFrom(minimumSize: const Size(48, 48)),
+      style:
+          IconButton.styleFrom(
+            minimumSize: const Size(48, 48),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8.0),
+            ),
+          ).copyWith(
+            side: WidgetStateProperty.fromMap({
+              WidgetState.focused: BorderSide(color: primary, width: 2),
+              WidgetState.any: BorderSide.none,
+            }),
+          ),
     ),
     dialogTheme: DialogThemeData(
-      backgroundColor: scheme.surfaceContainerLow,
+      backgroundColor: scheme.surface,
       surfaceTintColor: Colors.transparent,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(24),
+        borderRadius: BorderRadius.circular(16.0),
         side: BorderSide(color: scheme.outlineVariant),
       ),
     ),
     bottomSheetTheme: BottomSheetThemeData(
-      backgroundColor: scheme.surfaceContainerLow,
+      backgroundColor: scheme.surface,
       surfaceTintColor: Colors.transparent,
       dragHandleColor: scheme.outline,
       showDragHandle: true,
@@ -326,20 +360,29 @@ ThemeData noteTheme(Brightness brightness) {
       iconColor: primary,
       selectedColor: scheme.onPrimaryContainer,
       selectedTileColor: scheme.primaryContainer,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
     ),
     chipTheme: base.chipTheme.copyWith(
       backgroundColor: scheme.surfaceContainerLowest,
       selectedColor: scheme.primaryContainer,
       side: BorderSide(color: scheme.outlineVariant),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6.0)),
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+      labelStyle: TextStyle(
+        fontFamily: 'NotoSans',
+        color: ink,
+        fontWeight: FontWeight.w500,
+      ),
+      secondaryLabelStyle: TextStyle(
+        fontFamily: 'NotoSans',
+        color: scheme.onPrimaryContainer,
+      ),
     ),
     popupMenuTheme: PopupMenuThemeData(
       color: scheme.surfaceContainerLow,
       surfaceTintColor: Colors.transparent,
       textStyle: TextStyle(fontFamily: 'NotoSans', fontSize: 15, color: ink),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),
     ),
     snackBarTheme: SnackBarThemeData(
       behavior: SnackBarBehavior.floating,
@@ -348,15 +391,23 @@ ThemeData noteTheme(Brightness brightness) {
         fontFamily: 'NotoSans',
         color: scheme.onInverseSurface,
       ),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
     ),
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
         minimumSize: const Size(48, 48),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
       ),
     ),
     dividerTheme: DividerThemeData(color: scheme.outlineVariant, space: 1),
+    scrollbarTheme: ScrollbarThemeData(
+      radius: const Radius.circular(12),
+      thickness: const WidgetStatePropertyAll(6),
+      thumbColor: WidgetStateProperty.fromMap({
+        WidgetState.hovered: muted.withValues(alpha: .65),
+        WidgetState.any: muted.withValues(alpha: .4),
+      }),
+    ),
     progressIndicatorTheme: ProgressIndicatorThemeData(
       color: primary,
       linearTrackColor: scheme.primaryContainer,
@@ -364,7 +415,7 @@ ThemeData noteTheme(Brightness brightness) {
     tooltipTheme: TooltipThemeData(
       decoration: BoxDecoration(
         color: scheme.inverseSurface,
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(6.0),
       ),
       textStyle: TextStyle(
         fontFamily: 'NotoSans',
@@ -397,7 +448,7 @@ class Brand extends StatelessWidget {
         height: 40,
         decoration: BoxDecoration(
           gradient: const LinearGradient(colors: PrismPalette.actionColors),
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(8.0),
         ),
         child: Icon(Icons.auto_stories_outlined, color: Colors.white),
       ),
@@ -432,10 +483,10 @@ class StatusNotice extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
     return Container(
-      padding: const EdgeInsets.all(12),
+      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: error ? colors.errorContainer : colors.surfaceContainerHighest,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(8.0),
         border: Border.all(
           color: error
               ? colors.error.withValues(alpha: .4)
@@ -450,12 +501,25 @@ class StatusNotice extends StatelessWidget {
           final description = Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Icon(
-                icon,
-                size: 24,
-                color: error
-                    ? colors.onErrorContainer
-                    : colors.onSurfaceVariant,
+              ExcludeSemantics(
+                child: Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color:
+                        (error
+                                ? colors.onErrorContainer
+                                : colors.onSurfaceVariant)
+                            .withValues(alpha: .08),
+                    borderRadius: BorderRadius.circular(6.0),
+                  ),
+                  child: Icon(
+                    icon,
+                    size: 22,
+                    color: error
+                        ? colors.onErrorContainer
+                        : colors.onSurfaceVariant,
+                  ),
+                ),
               ),
               const SizedBox(width: 12),
               Expanded(
@@ -498,7 +562,7 @@ class DialogHeading extends StatelessWidget {
           padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
             color: Theme.of(context).colorScheme.primaryContainer,
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(8.0),
           ),
           child: Icon(
             icon,
@@ -540,6 +604,116 @@ class SurfacePanel extends StatelessWidget {
   }
 }
 
+/// Route and feature introductions share hierarchy without owning application state.
+class PageIntro extends StatelessWidget {
+  const PageIntro({
+    super.key,
+    required this.title,
+    required this.detail,
+    required this.icon,
+    this.eyebrow,
+    this.trailing,
+    this.accent = 0,
+    this.panel = true,
+  });
+  final String title, detail;
+  final String? eyebrow;
+  final IconData icon;
+  final Widget? trailing;
+  final int accent;
+  final bool panel;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final tone = PrismPalette.of(context).tones[accent];
+    final content = LayoutBuilder(
+      builder: (context, area) {
+        final compact =
+            area.maxWidth < 640 ||
+            MediaQuery.textScalerOf(context).scale(1) >= 1.5;
+        final heading = Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            if (eyebrow != null && !compact) ...[
+              Text(
+                eyebrow!,
+                style: theme.textTheme.bodySmall?.copyWith(
+                  color: tone.ink,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+              const SizedBox(height: 12),
+            ],
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                if (MediaQuery.textScalerOf(context).scale(1) < 1.5) ...[
+                  ExcludeSemantics(
+                    child: Container(
+                      width: compact ? 40 : 48,
+                      height: compact ? 40 : 48,
+                      decoration: BoxDecoration(
+                        color: Color.alphaBlend(
+                          tone.light.withValues(alpha: .18),
+                          theme.colorScheme.surface,
+                        ),
+                        borderRadius: BorderRadius.circular(8.0),
+                        border: Border.all(
+                          color: tone.light.withValues(alpha: .4),
+                        ),
+                      ),
+                      child: Icon(icon, color: tone.ink, size: 24),
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+                ],
+                Expanded(
+                  child: Semantics(
+                    header: true,
+                    child: Text(
+                      title,
+                      style:
+                          (compact
+                                  ? theme.textTheme.titleLarge
+                                  : theme.textTheme.headlineSmall)
+                              ?.copyWith(
+                                fontWeight: FontWeight.w700,
+                                height: 1.3,
+                              ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 12),
+            Text(
+              detail,
+              style: theme.textTheme.bodyMedium?.copyWith(
+                color: theme.colorScheme.onSurfaceVariant,
+              ),
+            ),
+          ],
+        );
+        if (trailing == null) return heading;
+        return compact
+            ? Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [heading, const SizedBox(height: 20), trailing!],
+              )
+            : Row(
+                children: [
+                  Expanded(child: heading),
+                  const SizedBox(width: 24),
+                  trailing!,
+                ],
+              );
+      },
+    );
+    return panel ? SurfacePanel(tinted: true, child: content) : content;
+  }
+}
+
 class SectionHeading extends StatelessWidget {
   const SectionHeading(this.title, {super.key, this.detail, this.icon});
   final String title;
@@ -552,19 +726,35 @@ class SectionHeading extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             if (icon != null) ...[
-              Icon(
-                icon,
-                size: 20,
-                color: Theme.of(context).colorScheme.primary,
+              ExcludeSemantics(
+                child: Container(
+                  padding: const EdgeInsets.all(6),
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.primaryContainer,
+                    borderRadius: BorderRadius.circular(6.0),
+                  ),
+                  child: Icon(
+                    icon,
+                    size: 20,
+                    color: Theme.of(context).colorScheme.onPrimaryContainer,
+                  ),
+                ),
               ),
-              const SizedBox(width: 8),
+              const SizedBox(width: 12),
             ],
             Expanded(
-              child: Text(
-                title,
-                style: Theme.of(context).textTheme.titleMedium,
+              child: Semantics(
+                header: true,
+                child: Padding(
+                  padding: EdgeInsets.only(top: icon == null ? 0 : 3),
+                  child: Text(
+                    title,
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
+                ),
               ),
             ),
           ],
@@ -595,6 +785,10 @@ class MetadataPill extends StatelessWidget {
               Theme.of(context).colorScheme.surface,
             ),
       borderRadius: BorderRadius.circular(8),
+      border: Border.all(
+        color: (tone?.light ?? Theme.of(context).colorScheme.outlineVariant)
+            .withValues(alpha: .5),
+      ),
     ),
     child: Row(
       mainAxisSize: MainAxisSize.min,
@@ -630,15 +824,23 @@ class EmptyNotes extends StatelessWidget {
   final IconData icon;
   @override
   Widget build(BuildContext context) => Padding(
-    padding: const EdgeInsets.symmetric(vertical: 48, horizontal: 24),
+    padding: const EdgeInsets.symmetric(vertical: 36, horizontal: 24),
     child: Column(
       children: [
         ExcludeSemantics(
           child: Container(
             padding: const EdgeInsets.all(24),
             decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.surfaceContainerHighest,
-              borderRadius: BorderRadius.circular(24),
+              gradient: LinearGradient(
+                colors: [
+                  Theme.of(context).colorScheme.primaryContainer,
+                  Theme.of(context).colorScheme.secondaryContainer,
+                ],
+              ),
+              borderRadius: BorderRadius.circular(28),
+              border: Border.all(
+                color: Theme.of(context).colorScheme.outlineVariant,
+              ),
             ),
             child: Icon(
               icon,
@@ -654,7 +856,16 @@ class EmptyNotes extends StatelessWidget {
           style: Theme.of(context).textTheme.titleLarge,
         ),
         const SizedBox(height: 8),
-        Text(detail, textAlign: TextAlign.center),
+        ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 440),
+          child: Text(
+            detail,
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              color: Theme.of(context).colorScheme.onSurfaceVariant,
+            ),
+          ),
+        ),
         if (action != null) ...[const SizedBox(height: 16), action!],
       ],
     ),

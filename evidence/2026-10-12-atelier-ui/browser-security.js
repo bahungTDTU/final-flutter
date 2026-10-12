@@ -1,0 +1,11 @@
+async page => {
+  await page.mouse.move(0,0);
+  await page.waitForTimeout(350);
+  await page.screenshot({path:'output/playwright/atelier-ui/security-desktop-dark.png'});
+  await page.setViewportSize({width:390,height:844});
+  await page.waitForTimeout(300);
+  await page.screenshot({path:'output/playwright/atelier-ui/security-phone-dark.png'});
+  await page.setViewportSize({width:1440,height:1000});
+  await page.getByRole('button',{name:'Quay lại',exact:true}).click();
+  return {readOnlySecurityQA:true,appErrors:page.atelier.errors,consoleErrors:page.atelier.consoleErrors};
+}

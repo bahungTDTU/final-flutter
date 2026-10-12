@@ -1,0 +1,11 @@
+warning: in the working copy of '.gitattributes', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'README.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'Readme.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docs/REQUIREMENTS_MATRIX.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docs/TEAM_CONTRIBUTIONS.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'lib/ui/dashboard.dart', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'lib/ui/document_workspace.dart', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'lib/ui/focus_panel.dart', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'lib/ui/planner.dart', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'lib/ui/prism.dart', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'lib/ui/security_center.dart', LF will be replaced by CRLF the next time Git touches it

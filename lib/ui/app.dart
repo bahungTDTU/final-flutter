@@ -149,38 +149,55 @@ class _AuthScreenState extends State<AuthScreen> {
             MediaQuery.sizeOf(context).height >= 700 &&
             MediaQuery.textScalerOf(context).scale(1) < 1.5)
           Expanded(
+            flex: 6,
             child: Padding(
-              padding: const EdgeInsets.all(24),
-              child: PrismReveal(
-                child: BrandPanel(
-                  padding: const EdgeInsets.all(48),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const MetadataPill(
-                        'GHI LẠI · SẮP XẾP · CHIA SẺ',
-                        icon: Icons.edit_note_outlined,
+              padding: const EdgeInsets.fromLTRB(24, 24, 0, 24),
+              child: BrandPanel(
+                padding: const EdgeInsets.all(48),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Brand(),
+                    const Spacer(),
+                    const Text(
+                      'KHÔNG GIAN CHO Ý TƯỞNG',
+                      style: TextStyle(letterSpacing: 2, fontSize: 12),
+                    ),
+                    const SizedBox(height: 24),
+                    Text(
+                      'Ghi lại.\nKết nối.\nCùng tạo nên.',
+                      style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                        fontSize: 54,
+                        height: 1.15,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.white,
                       ),
-                      const SizedBox(height: 36),
-                      Text(
-                        "Một nơi cho những\ný tưởng đáng giữ.",
-                        style: Theme.of(context).textTheme.headlineLarge
-                            ?.copyWith(fontSize: 40, color: Colors.white),
-                      ),
-                      const SizedBox(height: 16),
-                      const Text(
-                        'Từ ghi chú buổi học đến kế hoạch của nhóm.\nGiữ mọi điều quan trọng trong một không gian.',
-                      ),
-                      const SizedBox(height: 40),
-                      const PrismArtwork(),
-                    ],
-                  ),
+                    ),
+                    const SizedBox(height: 28),
+                    const Text(
+                      'Từ một ý tưởng nhỏ đến những điều đáng giữ.\nMột cuốn sổ riêng. Một không gian chung.',
+                    ),
+                    const Spacer(),
+                    const Divider(color: Color(0xff9ba28e)),
+                    const SizedBox(height: 20),
+                    const Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            'NOTE / TOGETHER',
+                            style: TextStyle(letterSpacing: 2),
+                          ),
+                        ),
+                        Icon(Icons.auto_stories_outlined, size: 40),
+                      ],
+                    ),
+                  ],
                 ),
               ),
             ),
           ),
         Expanded(
+          flex: 5,
           child: Center(
             child: SingleChildScrollView(
               padding: const EdgeInsets.all(24),
@@ -196,7 +213,9 @@ class _AuthScreenState extends State<AuthScreen> {
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         const Brand(),
-                        const SizedBox(height: 36),
+                        const SizedBox(height: 24),
+                        const Divider(),
+                        const SizedBox(height: 24),
                         Text(
                           register
                               ? 'Bắt đầu không gian của bạn'
@@ -325,6 +344,7 @@ class _AuthScreenState extends State<AuthScreen> {
                                 : 'Đăng nhập',
                           ),
                         ),
+                        const SizedBox(height: 12),
                         TextButton(
                           onPressed: widget.controller.busy
                               ? null

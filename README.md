@@ -1,5 +1,59 @@
 # NoteTogether - nền tảng triển khai local
 
+## Publication UI / Deskbook —12/10/2026
+
+Người dùng ủy quyền push bản UI trên `codex/ui-system-refresh`, PR vào `master`.
+Nhánh cập nhật với master `41eb180` (PR#6); tree baseline không đổi so với QA `f3b17a3`.
+270 Flutter/118 backend, format/analyze và Web/APK debug compile PASS; Chrome7viewport/
+hai theme, autosave/privacy/cache được nghiệm thu trong snapshot Deskbook.
+[Gate publication](evidence/2026-10-12-ui-publication/INDEX.md),
+[nhánh GitHub](https://github.com/bahungTDTU/final-flutter/tree/codex/ui-system-refresh).
+Commit cuối/CI được tra trên PR thật; không tự merge hoặc suy human approval từ local QA.
+Các đoạn “chưa commit/push” bên dưới là snapshots trước publication.
+
+## Deskbook — bố cục hiện hành12/10/2026
+
+PC dùng masthead ngang, thư viện trung tâm với bookmark và ngăn công cụ bên phải.
+Editor có tab Trang viết, mục lục/thông tin đóng mở riêng; phone có toolbar gọn và
+menu công cụ. Giữ bộ lọc, scroll, bản nháp, selection và frozen revision khi resize/theme.
+[Thiết kế](docs/UI_DESKBOOK.md), [spec](design-system/notetogether-deskbook/MASTER.md),
+[ảnh và nghiệm thu](evidence/2026-10-12-deskbook-layout/INDEX.md).
+
+PASS: format112files0changes/analyze,270 Flutter/118 backend; Chrome7viewport/hai theme,
+autosave/API/private-reader/cache40static, Web/APK debug compile. Native UI/IME/FPS chưa chạy.
+Source local `codex/ui-system-refresh` từ `f3b17a3`, chưa commit/push/merge.
+Các kết quả bên dưới là snapshots lịch sử của source tương ứng.
+
+## Editorial Atelier — UI mới, 12/10/2026
+
+Thiết kế mới theo ui-ux-pro-max: nền giấy ấm/obsidian/sage/đồng; thư viện đánh số,
+title như trang tạp chí, ô thống kê tương phản và cặp note ghim bất đối xứng7:5.
+PC có bàn viết với folio/outline/inspector; phone có một cột, toolbar dưới/menu công cụ.
+Auth, AI, workspace, reader và dialogs dùng cùng tokens. Theme được cache; bỏ paint
+glow/facet, giữ lazy/reduced-motion và quyền riêng tư trước unlock.
+[Thiết kế và giới hạn](docs/UI_ATELIER.md), [spec](design-system/notetogether-atelier/MASTER.md),
+[ảnh/nghiệm thu source cuối](evidence/2026-10-12-atelier-ui/INDEX.md).
+
+PASS: format110files0changes/analyze,267 Flutter/118 backend; Chrome5viewport/hai theme,
+38ảnh thật, Web và APK debug compile. Native UI/FPS NOT RUN.
+
+Source local `codex/ui-system-refresh` từ `f3b17a3`, chưa commit/push/merge.
+Các phần theo ngày bên dưới là snapshots trước Atelier; native UI/IME/FPS, provider
+thật và release vẫn chưa được nghiệm thu trong đợt này.
+
+## Nâng cấp UI toàn ứng dụng —12/10/2026
+
+Áp dụng ui-ux-pro-max: theme indigo/blue/teal, surfaces sáng/tối rõ hơn, nhãn nhập cố định,
+header/section/action thống nhất và focus state dễ nhận diện. Dashboard phone gọn;
+editor PC ribbon/paper/mục lục khác bố cục phone. Auth, AI, workspace/planner/focus,
+reader bảo vệ, dialogs và sheets nhận cùng theme. [Thiết kế](docs/UI_SYSTEM_REFRESH.md).
+
+PASS262 Flutter/118 backend, format109files0changes/analyze; Chrome5viewport/hai theme,
+autosave/API roundtrip và relock privacy, cache40static khớp SHA256. Web/APK debug compile
+PASS; native UI/IME/FPS và provider/release chưa chạy. [Ảnh và nghiệm thu](evidence/2026-10-12-ui-system-refresh/INDEX.md).
+Source `codex/ui-system-refresh` từ `f3b17a3`; working changes chưa commit/push trong lượt này.
+Các palette/kết quả theo ngày bên dưới là snapshots trước đợt nâng cấp.
+
 ## Publication Trung tâm bảo mật —12/10/2026
 
 Người dùng ủy quyền push trên `codex/security-center`. Source bảo mật commit `0fccdc8`

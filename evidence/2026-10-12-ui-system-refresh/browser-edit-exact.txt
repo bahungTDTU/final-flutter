@@ -1,0 +1,27 @@
+### Result
+{"exactKeyboardReplacement":true,"themeAndResizeRetainedTitle":true,"successfulSync":2,"appErrors":[],"consoleErrors":[]}
+### Ran Playwright code
+```js
+await (async page => {
+  const title = page.getByRole('textbox', {name: 'Tiêu đề', exact: true});
+  await title.click();
+  await title.press('Control+A');
+  await title.pressSequentially('Thiết kế NoteTogether · UI mới');
+  await page.waitForTimeout(1400);
+  const expected = 'Thiết kế NoteTogether · UI mới';
+  if (await title.inputValue() !== expected) throw Error('Keyboard title replacement failed');
+  await page.screenshot({path: 'output/playwright/ui-system-refresh/editor-phone-dark.png'});
+  await page.setViewportSize({width: 1440, height: 1000});
+  await page.waitForTimeout(350);
+  if (await title.inputValue() !== expected) throw Error('Resize lost the title');
+  await page.screenshot({path: 'output/playwright/ui-system-refresh/editor-desktop-dark.png'});
+  await page.getByRole('button', {name: 'Đổi giao diện', exact: true}).click();
+  await page.waitForTimeout(350);
+  if (await title.inputValue() !== expected) throw Error('Theme change lost the title');
+  await page.screenshot({path: 'output/playwright/ui-system-refresh/editor-desktop-light.png'});
+  return {exactKeyboardReplacement: true, themeAndResizeRetainedTitle: true,
+    successfulSync: page.uiRefresh.writes.filter(item => item.path === '/sync' && item.status === 200).length,
+    appErrors: page.uiRefresh.errors, consoleErrors: page.uiRefresh.consoleErrors};
+}
+)(page);
+```

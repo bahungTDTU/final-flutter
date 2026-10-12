@@ -1,0 +1,5 @@
+async page => {
+ await page.getByRole('button',{name:/^Ghi chú đã khóa Mở khóa/}).click();
+ await page.getByRole('textbox',{name:'Mật khẩu ghi chú',exact:true}).waitFor();
+ return {protectedGateOpened:true};
+}

@@ -1,0 +1,21 @@
+### Result
+{"privateFieldsRemovedAfterRelock":true,"appErrors":[],"consoleErrors":[]}
+### Ran Playwright code
+```js
+await (async page => {
+  await page.setViewportSize({width:390,height:844});
+  await page.mouse.move(0,0);
+  await page.waitForTimeout(300);
+  await page.screenshot({path:'output/playwright/atelier-ui/protected-reader-phone-dark.png'});
+  await page.getByRole('button',{name:'Khóa lại',exact:true}).click();
+  await page.waitForTimeout(300);
+  if (await page.getByRole('textbox',{name:'Tiêu đề',exact:true}).count()) throw Error('Private title retained after relock');
+  if (await page.getByRole('textbox',{name:'Nội dung',exact:true}).count()) throw Error('Private body retained after relock');
+  if (await page.getByText('Bản ghi riêng tư',{exact:true}).count()) throw Error('Private title displayed after relock');
+  await page.screenshot({path:'output/playwright/atelier-ui/protected-relocked-phone-dark.png'});
+  await page.getByRole('button',{name:'Quay lại',exact:true}).click();
+  await page.setViewportSize({width:1440,height:1000});
+  return {privateFieldsRemovedAfterRelock:true,appErrors:page.atelier.errors,consoleErrors:page.atelier.consoleErrors};
+}
+)(page);
+```

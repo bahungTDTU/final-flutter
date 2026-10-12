@@ -1,0 +1,6 @@
+async page => {
+ const shot=async name=>{await page.mouse.move(0,0);await page.waitForTimeout(300);await page.screenshot({path:`output/playwright/deskbook-ui/${name}.png`});};
+ await page.getByRole('button',{name:'Xưởng ghi chú Bắt đầu từ một mẫu',exact:true}).click();
+ await shot('templates-desktop-dark');
+ return {templateRouteOpened:true,appErrors:page.deskbook.errors,consoleErrors:page.deskbook.consoleErrors};
+}

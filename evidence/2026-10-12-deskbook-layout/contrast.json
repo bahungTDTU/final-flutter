@@ -1,0 +1,15 @@
+{
+  "result": "PASS",
+  "minimum": 4.93,
+  "ratios": {
+    "light text / paper": 13.8,
+    "light muted / high container": 4.93,
+    "dark text / surface": 13.17,
+    "dark muted / high container": 5.35,
+    "primary light action": 15.27,
+    "primary dark action": 7.59,
+    "sidebar muted / warm panel": 5.82,
+    "white / auth endpoint": 6.33,
+    "selected creation action": 9.59
+  }
+}
