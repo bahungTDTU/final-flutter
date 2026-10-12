@@ -1,0 +1,19 @@
+{
+  "result": "PASS",
+  "minimum": 5.03,
+  "ratios": {
+    "light body / surface": 13.84,
+    "light secondary text / high surface": 5.03,
+    "dark body / surface": 13.97,
+    "dark secondary text / high surface": 5.39,
+    "light primary button": 7.49,
+    "dark primary button": 9.19,
+    "sidebar muted / lower gradient": 9.66,
+    "white / header endpoint 5540b7": 7.49,
+    "white / header endpoint 275c96": 6.87,
+    "white / header endpoint 146779": 6.47,
+    "white / header endpoint 35265f": 13.18,
+    "white / header endpoint 253d68": 10.79,
+    "white / header endpoint 164555": 10.41
+  }
+}

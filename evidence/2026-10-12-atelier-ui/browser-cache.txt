@@ -1,0 +1,6 @@
+### Error
+Error: page.evaluate: TypeError: request.url is not a function
+    at eval (eval at evaluate (:368:30), <anonymous>:3:71)
+    at Array.map (<anonymous>)
+    at eval (eval at evaluate (:368:30), <anonymous>:3:40)
+    at async <anonymous>:394:30

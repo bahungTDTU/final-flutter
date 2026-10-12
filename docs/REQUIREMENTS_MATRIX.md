@@ -1,5 +1,39 @@
 # Ma trận yêu cầu 32 tiêu chí
 
+## Publication UI / Deskbook —12/10/2026
+
+Người dùng ủy quyền push bản UI trên `codex/ui-system-refresh`, PR vào `master`.
+Nhánh cập nhật với master `41eb180` (PR#6); tree baseline không đổi so với QA `f3b17a3`.
+270 Flutter/118 backend, format/analyze và Web/APK debug compile PASS; Chrome7viewport/
+hai theme, autosave/privacy/cache được nghiệm thu trong snapshot Deskbook.
+[Gate publication](../evidence/2026-10-12-ui-publication/INDEX.md),
+[nhánh GitHub](https://github.com/bahungTDTU/final-flutter/tree/codex/ui-system-refresh).
+Commit cuối/CI được tra trên PR thật; không tự merge hoặc suy human approval từ local QA.
+Các đoạn “chưa commit/push” bên dưới là snapshots trước publication.
+
+Cập nhật bố cục hiện hành12/10: Deskbook, skill ui-ux-pro-max trong repo. Masthead/
+library/right drawer trên PC; phone gọn; editor drawer đóng mở độc lập. Đây là cải tiến
+UX ngoài rubric, không thay yêu cầu grid/list/pin/auto-save/protection/ACL.
+270 Flutter/118 backend PASS; Chrome7viewport/hai theme, autosave/private-reader/cache.
+[UI_DESKBOOK](UI_DESKBOOK.md), [evidence](../evidence/2026-10-12-deskbook-layout/INDEX.md).
+Không suy hoàn thành native/provider/release/video/teamwork hoặc tự chấm điểm sáng tạo.
+Source `codex/ui-system-refresh`/base `f3b17a3`, chưa commit/push; dưới đây là lịch sử.
+
+Cập nhật UI hiện hành12/10: Editorial Atelier theo skill người dùng chỉ định tại repo;
+library indexed/cover7:5/writing desk/auth publication và semantic theme toàn app.
+Đây là cải tiến trình bày/UX ngoài rubric; không đổi ACL/server/schema/controller,
+không tự tăng điểm sáng tạo hoặc hoàn tất native/provider/release/video/teamwork.
+[UI_ATELIER](UI_ATELIER.md), [evidence](../evidence/2026-10-12-atelier-ui/INDEX.md).
+Source `codex/ui-system-refresh`/base `f3b17a3`, chưa commit/push; phần dưới là lịch sử.
+
+Nâng cấp UI12/10 theo ui-ux-pro-max nằm ngoài thay đổi nghiệp vụ rubric: theme/surface,
+hierarchy/forms/focus/responsive được thống nhất; không đổi ACL/server/schema/controller.
+262 Flutter/118 backend/analyze và Chrome5viewport/hai theme PASS; autosave/API/private
+reader/cache40static được đối chiếu. [UI_SYSTEM_REFRESH](UI_SYSTEM_REFRESH.md),
+[evidence](../evidence/2026-10-12-ui-system-refresh/INDEX.md). Source `codex/ui-system-refresh`
+từ `f3b17a3`, chưa commit/push; không suy hoàn thành native/provider/release/video/teamwork
+hoặc điểm sáng tạo từ kiểm thử UI. Các trạng thái theo ngày bên dưới là snapshots.
+
 Publication12/10 được ủy quyền trên `codex/security-center`: source `0fccdc8`,
 tích hợp master `3eb76e5` sau PR#5. Gate nhánh cập nhật và source/evidence hashes:
 evidence/2026-10-12-security-publication/INDEX.md. Các dòng chưa push dưới đây là snapshots

@@ -1,5 +1,48 @@
 # UI/UX QA – cập nhật 12/10/2026
 
+## Publication UI / Deskbook —12/10/2026
+
+Người dùng ủy quyền push bản UI trên `codex/ui-system-refresh`, PR vào `master`.
+Nhánh cập nhật với master `41eb180` (PR#6); tree baseline không đổi so với QA `f3b17a3`.
+270 Flutter/118 backend, format/analyze và Web/APK debug compile PASS; Chrome7viewport/
+hai theme, autosave/privacy/cache được nghiệm thu trong snapshot Deskbook.
+[Gate publication](../evidence/2026-10-12-ui-publication/INDEX.md),
+[nhánh GitHub](https://github.com/bahungTDTU/final-flutter/tree/codex/ui-system-refresh).
+Commit cuối/CI được tra trên PR thật; không tự merge hoặc suy human approval từ local QA.
+Các đoạn “chưa commit/push” bên dưới là snapshots trước publication.
+
+## Deskbook — nghiệm thu hiện hành12/10/2026
+
+[INDEX](../evidence/2026-10-12-deskbook-layout/INDEX.md): source cuối format112files0changes,
+analyze sạch,270 Flutter PASS; backend118 PASS, không đổi backend/data/controller/deps.
+Ba regression tương tác mới: chuyển desk/rail/phone giữ query và label selection;
+phone menu mở workspace thật; drawer editor giữ rich selection/draft/frozen revision.
+Giữ tooltip quản lý nhãn cho integration cũ, không đổi assertion cũ để pass.
+Chrome7viewport/light-dark, ảnh editor/reader/tools; autosave API đối chiếu, cache40static
+SHA256 khớp build. Web và Android debug compile PASS. Native runtime/IME/FPS/screen reader/
+provider/release/CI NOT RUN. Các kết quả dưới đây là snapshots trước Deskbook.
+
+## Editorial Atelier — snapshot trước Deskbook
+
+Nguồn bằng chứng mới: [INDEX](../evidence/2026-10-12-atelier-ui/INDEX.md), tách khỏi
+snapshot UI system refresh. Regression cho shelf order/privacy/large text, icon contrast
+và token contrast; tests Home/editor cũ giữ nguyên. Chrome thật kiểm tra responsive,
+theme/draft/autosave và static cache. Native UI/IME/FPS/screen reader/release NOT RUN.
+PASS source cuối:267 Flutter/118 backend/format110files0changes/analyze;38ảnh Chrome,
+5viewport/hai theme, autosave/lock privacy/cache SHA256, Web/APK debug compile.
+
+Các kết quả phía dưới là snapshots của source trước Atelier.
+
+## UI system refresh —12/10/2026
+
+PASS262 Flutter/118 backend/format109files0changes/analyze. Bốn regression mới: phone
+banner gọn, action pane hẹp/chữ200%, intro320px/chữ200% light/dark. Tests cũ không sửa.
+Chrome thật năm viewport/hai theme; nhóm màn hình chính, auth/form chỉ xem, theme/resize
+giữ draft, API xác nhận title chính xác/content/pin/share, protected relock loại editor.
+Cache40static SHA256 khớp build; token contrast chính min5.03, không full WCAG claim.
+Web/APK debug compile PASS; native UI/IME/FPS/screen reader/provider/release NOT RUN.
+Ảnh, raw failures đã sửa, logs và hashes: [INDEX](../evidence/2026-10-12-ui-system-refresh/INDEX.md).
+
 Security Center: widget test320px/200%/keyboard, retry input/resize/background clear và
 actual HTTP cancellation PASS. Chrome xác nhận mật khẩu sai/đúng, revoke one/all-others,
 offline hide/reload PASS; AppBar tương phản sửa theo theme chung. Ảnh/cache/source cuối

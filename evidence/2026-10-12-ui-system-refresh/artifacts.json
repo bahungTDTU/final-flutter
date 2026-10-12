@@ -1,0 +1,37 @@
+{
+  "capturedAt": "2026-10-12T09:24:14.854627+07:00",
+  "chromeQA_API": "http://127.0.0.1:8058",
+  "chromeQA": {
+    "cache": {
+      "name": "notetogether-static-309b295fab4ba3aa",
+      "count": 40,
+      "hashes": {
+        "main.dart.js": "581044c25772d26ed18a1a2704fd31dc965a6ef03727460e07cd20c9ef6db3ca",
+        "flutter_bootstrap.js": "e07103b3fb416699695bce1f717060ca248f425b8245d8773c19597e95a90869"
+      }
+    },
+    "appErrors": [],
+    "consoleErrors": []
+  },
+  "defaultWebAPI": "http://127.0.0.1:8000",
+  "defaultWorker": "notetogether-static-7ea6ad128286e8be",
+  "androidTarget": "debug compile only, runtime NOT RUN",
+  "files": {
+    "build/web/main.dart.js": {
+      "bytes": 4926679,
+      "sha256": "7e12a5b438d29f3d2a83e1040443ea6c0db3d5e8d30f7e46c726b8553c9c076c"
+    },
+    "build/web/flutter_bootstrap.js": {
+      "bytes": 13370,
+      "sha256": "e07103b3fb416699695bce1f717060ca248f425b8245d8773c19597e95a90869"
+    },
+    "build/web/offline_worker.js": {
+      "bytes": 2957,
+      "sha256": "ff11c5bafd3159faf79e486bbb38a3df5f9d3eef1636be037d13f779a50ef8fe"
+    },
+    "build/app/outputs/flutter-apk/app-debug.apk": {
+      "bytes": 195253503,
+      "sha256": "fd3c4098994af019160050915b5083dedf619a22083931cba9fdc893cf384d36"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "observedAt": "2026-10-12T10:58:45.183572+07:00",
+  "branch": "codex/ui-system-refresh",
+  "base": "41eb180543c08e1982ca585d7ebcc25b349e6ecb",
+  "master": "41eb180543c08e1982ca585d7ebcc25b349e6ecb",
+  "qaBase": "f3b17a3d33e5d432320e1d8620f87d7fc33b30d3",
+  "masterTreeMatchesQABase": true,
+  "qaCodeAndSpecHashesVerified": 19,
+  "snapshotEvidenceHashes": {
+    "2026-10-12-ui-system-refresh": 89,
+    "2026-10-12-atelier-ui": 88,
+    "2026-10-12-deskbook-layout": 89
+  },
+  "buildArtifactHashesVerified": 4,
+  "flutterTests": 270,
+  "backendTests": 118,
+  "secretPatternMatches": 0,
+  "candidateFiles": 298,
+  "candidateBytes": 20000693,
+  "excludedSkillFiles": 172,
+  "readmeMirrored": true
+}

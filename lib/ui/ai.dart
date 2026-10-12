@@ -72,24 +72,12 @@ class _AiQuestionsPanelState extends State<AiQuestionsPanel>
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Row(
-          children: [
-            Icon(
-              Icons.auto_awesome_outlined,
-              color: Theme.of(context).colorScheme.primary,
-            ),
-            const SizedBox(width: 12),
-            Expanded(
-              child: Text(
-                'Hỏi từ những ghi chú của bạn',
-                style: Theme.of(context).textTheme.headlineSmall,
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(height: 12),
-        const Text(
-          'AI tổng hợp từ ghi chú đã đồng bộ mà bạn có quyền đọc. Kết quả kèm nguồn để bạn kiểm tra.',
+        const PageIntro(
+          title: 'Hỏi từ những ghi chú của bạn',
+          detail: 'AI tổng hợp từ ghi chú đã đồng bộ mà bạn có quyền đọc. Kết quả kèm nguồn để bạn kiểm tra.',
+          icon: Icons.auto_awesome_outlined,
+          eyebrow: 'TRỢ LÝ GHI CHÚ',
+          accent: 2,
         ),
         const SizedBox(height: 16),
         const StatusNotice(

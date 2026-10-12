@@ -1,5 +1,29 @@
 # Nhóm và đóng góp thật
 
+12/10 người dùng ủy quyền push UI/Deskbook trên `codex/ui-system-refresh`, PR vào master.
+Thay đổi UI được agent hỗ trợ, author/committer cấu hình Bahung <523K0006@student.tdtu.edu.vn>
+theo người dùng; không thêm AI co-author hoặc giả contribution/review. Nhánh cập nhật
+master41eb180 bằng fast-forward, giữ các commits/tác giả trước đó. Gate publication:
+evidence/2026-10-12-ui-publication/INDEX.md. Không tự merge hoặc nhắn reviewer.
+Các dòng “chưa commit/push” phía dưới là snapshots của lượt phát triển trước publication.
+
+12/10 người dùng tiếp tục yêu cầu đổi bố cục bằng ui-ux-pro-max trong repo.
+Deskbook/layout/regression/Chrome QA do agent hỗ trợ trên `codex/ui-system-refresh`,
+base `f3b17a3`, chưa commit/push/merge. Không gán đóng góp độc lập hoặc approval cho
+thành viên. Evidence/2026-10-12-deskbook-layout/INDEX.md ghi local QA và giới hạn;
+không thay lịch sử Git/teamwork4tuần hoặc CI hosted.
+
+12/10 người dùng yêu cầu UI mới độc đáo/sang trọng bằng skill trong repo.
+Editorial Atelier/theme/layout/tests/QA do agent hỗ trợ trên `codex/ui-system-refresh`,
+base `f3b17a3`. Chưa commit/push/merge, không gán contribution độc lập hay approval
+cho thành viên. Thiết kế UI_ATELIER.md và evidence/2026-10-12-atelier-ui/INDEX.md;
+local QA không thay lịch sử Git/teamwork4tuần hoặc CI hosted.
+
+12/10 người dùng yêu cầu dùng ui-ux-pro-max nâng cấp toàn UI. Tokens/components, bố cục
+responsive và QA do agent hỗ trợ trên `codex/ui-system-refresh`, base `f3b17a3`. Chưa
+commit/push/merge; không gán contribution độc lập hoặc approval cho thành viên. Evidence
+local262 Flutter/118 backend/Chrome không thay lịch sử teamwork4tuần hoặc CI hosted.
+
 12/10 người dùng máy hiện tại ủy quyền push Security Center trên `codex/security-center`.
 Commit chức năng `0fccdc8` dùng author/committer Bahung <523K0006@student.tdtu.edu.vn>
 theo cấu hình đã xác nhận; không co-author trailer, không gán contribution độc lập cho Long.

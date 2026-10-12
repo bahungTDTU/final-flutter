@@ -126,10 +126,15 @@ class _FocusPanelState extends State<FocusPanel> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                SectionHeading(
-                  s?.breakTime == true ? 'Nghỉ ngắn' : 'Tập trung từng phiên',
+                PageIntro(
+                  title: s?.breakTime == true
+                      ? 'Nghỉ ngắn'
+                      : 'Tập trung từng phiên',
                   detail: 'Làm một việc, nghỉ một chút và ghi nhận tiến độ của bạn.',
                   icon: Icons.timer_outlined,
+                  eyebrow: 'THỜI GIAN CỦA BẠN',
+                  accent: 2,
+                  panel: false,
                 ),
                 const SizedBox(height: 16),
                 Center(

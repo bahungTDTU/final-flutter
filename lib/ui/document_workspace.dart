@@ -42,6 +42,8 @@ class DocumentWorkspace extends StatefulWidget {
 class _DocumentWorkspaceState extends State<DocumentWorkspace> {
   double zoom = 1;
   bool reading = false;
+  bool? contentsOpen;
+  bool inspectorOpen = true;
   late final GlobalKey paperKey = GlobalKey();
   bool get readOnly => widget.readOnly || reading;
   void search() => showDialog<void>(
@@ -59,10 +61,13 @@ class _DocumentWorkspaceState extends State<DocumentWorkspace> {
     final content = Container(
       key: paperKey,
       width: double.infinity,
-      padding: EdgeInsets.all(desktop ? 36 : 20),
+      padding: EdgeInsets.symmetric(
+        horizontal: desktop ? 48 : 20,
+        vertical: desktop ? 32 : 20,
+      ),
       decoration: BoxDecoration(
         color: colors.surfaceContainerLowest,
-        borderRadius: BorderRadius.circular(desktop ? 18 : 16),
+        borderRadius: BorderRadius.circular(desktop ? 4 : 12),
         border: Border.all(color: colors.outlineVariant),
         boxShadow: desktop
             ? [
@@ -77,9 +82,39 @@ class _DocumentWorkspaceState extends State<DocumentWorkspace> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
+          if (desktop) ...[
+            Row(
+              children: [
+                Text(
+                  'NOTETOGETHER / TÀI LIỆU',
+                  style: theme.textTheme.bodySmall?.copyWith(
+                    letterSpacing: 1.5,
+                  ),
+                ),
+                const SizedBox(width: 20),
+                const Expanded(child: Divider()),
+              ],
+            ),
+            const SizedBox(height: 32),
+          ],
           Semantics(
             header: true,
-            child: Text('Tiêu đề', style: theme.textTheme.bodySmall),
+            child: Row(
+              children: [
+                ExcludeSemantics(
+                  child: Icon(Icons.title, size: 18, color: colors.primary),
+                ),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Text(
+                    'Tiêu đề',
+                    style: theme.textTheme.bodySmall?.copyWith(
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
           const SizedBox(height: 10),
           Semantics(
@@ -92,7 +127,8 @@ class _DocumentWorkspaceState extends State<DocumentWorkspace> {
               minLines: 1,
               maxLines: null,
               style: theme.textTheme.headlineLarge?.copyWith(
-                fontSize: desktop ? 30 : 25,
+                fontSize: desktop ? 36 : 25,
+                fontWeight: FontWeight.w500,
                 height: 1.4,
               ),
               decoration: const InputDecoration(
@@ -111,7 +147,26 @@ class _DocumentWorkspaceState extends State<DocumentWorkspace> {
           const SizedBox(height: 18),
           Semantics(
             header: true,
-            child: Text('Nội dung', style: theme.textTheme.bodySmall),
+            child: Row(
+              children: [
+                ExcludeSemantics(
+                  child: Icon(
+                    Icons.notes_outlined,
+                    size: 18,
+                    color: colors.secondary,
+                  ),
+                ),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Text(
+                    'Nội dung',
+                    style: theme.textTheme.bodySmall?.copyWith(
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
           const SizedBox(height: 12),
           NoteRichTextField(
@@ -240,7 +295,7 @@ class _DocumentWorkspaceState extends State<DocumentWorkspace> {
                 if (desktop) ...[
                   const Icon(Icons.cloud_done_outlined, size: 18),
                   const SizedBox(width: 8),
-                  const Text('Tự động lưu'),
+                  Text(readOnly ? 'Chỉ đọc' : 'Tự động lưu'),
                   const Spacer(),
                 ],
                 Expanded(
@@ -292,19 +347,28 @@ class _DocumentWorkspaceState extends State<DocumentWorkspace> {
             area.maxWidth >= 1000 &&
             MediaQuery.textScalerOf(ctx).scale(16) <= 24;
         final showOutline =
-            desktop && area.maxWidth >= 1350 && !widget.focusMode;
-        final toolbar = Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            DocumentToolbar(
+            desktop &&
+            !widget.focusMode &&
+            (contentsOpen ?? area.maxWidth >= 1350);
+        final toolbar = DecoratedBox(
+          decoration: BoxDecoration(
+            color: Theme.of(ctx).colorScheme.surface,
+            border: Border(
+              bottom: BorderSide(
+                color: Theme.of(ctx).colorScheme.outlineVariant,
+              ),
+            ),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 4),
+            child: DocumentToolbar(
               document: widget.document,
               focusNode: widget.contentFocus,
               readOnly: readOnly,
               compact: !desktop,
               onSearch: search,
             ),
-            const Divider(),
-          ],
+          ),
         );
         final body = desktop
             ? Row(
@@ -313,14 +377,24 @@ class _DocumentWorkspaceState extends State<DocumentWorkspace> {
                   if (showOutline)
                     SizedBox(
                       width: 212,
-                      child: SingleChildScrollView(child: outline()),
+                      child: DecoratedBox(
+                        decoration: BoxDecoration(
+                          color: Theme.of(ctx).colorScheme.surfaceContainerLow,
+                          border: Border(
+                            right: BorderSide(
+                              color: Theme.of(ctx).colorScheme.outlineVariant,
+                            ),
+                          ),
+                        ),
+                        child: SingleChildScrollView(child: outline()),
+                      ),
                     ),
                   Expanded(
                     child: Scrollbar(
                       controller: widget.scrollController,
                       child: SingleChildScrollView(
                         controller: widget.scrollController,
-                        padding: const EdgeInsets.all(20),
+                        padding: const EdgeInsets.fromLTRB(28, 20, 28, 32),
                         child: Align(
                           alignment: Alignment.topCenter,
                           child: ConstrainedBox(
@@ -340,12 +414,24 @@ class _DocumentWorkspaceState extends State<DocumentWorkspace> {
                       ),
                     ),
                   ),
-                  if (!widget.focusMode)
+                  if (!widget.focusMode && inspectorOpen)
                     SizedBox(
-                      width: 276,
-                      child: SingleChildScrollView(
-                        padding: const EdgeInsets.fromLTRB(8, 18, 16, 18),
-                        child: inspector(true),
+                      width: 260,
+                      child: Material(
+                        color: Theme.of(ctx).colorScheme.surfaceContainerLow,
+                        child: DecoratedBox(
+                          decoration: BoxDecoration(
+                            border: Border(
+                              left: BorderSide(
+                                color: Theme.of(ctx).colorScheme.outlineVariant,
+                              ),
+                            ),
+                          ),
+                          child: SingleChildScrollView(
+                            padding: const EdgeInsets.all(16),
+                            child: inspector(true),
+                          ),
+                        ),
                       ),
                     ),
                 ],
@@ -371,6 +457,65 @@ class _DocumentWorkspaceState extends State<DocumentWorkspace> {
               );
         return Column(
           children: [
+            if (desktop)
+              Material(
+                color: Theme.of(ctx).colorScheme.surfaceContainerLow,
+                child: Padding(
+                  key: const Key('document-desk-tabs'),
+                  padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
+                  child: Row(
+                    children: [
+                      if (!widget.focusMode)
+                        IconButton(
+                          tooltip: 'Hiện/ẩn mục lục',
+                          isSelected: showOutline,
+                          icon: const Icon(Icons.view_sidebar_outlined),
+                          onPressed: () =>
+                              setState(() => contentsOpen = !showOutline),
+                        ),
+                      const SizedBox(width: 12),
+                      DecoratedBox(
+                        decoration: BoxDecoration(
+                          color: Theme.of(ctx)
+                              .colorScheme
+                              .surfaceContainerLowest,
+                          borderRadius: const BorderRadius.vertical(
+                            top: Radius.circular(12),
+                          ),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 24,
+                            vertical: 16,
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Icon(
+                                readOnly
+                                    ? Icons.chrome_reader_mode_outlined
+                                    : Icons.edit_note_outlined,
+                                size: 20,
+                              ),
+                              const SizedBox(width: 10),
+                              const Text('Trang viết'),
+                            ],
+                          ),
+                        ),
+                      ),
+                      const Spacer(),
+                      if (!widget.focusMode)
+                        IconButton(
+                          tooltip: 'Hiện/ẩn thông tin',
+                          isSelected: inspectorOpen,
+                          icon: const Icon(Icons.tune),
+                          onPressed: () =>
+                              setState(() => inspectorOpen = !inspectorOpen),
+                        ),
+                    ],
+                  ),
+                ),
+              ),
             if (desktop)
               Row(
                 children: [

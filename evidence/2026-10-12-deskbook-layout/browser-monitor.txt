@@ -1,0 +1,15 @@
+### Result
+{"monitoring":true,"tokensRecorded":false}
+### Ran Playwright code
+```js
+await (async page => {
+  page.deskbook = {errors: [], consoleErrors: [], writes: []};
+  page.on('pageerror', error => page.deskbook.errors.push(String(error)));
+  page.on('console', message => { if (message.type() === 'error') page.deskbook.consoleErrors.push(message.text()); });
+  page.on('response', response => {
+    const path = new URL(response.url()).pathname;
+    if (path === '/sync' || path === '/me/preferences/sync') page.deskbook.writes.push({path,status:response.status()});
+  });
+  return {monitoring:true,tokensRecorded:false};
+})(page);
+```

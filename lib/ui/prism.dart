@@ -37,9 +37,9 @@ class PrismPalette extends ThemeExtension<PrismPalette> {
   int get hashCode =>
       Object.hash(canvas, Object.hashAll(tones), Object.hashAll(rim));
   static const actionColors = [
-    Color(0xff5d46c6),
-    Color(0xff465ed2),
-    Color(0xff176e92),
+    Color(0xff272b25),
+    Color(0xff333c31),
+    Color(0xff4d5948),
   ];
 
   factory PrismPalette.forBrightness(Brightness brightness) {
@@ -48,24 +48,24 @@ class PrismPalette extends ThemeExtension<PrismPalette> {
       canvas: Color(dark ? 0xff101426 : 0xfff5f5fc),
       tones: dark
           ? const [
-              PrismTone(Color(0xffc8bdff), Color(0xffaa94ff)),
-              PrismTone(Color(0xffa6cdff), Color(0xff66b0ff)),
-              PrismTone(Color(0xff91e5ec), Color(0xff4ed3df)),
-              PrismTone(Color(0xffffb8d8), Color(0xffee8abd)),
-              PrismTone(Color(0xffffdf9f), Color(0xffeebb6b)),
-              PrismTone(Color(0xffa0eed1), Color(0xff59d5af)),
+              PrismTone(Color(0xffc7d4bd), Color(0xffa6b69b)),
+              PrismTone(Color(0xffced8e2), Color(0xffa8b8c8)),
+              PrismTone(Color(0xffc9ded0), Color(0xffa1bbac)),
+              PrismTone(Color(0xffe4c5bc), Color(0xffc7a19a)),
+              PrismTone(Color(0xffead5a5), Color(0xffcbb788)),
+              PrismTone(Color(0xffd4dfbd), Color(0xffa7b798)),
             ]
           : const [
-              PrismTone(Color(0xff5041aa), Color(0xffaa94ff)),
-              PrismTone(Color(0xff2357aa), Color(0xff66b0ff)),
-              PrismTone(Color(0xff096173), Color(0xff4ed3df)),
-              PrismTone(Color(0xffa43168), Color(0xffee8abd)),
-              PrismTone(Color(0xff865306), Color(0xffeebb6b)),
-              PrismTone(Color(0xff126b54), Color(0xff59d5af)),
+              PrismTone(Color(0xff4f6450), Color(0xffa6b69b)),
+              PrismTone(Color(0xff546374), Color(0xffa8b8c8)),
+              PrismTone(Color(0xff566e65), Color(0xffa1bbac)),
+              PrismTone(Color(0xff815957), Color(0xffc7a19a)),
+              PrismTone(Color(0xff80602f), Color(0xffcbb788)),
+              PrismTone(Color(0xff53694b), Color(0xffa7b798)),
             ],
       rim: dark
-          ? const [Color(0xff70649e), Color(0xff4c7085), Color(0xff7a536e)]
-          : const [Color(0xffcdc2f2), Color(0xffb2dbe5), Color(0xffeed0e2)],
+          ? const [Color(0xff535b49), Color(0xff535b49), Color(0xff535b49)]
+          : const [Color(0xffd0d1c3), Color(0xffd0d1c3), Color(0xffd0d1c3)],
     );
   }
 
@@ -215,49 +215,6 @@ class _Atmosphere extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     canvas.drawRect(Offset.zero & size, Paint()..color = palette.canvas);
-    void glow(Offset center, double radius, Color color) {
-      final bounds = Rect.fromCircle(center: center, radius: radius);
-      canvas.drawCircle(
-        center,
-        radius,
-        Paint()
-          ..shader = RadialGradient(
-            colors: [color.withValues(alpha: .12), color.withValues(alpha: 0)],
-          ).createShader(bounds),
-      );
-    }
-
-    glow(
-      Offset(size.width * .84, size.height * .05),
-      size.width.clamp(280, 700) * .6,
-      palette.tones[0].light,
-    );
-    glow(
-      Offset(size.width * .98, size.height * .32),
-      310,
-      palette.tones[2].light,
-    );
-    glow(
-      Offset(size.width * .08, size.height * .94),
-      360,
-      palette.tones[3].light,
-    );
-    final x = size.width * .88, y = size.height * .12;
-    final facet = Path()
-      ..moveTo(x - 70, y)
-      ..lineTo(x + 120, y + 40)
-      ..lineTo(x + 30, y + 215)
-      ..close();
-    canvas.drawPath(
-      facet,
-      Paint()
-        ..shader = LinearGradient(
-          colors: [
-            palette.tones[2].light.withValues(alpha: .04),
-            palette.tones[0].light.withValues(alpha: .025),
-          ],
-        ).createShader(facet.getBounds()),
-    );
   }
 
   @override
@@ -288,12 +245,16 @@ class PrismSurface extends StatelessWidget {
           end: Alignment.bottomRight,
           colors: p.rim,
         ),
-        borderRadius: BorderRadius.circular(22),
+        borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
-            color: p.tones[0].light.withValues(alpha: .045),
-            blurRadius: 22,
-            offset: const Offset(0, 8),
+            color: Theme.of(context).colorScheme.onSurface.withValues(
+              alpha: Theme.of(context).brightness == Brightness.dark
+                  ? .12
+                  : .045,
+            ),
+            blurRadius: 16,
+            offset: const Offset(0, 6),
           ),
         ],
       ),
@@ -301,7 +262,7 @@ class PrismSurface extends StatelessWidget {
         padding: const EdgeInsets.all(1),
         child: Material(
           color: surface,
-          borderRadius: BorderRadius.circular(21),
+          borderRadius: BorderRadius.circular(11),
           clipBehavior: Clip.antiAlias,
           child: Ink(
             decoration: BoxDecoration(
@@ -312,12 +273,12 @@ class PrismSurface extends StatelessWidget {
                     backgroundColors ??
                     [
                       Color.alphaBlend(
-                        p.tones[0].light.withValues(alpha: tinted ? .20 : .07),
+                        p.tones[0].light.withValues(alpha: tinted ? .06 : 0),
                         surface,
                       ),
                       surface,
                       Color.alphaBlend(
-                        p.tones[1].light.withValues(alpha: tinted ? .12 : .05),
+                        p.tones[2].light.withValues(alpha: tinted ? .04 : 0),
                         surface,
                       ),
                     ],
@@ -377,7 +338,7 @@ class _PrismCardState extends State<PrismCard> {
             ),
         padding: const EdgeInsets.all(1),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(22),
+          borderRadius: BorderRadius.circular(12),
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
@@ -399,7 +360,7 @@ class _PrismCardState extends State<PrismCard> {
         ),
         child: Material(
           color: colors.surface,
-          borderRadius: BorderRadius.circular(21),
+          borderRadius: BorderRadius.circular(11),
           clipBehavior: Clip.antiAlias,
           child: Ink(
             decoration: BoxDecoration(
@@ -412,13 +373,13 @@ class _PrismCardState extends State<PrismCard> {
                       alpha: tone == null
                           ? .025
                           : rich
-                          ? (dark ? .16 : .30)
-                          : .13,
+                          ? (dark ? .05 : .045)
+                          : .03,
                     ),
                     colors.surface,
                   ),
                   Color.alphaBlend(
-                    accent.withValues(alpha: rich ? (dark ? .09 : .17) : 0),
+                    accent.withValues(alpha: rich ? (dark ? .03 : .025) : 0),
                     colors.surface,
                   ),
                 ],
@@ -431,17 +392,9 @@ class _PrismCardState extends State<PrismCard> {
               onHover: (v) => setState(() => hovered = v),
               onFocusChange: (v) => setState(() => focused = v),
               onHighlightChanged: (v) => setState(() => pressed = v),
-              borderRadius: BorderRadius.circular(21),
+              borderRadius: BorderRadius.circular(11),
               child: Stack(
                 children: [
-                  if (rich)
-                    Positioned.fill(
-                      child: ExcludeSemantics(
-                        child: IgnorePointer(
-                          child: CustomPaint(painter: _CardFacet(accent)),
-                        ),
-                      ),
-                    ),
                   if (tone != null)
                     Positioned(
                       top: 0,
@@ -472,27 +425,6 @@ class _PrismCardState extends State<PrismCard> {
   }
 }
 
-class _CardFacet extends CustomPainter {
-  const _CardFacet(this.color);
-  final Color color;
-  @override
-  void paint(Canvas canvas, Size size) {
-    final w = size.width, h = size.height;
-    canvas.drawPath(
-      Path()..addPolygon([
-        Offset(w * .67, h),
-        Offset(w, h * .55),
-        Offset(w, h),
-      ], true),
-      Paint()..color = color.withValues(alpha: .09),
-    );
-  }
-
-  @override
-  bool shouldRepaint(covariant _CardFacet oldDelegate) =>
-      color != oldDelegate.color;
-}
-
 class PrismAction extends StatelessWidget {
   const PrismAction({
     super.key,
@@ -515,7 +447,7 @@ class PrismAction extends StatelessWidget {
         gradient: onPressed == null
             ? null
             : const LinearGradient(colors: PrismPalette.actionColors),
-        borderRadius: BorderRadius.circular(14),
+        borderRadius: BorderRadius.circular(8),
       ),
       child: icon == null
           ? FilledButton(onPressed: onPressed, style: style, child: child)

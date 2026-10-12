@@ -1,5 +1,55 @@
 # NoteTogether - trạng thái 12/10/2026
 
+## Publication UI / Deskbook —12/10/2026
+
+Người dùng ủy quyền push bản UI trên `codex/ui-system-refresh`, PR vào `master`.
+Nhánh cập nhật với master `41eb180` (PR#6); tree baseline không đổi so với QA `f3b17a3`.
+270 Flutter/118 backend, format/analyze và Web/APK debug compile PASS; Chrome7viewport/
+hai theme, autosave/privacy/cache được nghiệm thu trong snapshot Deskbook.
+[Gate publication](evidence/2026-10-12-ui-publication/INDEX.md),
+[nhánh GitHub](https://github.com/bahungTDTU/final-flutter/tree/codex/ui-system-refresh).
+Commit cuối/CI được tra trên PR thật; không tự merge hoặc suy human approval từ local QA.
+Các đoạn “chưa commit/push” bên dưới là snapshots trước publication.
+
+## Deskbook — bố cục hiện hành12/10/2026
+
+IMPLEMENTED: masthead ngang, thư viện có bookmark, ngăn bàn bên phải trên PC đủ rộng;
+phone thu gọn công cụ, editor tab Trang viết/mục lục/thông tin đóng mở độc lập.
+PASS format112files0changes/analyze/270 Flutter;118 backend trên cùng backend không đổi.
+Chrome7viewport/hai theme, exact autosave/API và lock privacy, cache40static/build hash.
+Web/APK debug compile PASS; native UI/IME/FPS/provider/release/CI chưa nghiệm thu.
+Branch `codex/ui-system-refresh`, base `f3b17a3`, working changes chưa commit/push/merge.
+[UI_DESKBOOK](docs/UI_DESKBOOK.md), [evidence](evidence/2026-10-12-deskbook-layout/INDEX.md).
+Các phần dưới là snapshots lịch sử; không ghi đè evidence cũ.
+
+## Editorial Atelier — snapshot trước Deskbook
+
+IMPLEMENTED: bố cục thư viện indexed/title editorial/count plate/pinned7:5, auth publication
+và writing desk PC; phone riêng, semantic paper/obsidian/sage/brass theme toàn ứng dụng.
+Giữ list lazy, reduced motion, editor identity/caret/base revision và lock privacy.
+Cache theme bất biến; bỏ glow/facet paint. Source `codex/ui-system-refresh`/base `f3b17a3`,
+working changes chưa commit/push. [UI_ATELIER](docs/UI_ATELIER.md),
+[evidence hiện hành](evidence/2026-10-12-atelier-ui/INDEX.md).
+PASS local source cuối:267 Flutter/118 backend, format110files0changes/analyze; Chrome
+5viewport/hai theme,38ảnh, autosave/API/privacy/cache; Web/APK debug compile.
+
+Các kết quả/UI theo ngày dưới đây là snapshots cũ; không thay native/provider/release gates.
+
+## UI toàn ứng dụng theo ui-ux-pro-max —12/10/2026
+
+IMPLEMENTED: tokens light/dark, navy sidebar/indigo-blue-teal header, opaque reading
+surfaces, PageIntro/heading/notice/empty state, input floating labels, keyboard focus,
+chip/dialog/sheet/scrollbar cohesion. Dashboard phone/short window gọn; editor PC giữ
+ribbon/paper/outline, phone toolbar dưới. Không đổi backend/controller/ACL/outbox/revision.
+
+PASS cuối:262 Flutter/118 backend, format109files0changes/analyzer sạch; Chrome5viewport/
+hai theme, bản nháp giữ khi resize/theme và exact title API roundtrip, relock loại reader,
+cache40static SHA256 khớp. Web compile/API8058QA và APK debug compile PASS. Bản Web dev
+được build lại với API8000; xem logs/index cho kết quả thực và giới hạn native/provider.
+[Thiết kế](docs/UI_SYSTEM_REFRESH.md), [nghiệm thu/ảnh](evidence/2026-10-12-ui-system-refresh/INDEX.md).
+Branch `codex/ui-system-refresh`, base `f3b17a3`, chưa commit/push. Kết quả phía dưới giữ
+snapshot lịch sử; UI mới không đóng gates release/native UI/IME/FPS/screen reader/CI hosted.
+
 ## Publication Trung tâm bảo mật —12/10/2026
 
 Người dùng ủy quyền xuất bản `codex/security-center`; commit chức năng `0fccdc8`,

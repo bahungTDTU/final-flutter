@@ -1258,6 +1258,19 @@ class _WorkspaceScreenState extends State<WorkspaceScreen> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
+                            if (MediaQuery.sizeOf(context).width >= 900 &&
+                                MediaQuery.sizeOf(context).height >= 700 &&
+                                MediaQuery.textScalerOf(context).scale(1) <
+                                    1.5) ...[
+                              const PageIntro(
+                                title: 'Không gian của những ý tưởng',
+                                detail: 'Tìm lại ghi chú, sắp xếp công việc và dành thời gian cho điều quan trọng.',
+                                icon: Icons.space_dashboard_outlined,
+                                eyebrow: 'WORKSPACE',
+                                accent: 2,
+                              ),
+                              const SizedBox(height: 24),
+                            ],
                             if (MediaQuery.sizeOf(context).width < 600 ||
                                 MediaQuery.textScalerOf(context).scale(1) >=
                                     1.5)

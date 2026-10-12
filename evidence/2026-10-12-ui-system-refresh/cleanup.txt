@@ -1,0 +1,1 @@
+Owned QA server processes stopped; ports 8058 and 7376 no longer listening.

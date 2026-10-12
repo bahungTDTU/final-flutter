@@ -1,0 +1,1 @@
+{"fixture": "synthetic, isolated loopback server", "notes": 9, "labels": 4, "roles": ["owner", "viewer", "editor", "stranger"], "viewerWrite": 403, "strangerRead": 404, "lockedRead": 423, "lockedProjectionFields": ["id", "locked", "pinned_at", "revision", "role", "shared"], "tokensRecorded": false}

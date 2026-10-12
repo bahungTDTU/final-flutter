@@ -1,26 +1,16 @@
 import 'package:flutter/material.dart';
 
 import 'design_system.dart';
+import 'deskbook.dart';
 
-/// Static optical areas, excluded from interaction and semantics.
+/// Quiet canvas: the document covers carry the hierarchy.
 class DashboardBackdrop extends StatelessWidget {
   const DashboardBackdrop({super.key, required this.child});
   final Widget child;
   @override
-  Widget build(BuildContext context) => Stack(
-    fit: StackFit.expand,
-    children: [
-      Positioned.fill(
-        child: _Decoration(
-          child: CustomPaint(
-            painter: _DashboardFacets(
-              dark: Theme.of(context).brightness == Brightness.dark,
-            ),
-          ),
-        ),
-      ),
-      child,
-    ],
+  Widget build(BuildContext context) => ColoredBox(
+    color: Theme.of(context).scaffoldBackgroundColor,
+    child: child,
   );
 }
 
@@ -28,63 +18,58 @@ class DashboardSidebar extends StatelessWidget {
   const DashboardSidebar({super.key, required this.builder});
   final WidgetBuilder builder;
   @override
+  Widget build(BuildContext context) => Material(
+    color: Theme.of(context).colorScheme.surfaceContainerLow,
+    child: Builder(builder: builder),
+  );
+}
+
+/// Indexed navigation retains the framework's focus and keyboard behavior.
+class LibraryDestination extends StatelessWidget {
+  const LibraryDestination({
+    super.key,
+    required this.index,
+    required this.title,
+    required this.icon,
+    required this.selected,
+    required this.onTap,
+  });
+  final int index;
+  final String title;
+  final IconData icon;
+  final bool selected;
+  final VoidCallback onTap;
+  @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final colors = theme.colorScheme.copyWith(
-      surface: const Color(0xff24255f),
-      onSurface: Colors.white,
-      onSurfaceVariant: DashboardColors.sidebarMuted,
-      primary: DashboardColors.selected,
-      secondaryContainer: DashboardColors.selected,
-      onSecondaryContainer: DashboardColors.selectedInk,
-      outlineVariant: const Color(0xff545787),
-    );
+    final colors = Theme.of(context).colorScheme;
     return DecoratedBox(
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: DashboardColors.sidebar,
+      decoration: BoxDecoration(
+        border: Border(
+          left: BorderSide(
+            color: selected ? colors.primary : Colors.transparent,
+            width: 3,
+          ),
         ),
       ),
-      child: Stack(
-        fit: StackFit.expand,
-        children: [
-          const Positioned.fill(
-            child: _Decoration(
-              child: CustomPaint(painter: _DashboardFacets(sidebar: true)),
-            ),
+      child: ListTile(
+        selected: selected,
+        selectedColor: colors.onSurface,
+        selectedTileColor: colors.primary.withValues(alpha: .055),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+        leading: ExcludeSemantics(
+          child: Text(
+            '${index + 1}'.padLeft(2, '0'),
+            style: Theme.of(context).textTheme.bodySmall,
           ),
-          Theme(
-            data: theme.copyWith(
-              colorScheme: colors,
-              textTheme: theme.textTheme.apply(
-                bodyColor: Colors.white,
-                displayColor: Colors.white,
-              ),
-              iconTheme: theme.iconTheme.copyWith(color: Colors.white),
-              listTileTheme: const ListTileThemeData(
-                textColor: Colors.white,
-                iconColor: Colors.white,
-                selectedColor: DashboardColors.selectedInk,
-              ),
-              dividerTheme: const DividerThemeData(
-                color: Color(0xff545787),
-                space: 1,
-              ),
-              textButtonTheme: TextButtonThemeData(
-                style: TextButton.styleFrom(
-                  foregroundColor: DashboardColors.selected,
-                  minimumSize: const Size(48, 48),
-                ),
-              ),
-            ),
-            child: Material(
-              color: Colors.transparent,
-              child: Builder(builder: builder),
-            ),
+        ),
+        title: Text(
+          title,
+          style: TextStyle(
+            fontWeight: selected ? FontWeight.w700 : FontWeight.w500,
           ),
-        ],
+        ),
+        trailing: Icon(icon, size: 19),
+        onTap: onTap,
       ),
     );
   }
@@ -101,197 +86,204 @@ class DashboardHeader extends StatelessWidget {
     required this.onSync,
     this.action,
     this.notice,
+    this.workbench = false,
   });
   final String title, detail, syncLabel;
   final int count;
   final bool online;
   final VoidCallback onSync;
   final Widget? action, notice;
+  final bool workbench;
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final small = MediaQuery.sizeOf(context).width < 600;
-    final dark = theme.brightness == Brightness.dark;
-    return DecoratedBox(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(22),
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: dark ? DashboardColors.darkHeader : DashboardColors.header,
-        ),
+    final colors = theme.colorScheme;
+    final compact =
+        MediaQuery.sizeOf(context).width < 600 ||
+        MediaQuery.sizeOf(context).height < 740;
+    final sync = TextButton.icon(
+      onPressed: onSync,
+      icon: Icon(
+        online ? Icons.cloud_done_outlined : Icons.cloud_off_outlined,
+        size: 18,
       ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(22),
-        child: Stack(
-          children: [
-            const Positioned.fill(
-              child: _Decoration(
-                child: CustomPaint(painter: _DashboardFacets(header: true)),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.all(small ? 16 : 24),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        child: Text(
-                          title,
-                          style: theme.textTheme.headlineLarge?.copyWith(
-                            color: Colors.white,
-                            fontSize: small ? 26 : 36,
-                          ),
-                        ),
-                      ),
-                      if (action != null) ...[
-                        const SizedBox(width: 16),
-                        action!,
-                      ],
-                    ],
+      label: Text(syncLabel),
+    );
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        if (!compact && !workbench) ...[
+          Row(
+            children: [
+              Expanded(
+                flex: 4,
+                child: Text(
+                  'KHÔNG GIAN GHI CHÚ',
+                  style: theme.textTheme.bodySmall?.copyWith(
+                    letterSpacing: 2,
+                    fontWeight: FontWeight.w600,
                   ),
-                  const SizedBox(height: 8),
-                  Text(
-                    detail,
-                    style: theme.textTheme.bodyMedium?.copyWith(
-                      color: DashboardColors.heroMuted,
+                ),
+              ),
+              const SizedBox(width: 16),
+              const Expanded(child: Divider()),
+            ],
+          ),
+          const SizedBox(height: 24),
+        ],
+        LayoutBuilder(
+          builder: (context, area) {
+            final wide =
+                !compact &&
+                area.maxWidth >= 700 &&
+                MediaQuery.textScalerOf(context).scale(1) < 1.5;
+            final titleBlock = Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Semantics(
+                  header: true,
+                  child: Text(
+                    title,
+                    style: theme.textTheme.headlineLarge?.copyWith(
+                      fontSize: compact ? 28 : 46,
+                      fontWeight: FontWeight.w500,
+                      letterSpacing: -1.2,
+                      height: 1.2,
                     ),
                   ),
+                ),
+                if (!compact) ...[
+                  const SizedBox(height: 12),
+                  Text(detail, style: theme.textTheme.bodyMedium),
+                ],
+                if (action != null) ...[const SizedBox(height: 20), action!],
+                if (!wide) ...[
+                  const SizedBox(height: 8),
                   Wrap(
                     spacing: 12,
-                    runSpacing: 4,
                     crossAxisAlignment: WrapCrossAlignment.center,
                     children: [
-                      Text(
-                        '$count ghi chú',
-                        style: theme.textTheme.bodySmall?.copyWith(
-                          color: DashboardColors.heroMuted,
-                        ),
-                      ),
-                      TextButton.icon(
-                        style: TextButton.styleFrom(
-                          foregroundColor: Colors.white,
-                        ),
-                        onPressed: onSync,
-                        icon: Icon(
-                          online
-                              ? Icons.cloud_done_outlined
-                              : Icons.cloud_off_outlined,
-                          size: 18,
-                        ),
-                        label: Text(syncLabel),
-                      ),
+                      Text('$count ghi chú', style: theme.textTheme.bodySmall),
+                      sync,
                     ],
                   ),
-                  if (notice != null) ...[
-                    const SizedBox(height: 12),
-                    Theme(
-                      data: theme.copyWith(
-                        colorScheme: theme.colorScheme.copyWith(
-                          surfaceContainerHighest: dark
-                              ? DashboardColors.darkNotice
-                              : DashboardColors.notice,
-                          onSurface: dark
-                              ? DashboardColors.darkNoticeInk
-                              : DashboardColors.noticeInk,
-                          onSurfaceVariant: dark
-                              ? DashboardColors.darkNoticeInk
-                              : DashboardColors.noticeInk,
-                          primary: dark
-                              ? DashboardColors.darkNoticeInk
-                              : DashboardColors.noticeInk,
-                        ),
-                      ),
-                      child: notice!,
-                    ),
-                  ],
                 ],
+              ],
+            );
+            if (workbench) {
+              return NotebookTitle(
+                title: title,
+                detail: detail,
+                count: count,
+                sync: sync,
+              );
+            }
+            if (!wide) return titleBlock;
+            return Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Expanded(child: titleBlock),
+                const SizedBox(width: 36),
+                SizedBox(
+                  width: 220,
+                  child: Theme(
+                    data: noteTheme(
+                      theme.brightness == Brightness.light
+                          ? Brightness.dark
+                          : Brightness.light,
+                    ),
+                    child: Builder(
+                      builder: (context) {
+                        final plate = Theme.of(context);
+                        return Container(
+                          key: const Key('library-count-plate'),
+                          padding: const EdgeInsets.fromLTRB(24, 20, 16, 12),
+                          decoration: BoxDecoration(
+                            color: plate.colorScheme.surface,
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              ExcludeSemantics(
+                                child: Text(
+                                  '$count'.padLeft(2, '0'),
+                                  style: plate.textTheme.displayLarge?.copyWith(
+                                    fontSize: 64,
+                                    fontWeight: FontWeight.w300,
+                                    height: 1.05,
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(height: 8),
+                              Text(
+                                '$count ghi chú',
+                                style: plate.textTheme.bodySmall,
+                              ),
+                              const SizedBox(height: 12),
+                              const Divider(),
+                              sync,
+                            ],
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ),
+              ],
+            );
+          },
+        ),
+        if (notice != null) ...[
+          const SizedBox(height: 20),
+          Theme(
+            data: theme.copyWith(
+              colorScheme: colors.copyWith(
+                surfaceContainerHighest: theme.brightness == Brightness.dark
+                    ? DashboardColors.darkNotice
+                    : DashboardColors.notice,
+                onSurface: theme.brightness == Brightness.dark
+                    ? DashboardColors.darkNoticeInk
+                    : DashboardColors.noticeInk,
+                onSurfaceVariant: theme.brightness == Brightness.dark
+                    ? DashboardColors.darkNoticeInk
+                    : DashboardColors.noticeInk,
+                primary: theme.brightness == Brightness.dark
+                    ? DashboardColors.darkNoticeInk
+                    : DashboardColors.noticeInk,
               ),
             ),
-          ],
-        ),
-      ),
+            child: notice!,
+          ),
+        ],
+        const SizedBox(height: 20),
+        Divider(color: colors.onSurface, thickness: 1),
+      ],
     );
   }
 }
 
-class _Decoration extends StatelessWidget {
-  const _Decoration({required this.child});
-  final Widget child;
-  @override
-  Widget build(BuildContext context) => ExcludeSemantics(
-    child: IgnorePointer(child: RepaintBoundary(child: child)),
-  );
-}
-
-class _DashboardFacets extends CustomPainter {
-  const _DashboardFacets({
-    this.dark = false,
-    this.header = false,
-    this.sidebar = false,
+/// Only two covers are eager; the rest of the catalogue remains a sliver.
+class PinnedShelf extends StatelessWidget {
+  const PinnedShelf({
+    super.key,
+    required this.first,
+    required this.second,
+    required this.height,
   });
-  final bool dark, header, sidebar;
+  final Widget first, second;
+  final double height;
   @override
-  void paint(Canvas canvas, Size size) {
-    if (!header && !sidebar) {
-      canvas.drawRect(
-        Offset.zero & size,
-        Paint()
-          ..color = dark ? DashboardColors.darkCanvas : DashboardColors.canvas,
-      );
-    }
-    final w = size.width, h = size.height;
-    void facet(List<Offset> points, Color color) {
-      canvas.drawPath(Path()..addPolygon(points, true), Paint()..color = color);
-    }
-
-    if (sidebar) {
-      facet([
-        Offset(0, h * .66),
-        Offset(w, h * .49),
-        Offset(w * .47, h * .84),
-      ], const Color(0xff8583ff).withValues(alpha: .15));
-      facet([
-        Offset(w, h * .49),
-        Offset(w * .47, h * .84),
-        Offset(w, h),
-      ], const Color(0xff8c5df3).withValues(alpha: .12));
-    } else if (header) {
-      facet([
-        Offset(w * .72, 0),
-        Offset(w * .85, h * .43),
-        Offset(w * .80, h),
-      ], Colors.white.withValues(alpha: .07));
-      facet([
-        Offset(w * .85, h * .43),
-        Offset(w, 0),
-        Offset(w, h),
-      ], const Color(0xff8cf1ff).withValues(alpha: .07));
-    } else {
-      facet([
-        Offset(w * .70, 0),
-        Offset(w, 0),
-        Offset(w * .92, h * .55),
-      ], const Color(0xff99bdff).withValues(alpha: dark ? .04 : .10));
-      facet([
-        Offset(w * .85, h * .42),
-        Offset(w, h * .35),
-        Offset(w, h * .88),
-      ], const Color(0xff80daca).withValues(alpha: dark ? .025 : .08));
-      facet([
-        Offset(w * .74, h * .78),
-        Offset(w, h * .57),
-        Offset(w, h),
-      ], const Color(0xffbaa4f4).withValues(alpha: dark ? .025 : .09));
-    }
-  }
-
-  @override
-  bool shouldRepaint(covariant _DashboardFacets oldDelegate) =>
-      dark != oldDelegate.dark ||
-      header != oldDelegate.header ||
-      sidebar != oldDelegate.sidebar;
+  Widget build(BuildContext context) => SizedBox(
+    height: height,
+    child: Row(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Expanded(flex: 7, child: first),
+        const SizedBox(width: 20),
+        Expanded(flex: 5, child: second),
+      ],
+    ),
+  );
 }

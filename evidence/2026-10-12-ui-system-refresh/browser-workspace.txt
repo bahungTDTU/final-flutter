@@ -1,0 +1,19 @@
+### Result
+{"sections":7,"appErrors":[],"consoleErrors":[]}
+### Ran Playwright code
+```js
+await (async page => {
+  const sections = [['Yêu thích', 'favorites'], ['Gần đây', 'recent'],
+    ['Bộ sưu tập', 'collections'], ['Công việc', 'tasks'],
+    ['Mẫu riêng', 'personal-templates'], ['Nhập / xuất', 'transfer'],
+    ['Tổng quan', 'workspace']];
+  for (const [label, file] of sections) {
+    await page.getByRole('checkbox', {name: label, exact: true}).click();
+    await page.waitForTimeout(300);
+    await page.screenshot({path: `output/playwright/ui-system-refresh/${file}-desktop-dark.png`});
+  }
+  return {sections: sections.length, appErrors: page.uiRefresh.errors,
+    consoleErrors: page.uiRefresh.consoleErrors};
+}
+)(page);
+```

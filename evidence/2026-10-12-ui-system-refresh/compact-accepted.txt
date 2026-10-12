@@ -1,0 +1,6 @@
+00:00 +0: loading D:/flutter cuoi ki/test/ui_system_refresh_test.dart
+00:00 +0: Phone dashboard keeps the summary compact on a tall screen
+00:00 +1: Dashboard actions stay below large headings in a narrow desktop pane
+00:00 +2: Feature intro wraps description and actions at 320px with large text (Brightness.dark)
+00:00 +3: Feature intro wraps description and actions at 320px with large text (Brightness.light)
+00:00 +4: All tests passed!

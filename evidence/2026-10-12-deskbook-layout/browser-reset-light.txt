@@ -1,0 +1,12 @@
+### Result
+{"lightThemeRestored":true}
+### Ran Playwright code
+```js
+await (async page => {
+ await page.getByRole('group',{name:/Đã chia sẻ cho 2 người Thiết kế NoteTogether/}).click();
+ await page.getByRole('button',{name:'Đổi giao diện',exact:true}).click();
+ await page.getByRole('button',{name:'Quay lại',exact:true}).click();
+ return {lightThemeRestored:true};
+}
+)(page);
+```

@@ -1,0 +1,65 @@
+{
+  "capturedAt": "2026-10-12T09:24:14.598655+07:00",
+  "base": "f3b17a3d33e5d432320e1d8620f87d7fc33b30d3",
+  "branch": "codex/ui-system-refresh",
+  "workingChanges": true,
+  "businessAndDependencyDiff": [],
+  "files": {
+    "lib/ui/ai.dart": {
+      "sha256": "18c45ea07a0f7bb919e45e6d2d6f9f8cd405bfc1896743896c1fbcc7960738db",
+      "lf_sha256": "9b532cc140ea55f9c8a5b40b2440b519d4f2ee66134ca36a0da9f6a1034dcb81"
+    },
+    "lib/ui/app.dart": {
+      "sha256": "9c71656bb32e4dc9552abd0beeb4612c147dc4173516552ea769bca41a11a9ad",
+      "lf_sha256": "fde06f8f488b8db151f10bbdcf70bcff9e10c0f6355479928d86c20cb6a52f15"
+    },
+    "lib/ui/dashboard.dart": {
+      "sha256": "04e741d69fbb49f1b14905bd2cd3d291b91bf13790ad55938ab2183400cb332f",
+      "lf_sha256": "04e741d69fbb49f1b14905bd2cd3d291b91bf13790ad55938ab2183400cb332f"
+    },
+    "lib/ui/design_system.dart": {
+      "sha256": "a3cfe0284dca39de439db09e4a81b11098edc7863f0bbec089aa82cf2a98fa3b",
+      "lf_sha256": "9d789b0c35547ee980d8529e940329d1c2c0c5607c8b4e5a960b56eb7807de87"
+    },
+    "lib/ui/document_workspace.dart": {
+      "sha256": "ea49defe53b1452c8ff432246544d331dffe8777bda5cd14e56f7b0aaa5ecd35",
+      "lf_sha256": "ea49defe53b1452c8ff432246544d331dffe8777bda5cd14e56f7b0aaa5ecd35"
+    },
+    "lib/ui/focus_panel.dart": {
+      "sha256": "a4d5c67ee22000646954ae00bd89a3efa78bffff9df181ae6f7b6de64fab2f6f",
+      "lf_sha256": "a4d5c67ee22000646954ae00bd89a3efa78bffff9df181ae6f7b6de64fab2f6f"
+    },
+    "lib/ui/home.dart": {
+      "sha256": "6496c91c95d5591055084f4266e3cb76e6a7a3bb54513d5cbf7f45f612d932b7",
+      "lf_sha256": "55c3a7e5ce59c6bd8909dab13b5b9ea8c2eb4091c228f8f9be87354520688b1e"
+    },
+    "lib/ui/planner.dart": {
+      "sha256": "c0cb8cd2a36cfb7549965be25814758690e1e8174e3c388bc5f758374b147203",
+      "lf_sha256": "c0cb8cd2a36cfb7549965be25814758690e1e8174e3c388bc5f758374b147203"
+    },
+    "lib/ui/prism.dart": {
+      "sha256": "01c4b3b37d71a667ac49a71a70f8fa672f4cc4adbd505ddd7519fc6ab67f69b8",
+      "lf_sha256": "01c4b3b37d71a667ac49a71a70f8fa672f4cc4adbd505ddd7519fc6ab67f69b8"
+    },
+    "lib/ui/security_center.dart": {
+      "sha256": "5137ec8edd6232902a94cf8242e99d702ef2448d634b93966114e846621e1d5e",
+      "lf_sha256": "5137ec8edd6232902a94cf8242e99d702ef2448d634b93966114e846621e1d5e"
+    },
+    "lib/ui/workspace.dart": {
+      "sha256": "ce33f331437b51ee2b391e6daff4ceab404061bc8b34b2f12617b9fa74f7f553",
+      "lf_sha256": "b8e9ca1a771031c4727247fcb3f430eef9cf1e61300dd37a23e9d246cfc3cf5d"
+    },
+    "test/ui_system_refresh_test.dart": {
+      "sha256": "3b96e85c49a535b17edbe9d9fcfd194a205d499fd5de75ecc04abe9fcb1a10e7",
+      "lf_sha256": "3b96e85c49a535b17edbe9d9fcfd194a205d499fd5de75ecc04abe9fcb1a10e7"
+    },
+    "pubspec.yaml": {
+      "sha256": "35a35749970f23a36d58bd138a21b68c988405120a5cd7d30ece304fe9ba49b4",
+      "lf_sha256": "11529956ce8e3dd4bcde009f97c45de2a5a53bb65b955061fbcf23d08bbb1282"
+    },
+    "pubspec.lock": {
+      "sha256": "11dd9d44d7af0eb38108a8b19e2cd6985ee6e0937a36a260257131fa48bc2221",
+      "lf_sha256": "11dd9d44d7af0eb38108a8b19e2cd6985ee6e0937a36a260257131fa48bc2221"
+    }
+  }
+}
