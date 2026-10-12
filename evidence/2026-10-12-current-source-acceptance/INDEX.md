@@ -62,3 +62,10 @@ same-process DB reopen != OS relaunch; API/controller peer != two UI users.
 User confirmed no SMTP/Gemini configuration: stage3 blocked pending real setup/receipt/provider.
 HTTPS/release signing/submission/video/team evidence remain later stages. CI of prior PRs
 is upstream history; new branch requires its own CI and another human approval before merge.
+
+## Artifact hash scope
+
+`source-manifest.json` and `checksums.json` hash the original Windows working-copy
+bytes captured during QA. Git normalizes text line endings; they may differ after
+checkout on another OS. `repository-checksums.json` hashes committed Git blob bytes
+for cross-platform verification (`git cat-file blob HEAD:<path>`). It excludes itself.
