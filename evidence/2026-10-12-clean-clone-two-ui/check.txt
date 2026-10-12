@@ -1,0 +1,336 @@
+The network path was not found.
+Formatted 112 files (0 changed) in 3.25 seconds.
+The network path was not found.
+Resolving dependencies...
+Downloading packages...
+  code_assets 1.2.1 (2.1.0 available)
+  cross_file 0.3.5+5 (0.4.0 available)
+  flutter_keyboard_visibility_linux 1.0.0 (2.0.0 available)
+  flutter_keyboard_visibility_macos 1.0.0 (2.0.0 available)
+  flutter_keyboard_visibility_platform_interface 2.0.0 (3.0.0 available)
+  flutter_keyboard_visibility_windows 1.0.0 (2.0.0 available)
+  hooks 2.0.2 (2.2.0 available)
+  idb_shim 2.9.9 (2.9.11 available)
+  jni_flutter 1.0.4 (retracted, 1.0.4+1 available)
+  markdown 7.3.0 (7.3.1 available)
+  material_color_utilities 0.13.0 (0.13.1 available)
+  meta 1.18.3 (1.19.0 available)
+  objective_c 9.5.0 (9.6.2 available)
+  record_use 0.6.0 (1.1.1 available)
+  test_api 0.7.12 (0.7.15 available)
+  vector_math 2.4.0 (2.4.3 available)
+  video_player 2.14.0 (2.14.1 available)
+  video_player_avfoundation 2.12.0 (2.12.1 available)
+Got dependencies!
+18 packages have newer versions incompatible with dependency constraints.
+Try `flutter pub outdated` for more information.
+Analyzing notetogether-clean-947802a...                         
+No issues found! (ran in 11.6s)
+The network path was not found.
+Resolving dependencies...
+Downloading packages...
+  code_assets 1.2.1 (2.1.0 available)
+  cross_file 0.3.5+5 (0.4.0 available)
+  flutter_keyboard_visibility_linux 1.0.0 (2.0.0 available)
+  flutter_keyboard_visibility_macos 1.0.0 (2.0.0 available)
+  flutter_keyboard_visibility_platform_interface 2.0.0 (3.0.0 available)
+  flutter_keyboard_visibility_windows 1.0.0 (2.0.0 available)
+  hooks 2.0.2 (2.2.0 available)
+  idb_shim 2.9.9 (2.9.11 available)
+  jni_flutter 1.0.4 (retracted, 1.0.4+1 available)
+  markdown 7.3.0 (7.3.1 available)
+  material_color_utilities 0.13.0 (0.13.1 available)
+  meta 1.18.3 (1.19.0 available)
+  objective_c 9.5.0 (9.6.2 available)
+  record_use 0.6.0 (1.1.1 available)
+  test_api 0.7.12 (0.7.15 available)
+  vector_math 2.4.0 (2.4.3 available)
+  video_player 2.14.0 (2.14.1 available)
+  video_player_avfoundation 2.12.0 (2.12.1 available)
+Got dependencies!
+18 packages have newer versions incompatible with dependency constraints.
+Try `flutter pub outdated` for more information.
+00:00 +0: loading C:/Temp/notetogether-clean-947802a/test/ai_test.dart
+00:00 +0: C:/Temp/notetogether-clean-947802a/test/ai_test.dart: Summary regeneration stays RAM-only and cannot overwrite notes or outbox
+00:00 +1: C:/Temp/notetogether-clean-947802a/test/ai_test.dart: Unsent draft blocks summary of stale server version
+00:00 +2: C:/Temp/notetogether-clean-947802a/test/ai_test.dart: Removing an uncited context source clears the whole answer
+00:00 +3: C:/Temp/notetogether-clean-947802a/test/ai_test.dart: Account switch during inference discards late answer and source metadata
+00:00 +4: C:/Temp/notetogether-clean-947802a/test/ai_test.dart: Validation failure and citation open both enforce current server permission
+00:00 +5: C:/Temp/notetogether-clean-947802a/test/ai_test.dart: Protected gate expiry and background hide output immediately
+00:00 +6: C:/Temp/notetogether-clean-947802a/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:00 +7: C:/Temp/notetogether-clean-947802a/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:00 +8: C:/Temp/notetogether-clean-947802a/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:00 +9: C:/Temp/notetogether-clean-947802a/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:00 +10: C:/Temp/notetogether-clean-947802a/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:00 +11: C:/Temp/notetogether-clean-947802a/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:01 +12: C:/Temp/notetogether-clean-947802a/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:01 +13: C:/Temp/notetogether-clean-947802a/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:01 +14: C:/Temp/notetogether-clean-947802a/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:01 +15: C:/Temp/notetogether-clean-947802a/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:01 +16: C:/Temp/notetogether-clean-947802a/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:01 +17: C:/Temp/notetogether-clean-947802a/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:01 +18: C:/Temp/notetogether-clean-947802a/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:02 +19: C:/Temp/notetogether-clean-947802a/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:02 +20: C:/Temp/notetogether-clean-947802a/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:02 +21: C:/Temp/notetogether-clean-947802a/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:02 +22: C:/Temp/notetogether-clean-947802a/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:02 +23: C:/Temp/notetogether-clean-947802a/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:02 +24: C:/Temp/notetogether-clean-947802a/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:02 +25: C:/Temp/notetogether-clean-947802a/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:02 +26: C:/Temp/notetogether-clean-947802a/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:02 +27: C:/Temp/notetogether-clean-947802a/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:02 +28: C:/Temp/notetogether-clean-947802a/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:02 +29: C:/Temp/notetogether-clean-947802a/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:02 +30: C:/Temp/notetogether-clean-947802a/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:02 +31: C:/Temp/notetogether-clean-947802a/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:03 +32: C:/Temp/notetogether-clean-947802a/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:03 +33: C:/Temp/notetogether-clean-947802a/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:03 +34: C:/Temp/notetogether-clean-947802a/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:03 +35: C:/Temp/notetogether-clean-947802a/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:03 +36: C:/Temp/notetogether-clean-947802a/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:03 +37: C:/Temp/notetogether-clean-947802a/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:03 +38: C:/Temp/notetogether-clean-947802a/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:03 +39: C:/Temp/notetogether-clean-947802a/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:03 +40: C:/Temp/notetogether-clean-947802a/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:03 +41: C:/Temp/notetogether-clean-947802a/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:03 +42: C:/Temp/notetogether-clean-947802a/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:04 +43: C:/Temp/notetogether-clean-947802a/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:04 +44: C:/Temp/notetogether-clean-947802a/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:04 +45: C:/Temp/notetogether-clean-947802a/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:04 +46: C:/Temp/notetogether-clean-947802a/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:04 +47: C:/Temp/notetogether-clean-947802a/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:04 +48: C:/Temp/notetogether-clean-947802a/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:04 +49: C:/Temp/notetogether-clean-947802a/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:04 +50: C:/Temp/notetogether-clean-947802a/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:04 +51: C:/Temp/notetogether-clean-947802a/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:04 +52: C:/Temp/notetogether-clean-947802a/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:04 +53: C:/Temp/notetogether-clean-947802a/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:04 +54: C:/Temp/notetogether-clean-947802a/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:05 +55: C:/Temp/notetogether-clean-947802a/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:05 +56: C:/Temp/notetogether-clean-947802a/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:05 +57: C:/Temp/notetogether-clean-947802a/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:05 +58: C:/Temp/notetogether-clean-947802a/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:05 +59: C:/Temp/notetogether-clean-947802a/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:05 +60: C:/Temp/notetogether-clean-947802a/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:05 +61: C:/Temp/notetogether-clean-947802a/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:05 +62: C:/Temp/notetogether-clean-947802a/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:05 +63: C:/Temp/notetogether-clean-947802a/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:05 +64: C:/Temp/notetogether-clean-947802a/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:05 +65: C:/Temp/notetogether-clean-947802a/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:06 +66: C:/Temp/notetogether-clean-947802a/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:06 +67: C:/Temp/notetogether-clean-947802a/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:06 +68: C:/Temp/notetogether-clean-947802a/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:06 +69: C:/Temp/notetogether-clean-947802a/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:06 +70: C:/Temp/notetogether-clean-947802a/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:06 +71: C:/Temp/notetogether-clean-947802a/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:06 +72: C:/Temp/notetogether-clean-947802a/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:06 +73: C:/Temp/notetogether-clean-947802a/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:07 +74: C:/Temp/notetogether-clean-947802a/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:07 +75: C:/Temp/notetogether-clean-947802a/test/home_experience_test.dart: Controller pulses update Home without rebuilding the app shell
+00:07 +76: C:/Temp/notetogether-clean-947802a/test/home_experience_test.dart: Controller pulses update Home without rebuilding the app shell
+00:07 +77: C:/Temp/notetogether-clean-947802a/test/home_experience_test.dart: Controller pulses update Home without rebuilding the app shell
+00:07 +78: C:/Temp/notetogether-clean-947802a/test/home_experience_test.dart: Controller pulses update Home without rebuilding the app shell
+00:07 +79: C:/Temp/notetogether-clean-947802a/test/home_experience_test.dart: Controller pulses update Home without rebuilding the app shell
+00:07 +80: C:/Temp/notetogether-clean-947802a/test/home_experience_test.dart: Controller pulses update Home without rebuilding the app shell
+SHELL_PROBE {"pulses":20,"shell_replacements":0,"fps_measured":false}
+00:07 +81: C:/Temp/notetogether-clean-947802a/test/note_document_test.dart: Ctrl F from rich input opens document search without saving
+00:08 +82: C:/Temp/notetogether-clean-947802a/test/note_ordering_test.dart: Home grid renders locked newest before ordinary older
+00:08 +83: C:/Temp/notetogether-clean-947802a/test/deskbook_layout_test.dart: Document drawers preserve rich selection, draft and frozen revision
+00:08 +84: C:/Temp/notetogether-clean-947802a/test/deskbook_layout_test.dart: Document drawers preserve rich selection, draft and frozen revision
+00:08 +85: C:/Temp/notetogether-clean-947802a/test/deskbook_layout_test.dart: Document drawers preserve rich selection, draft and frozen revision
+00:08 +86: C:/Temp/notetogether-clean-947802a/test/deskbook_layout_test.dart: Document drawers preserve rich selection, draft and frozen revision
+00:08 +87: C:/Temp/notetogether-clean-947802a/test/deskbook_layout_test.dart: Document drawers preserve rich selection, draft and frozen revision
+00:08 +88: C:/Temp/notetogether-clean-947802a/test/deskbook_layout_test.dart: Document drawers preserve rich selection, draft and frozen revision
+00:08 +89: C:/Temp/notetogether-clean-947802a/test/deskbook_layout_test.dart: Document drawers preserve rich selection, draft and frozen revision
+00:08 +90: C:/Temp/notetogether-clean-947802a/test/deskbook_layout_test.dart: Document drawers preserve rich selection, draft and frozen revision
+00:08 +91: C:/Temp/notetogether-clean-947802a/test/deskbook_layout_test.dart: Document drawers preserve rich selection, draft and frozen revision
+00:08 +92: C:/Temp/notetogether-clean-947802a/test/deskbook_layout_test.dart: Document drawers preserve rich selection, draft and frozen revision
+00:08 +93: C:/Temp/notetogether-clean-947802a/test/deskbook_layout_test.dart: Document drawers preserve rich selection, draft and frozen revision
+00:08 +94: C:/Temp/notetogether-clean-947802a/test/deskbook_layout_test.dart: Document drawers preserve rich selection, draft and frozen revision
+00:08 +95: C:/Temp/notetogether-clean-947802a/test/deskbook_layout_test.dart: Document drawers preserve rich selection, draft and frozen revision
+00:08 +96: C:/Temp/notetogether-clean-947802a/test/deskbook_layout_test.dart: Document drawers preserve rich selection, draft and frozen revision
+00:08 +97: C:/Temp/notetogether-clean-947802a/test/deskbook_layout_test.dart: Document drawers preserve rich selection, draft and frozen revision
+00:08 +98: C:/Temp/notetogether-clean-947802a/test/deskbook_layout_test.dart: Document drawers preserve rich selection, draft and frozen revision
+00:08 +99: C:/Temp/notetogether-clean-947802a/test/deskbook_layout_test.dart: Document drawers preserve rich selection, draft and frozen revision
+00:08 +100: C:/Temp/notetogether-clean-947802a/test/deskbook_layout_test.dart: Document drawers preserve rich selection, draft and frozen revision
+00:08 +101: C:/Temp/notetogether-clean-947802a/test/deskbook_layout_test.dart: Document drawers preserve rich selection, draft and frozen revision
+00:08 +102: C:/Temp/notetogether-clean-947802a/test/deskbook_layout_test.dart: Document drawers preserve rich selection, draft and frozen revision
+00:08 +103: C:/Temp/notetogether-clean-947802a/test/deskbook_layout_test.dart: Document drawers preserve rich selection, draft and frozen revision
+00:08 +104: C:/Temp/notetogether-clean-947802a/test/deskbook_layout_test.dart: Document drawers preserve rich selection, draft and frozen revision
+00:08 +105: C:/Temp/notetogether-clean-947802a/test/deskbook_layout_test.dart: Document drawers preserve rich selection, draft and frozen revision
+00:08 +106: C:/Temp/notetogether-clean-947802a/test/deskbook_layout_test.dart: Document drawers preserve rich selection, draft and frozen revision
+00:08 +107: C:/Temp/notetogether-clean-947802a/test/deskbook_layout_test.dart: Document drawers preserve rich selection, draft and frozen revision
+00:09 +108: C:/Temp/notetogether-clean-947802a/test/deskbook_layout_test.dart: Document drawers preserve rich selection, draft and frozen revision
+00:09 +109: C:/Temp/notetogether-clean-947802a/test/deskbook_layout_test.dart: Document drawers preserve rich selection, draft and frozen revision
+00:09 +110: C:/Temp/notetogether-clean-947802a/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:09 +111: C:/Temp/notetogether-clean-947802a/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:10 +112: C:/Temp/notetogether-clean-947802a/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:10 +113: C:/Temp/notetogether-clean-947802a/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:10 +114: C:/Temp/notetogether-clean-947802a/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:10 +115: C:/Temp/notetogether-clean-947802a/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:10 +116: C:/Temp/notetogether-clean-947802a/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:10 +117: C:/Temp/notetogether-clean-947802a/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:10 +118: C:/Temp/notetogether-clean-947802a/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:10 +119: C:/Temp/notetogether-clean-947802a/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:10 +120: C:/Temp/notetogether-clean-947802a/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:10 +121: C:/Temp/notetogether-clean-947802a/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:10 +122: C:/Temp/notetogether-clean-947802a/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:10 +123: C:/Temp/notetogether-clean-947802a/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:10 +124: C:/Temp/notetogether-clean-947802a/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:10 +125: C:/Temp/notetogether-clean-947802a/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:10 +126: C:/Temp/notetogether-clean-947802a/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:10 +127: C:/Temp/notetogether-clean-947802a/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:11 +128: C:/Temp/notetogether-clean-947802a/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:11 +129: C:/Temp/notetogether-clean-947802a/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:11 +130: C:/Temp/notetogether-clean-947802a/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:11 +131: C:/Temp/notetogether-clean-947802a/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:11 +132: C:/Temp/notetogether-clean-947802a/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:11 +133: C:/Temp/notetogether-clean-947802a/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:11 +134: C:/Temp/notetogether-clean-947802a/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:11 +135: C:/Temp/notetogether-clean-947802a/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:11 +136: C:/Temp/notetogether-clean-947802a/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:11 +137: C:/Temp/notetogether-clean-947802a/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:11 +138: C:/Temp/notetogether-clean-947802a/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:11 +139: C:/Temp/notetogether-clean-947802a/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:12 +140: C:/Temp/notetogether-clean-947802a/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:12 +141: C:/Temp/notetogether-clean-947802a/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:12 +142: C:/Temp/notetogether-clean-947802a/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:12 +143: C:/Temp/notetogether-clean-947802a/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:12 +144: C:/Temp/notetogether-clean-947802a/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:12 +145: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Protected editor autosaves; revoked delete confirmation removes name and disables action
+00:12 +146: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Protected editor autosaves; revoked delete confirmation removes name and disables action
+00:12 +147: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Protected editor autosaves; revoked delete confirmation removes name and disables action
+00:12 +148: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Protected editor autosaves; revoked delete confirmation removes name and disables action
+00:12 +149: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Protected editor autosaves; revoked delete confirmation removes name and disables action
+00:12 +150: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Protected editor autosaves; revoked delete confirmation removes name and disables action
+00:12 +151: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Protected editor autosaves; revoked delete confirmation removes name and disables action
+00:12 +152: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Protected editor autosaves; revoked delete confirmation removes name and disables action
+00:12 +153: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Protected editor autosaves; revoked delete confirmation removes name and disables action
+00:12 +154: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Protected editor autosaves; revoked delete confirmation removes name and disables action
+00:12 +155: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Protected editor autosaves; revoked delete confirmation removes name and disables action
+00:13 +156: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Protected editor autosaves; revoked delete confirmation removes name and disables action
+00:13 +157: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Protected editor autosaves; revoked delete confirmation removes name and disables action
+00:13 +158: C:/Temp/notetogether-clean-947802a/test/security_center_test.dart: confirmation keeps retry input on resize, clears on background, and handles 320px/200%/keyboard
+00:13 +159: C:/Temp/notetogether-clean-947802a/test/security_center_test.dart: confirmation keeps retry input on resize, clears on background, and handles 320px/200%/keyboard
+00:13 +160: C:/Temp/notetogether-clean-947802a/test/realtime_test.dart: Clean live editor preserves selection and explicitly opens a new base
+00:13 +161: C:/Temp/notetogether-clean-947802a/test/realtime_test.dart: Clean live editor preserves selection and explicitly opens a new base
+00:14 +162: C:/Temp/notetogether-clean-947802a/test/realtime_test.dart: Clean live editor preserves selection and explicitly opens a new base
+00:14 +163: C:/Temp/notetogether-clean-947802a/test/realtime_test.dart: Clean live editor preserves selection and explicitly opens a new base
+00:14 +164: C:/Temp/notetogether-clean-947802a/test/sharing_test.dart: Downgrade while typing shows server read-only and preserves draft
+00:14 +165: C:/Temp/notetogether-clean-947802a/test/sharing_test.dart: Downgrade while typing shows server read-only and preserves draft
+00:14 +166: C:/Temp/notetogether-clean-947802a/test/sharing_test.dart: Downgrade while typing shows server read-only and preserves draft
+00:14 +167: C:/Temp/notetogether-clean-947802a/test/sharing_test.dart: Downgrade while typing shows server read-only and preserves draft
+00:14 +168: C:/Temp/notetogether-clean-947802a/test/ui_cohesion_test.dart: Typing avoids rebuilding note cards until debounce; search still matches beyond bounded preview
+00:15 +169: C:/Temp/notetogether-clean-947802a/test/ui_cohesion_test.dart: Typing avoids rebuilding note cards until debounce; search still matches beyond bounded preview
+00:15 +170: C:/Temp/notetogether-clean-947802a/test/ui_cohesion_test.dart: Typing avoids rebuilding note cards until debounce; search still matches beyond bounded preview
+00:15 +171: C:/Temp/notetogether-clean-947802a/test/ui_cohesion_test.dart: Typing avoids rebuilding note cards until debounce; search still matches beyond bounded preview
+00:15 +172: C:/Temp/notetogether-clean-947802a/test/ui_cohesion_test.dart: Typing avoids rebuilding note cards until debounce; search still matches beyond bounded preview
+00:15 +173: C:/Temp/notetogether-clean-947802a/test/ui_cohesion_test.dart: Typing avoids rebuilding note cards until debounce; search still matches beyond bounded preview
+00:16 +174: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:16 +175: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:16 +176: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:16 +177: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:16 +178: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:16 +179: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:16 +180: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:16 +181: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:17 +182: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:17 +183: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:17 +184: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:17 +185: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:17 +186: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:17 +187: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:17 +188: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:17 +189: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:17 +190: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:17 +191: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:17 +192: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:18 +193: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:18 +194: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:18 +195: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:19 +196: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:19 +197: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:19 +198: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:19 +199: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:20 +200: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:20 +201: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:20 +202: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:20 +203: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:20 +204: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:20 +205: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:21 +206: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:21 +207: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:21 +208: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:21 +209: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:21 +210: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:21 +211: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:21 +212: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:21 +213: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:21 +214: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:21 +215: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:21 +216: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:21 +217: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:21 +218: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:21 +219: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:21 +220: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:21 +221: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:21 +222: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:21 +223: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:21 +224: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:21 +225: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:21 +226: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:22 +227: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:22 +228: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:22 +229: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:22 +230: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:22 +231: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:22 +232: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:23 +233: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:23 +234: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:23 +235: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:23 +236: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:23 +237: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:23 +238: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:23 +239: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:23 +240: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:23 +241: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:24 +242: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:24 +243: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:24 +244: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:24 +245: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:24 +246: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:24 +247: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:24 +248: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:25 +249: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:25 +250: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:25 +251: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:25 +252: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:25 +253: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:25 +254: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:26 +255: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:26 +256: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:26 +257: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:26 +257: C:/Temp/notetogether-clean-947802a/test/ui_cohesion_test.dart: Controlled NotoSans shaping and cached-query benchmark; timings are evidence, not FPS assertions
+UI_BENCHMARK {"target":"host Flutter test engine/NotoSans","iterations":11,"note_chars":100000,"preview_chars":481,"paragraph_full_median_us":11367,"paragraph_preview_median_us":391,"notes":500,"baseline_query_median_us":506305,"optimized_query_median_us":527,"cached_query_median_us":11,"fps_measured":false}
+00:26 +258: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:26 +259: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:27 +260: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:30 +261: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Delete conflict requires new confirmation and revoked delete hides content
+00:31 +262: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Offline draft survives encrypted Sembast close/reopen and never enters ordinary outbox
+00:31 +263: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: A copied old-password draft permits new-password unlock without losing the private copy
+00:31 +264: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Lost acknowledgement replays the same immutable operation after reopen
+00:31 +265: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Typing while protected operation is inflight keeps newest draft and chains own ack
+00:31 +266: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Realtime clean content updates keep frozen base; dirty content remains on conflict
+00:31 +267: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Revoke hides content and preserves password-bound recovery; copy never mutates source
+00:31 +268: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Encrypted field merge survives ordinary snapshot capture and account switch mid-write
+00:31 +269: C:/Temp/notetogether-clean-947802a/test/protected_editing_test.dart: Delegated picker obscures content and rechecks grant before showing it again
+00:31 +270: All tests passed!
+........................................................................ [ 50%]
+......................................................................   [100%]
+============================== warnings summary ===============================
+.venv\Lib\site-packages\fastapi\testclient.py:1
+  C:\Temp\notetogether-clean-947802a\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+142 passed, 1 warning in 92.60s (0:01:32)

@@ -1,5 +1,16 @@
 # NoteTogether - nền tảng triển khai local
 
+## Clone sạch và hai UI độc lập —12/10/2026
+
+Đúng947802a: setup/check PASS270Flutter/142backend, Web release local40resources và
+APK debug build PASS; .git giữ nguyên, working tree sạch. Hai WebUI khác origin/account
+PASS dirty409→bản sao UUID mới; owner revoke khi peer gõ→ẩn nội dung→phục hồi riêng,
+backend xác nhận original không bị ghi đè và bản sao cô lập quyền.
+[Evidence](evidence/2026-10-12-clean-clone-two-ui/INDEX.md),
+[gate/đầu vào còn thiếu](docs/REMAINING_GATES.md). Chưa có approval để merge PR8, provider/HTTPS/key
+release/Rubric/video thực; native IME/OS relaunch/picker/TTL còn riêng.
+
+
 ## Chuẩn bị release và phục hồi state —12/10/2026
 
 Đã thêm production HTTPS origin guard và signing Android riêng, không fallback debug.

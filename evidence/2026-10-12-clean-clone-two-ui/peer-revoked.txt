@@ -1,0 +1,10 @@
+Browser tab: 3, Title: "NoteTogether", URL: "http://localhost:7364/".
+0 AXWebArea NoteTogether, URL: localhost:7364/
+	1 container
+		2 container Quay lại Bạn không còn quyền truy cập ghi chú này. Quay lại danh sách để tiếp tục.
+			3 container flt-semantic-node-78
+				4 button Quay lại, ID: flt-semantic-node-194
+				5 text Bạn không còn quyền truy cập ghi chú này.
+				6 text Quay lại danh sách để tiếp tục.
+
+The focused UI element is 2 container Quay lại Bạn không còn quyền truy cập ghi chú này. Quay lại danh sách để tiếp tục.
