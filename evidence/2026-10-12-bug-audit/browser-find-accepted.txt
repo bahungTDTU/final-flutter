@@ -1,0 +1,44 @@
+### Result
+{"result":"PASS","backwardsFirstLast":true,"realtimeResultsUpdated":true,"replaceStillEnabled":false,"pageConsoleErrors":0,"tokensRecorded":false}
+### Ran Playwright code
+```js
+await (async page => {
+  const problems = [];
+  const onError = error => problems.push(String(error));
+  const onConsole = message => { if (message.type() === 'error') problems.push(message.text()); };
+  page.on('pageerror', onError);
+  page.on('console', onConsole);
+  await page.getByRole('button', { name: /^Tìm và thay thế \(Ctrl\+F\)/ }).click();
+  await page.getByRole('textbox', { name: 'Tìm trong ghi chú', exact: true }).fill('Alpha');
+  await page.getByText('3 kết quả', { exact: true }).waitFor();
+  await page.getByRole('button', { name: 'Trước', exact: true }).click();
+  await page.getByText('3 kết quả · 3/3', { exact: true }).waitFor();
+  await page.getByRole('button', { name: 'Tiếp', exact: true }).click();
+  await page.getByText('3 kết quả · 1/3', { exact: true }).waitFor();
+  await page.screenshot({ path: 'D:/flutter cuoi ki/output/playwright/bug-audit-find-three.png' });
+  const login = await page.request.post('http://127.0.0.1:8058/auth/login', { data: {
+    email: 'ui-refresh-editor@example.test', password: 'safe-password-123'
+  }});
+  if (login.status() !== 200) throw Error('Fixture login failed');
+  const headers = { Authorization: 'Bearer ' + (await login.json()).token };
+  const listed = await page.request.get('http://127.0.0.1:8058/notes', { headers });
+  const note = (await listed.json()).find(row => row.title === 'Thiết kế NoteTogether');
+  const accepted = await page.request.post('http://127.0.0.1:8058/sync', { headers, data: {
+    op_id: await page.evaluate(() => crypto.randomUUID()), note_id: note.id,
+    base_revision: note.revision, kind: 'upsert', title: note.title, content: 'Alpha'
+  }});
+  if (accepted.status() !== 200) throw Error('Fixture remote update failed');
+  await page.getByText('1 kết quả', { exact: true }).waitFor({ timeout: 20000 });
+  await page.getByRole('button', { name: 'Tiếp', exact: true }).click();
+  await page.getByText('1 kết quả · 1/1', { exact: true }).waitFor();
+  await page.screenshot({ path: 'D:/flutter cuoi ki/output/playwright/bug-audit-find-remote.png' });
+  const replaceStillEnabled = await page.getByRole('button', { name: 'Thay tất cả', exact: true }).isEnabled();
+  if (replaceStillEnabled) throw Error('Stale editor still offers replacements');
+  if (problems.length) throw Error(JSON.stringify(problems));
+  page.removeListener('pageerror', onError);
+  page.removeListener('console', onConsole);
+  return { result: 'PASS', backwardsFirstLast: true, realtimeResultsUpdated: true,
+    replaceStillEnabled, pageConsoleErrors: problems.length, tokensRecorded: false };
+}
+)(page);
+```

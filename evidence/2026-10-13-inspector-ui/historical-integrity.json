@@ -1,0 +1,27 @@
+{
+  "capturedAt": "2026-10-13T11:09:54.892850+07:00",
+  "result": "PASS",
+  "scope": "old evidence payload bytes only; source snapshots remain historical",
+  "snapshots": [
+    {
+      "folder": "2026-10-12-ui-system-refresh",
+      "filesChecked": 89,
+      "failures": []
+    },
+    {
+      "folder": "2026-10-12-atelier-ui",
+      "filesChecked": 88,
+      "failures": []
+    },
+    {
+      "folder": "2026-10-12-deskbook-layout",
+      "filesChecked": 89,
+      "failures": []
+    },
+    {
+      "folder": "2026-10-12-bug-audit",
+      "filesChecked": 65,
+      "failures": []
+    }
+  ]
+}

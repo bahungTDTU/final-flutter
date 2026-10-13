@@ -1,0 +1,21 @@
+00:00 +0: loading D:/flutter cuoi ki/test/bug_audit_regression_test.dart
+00:00 +0: D:/flutter cuoi ki/test/bug_audit_regression_test.dart: Open find disables replacements after a role-only downgrade
+00:01 +1: D:/flutter cuoi ki/test/bug_audit_regression_test.dart: Open find disables replacements after a role-only downgrade
+00:01 +2: D:/flutter cuoi ki/test/bug_audit_regression_test.dart: Open find disables replacements after a role-only downgrade
+00:01 +3: D:/flutter cuoi ki/test/bug_audit_regression_test.dart: Open find disables replacements after a role-only downgrade
+00:01 +4: D:/flutter cuoi ki/test/bug_audit_regression_test.dart: Open find disables replacements after a role-only downgrade
+00:01 +5: D:/flutter cuoi ki/test/bug_audit_regression_test.dart: Open find disables replacements after a role-only downgrade
+00:01 +6: D:/flutter cuoi ki/test/bug_audit_regression_test.dart: Open find disables replacements after a role-only downgrade
+00:01 +7: D:/flutter cuoi ki/test/bug_audit_regression_test.dart: Open find disables replacements after a role-only downgrade
+00:01 +8: D:/flutter cuoi ki/test/bug_audit_regression_test.dart: Open find disables replacements after a role-only downgrade
+00:01 +9: D:/flutter cuoi ki/test/bug_audit_regression_test.dart: Open find disables replacements after a role-only downgrade
+00:01 +10: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:01 +11: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:01 +12: D:/flutter cuoi ki/test/note_document_test.dart: Desktop formats directly, saves frozen base, and retains controller/caret on phone resize
+00:01 +13: D:/flutter cuoi ki/test/note_document_test.dart: Desktop formats directly, saves frozen base, and retains controller/caret on phone resize
+00:02 +14: D:/flutter cuoi ki/test/note_document_test.dart: Desktop formats directly, saves frozen base, and retains controller/caret on phone resize
+00:02 +15: D:/flutter cuoi ki/test/note_document_test.dart: Desktop formats directly, saves frozen base, and retains controller/caret on phone resize
+00:02 +16: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Document drawers preserve rich selection, draft and frozen revision
+00:02 +17: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Document drawers preserve rich selection, draft and frozen revision
+00:02 +18: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Document drawers preserve rich selection, draft and frozen revision
+00:03 +19: All tests passed!

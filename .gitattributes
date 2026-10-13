@@ -56,3 +56,14 @@ evidence/2026-10-12-deskbook-layout/*.txt -whitespace
 evidence/2026-10-12-deskbook-layout/*.js -whitespace
 evidence/2026-10-12-ui-publication/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 evidence/2026-10-12-ui-publication/*.txt -whitespace
+
+# Bug audit keeps failure/acceptance logs and screenshot hashes reproducible.
+evidence/2026-10-12-bug-audit/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+evidence/2026-10-12-bug-audit/*.txt -whitespace
+
+# Inspector refinement preserves final screenshots and raw acceptance logs.
+evidence/2026-10-13-inspector-ui/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+evidence/2026-10-13-inspector-ui/*.txt -whitespace
+
+# Current UI publication is a separate immutable evidence record.
+evidence/2026-10-13-ui-publication/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

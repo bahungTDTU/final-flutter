@@ -1,0 +1,96 @@
+{
+  "capturedAt": "2026-10-13T11:09:54.892850+07:00",
+  "base": "46df286302cc88e07c98ba1b14160cc64491e2df",
+  "branch": "codex/bug-audit-fixes",
+  "workingChanges": true,
+  "unchangedFromBugAudit": {
+    "backend/attachments.py": true,
+    "backend/tests/test_attachment_ranges.py": true,
+    "test/bug_audit_regression_test.dart": true,
+    "pubspec.yaml": true,
+    "pubspec.lock": true
+  },
+  "stateDataDependenciesAndroidDiff": [],
+  "files": {
+    ".gitattributes": {
+      "sha256": "63efaa681485cc9629bfc3e8622169c18c2bd623bd8a31804530744d0f030a9b",
+      "lf_sha256": "63efaa681485cc9629bfc3e8622169c18c2bd623bd8a31804530744d0f030a9b"
+    },
+    "lib/ui/note_inspector.dart": {
+      "sha256": "879fc310e17db6db3cd61930580f3848737b468426dbe0462c938fbfb863943d",
+      "lf_sha256": "879fc310e17db6db3cd61930580f3848737b468426dbe0462c938fbfb863943d"
+    },
+    "lib/ui/note_protection.dart": {
+      "sha256": "f5c1528d42fb689b21bbdd7715129a782ab7a7afab94f17cd29ca81027e31987",
+      "lf_sha256": "853b4fc9030048315d829ce8ad19891b3e8476282291d8626e760952c8abcfe2"
+    },
+    "lib/ui/editor.dart": {
+      "sha256": "c6beba48fc8b00208650e409fe8d9d5221da3c1e5d2f4cd7aef54adfe6fe947e",
+      "lf_sha256": "5c3e20c2ef9ca51e458b88aa8f7237f75b54f8bdc71a18e4a832075d18fe127c"
+    },
+    "lib/ui/document_workspace.dart": {
+      "sha256": "f5b6b45800e90e79761ed4d9c129f5243c0c174d8b04c13191c1e821572fd628",
+      "lf_sha256": "a9064e4f93ef95cbf709f509a0c1dcda0b8980fe5914bde9abf69509cec3bd2d"
+    },
+    "test/inspector_ui_test.dart": {
+      "sha256": "53b066736e60340e58b75a7856669c467b89ecd281943b16829c4f77403b42c7",
+      "lf_sha256": "53b066736e60340e58b75a7856669c467b89ecd281943b16829c4f77403b42c7"
+    },
+    "test/bug_audit_regression_test.dart": {
+      "sha256": "d275becac62eb3f093d558577e517a4ead4459de93c44b087f2da4e1749804d8",
+      "lf_sha256": "d275becac62eb3f093d558577e517a4ead4459de93c44b087f2da4e1749804d8"
+    },
+    "backend/attachments.py": {
+      "sha256": "604d995f950acd3ed322aceff5b27e2e9d2b32615fa82486c02ded25ef0173c5",
+      "lf_sha256": "604d995f950acd3ed322aceff5b27e2e9d2b32615fa82486c02ded25ef0173c5"
+    },
+    "backend/tests/test_attachment_ranges.py": {
+      "sha256": "d68ed7ed42e4c0925dd9317fc6593fe01db7639c771ff07041dc92478984432b",
+      "lf_sha256": "d68ed7ed42e4c0925dd9317fc6593fe01db7639c771ff07041dc92478984432b"
+    },
+    "scripts/prepare_web_offline.py": {
+      "sha256": "279d00b5fe0f3010048485a0896b2fd76cb216d3ba7a62e9c8b65f1e383255af",
+      "lf_sha256": "279d00b5fe0f3010048485a0896b2fd76cb216d3ba7a62e9c8b65f1e383255af"
+    },
+    "pubspec.yaml": {
+      "sha256": "35a35749970f23a36d58bd138a21b68c988405120a5cd7d30ece304fe9ba49b4",
+      "lf_sha256": "11529956ce8e3dd4bcde009f97c45de2a5a53bb65b955061fbcf23d08bbb1282"
+    },
+    "pubspec.lock": {
+      "sha256": "11dd9d44d7af0eb38108a8b19e2cd6985ee6e0937a36a260257131fa48bc2221",
+      "lf_sha256": "11dd9d44d7af0eb38108a8b19e2cd6985ee6e0937a36a260257131fa48bc2221"
+    },
+    "README.md": {
+      "sha256": "0fbc4533b5980c405e2316cdd7049cc51bf9d6726fade38a62edb5d2a9eecad5",
+      "lf_sha256": "0fbc4533b5980c405e2316cdd7049cc51bf9d6726fade38a62edb5d2a9eecad5"
+    },
+    "Readme.txt": {
+      "sha256": "0fbc4533b5980c405e2316cdd7049cc51bf9d6726fade38a62edb5d2a9eecad5",
+      "lf_sha256": "0fbc4533b5980c405e2316cdd7049cc51bf9d6726fade38a62edb5d2a9eecad5"
+    },
+    "STATUS.md": {
+      "sha256": "ff461fd7ff109f6e2e48ab38c95dc60a8a3c30cf8f191c687813ce2dd5a9ec3c",
+      "lf_sha256": "ff461fd7ff109f6e2e48ab38c95dc60a8a3c30cf8f191c687813ce2dd5a9ec3c"
+    },
+    "docs/REQUIREMENTS_MATRIX.md": {
+      "sha256": "544c7d7843f9aba6d67a254d42a80e0f8c5693ae3a5ae40c0798afb5e19c8a31",
+      "lf_sha256": "544c7d7843f9aba6d67a254d42a80e0f8c5693ae3a5ae40c0798afb5e19c8a31"
+    },
+    "docs/UI_UX_DESIGN.md": {
+      "sha256": "ebd7cde3d900be08a974671ba4dace8abc83e92e65f11b5bdc6392e489f81140",
+      "lf_sha256": "ebd7cde3d900be08a974671ba4dace8abc83e92e65f11b5bdc6392e489f81140"
+    },
+    "docs/UI_UX_QA.md": {
+      "sha256": "580966d4f4c03510ada6a5ca6d2c6943f5c15b378eb2bdc08b5807ee30a014b4",
+      "lf_sha256": "580966d4f4c03510ada6a5ca6d2c6943f5c15b378eb2bdc08b5807ee30a014b4"
+    },
+    "docs/UI_INSPECTOR_REFINEMENT.md": {
+      "sha256": "f2c5d1031cd11cdc399eb7fa75fd9a1ffe0ba9e354c20ca14843fe881bf24ea6",
+      "lf_sha256": "f2c5d1031cd11cdc399eb7fa75fd9a1ffe0ba9e354c20ca14843fe881bf24ea6"
+    },
+    "design-system/notetogether-deskbook/pages/note-inspector.md": {
+      "sha256": "220ac7930135e99aef30976b6201535cb11815fe932185fb255b358b6dfce8a2",
+      "lf_sha256": "220ac7930135e99aef30976b6201535cb11815fe932185fb255b358b6dfce8a2"
+    }
+  }
+}

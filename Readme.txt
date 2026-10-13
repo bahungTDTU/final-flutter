@@ -1,5 +1,37 @@
 # NoteTogether - nền tảng triển khai local
 
+## Publication UI và sửa lỗi —13/10/2026
+
+Người dùng ủy quyền xuất bản bản hiện tại trên `codex/bug-audit-fixes`, PR vào `master`.
+Mã đã nghiệm thu không đổi:279 Flutter/119 backend, format/analyze, Web/APK debug compile;
+browser/API có phạm vi riêng trong evidence audit và inspector. Branch base `46df286`.
+[Gate publication](evidence/2026-10-13-ui-publication/INDEX.md),
+[branch GitHub](https://github.com/bahungTDTU/final-flutter/tree/codex/bug-audit-fixes).
+CI mới nhất và human approval được kiểm ở PR thật; không tự merge hoặc đóng release gates.
+Các dòng “chưa commit/push” dưới đây thuộc snapshots nghiệm thu trước publication.
+
+## Ngăn công cụ ghi chú —13/10/2026
+
+UI theo skill ui-ux-pro-max người dùng chỉ định: các nhóm thông tin/AI/công cụ/bảo vệ
+thành thẻ riêng; nút cùng chiều rộng, chữ tự xuống dòng, primary edit/error delete và
+badge metadata có semantics đúng. Editor thường dùng chung components.
+PASS format/analyze,279 Flutter/119 backend; WebIAB PC-phone/hai theme, edit/pin/API,
+owner/viewer/private relock; Web và APK debug compile. Android runtime/IME/FPS chưa chạy.
+[Thiết kế và giới hạn](docs/UI_INSPECTOR_REFINEMENT.md),
+[ảnh và kết quả](evidence/2026-10-13-inspector-ui/INDEX.md).
+Source local `codex/bug-audit-fixes`, base `46df286`, chưa commit/push; các mục dưới là
+snapshots trước lượt UI này. Bản Web local7357 dùng backend8000.
+
+## Rà lỗi —12/10/2026
+
+Sửa 7 nhóm lỗi editor/find/outline/responsive, quyền thay thế động, purge input riêng tư
+và byte range gây 500. Format/analyze/275 Flutter/119 backend PASS; Chrome thật kiểm
+realtime/remote lock/DOM purge, PC-phone/hai theme và cache; Web/APK debug compile PASS.
+[Báo cáo và giới hạn](docs/BUG_AUDIT_2026-10-12.md),
+[bằng chứng](evidence/2026-10-12-bug-audit/INDEX.md).
+Source local `codex/bug-audit-fixes` từ master `46df286`, chưa commit/push.
+Native runtime/IME/FPS, provider, release và CI mới chưa chạy; bên dưới là snapshots lịch sử.
+
 ## Publication UI / Deskbook —12/10/2026
 
 Người dùng ủy quyền push bản UI trên `codex/ui-system-refresh`, PR vào `master`.

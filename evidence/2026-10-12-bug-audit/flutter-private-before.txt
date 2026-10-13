@@ -1,0 +1,30 @@
+00:00 +0: loading D:/flutter cuoi ki/test/bug_audit_regression_test.dart
+00:00 +0: Find clears private input when the source is hidden by its gate
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: empty
+  Actual: 'Private'
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///D:/flutter%20cuoi%20ki/test/bug_audit_regression_test.dart:41:7)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1953:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///D:/flutter%20cuoi%20ki/test/bug_audit_regression_test.dart line 41
+The test description was:
+  Find clears private input when the source is hidden by its gate
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:00 +0 -1: Find clears private input when the source is hidden by its gate [E]
+  Test failed. See exception logs above.
+  The test description was: Find clears private input when the source is hidden by its gate
+  
+00:00 +0 -1: Some tests failed.
+
+Failing tests:
+  D:/flutter cuoi ki/test/bug_audit_regression_test.dart: Find clears private input when the source is hidden by its gate

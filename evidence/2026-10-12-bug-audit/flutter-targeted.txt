@@ -1,0 +1,32 @@
+00:00 +0: loading D:/flutter cuoi ki/test/bug_audit_regression_test.dart
+00:00 +0: D:/flutter cuoi ki/test/bug_audit_regression_test.dart: Find previous starts at the last result and wraps both ways
+00:00 +1: D:/flutter cuoi ki/test/note_document_test.dart: Ctrl F from rich input opens document search without saving
+00:01 +2: D:/flutter cuoi ki/test/note_document_test.dart: Ctrl F from rich input opens document search without saving
+00:01 +3: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:01 +4: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:01 +5: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:01 +6: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:01 +7: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:01 +8: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:01 +9: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:01 +10: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:01 +11: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:01 +12: D:/flutter cuoi ki/test/protected_editing_test.dart: Protected editor autosaves; revoked delete confirmation removes name and disables action
+00:02 +13: D:/flutter cuoi ki/test/protected_editing_test.dart: Protected editor autosaves; revoked delete confirmation removes name and disables action
+00:02 +14: D:/flutter cuoi ki/test/note_document_test.dart: Desktop formats directly, saves frozen base, and retains controller/caret on phone resize
+00:02 +15: D:/flutter cuoi ki/test/note_document_test.dart: Desktop formats directly, saves frozen base, and retains controller/caret on phone resize
+00:02 +16: D:/flutter cuoi ki/test/note_document_test.dart: Desktop formats directly, saves frozen base, and retains controller/caret on phone resize
+00:02 +17: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Document drawers preserve rich selection, draft and frozen revision
+00:02 +18: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Document drawers preserve rich selection, draft and frozen revision
+00:02 +19: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Document drawers preserve rich selection, draft and frozen revision
+00:03 +20: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:14 +21: D:/flutter cuoi ki/test/protected_editing_test.dart: Delete conflict requires new confirmation and revoked delete hides content
+00:14 +22: D:/flutter cuoi ki/test/protected_editing_test.dart: Offline draft survives encrypted Sembast close/reopen and never enters ordinary outbox
+00:14 +23: D:/flutter cuoi ki/test/protected_editing_test.dart: A copied old-password draft permits new-password unlock without losing the private copy
+00:14 +24: D:/flutter cuoi ki/test/protected_editing_test.dart: Lost acknowledgement replays the same immutable operation after reopen
+00:14 +25: D:/flutter cuoi ki/test/protected_editing_test.dart: Typing while protected operation is inflight keeps newest draft and chains own ack
+00:14 +26: D:/flutter cuoi ki/test/protected_editing_test.dart: Realtime clean content updates keep frozen base; dirty content remains on conflict
+00:14 +27: D:/flutter cuoi ki/test/protected_editing_test.dart: Revoke hides content and preserves password-bound recovery; copy never mutates source
+00:14 +28: D:/flutter cuoi ki/test/protected_editing_test.dart: Encrypted field merge survives ordinary snapshot capture and account switch mid-write
+00:14 +29: D:/flutter cuoi ki/test/protected_editing_test.dart: Delegated picker obscures content and rechecks grant before showing it again
+00:14 +30: All tests passed!

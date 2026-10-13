@@ -4,6 +4,7 @@ import 'package:flutter_quill/flutter_quill.dart' as quill;
 
 import '../domain/writing_tools.dart';
 import 'design_system.dart';
+import 'note_inspector.dart';
 import 'rich_note_field.dart';
 
 class DocumentWorkspace extends StatefulWidget {
@@ -44,6 +45,8 @@ class _DocumentWorkspaceState extends State<DocumentWorkspace> {
   bool reading = false;
   bool? contentsOpen;
   bool inspectorOpen = true;
+  final editingBlocked = ValueNotifier(false);
+  bool gateUpdateScheduled = false;
   late final GlobalKey paperKey = GlobalKey();
   bool get readOnly => widget.readOnly || reading;
   void search() => showDialog<void>(
@@ -52,8 +55,26 @@ class _DocumentWorkspaceState extends State<DocumentWorkspace> {
       document: widget.document,
       focusNode: widget.contentFocus,
       readOnly: readOnly,
+      gateChanges: editingBlocked,
     ),
   );
+
+  void updateEditingGate() {
+    if (editingBlocked.value == readOnly || gateUpdateScheduled) return;
+    gateUpdateScheduled = true;
+    // The dialog is a sibling route. Notify after layout rather than marking
+    // that route dirty while the editor is being built.
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      gateUpdateScheduled = false;
+      if (mounted) editingBlocked.value = readOnly;
+    });
+  }
+
+  @override
+  void dispose() {
+    editingBlocked.dispose();
+    super.dispose();
+  }
 
   Widget paper(BuildContext context, bool desktop) {
     final theme = Theme.of(context);
@@ -85,14 +106,16 @@ class _DocumentWorkspaceState extends State<DocumentWorkspace> {
           if (desktop) ...[
             Row(
               children: [
-                Text(
-                  'NOTETOGETHER / TÀI LIỆU',
-                  style: theme.textTheme.bodySmall?.copyWith(
-                    letterSpacing: 1.5,
+                Expanded(
+                  child: Text(
+                    'NOTETOGETHER / TÀI LIỆU',
+                    style: theme.textTheme.bodySmall?.copyWith(
+                      letterSpacing: 1.5,
+                    ),
                   ),
                 ),
                 const SizedBox(width: 20),
-                const Expanded(child: Divider()),
+                const SizedBox(width: 48, child: Divider()),
               ],
             ),
             const SizedBox(height: 32),
@@ -202,20 +225,18 @@ class _DocumentWorkspaceState extends State<DocumentWorkspace> {
   Widget inspector(bool desktop) => Column(
     crossAxisAlignment: CrossAxisAlignment.stretch,
     children: [
-      if (widget.organisation != null) widget.organisation!,
-      if (widget.actions.isNotEmpty) ...[
-        const SizedBox(height: 20),
-        Semantics(
-          header: true,
-          child: Text(
-            'Công cụ',
-            style: Theme.of(context).textTheme.titleMedium,
-          ),
-        ),
-        const SizedBox(height: 8),
-        ...widget.actions,
+      if (widget.organisation != null) ...[
+        widget.organisation!,
+        const SizedBox(height: 16),
       ],
-      const SizedBox(height: 20),
+      if (widget.actions.isNotEmpty) ...[
+        InspectorSection(
+          title: 'Công cụ',
+          icon: Icons.tune_outlined,
+          children: widget.actions,
+        ),
+        const SizedBox(height: 16),
+      ],
       widget.tools,
     ],
   );
@@ -343,6 +364,7 @@ class _DocumentWorkspaceState extends State<DocumentWorkspace> {
     },
     child: LayoutBuilder(
       builder: (ctx, area) {
+        updateEditingGate();
         final desktop =
             area.maxWidth >= 1000 &&
             MediaQuery.textScalerOf(ctx).scale(16) <= 24;
@@ -377,16 +399,18 @@ class _DocumentWorkspaceState extends State<DocumentWorkspace> {
                   if (showOutline)
                     SizedBox(
                       width: 212,
-                      child: DecoratedBox(
-                        decoration: BoxDecoration(
-                          color: Theme.of(ctx).colorScheme.surfaceContainerLow,
-                          border: Border(
-                            right: BorderSide(
-                              color: Theme.of(ctx).colorScheme.outlineVariant,
+                      child: Material(
+                        color: Theme.of(ctx).colorScheme.surfaceContainerLow,
+                        child: DecoratedBox(
+                          decoration: BoxDecoration(
+                            border: Border(
+                              right: BorderSide(
+                                color: Theme.of(ctx).colorScheme.outlineVariant,
+                              ),
                             ),
                           ),
+                          child: SingleChildScrollView(child: outline()),
                         ),
-                        child: SingleChildScrollView(child: outline()),
                       ),
                     ),
                   Expanded(
@@ -545,10 +569,12 @@ class DocumentFindDialog extends StatefulWidget {
     required this.document,
     required this.focusNode,
     required this.readOnly,
+    this.gateChanges,
   });
   final NoteDocumentController document;
   final FocusNode focusNode;
   final bool readOnly;
+  final Listenable? gateChanges;
   @override
   State<DocumentFindDialog> createState() => _DocumentFindDialogState();
 }
@@ -557,9 +583,63 @@ class _DocumentFindDialogState extends State<DocumentFindDialog> {
   final query = TextEditingController(), replacement = TextEditingController();
   bool matchCase = false;
   int active = -1;
+  int inputEpoch = 0;
   List<RegExpMatch> matches = [];
   String? message;
+  late String observedText;
+  bool get canReplace =>
+      !widget.readOnly &&
+      !widget.document.controller.readOnly &&
+      widget.document.canEdit();
+
+  @override
+  void initState() {
+    super.initState();
+    observedText = widget.document.text;
+    widget.document.source.addListener(textChanged);
+    widget.gateChanges?.addListener(gateChanged);
+  }
+
+  @override
+  void didUpdateWidget(covariant DocumentFindDialog oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.document != widget.document) {
+      oldWidget.document.source.removeListener(textChanged);
+      widget.document.source.addListener(textChanged);
+      refresh();
+    }
+    if (oldWidget.gateChanges != widget.gateChanges) {
+      oldWidget.gateChanges?.removeListener(gateChanged);
+      widget.gateChanges?.addListener(gateChanged);
+    }
+  }
+
+  void gateChanged() {
+    if (mounted) {
+      clearHiddenInput();
+      setState(() {});
+    }
+  }
+
+  void clearHiddenInput() {
+    if (widget.document.text.isEmpty && !widget.document.canEdit()) {
+      if (query.text.isNotEmpty || replacement.text.isNotEmpty) inputEpoch++;
+      query.clear();
+      replacement.clear();
+    }
+  }
+
+  void textChanged() {
+    // Selection changes do not rerun search. Content changes also discard the
+    // old RegExpMatch strings when a protected reader clears its source.
+    if (mounted && widget.document.text != observedText) {
+      clearHiddenInput();
+      setState(refresh);
+    }
+  }
+
   void refresh() {
+    observedText = widget.document.text;
     final term = query.text;
     matches = term.isEmpty
         ? []
@@ -567,14 +647,18 @@ class _DocumentFindDialogState extends State<DocumentFindDialog> {
             RegExp.escape(term),
             caseSensitive: matchCase,
             unicode: true,
-          ).allMatches(widget.document.text).toList();
+          ).allMatches(observedText).toList();
     active = -1;
     message = null;
   }
 
   void next(int direction) {
     if (matches.isEmpty) return;
-    setState(() => active = (active + direction) % matches.length);
+    setState(
+      () => active = active < 0
+          ? (direction < 0 ? matches.length - 1 : 0)
+          : (active + direction) % matches.length,
+    );
     final match = matches[active];
     widget.document.controller.updateSelection(
       TextSelection(baseOffset: match.start, extentOffset: match.end),
@@ -583,7 +667,7 @@ class _DocumentFindDialogState extends State<DocumentFindDialog> {
   }
 
   void replace(bool all) {
-    if (!widget.document.canEdit() || matches.isEmpty) return;
+    if (!canReplace || matches.isEmpty) return;
     final currentText = widget.document.text;
     // Recompute after any local/remote update while the dialog was open.
     final fresh = RegExp(
@@ -614,6 +698,9 @@ class _DocumentFindDialogState extends State<DocumentFindDialog> {
 
   @override
   void dispose() {
+    widget.document.source.removeListener(textChanged);
+    widget.gateChanges?.removeListener(gateChanged);
+    matches = [];
     query.dispose();
     replacement.dispose();
     super.dispose();
@@ -621,6 +708,9 @@ class _DocumentFindDialogState extends State<DocumentFindDialog> {
 
   @override
   Widget build(BuildContext context) => AlertDialog(
+    // Recreate native web semantics inputs on a private purge. Clearing an
+    // unfocused TextField alone can leave its previous DOM value behind.
+    key: ValueKey(inputEpoch),
     title: const DialogHeading('Tìm và thay thế', icon: Icons.find_replace),
     content: SizedBox(
       width: 460,
@@ -669,6 +759,7 @@ class _DocumentFindDialogState extends State<DocumentFindDialog> {
               TextField(
                 key: const Key('document-replacement'),
                 controller: replacement,
+                enabled: canReplace,
                 decoration: const InputDecoration(labelText: 'Thay bằng'),
               ),
               const SizedBox(height: 12),
@@ -677,15 +768,25 @@ class _DocumentFindDialogState extends State<DocumentFindDialog> {
                 runSpacing: 8,
                 children: [
                   OutlinedButton(
-                    onPressed: matches.isEmpty ? null : () => replace(false),
+                    onPressed: !canReplace || matches.isEmpty
+                        ? null
+                        : () => replace(false),
                     child: const Text('Thay một'),
                   ),
                   FilledButton(
-                    onPressed: matches.isEmpty ? null : () => replace(true),
+                    onPressed: !canReplace || matches.isEmpty
+                        ? null
+                        : () => replace(true),
                     child: const Text('Thay tất cả'),
                   ),
                 ],
               ),
+              if (!canReplace) ...[
+                const SizedBox(height: 12),
+                const Text(
+                  'Phiên soạn thảo đã thay đổi. Đóng hộp tìm kiếm và mở lại ghi chú để chỉnh sửa.',
+                ),
+              ],
             ],
             if (message != null)
               Padding(

@@ -1,10 +1,16 @@
 """Generate a static-only offline shell manifest from the actual Flutter release."""
 import hashlib
+import argparse
 import json
 from pathlib import Path
 
 root = Path(__file__).resolve().parents[1]
-build = root / 'build' / 'web'
+parser = argparse.ArgumentParser()
+parser.add_argument('--build-dir', default='build/web', help='Flutter Web output directory within the workspace')
+args = parser.parse_args()
+build = (root / args.build_dir).resolve()
+if not build.is_relative_to(root.resolve()):
+    parser.error('Build directory must stay inside the workspace')
 if not (build / 'main.dart.js').is_file():
     raise SystemExit('Build Flutter Web first.')
 exclude = {'offline_worker.js', 'offline_worker_template.js', 'flutter_service_worker.js'}

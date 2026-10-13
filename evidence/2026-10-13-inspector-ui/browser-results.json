@@ -1,0 +1,53 @@
+{
+  "date": "2026-10-13",
+  "browser": "Codex In-app Browser",
+  "target": "http://127.0.0.1:7376",
+  "api": "http://127.0.0.1:8058",
+  "syntheticFixture": true,
+  "viewports": [
+    {
+      "width": 1280,
+      "height": 1000,
+      "themes": [
+        "light",
+        "dark"
+      ]
+    },
+    {
+      "width": 375,
+      "height": 812,
+      "themes": [
+        "dark"
+      ]
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "themes": [
+        "dark"
+      ]
+    }
+  ],
+  "observed": {
+    "sectionsSeparated": true,
+    "wrappedRefreshLabel": true,
+    "staticBadgesNotCheckbox": true,
+    "ownerEdit": true,
+    "ownerPin": true,
+    "autosaveVerifiedByApi": true,
+    "attachmentEmptyDialog": true,
+    "shareDialogTwoRecipients": true,
+    "resizeKeptDocumentTitle": true,
+    "relockRemovedPrivateContent": true,
+    "viewerReadOnlyAndNoOwnerControls": true
+  },
+  "errors": [],
+  "notRun": [
+    "native Android UI",
+    "IME",
+    "FPS",
+    "real screen reader",
+    "LLM provider",
+    "CI"
+  ]
+}

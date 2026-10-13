@@ -14,6 +14,7 @@ import 'note_text_field.dart';
 import 'writing_studio.dart';
 import 'rich_note_field.dart';
 import 'document_workspace.dart';
+import 'note_inspector.dart';
 import 'note_protection.dart';
 
 class EditorScreen extends StatefulWidget {
@@ -716,18 +717,18 @@ class _EditorScreenState extends State<EditorScreen>
           ),
           actions: [
             if (note != null)
-              ListTile(
-                leading: const Icon(Icons.attach_file),
-                title: const Text('Đính kèm'),
-                onTap: !c.hasPending(widget.id)
+              InspectorAction(
+                icon: Icons.attach_file,
+                label: 'Đính kèm',
+                onPressed: !c.hasPending(widget.id)
                     ? () => unawaited(toolAction('files'))
                     : null,
               ),
             if (note != null)
-              ListTile(
-                leading: const Icon(Icons.auto_awesome_outlined),
-                title: const Text('Tóm tắt AI'),
-                onTap:
+              InspectorAction(
+                icon: Icons.auto_awesome_outlined,
+                label: 'Tóm tắt AI',
+                onPressed:
                     !dirty &&
                         !c.hasPending(widget.id) &&
                         !c.drafts.containsKey(widget.id)
@@ -735,10 +736,10 @@ class _EditorScreenState extends State<EditorScreen>
                     : null,
               ),
             if (note?.role == 'owner')
-              ListTile(
-                leading: const Icon(Icons.lock_outline),
-                title: const Text('Bảo vệ ghi chú'),
-                onTap:
+              InspectorAction(
+                icon: Icons.lock_outline,
+                label: 'Bảo vệ ghi chú',
+                onPressed:
                     !dirty &&
                         !c.hasPending(widget.id) &&
                         !c.drafts.containsKey(widget.id) &&

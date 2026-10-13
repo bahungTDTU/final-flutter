@@ -1,4 +1,37 @@
-# NoteTogether - trạng thái 12/10/2026
+# NoteTogether - trạng thái 13/10/2026
+
+## Publication UI và sửa lỗi —13/10/2026
+
+Người dùng ủy quyền push current source trên `codex/bug-audit-fixes`, PR vào `master`.
+Base `46df286`; source code khớp nghiệm thu279 Flutter/119 backend, format/analyze và
+Web/APK debug compile. Đây là xuất bản branch/PR; CI và approval giữ gates tại GitHub.
+[Gate](evidence/2026-10-13-ui-publication/INDEX.md),
+[branch](https://github.com/bahungTDTU/final-flutter/tree/codex/bug-audit-fixes).
+Không merge/deploy/release/submission. Các dòng chưa push dưới đây là snapshots trước publication.
+
+## Ngăn công cụ ghi chú hiện hành —13/10/2026
+
+IMPLEMENTED: tách section/action/badge cho inspector, sửa căn chỉnh, chiều rộng nút,
+text reflow, primary/destructive states và metadata checkbox semantics; dùng cả editor
+thường/bảo vệ. Giữ callback/quyền/controller/caret/revision/outbox và private purge.
+PASS115files0changes/analyze/279 Flutter/119 backend; actual WebIAB1280×1000 sáng/tối,
+375×812/844×390 tối; edit/pin/autosaveAPI/dialogs/owner/viewer/relock. Web/APK debug compile.
+Native UI/IME/FPS/real screen reader/provider/CI/release/submission NOT RUN.
+Branch `codex/bug-audit-fixes`, base `46df286`, working changes chưa commit/push.
+[Báo cáo](docs/UI_INSPECTOR_REFINEMENT.md),
+[evidence](evidence/2026-10-13-inspector-ui/INDEX.md). Giữ thay đổi/evidence audit12/10;
+kết quả bên dưới là snapshots trước cập nhật này.
+
+## Rà lỗi hiện hành —12/10/2026
+
+IMPLEMENTED: sửa 7 nhóm lỗi tìm kiếm, outline/zoom, byte range, readonly dialog và dữ liệu
+tìm/thay thế còn trong DOM sau khóa. PASS format 113 files/0 changes, analyze/275 Flutter/
+119 backend, HTTP 4 vai trò, Chrome PC-phone/hai theme/realtime/remote-lock input purge/cache,
+Web và APK debug compile. [Báo cáo](docs/BUG_AUDIT_2026-10-12.md),
+[evidence](evidence/2026-10-12-bug-audit/INDEX.md).
+Branch `codex/bug-audit-fixes`, base master `46df286`, chưa commit/push.
+Native runtime/IME/FPS, provider/release/submission và CI mới NOT RUN. PR#7 đã merge;
+các kết quả/nhánh/chưa-push bên dưới là snapshots trước đợt audit này.
 
 ## Publication UI / Deskbook —12/10/2026
 

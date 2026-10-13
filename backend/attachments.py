@@ -147,12 +147,19 @@ def install_attachment_routes(app, db, authenticate, access, now):
                        'Content-Disposition': "attachment; filename=download; filename*=UTF-8''" + quote(row['name'])}
             requested = request.headers.get('range')
             if requested:
-                match = re.fullmatch(r'bytes=(\d*)-(\d*)', requested)
+                match = re.fullmatch(r'bytes=([0-9]*)-([0-9]*)', requested)
                 if not match or not any(match.groups()):
                     raise HTTPException(416, 'Invalid byte range', headers={'Content-Range': f'bytes */{len(data)}'})
                 first, last = match.groups()
-                start = int(first) if first else max(0, len(data) - int(last))
-                end = min(int(last), len(data) - 1) if first and last else len(data) - 1
+                def bounded_offset(value):
+                    # Only offsets up to the file size affect the slice. Avoid
+                    # converting an unbounded header to a Python big integer.
+                    digits = value.lstrip('0') or '0'
+                    if len(digits) > len(str(len(data))):
+                        return len(data)
+                    return min(int(digits), len(data))
+                start = bounded_offset(first) if first else max(0, len(data) - bounded_offset(last))
+                end = min(bounded_offset(last), len(data) - 1) if first and last else len(data) - 1
                 if start > end or start >= len(data):
                     raise HTTPException(416, 'Invalid byte range', headers={'Content-Range': f'bytes */{len(data)}'})
                 headers['Content-Range'] = f'bytes {start}-{end}/{len(data)}'

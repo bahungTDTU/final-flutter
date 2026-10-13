@@ -1,5 +1,26 @@
 # Ma trận yêu cầu 32 tiêu chí
 
+Publication13/10 được người dùng ủy quyền trên `codex/bug-audit-fixes`, PR vào master.
+Source code không đổi từ nghiệm thu279 Flutter/119 backend/Web/APK debug compile;
+không tự tăng mức hoàn thành rubric hoặc dùng local PASS thay CI/human approval.
+[Gate publication](../evidence/2026-10-13-ui-publication/INDEX.md). Các dòng chưa push
+phía dưới là snapshots trước publication; native/provider/public release/video vẫn riêng.
+
+Cập nhật13/10: cải thiện UI ngoài rubric cho inspector của editor thường/bảo vệ;
+không đổi ACL/auto-save/lock/share/pin requirements và không tự tăng điểm sáng tạo.
+279 Flutter/119 backend, format/analyze, WebIAB PC-phone/hai theme/owner-viewer/relock
+và edit+pin+API PASS; Web/APK debug compile PASS. Native UI/IME/FPS/real screen reader/
+provider/CI/release/video/submission NOT RUN. Branch local `codex/bug-audit-fixes`, chưa push.
+[Báo cáo](UI_INSPECTOR_REFINEMENT.md),
+[ảnh/log](../evidence/2026-10-13-inspector-ui/INDEX.md). Các đoạn dưới là snapshots lịch sử.
+
+Audit 12/10 trên master 46df286: sửa 7 nhóm bug, hỗ trợ tiêu chí 12/14/15/16/23/24/26;
+không thêm tiêu chí hoặc tự tăng điểm. 275 Flutter/119 backend và Chrome actual PC-phone/
+remote updates/remote lock/DOM purge PASS; Web/APK debug compile PASS.
+[Báo cáo](BUG_AUDIT_2026-10-12.md), [evidence](../evidence/2026-10-12-bug-audit/INDEX.md).
+Source local `codex/bug-audit-fixes`, chưa commit/push; native/provider/release/video/
+submission/CI mới vẫn NOT RUN. Các snapshots publication/UI phía dưới giữ lịch sử.
+
 ## Publication UI / Deskbook —12/10/2026
 
 Người dùng ủy quyền push bản UI trên `codex/ui-system-refresh`, PR vào `master`.
