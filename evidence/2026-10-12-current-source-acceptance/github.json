@@ -1,0 +1,83 @@
+[
+  {
+    "number": 5,
+    "merged": true,
+    "merged_at": "2026-10-11T17:56:13Z",
+    "head": "cb532b6f74a5e8e193399e4fe8efde00fb579059",
+    "url": "https://github.com/bahungTDTU/final-flutter/pull/5",
+    "checks": [
+      {
+        "name": "Build smoke",
+        "status": "completed",
+        "conclusion": "success",
+        "head_sha": "cb532b6f74a5e8e193399e4fe8efde00fb579059"
+      },
+      {
+        "name": "Flutter quality",
+        "status": "completed",
+        "conclusion": "success",
+        "head_sha": "cb532b6f74a5e8e193399e4fe8efde00fb579059"
+      },
+      {
+        "name": "Backend tests",
+        "status": "completed",
+        "conclusion": "success",
+        "head_sha": "cb532b6f74a5e8e193399e4fe8efde00fb579059"
+      }
+    ]
+  },
+  {
+    "number": 6,
+    "merged": true,
+    "merged_at": "2026-10-11T18:16:32Z",
+    "head": "f3b17a3d33e5d432320e1d8620f87d7fc33b30d3",
+    "url": "https://github.com/bahungTDTU/final-flutter/pull/6",
+    "checks": [
+      {
+        "name": "Backend tests",
+        "status": "completed",
+        "conclusion": "success",
+        "head_sha": "f3b17a3d33e5d432320e1d8620f87d7fc33b30d3"
+      },
+      {
+        "name": "Flutter quality",
+        "status": "completed",
+        "conclusion": "success",
+        "head_sha": "f3b17a3d33e5d432320e1d8620f87d7fc33b30d3"
+      },
+      {
+        "name": "Build smoke",
+        "status": "completed",
+        "conclusion": "success",
+        "head_sha": "f3b17a3d33e5d432320e1d8620f87d7fc33b30d3"
+      }
+    ]
+  },
+  {
+    "number": 7,
+    "merged": true,
+    "merged_at": "2026-10-12T04:16:23Z",
+    "head": "59cd54eaa2d32ac73df0736486b193815c20fee4",
+    "url": "https://github.com/bahungTDTU/final-flutter/pull/7",
+    "checks": [
+      {
+        "name": "Build smoke",
+        "status": "completed",
+        "conclusion": "success",
+        "head_sha": "59cd54eaa2d32ac73df0736486b193815c20fee4"
+      },
+      {
+        "name": "Flutter quality",
+        "status": "completed",
+        "conclusion": "success",
+        "head_sha": "59cd54eaa2d32ac73df0736486b193815c20fee4"
+      },
+      {
+        "name": "Backend tests",
+        "status": "completed",
+        "conclusion": "success",
+        "head_sha": "59cd54eaa2d32ac73df0736486b193815c20fee4"
+      }
+    ]
+  }
+]

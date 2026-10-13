@@ -1,0 +1,16 @@
+{
+  "base": "8307b4c90e29aa50bc7fecc50477246bafe1500c",
+  "sha256": {
+    "android/app/build.gradle.kts": "3bb04971fcaf0656f48ef7756b57e89b9958879982f6722aee088e8aa2dfbf98",
+    "scripts/build.ps1": "6180a93c29766545f7bb2f026a1a0db56f9f65f3ae85c23dfcda11c37c439bbc",
+    "scripts/release_preflight.py": "63b8183fc46ca7d9807a067b71337adc6dee78c66be6b32f81ed2259ee889416",
+    "backend/backup.py": "8a527b134286ab0cb4e497d2de180883c920d4bbbb149ce5c524c399f4734897",
+    "backend/tests/test_backup.py": "ca45d2f4b3c4943366ae4f4fc6803d5bc4cce19fed8c12af6bfe2af76613cf4c",
+    "backend/tests/test_release_preflight.py": "868275b041363629502ea3889b8268bf17132e205c478d728f672e72483fdcf4",
+    "backend/Dockerfile": "541d2a524478c4ed394dc8643e798ec0baa4e724ed13b5210268e2d2234a3b43",
+    "compose.yaml": "fdee4fc498f495d6bcdc4bc459b0807bc84dface50f6ab53a793b06524e1dac0",
+    ".dockerignore": "66ba22c7f4e2f87452a544f3aada81503b940f9ef4b55130e66a554f285ccabe",
+    "integration_test/note_protection_test.dart": "5048bf673c9a93b231520afe6c347becf58986c7fbf05eacb7cd5e31ce24419b",
+    "integration_test/session_storage_test.dart": "ab33bb9d75c9873be3aa34b8e887db305a4fc5a631ce3e1c69fd553c915b8c54"
+  }
+}

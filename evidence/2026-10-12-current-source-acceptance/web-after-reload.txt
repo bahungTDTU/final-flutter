@@ -1,0 +1,32 @@
+Browser tab: 1, Title: "NoteTogether", URL: "http://127.0.0.1:7364/".
+1 AXWebArea NoteTogether, URL: 127.0.0.1:7364/
+	2 container
+		3 container ID: flt-semantic-node-4, Description: Ghi chú Tab 1 trong tổng số 3 Được chia sẻ Tab 2 trong tổng số 3 Hỏi ghi chú Tab 3 trong tổng số 3 Hồ sơ và tùy chỉnh
+			4 container flt-semantic-node-5
+				5 button Ghi chú Tab 1 trong tổng số 3, ID: flt-semantic-node-6
+				6 button Được chia sẻ Tab 2 trong tổng số 3, ID: flt-semantic-node-7
+				7 button Hỏi ghi chú Tab 3 trong tổng số 3, ID: flt-semantic-node-8
+				8 button Hồ sơ và tùy chỉnh, ID: flt-semantic-node-9
+			9 container flt-semantic-node-31
+				10 heading Ghi chú của bạn, Value: 2, ID: flt-semantic-node-15
+					11 text Ghi chú của bạn
+				12 button Ghi chú mới, ID: flt-semantic-node-16
+				13 text 1 ghi chú
+				14 button Trực tiếp, ID: flt-semantic-node-18
+				15 text Email của bạn chưa được xác minh.
+				16 button Xác minh, ID: flt-semantic-node-20
+				17 container flt-semantic-node-21
+					18 text field (settable) Tìm ghi chú
+					19 text Tìm ngay khi nhập · Ctrl + F để đến ô tìm kiếm
+				20 button Lưới, ID: flt-semantic-node-23
+				21 button Danh sách, ID: flt-semantic-node-25
+				22 button Xưởng ghi chú, ID: flt-semantic-node-27
+				23 button Không gian làm việc, ID: flt-semantic-node-28
+				24 button Tìm nhanh · Ctrl+K, ID: flt-semantic-node-29
+				25 button Quản lý nhãn, ID: flt-semantic-node-30
+				26 text Tất cả ghi chú
+				27 text 1
+				28 container Description: Nghiệm thu source mới 46df286 Tiếng Việt: Nguyễn Bảo Long — ghi chú có dấu. 12/10/2026, ID: flt-semantic-node-11
+					29 button (collapsed) Thao tác ghi chú, ID: flt-semantic-node-12, Secondary Actions: Expand
+
+The focused UI element is 3 container ID: flt-semantic-node-4, Description: Ghi chú Tab 1 trong tổng số 3 Được chia sẻ Tab 2 trong tổng số 3 Hỏi ghi chú Tab 3 trong tổng số 3 Hồ sơ và tùy chỉnh

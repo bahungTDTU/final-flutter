@@ -1,0 +1,24 @@
+{
+  "source_base": "947802a",
+  "scope": "actual two independent IAB UI clients; Web library code unchanged from46df286",
+  "original": {
+    "id": "083c224c-236e-492c-9d8f-c774f5ccfd0e",
+    "revision": 3,
+    "title": "Hai UI độc lập 12-10",
+    "content": "Bản nháp trước thu hồi quyền"
+  },
+  "owner_conflict_copy": {
+    "id": "b143305c-a60d-4d9a-b86b-b6ef3a89cd1d",
+    "revision": 1,
+    "title": "Hai UI độc lập 12-10 (bản phục hồi)",
+    "content": "Nội dung owner từ UI thứ nhấtBản gốc cùng revision"
+  },
+  "peer_revoked_copy": {
+    "id": "e8cc9c3d-6eb7-4231-a560-1a50e62abad7",
+    "revision": 1,
+    "title": "Hai UI độc lập 12-10",
+    "content": "Nháp chưa đồng bộ khi owner thu hồi"
+  },
+  "acl": "PASS peer original404, peer owner-copy404, owner peer-copy404; original does not contain revoked draft",
+  "validation_note": "Initial diagnostic incorrectly expected a trailing Quill sentinel newline in plain stored content; corrected to exact plain text per storage contract. No app code changed."
+}

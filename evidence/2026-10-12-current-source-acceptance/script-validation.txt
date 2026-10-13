@@ -1,0 +1,4 @@
+PASS PowerShell parser
+PASS remote URL guard/environment unchanged
+PASS invalid socket path/environment restored
+PASS Python compile

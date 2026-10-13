@@ -1,0 +1,73 @@
+Browser tab: 3, Title: "NoteTogether", URL: "http://localhost:7364/".
+0 AXWebArea NoteTogether, URL: localhost:7364/
+	1 container
+		2 text Đồng bộ
+		3 container Quay lại Không gian viết Viết tập trung Dàn ý & checklist Tóm tắt bằng AI Chia sẻ ghi chú Đính kèm Đổi giao diện Đồng bộ Đồng bộ Trang viết Tự động lưu 8 từ · 35 ký tự 100%
+			4 container flt-semantic-node-215
+				5 container flt-semantic-node-258
+					6 button Quay lại, ID: flt-semantic-node-259
+					7 heading Không gian viết, Value: 2, ID: flt-semantic-node-260
+						8 text Không gian viết
+					9 button Viết tập trung, ID: flt-semantic-node-261
+					10 button Dàn ý & checklist, ID: flt-semantic-node-299
+					11 button Tóm tắt bằng AI, ID: flt-semantic-node-300
+					12 button Chia sẻ ghi chú, ID: flt-semantic-node-301
+					13 button Đính kèm, ID: flt-semantic-node-302
+					14 button Đổi giao diện, ID: flt-semantic-node-303
+					15 button Đồng bộ Đồng bộ, ID: flt-semantic-node-304
+						16 text Đồng bộ
+						17 text Đồng bộ
+				18 container Description: Trang viết Tự động lưu 8 từ · 35 ký tự 100%, ID: flt-semantic-node-216
+					19 button Hiện/ẩn mục lục, ID: flt-semantic-node-305
+					20 button Hiện/ẩn thông tin, ID: flt-semantic-node-306
+					21 container flt-semantic-node-307
+						22 button (disabled) Hoàn tác (Ctrl+Z), ID: flt-semantic-node-308
+						23 button (disabled) Làm lại (Ctrl+Y), ID: flt-semantic-node-309
+						24 button (collapsed) Kiểu đoạn văn Văn bản, ID: flt-semantic-node-310, Secondary Actions: Expand
+						25 button (collapsed) Cỡ chữ 16, ID: flt-semantic-node-311, Secondary Actions: Expand
+						26 button In đậm (Ctrl+B), ID: flt-semantic-node-312
+						27 button In nghiêng (Ctrl+I), ID: flt-semantic-node-313
+						28 button Gạch chân (Ctrl+U), ID: flt-semantic-node-314
+						29 button Gạch ngang, ID: flt-semantic-node-315
+						30 button Màu chữ, ID: flt-semantic-node-316
+						31 button Đánh dấu màu, ID: flt-semantic-node-317
+						32 button Căn trái, ID: flt-semantic-node-318
+						33 button Căn giữa, ID: flt-semantic-node-319
+						34 button Căn phải, ID: flt-semantic-node-320
+						35 button Căn đều, ID: flt-semantic-node-321
+						36 button Danh sách dấu đầu dòng, ID: flt-semantic-node-322
+						37 button Danh sách đánh số, ID: flt-semantic-node-323
+						38 button Danh sách công việc, ID: flt-semantic-node-324
+						39 button Trích dẫn, ID: flt-semantic-node-325
+						40 button Khối mã, ID: flt-semantic-node-326
+						41 button Chèn liên kết, ID: flt-semantic-node-327
+						42 button Xóa định dạng, ID: flt-semantic-node-328
+						43 button Tìm và thay thế (Ctrl+F), ID: flt-semantic-node-329
+					44 button Chế độ đọc, ID: flt-semantic-node-330
+					45 container flt-semantic-node-331
+						46 text Đã đồng bộ Trực tiếp
+						47 text NOTETOGETHER / TÀI LIỆU
+						48 heading Tiêu đề, Value: 2, ID: flt-semantic-node-246
+							49 text Tiêu đề
+						50 container flt-semantic-node-247
+							51 text entry area (settable) Tiêu đề
+							52 text Còn lại 180 ký tự
+						53 heading Nội dung, Value: 2, ID: flt-semantic-node-249
+							54 text Nội dung
+						55 text entry area (settable) Nội dung
+					56 container flt-semantic-node-334
+						57 heading Sắp xếp, Value: 2, ID: flt-semantic-node-335
+							58 text Sắp xếp
+						59 checkbox Description: Ghim ghi chú, Value: 0, ID: flt-semantic-node-336
+						60 heading Công cụ, Value: 2, ID: flt-semantic-node-337
+							61 text Công cụ
+						62 button Đính kèm, ID: flt-semantic-node-338
+						63 button Tóm tắt AI, ID: flt-semantic-node-339
+						64 button Bảo vệ ghi chú, ID: flt-semantic-node-340
+						65 text 8 từ · 35 ký tự
+						66 text Đọc khoảng 1 phút
+						67 button Dàn ý & checklist Tiêu đề đoạn và danh sách công việc, ID: flt-semantic-node-255
+					68 button Thu nhỏ tài liệu, ID: flt-semantic-node-341
+					69 button Phóng to tài liệu, ID: flt-semantic-node-342
+
+The focused UI element is 3 container Quay lại Không gian viết Viết tập trung Dàn ý & checklist Tóm tắt bằng AI Chia sẻ ghi chú Đính kèm Đổi giao diện Đồng bộ Đồng bộ Trang viết Tự động lưu 8 từ · 35 ký tự 100%

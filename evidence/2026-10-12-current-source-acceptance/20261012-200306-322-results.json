@@ -1,0 +1,44 @@
+{
+  "source": "46df286302cc88e07c98ba1b14160cc64491e2df",
+  "tracked_changes": [
+    " M integration_test/sharing_test.dart"
+  ],
+  "date": "2026-10-12T13:05:10.7640662Z",
+  "device": "emulator-5554",
+  "api_url": "http://10.0.2.2:8042/",
+  "scope": "Android integration: injected text input and database reopen; not real IME or OS relaunch.",
+  "results": [
+    {
+      "suite": "sharing",
+      "exit_code": 0,
+      "log": "evidence\\2026-10-12-current-source-acceptance\\20261012-200306-322-sharing.txt",
+      "command": [
+        "F:\\bin\\flutter.bat",
+        "drive",
+        "--driver=test_driver/integration_test.dart",
+        "--target=integration_test/sharing_test.dart",
+        "-d",
+        "emulator-5554",
+        "--dart-define=API_URL=http://10.0.2.2:8042",
+        "--enable-software-rendering",
+        "--no-enable-impeller"
+      ]
+    },
+    {
+      "suite": "realtime",
+      "exit_code": 0,
+      "log": "evidence\\2026-10-12-current-source-acceptance\\20261012-200306-322-realtime.txt",
+      "command": [
+        "F:\\bin\\flutter.bat",
+        "drive",
+        "--driver=test_driver/integration_test.dart",
+        "--target=integration_test/realtime_test.dart",
+        "-d",
+        "emulator-5554",
+        "--dart-define=API_URL=http://10.0.2.2:8042",
+        "--enable-software-rendering",
+        "--no-enable-impeller"
+      ]
+    }
+  ]
+}

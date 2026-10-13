@@ -1,0 +1,25 @@
+{
+  "source": "46df286302cc88e07c98ba1b14160cc64491e2df",
+  "tracked_changes": [],
+  "date": "2026-10-12T12:59:24.2072126Z",
+  "device": "emulator-5554",
+  "api_url": "http://10.0.2.2:8042/",
+  "scope": "Android integration: injected text input and database reopen; not real IME or OS relaunch.",
+  "results": [
+    {
+      "suite": "note_flow",
+      "exit_code": 64,
+      "log": "evidence\\2026-10-12-current-source-acceptance\\20261012-195915-274-note_flow.txt",
+      "command": [
+        "F:\\bin\\flutter.bat",
+        "test",
+        "integration_test/note_flow_test.dart",
+        "-d",
+        "emulator-5554",
+        "--dart-define=API_URL=http://10.0.2.2:8042",
+        "--enable-software-rendering",
+        "--no-enable-impeller"
+      ]
+    }
+  ]
+}

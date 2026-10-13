@@ -1,5 +1,7 @@
 import '../test_driver/editor_input.dart';
 
+import 'package:note_together/ui/rich_note_field.dart';
+
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -149,7 +151,14 @@ void main() {
         },
       );
       await until(
-        () => find.text('Peer protected live content').evaluate().isNotEmpty,
+        () => find
+            .byWidgetPredicate(
+              (widget) =>
+                  widget is NoteRichTextField &&
+                  widget.document.text == 'Peer protected live content',
+            )
+            .evaluate()
+            .isNotEmpty,
       );
       expect(find.text('Chỉnh sửa phiên bản mới'), findsOneWidget);
       await tester.ensureVisible(find.text('Chỉnh sửa phiên bản mới'));
@@ -199,7 +208,20 @@ void main() {
         'Protected offline survives encrypted reopen',
       );
       await tester.pumpAndSettle();
-      await c.readProtectedEnvelope(id, c.user!['id'] as String);
+      expect(
+        tester
+            .widget<NoteRichTextField>(
+              find.byKey(const Key('protected-content-editor')),
+            )
+            .document
+            .text,
+        'Protected offline survives encrypted reopen',
+      );
+      final offlineEnvelope = await c.readProtectedEnvelope(
+        id,
+        c.user!['id'] as String,
+      );
+      expect(offlineEnvelope?['dirty'], true);
       await tester.pumpWidget(const SizedBox());
       c.dispose();
       await db.close();
@@ -211,6 +233,10 @@ void main() {
       await tester.pumpWidget(NoteTogetherApp(controller: c));
       await tester.pumpAndSettle();
       await open();
+      // Reopen starts in reading mode; save status belongs to editing mode.
+      await tester.ensureVisible(find.text('Chỉnh sửa'));
+      await tester.tap(find.text('Chỉnh sửa'));
+      await tester.pumpAndSettle();
       await until(() => find.text('Đã đồng bộ').evaluate().isNotEmpty);
       final freshToken = c.token;
       expect(

@@ -1,5 +1,47 @@
 # Ma trận yêu cầu 32 tiêu chí
 
+## Clone sạch và hai UI độc lập —12/10/2026
+
+Đúng947802a: setup/check PASS270Flutter/142backend, Web release local40resources và
+APK debug build PASS; .git giữ nguyên, working tree sạch. Hai WebUI khác origin/account
+PASS dirty409→bản sao UUID mới; owner revoke khi peer gõ→ẩn nội dung→phục hồi riêng,
+backend xác nhận original không bị ghi đè và bản sao cô lập quyền.
+[Evidence](../evidence/2026-10-12-clean-clone-two-ui/INDEX.md),
+[gate/đầu vào còn thiếu](REMAINING_GATES.md). Chưa có approval để merge PR8, provider/HTTPS/key
+release/Rubric/video thực; native IME/OS relaunch/picker/TTL còn riêng.
+
+
+## Chuẩn bị release và phục hồi state —12/10/2026
+
+Đã thêm production HTTPS origin guard và signing Android riêng, không fallback debug.
+Backup SQLite nhất quán + mail key, restore vào thư mục mới có integrity/FK/hash checks.
+142 backend tests PASS; HTTP restore riêng8043 giữ rich Delta/UUID/file bytes/ACL;
+Android debug build PASS, release thiếu key bị từ chối đúng. Native session-storage
+PASS migration mã hóa/offline DB reopen/logout401/manual re-login giữ draft.
+Native protection enable/change/disable và injected lifecycle relock PASS; không thay
+nghiệm thu OS background/TTL thật.
+Compose persistent volume/context filtering đã cấu hình; Docker engine chưa khả dụng
+sau thử khởi động Desktop, chưa nghiệm thu image/recreate. Xem
+[runbook release](RELEASE_AND_BACKUP.md),
+[evidence](../evidence/2026-10-12-release-preparation/INDEX.md).
+R01 code guard đã kiểm tra; signing certificate thật/HTTPS/providers/video/Rubric và
+IME/OS relaunch/picker/two-UI còn gate mở. PR#8 thiếu approval người khác trước merge.
+
+
+## Kiểm chứng source sau PR#7 —12/10/2026
+
+Base46df286, nhánh codex/current-source-acceptance. Native note_flow/sharing/realtime
+PASS với API36 debug software renderer, FastAPI/SQLite riêng8042; cập nhật locator
+sharing cho menu phone Deskbook, không giảm assertions. Web release local7364 PASS
+Vietnamese/rich bold/undo-redo/autosave, offline edit/reload/reconnect giữ UUID/Delta.
+Protected native SSE/autosave/encrypted offline DB reopen/revalidation/delete PASS.
+HTTP4roles/protection/private files/revoke/password/conflict409 PASS. Đây là bổ sung
+evidence cho11/12/14/16/23–26/30/31; không tự đánh dấu đủ điểm hoặc full hai target.
+[Evidence mới](../evidence/2026-10-12-current-source-acceptance/INDEX.md),
+[phạm vi/gate còn lại](CURRENT_SOURCE_ACCEPTANCE.md).
+IME native/OS relaunch/OS picker/TTL/background/two-UI/provider/public release/video
+còn riêng; người dùng xác nhận chưa cấu hình SMTP/Gemini, tiếp tục local.
+
 ## Publication UI / Deskbook —12/10/2026
 
 Người dùng ủy quyền push bản UI trên `codex/ui-system-refresh`, PR vào `master`.

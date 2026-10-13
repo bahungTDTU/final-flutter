@@ -1,5 +1,10 @@
 # Bước tiếp theo: M6.1 — release và backend tái lập
 
+12/10/2026: phần guard/signing/Compose/backup-restore trong kế hoạch đã triển khai local;
+xem [RELEASE_AND_BACKUP](RELEASE_AND_BACKUP.md). HTTP restore và142backend tests PASS;
+Docker engine/public provider/signing thật còn mở. Nội dung06/10 dưới đây giữ như kế hoạch gốc.
+
+
 Người dùng yêu cầu06/10 để release sau cùng. Kế hoạch này được hoãn; ưu tiên các thiếu hụt
 chức năng và kiểm chứng core trong STATUS trước. Không coi đây là hành động đã triển khai.
 
