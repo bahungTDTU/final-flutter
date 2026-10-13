@@ -1,0 +1,15 @@
+{
+  "date_utc": "2026-10-12T13:59:16.810614+00:00",
+  "commit": "947802a1bd9bce4037531937cbda9b48fc38d290",
+  "clone": "C:/Temp/notetogether-clean-947802a",
+  "git_preserved": true,
+  "working_tree_clean": true,
+  "setup": "PASS Python3.12/newvenv/Flutter3.47.1",
+  "check": "PASS format/analyze/270Flutter/142backend",
+  "builds": {
+    "web_release_local": "PASS40static resources; notpublicHTTPS",
+    "apk_debug": "PASS; not signedrelease"
+  },
+  "web_code_identity": "git diff46df286..947802a -- lib web pubspec.yaml pubspec.lock empty; twoUI uses priorWeb artifact with same library/dependencies",
+  "apk_debug_sha256": "e9b756fb0f7ed99d9206ba99fc1ddc2d5f27c81fb827e36ad3b477838ed55a5d"
+}

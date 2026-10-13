@@ -1,13 +1,31 @@
 """Actual HTTP protected-note ACL/mutation/attachment probe; disposable local users."""
+import argparse
 from datetime import datetime, timezone
 import json
 from pathlib import Path
 from uuid import uuid4
+from urllib.parse import urlsplit
 import httpx
+
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--url', default='http://127.0.0.1:8000')
+parser.add_argument('--output', default=f'output/protected-http-{uuid4()}.json')
+args = parser.parse_args()
+endpoint = urlsplit(args.url)
+if (endpoint.scheme != 'http' or endpoint.hostname not in ('127.0.0.1', 'localhost')
+        or endpoint.username or endpoint.password or endpoint.query or endpoint.fragment
+        or endpoint.path not in ('', '/')):
+    parser.error('--url must be a disposable local HTTP backend without credentials, path or query')
+output_path = Path(args.output)
+if output_path.exists():
+    parser.error('--output already exists; choose a new path to preserve historical evidence')
+output_path.parent.mkdir(parents=True, exist_ok=True)
+session_path = Path('tmp') / f'protected-qa-session-{uuid4()}.json'
+session_path.parent.mkdir(parents=True, exist_ok=True)
 
 password='ProtectedQA-local-2026!'
 note_password='protected-password-123'
-with httpx.Client(base_url='http://127.0.0.1:8000',timeout=15) as api:
+with httpx.Client(base_url=args.url,timeout=15) as api:
     def call(method,path,user=None,body=None,status=200,**kwargs):
         headers={'Authorization':'Bearer '+user['token']} if user else {}
         response=api.request(method,path,headers=headers,json=body,**kwargs)
@@ -62,11 +80,13 @@ with httpx.Client(base_url='http://127.0.0.1:8000',timeout=15) as api:
     for role in ('viewer','editor'):
         call('POST',f'/notes/{ui_id}/shares',owner,{'email':users[role]['user']['email'],'role':role})
     call('POST',f'/notes/{ui_id}/protection',owner,{'password':note_password,'confirmation':note_password})
-    Path('tmp/protected-qa-session.json').write_text(json.dumps({'users':users,'note':ui_id},ensure_ascii=False),encoding='utf-8')
-    output={'date_utc':datetime.now(timezone.utc).isoformat(),'url':'http://127.0.0.1:8000','note_id':key,'ui_note_id':ui_id,
+    session_path.write_text(json.dumps({'users':users,'note':ui_id},ensure_ascii=False),encoding='utf-8')
+    output={'date_utc':datetime.now(timezone.utc).isoformat(),'url':args.url,'note_id':key,'ui_note_id':ui_id,
             'results':['PASS actual HTTP owner/viewer/editor/stranger locked + grant + minimal list',
                        'PASS protected edit/replay/frozen revision409/viewer and editor-delete denied',
                        'PASS private attachment upload/read/delete role rules',
                        'PASS revoke/password change invalidates grant/owner confirmed delete']}
-    Path('evidence/2026-10-05-protected-notes/http-api.json').write_text(json.dumps(output,indent=2),encoding='utf-8')
+    with output_path.open('x', encoding='utf-8') as evidence_file:
+        evidence_file.write(json.dumps(output,indent=2))
     for line in output['results']: print(line)
+    print(f'Private QA session (ignored): {session_path}')

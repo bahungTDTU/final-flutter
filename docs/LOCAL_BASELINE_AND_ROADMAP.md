@@ -1,5 +1,51 @@
 # Baseline máy mới và lộ trình nghiệm thu —12/10/2026
 
+## Clone sạch và hai UI độc lập —12/10/2026
+
+Đúng947802a: setup/check PASS270Flutter/142backend, Web release local40resources và
+APK debug build PASS; .git giữ nguyên, working tree sạch. Hai WebUI khác origin/account
+PASS dirty409→bản sao UUID mới; owner revoke khi peer gõ→ẩn nội dung→phục hồi riêng,
+backend xác nhận original không bị ghi đè và bản sao cô lập quyền.
+[Evidence](../evidence/2026-10-12-clean-clone-two-ui/INDEX.md),
+[gate/đầu vào còn thiếu](REMAINING_GATES.md). Chưa có approval để merge PR8, provider/HTTPS/key
+release/Rubric/video thực; native IME/OS relaunch/picker/TTL còn riêng.
+
+
+## Chuẩn bị release và phục hồi state —12/10/2026
+
+Đã thêm production HTTPS origin guard và signing Android riêng, không fallback debug.
+Backup SQLite nhất quán + mail key, restore vào thư mục mới có integrity/FK/hash checks.
+142 backend tests PASS; HTTP restore riêng8043 giữ rich Delta/UUID/file bytes/ACL;
+Android debug build PASS, release thiếu key bị từ chối đúng. Native session-storage
+PASS migration mã hóa/offline DB reopen/logout401/manual re-login giữ draft.
+Native protection enable/change/disable và injected lifecycle relock PASS; không thay
+nghiệm thu OS background/TTL thật.
+Compose persistent volume/context filtering đã cấu hình; Docker engine chưa khả dụng
+sau thử khởi động Desktop, chưa nghiệm thu image/recreate. Xem
+[runbook release](RELEASE_AND_BACKUP.md),
+[evidence](../evidence/2026-10-12-release-preparation/INDEX.md).
+R01 code guard đã kiểm tra; signing certificate thật/HTTPS/providers/video/Rubric và
+IME/OS relaunch/picker/two-UI còn gate mở. PR#8 thiếu approval người khác trước merge.
+
+
+## Tiến độ tiếp tục sau bàn giao —12/10/2026
+
+PR#5 đã merge; master hiện46df286 còn chứa PR#6 security center và PR#7 Deskbook.
+Ba required checks của cả ba PR đã success trên đúng head (github.json trong evidence mới).
+Working tree ban đầu sạch; tiếp tục trên codex/current-source-acceptance từ origin/master.
+Phần baseline bên dưới giữ nguyên source35db810 và trạng thái tại chặng1.
+
+N01/N02 có bổ sung Web Vietnamese/bold/undo-redo/autosave/offline edit/reload/reconnect
+giữ UUID/Delta; native note_flow Sembast/platform key/offline socket/reopen PASS.
+N03 có native sharing/realtime/frozen-base409/viewer/revoke/recovery PASS và HTTP4roles.
+N04 có native protected autosave/SSE/frozen base/encrypted offline DB reopen/revalidation/
+confirmed delete PASS. N04/N05 có HTTP protected/private file/change-password/ACL PASS; không thay native
+TTL/background/picker/cancel. IME thật, OS process relaunch, hai UI độc lập và các bước
+native thủ công vẫn mở; chặng2 chưa đóng. Người dùng xác nhận chưa cấu hình provider,
+P01/P02 vẫn blocked bởi SMTP Internet/inbox và Gemini key mới; tiếp tục local.
+[Runbook hiện hành](CURRENT_SOURCE_ACCEPTANCE.md),
+[kết quả/source/giới hạn](../evidence/2026-10-12-current-source-acceptance/INDEX.md).
+
 ## Nguồn chuẩn và phạm vi
 
 Base source: master `35db810` (merge PR#4), checkout sạch trước thay đổi.

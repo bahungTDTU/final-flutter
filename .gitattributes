@@ -67,3 +67,16 @@ evidence/2026-10-13-inspector-ui/*.txt -whitespace
 
 # Current UI publication is a separate immutable evidence record.
 evidence/2026-10-13-ui-publication/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# Preserve the acceptance rerun after integrating the updated master.
+evidence/2026-10-13-master-integration/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+evidence/2026-10-13-master-integration/*.txt -whitespace
+
+# Upstream CLI snapshots keep their original padding; source checks stay enabled.
+evidence/2026-10-12-clean-clone-two-ui/*.txt -whitespace
+evidence/2026-10-12-current-source-acceptance/*.txt -whitespace
+evidence/2026-10-12-release-preparation/*.txt -whitespace
+
+# Publication resumed on the client date 14/10; earlier evidence stays historical.
+evidence/2026-10-14-publish-resume/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+evidence/2026-10-14-publish-resume/*.txt -whitespace

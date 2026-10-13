@@ -2,7 +2,8 @@ FROM python:3.12-slim
 WORKDIR /app
 COPY backend/requirements.txt backend/requirements.txt
 RUN pip install --no-cache-dir -r backend/requirements.txt
-COPY backend backend
+COPY backend/*.py backend/
+COPY backend/schema.sql backend/schema.sql
 RUN useradd --create-home appuser && mkdir -p backend/state && chown -R appuser:appuser /app
 USER appuser
 EXPOSE 8000

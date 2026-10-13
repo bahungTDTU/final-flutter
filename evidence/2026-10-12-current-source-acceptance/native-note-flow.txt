@@ -1,0 +1,64 @@
+The network path was not found.
+[1/3] Android SDK
+  ├─ [1/6] android-arm-profile/windows-x64                       1,908ms
+  ├─ [2/6] android-arm-release/windows-x64                       1,332ms
+  ├─ [3/6] android-arm64-profile/windows-x64                     1,832ms
+  ├─ [4/6] android-arm64-release/windows-x64                       402ms
+  ├─ [5/6] android-x64-profile/windows-x64                       1,865ms
+  └─ [6/6] android-x64-release/windows-x64                       1,786ms
+Resolving dependencies...
+Downloading packages...
+  code_assets 1.2.1 (2.1.0 available)
+  cross_file 0.3.5+5 (0.4.0 available)
+  flutter_keyboard_visibility_linux 1.0.0 (2.0.0 available)
+  flutter_keyboard_visibility_macos 1.0.0 (2.0.0 available)
+  flutter_keyboard_visibility_platform_interface 2.0.0 (3.0.0 available)
+  flutter_keyboard_visibility_windows 1.0.0 (2.0.0 available)
+  hooks 2.0.2 (2.2.0 available)
+  idb_shim 2.9.9 (2.9.11 available)
+  jni_flutter 1.0.4 (retracted, 1.0.4+1 available)
+  markdown 7.3.0 (7.3.1 available)
+  material_color_utilities 0.13.0 (0.13.1 available)
+  meta 1.18.3 (1.19.0 available)
+  objective_c 9.5.0 (9.6.2 available)
+  record_use 0.6.0 (1.1.1 available)
+  test_api 0.7.12 (0.7.15 available)
+  vector_math 2.4.0 (2.4.3 available)
+  video_player 2.14.0 (2.14.1 available)
+  video_player_avfoundation 2.12.0 (2.12.1 available)
+Got dependencies!
+18 packages have newer versions incompatible with dependency constraints.
+Try `flutter pub outdated` for more information.
+00:00 +0: loading C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/integration_test/note_flow_test.dart
+Running Gradle task 'assembleDebug'...                          
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+java.io.IOException: Unable to establish loopback connection
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+> Get more help at https://help.gradle.org.
+Running Gradle task 'assembleDebug'...                              4.9s
+00:00 +0 -1: loading C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/integration_test/note_flow_test.dart [E]
+  Failed to load "C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/integration_test/note_flow_test.dart": Gradle task assembleDebug failed with exit code 1
+  package:flutter_tools/src/base/common.dart 34:3                    throwToolExit
+  package:flutter_tools/src/android/gradle.dart 653:7                AndroidGradleBuilder.buildGradleApp
+  ===== asynchronous gap ===========================
+  package:flutter_tools/src/android/gradle.dart 246:5                AndroidGradleBuilder.buildApk
+  ===== asynchronous gap ===========================
+  package:flutter_tools/src/android/android_device.dart 571:7        AndroidDevice.startApp
+  ===== asynchronous gap ===========================
+  package:flutter_tools/src/test/integration_test_device.dart 59:39  IntegrationTestTestDevice.start
+  ===== asynchronous gap ===========================
+  package:flutter_tools/src/test/flutter_platform.dart 679:51        FlutterPlatform._startTest.<fn>
+  ===== asynchronous gap ===========================
+  package:flutter_tools/src/base/async_guard.dart 108:24             asyncGuard.<fn>
+  
+00:00 +0 -1: Some tests failed.
+
+Failing tests:
+  C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/integration_test/note_flow_test.dart: loading C:/Users/Nguyen Long/Documents/Codex/2026-10-11/https-github-com-bahungtdtu-final-flutter/final-flutter/integration_test/note_flow_test.dart

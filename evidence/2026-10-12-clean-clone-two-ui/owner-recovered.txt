@@ -1,0 +1,45 @@
+Browser tab: 2, Title: "NoteTogether", URL: "http://127.0.0.1:7364/".
+0 AXWebArea NoteTogether, URL: 127.0.0.1:7364/
+	1 container
+		2 container Description: NoteTogether, ID: flt-semantic-node-4
+			3 button Ghi chú, ID: flt-semantic-node-6
+			4 button Được chia sẻ, ID: flt-semantic-node-8
+			5 button Hỏi ghi chú, ID: flt-semantic-node-10
+			6 button Tìm nhanh · Ctrl+K, ID: flt-semantic-node-11
+			7 button Ghi chú mới, ID: flt-semantic-node-12
+			8 button Hồ sơ và tùy chỉnh Ảnh đại diện mặc định C, ID: flt-semantic-node-13
+			9 container flt-semantic-node-34
+				39 text SỔ GHI / NOTETOGETHER
+				10 heading Ghi chú của bạn, Value: 2, ID: flt-semantic-node-22
+					40 text Ghi chú của bạn
+				12 text Ý tưởng, bài học và kế hoạch — gọn trong một nơi.
+				41 text 3 ghi chú
+				14 button Trực tiếp, ID: flt-semantic-node-25
+				15 text Email của bạn chưa được xác minh.
+				16 button Xác minh, ID: flt-semantic-node-27
+				17 container flt-semantic-node-28
+					18 text field (settable) Tìm ghi chú
+					19 text Tìm ngay khi nhập · Ctrl + F để đến ô tìm kiếm
+				20 button Lưới, ID: flt-semantic-node-30
+				21 button Danh sách, ID: flt-semantic-node-32
+				22 text Tất cả ghi chú
+				42 text 3
+				24 container Description: Hai UI độc lập 12-10 (bản phục hồi) Nội dung owner từ UI thứ nhấtBản gốc cùng revision 12/10/2026, ID: flt-semantic-node-125
+					25 button (collapsed) Thao tác ghi chú, ID: flt-semantic-node-126, Secondary Actions: Expand
+				43 container ID: flt-semantic-node-127, Description: Đã chia sẻ cho 1 người Hai UI độc lập 12-10 Bản nháp peer từ UI thứ haiBản gốc cùng revision Ghi chú được chia sẻ 12/10/2026
+					44 button (collapsed) Thao tác ghi chú, ID: flt-semantic-node-128, Secondary Actions: Expand
+				45 container ID: flt-semantic-node-129, Description: Nghiệm thu source mới 46df286 Tiếng Việt: Nguyễn Bảo Long — ghi chú có dấu. Offline trước reload. 12/10/2026
+					46 button (collapsed) Thao tác ghi chú, ID: flt-semantic-node-130, Secondary Actions: Expand
+			28 container flt-semantic-node-35
+				29 text NGĂN BÀN
+				30 text Từ ý tưởng đến bản nháp.
+				31 text Những công cụ nhỏ, luôn trong tầm tay.
+				32 button Xưởng ghi chú Bắt đầu từ một mẫu, ID: flt-semantic-node-39
+				33 button Không gian làm việc Kế hoạch, việc cần làm và tập trung, ID: flt-semantic-node-40
+				34 container Description: Quản lý nhãn, ID: flt-semantic-node-41
+					35 button Quản lý nhãn, ID: flt-semantic-node-42
+				36 button Tùy chỉnh, ID: flt-semantic-node-43
+				37 text ĐƯỜNG TẮT
+				38 text Ctrl + F / Tìm trong thư viện Ctrl + K / Tìm nhanh
+
+The focused UI element is 2 container Description: NoteTogether, ID: flt-semantic-node-4

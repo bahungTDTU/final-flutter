@@ -1,0 +1,66 @@
+Browser tab: 3, Title: "NoteTogether", URL: "http://localhost:7364/".
+0 AXWebArea NoteTogether, URL: localhost:7364/
+	1 container
+		9 text Nhập tiêu đề và nội dung để tạo ghi chú Trực tiếp 
+		3 container flt-semantic-node-78
+			4 container flt-semantic-node-124
+				5 button Quay lại, ID: flt-semantic-node-125
+				10 heading Không gian viết, Value: 2, ID: flt-semantic-node-126
+					11 text Không gian viết
+				8 button Viết tập trung, ID: flt-semantic-node-127
+				12 button Dàn ý & checklist, ID: flt-semantic-node-150
+				13 button (disabled) Tóm tắt bằng AI, ID: flt-semantic-node-151
+				14 button Đính kèm, ID: flt-semantic-node-152
+				15 button Đổi giao diện, ID: flt-semantic-node-153
+				16 button Đồng bộ, ID: flt-semantic-node-154
+			17 container Description: Trang viết Tự động lưu 0 từ · 0 ký tự 100%, ID: flt-semantic-node-79
+				18 button Hiện/ẩn mục lục, ID: flt-semantic-node-155
+				19 button Hiện/ẩn thông tin, ID: flt-semantic-node-156
+				20 container flt-semantic-node-157
+					21 button Hoàn tác (Ctrl+Z), ID: flt-semantic-node-158
+					22 button (disabled) Làm lại (Ctrl+Y), ID: flt-semantic-node-159
+					23 button (collapsed) Kiểu đoạn văn Văn bản, ID: flt-semantic-node-160, Secondary Actions: Expand
+					24 button (collapsed) Cỡ chữ 16, ID: flt-semantic-node-161, Secondary Actions: Expand
+					25 button In đậm (Ctrl+B), ID: flt-semantic-node-162
+					26 button In nghiêng (Ctrl+I), ID: flt-semantic-node-163
+					27 button Gạch chân (Ctrl+U), ID: flt-semantic-node-164
+					28 button Gạch ngang, ID: flt-semantic-node-165
+					29 button Màu chữ, ID: flt-semantic-node-166
+					30 button Đánh dấu màu, ID: flt-semantic-node-167
+					31 button Căn trái, ID: flt-semantic-node-168
+					32 button Căn giữa, ID: flt-semantic-node-169
+					33 button Căn phải, ID: flt-semantic-node-170
+					34 button Căn đều, ID: flt-semantic-node-171
+					35 button Danh sách dấu đầu dòng, ID: flt-semantic-node-172
+					36 button Danh sách đánh số, ID: flt-semantic-node-173
+					37 button Danh sách công việc, ID: flt-semantic-node-174
+					38 button Trích dẫn, ID: flt-semantic-node-175
+					39 button Khối mã, ID: flt-semantic-node-176
+					40 button Chèn liên kết, ID: flt-semantic-node-177
+					41 button Xóa định dạng, ID: flt-semantic-node-178
+					42 button Tìm và thay thế (Ctrl+F), ID: flt-semantic-node-179
+				43 button Chế độ đọc, ID: flt-semantic-node-180
+				44 container flt-semantic-node-181
+					45 text Nhập tiêu đề và nội dung để tạo ghi chú Trực tiếp
+					46 text NOTETOGETHER / TÀI LIỆU
+					47 heading Tiêu đề, Value: 2, ID: flt-semantic-node-109
+						48 text Tiêu đề
+					49 container flt-semantic-node-110
+						50 text entry area (settable) Tiêu đề
+						51 text Còn lại 180 ký tự
+					52 heading Nội dung, Value: 2, ID: flt-semantic-node-112
+						53 text Nội dung
+					54 text entry area (settable) Description: Nội dung, Value: 
+
+				55 container flt-semantic-node-184
+					56 heading Công cụ, Value: 2, ID: flt-semantic-node-185
+						57 text Công cụ
+					58 button Đính kèm, ID: flt-semantic-node-186
+					59 text Tóm tắt AI
+					60 text 10 từ · 48 ký tự
+					61 text Đọc khoảng 1 phút
+					62 button Dàn ý & checklist Tiêu đề đoạn và danh sách công việc, ID: flt-semantic-node-121
+				63 button Thu nhỏ tài liệu, ID: flt-semantic-node-188
+				64 button Phóng to tài liệu, ID: flt-semantic-node-189
+
+The focused UI element is 54 text entry area (settable) Description: Nội dung, Value: 

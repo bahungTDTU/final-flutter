@@ -1,0 +1,42 @@
+{
+  "source": "46df286302cc88e07c98ba1b14160cc64491e2df",
+  "tracked_changes": [],
+  "date": "2026-10-12T13:02:21.0648746Z",
+  "device": "emulator-5554",
+  "api_url": "http://10.0.2.2:8042/",
+  "scope": "Android integration: injected text input and database reopen; not real IME or OS relaunch.",
+  "results": [
+    {
+      "suite": "note_flow",
+      "exit_code": 0,
+      "log": "evidence\\2026-10-12-current-source-acceptance\\20261012-195954-326-note_flow.txt",
+      "command": [
+        "F:\\bin\\flutter.bat",
+        "drive",
+        "--driver=test_driver/integration_test.dart",
+        "--target=integration_test/note_flow_test.dart",
+        "-d",
+        "emulator-5554",
+        "--dart-define=API_URL=http://10.0.2.2:8042",
+        "--enable-software-rendering",
+        "--no-enable-impeller"
+      ]
+    },
+    {
+      "suite": "sharing",
+      "exit_code": 1,
+      "log": "evidence\\2026-10-12-current-source-acceptance\\20261012-195954-326-sharing.txt",
+      "command": [
+        "F:\\bin\\flutter.bat",
+        "drive",
+        "--driver=test_driver/integration_test.dart",
+        "--target=integration_test/sharing_test.dart",
+        "-d",
+        "emulator-5554",
+        "--dart-define=API_URL=http://10.0.2.2:8042",
+        "--enable-software-rendering",
+        "--no-enable-impeller"
+      ]
+    }
+  ]
+}

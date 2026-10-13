@@ -17,9 +17,15 @@ Future<void> enterNoteField(
   }
   await tester.ensureVisible(finder);
   await tester.pumpAndSettle();
-  field.document.requestKeyboard(field.focusNode);
+  // Let focus leave the preceding password field before opening Quill's
+  // TextInputClient. Otherwise native drive can inject into the old client.
+  field.focusNode.requestFocus();
+  await tester.pumpAndSettle();
+  final focusedField = tester.widget<NoteRichTextField>(finder);
+  focusedField.document.requestKeyboard(focusedField.focusNode);
   await tester.pump();
-  expect(field.readOnly, false);
+  expect(focusedField.focusNode.hasFocus, true);
+  expect(focusedField.readOnly, false);
   if (tester.testTextInput.isRegistered) {
     expect(tester.testTextInput.hasAnyClients, true);
   }

@@ -1,5 +1,26 @@
 # NoteTogether - nền tảng triển khai local
 
+## Tiếp tục publication —14/10/2026
+
+PR9 được cập nhật từ branch `codex/bug-audit-fixes`, giữ merge history với master `eaf39b4`.
+Local acceptance13/10 sau integration: format/analyze/279Flutter/143backend PASS; source
+chức năng không đổi khi tiếp tục publication. Chỉ thêm thuộc tính bỏ kiểm tra padding cho
+ba thư mục CLI logs của master, không thay bytes evidence hoặc kiểm tra whitespace source.
+[Gate mới](evidence/2026-10-14-publish-resume/INDEX.md),
+[PR9](https://github.com/bahungTDTU/final-flutter/pull/9). CI và human approval phải ở head
+mới nhất; không merge PR/deploy/release. Các trạng thái trước bên dưới là snapshots.
+
+## PR9 cập nhật master —13/10/2026
+
+Branch `codex/bug-audit-fixes` tích hợp master `eaf39b4` sau PR8, giữ cả lịch sử Bahung/
+Nguyễn Bảo Long và các phần nghiệm thu/native/backup/release guards của master mới.
+Format/analyze/279 Flutter/143 backend PASS trên bản tích hợp; UI/library/ACL không đổi
+trong quá trình giải quyết xung đột tài liệu. [PR9](https://github.com/bahungTDTU/final-flutter/pull/9),
+[gate tích hợp](evidence/2026-10-13-master-integration/INDEX.md).
+Ba CI của head ban đầu f0267d1 đã PASS; CI phải chạy lại trên merge head mới, cùng human
+approval sau push cuối. Không merge PR/deploy/phát hành. Các trạng thái/ngày bên dưới
+giữ snapshot trước integration, gồm trạng thái PR8 trước khi được merge.
+
 ## Publication UI và sửa lỗi —13/10/2026
 
 Người dùng ủy quyền xuất bản bản hiện tại trên `codex/bug-audit-fixes`, PR vào `master`.
@@ -31,6 +52,56 @@ realtime/remote lock/DOM purge, PC-phone/hai theme và cache; Web/APK debug comp
 [bằng chứng](evidence/2026-10-12-bug-audit/INDEX.md).
 Source local `codex/bug-audit-fixes` từ master `46df286`, chưa commit/push.
 Native runtime/IME/FPS, provider, release và CI mới chưa chạy; bên dưới là snapshots lịch sử.
+
+## Clone sạch và hai UI độc lập —12/10/2026
+
+Đúng947802a: setup/check PASS270Flutter/142backend, Web release local40resources và
+APK debug build PASS; .git giữ nguyên, working tree sạch. Hai WebUI khác origin/account
+PASS dirty409→bản sao UUID mới; owner revoke khi peer gõ→ẩn nội dung→phục hồi riêng,
+backend xác nhận original không bị ghi đè và bản sao cô lập quyền.
+[Evidence](evidence/2026-10-12-clean-clone-two-ui/INDEX.md),
+[gate/đầu vào còn thiếu](docs/REMAINING_GATES.md). Chưa có approval để merge PR8, provider/HTTPS/key
+release/Rubric/video thực; native IME/OS relaunch/picker/TTL còn riêng.
+
+
+## Chuẩn bị release và phục hồi state —12/10/2026
+
+Đã thêm production HTTPS origin guard và signing Android riêng, không fallback debug.
+Backup SQLite nhất quán + mail key, restore vào thư mục mới có integrity/FK/hash checks.
+142 backend tests PASS; HTTP restore riêng8043 giữ rich Delta/UUID/file bytes/ACL;
+Android debug build PASS, release thiếu key bị từ chối đúng. Native session-storage
+PASS migration mã hóa/offline DB reopen/logout401/manual re-login giữ draft.
+Native protection enable/change/disable và injected lifecycle relock PASS; không thay
+nghiệm thu OS background/TTL thật.
+Compose persistent volume/context filtering đã cấu hình; Docker engine chưa khả dụng
+sau thử khởi động Desktop, chưa nghiệm thu image/recreate. Xem
+[runbook release](docs/RELEASE_AND_BACKUP.md),
+[evidence](evidence/2026-10-12-release-preparation/INDEX.md).
+R01 code guard đã kiểm tra; signing certificate thật/HTTPS/providers/video/Rubric và
+IME/OS relaunch/picker/two-UI còn gate mở. PR#8 thiếu approval người khác trước merge.
+
+
+## Nghiệm thu tiếp tục trên source mới —12/10/2026
+
+Sau merge PR#5/#6/#7, tiếp tục từ master46df286 trên nhánh codex/current-source-acceptance.
+Native API36 note_flow/sharing/realtime/protected_editing và Web release local autosave/rich text/offline
+reload/reconnect đã chạy; xem [evidence hiện hành](evidence/2026-10-12-current-source-acceptance/INDEX.md).
+Không đóng toàn chặng2: IME native thật, OS relaunch, hai UI độc lập, protected picker/
+TTL/background còn riêng. SMTP/Gemini thật chờ nhóm cấu hình; release để sau core.
+
+[Runbook](docs/CURRENT_SOURCE_ACCEPTANCE.md) có lệnh native máy mới. Đặt FLUTTER_BIN
+đúng SDK3.47.1, emulator QA đã boot và backend dùng DB disposable/port riêng:
+
+```powershell
+& scripts/qa_native.ps1 -Device emulator-5554 -ApiUrl http://10.0.2.2:8042 `
+  -JvmSocketDirectory C:\Temp\notetogether-jvm -SoftwareRendering
+& .\.venv\Scripts\python.exe scripts/qa_protected_notes.py --url http://127.0.0.1:8042 `
+  --output output/protected-http-new-run.json
+```
+
+Probe HTTP chỉ nhận backend loopback, từ chối output đã tồn tại để giữ evidence cũ;
+default output là file UUID mới trong output/, session QA riêng ở tmp/ ignored.
+Native driver dùng injected input/DB reopen, không thay real IME/OS restart.
 
 ## Publication UI / Deskbook —12/10/2026
 

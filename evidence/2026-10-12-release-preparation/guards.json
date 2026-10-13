@@ -1,0 +1,35 @@
+{
+  "date_utc": "2026-10-12T13:48:08.424839+00:00",
+  "source_base": "8307b4c90e29aa50bc7fecc50477246bafe1500c",
+  "working_changes": [
+    "android/app/build.gradle.kts",
+    "scripts/build.ps1",
+    "scripts/release_preflight.py",
+    "backend/backup.py",
+    "backend/Dockerfile",
+    "compose.yaml",
+    ".dockerignore"
+  ],
+  "checks": [
+    {
+      "command": "scripts/build.ps1 -Production -Target web",
+      "result": "PASS rejects missing explicit URL before Flutter build"
+    },
+    {
+      "command": "scripts/build.ps1 -Production -ApiUrl http://127.0.0.1:8000",
+      "result": "PASS rejects HTTP/local API before build"
+    },
+    {
+      "command": "scripts/build.ps1 -Production -Target apk -ApiUrl https://api.notetogether.vn",
+      "result": "PASS syntactic HTTPS accepted without network; missing key.properties rejected before build"
+    },
+    {
+      "command": "gradlew :app:assembleRelease --dry-run",
+      "result": "EXPECTED exit1: missing release signing; direct Gradle cannot fall back to debug"
+    },
+    {
+      "command": "docker compose config --quiet",
+      "result": "PASS exit0; no secret config printed"
+    }
+  ]
+}
