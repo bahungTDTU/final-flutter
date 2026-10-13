@@ -1,0 +1,78 @@
+### Page
+- Page URL: http://127.0.0.1:7376/
+- Page Title: NoteTogether
+### Snapshot
+```yaml
+- generic [active] [ref=e5]:
+  - generic:
+    - generic:
+      - generic:
+        - generic:
+          - generic:
+            - generic:
+              - button "Quay lại" [ref=e102]
+              - heading "Không gian viết" [level=2] [ref=e103]
+              - button "Viết tập trung" [ref=e104]
+              - button "Dàn ý & checklist" [ref=e105]
+              - button "Tóm tắt bằng AI" [ref=e106]
+              - button "Chia sẻ ghi chú" [ref=e107]
+              - button "Đính kèm" [ref=e108]
+              - button "Đổi giao diện" [ref=e109]
+              - button "Đồng bộ" [ref=e110]
+            - group "Trang viết Tự động lưu 7 từ · 37 ký tự 140%":
+              - button "Hiện/ẩn mục lục" [ref=e111]
+              - button "Hiện/ẩn thông tin" [ref=e112]
+              - group:
+                - button "Hoàn tác (Ctrl+Z)" [disabled] [ref=e113]
+                - button "Làm lại (Ctrl+Y)" [disabled] [ref=e114]
+                - button "Kiểu đoạn văn Văn bản" [ref=e115]
+                - button "Cỡ chữ 16" [ref=e116]
+                - button "In đậm (Ctrl+B)" [ref=e117]
+                - button "In nghiêng (Ctrl+I)" [ref=e118]
+                - button "Gạch chân (Ctrl+U)" [ref=e119]
+                - button "Gạch ngang" [ref=e120]
+                - button "Màu chữ" [ref=e121]
+                - button "Đánh dấu màu" [ref=e122]
+                - button "Căn trái" [ref=e123]
+                - button "Căn giữa" [ref=e124]
+                - button "Căn phải" [ref=e125]
+                - button "Căn đều" [ref=e126]
+                - button "Danh sách dấu đầu dòng" [ref=e127]
+                - button "Danh sách đánh số" [ref=e128]
+                - button "Danh sách công việc" [ref=e129]
+                - button "Trích dẫn" [ref=e130]
+                - button "Khối mã" [ref=e131]
+                - button "Chèn liên kết" [ref=e132]
+                - button "Xóa định dạng" [ref=e133]
+                - button "Tìm và thay thế (Ctrl+F)" [ref=e134]
+              - button "Chế độ đọc" [ref=e135]
+              - group:
+                - heading "Mục lục" [level=2] [ref=e136]
+                - button "Mục tiêu" [ref=e137]
+                - generic [ref=e138]: Chọn tiêu đề để di chuyển
+              - group:
+                - generic [ref=e139]: Đã đồng bộ Trực tiếp
+                - generic [ref=e140]: NOTETOGETHER / TÀI LIỆU
+                - heading "Tiêu đề" [level=2] [ref=e141]
+                - generic [ref=e142]:
+                  - textbox "Tiêu đề" [ref=e143]
+                  - generic [ref=e144]: Còn lại 179 ký tự
+                - heading "Nội dung" [level=2] [ref=e145]
+                - textbox "Nội dung" [ref=e147]
+              - group:
+                - heading "Sắp xếp" [level=2] [ref=e148]
+                - checkbox "Đã ghim" [ref=e149]
+                - checkbox "Cá nhân" [ref=e150]
+                - checkbox "Dự án" [ref=e151]
+                - checkbox "Học tập" [checked] [ref=e152]
+                - checkbox "Ý tưởng" [ref=e153]
+                - heading "Công cụ" [level=2] [ref=e154]
+                - button "Đính kèm" [ref=e155]
+                - button "Tóm tắt AI" [ref=e156]
+                - button "Bảo vệ ghi chú" [ref=e157]
+                - generic [ref=e158]: 7 từ · 37 ký tự
+                - generic [ref=e159]: Đọc khoảng 1 phút
+                - button "Dàn ý & checklist Tiêu đề đoạn và danh sách công việc" [ref=e160]
+              - button "Thu nhỏ tài liệu" [ref=e161]
+              - button "Phóng to tài liệu" [disabled] [ref=e162]
+```

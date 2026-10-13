@@ -1,0 +1,23 @@
+### Result
+{"result":"PASS","worker":"notetogether-static-3f4879f435ec9f21","staticResources":40,"privateApiCached":false,"hashes":{"main.dart.js":"3838d64bb410440fb0afb745229a10d96f06868ca50e8efae05545c1b057c247","flutter_bootstrap.js":"e07103b3fb416699695bce1f717060ca248f425b8245d8773c19597e95a90869"}}
+### Ran Playwright code
+```js
+await (async page => {
+  return await page.evaluate(async () => {
+    const names = await caches.keys();
+    const name = names.find(value => value.startsWith('notetogether-static-'));
+    if (!name) throw Error('Static shell cache unavailable');
+    const cache = await caches.open(name);
+    const requests = await cache.keys();
+    if (requests.some(request => /\/(auth|notes|me|ai)(\/|$)/.test(new URL(request.url).pathname))) throw Error('Private API response cached');
+    const hashes = {};
+    for (const asset of ['main.dart.js', 'flutter_bootstrap.js']) {
+      const response = await cache.match(new URL(asset, location.origin + '/').href);
+      if (!response) throw Error('Missing cached asset: ' + asset);
+      hashes[asset] = Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', await response.arrayBuffer())), value => value.toString(16).padStart(2, '0')).join('');
+    }
+    return { result: 'PASS', worker: name, staticResources: requests.length, privateApiCached: false, hashes };
+  });
+}
+)(page);
+```

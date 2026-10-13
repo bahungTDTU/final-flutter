@@ -1,0 +1,467 @@
+{
+  "clientDate": "2026-10-14",
+  "capturedAt": "2026-10-14T02:45:20.777347+07:00",
+  "stagedFilesBeforeGateCompletion": 111,
+  "privateFiles": [],
+  "secretPatternMatches": [],
+  "scanScope": "high confidence formats only; not a universal security audit",
+  "upstreamEvidenceGitBlobsUnchanged": {
+    "2026-10-12-clean-clone-two-ui": 18,
+    "2026-10-12-current-source-acceptance": 46,
+    "2026-10-12-release-preparation": 14
+  },
+  "ownEvidencePayloadsUnchanged": {
+    "2026-10-12-bug-audit": 65,
+    "2026-10-13-inspector-ui": 38,
+    "2026-10-13-ui-publication": 4,
+    "2026-10-13-master-integration": 4
+  },
+  "acceptedSourceGitBlobsMatch": true,
+  "diffCheck": "PASS",
+  "files": [
+    {
+      "path": ".dockerignore",
+      "bytes": 281
+    },
+    {
+      "path": ".gitattributes",
+      "bytes": 5347
+    },
+    {
+      "path": "README.md",
+      "bytes": 52147
+    },
+    {
+      "path": "Readme.txt",
+      "bytes": 52147
+    },
+    {
+      "path": "STATUS.md",
+      "bytes": 72047
+    },
+    {
+      "path": "android/app/build.gradle.kts",
+      "bytes": 3158
+    },
+    {
+      "path": "backend/Dockerfile",
+      "bytes": 466
+    },
+    {
+      "path": "backend/backup.py",
+      "bytes": 5565
+    },
+    {
+      "path": "backend/tests/test_backup.py",
+      "bytes": 4746
+    },
+    {
+      "path": "backend/tests/test_release_preflight.py",
+      "bytes": 1014
+    },
+    {
+      "path": "compose.yaml",
+      "bytes": 1096
+    },
+    {
+      "path": "docs/CURRENT_SOURCE_ACCEPTANCE.md",
+      "bytes": 5839
+    },
+    {
+      "path": "docs/LOCAL_BASELINE_AND_ROADMAP.md",
+      "bytes": 9556
+    },
+    {
+      "path": "docs/NEXT_STEP_RELEASE_READINESS.md",
+      "bytes": 6301
+    },
+    {
+      "path": "docs/RELEASE_AND_BACKUP.md",
+      "bytes": 5361
+    },
+    {
+      "path": "docs/REMAINING_GATES.md",
+      "bytes": 4385
+    },
+    {
+      "path": "docs/REQUIREMENTS_MATRIX.md",
+      "bytes": 40982
+    },
+    {
+      "path": "docs/TEAM_CONTRIBUTIONS.md",
+      "bytes": 8397
+    },
+    {
+      "path": "evidence/2026-10-12-clean-clone-two-ui/INDEX.md",
+      "bytes": 2985
+    },
+    {
+      "path": "evidence/2026-10-12-clean-clone-two-ui/apk-debug-build.txt",
+      "bytes": 1346
+    },
+    {
+      "path": "evidence/2026-10-12-clean-clone-two-ui/check.txt",
+      "bytes": 45362
+    },
+    {
+      "path": "evidence/2026-10-12-clean-clone-two-ui/clean-clone.json",
+      "bytes": 694
+    },
+    {
+      "path": "evidence/2026-10-12-clean-clone-two-ui/owner-conflict.png",
+      "bytes": 44592
+    },
+    {
+      "path": "evidence/2026-10-12-clean-clone-two-ui/owner-conflict.txt",
+      "bytes": 3831
+    },
+    {
+      "path": "evidence/2026-10-12-clean-clone-two-ui/owner-recovered.png",
+      "bytes": 68556
+    },
+    {
+      "path": "evidence/2026-10-12-clean-clone-two-ui/owner-recovered.txt",
+      "bytes": 2923
+    },
+    {
+      "path": "evidence/2026-10-12-clean-clone-two-ui/owner-revoked.png",
+      "bytes": 62918
+    },
+    {
+      "path": "evidence/2026-10-12-clean-clone-two-ui/peer-recovered.png",
+      "bytes": 50431
+    },
+    {
+      "path": "evidence/2026-10-12-clean-clone-two-ui/peer-recovered.txt",
+      "bytes": 4444
+    },
+    {
+      "path": "evidence/2026-10-12-clean-clone-two-ui/peer-revoked.png",
+      "bytes": 15686
+    },
+    {
+      "path": "evidence/2026-10-12-clean-clone-two-ui/peer-revoked.txt",
+      "bytes": 595
+    },
+    {
+      "path": "evidence/2026-10-12-clean-clone-two-ui/peer-saved.png",
+      "bytes": 47854
+    },
+    {
+      "path": "evidence/2026-10-12-clean-clone-two-ui/peer-saved.txt",
+      "bytes": 3698
+    },
+    {
+      "path": "evidence/2026-10-12-clean-clone-two-ui/setup.txt",
+      "bytes": 7583
+    },
+    {
+      "path": "evidence/2026-10-12-clean-clone-two-ui/two-ui-backend.json",
+      "bytes": 1069
+    },
+    {
+      "path": "evidence/2026-10-12-clean-clone-two-ui/web-build.txt",
+      "bytes": 2079
+    },
+    {
+      "path": "evidence/2026-10-12-current-source-acceptance/20261012-195915-274-note_flow.txt",
+      "bytes": 184
+    },
+    {
+      "path": "evidence/2026-10-12-current-source-acceptance/20261012-195915-274-results.json",
+      "bytes": 765
+    },
+    {
+      "path": "evidence/2026-10-12-current-source-acceptance/20261012-195954-326-note_flow.txt",
+      "bytes": 8710
+    },
+    {
+      "path": "evidence/2026-10-12-current-source-acceptance/20261012-195954-326-results.json",
+      "bytes": 1333
+    },
+    {
+      "path": "evidence/2026-10-12-current-source-acceptance/20261012-195954-326-sharing.txt",
+      "bytes": 6934
+    },
+    {
+      "path": "evidence/2026-10-12-current-source-acceptance/20261012-200306-322-realtime.txt",
+      "bytes": 24960
+    },
+    {
+      "path": "evidence/2026-10-12-current-source-acceptance/20261012-200306-322-results.json",
+      "bytes": 1377
+    },
+    {
+      "path": "evidence/2026-10-12-current-source-acceptance/20261012-200306-322-sharing.txt",
+      "bytes": 29121
+    },
+    {
+      "path": "evidence/2026-10-12-current-source-acceptance/20261012-202119-067-note_flow.txt",
+      "bytes": 10954
+    },
+    {
+      "path": "evidence/2026-10-12-current-source-acceptance/20261012-202119-067-realtime.txt",
+      "bytes": 30642
+    },
+    {
+      "path": "evidence/2026-10-12-current-source-acceptance/20261012-202119-067-results.json",
+      "bytes": 2204
+    },
+    {
+      "path": "evidence/2026-10-12-current-source-acceptance/20261012-202119-067-sharing.txt",
+      "bytes": 33827
+    },
+    {
+      "path": "evidence/2026-10-12-current-source-acceptance/INDEX.md",
+      "bytes": 5545
+    },
+    {
+      "path": "evidence/2026-10-12-current-source-acceptance/analyze-final.txt",
+      "bytes": 1137
+    },
+    {
+      "path": "evidence/2026-10-12-current-source-acceptance/analyze-protected.txt",
+      "bytes": 1137
+    },
+    {
+      "path": "evidence/2026-10-12-current-source-acceptance/analyze-sharing.txt",
+      "bytes": 1137
+    },
+    {
+      "path": "evidence/2026-10-12-current-source-acceptance/checksums.json",
+      "bytes": 4321
+    },
+    {
+      "path": "evidence/2026-10-12-current-source-acceptance/github.json",
+      "bytes": 2283
+    },
+    {
+      "path": "evidence/2026-10-12-current-source-acceptance/gradle-ipv4.txt",
+      "bytes": 5410
+    },
+    {
+      "path": "evidence/2026-10-12-current-source-acceptance/gradle-jdk17.txt",
+      "bytes": 605
+    },
+    {
+      "path": "evidence/2026-10-12-current-source-acceptance/gradle-short-temp.txt",
+      "bytes": 676
+    },
+    {
+      "path": "evidence/2026-10-12-current-source-acceptance/gradle-unix-temp.txt",
+      "bytes": 12381
+    },
+    {
+      "path": "evidence/2026-10-12-current-source-acceptance/http-acl.json",
+      "bytes": 519
+    },
+    {
+      "path": "evidence/2026-10-12-current-source-acceptance/http-acl.txt",
+      "bytes": 374
+    },
+    {
+      "path": "evidence/2026-10-12-current-source-acceptance/log-redactions.json",
+      "bytes": 445
+    },
+    {
+      "path": "evidence/2026-10-12-current-source-acceptance/native-note-flow-short-socket.txt",
+      "bytes": 3713
+    },
+    {
+      "path": "evidence/2026-10-12-current-source-acceptance/native-note-flow.txt",
+      "bytes": 3841
+    },
+    {
+      "path": "evidence/2026-10-12-current-source-acceptance/native-protected-editing-durability.txt",
+      "bytes": 18333
+    },
+    {
+      "path": "evidence/2026-10-12-current-source-acceptance/native-protected-editing-final.txt",
+      "bytes": 21752
+    },
+    {
+      "path": "evidence/2026-10-12-current-source-acceptance/native-protected-editing-quill.txt",
+      "bytes": 21085
+    },
+    {
+      "path": "evidence/2026-10-12-current-source-acceptance/native-protected-editing-retry.txt",
+      "bytes": 9160
+    },
+    {
+      "path": "evidence/2026-10-12-current-source-acceptance/native-protected-editing.txt",
+      "bytes": 6472
+    },
+    {
+      "path": "evidence/2026-10-12-current-source-acceptance/native-protected-focus.txt",
+      "bytes": 21881
+    },
+    {
+      "path": "evidence/2026-10-12-current-source-acceptance/repository-checksums.json",
+      "bytes": 6660
+    },
+    {
+      "path": "evidence/2026-10-12-current-source-acceptance/script-validation.txt",
+      "bytes": 133
+    },
+    {
+      "path": "evidence/2026-10-12-current-source-acceptance/source-manifest.json",
+      "bytes": 14024
+    },
+    {
+      "path": "evidence/2026-10-12-current-source-acceptance/web-after-reload.txt",
+      "bytes": 2067
+    },
+    {
+      "path": "evidence/2026-10-12-current-source-acceptance/web-build.txt",
+      "bytes": 1981
+    },
+    {
+      "path": "evidence/2026-10-12-current-source-acceptance/web-editor-reopened.png",
+      "bytes": 28594
+    },
+    {
+      "path": "evidence/2026-10-12-current-source-acceptance/web-home.png",
+      "bytes": 40075
+    },
+    {
+      "path": "evidence/2026-10-12-current-source-acceptance/web-offline-reloaded.png",
+      "bytes": 44018
+    },
+    {
+      "path": "evidence/2026-10-12-current-source-acceptance/web-offline-reloaded.txt",
+      "bytes": 2278
+    },
+    {
+      "path": "evidence/2026-10-12-current-source-acceptance/web-offline-roundtrip.json",
+      "bytes": 310
+    },
+    {
+      "path": "evidence/2026-10-12-current-source-acceptance/web-reconnected.png",
+      "bytes": 40854
+    },
+    {
+      "path": "evidence/2026-10-12-current-source-acceptance/web-reconnected.txt",
+      "bytes": 2092
+    },
+    {
+      "path": "evidence/2026-10-12-current-source-acceptance/web-roundtrip.json",
+      "bytes": 285
+    },
+    {
+      "path": "evidence/2026-10-12-release-preparation/INDEX.md",
+      "bytes": 4101
+    },
+    {
+      "path": "evidence/2026-10-12-release-preparation/analyze-note-protection.txt",
+      "bytes": 1137
+    },
+    {
+      "path": "evidence/2026-10-12-release-preparation/android-debug.txt",
+      "bytes": 1346
+    },
+    {
+      "path": "evidence/2026-10-12-release-preparation/android-release-no-key.txt",
+      "bytes": 6996
+    },
+    {
+      "path": "evidence/2026-10-12-release-preparation/backend-tests.txt",
+      "bytes": 740
+    },
+    {
+      "path": "evidence/2026-10-12-release-preparation/backup-preflight-tests.txt",
+      "bytes": 648
+    },
+    {
+      "path": "evidence/2026-10-12-release-preparation/docker-engine-after-start.txt",
+      "bytes": 225
+    },
+    {
+      "path": "evidence/2026-10-12-release-preparation/docker-engine.txt",
+      "bytes": 225
+    },
+    {
+      "path": "evidence/2026-10-12-release-preparation/guards.json",
+      "bytes": 1157
+    },
+    {
+      "path": "evidence/2026-10-12-release-preparation/http-restore.json",
+      "bytes": 599
+    },
+    {
+      "path": "evidence/2026-10-12-release-preparation/native-note-protection.txt",
+      "bytes": 18259
+    },
+    {
+      "path": "evidence/2026-10-12-release-preparation/native-session-storage.txt",
+      "bytes": 5860
+    },
+    {
+      "path": "evidence/2026-10-12-release-preparation/preflight-tests.txt",
+      "bytes": 99
+    },
+    {
+      "path": "evidence/2026-10-12-release-preparation/source-manifest.json",
+      "bytes": 1194
+    },
+    {
+      "path": "evidence/2026-10-13-master-integration/INDEX.md",
+      "bytes": 1779
+    },
+    {
+      "path": "evidence/2026-10-13-master-integration/SHA256SUMS.json",
+      "bytes": 368
+    },
+    {
+      "path": "evidence/2026-10-13-master-integration/before-integration-ci.json",
+      "bytes": 968
+    },
+    {
+      "path": "evidence/2026-10-13-master-integration/check.txt",
+      "bytes": 40269
+    },
+    {
+      "path": "evidence/2026-10-13-master-integration/source_manifest.json",
+      "bytes": 3941
+    },
+    {
+      "path": "evidence/2026-10-14-publish-resume/INDEX.md",
+      "bytes": 1462
+    },
+    {
+      "path": "evidence/2026-10-14-publish-resume/source_manifest.json",
+      "bytes": 3845
+    },
+    {
+      "path": "integration_test/note_protection_test.dart",
+      "bytes": 10107
+    },
+    {
+      "path": "integration_test/protected_editing_test.dart",
+      "bytes": 9289
+    },
+    {
+      "path": "integration_test/sharing_test.dart",
+      "bytes": 11851
+    },
+    {
+      "path": "scripts/build.ps1",
+      "bytes": 1092
+    },
+    {
+      "path": "scripts/qa_native.ps1",
+      "bytes": 3403
+    },
+    {
+      "path": "scripts/qa_protected_notes.py",
+      "bytes": 6149
+    },
+    {
+      "path": "scripts/release_preflight.py",
+      "bytes": 2145
+    },
+    {
+      "path": "test_driver/editor_input.dart",
+      "bytes": 1423
+    }
+  ]
+}

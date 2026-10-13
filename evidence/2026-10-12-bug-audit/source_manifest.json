@@ -1,0 +1,61 @@
+{
+  "capturedAt": "2026-10-12T14:30:36.497699+07:00",
+  "base": "46df286302cc88e07c98ba1b14160cc64491e2df",
+  "branch": "codex/bug-audit-fixes",
+  "workingChanges": true,
+  "stateDataDependenciesAndroidDiff": [],
+  "files": {
+    "lib/ui/document_workspace.dart": {
+      "sha256": "261a08dce46e967b01df94b7ecf6f42ed6ed0b11cf38d62fe70dcdcab95fb456",
+      "lf_sha256": "6743a0691f2c6d98738a7f73e8924f2f8d897452cdcc80232866e0fe39831a7e"
+    },
+    "backend/attachments.py": {
+      "sha256": "604d995f950acd3ed322aceff5b27e2e9d2b32615fa82486c02ded25ef0173c5",
+      "lf_sha256": "604d995f950acd3ed322aceff5b27e2e9d2b32615fa82486c02ded25ef0173c5"
+    },
+    "test/bug_audit_regression_test.dart": {
+      "sha256": "d275becac62eb3f093d558577e517a4ead4459de93c44b087f2da4e1749804d8",
+      "lf_sha256": "d275becac62eb3f093d558577e517a4ead4459de93c44b087f2da4e1749804d8"
+    },
+    "backend/tests/test_attachment_ranges.py": {
+      "sha256": "d68ed7ed42e4c0925dd9317fc6593fe01db7639c771ff07041dc92478984432b",
+      "lf_sha256": "d68ed7ed42e4c0925dd9317fc6593fe01db7639c771ff07041dc92478984432b"
+    },
+    "README.md": {
+      "sha256": "43ead81712add06b8b6dee5b9c39457b482ee54ee063371680b70a1041c150b0",
+      "lf_sha256": "050ca6655fc02a6f70d88a5739b6e219a5612df3c818af43129690d75725ae42"
+    },
+    "Readme.txt": {
+      "sha256": "43ead81712add06b8b6dee5b9c39457b482ee54ee063371680b70a1041c150b0",
+      "lf_sha256": "050ca6655fc02a6f70d88a5739b6e219a5612df3c818af43129690d75725ae42"
+    },
+    "STATUS.md": {
+      "sha256": "c5567fb99cd79412d60e2b7a5176c50620897a4953042f224d6829414d8ed30d",
+      "lf_sha256": "33c43b9f569f9b7b4cdc8a1a571da01b78a4a75a45a85ed208579944c81f9b31"
+    },
+    "docs/REQUIREMENTS_MATRIX.md": {
+      "sha256": "79a7196511f80000d0693704772aa17b1de4f774e080dfad7d9c2b40f5861b89",
+      "lf_sha256": "b3f5b1dd18347823f6e7a6c440ea2991f3c4e961206aeb69e6001711806e51a9"
+    },
+    "docs/UI_UX_QA.md": {
+      "sha256": "d73c0867b6743305492fae44b45d34cd54aa8f9e0dcb9e143d915da71fb0a974",
+      "lf_sha256": "eb1b591d8ed637ddd055069d975d80b94e3384b5e51cab99ebdd18c9a2ac27c3"
+    },
+    "docs/BUG_AUDIT_2026-10-12.md": {
+      "sha256": "ce0e175470262704167dc06197fcdffb6eb5b7ec00e4130feffe2b44fab5f0c7",
+      "lf_sha256": "ce0e175470262704167dc06197fcdffb6eb5b7ec00e4130feffe2b44fab5f0c7"
+    },
+    ".gitattributes": {
+      "sha256": "7ebc2c44e36721a0c5e5d79ecc0f9a90c7a0e378f2665cb472844ec5b9d64adf",
+      "lf_sha256": "7ebc2c44e36721a0c5e5d79ecc0f9a90c7a0e378f2665cb472844ec5b9d64adf"
+    },
+    "pubspec.yaml": {
+      "sha256": "35a35749970f23a36d58bd138a21b68c988405120a5cd7d30ece304fe9ba49b4",
+      "lf_sha256": "11529956ce8e3dd4bcde009f97c45de2a5a53bb65b955061fbcf23d08bbb1282"
+    },
+    "pubspec.lock": {
+      "sha256": "11dd9d44d7af0eb38108a8b19e2cd6985ee6e0937a36a260257131fa48bc2221",
+      "lf_sha256": "11dd9d44d7af0eb38108a8b19e2cd6985ee6e0937a36a260257131fa48bc2221"
+    }
+  }
+}

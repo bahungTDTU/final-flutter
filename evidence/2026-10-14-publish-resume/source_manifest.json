@@ -1,0 +1,96 @@
+{
+  "clientDate": "2026-10-14",
+  "capturedAt": "2026-10-14T02:43:27.102477+07:00",
+  "parents": [
+    "f0267d15fe2915777bae5aedd5f189ea13423480",
+    "eaf39b469dc91ead9f94e979b0310c85174ab87b"
+  ],
+  "acceptedFunctionalSourceFiles": 20,
+  "changedFunctionalSourceFiles": [],
+  "checksReusedFrom": "evidence/2026-10-13-master-integration/check.txt",
+  "checkLogSha256": "423663d1345496837324ad5017037fcc512e5e9e277e96b5ec4896b2b78c06c1",
+  "localAcceptance": {
+    "flutter": 279,
+    "backend": 143,
+    "format": "PASS",
+    "analyze": "PASS"
+  },
+  "notRerun": true,
+  "files": {
+    ".gitattributes": {
+      "lf_sha256": "8a59ff0d25e424fa60e1327c468ba4fa57ca0c27d4b170a811986a23bac99c26"
+    },
+    "README.md": {
+      "lf_sha256": "3a56312de08878b0af9d479169b6ffe29eeb112efac023b7a96895ea549db464"
+    },
+    "Readme.txt": {
+      "lf_sha256": "3a56312de08878b0af9d479169b6ffe29eeb112efac023b7a96895ea549db464"
+    },
+    "STATUS.md": {
+      "lf_sha256": "e5115013776590aa2c9ac2444567f8675f524d7f461fa5144d3595b4d6bc0f62"
+    },
+    "docs/REQUIREMENTS_MATRIX.md": {
+      "lf_sha256": "e5955dc6b7515be266110e9b88f8b3c0515dc5e63ba1e56eadc17c68b5ce86a5"
+    },
+    "backend/backup.py": {
+      "lf_sha256": "8a527b134286ab0cb4e497d2de180883c920d4bbbb149ce5c524c399f4734897"
+    },
+    "backend/tests/test_backup.py": {
+      "lf_sha256": "ca45d2f4b3c4943366ae4f4fc6803d5bc4cce19fed8c12af6bfe2af76613cf4c"
+    },
+    "backend/tests/test_release_preflight.py": {
+      "lf_sha256": "868275b041363629502ea3889b8268bf17132e205c478d728f672e72483fdcf4"
+    },
+    "scripts/build.ps1": {
+      "lf_sha256": "ac2eaeb6ac92bd34c94b4a4c745cd2dd4e1c8af6433d26767772e0f91ca0832c"
+    },
+    "scripts/release_preflight.py": {
+      "lf_sha256": "63b8183fc46ca7d9807a067b71337adc6dee78c66be6b32f81ed2259ee889416"
+    },
+    "scripts/qa_native.ps1": {
+      "lf_sha256": "a8b5ae0cc9b17cff4ef6926b045050c67f8e3af59932ea096957a7418d3014b8"
+    },
+    "scripts/qa_protected_notes.py": {
+      "lf_sha256": "32423284d9f3e5039009a8555bea6f0d8632ca57fe5d1b0655b8a9bc38407b98"
+    },
+    "android/app/build.gradle.kts": {
+      "lf_sha256": "6576a7d7e882f7b570018d44cb068a322dbf159aa4910fd5a616e7f3cdb3f734"
+    },
+    "integration_test/sharing_test.dart": {
+      "lf_sha256": "e5ada745e47e511764480bc038f971fdc5f47ff86c10bc5ed030cdadf96cd3df"
+    },
+    "integration_test/note_protection_test.dart": {
+      "lf_sha256": "9076c02b8b6e5c1618b4fb8da385282953a5afa4ebaebef7ae39901afbb8172c"
+    },
+    "integration_test/protected_editing_test.dart": {
+      "lf_sha256": "284b1c856d2f1b3986b7ce1baa283a77b961a1cd877e9bf306932613bc3ea663"
+    },
+    "test_driver/editor_input.dart": {
+      "lf_sha256": "960f7d63670b02ff46a108a4ab54b5644dd515410d49231c39cc40768700b365"
+    },
+    "lib/ui/document_workspace.dart": {
+      "lf_sha256": "a9064e4f93ef95cbf709f509a0c1dcda0b8980fe5914bde9abf69509cec3bd2d"
+    },
+    "lib/ui/editor.dart": {
+      "lf_sha256": "5c3e20c2ef9ca51e458b88aa8f7237f75b54f8bdc71a18e4a832075d18fe127c"
+    },
+    "lib/ui/note_protection.dart": {
+      "lf_sha256": "853b4fc9030048315d829ce8ad19891b3e8476282291d8626e760952c8abcfe2"
+    },
+    "lib/ui/note_inspector.dart": {
+      "lf_sha256": "879fc310e17db6db3cd61930580f3848737b468426dbe0462c938fbfb863943d"
+    },
+    "backend/app.py": {
+      "lf_sha256": "0c010b5c05c7160431f2196738007fe175fc300b982758a2e0c44581a433cb42"
+    },
+    "backend/attachments.py": {
+      "lf_sha256": "604d995f950acd3ed322aceff5b27e2e9d2b32615fa82486c02ded25ef0173c5"
+    },
+    "pubspec.yaml": {
+      "lf_sha256": "11529956ce8e3dd4bcde009f97c45de2a5a53bb65b955061fbcf23d08bbb1282"
+    },
+    "pubspec.lock": {
+      "lf_sha256": "11dd9d44d7af0eb38108a8b19e2cd6985ee6e0937a36a260257131fa48bc2221"
+    }
+  }
+}

@@ -1,5 +1,58 @@
 # NoteTogether - nền tảng triển khai local
 
+## Tiếp tục publication —14/10/2026
+
+PR9 được cập nhật từ branch `codex/bug-audit-fixes`, giữ merge history với master `eaf39b4`.
+Local acceptance13/10 sau integration: format/analyze/279Flutter/143backend PASS; source
+chức năng không đổi khi tiếp tục publication. Chỉ thêm thuộc tính bỏ kiểm tra padding cho
+ba thư mục CLI logs của master, không thay bytes evidence hoặc kiểm tra whitespace source.
+[Gate mới](evidence/2026-10-14-publish-resume/INDEX.md),
+[PR9](https://github.com/bahungTDTU/final-flutter/pull/9). CI và human approval phải ở head
+mới nhất; không merge PR/deploy/release. Các trạng thái trước bên dưới là snapshots.
+
+## PR9 cập nhật master —13/10/2026
+
+Branch `codex/bug-audit-fixes` tích hợp master `eaf39b4` sau PR8, giữ cả lịch sử Bahung/
+Nguyễn Bảo Long và các phần nghiệm thu/native/backup/release guards của master mới.
+Format/analyze/279 Flutter/143 backend PASS trên bản tích hợp; UI/library/ACL không đổi
+trong quá trình giải quyết xung đột tài liệu. [PR9](https://github.com/bahungTDTU/final-flutter/pull/9),
+[gate tích hợp](evidence/2026-10-13-master-integration/INDEX.md).
+Ba CI của head ban đầu f0267d1 đã PASS; CI phải chạy lại trên merge head mới, cùng human
+approval sau push cuối. Không merge PR/deploy/phát hành. Các trạng thái/ngày bên dưới
+giữ snapshot trước integration, gồm trạng thái PR8 trước khi được merge.
+
+## Publication UI và sửa lỗi —13/10/2026
+
+Người dùng ủy quyền xuất bản bản hiện tại trên `codex/bug-audit-fixes`, PR vào `master`.
+Mã đã nghiệm thu không đổi:279 Flutter/119 backend, format/analyze, Web/APK debug compile;
+browser/API có phạm vi riêng trong evidence audit và inspector. Branch base `46df286`.
+[Gate publication](evidence/2026-10-13-ui-publication/INDEX.md),
+[branch GitHub](https://github.com/bahungTDTU/final-flutter/tree/codex/bug-audit-fixes).
+CI mới nhất và human approval được kiểm ở PR thật; không tự merge hoặc đóng release gates.
+Các dòng “chưa commit/push” dưới đây thuộc snapshots nghiệm thu trước publication.
+
+## Ngăn công cụ ghi chú —13/10/2026
+
+UI theo skill ui-ux-pro-max người dùng chỉ định: các nhóm thông tin/AI/công cụ/bảo vệ
+thành thẻ riêng; nút cùng chiều rộng, chữ tự xuống dòng, primary edit/error delete và
+badge metadata có semantics đúng. Editor thường dùng chung components.
+PASS format/analyze,279 Flutter/119 backend; WebIAB PC-phone/hai theme, edit/pin/API,
+owner/viewer/private relock; Web và APK debug compile. Android runtime/IME/FPS chưa chạy.
+[Thiết kế và giới hạn](docs/UI_INSPECTOR_REFINEMENT.md),
+[ảnh và kết quả](evidence/2026-10-13-inspector-ui/INDEX.md).
+Source local `codex/bug-audit-fixes`, base `46df286`, chưa commit/push; các mục dưới là
+snapshots trước lượt UI này. Bản Web local7357 dùng backend8000.
+
+## Rà lỗi —12/10/2026
+
+Sửa 7 nhóm lỗi editor/find/outline/responsive, quyền thay thế động, purge input riêng tư
+và byte range gây 500. Format/analyze/275 Flutter/119 backend PASS; Chrome thật kiểm
+realtime/remote lock/DOM purge, PC-phone/hai theme và cache; Web/APK debug compile PASS.
+[Báo cáo và giới hạn](docs/BUG_AUDIT_2026-10-12.md),
+[bằng chứng](evidence/2026-10-12-bug-audit/INDEX.md).
+Source local `codex/bug-audit-fixes` từ master `46df286`, chưa commit/push.
+Native runtime/IME/FPS, provider, release và CI mới chưa chạy; bên dưới là snapshots lịch sử.
+
 ## Clone sạch và hai UI độc lập —12/10/2026
 
 Đúng947802a: setup/check PASS270Flutter/142backend, Web release local40resources và

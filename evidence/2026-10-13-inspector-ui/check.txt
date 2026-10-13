@@ -1,0 +1,13 @@
+Formatted 115 files (0 changed) in 1.07 seconds.
+Analyzing flutter cuoi ki...                                    
+
+   info - Statements in an if should be enclosed in a block. Try wrapping the statement in a block - test\inspector_ui_test.dart:68:13 - curly_braces_in_flow_control_structures
+
+1 issue found. (ran in 36.4s)
+Analyze failed with exit code 1
+At D:\flutter cuoi ki\scripts\toolchain.ps1:4 char:66
++ ... ITCODE -ne 0) { throw "$Step failed with exit code $LASTEXITCODE" } }
++                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (Analyze failed with exit code 1:String) [], RuntimeException
+    + FullyQualifiedErrorId : Analyze failed with exit code 1
+ 

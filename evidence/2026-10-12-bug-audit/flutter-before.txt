@@ -1,0 +1,185 @@
+00:00 +0: loading D:/flutter cuoi ki/test/bug_audit_regression_test.dart
+00:00 +0: Find previous starts at the last result and wraps both ways
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: TextSelection:<TextSelection(baseOffset: 23, extentOffset: 28, isDirectional: false)>
+  Actual: TextSelection:<TextSelection(baseOffset: 13, extentOffset: 18, isDirectional: false)>
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///D:/flutter%20cuoi%20ki/test/bug_audit_regression_test.dart:29:5)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1953:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///D:/flutter%20cuoi%20ki/test/bug_audit_regression_test.dart line 29
+The test description was:
+  Find previous starts at the last result and wraps both ways
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:00 +0 -1: Find previous starts at the last result and wraps both ways [E]
+  Test failed. See exception logs above.
+  The test description was: Find previous starts at the last result and wraps both ways
+  
+00:00 +0 -1: Open find follows remote text changes without stale selections
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: exactly one matching candidate
+  Actual: _TextWidgetFinder:<Found 0 widgets with text "1 kết quả": []>
+   Which: means none were found but one was expected
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///D:/flutter%20cuoi%20ki/test/bug_audit_regression_test.dart:58:5)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1953:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///D:/flutter%20cuoi%20ki/test/bug_audit_regression_test.dart line 58
+The test description was:
+  Open find follows remote text changes without stale selections
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:01 +0 -2: Open find follows remote text changes without stale selections [E]
+  Test failed. See exception logs above.
+  The test description was: Open find follows remote text changes without stale selections
+  
+00:01 +0 -2: Desktop zoom with both drawers never overflows or rewrites a note
+══╡ EXCEPTION CAUGHT BY FLUTTER FRAMEWORK ╞═════════════════════════════════════════════════════════
+The following assertion was thrown:
+ListTile background color or ink splashes may be invisible.
+The ListTile is wrapped in a DecoratedBox that has a background color. Because ListTile paints its
+background and ink splashes on the nearest Material ancestor, this DecoratedBox will hide those
+effects.
+To fix this, wrap the ListTile in its own Material widget, or remove the background color from the
+intermediate DecoratedBox.
+
+ListTile:
+  ListTile(dense: true, contentPadding: EdgeInsets(12.0, 0.0, 12.0, 0.0), onTap: Closure: () => void)
+DecoratedBox:
+  DecoratedBox(bg: BoxDecoration(color: Color(alpha: 1.0000, red: 0.9333, green: 0.9176, blue: 0.8745, colorSpace: ColorSpace.sRGB), border: Border(right: BorderSide(color: Color(alpha: 1.0000, red: 0.8235, green: 0.8235, blue: 0.7686, colorSpace: ColorSpace.sRGB)))))
+════════════════════════════════════════════════════════════════════════════════════════════════════
+══╡ EXCEPTION CAUGHT BY RENDERING LIBRARY ╞═════════════════════════════════════════════════════════
+The following assertion was thrown during layout:
+A RenderFlex overflowed by 129 pixels on the right.
+
+The relevant error-causing widget was:
+  Row Row:file:///D:/flutter%20cuoi%20ki/lib/ui/document_workspace.dart:86:13
+
+The overflowing RenderFlex has an orientation of Axis.horizontal.
+The edge of the RenderFlex that is overflowing has been marked in the rendering with a yellow and
+black striped pattern. This is usually caused by the contents being too big for the RenderFlex.
+Consider applying a flex factor (e.g. using an Expanded widget) to force the children of the
+RenderFlex to fit within the available space instead of being sized to their natural size.
+This is considered an error condition because it indicates that there is content that cannot be
+seen. If the content is legitimately bigger than the available space, consider clipping it with a
+ClipRect widget before putting it in the flex, or using a scrollable container rather than a Flex,
+like a ListView.
+The specific RenderFlex in question is: RenderFlex#1f157 relayoutBoundary=up9 OVERFLOWING:
+  creator: Row ← Column ← Padding ← DecoratedBox ← ConstrainedBox ← Container-[GlobalKey#1fa81] ←
+    MediaQuery ← Column ← ConstrainedBox ← Align ← Padding ← _SingleChildViewport ← ⋯
+  parentData: offset=Offset(0.0, 0.0); flex=null; fit=null (can use size)
+  constraints: BoxConstraints(w=374.0, 0.0<=h<=Infinity)
+  size: Size(374.0, 27.0)
+  direction: horizontal
+  mainAxisAlignment: start
+  mainAxisSize: max
+  crossAxisAlignment: center
+  textDirection: ltr
+  verticalDirection: down
+  spacing: 0.0
+◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤
+════════════════════════════════════════════════════════════════════════════════════════════════════
+══╡ EXCEPTION CAUGHT BY FLUTTER FRAMEWORK ╞═════════════════════════════════════════════════════════
+The following assertion was thrown:
+ListTile background color or ink splashes may be invisible.
+The ListTile is wrapped in a DecoratedBox that has a background color. Because ListTile paints its
+background and ink splashes on the nearest Material ancestor, this DecoratedBox will hide those
+effects.
+To fix this, wrap the ListTile in its own Material widget, or remove the background color from the
+intermediate DecoratedBox.
+
+ListTile:
+  ListTile(dense: true, contentPadding: EdgeInsets(12.0, 0.0, 12.0, 0.0), onTap: Closure: () => void)
+DecoratedBox:
+  DecoratedBox(bg: BoxDecoration(color: Color(alpha: 1.0000, red: 0.9333, green: 0.9176, blue: 0.8745, colorSpace: ColorSpace.sRGB), border: Border(right: BorderSide(color: Color(alpha: 1.0000, red: 0.8235, green: 0.8235, blue: 0.7686, colorSpace: ColorSpace.sRGB)))))
+════════════════════════════════════════════════════════════════════════════════════════════════════
+══╡ EXCEPTION CAUGHT BY FLUTTER FRAMEWORK ╞═════════════════════════════════════════════════════════
+The following assertion was thrown:
+ListTile background color or ink splashes may be invisible.
+The ListTile is wrapped in a DecoratedBox that has a background color. Because ListTile paints its
+background and ink splashes on the nearest Material ancestor, this DecoratedBox will hide those
+effects.
+To fix this, wrap the ListTile in its own Material widget, or remove the background color from the
+intermediate DecoratedBox.
+
+ListTile:
+  ListTile(dense: true, contentPadding: EdgeInsets(12.0, 0.0, 12.0, 0.0), onTap: Closure: () => void)
+DecoratedBox:
+  DecoratedBox(bg: BoxDecoration(color: Color(alpha: 1.0000, red: 0.9333, green: 0.9176, blue: 0.8745, colorSpace: ColorSpace.sRGB), border: Border(right: BorderSide(color: Color(alpha: 1.0000, red: 0.8235, green: 0.8235, blue: 0.7686, colorSpace: ColorSpace.sRGB)))))
+════════════════════════════════════════════════════════════════════════════════════════════════════
+══╡ EXCEPTION CAUGHT BY FLUTTER FRAMEWORK ╞═════════════════════════════════════════════════════════
+The following assertion was thrown:
+ListTile background color or ink splashes may be invisible.
+The ListTile is wrapped in a DecoratedBox that has a background color. Because ListTile paints its
+background and ink splashes on the nearest Material ancestor, this DecoratedBox will hide those
+effects.
+To fix this, wrap the ListTile in its own Material widget, or remove the background color from the
+intermediate DecoratedBox.
+
+ListTile:
+  ListTile(dense: true, contentPadding: EdgeInsets(12.0, 0.0, 12.0, 0.0), onTap: Closure: () => void)
+DecoratedBox:
+  DecoratedBox(bg: BoxDecoration(color: Color(alpha: 1.0000, red: 0.9333, green: 0.9176, blue: 0.8745, colorSpace: ColorSpace.sRGB), border: Border(right: BorderSide(color: Color(alpha: 1.0000, red: 0.8235, green: 0.8235, blue: 0.7686, colorSpace: ColorSpace.sRGB)))))
+════════════════════════════════════════════════════════════════════════════════════════════════════
+══╡ EXCEPTION CAUGHT BY FLUTTER FRAMEWORK ╞═════════════════════════════════════════════════════════
+The following assertion was thrown:
+ListTile background color or ink splashes may be invisible.
+The ListTile is wrapped in a DecoratedBox that has a background color. Because ListTile paints its
+background and ink splashes on the nearest Material ancestor, this DecoratedBox will hide those
+effects.
+To fix this, wrap the ListTile in its own Material widget, or remove the background color from the
+intermediate DecoratedBox.
+
+ListTile:
+  ListTile(dense: true, contentPadding: EdgeInsets(12.0, 0.0, 12.0, 0.0), onTap: Closure: () => void)
+DecoratedBox:
+  DecoratedBox(bg: BoxDecoration(color: Color(alpha: 1.0000, red: 0.9333, green: 0.9176, blue: 0.8745, colorSpace: ColorSpace.sRGB), border: Border(right: BorderSide(color: Color(alpha: 1.0000, red: 0.8235, green: 0.8235, blue: 0.7686, colorSpace: ColorSpace.sRGB)))))
+════════════════════════════════════════════════════════════════════════════════════════════════════
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: null
+  Actual: 'Multiple exceptions (6) were detected during the running of the current test, and at
+least one was unexpected.'
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///D:/flutter%20cuoi%20ki/test/bug_audit_regression_test.dart:100:5)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1953:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///D:/flutter%20cuoi%20ki/test/bug_audit_regression_test.dart line 100
+The test description was:
+  Desktop zoom with both drawers never overflows or rewrites a note
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:02 +0 -3: Desktop zoom with both drawers never overflows or rewrites a note [E]
+  Test failed. See exception logs above.
+  The test description was: Desktop zoom with both drawers never overflows or rewrites a note
+  
+00:02 +0 -3: Some tests failed.
+
+Failing tests:
+  D:/flutter cuoi ki/test/bug_audit_regression_test.dart: Desktop zoom with both drawers never overflows or rewrites a note
+  D:/flutter cuoi ki/test/bug_audit_regression_test.dart: Find previous starts at the last result and wraps both ways
+  D:/flutter cuoi ki/test/bug_audit_regression_test.dart: Open find follows remote text changes without stale selections

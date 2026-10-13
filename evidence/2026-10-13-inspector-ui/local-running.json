@@ -1,0 +1,9 @@
+{
+  "capturedAt": "2026-10-13T11:09:54.892850+07:00",
+  "result": "PASS",
+  "backendHealth": 200,
+  "web": "http://127.0.0.1:7357",
+  "servedAssetsMatchBuild": true,
+  "cacheName": "notetogether-static-d2a719ad99ee8e72",
+  "containsUserData": false
+}

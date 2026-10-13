@@ -1,0 +1,21 @@
+{
+  "retainedPorts": [
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 8000,
+      "OwningProcess": 3492
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 7357,
+      "OwningProcess": 30508
+    }
+  ],
+  "date": "2026-10-13",
+  "qaStopped": [
+    22252,
+    18280,
+    25216,
+    28784
+  ]
+}

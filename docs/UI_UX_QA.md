@@ -1,4 +1,28 @@
-# UI/UX QA – cập nhật 12/10/2026
+# UI/UX QA – cập nhật 13/10/2026
+
+## Inspector — nghiệm thu hiện hành13/10/2026
+
+PASS115files0changes/analyze/279 Flutter;119 backend từ full check trước badge cuối,
+source backend không đổi. Widget228dp/chữ200% hai theme, badge180dp; protected route
+giữ rich controller/selection khi đổi1536/375/844/theme/textscale, relock purge ngay.
+Actual WebIAB1280×1000 sáng/tối,375×812/844×390 tối; nút edit/pin+API xác nhận, dialog
+attachment/share, readonly viewer và khóa lại. Ảnh chỉ chứa dữ liệu thử nghiệm.
+Web QA build riêng/API8058; bản chạy máy build/web/API8000. Web/APK debug compile PASS.
+Native runtime/IME/FPS/real screen reader/provider/CI/release NOT RUN.
+[Báo cáo](UI_INSPECTOR_REFINEMENT.md),
+[INDEX](../evidence/2026-10-13-inspector-ui/INDEX.md). Các mục dưới giữ evidence lịch sử.
+
+## Rà lỗi hiện hành —12/10/2026
+
+Find chọn ngược/cập nhật text từ xa, quyền dialog thay thế động, outline Material và
+caption zoom/chữ lớn được sửa với regression trước FAIL/sau PASS. Purge input khi nguồn
+bị che còn tạo lại subtree để loại giá trị DOM accessibility cũ dù canvas đã trống.
+Chrome source cuối PC 1000×850/zoom 140%/hai drawer, phone 390×844, hai theme, remote update/
+remote lock/inputValue purge PASS; widget thêm chữ150%, role-only downgrade và giữ draft.
+275 Flutter/analyzer/format PASS,119 backend trên cùng source backend cuối.
+[Báo cáo](BUG_AUDIT_2026-10-12.md), [ảnh/logs](../evidence/2026-10-12-bug-audit/INDEX.md).
+Android debug compile PASS; native runtime/IME/FPS/screen reader/provider/release/CI mới
+NOT RUN. Branch local `codex/bug-audit-fixes`, chưa commit/push; phần dưới là lịch sử.
 
 ## Publication UI / Deskbook —12/10/2026
 

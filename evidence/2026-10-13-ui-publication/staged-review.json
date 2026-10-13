@@ -1,0 +1,530 @@
+{
+  "capturedAt": "2026-10-13T11:26:01.573986+07:00",
+  "stagedFilesBeforeGateCompletion": 129,
+  "stagedBytes": 1710358,
+  "largestFileBytes": 102146,
+  "privateFiles": [],
+  "secretPatternMatches": [],
+  "secretScanScope": "high-confidence credential formats, no values recorded; not a universal security audit",
+  "acceptedCodeFiles": 11,
+  "stagedAcceptedCodeMatch": true,
+  "historicalEvidenceBlobMatch": true,
+  "files": [
+    {
+      "path": ".gitattributes",
+      "bytes": 4600
+    },
+    {
+      "path": "README.md",
+      "bytes": 47499
+    },
+    {
+      "path": "Readme.txt",
+      "bytes": 47499
+    },
+    {
+      "path": "STATUS.md",
+      "bytes": 67245
+    },
+    {
+      "path": "backend/attachments.py",
+      "bytes": 10309
+    },
+    {
+      "path": "backend/tests/test_attachment_ranges.py",
+      "bytes": 1457
+    },
+    {
+      "path": "design-system/notetogether-deskbook/pages/note-inspector.md",
+      "bytes": 1673
+    },
+    {
+      "path": "docs/BUG_AUDIT_2026-10-12.md",
+      "bytes": 4604
+    },
+    {
+      "path": "docs/REQUIREMENTS_MATRIX.md",
+      "bytes": 37234
+    },
+    {
+      "path": "docs/UI_INSPECTOR_REFINEMENT.md",
+      "bytes": 4236
+    },
+    {
+      "path": "docs/UI_UX_DESIGN.md",
+      "bytes": 22957
+    },
+    {
+      "path": "docs/UI_UX_QA.md",
+      "bytes": 39014
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/GALLERY.md",
+      "bytes": 924
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/INDEX.md",
+      "bytes": 2147
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/SHA256SUMS.json",
+      "bytes": 6351
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/analyze-accepted.txt",
+      "bytes": 98
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/api-roles-ranges-accepted.json",
+      "bytes": 102
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/api-roles-ranges-final.json",
+      "bytes": 102
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/api-roles-ranges.json",
+      "bytes": 102
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/api-seed.json",
+      "bytes": 301
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/artifacts.json",
+      "bytes": 785
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/backend-before.txt",
+      "bytes": 7085
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/backend-error.txt",
+      "bytes": 202
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/backend-targeted.txt",
+      "bytes": 571
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/browser-before-find-final.txt",
+      "bytes": 3955
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/browser-cache-final.txt",
+      "bytes": 1392
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/browser-cache.js",
+      "bytes": 1013
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/browser-cli-invocation-error.txt",
+      "bytes": 46
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/browser-editor-final-snapshot.txt",
+      "bytes": 3676
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/browser-editor-snapshot.txt",
+      "bytes": 3955
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/browser-find-accepted.txt",
+      "bytes": 2854
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/browser-find-final.txt",
+      "bytes": 2854
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/browser-find.js",
+      "bytes": 2602
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/browser-find.txt",
+      "bytes": 2681
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/browser-hide-accepted.txt",
+      "bytes": 42
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/browser-hide-final.txt",
+      "bytes": 2655
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/browser-hide.js",
+      "bytes": 2332
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/browser-hover-harness-error.txt",
+      "bytes": 174
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/browser-layout-accepted.txt",
+      "bytes": 2805
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/browser-layout-final.txt",
+      "bytes": 2805
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/browser-layout.js",
+      "bytes": 2543
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/browser-layout.txt",
+      "bytes": 2565
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/browser-login.js",
+      "bytes": 362
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/browser-phone-harness-error.txt",
+      "bytes": 159
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/browser-private-dom-before.txt",
+      "bytes": 42
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/build-apk-debug.txt",
+      "bytes": 446
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/build-web-accepted-final.txt",
+      "bytes": 1047
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/build-web-accepted.txt",
+      "bytes": 1047
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/build-web-default.txt",
+      "bytes": 1047
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/build-web-qa-final.txt",
+      "bytes": 1047
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/build-web-qa.txt",
+      "bytes": 1047
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/check-accepted.txt",
+      "bytes": 39421
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/check-final.txt",
+      "bytes": 38744
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/check.txt",
+      "bytes": 747
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/flutter-accepted.txt",
+      "bytes": 38321
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/flutter-before.txt",
+      "bytes": 15130
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/flutter-private-before.txt",
+      "bytes": 1914
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/flutter-role-before.txt",
+      "bytes": 1905
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/flutter-role-harness-before.txt",
+      "bytes": 6521
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/flutter-targeted-final.txt",
+      "bytes": 2649
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/flutter-targeted.txt",
+      "bytes": 4338
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/format-accepted.txt",
+      "bytes": 50
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/historical-integrity.json",
+      "bytes": 245
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/qa-artifacts.json",
+      "bytes": 1153
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/qa_api.py",
+      "bytes": 4395
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/qa_seed.py",
+      "bytes": 3494
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/qa_server.py",
+      "bytes": 1113
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/record_manifest.py",
+      "bytes": 4480
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/screenshots/bug-audit-desktop-dark.png",
+      "bytes": 101950
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/screenshots/bug-audit-desktop-light.png",
+      "bytes": 102146
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/screenshots/bug-audit-find-hidden.png",
+      "bytes": 30994
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/screenshots/bug-audit-find-remote.png",
+      "bytes": 90500
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/screenshots/bug-audit-find-three.png",
+      "bytes": 86230
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/screenshots/bug-audit-phone-dark.png",
+      "bytes": 46027
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/screenshots/bug-audit-phone-light.png",
+      "bytes": 46965
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/screenshots/private-dom-before.png",
+      "bytes": 31081
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/service-cleanup.json",
+      "bytes": 116
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/source_manifest.json",
+      "bytes": 2986
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/verify-result.txt",
+      "bytes": 229
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/verify_manifest.py",
+      "bytes": 1445
+    },
+    {
+      "path": "evidence/2026-10-12-bug-audit/web-error.txt",
+      "bytes": 11226
+    },
+    {
+      "path": "evidence/2026-10-13-inspector-ui/GALLERY.md",
+      "bytes": 868
+    },
+    {
+      "path": "evidence/2026-10-13-inspector-ui/INDEX.md",
+      "bytes": 2752
+    },
+    {
+      "path": "evidence/2026-10-13-inspector-ui/SHA256SUMS.json",
+      "bytes": 3649
+    },
+    {
+      "path": "evidence/2026-10-13-inspector-ui/analyze-accepted.txt",
+      "bytes": 98
+    },
+    {
+      "path": "evidence/2026-10-13-inspector-ui/api-autosave.json",
+      "bytes": 63
+    },
+    {
+      "path": "evidence/2026-10-13-inspector-ui/api-fixtures.json",
+      "bytes": 301
+    },
+    {
+      "path": "evidence/2026-10-13-inspector-ui/api-shares.json",
+      "bytes": 62
+    },
+    {
+      "path": "evidence/2026-10-13-inspector-ui/artifacts.json",
+      "bytes": 1324
+    },
+    {
+      "path": "evidence/2026-10-13-inspector-ui/browser-results.json",
+      "bytes": 1022
+    },
+    {
+      "path": "evidence/2026-10-13-inspector-ui/build-apk-debug.txt",
+      "bytes": 446
+    },
+    {
+      "path": "evidence/2026-10-13-inspector-ui/build-web-qa-final.txt",
+      "bytes": 1066
+    },
+    {
+      "path": "evidence/2026-10-13-inspector-ui/build-web-qa.txt",
+      "bytes": 1066
+    },
+    {
+      "path": "evidence/2026-10-13-inspector-ui/build-web-user-accepted.txt",
+      "bytes": 1047
+    },
+    {
+      "path": "evidence/2026-10-13-inspector-ui/build-web-user.txt",
+      "bytes": 0
+    },
+    {
+      "path": "evidence/2026-10-13-inspector-ui/capture_manifest.py",
+      "bytes": 5622
+    },
+    {
+      "path": "evidence/2026-10-13-inspector-ui/check-accepted.txt",
+      "bytes": 40195
+    },
+    {
+      "path": "evidence/2026-10-13-inspector-ui/check.txt",
+      "bytes": 744
+    },
+    {
+      "path": "evidence/2026-10-13-inspector-ui/flutter-accepted.txt",
+      "bytes": 39190
+    },
+    {
+      "path": "evidence/2026-10-13-inspector-ui/format-accepted.txt",
+      "bytes": 50
+    },
+    {
+      "path": "evidence/2026-10-13-inspector-ui/historical-integrity.json",
+      "bytes": 620
+    },
+    {
+      "path": "evidence/2026-10-13-inspector-ui/inspector-accepted.txt",
+      "bytes": 2432
+    },
+    {
+      "path": "evidence/2026-10-13-inspector-ui/inspector-tests.txt",
+      "bytes": 374
+    },
+    {
+      "path": "evidence/2026-10-13-inspector-ui/local-running.json",
+      "bytes": 260
+    },
+    {
+      "path": "evidence/2026-10-13-inspector-ui/locked-ax.txt",
+      "bytes": 885
+    },
+    {
+      "path": "evidence/2026-10-13-inspector-ui/qa_preferences.py",
+      "bytes": 1987
+    },
+    {
+      "path": "evidence/2026-10-13-inspector-ui/qa_seed.py",
+      "bytes": 3494
+    },
+    {
+      "path": "evidence/2026-10-13-inspector-ui/qa_server.py",
+      "bytes": 1113
+    },
+    {
+      "path": "evidence/2026-10-13-inspector-ui/screenshots/locked-landscape.jpg",
+      "bytes": 21096
+    },
+    {
+      "path": "evidence/2026-10-13-inspector-ui/screenshots/owner-desktop-dark-management.jpg",
+      "bytes": 80959
+    },
+    {
+      "path": "evidence/2026-10-13-inspector-ui/screenshots/owner-desktop-dark.jpg",
+      "bytes": 79029
+    },
+    {
+      "path": "evidence/2026-10-13-inspector-ui/screenshots/owner-desktop-light.jpg",
+      "bytes": 72151
+    },
+    {
+      "path": "evidence/2026-10-13-inspector-ui/screenshots/owner-landscape.jpg",
+      "bytes": 22714
+    },
+    {
+      "path": "evidence/2026-10-13-inspector-ui/screenshots/owner-phone-document.jpg",
+      "bytes": 30990
+    },
+    {
+      "path": "evidence/2026-10-13-inspector-ui/screenshots/owner-phone-tools.jpg",
+      "bytes": 31156
+    },
+    {
+      "path": "evidence/2026-10-13-inspector-ui/screenshots/viewer-desktop-light.jpg",
+      "bytes": 70598
+    },
+    {
+      "path": "evidence/2026-10-13-inspector-ui/service-cleanup.json",
+      "bytes": 341
+    },
+    {
+      "path": "evidence/2026-10-13-inspector-ui/source_manifest.json",
+      "bytes": 4763
+    },
+    {
+      "path": "evidence/2026-10-13-inspector-ui/theme-dark.json",
+      "bytes": 61
+    },
+    {
+      "path": "evidence/2026-10-13-inspector-ui/viewer-ax.txt",
+      "bytes": 257
+    },
+    {
+      "path": "evidence/2026-10-13-ui-publication/INDEX.md",
+      "bytes": 2508
+    },
+    {
+      "path": "evidence/2026-10-13-ui-publication/gate.json",
+      "bytes": 911
+    },
+    {
+      "path": "lib/ui/document_workspace.dart",
+      "bytes": 27567
+    },
+    {
+      "path": "lib/ui/editor.dart",
+      "bytes": 27062
+    },
+    {
+      "path": "lib/ui/note_inspector.dart",
+      "bytes": 5130
+    },
+    {
+      "path": "lib/ui/note_protection.dart",
+      "bytes": 34455
+    },
+    {
+      "path": "scripts/prepare_web_offline.py",
+      "bytes": 1452
+    },
+    {
+      "path": "test/bug_audit_regression_test.dart",
+      "bytes": 7992
+    },
+    {
+      "path": "test/inspector_ui_test.dart",
+      "bytes": 7631
+    }
+  ]
+}

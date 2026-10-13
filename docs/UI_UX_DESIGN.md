@@ -1,4 +1,14 @@
-# NoteTogether – UI/UX design, cập nhật 12/10/2026
+# NoteTogether – UI/UX design, cập nhật 13/10/2026
+
+## Inspector — bố cục hiện hành13/10/2026
+
+Kế thừa Deskbook/Atelier. Thông tin, AI, công cụ, bảo vệ là các thẻ có header nhỏ,
+outline/surface từ theme. Button full-width/icon cùng cột/label trái tự wrap, min48dp,
+gap8dp; edit primary, delete error. Metadata badge văn bản, nhãn chọn vẫn FilterChip.
+Không thêm exit transition giữ private children; giữ editor/caret/revision/scroll.
+[UI_INSPECTOR_REFINEMENT](UI_INSPECTOR_REFINEMENT.md),
+[spec](../design-system/notetogether-deskbook/pages/note-inspector.md).
+Các mục theo ngày bên dưới là snapshots trước cập nhật inspector này.
 
 ## Deskbook — bố cục hiện hành12/10/2026
 

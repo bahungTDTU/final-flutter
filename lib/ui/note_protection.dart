@@ -6,6 +6,7 @@ import 'ai.dart';
 import 'editor.dart';
 import 'rich_note_field.dart';
 import 'document_workspace.dart';
+import 'note_inspector.dart';
 
 import '../state/app_controller.dart';
 import '../state/protected_reader.dart';
@@ -579,35 +580,30 @@ class _ProtectedNoteScreenState extends State<ProtectedNoteScreen>
                       ),
                   ],
                 ),
-                organisation: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                organisation: InspectorSection(
+                  title: 'Thông tin ghi chú',
+                  icon: Icons.info_outline,
                   children: [
-                    const SectionHeading(
-                      'Thông tin ghi chú',
-                      icon: Icons.info_outline,
-                    ),
                     Wrap(
                       spacing: 12,
                       runSpacing: 8,
                       children: [
                         if (note.pinnedAt != null)
-                          const Chip(
-                            label: Text('Đã ghim'),
-                            avatar: Icon(Icons.push_pin_outlined),
+                          const InspectorBadge(
+                            'Đã ghim',
+                            icon: Icons.push_pin_outlined,
                           ),
                         if (note.sharedCount > 0 || note.role != 'owner')
-                          const Chip(
-                            label: Text('Đã chia sẻ'),
-                            avatar: Icon(Icons.people_outline),
+                          const InspectorBadge(
+                            'Đã chia sẻ',
+                            icon: Icons.people_outline,
                           ),
-                        Chip(
-                          label: Text(
-                            note.role == 'viewer'
-                                ? 'Chỉ xem'
-                                : note.role == 'editor'
-                                ? 'Có thể chỉnh sửa'
-                                : 'Chủ sở hữu',
-                          ),
+                        InspectorBadge(
+                          note.role == 'viewer'
+                              ? 'Chỉ xem'
+                              : note.role == 'editor'
+                              ? 'Có thể chỉnh sửa'
+                              : 'Chủ sở hữu',
                         ),
                       ],
                     ),
@@ -615,38 +611,36 @@ class _ProtectedNoteScreenState extends State<ProtectedNoteScreen>
                       Text(
                         'Từ ${note.sharedByName ?? note.sharedByEmail ?? 'Chủ sở hữu'} · ${note.sharedAt ?? ''}',
                       ),
-                    if (!widget.recoveryMode && note.role == 'owner')
+                    if (!widget.recoveryMode && note.role == 'owner') ...[
+                      const SizedBox(height: 4),
+                      Text(
+                        'Ghim & nhãn',
+                        style: Theme.of(context).textTheme.labelLarge,
+                      ),
+                      InspectorAction(
+                        icon: Icons.push_pin_outlined,
+                        label: reader.effectivePin == null
+                            ? 'Ghim ghi chú'
+                            : 'Đã ghim',
+                        onPressed: reader.requiresReopen || reader.saving
+                            ? null
+                            : () async {
+                                final pin = reader.effectivePin;
+                                await reader.edit(
+                                  title.text,
+                                  content.text,
+                                  updatePin: true,
+                                  pinnedAt: pin == null
+                                      ? DateTime.now().toUtc().toIso8601String()
+                                      : null,
+                                );
+                                await reader.flush();
+                              },
+                      ),
                       Wrap(
                         spacing: 8,
                         runSpacing: 8,
                         children: [
-                          ActionChip(
-                            avatar: const Icon(
-                              Icons.push_pin_outlined,
-                              size: 18,
-                            ),
-                            label: Text(
-                              reader.effectivePin == null
-                                  ? 'Ghim ghi chú'
-                                  : 'Đã ghim',
-                            ),
-                            onPressed: reader.requiresReopen || reader.saving
-                                ? null
-                                : () async {
-                                    final pin = reader.effectivePin;
-                                    await reader.edit(
-                                      title.text,
-                                      content.text,
-                                      updatePin: true,
-                                      pinnedAt: pin == null
-                                          ? DateTime.now()
-                                                .toUtc()
-                                                .toIso8601String()
-                                          : null,
-                                    );
-                                    await reader.flush();
-                                  },
-                          ),
                           ...c.labels.map(
                             (label) => FilterChip(
                               label: Text(c.labelName(label, note)),
@@ -676,53 +670,46 @@ class _ProtectedNoteScreenState extends State<ProtectedNoteScreen>
                           ),
                         ],
                       ),
+                    ],
                     if (note.role != 'owner')
                       Wrap(
                         spacing: 8,
                         children: note.labels
                             .map(
                               (label) =>
-                                  Chip(label: Text(c.labelName(label, note))),
+                                  InspectorBadge(c.labelName(label, note)),
                             )
                             .toList(),
                       ),
                     if (reader.canEdit)
-                      Wrap(
-                        spacing: 12,
-                        runSpacing: 8,
-                        children: [
-                          OutlinedButton.icon(
-                            onPressed: reader.saving
-                                ? null
-                                : () {
-                                    reader.beginFreshEdit();
-                                    setState(() => editing = true);
-                                  },
-                            icon: const Icon(Icons.edit_outlined),
-                            label: Text(
-                              reader.requiresReopen
-                                  ? 'Chỉnh sửa phiên bản mới'
-                                  : 'Chỉnh sửa',
-                            ),
-                          ),
-                          if (reader.dirty)
-                            TextButton(
-                              onPressed: reader.localWriteFailed
-                                  ? () async {
-                                      try {
-                                        await reader.persist();
-                                      } catch (_) {}
-                                    }
-                                  : reader.serverGate
-                                  ? reader.flush
-                                  : null,
-                              child: Text(
-                                reader.localWriteFailed
-                                    ? 'Thử ghi bản nháp lại'
-                                    : 'Đồng bộ bản nháp',
-                              ),
-                            ),
-                        ],
+                      InspectorAction(
+                        primary: true,
+                        onPressed: reader.saving
+                            ? null
+                            : () {
+                                reader.beginFreshEdit();
+                                setState(() => editing = true);
+                              },
+                        icon: Icons.edit_outlined,
+                        label: reader.requiresReopen
+                            ? 'Chỉnh sửa phiên bản mới'
+                            : 'Chỉnh sửa',
+                      ),
+                    if (reader.canEdit && reader.dirty)
+                      InspectorAction(
+                        icon: Icons.cloud_upload_outlined,
+                        onPressed: reader.localWriteFailed
+                            ? () async {
+                                try {
+                                  await reader.persist();
+                                } catch (_) {}
+                              }
+                            : reader.serverGate
+                            ? reader.flush
+                            : null,
+                        label: reader.localWriteFailed
+                            ? 'Thử ghi bản nháp lại'
+                            : 'Đồng bộ bản nháp',
                       ),
                   ],
                 ),
@@ -731,51 +718,53 @@ class _ProtectedNoteScreenState extends State<ProtectedNoteScreen>
                   children: [
                     if (reader.dirty &&
                         (reader.conflicted || widget.recoveryMode)) ...[
-                      const SizedBox(height: 16),
-                      TextButton(
-                        onPressed: copy,
-                        child: const Text('Giữ bản nháp thành ghi chú riêng'),
-                      ),
-                      if (reader.serverGate)
-                        TextButton(
-                          onPressed: () async {
-                            final confirm = await showDialog<bool>(
-                              context: context,
-                              builder: (_) => AlertDialog(
-                                title: const Text(
-                                  'Bỏ bản nháp và dùng bản máy chủ?',
-                                ),
-                                actions: [
-                                  TextButton(
-                                    onPressed: () =>
-                                        Navigator.pop(context, false),
-                                    child: const Text('Hủy'),
-                                  ),
-                                  FilledButton(
-                                    onPressed: () =>
-                                        Navigator.pop(context, true),
-                                    child: const Text('Dùng bản máy chủ'),
-                                  ),
-                                ],
-                              ),
-                            );
-                            if (confirm == true) await reader.useRemote();
-                          },
-                          child: const Text('Dùng bản máy chủ'),
-                        ),
-                    ],
-                    const SizedBox(height: 24),
-                    if (!widget.recoveryMode || reader.serverGate)
-                      const SectionHeading(
-                        'Công cụ ghi chú',
-                        icon: Icons.tune_outlined,
-                      ),
-                    if (!widget.recoveryMode)
-                      Wrap(
-                        spacing: 12,
-                        runSpacing: 8,
+                      InspectorSection(
+                        title: 'Bản nháp cần xử lý',
+                        icon: Icons.restore_outlined,
                         children: [
-                          OutlinedButton.icon(
+                          InspectorAction(
+                            onPressed: copy,
+                            icon: Icons.copy_outlined,
+                            label: 'Giữ bản nháp thành ghi chú riêng',
+                          ),
+                          if (reader.serverGate)
+                            InspectorAction(
+                              icon: Icons.cloud_download_outlined,
+                              onPressed: () async {
+                                final confirm = await showDialog<bool>(
+                                  context: context,
+                                  builder: (_) => AlertDialog(
+                                    title: const Text(
+                                      'Bỏ bản nháp và dùng bản máy chủ?',
+                                    ),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () =>
+                                            Navigator.pop(context, false),
+                                        child: const Text('Hủy'),
+                                      ),
+                                      FilledButton(
+                                        onPressed: () =>
+                                            Navigator.pop(context, true),
+                                        child: const Text('Dùng bản máy chủ'),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                                if (confirm == true) await reader.useRemote();
+                              },
+                              label: 'Dùng bản máy chủ',
+                            ),
+                        ],
+                      ),
+                      const SizedBox(height: 16),
+                    ],
+                    if (!widget.recoveryMode) ...[
+                      InspectorSection(
+                        title: 'Trợ lý AI',
+                        icon: Icons.auto_awesome_outlined,
+                        children: [
+                          InspectorAction(
                             onPressed: reader.canUseAi
                                 ? () => showDialog<void>(
                                     context: context,
@@ -787,10 +776,10 @@ class _ProtectedNoteScreenState extends State<ProtectedNoteScreen>
                                     ),
                                   )
                                 : null,
-                            icon: const Icon(Icons.auto_awesome_outlined),
-                            label: const Text('Tóm tắt AI'),
+                            icon: Icons.auto_awesome_outlined,
+                            label: 'Tóm tắt AI',
                           ),
-                          OutlinedButton.icon(
+                          InspectorAction(
                             onPressed: reader.canUseAi
                                 ? () => Navigator.of(context).push(
                                     MaterialPageRoute<void>(
@@ -802,79 +791,87 @@ class _ProtectedNoteScreenState extends State<ProtectedNoteScreen>
                                     ),
                                   )
                                 : null,
-                            icon: const Icon(Icons.question_answer_outlined),
-                            label: const Text('Hỏi AI'),
+                            icon: Icons.question_answer_outlined,
+                            label: 'Hỏi AI',
                           ),
                         ],
                       ),
+                      const SizedBox(height: 16),
+                    ],
                     if (reader.serverGate) ...[
-                      TextButton.icon(
-                        onPressed: () => showDialog<void>(
-                          context: context,
-                          builder: (_) => AttachmentsDialog(
-                            controller: c,
-                            noteId: widget.id,
-                            canEdit: reader.canEdit,
-                            onPickingChanged: reader.setPicking,
-                            protectedGate: () => reader.serverGate,
-                            gateChanges: reader,
-                          ),
-                        ),
-                        icon: const Icon(Icons.attach_file),
-                        label: Text(
-                          reader.canEdit ? 'Quản lý đính kèm' : 'Xem đính kèm',
-                        ),
-                      ),
-                      TextButton.icon(
-                        onPressed: reader.busy ? null : reader.refresh,
-                        icon: const Icon(Icons.refresh),
-                        label: const Text('Kiểm tra quyền và cập nhật'),
-                      ),
-                      if (note.role == 'owner')
-                        TextButton.icon(
-                          onPressed: () => showDialog<void>(
-                            context: context,
-                            builder: (_) => ShareDialog(
-                              controller: c,
-                              noteId: widget.id,
-                              protectedGate: () =>
-                                  reader.serverGate &&
-                                  reader.note?.role == 'owner',
-                              gateChanges: reader,
+                      InspectorSection(
+                        title: 'Công cụ ghi chú',
+                        icon: Icons.tune_outlined,
+                        children: [
+                          InspectorAction(
+                            onPressed: () => showDialog<void>(
+                              context: context,
+                              builder: (_) => AttachmentsDialog(
+                                controller: c,
+                                noteId: widget.id,
+                                canEdit: reader.canEdit,
+                                onPickingChanged: reader.setPicking,
+                                protectedGate: () => reader.serverGate,
+                                gateChanges: reader,
+                              ),
                             ),
+                            icon: Icons.attach_file,
+                            label: reader.canEdit
+                                ? 'Quản lý đính kèm'
+                                : 'Xem đính kèm',
                           ),
-                          icon: const Icon(Icons.people_outline),
-                          label: const Text('Quản lý chia sẻ'),
-                        ),
+                          InspectorAction(
+                            onPressed: reader.busy ? null : reader.refresh,
+                            icon: Icons.refresh,
+                            label: 'Kiểm tra quyền và cập nhật',
+                          ),
+                          if (note.role == 'owner')
+                            InspectorAction(
+                              onPressed: () => showDialog<void>(
+                                context: context,
+                                builder: (_) => ShareDialog(
+                                  controller: c,
+                                  noteId: widget.id,
+                                  protectedGate: () =>
+                                      reader.serverGate &&
+                                      reader.note?.role == 'owner',
+                                  gateChanges: reader,
+                                ),
+                              ),
+                              icon: Icons.people_outline,
+                              label: 'Quản lý chia sẻ',
+                            ),
+                        ],
+                      ),
                       if (note.role == 'owner') ...[
                         const SizedBox(height: 16),
-                        const SectionHeading(
-                          'Bảo vệ & quản lý',
+                        InspectorSection(
+                          title: 'Bảo vệ & quản lý',
                           icon: Icons.security_outlined,
-                        ),
-                        Wrap(
-                          spacing: 12,
-                          runSpacing: 8,
                           children: [
-                            OutlinedButton(
+                            InspectorAction(
+                              icon: Icons.password_outlined,
                               onPressed: reader.dirty || reader.saving
                                   ? null
                                   : () => manage(ProtectionAction.change),
-                              child: const Text('Đổi mật khẩu ghi chú'),
+                              label: 'Đổi mật khẩu ghi chú',
                             ),
-                            OutlinedButton(
+                            InspectorAction(
+                              icon: Icons.lock_open_outlined,
                               onPressed: reader.dirty || reader.saving
                                   ? null
                                   : () => manage(ProtectionAction.disable),
-                              child: const Text('Tắt khóa ghi chú'),
+                              label: 'Tắt khóa ghi chú',
                             ),
-                            TextButton.icon(
+                            const Divider(height: 8),
+                            InspectorAction(
                               key: const Key('protected-delete'),
+                              destructive: true,
                               onPressed: reader.dirty || reader.saving
                                   ? null
                                   : delete,
-                              icon: const Icon(Icons.delete_outline),
-                              label: const Text('Xóa ghi chú'),
+                              icon: Icons.delete_outline,
+                              label: 'Xóa ghi chú',
                             ),
                           ],
                         ),

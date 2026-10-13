@@ -1,0 +1,5 @@
+00:00 +0: loading D:/flutter cuoi ki/test/inspector_ui_test.dart
+00:00 +0: Narrow inspector reflows long actions and keeps separate targets (Brightness.dark)
+00:00 +1: Narrow inspector reflows long actions and keeps separate targets (Brightness.light)
+00:00 +2: Protected inspector survives theme/resize and disappears immediately on relock
+00:02 +3: All tests passed!

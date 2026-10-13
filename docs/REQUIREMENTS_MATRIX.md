@@ -1,5 +1,38 @@
 # Ma trận yêu cầu 32 tiêu chí
 
+Tiếp tục publication14/10 trên PR9/codex/bug-audit-fixes, tích hợp master `eaf39b4`.
+Local279Flutter/143backend/format/analyze đã PASS13/10 trên cùng source chức năng;
+không tăng rubric từ hash/merge và không dùng CI head cũ thay CI mới.
+[Gate](../evidence/2026-10-14-publish-resume/INDEX.md). Source/native/provider/release
+giữ phạm vi evidence riêng; trạng thái bên dưới thuộc snapshots trước publication.
+
+PR9 tích hợp master `eaf39b4` sau PR8,13/10. Local format/analyze/279Flutter/143backend
+PASS sau integration; không tăng completion rubric từ merge. Library UI/controller/data/
+core authorization không đổi khi giải quyết xung đột. [Gate](../evidence/2026-10-13-master-integration/INDEX.md),
+[PR9](https://github.com/bahungTDTU/final-flutter/pull/9). CI mới và approval vẫn theo ruleset;
+native/provider/public release/video giữ scope của evidence tương ứng, các mục dưới là snapshots.
+
+Publication13/10 được người dùng ủy quyền trên `codex/bug-audit-fixes`, PR vào master.
+Source code không đổi từ nghiệm thu279 Flutter/119 backend/Web/APK debug compile;
+không tự tăng mức hoàn thành rubric hoặc dùng local PASS thay CI/human approval.
+[Gate publication](../evidence/2026-10-13-ui-publication/INDEX.md). Các dòng chưa push
+phía dưới là snapshots trước publication; native/provider/public release/video vẫn riêng.
+
+Cập nhật13/10: cải thiện UI ngoài rubric cho inspector của editor thường/bảo vệ;
+không đổi ACL/auto-save/lock/share/pin requirements và không tự tăng điểm sáng tạo.
+279 Flutter/119 backend, format/analyze, WebIAB PC-phone/hai theme/owner-viewer/relock
+và edit+pin+API PASS; Web/APK debug compile PASS. Native UI/IME/FPS/real screen reader/
+provider/CI/release/video/submission NOT RUN. Branch local `codex/bug-audit-fixes`, chưa push.
+[Báo cáo](UI_INSPECTOR_REFINEMENT.md),
+[ảnh/log](../evidence/2026-10-13-inspector-ui/INDEX.md). Các đoạn dưới là snapshots lịch sử.
+
+Audit 12/10 trên master 46df286: sửa 7 nhóm bug, hỗ trợ tiêu chí 12/14/15/16/23/24/26;
+không thêm tiêu chí hoặc tự tăng điểm. 275 Flutter/119 backend và Chrome actual PC-phone/
+remote updates/remote lock/DOM purge PASS; Web/APK debug compile PASS.
+[Báo cáo](BUG_AUDIT_2026-10-12.md), [evidence](../evidence/2026-10-12-bug-audit/INDEX.md).
+Source local `codex/bug-audit-fixes`, chưa commit/push; native/provider/release/video/
+submission/CI mới vẫn NOT RUN. Các snapshots publication/UI phía dưới giữ lịch sử.
+
 ## Clone sạch và hai UI độc lập —12/10/2026
 
 Đúng947802a: setup/check PASS270Flutter/142backend, Web release local40resources và
