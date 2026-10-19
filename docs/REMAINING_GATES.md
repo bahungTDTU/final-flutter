@@ -1,5 +1,14 @@
 # Các gate còn lại — cập nhật19/10/2026
 
+## N05 account-password native —19/10/2026
+
+Native UI settings→đổi password→manual login mới PASS; current/peer token cũ401,
+password cũ401, encrypted session và invalid draft giữ nguyên. Actual debug API36,
+input qua driver, không IME. Xem evidence/2026-10-19-account-password/INDEX.md.
+Web compile/40staticresources PASS; browser UI chưa chạy do cả CUA/node runtime lỗi
+“failed to write kernel assets”. N05 Web/picker/labels và C1/C2 final artifact còn mở.
+
+
 ## N02 core bổ sung —19/10/2026
 
 Android16/API36 debug QA entrypoint PASS force-stop/relaunch PID4558→4729, encrypted
@@ -40,7 +49,7 @@ Không có thay đổi nghiệp vụ pending trong working tree; chưa thể đ�
 | N02 | Web reload; native core QA entrypoint OS force-stop/relaunch, encrypted rich/draft/outbox + reconnect PASS19/10 | Editor UI/main-entrypoint và final artifact OS relaunch; Wi-Fi toggle/physical theo phạm vi |
 | N03 | Native socket/SSE/frozen409, hai WebUI conflict/revoke/private copies | UI remote lock/delete/downgrade variants, native independent UI peers theo phạm vi rubric |
 | N04 | Native unlock/change/disable, encrypted offline/revalidation, injected lifecycle | TTL thực, OS background/relock và visual/semantics/cache inspection trên artifact cuối |
-| N05 | HTTP file ACL, native session migration/logout401/relogin giữ draft | OS picker protectedTXT/avatar/cancel/error, AND labels/rename, đổi mật khẩu account→oldtoken401 trên hai target |
+| N05 | HTTP file ACL, native session migration; native UI đổi password/manual login, current+peer token401/draft PASS19/10 | OS picker protectedTXT/avatar/cancel/error, AND labels/rename; Web password UI và final artifact |
 | P01/P02 | Core/provider adapters và fixture tests | SMTP Internet/inbox receipt, Gemini key mới/project được nhóm cấu hình; UI/evaluation thật |
 | R01 | Explicit HTTPS origin guard, missing signing fails, no debug fallback | Keystore do nhóm quản lý, inspect certificate và install/run signedAPK |
 | R02 | SQLite/mailkey/WAL backup→new copy restore, actualHTTP file/hash/ACL PASS | Docker engine hoạt động; build/context/image inspection và volume recreate/restore thật |

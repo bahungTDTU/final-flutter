@@ -1,5 +1,14 @@
 # Nghiệm thu source sau PR #7 — 12/10/2026
 
+## Bổ sung19/10/2026
+
+[NATIVE_OS_ACCEPTANCE](NATIVE_OS_ACCEPTANCE.md) có probe OS force-stop/relaunch core
+với QA entrypoint riêng; không thay main UI/IME. session_storage_test nay đi thêm actual
+Home settings/password dialog và manual login mới, hai token cũ401 và draft giữ nguyên.
+Command/evidence ở ../evidence/2026-10-19-account-password/INDEX.md. Browser runtime
+lượt này lỗi kernel; Web compile không thay Web UI acceptance.
+
+
 Base `46df286` chứa baseline PR #5, Trung tâm bảo mật PR #6 và Deskbook PR #7.
 Ba required checks của từng PR đã PASS trên đúng head trước merge; snapshot tại
 `evidence/2026-10-12-current-source-acceptance/github.json`. Không dùng CI của các

@@ -1,5 +1,14 @@
 # NoteTogether - trạng thái 19/10/2026
 
+## N05 account-password native —19/10/2026
+
+Native UI settings→đổi password→manual login mới PASS; current/peer token cũ401,
+password cũ401, encrypted session và invalid draft giữ nguyên. Actual debug API36,
+input qua driver, không IME. Xem evidence/2026-10-19-account-password/INDEX.md.
+Web compile/40staticresources PASS; browser UI chưa chạy do cả CUA/node runtime lỗi
+“failed to write kernel assets”. N05 Web/picker/labels và C1/C2 final artifact còn mở.
+
+
 ## N02 core bổ sung —19/10/2026
 
 Android16/API36 debug QA entrypoint PASS force-stop/relaunch PID4558→4729, encrypted

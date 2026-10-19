@@ -2,6 +2,15 @@
 
 Không dùng pass backend hoặc mock để suy ra Web/native pass. Kết quả thật: STATUS + evidence.
 
+## Bổ sung19/10/2026
+
+279Flutter tests/analyze/format116files PASS lượt bàn giao. Probe QA entrypoint native
+OS process death giữ encrypted rich/draft/outbox và sync đúng UUID PASS; replay ở
+NATIVE_OS_ACCEPTANCE.md. session_storage integration hiện đi qua production settings/
+password dialog/manual login, kiểm hai session cũ401/password cũ401/draft retention PASS.
+Web compile PASS nhưng UI không chạy do công cụ browser/node kernel lỗi. Không thay
+IME/picker/physical/final signed release. Evidence theo ngày trong REMAINING_GATES.
+
 ## Baseline hiện hành và phạm vi
 
 Bộ suite đã mở rộng; danh sách đầu bên dưới mô tả baseline ban đầu, không phải tổng số
