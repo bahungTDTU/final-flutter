@@ -7,11 +7,14 @@ import argparse
 from contextlib import closing
 from datetime import datetime, timezone
 import hashlib
+import hmac
 import json
 import os
 from pathlib import Path
 import shutil
 import sqlite3
+
+from backend.email_queue import derive_mail_code
 
 
 def digest(path):
@@ -33,6 +36,17 @@ def validate_database(path):
         for table in ('users', 'notes', 'attachments', 'email_jobs'):
             conn.execute(f'SELECT 1 FROM {table} LIMIT 1')
         return conn.execute('SELECT 1 FROM email_jobs LIMIT 1').fetchone() is not None
+
+
+def validate_mail_key(database, key):
+    if len(key) != 32:
+        raise ValueError('Mail key must contain exactly32 bytes')
+    with closing(read_database(database)) as conn:
+        for user_id, kind, nonce, expected in conn.execute(
+                'SELECT user_id,kind,nonce,token_digest FROM email_jobs WHERE nonce IS NOT NULL'):
+            code = derive_mail_code(key, user_id, kind, bytes(nonce))
+            if not hmac.compare_digest(hashlib.sha256(code.encode()).hexdigest(), expected):
+                raise ValueError('Mail key does not match queued mail in the snapshot')
 
 
 def write_private(path, value):
@@ -66,8 +80,7 @@ def backup(database, destination, mail_key=None):
     files = {'app.sqlite3': digest(copy)}
     if key.is_file():
         value = key.read_bytes()
-        if len(value) != 32:
-            raise ValueError('Mail key must contain exactly32 bytes')
+        validate_mail_key(copy, value)
         write_private(destination / 'app.sqlite3.mail-key', value)
         files['app.sqlite3.mail-key'] = digest(destination / 'app.sqlite3.mail-key')
     elif needs_key:
@@ -80,8 +93,10 @@ def backup(database, destination, mail_key=None):
 def restore(source, destination):
     source, destination = Path(source), Path(destination)
     manifest = json.loads((source / 'manifest.json').read_text(encoding='utf-8'))
+    if not isinstance(manifest, dict):
+        raise ValueError('Unsupported backup manifest')
     files = manifest.get('sha256', {})
-    if (manifest.get('version') != 1 or set(files) not in (
+    if (manifest.get('version') != 1 or not isinstance(files, dict) or set(files) not in (
             {'app.sqlite3'}, {'app.sqlite3', 'app.sqlite3.mail-key'})):
         raise ValueError('Unsupported backup manifest')
     for name, expected in files.items():
@@ -91,8 +106,8 @@ def restore(source, destination):
     needs_key = validate_database(source / 'app.sqlite3')
     if needs_key and 'app.sqlite3.mail-key' not in files:
         raise ValueError('Backup is missing the mail key')
-    if 'app.sqlite3.mail-key' in files and (source / 'app.sqlite3.mail-key').stat().st_size != 32:
-        raise ValueError('Invalid backed-up mail key')
+    if 'app.sqlite3.mail-key' in files:
+        validate_mail_key(source / 'app.sqlite3', (source / 'app.sqlite3.mail-key').read_bytes())
     destination.mkdir(mode=0o700)
     for name in files:
         copy_private(source / name, destination / name)

@@ -1,0 +1,154 @@
+..FFFFF                                                                  [100%]
+================================== FAILURES ===================================
+____ test_wrong_32_byte_key_cannot_publish_backup_or_restore_pending_mail _____
+
+tmp_path = WindowsPath('C:/Users/Nguyen Long/AppData/Local/Temp/pytest-of-Nguyen Long/pytest-5/test_wrong_32_byte_key_cannot_0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000026151BD7050>
+
+    def test_wrong_32_byte_key_cannot_publish_backup_or_restore_pending_mail(tmp_path, monkeypatch):
+        monkeypatch.delenv('MAIL_OUTBOX_KEY_FILE', raising=False)
+        database = tmp_path / 'source.sqlite3'
+        app = create_app(database, email_delivery=RecordingDelivery(), start_email_worker=False)
+        with TestClient(app) as client:
+            assert client.post('/auth/register', json={'email': 'queued@example.test', 'name': 'Queued',
+                'password': 'Backup-test-2026!', 'confirmation': 'Backup-test-2026!'}).status_code == 201
+        original_key = app.state.email_queue.key_path.read_bytes()
+        wrong_key = bytes([original_key[0] ^ 1]) + original_key[1:]
+        key_path = tmp_path / 'other.mail-key'
+        key_path.write_bytes(wrong_key)
+>       with pytest.raises(ValueError, match='does not match'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+backend\tests\test_backup.py:98: Failed
+_ test_malformed_manifest_is_rejected_before_creating_restore_target[manifest0] _
+
+tmp_path = WindowsPath('C:/Users/Nguyen Long/AppData/Local/Temp/pytest-of-Nguyen Long/pytest-5/test_malformed_manifest_is_rej0')
+manifest = []
+
+    @pytest.mark.parametrize('manifest', [[], None, {'version': 1, 'sha256': None},
+                                         {'version': 1, 'sha256': ['app.sqlite3']}])
+    def test_malformed_manifest_is_rejected_before_creating_restore_target(tmp_path, manifest):
+        source = tmp_path / 'backup'
+        source.mkdir()
+        (source / 'manifest.json').write_text(json.dumps(manifest))
+        with pytest.raises(ValueError, match='manifest'):
+>           restore(source, tmp_path / 'restored')
+
+backend\tests\test_backup.py:122: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+source = WindowsPath('C:/Users/Nguyen Long/AppData/Local/Temp/pytest-of-Nguyen Long/pytest-5/test_malformed_manifest_is_rej0/backup')
+destination = WindowsPath('C:/Users/Nguyen Long/AppData/Local/Temp/pytest-of-Nguyen Long/pytest-5/test_malformed_manifest_is_rej0/restored')
+
+    def restore(source, destination):
+        source, destination = Path(source), Path(destination)
+        manifest = json.loads((source / 'manifest.json').read_text(encoding='utf-8'))
+>       files = manifest.get('sha256', {})
+                ^^^^^^^^^^^^
+E       AttributeError: 'list' object has no attribute 'get'
+
+backend\backup.py:83: AttributeError
+__ test_malformed_manifest_is_rejected_before_creating_restore_target[None] ___
+
+tmp_path = WindowsPath('C:/Users/Nguyen Long/AppData/Local/Temp/pytest-of-Nguyen Long/pytest-5/test_malformed_manifest_is_rej1')
+manifest = None
+
+    @pytest.mark.parametrize('manifest', [[], None, {'version': 1, 'sha256': None},
+                                         {'version': 1, 'sha256': ['app.sqlite3']}])
+    def test_malformed_manifest_is_rejected_before_creating_restore_target(tmp_path, manifest):
+        source = tmp_path / 'backup'
+        source.mkdir()
+        (source / 'manifest.json').write_text(json.dumps(manifest))
+        with pytest.raises(ValueError, match='manifest'):
+>           restore(source, tmp_path / 'restored')
+
+backend\tests\test_backup.py:122: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+source = WindowsPath('C:/Users/Nguyen Long/AppData/Local/Temp/pytest-of-Nguyen Long/pytest-5/test_malformed_manifest_is_rej1/backup')
+destination = WindowsPath('C:/Users/Nguyen Long/AppData/Local/Temp/pytest-of-Nguyen Long/pytest-5/test_malformed_manifest_is_rej1/restored')
+
+    def restore(source, destination):
+        source, destination = Path(source), Path(destination)
+        manifest = json.loads((source / 'manifest.json').read_text(encoding='utf-8'))
+>       files = manifest.get('sha256', {})
+                ^^^^^^^^^^^^
+E       AttributeError: 'NoneType' object has no attribute 'get'
+
+backend\backup.py:83: AttributeError
+_ test_malformed_manifest_is_rejected_before_creating_restore_target[manifest2] _
+
+tmp_path = WindowsPath('C:/Users/Nguyen Long/AppData/Local/Temp/pytest-of-Nguyen Long/pytest-5/test_malformed_manifest_is_rej2')
+manifest = {'version': 1, 'sha256': None}
+
+    @pytest.mark.parametrize('manifest', [[], None, {'version': 1, 'sha256': None},
+                                         {'version': 1, 'sha256': ['app.sqlite3']}])
+    def test_malformed_manifest_is_rejected_before_creating_restore_target(tmp_path, manifest):
+        source = tmp_path / 'backup'
+        source.mkdir()
+        (source / 'manifest.json').write_text(json.dumps(manifest))
+        with pytest.raises(ValueError, match='manifest'):
+>           restore(source, tmp_path / 'restored')
+
+backend\tests\test_backup.py:122: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+source = WindowsPath('C:/Users/Nguyen Long/AppData/Local/Temp/pytest-of-Nguyen Long/pytest-5/test_malformed_manifest_is_rej2/backup')
+destination = WindowsPath('C:/Users/Nguyen Long/AppData/Local/Temp/pytest-of-Nguyen Long/pytest-5/test_malformed_manifest_is_rej2/restored')
+
+    def restore(source, destination):
+        source, destination = Path(source), Path(destination)
+        manifest = json.loads((source / 'manifest.json').read_text(encoding='utf-8'))
+        files = manifest.get('sha256', {})
+>       if (manifest.get('version') != 1 or set(files) not in (
+                                            ^^^^^^^^^^
+                {'app.sqlite3'}, {'app.sqlite3', 'app.sqlite3.mail-key'})):
+E               TypeError: 'NoneType' object is not iterable
+
+backend\backup.py:84: TypeError
+_ test_malformed_manifest_is_rejected_before_creating_restore_target[manifest3] _
+
+tmp_path = WindowsPath('C:/Users/Nguyen Long/AppData/Local/Temp/pytest-of-Nguyen Long/pytest-5/test_malformed_manifest_is_rej3')
+manifest = {'version': 1, 'sha256': ['app.sqlite3']}
+
+    @pytest.mark.parametrize('manifest', [[], None, {'version': 1, 'sha256': None},
+                                         {'version': 1, 'sha256': ['app.sqlite3']}])
+    def test_malformed_manifest_is_rejected_before_creating_restore_target(tmp_path, manifest):
+        source = tmp_path / 'backup'
+        source.mkdir()
+        (source / 'manifest.json').write_text(json.dumps(manifest))
+        with pytest.raises(ValueError, match='manifest'):
+>           restore(source, tmp_path / 'restored')
+
+backend\tests\test_backup.py:122: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+source = WindowsPath('C:/Users/Nguyen Long/AppData/Local/Temp/pytest-of-Nguyen Long/pytest-5/test_malformed_manifest_is_rej3/backup')
+destination = WindowsPath('C:/Users/Nguyen Long/AppData/Local/Temp/pytest-of-Nguyen Long/pytest-5/test_malformed_manifest_is_rej3/restored')
+
+    def restore(source, destination):
+        source, destination = Path(source), Path(destination)
+        manifest = json.loads((source / 'manifest.json').read_text(encoding='utf-8'))
+        files = manifest.get('sha256', {})
+        if (manifest.get('version') != 1 or set(files) not in (
+                {'app.sqlite3'}, {'app.sqlite3', 'app.sqlite3.mail-key'})):
+            raise ValueError('Unsupported backup manifest')
+>       for name, expected in files.items():
+                              ^^^^^^^^^^^
+E       AttributeError: 'list' object has no attribute 'items'
+
+backend\backup.py:87: AttributeError
+============================== warnings summary ===============================
+.venv\Lib\site-packages\fastapi\testclient.py:1
+  C:\Users\Nguyen Long\Documents\Codex\2026-10-11\https-github-com-bahungtdtu-final-flutter\final-flutter\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED backend/tests/test_backup.py::test_wrong_32_byte_key_cannot_publish_backup_or_restore_pending_mail
+FAILED backend/tests/test_backup.py::test_malformed_manifest_is_rejected_before_creating_restore_target[manifest0]
+FAILED backend/tests/test_backup.py::test_malformed_manifest_is_rejected_before_creating_restore_target[None]
+FAILED backend/tests/test_backup.py::test_malformed_manifest_is_rejected_before_creating_restore_target[manifest2]
+FAILED backend/tests/test_backup.py::test_malformed_manifest_is_rejected_before_creating_restore_target[manifest3]
+5 failed, 2 passed, 1 warning in 3.79s

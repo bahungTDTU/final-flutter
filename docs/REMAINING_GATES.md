@@ -1,4 +1,8 @@
-# Các gate còn lại —12/10/2026
+# Các gate còn lại — cập nhật19/10/2026
+
+PR8/9 đã merge, master d59fdfd. Lượt19/10 sửa thêm kiểm tra mail key/snapshot
+và manifest trong backup/restore; xem evidence/2026-10-19-backup-hardening.
+Các kết quả kiểm thử12/10 bên dưới là snapshot lúc chạy, không tự áp sang UI mới.
 
 Đã commit/push mốc native/Web acceptance và947802a production guard/backup preparation.
 Clean clone đúng947802a PASS setup/format/analyze/270Flutter/142backend/Web local/debugAPK.
@@ -9,7 +13,7 @@ Không có thay đổi nghiệp vụ pending trong working tree; chưa thể đ�
 
 | Gate | Đã có | Còn cần để đóng |
 |---|---|---|
-| Merge PR8 | CI3/3 PASS tại947802a, không conflict | Approval của người khác sau push cuối, resolved reviews; newest-head CI khi thêm evidence |
+| Publication | PR8/9 đã merge vào master d59fdfd | Nhánh mới cần PR, CI và approval riêng; không tái dùng approval/CI cũ |
 | N01 | Quill/native injected input, autosave, Web rich text | IME Android Telex/VNI thật, selection/paste/format/theme/resize trên native |
 | N02 | Web reload offline/reconnect cùng UUID/Delta, native encrypted DB reopen | Force-stop/relaunch process OS thật rồi reconnect, không mất rich draft |
 | N03 | Native socket/SSE/frozen409, hai WebUI conflict/revoke/private copies | UI remote lock/delete/downgrade variants, native independent UI peers theo phạm vi rubric |
@@ -25,7 +29,7 @@ Không có thay đổi nghiệp vụ pending trong working tree; chưa thể đ�
 
 ## Đầu vào còn thiếu
 
-- GitHub: một thành viên khác review/approve PR8 sau push cuối. Không dùng bot COMMENTED
+- GitHub: một thành viên khác review/approve PR mới sau push cuối. Không dùng bot COMMENTED
   thay approval, không đổi ruleset hoặc tạo approval bằng tài khoản người khác.
 - Nhóm chọn tên miền/hosting và cấu hình SMTP/Gemini ở backend; chỉ thông báo nơi/khả năng
   cấu hình, không gửi secrets vào chat. `.env`/keyfile/keystore luôn ignored/private.

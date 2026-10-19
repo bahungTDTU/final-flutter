@@ -1,0 +1,9 @@
+{
+  "base": "d59fdfda46bd4a29bfa114f9781a21225f6454cc",
+  "scope": "SHA256 of staged Git blob bytes",
+  "sha256": {
+    "backend/backup.py": "34411229ef213d9e94c21b2d61457af668c3efcb35cb143175b635ee409168a1",
+    "backend/email_queue.py": "1f43abb7838e3309a57cd079436a3a3d983a96e42480f54a1cb6936c2b4492f3",
+    "backend/tests/test_backup.py": "ba3f106c54fe9e076f8ceb06157ead8d704501aa3e1642a477eb0c786bd0d6a7"
+  }
+}

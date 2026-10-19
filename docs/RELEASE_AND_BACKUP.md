@@ -81,3 +81,14 @@ private; module có sẵn trong image. Restore drill dùng volume/project riêng
 volume production vào target ghi. Cần nghiệm thu recreate/restore qua HTTP thật trước R02 PASS.
 ASGI tests chỉ xác minh module/DB/ACL/mail-key, không thay container/Internet.
 Nguồn: [SQLite Backup API](https://sqlite.org/backup.html).
+
+## Kiểm tra cặp mail key/snapshot —19/10/2026
+
+Đủ32byte và đúng SHA256 trong manifest chưa chứng minh key thuộc database đó.
+Backup/restore nay dẫn xuất lại mã cho từng email job còn nonce bằng chính PRF của
+hàng đợi, rồi so digest với token_digest đã lưu. Nhầm key sẽ bị từ chối trước khi
+backup có manifest hợp lệ hoặc restore tạo destination; không gửi mail hay in mã/key.
+Thuật toán/format PRF hiện có giữ nguyên, dùng một hàm chung giữa worker và validator.
+Nếu không còn job có nonce, không thể xác minh danh tính key qua job đã xóa nonce;
+kiểm tra32byte vẫn áp dụng. Hash/đối chiếu key không thay xác thực nguồn backup.
+Manifest sai kiểu object/map bị từ chối bằng lỗi CLI exit2 gọn, không traceback/path.
