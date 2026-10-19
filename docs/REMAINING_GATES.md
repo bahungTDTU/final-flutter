@@ -1,5 +1,15 @@
 # Các gate còn lại — cập nhật19/10/2026
 
+## Publication tiếp nối —19/10/2026
+
+PR10 đã merge vào master db64d74 trong lúc thực hiện bàn giao. Ba commit C0/native
+được giữ nguyên và tích hợp master trên branch codex/native-completion-acceptance.
+Merge không đổi source so với db02a4b; không coi merge là lần chạy test mới.
+279Flutter/analyze/format PASS; native OS-core và account-password UI PASS theo INDEX.
+CI/approval cần kiểm trên PR/head mới. C1/C2 full UI/IME còn mở do giới hạn nghiệm thu;
+Web UI bị chặn bởi lỗi kernel công cụ, không phải kết luận lỗi app.
+
+
 ## N05 account-password native —19/10/2026
 
 Native UI settings→đổi password→manual login mới PASS; current/peer token cũ401,
@@ -44,7 +54,7 @@ Không có thay đổi nghiệp vụ pending trong working tree; chưa thể đ�
 
 | Gate | Đã có | Còn cần để đóng |
 |---|---|---|
-| Publication | PR8/9 đã merge vào master d59fdfd | Nhánh mới cần PR, CI và approval riêng; không tái dùng approval/CI cũ |
+| Publication | PR8/9/10 đã merge vào master db64d74 | Nhánh mới cần PR, CI và approval riêng; không tái dùng approval/CI cũ |
 | N01 | Quill/native injected input, autosave, Web rich text | IME Android Telex/VNI thật, selection/paste/format/theme/resize trên native |
 | N02 | Web reload; native core QA entrypoint OS force-stop/relaunch, encrypted rich/draft/outbox + reconnect PASS19/10 | Editor UI/main-entrypoint và final artifact OS relaunch; Wi-Fi toggle/physical theo phạm vi |
 | N03 | Native socket/SSE/frozen409, hai WebUI conflict/revoke/private copies | UI remote lock/delete/downgrade variants, native independent UI peers theo phạm vi rubric |
