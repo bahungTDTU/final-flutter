@@ -11,7 +11,7 @@ lên bahungTDTU/final-flutter; lịch sử tác giả giữ nguyên, không gi�
 Yêu cầu hiện hành: commit mới dùng author/committer Nguyễn Bảo Long
 <523k0014@student.tdtu.edu.vn>, có AI hỗ trợ. Không đổi tác giả commit lịch sử.
 
-Quy trình Git người dùng yêu cầu07/10: từ giờ chỉ push branch làm việc, mặc định codex/<mô-tả>;
+Quy trình Git người dùng yêu cầu07/10: từ giờ chỉ push branch làm việc, đặt tên theo nội dung thay đổi;
 không push trực tiếp master/default branch, không force-push hoặc bypass ruleset. Tạo PR vào
 master và attach PR vào task. Trước merge: local checks phù hợp PASS, ba required CI checks
 Flutter quality/Backend tests/Build smoke PASS trên code mới nhất, branch cập nhật với master,

@@ -1,4 +1,4 @@
-// QA-only entrypoint. Never selected by production build scripts or navigation.
+// QA entrypoint; excluded from production builds.
 import 'dart:convert';
 import 'dart:io';
 
@@ -49,7 +49,7 @@ Future<void> main() async {
   final directory = await getApplicationSupportDirectory();
   final report = File(path.join(directory.path, 'qa-os-$run.json'));
   Future<void> result(Map<String, dynamic> value) async {
-    // Only synthetic metadata/assertions. Never token/password/device keys.
+    // Synthetic metadata only; no secrets.
     await report.writeAsString(jsonEncode(value), flush: true);
   }
 
@@ -129,8 +129,7 @@ Future<void> main() async {
         'operation_fingerprint': await fingerprint(offline.pending.single),
         'pid': pid,
       });
-      // Keep controller and database open. The host must kill this OS process.
-      // No dispose, close, lifecycle injection or logout before force-stop.
+      // Leave the database open for the host force-stop.
       return;
     }
     final before = jsonDecode(await report.readAsString()) as Map;
@@ -199,7 +198,7 @@ Future<void> main() async {
     });
   } catch (error) {
     await result({'stage': 'fail', 'error_type': error.runtimeType.toString()});
-    // Assertion labels are QA-only; avoid leaking transport or storage exceptions.
+    // Log assertion labels only.
     if (error is StateError) debugPrint('OS QA assertion: ${error.message}');
   }
 }

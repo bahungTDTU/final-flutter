@@ -3,7 +3,7 @@
 ## Publication tiếp nối —19/10/2026
 
 PR10 đã merge vào master db64d74 trong lúc thực hiện bàn giao. Ba commit C0/native
-được giữ nguyên và tích hợp master trên branch codex/native-completion-acceptance.
+được giữ nguyên và tích hợp master trên nhánh nghiệm thu native.
 Merge không đổi source so với db02a4b; không coi merge là lần chạy test mới.
 279Flutter/analyze/format PASS; native OS-core và account-password UI PASS theo INDEX.
 CI/approval cần kiểm trên PR/head mới. C1/C2 full UI/IME còn mở do giới hạn nghiệm thu;

@@ -2,8 +2,7 @@
 
 ## Tiếp nối nghiệm thu —19/10/2026
 
-PR10 backup hardening đã merge vào master db64d74. Nhánh tiếp nối
-codex/native-completion-acceptance giữ các commit bàn giao, QA native process death
+PR10 backup hardening đã merge vào master db64d74. Nhánh nghiệm thu native giữ các commit bàn giao, QA native process death
 và password UI. 279Flutter/analyze PASS; nghiệm thu/gates và giới hạn cụ thể xem
 [STATUS](STATUS.md), [OS native](docs/NATIVE_OS_ACCEPTANCE.md) và
 [REMAINING_GATES](docs/REMAINING_GATES.md). Chưa đóng full release/provider/submission.

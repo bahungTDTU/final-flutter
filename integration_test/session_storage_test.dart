@@ -139,8 +139,7 @@ void main() {
       expect(jsonEncode(await raw.read('session')).contains(c.token!), false);
       await picture('native-session-login-restored-draft');
 
-      // Exercise the actual account-password dialog and manual login route.
-      // A second live session must also be revoked, not merely this controller.
+      // Password change must revoke both sessions and retain drafts.
       final currentToken = c.token!;
       final peer = await api.call(
         'POST',

@@ -1,7 +1,6 @@
-"""Force-stop/relaunch the QA-only APK on a disposable Android emulator.
+"""Check QA APK persistence across emulator force-stop/relaunch.
 
-Build test_driver/os_relaunch_app.dart with the same QA_RUN_ID first. This does
-not test IME/editor UI, toggle Wi-Fi, clear app data or touch a physical device.
+Build os_relaunch_app.dart with the same QA_RUN_ID. Not an IME/UI test.
 """
 import argparse
 import hashlib
@@ -63,8 +62,7 @@ def main():
             '--ez', 'enable-software-rendering', 'true',
             '--ez', 'enable-impeller', 'false')
 
-    # Install -r preserves the existing app sandbox; dedicated QA DB uses run ID.
-    # Reject a stale run instead of accepting an old PASS or overwriting its marker.
+    # Preserve app data; reject reused QA runs.
     adb('install', '-r', str(args.apk.resolve()))
     if read() is not None:
         raise RuntimeError('Run ID already exists; choose a new run ID and rebuild')

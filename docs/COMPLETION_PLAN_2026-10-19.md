@@ -1,6 +1,6 @@
 # Đánh giá kỹ thuật và kế hoạch hoàn thiện NoteTogether
 
-Ngày 19/10/2026. Snapshot checkout `bae3159`, branch `codex/backup-restore-hardening`,
+Ngày 19/10/2026. Snapshot checkout `bae3159`,
 base master đã biết `d59fdfd`. Đây là phân tích và kế hoạch, không phải nghiệm thu mới.
 Lượt này không chạy lại test/runtime, không kiểm tra trạng thái GitHub trực tiếp và không
 thay đổi app. PR10/CI/approval phải truy vấn lại trước hành động Git tiếp theo.
@@ -143,6 +143,4 @@ Không tuyên bố đã đọc toàn bộ mọi dòng của mọi Markdown/evide
 Các tài liệu lịch sử/thẩm mỹ không phải backlog mặc định cần triển khai lại.
 
 Prompt thực thi ở [PROMPT_6_1_SOL_COMPLETION.md](PROMPT_6_1_SOL_COMPLETION.md).
-Thiết kế prompt theo đầu ra, file nguồn và tiêu chí nghiệm thu, phù hợp hướng dẫn
-[OpenAI về workflow Codex](https://developers.openai.com/cookbook/examples/codex/iterating-development-workflows-with-codex).
-Đây là prompt theo dự án cho 6.1 Sol, không phải cam kết model có thể vượt mọi blocker.
+Prompt nêu đầu ra, file nguồn và tiêu chí nghiệm thu; không thay thế đầu vào bên ngoài.

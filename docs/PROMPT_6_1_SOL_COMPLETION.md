@@ -1,9 +1,6 @@
 # Prompt bàn giao cho GPT-6.1 Sol
 
-Chọn 6.1 Sol trong Codex, mở đúng repo rồi dán phần dưới. Khuyến nghị thực hành: dùng
-reasoning High cho công việc thông thường; tăng khi điều tra race/security khó nếu giao
-diện hỗ trợ. Đây là lựa chọn vận hành đề xuất, không bảo đảm chất lượng. Không cần API key
-OpenAI chỉ để dùng prompt này trong phiên Codex đã đăng nhập.
+Chọn 6.1 Sol, mở repo và dán prompt dưới đây. Dùng reasoning High nếu được hỗ trợ.
 
 ## Prompt để sao chép
 
@@ -13,10 +10,8 @@ việc nhắc lại kế hoạch. Mục tiêu là một release Web + Android ch
 đúng quyền/offline và có bộ nghiệm thu/nộp trung thực theo yêu cầu chính thức.
 
 Repo: https://github.com/bahungTDTU/final-flutter
-Checkout đã biết:
-C:\Users\Nguyen Long\Documents\Codex\2026-10-11\https-github-com-bahungtdtu-final-flutter\final-flutter
-Hãy xác minh đường dẫn và Git state thật. Snapshot bàn giao19/10: branch
-codex/backup-restore-hardening, HEAD bae3159, master d59fdfd; PR10 cho backup hardening.
+Hãy xác minh checkout và Git state thật. Snapshot bàn giao19/10:
+HEAD bae3159, master d59fdfd; PR10 cho backup hardening.
 Đây chỉ là snapshot, không giả định remote/CI/approval vẫn như vậy.
 
 Đọc trước khi sửa:
@@ -32,7 +27,7 @@ Chính sách hiện hành của tôi:
 - Author và committer: Nguyễn Bảo Long <523k0014@student.tdtu.edu.vn>.
   Kiểm tra repo-local identity trước commit; yêu cầu này thay đoạn author cũ trong AGENTS.
   Giữ lịch sử tác giả người khác, ghi nhận có AI hỗ trợ, không giả đóng góp/teamwork.
-- Chỉ dùng branch codex/*, không direct push master, force push, reset bỏ thay đổi của tôi.
+- Chỉ dùng branch làm việc riêng, không direct push master, force push, reset bỏ thay đổi của tôi.
   Kiểm tra PR hiện có trước tạo mới. PR phải được attach vào chat khi tạo/tiếp tục.
   Chỉ merge khi đã có ủy quyền merge áp dụng và đủ ruleset: đúng head mới nhất,
   Flutter quality/Backend tests/Build smoke PASS, up-to-date base, hết review threads,
