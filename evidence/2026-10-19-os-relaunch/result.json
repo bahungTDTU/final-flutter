@@ -1,0 +1,22 @@
+{
+  "stage": "pass",
+  "pid_before": 4558,
+  "pid_after": 4729,
+  "stable_uuid": true,
+  "exact_delta": true,
+  "invalid_draft_retained": true,
+  "immutable_operation": true,
+  "encrypted_file": true,
+  "backend_exactly_one": true,
+  "scope": "Native core with real force-stop; controller input, not IME/UI QA",
+  "run_id": "oct19-os-a",
+  "device": "emulator-5554",
+  "apk_sha256": "1f2818bd5338f3a01e4233d5e821026aa09cceae9bdda6d645a066ace36a2fa4",
+  "source": "d929a63bda2eef0e7e2e38c1962e6871c71597cc",
+  "os_force_stop_verified": true,
+  "offline_scope": "real refused socket, not Wi-Fi toggle",
+  "qa_source_sha256": {
+    "test_driver/os_relaunch_app.dart": "e47e2c918c69c3c140bdc7fdccdba9c816190840c92dd0a38b0a7f06e6c7930c",
+    "scripts/qa_os_relaunch.py": "dae32be0b9ecc4cf9f8c333ff9e675125ab6e8e69b4fd30a3bb6b5a220e3bb3b"
+  }
+}

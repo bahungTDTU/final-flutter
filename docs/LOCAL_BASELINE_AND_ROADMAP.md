@@ -103,7 +103,12 @@ Backend mặc định8000/Web7357. Khi QA dùng DB tmp riêng; không dùng DB n
 .env.example là template; secret chỉ qua process environment/file ignored.
 Kết quả lệnh và giới hạn xem evidence/2026-10-12-local-baseline/INDEX.md.
 
-## Backlog duy nhất cho các chặng tiếp theo
+## Backlog gốc tại chặng1 — snapshot lịch sử
+
+Bảng dưới giữ trạng thái lúc lập baseline, không dùng để chọn việc hiện hành.
+Bảng gate đang áp dụng nằm ở [REMAINING_GATES](REMAINING_GATES.md); trình tự C0–C5
+ở [kế hoạch hoàn thiện19/10](COMPLETION_PLAN_2026-10-19.md). R01 guard và backup
+đã có code; các nghiệm thu OS/provider/release còn riêng.
 
 | ID | Chặng / việc | Điều kiện nghiệm thu | Trạng thái ở chặng1 |
 |---|---|---|---|

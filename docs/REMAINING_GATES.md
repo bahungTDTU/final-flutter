@@ -1,5 +1,46 @@
 # Các gate còn lại — cập nhật19/10/2026
 
+## Publication tiếp nối —19/10/2026
+
+PR10 đã merge vào master db64d74 trong lúc thực hiện bàn giao. Ba commit C0/native
+được giữ nguyên và tích hợp master trên nhánh nghiệm thu native.
+Merge không đổi source so với db02a4b; không coi merge là lần chạy test mới.
+279Flutter/analyze/format PASS; native OS-core và account-password UI PASS theo INDEX.
+CI/approval cần kiểm trên PR/head mới. C1/C2 full UI/IME còn mở do giới hạn nghiệm thu;
+Web UI bị chặn bởi lỗi kernel công cụ, không phải kết luận lỗi app.
+
+
+## N05 account-password native —19/10/2026
+
+Native UI settings→đổi password→manual login mới PASS; current/peer token cũ401,
+password cũ401, encrypted session và invalid draft giữ nguyên. Actual debug API36,
+input qua driver, không IME. Xem evidence/2026-10-19-account-password/INDEX.md.
+Web compile/40staticresources PASS; browser UI chưa chạy do cả CUA/node runtime lỗi
+“failed to write kernel assets”. N05 Web/picker/labels và C1/C2 final artifact còn mở.
+
+
+## N02 core bổ sung —19/10/2026
+
+Android16/API36 debug QA entrypoint PASS force-stop/relaunch PID4558→4729, encrypted
+session/store, rich Delta/UUID, invalid draft, immutable pending fingerprint và reconnect
+backend đúng một note. Input qua controller/socket refusal, không IME/UI/Wi-Fi toggle.
+279Flutter tests/analyze/build debug PASS; source app production không đổi.
+Xem evidence/2026-10-19-os-relaunch/INDEX.md và docs/NATIVE_OS_ACCEPTANCE.md.
+Full C1/N02 trên editor/release cuối vẫn mở; không suy core probe thành full native PASS.
+
+
+## Bàn giao C0 —19/10/2026
+
+Đã fetch: master vẫn d59fdfd. PR10 open, head bae3159; GitHub báo ba required
+checks success, chỉ bot COMMENTED, chưa có human approval (snapshot trước push mới).
+C0 đồng bộ author hiện hành, signing/mail queue docs, tách baseline test/roadmap lịch sử
+và bổ sung entrypoint README. Không đổi source app; README/Readme đồng nhất byte.
+Kế hoạch và prompt C0–C5 đã lưu trong docs/COMPLETION_PLAN_2026-10-19.md và
+PROMPT_6_1_SOL_COMPLETION.md. Evidence: evidence/2026-10-19-handoff/INDEX.md.
+Trạng thái runtime: adb chưa có device; AVD taskflow_api36 có sẵn; Docker Linux engine
+pipe chưa có. Không coi kiểm tra môi trường là native/container PASS.
+
+
 PR8/9 đã merge, master d59fdfd. Lượt19/10 sửa thêm kiểm tra mail key/snapshot
 và manifest trong backup/restore; xem evidence/2026-10-19-backup-hardening.
 Các kết quả kiểm thử12/10 bên dưới là snapshot lúc chạy, không tự áp sang UI mới.
@@ -13,12 +54,12 @@ Không có thay đổi nghiệp vụ pending trong working tree; chưa thể đ�
 
 | Gate | Đã có | Còn cần để đóng |
 |---|---|---|
-| Publication | PR8/9 đã merge vào master d59fdfd | Nhánh mới cần PR, CI và approval riêng; không tái dùng approval/CI cũ |
+| Publication | PR8/9/10 đã merge vào master db64d74 | Nhánh mới cần PR, CI và approval riêng; không tái dùng approval/CI cũ |
 | N01 | Quill/native injected input, autosave, Web rich text | IME Android Telex/VNI thật, selection/paste/format/theme/resize trên native |
-| N02 | Web reload offline/reconnect cùng UUID/Delta, native encrypted DB reopen | Force-stop/relaunch process OS thật rồi reconnect, không mất rich draft |
+| N02 | Web reload; native core QA entrypoint OS force-stop/relaunch, encrypted rich/draft/outbox + reconnect PASS19/10 | Editor UI/main-entrypoint và final artifact OS relaunch; Wi-Fi toggle/physical theo phạm vi |
 | N03 | Native socket/SSE/frozen409, hai WebUI conflict/revoke/private copies | UI remote lock/delete/downgrade variants, native independent UI peers theo phạm vi rubric |
 | N04 | Native unlock/change/disable, encrypted offline/revalidation, injected lifecycle | TTL thực, OS background/relock và visual/semantics/cache inspection trên artifact cuối |
-| N05 | HTTP file ACL, native session migration/logout401/relogin giữ draft | OS picker protectedTXT/avatar/cancel/error, AND labels/rename, đổi mật khẩu account→oldtoken401 trên hai target |
+| N05 | HTTP file ACL, native session migration; native UI đổi password/manual login, current+peer token401/draft PASS19/10 | OS picker protectedTXT/avatar/cancel/error, AND labels/rename; Web password UI và final artifact |
 | P01/P02 | Core/provider adapters và fixture tests | SMTP Internet/inbox receipt, Gemini key mới/project được nhóm cấu hình; UI/evaluation thật |
 | R01 | Explicit HTTPS origin guard, missing signing fails, no debug fallback | Keystore do nhóm quản lý, inspect certificate và install/run signedAPK |
 | R02 | SQLite/mailkey/WAL backup→new copy restore, actualHTTP file/hash/ACL PASS | Docker engine hoạt động; build/context/image inspection và volume recreate/restore thật |

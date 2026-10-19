@@ -1,0 +1,3 @@
+Excerpt from output/native-password-oct19.txt (raw log remains ignored).
+I/flutter ( 4969): 00:00 +0: Native legacy session migration, offline reopen, server logout and manual re-login preserve encrypted drafts
+I/flutter ( 4969): 00:23 +2: All tests passed!

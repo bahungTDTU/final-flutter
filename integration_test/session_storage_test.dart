@@ -138,6 +138,77 @@ void main() {
       expect((await raw.read('session'))!['vault_version'], 1);
       expect(jsonEncode(await raw.read('session')).contains(c.token!), false);
       await picture('native-session-login-restored-draft');
+
+      // Password change must revoke both sessions and retain drafts.
+      final currentToken = c.token!;
+      final peer = await api.call(
+        'POST',
+        '/auth/login',
+        body: {'email': email, 'password': password},
+      );
+      await tester.tap(find.byTooltip('Hồ sơ và tùy chỉnh').first);
+      await tester.pumpAndSettle();
+      await tester.ensureVisible(find.text('Đổi mật khẩu'));
+      await tester.tap(find.text('Đổi mật khẩu'));
+      await tester.pumpAndSettle();
+      Future<void> passwordField(String label, String value) async {
+        final field = find.widgetWithText(TextFormField, label);
+        tester.binding.focusedEditable = null;
+        await tester.ensureVisible(field);
+        await tester.enterText(field, value);
+        FocusManager.instance.primaryFocus?.unfocus();
+        await tester.pumpAndSettle();
+      }
+
+      const changedPassword = 'Changed-native-session-2026!';
+      await passwordField('Mật khẩu hiện tại', password);
+      await passwordField('Mật khẩu mới', changedPassword);
+      await passwordField('Nhập lại mật khẩu mới', changedPassword);
+      final change = find.widgetWithText(FilledButton, 'Đổi mật khẩu');
+      await tester.ensureVisible(change);
+      await tester.tap(change);
+      for (var i = 0; i < 120 && c.user != null; i++) {
+        await tester.pump(const Duration(milliseconds: 250));
+      }
+      await tester.pumpAndSettle();
+      expect(c.user, isNull);
+      expect(find.byKey(const Key('auth-submit')), findsOneWidget);
+      for (final oldToken in [currentToken, peer['token'] as String]) {
+        var denied = false;
+        try {
+          await api.call('GET', '/me', token: oldToken);
+        } on ApiException catch (e) {
+          denied = e.status == 401;
+        }
+        expect(denied, true);
+      }
+      var oldPasswordDenied = false;
+      try {
+        await api.call(
+          'POST',
+          '/auth/login',
+          body: {'email': email, 'password': password},
+        );
+      } on ApiException catch (e) {
+        oldPasswordDenied = e.status == 401;
+      }
+      expect(oldPasswordDenied, true);
+      await type(const Key('auth-email'), email);
+      await type(const Key('auth-password'), changedPassword);
+      await tester.ensureVisible(find.byKey(const Key('auth-submit')));
+      await tester.tap(find.byKey(const Key('auth-submit')));
+      for (var i = 0; i < 120 && (c.user == null || c.busy || c.syncing); i++) {
+        await tester.pump(const Duration(milliseconds: 250));
+      }
+      expect(c.user?['id'] == auth['user']['id'], true);
+      expect(c.token != currentToken, true);
+      expect(
+        c.drafts[note]['content'],
+        'Private draft retained after session logout',
+      );
+      expect((await raw.read('session'))!['vault_version'], 1);
+      expect(jsonEncode(await raw.read('session')).contains(c.token!), false);
+      await picture('native-password-changed-manual-login-draft');
       await c.logout();
       await tester.pumpWidget(const SizedBox());
       c.dispose();

@@ -1,5 +1,46 @@
 # NoteTogether - trạng thái 19/10/2026
 
+## Publication tiếp nối —19/10/2026
+
+PR10 đã merge vào master db64d74 trong lúc thực hiện bàn giao. Ba commit C0/native
+được giữ nguyên và tích hợp master trên nhánh nghiệm thu native.
+Merge không đổi source so với db02a4b; không coi merge là lần chạy test mới.
+279Flutter/analyze/format PASS; native OS-core và account-password UI PASS theo INDEX.
+CI/approval cần kiểm trên PR/head mới. C1/C2 full UI/IME còn mở do giới hạn nghiệm thu;
+Web UI bị chặn bởi lỗi kernel công cụ, không phải kết luận lỗi app.
+
+
+## N05 account-password native —19/10/2026
+
+Native UI settings→đổi password→manual login mới PASS; current/peer token cũ401,
+password cũ401, encrypted session và invalid draft giữ nguyên. Actual debug API36,
+input qua driver, không IME. Xem evidence/2026-10-19-account-password/INDEX.md.
+Web compile/40staticresources PASS; browser UI chưa chạy do cả CUA/node runtime lỗi
+“failed to write kernel assets”. N05 Web/picker/labels và C1/C2 final artifact còn mở.
+
+
+## N02 core bổ sung —19/10/2026
+
+Android16/API36 debug QA entrypoint PASS force-stop/relaunch PID4558→4729, encrypted
+session/store, rich Delta/UUID, invalid draft, immutable pending fingerprint và reconnect
+backend đúng một note. Input qua controller/socket refusal, không IME/UI/Wi-Fi toggle.
+279Flutter tests/analyze/build debug PASS; source app production không đổi.
+Xem evidence/2026-10-19-os-relaunch/INDEX.md và docs/NATIVE_OS_ACCEPTANCE.md.
+Full C1/N02 trên editor/release cuối vẫn mở; không suy core probe thành full native PASS.
+
+
+## Bàn giao C0 —19/10/2026
+
+Đã fetch: master vẫn d59fdfd. PR10 open, head bae3159; GitHub báo ba required
+checks success, chỉ bot COMMENTED, chưa có human approval (snapshot trước push mới).
+C0 đồng bộ author hiện hành, signing/mail queue docs, tách baseline test/roadmap lịch sử
+và bổ sung entrypoint README. Không đổi source app; README/Readme đồng nhất byte.
+Kế hoạch và prompt C0–C5 đã lưu trong docs/COMPLETION_PLAN_2026-10-19.md và
+PROMPT_6_1_SOL_COMPLETION.md. Evidence: evidence/2026-10-19-handoff/INDEX.md.
+Trạng thái runtime: adb chưa có device; AVD taskflow_api36 có sẵn; Docker Linux engine
+pipe chưa có. Không coi kiểm tra môi trường là native/container PASS.
+
+
 ## Tiếp tục từ GitHub —19/10/2026
 
 PR8 và PR9 đã merge; base hiện tại `d59fdfd` gồm sửa editor/tìm kiếm/inspector.

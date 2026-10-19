@@ -1,5 +1,16 @@
 # Ma trận yêu cầu 32 tiêu chí
 
+## Cách đọc trạng thái hiện hành —19/10/2026
+
+Bảng32 mục phía dưới là snapshot chi tiết lịch sử; cột Native có câu “rich editor mới
+NOT RUN” không phủ nhận integration12/10. N01–N05 đã có injected input/socket/Sembast,
+SSE/frozen409/protected editing/session migration; IME thật, OS force-stop/relaunch,
+TTL/background/picker và một số UI variants vẫn chưa đóng. Bằng chứng mới không tự
+đóng cả tiêu chí: xem [CURRENT_SOURCE_ACCEPTANCE](CURRENT_SOURCE_ACCEPTANCE.md),
+[REMAINING_GATES](REMAINING_GATES.md) và INDEX theo source/target.
+R01 guard/signing đã triển khai; signed artifact/public HTTPS/provider vẫn chưa nghiệm thu.
+Kế hoạch thực thi hiện hành: [C0–C5](COMPLETION_PLAN_2026-10-19.md).
+
 ## Tiếp tục từ GitHub —19/10/2026
 
 PR8 và PR9 đã merge; base hiện tại `d59fdfd` gồm sửa editor/tìm kiếm/inspector.
@@ -345,7 +356,7 @@ OS denied/cancel chỉ doubles; protected-reader actual file UI/physical/release
 | 4 | Reset mật khẩu | 0.25 | forgot generic/outbox/reset-check/reset/session revoke + public resend | email-queue06/10; restart/retry/TTL/known-unknown/key-failure guards | Web debug reset request/resend/cooldown; password completion historical/widget | API36 debug real TLS/reset/password2x/manual login PASS | Chưa deploy/demo | Chưa quay | Inbox ngoài/production abuse/physical/full release/HTTPS chưa nghiệm thu |
 | 5 | Xem profile/avatar | 0.25 | AccountAvatar/controller + GET /me/avatar | evidence/2026-10-01-avatar-labels; private/cache/account guards | Canonical avatar + offline reload PASS local release | Canonical + encrypted DB reopen PASS debug | Chưa deploy/demo | Chưa quay | Physical/public HTTPS/video/quota/rate limits chưa nghiệm thu |
 | 6 | Sửa profile/avatar | 0.25 | AvatarEditor/file_selector + POST/DELETE /me/avatar | API type/size/metadata/CAS; actual Web/native picker | Choose/upload/default PASS local release | Actual DocumentsUI/upload/default PASS debug | Chưa deploy/demo | Chưa quay | OS denied/cancel chưa chạy; widget coverage; upload online-only; public storage/HTTPS chưa nghiệm thu |
-| 7 | Đổi mật khẩu tài khoản | 0.25 | Settings + /auth/password; current/new/confirmation, revoke sessions/grants, manual login | Widget validation/error + backend password/session tests | IMPLEMENTED; success UI thật trên bản cuối NOT RUN | IMPLEMENTED; success UI thật trên bản cuối NOT RUN | Chưa deploy/demo | Chưa quay | Cần success→manual login/old session401 trên Web/native; không gọi thiếu evidence là thiếu code |
+| 7 | Đổi mật khẩu tài khoản | 0.25 | Settings + /auth/password; current/new/confirmation, revoke sessions/grants, manual login | Widget validation/error + backend password/session tests | IMPLEMENTED; Web success UI thật chưa nghiệm thu lượt19/10 do lỗi kernel browser | Actual API36 debug Home/dialog/manual login mới, current+peer token401, draft giữ PASS19/10 | Chưa deploy/demo | Chưa quay | Cần Web UI/final artifact; evidence/2026-10-19-account-password; driver input không IME |
 | 8 | Preferences | 0.25 | settings/controller + POST /me/preferences/sync | 12 Flutter/14 backend tests; Android integration; evidence/2026-10-01-preferences | Chrome release PASS offline/reload/reconnect + SQLite | Debug emulator PASS offline/reopen/cross-session | Chưa deploy/demo | Chưa quay | Chưa production/physical-device/video |
 | 9 | List view | 0.25 | Home adaptive list/NoteListingCache + grid preference | Widget geometry/200%/privacy; Chrome/home/frame-performance09/10; ordering10/10 | Actual Chrome mixed locked order/offline reload/reconnect PASS10/10; features khác historical | Historical API36 list/profile09/10 PASS; Quill source mới native NOT RUN | Chưa deploy/demo | Chưa quay | Native source mới/text scale/accessibility thực/release/video chưa nghiệm thu |
 | 10 | Grid view | 0.25 | Home adaptive grid/default cards + grid preference | Widget geometry/200%/privacy; Chrome/home/frame-performance09/10; ordering10/10 | Actual Chrome mixed locked order/resize390px PASS10/10; features khác historical | Historical API36 grid/profile09/10 PASS; Quill source mới native NOT RUN | Chưa deploy/demo | Chưa quay | Native source mới/compact/tablet/landscape/physical/release/video chưa nghiệm thu |

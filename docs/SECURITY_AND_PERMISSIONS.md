@@ -45,7 +45,7 @@ Email code random32-byte, digest/TTL/kind/used kiểm tra atomic; reset/check pu
 mã, reset cuối kiểm tra lại và revoke mọi session. Main không giữ mailbox/token thô/log.
 Forgot response/cooldown known/unknown giống nhau; chưa bảo đảm chống timing enumeration.
 SMTP accepted không chứng minh inbox receipt; transactional mail outbox/worker
-đã có encrypted token, lease/retry/cancel. Key lifecycle và giới hạn nghiệm thu Internet
+đã có nonce/metadata và dẫn xuất mã bằng PRF, lease/retry/cancel; không lưu mã thô. Key lifecycle và giới hạn nghiệm thu Internet
 xem EMAIL_DELIVERY.md.
 
 Avatar input PNG/JPEG≤2 MiB/dimensions bounded; backend decode/EXIF orientation rồi tạo PNG mới
@@ -91,5 +91,6 @@ claim. Logout/background/account switch ngắt feed theo epoch. Xem REALTIME_COL
 
 Không log password, token hoặc content; Uvicorn chạy --no-access-log. CORS allowlist local,
 không dùng wildcard credential. HTTPS bắt buộc khi public; Dockerfile chỉ là cấu hình chưa deploy.
-Release Android cần INTERNET; cleartext chỉ cho debug build. Release hiện dùng signing key debug
-từ scaffold, phải thay bằng keystore riêng trước nộp; không commit private signing material.
+Release Android cần INTERNET; cleartext chỉ cho debug build. Release dùng signing config riêng và từ chối thiếu key/alias/password; không fallback
+debug signing. Keystore thật/certificate/install-run còn phải nghiệm thu; xem
+RELEASE_AND_BACKUP.md. Không commit private signing material.
