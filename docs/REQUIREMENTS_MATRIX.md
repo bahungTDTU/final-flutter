@@ -1,5 +1,16 @@
 # Ma trận yêu cầu 32 tiêu chí
 
+## Cách đọc trạng thái hiện hành —19/10/2026
+
+Bảng32 mục phía dưới là snapshot chi tiết lịch sử; cột Native có câu “rich editor mới
+NOT RUN” không phủ nhận integration12/10. N01–N05 đã có injected input/socket/Sembast,
+SSE/frozen409/protected editing/session migration; IME thật, OS force-stop/relaunch,
+TTL/background/picker và một số UI variants vẫn chưa đóng. Bằng chứng mới không tự
+đóng cả tiêu chí: xem [CURRENT_SOURCE_ACCEPTANCE](CURRENT_SOURCE_ACCEPTANCE.md),
+[REMAINING_GATES](REMAINING_GATES.md) và INDEX theo source/target.
+R01 guard/signing đã triển khai; signed artifact/public HTTPS/provider vẫn chưa nghiệm thu.
+Kế hoạch thực thi hiện hành: [C0–C5](COMPLETION_PLAN_2026-10-19.md).
+
 ## Tiếp tục từ GitHub —19/10/2026
 
 PR8 và PR9 đã merge; base hiện tại `d59fdfd` gồm sửa editor/tìm kiếm/inspector.

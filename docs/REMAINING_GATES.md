@@ -1,5 +1,17 @@
 # Các gate còn lại — cập nhật19/10/2026
 
+## Bàn giao C0 —19/10/2026
+
+Đã fetch: master vẫn d59fdfd. PR10 open, head bae3159; GitHub báo ba required
+checks success, chỉ bot COMMENTED, chưa có human approval (snapshot trước push mới).
+C0 đồng bộ author hiện hành, signing/mail queue docs, tách baseline test/roadmap lịch sử
+và bổ sung entrypoint README. Không đổi source app; README/Readme đồng nhất byte.
+Kế hoạch và prompt C0–C5 đã lưu trong docs/COMPLETION_PLAN_2026-10-19.md và
+PROMPT_6_1_SOL_COMPLETION.md. Evidence: evidence/2026-10-19-handoff/INDEX.md.
+Trạng thái runtime: adb chưa có device; AVD taskflow_api36 có sẵn; Docker Linux engine
+pipe chưa có. Không coi kiểm tra môi trường là native/container PASS.
+
+
 PR8/9 đã merge, master d59fdfd. Lượt19/10 sửa thêm kiểm tra mail key/snapshot
 và manifest trong backup/restore; xem evidence/2026-10-19-backup-hardening.
 Các kết quả kiểm thử12/10 bên dưới là snapshot lúc chạy, không tự áp sang UI mới.

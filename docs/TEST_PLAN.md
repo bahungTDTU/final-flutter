@@ -2,7 +2,15 @@
 
 Không dùng pass backend hoặc mock để suy ra Web/native pass. Kết quả thật: STATUS + evidence.
 
-## Bộ đã có
+## Baseline hiện hành và phạm vi
+
+Bộ suite đã mở rộng; danh sách đầu bên dưới mô tả baseline ban đầu, không phải tổng số
+tests hiện tại. Evidence13/10 ghi279Flutter/143backend; evidence19/10 backup ghi148backend.
+Đây là các snapshot khác nhau, không suy ra full suite đã chạy lại trên cùng head.
+Native integration12/10 có injected input/socket/Sembast thật; IME/OS kill còn riêng.
+Xem REMAINING_GATES.md và INDEX tương ứng.
+
+## Bộ baseline ban đầu
 - Backend pytest: registration/unverified, token verify/reset expiry/reuse, session revocation,
   password hashes, profile/preferences, immutable idempotency, revision/delete conflict,
   owner/viewer/editor/stranger, locked list redaction, session-bound/versioned/expired grant,
@@ -36,7 +44,7 @@ revoke/lock trước/sau generation; browser Back/deep link/refresh; text scalin
 landscape; release APK install/run; sạch source reinstall; public HTTPS từ mạng độc lập.
 
 Evidence mỗi lần: date, target, exact command/scenario, expected/actual, version, commit
-(hiện chưa có commit), test double/service thật, logs/screenshots không chứa token/content riêng tư.
+(ghi SHA thực tại lần chạy), test double/service thật, logs/screenshots không chứa token/content riêng tư.
 
 ## Email increment 01/10/2026
 

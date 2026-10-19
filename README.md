@@ -1,5 +1,21 @@
 # NoteTogether - nền tảng triển khai local
 
+## Bắt đầu và trạng thái hiện hành
+
+Một Flutter app Web/Android, FastAPI/SQLite và Sembast local. Chức năng đã có nhiều
+nghiệm thu local; chưa sẵn sàng public release/nộp bài. Không dùng lịch sử PASS để suy
+provider/IME/OS lifecycle hoặc signed release đã đạt.
+
+- [Gate hiện hành](docs/REMAINING_GATES.md), [kế hoạch C0–C5](docs/COMPLETION_PLAN_2026-10-19.md).
+- [Hướng dẫn setup Windows](#setup-trên-windows), [baseline/toolchain](docs/LOCAL_BASELINE_AND_ROADMAP.md).
+- [Nghiệm thu native](docs/CURRENT_SOURCE_ACCEPTANCE.md), [release/backup](docs/RELEASE_AND_BACKUP.md).
+- [Prompt bàn giao](docs/PROMPT_6_1_SOL_COMPLETION.md), [checklist nộp](docs/SUBMISSION_CHECKLIST.md).
+
+Cần Flutter3.47.1/Dart3.13.1, Python3.12; scripts/setup.ps1 hỗ trợ -Python và FLUTTER_BIN.
+Sau setup dùng scripts/check.ps1, start_backend.ps1 và start_web.ps1 ở các terminal riêng.
+Secret chỉ cấu hình qua process/file ignored. Các mục theo ngày bên dưới là nhật ký
+lịch sử có phạm vi riêng; trạng thái GitHub phải kiểm tra lại trên PR/head mới nhất.
+
 ## Tiếp tục từ GitHub —19/10/2026
 
 PR8 và PR9 đã merge; base hiện tại `d59fdfd` gồm sửa editor/tìm kiếm/inspector.
