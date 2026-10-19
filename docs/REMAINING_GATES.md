@@ -1,5 +1,15 @@
 # Các gate còn lại — cập nhật19/10/2026
 
+## N02 core bổ sung —19/10/2026
+
+Android16/API36 debug QA entrypoint PASS force-stop/relaunch PID4558→4729, encrypted
+session/store, rich Delta/UUID, invalid draft, immutable pending fingerprint và reconnect
+backend đúng một note. Input qua controller/socket refusal, không IME/UI/Wi-Fi toggle.
+279Flutter tests/analyze/build debug PASS; source app production không đổi.
+Xem evidence/2026-10-19-os-relaunch/INDEX.md và docs/NATIVE_OS_ACCEPTANCE.md.
+Full C1/N02 trên editor/release cuối vẫn mở; không suy core probe thành full native PASS.
+
+
 ## Bàn giao C0 —19/10/2026
 
 Đã fetch: master vẫn d59fdfd. PR10 open, head bae3159; GitHub báo ba required
@@ -27,7 +37,7 @@ Không có thay đổi nghiệp vụ pending trong working tree; chưa thể đ�
 |---|---|---|
 | Publication | PR8/9 đã merge vào master d59fdfd | Nhánh mới cần PR, CI và approval riêng; không tái dùng approval/CI cũ |
 | N01 | Quill/native injected input, autosave, Web rich text | IME Android Telex/VNI thật, selection/paste/format/theme/resize trên native |
-| N02 | Web reload offline/reconnect cùng UUID/Delta, native encrypted DB reopen | Force-stop/relaunch process OS thật rồi reconnect, không mất rich draft |
+| N02 | Web reload; native core QA entrypoint OS force-stop/relaunch, encrypted rich/draft/outbox + reconnect PASS19/10 | Editor UI/main-entrypoint và final artifact OS relaunch; Wi-Fi toggle/physical theo phạm vi |
 | N03 | Native socket/SSE/frozen409, hai WebUI conflict/revoke/private copies | UI remote lock/delete/downgrade variants, native independent UI peers theo phạm vi rubric |
 | N04 | Native unlock/change/disable, encrypted offline/revalidation, injected lifecycle | TTL thực, OS background/relock và visual/semantics/cache inspection trên artifact cuối |
 | N05 | HTTP file ACL, native session migration/logout401/relogin giữ draft | OS picker protectedTXT/avatar/cancel/error, AND labels/rename, đổi mật khẩu account→oldtoken401 trên hai target |

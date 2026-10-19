@@ -1,5 +1,15 @@
 # NoteTogether - trạng thái 19/10/2026
 
+## N02 core bổ sung —19/10/2026
+
+Android16/API36 debug QA entrypoint PASS force-stop/relaunch PID4558→4729, encrypted
+session/store, rich Delta/UUID, invalid draft, immutable pending fingerprint và reconnect
+backend đúng một note. Input qua controller/socket refusal, không IME/UI/Wi-Fi toggle.
+279Flutter tests/analyze/build debug PASS; source app production không đổi.
+Xem evidence/2026-10-19-os-relaunch/INDEX.md và docs/NATIVE_OS_ACCEPTANCE.md.
+Full C1/N02 trên editor/release cuối vẫn mở; không suy core probe thành full native PASS.
+
+
 ## Bàn giao C0 —19/10/2026
 
 Đã fetch: master vẫn d59fdfd. PR10 open, head bae3159; GitHub báo ba required
