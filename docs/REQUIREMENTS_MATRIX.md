@@ -1,5 +1,18 @@
 # Ma trận yêu cầu 32 tiêu chí
 
+## Tiếp tục từ GitHub —19/10/2026
+
+PR8 và PR9 đã merge; base hiện tại `d59fdfd` gồm sửa editor/tìm kiếm/inspector.
+Lượt này trên `codex/backup-restore-hardening`, tác giả Nguyễn Bảo Long, có AI hỗ trợ.
+Sửa backup/restore nhận nhầm mail key32byte: đối chiếu PRF với nonce/digest của các
+mail job trong snapshot trước khi chấp nhận. Manifest sai kiểu được trả lỗi CLI gọn.
+Giữ thuật toán mã email, ACL/editor/outbox và source UI hiện tại.
+PASS148 backend tests,16 tests backup/emailqueue và7 backup/CLI tests; Python compile
+và git diff whitespace checks PASS. Không rerun UI/native vì không sửa client.
+[Evidence và phạm vi](../evidence/2026-10-19-backup-hardening/INDEX.md).
+SMTP/Gemini thật, Docker engine/HTTPS/signing/native thủ công và bộ nộp vẫn là gate riêng.
+
+
 Tiếp tục publication14/10 trên PR9/codex/bug-audit-fixes, tích hợp master `eaf39b4`.
 Local279Flutter/143backend/format/analyze đã PASS13/10 trên cùng source chức năng;
 không tăng rubric từ hash/merge và không dùng CI head cũ thay CI mới.

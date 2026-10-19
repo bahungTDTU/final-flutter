@@ -2,6 +2,8 @@ from contextlib import closing
 import hashlib
 import json
 import sqlite3
+import subprocess
+import sys
 
 from fastapi.testclient import TestClient
 import pytest
@@ -82,3 +84,48 @@ def test_no_overwrite_missing_key_and_tamper_detection(tmp_path, monkeypatch):
     (destination / 'manifest.json').write_text(json.dumps(manifest))
     with pytest.raises(ValueError, match='manifest'):
         restore(destination, tmp_path / 'path-traversal')
+
+
+def test_wrong_32_byte_key_cannot_publish_backup_or_restore_pending_mail(tmp_path, monkeypatch):
+    monkeypatch.delenv('MAIL_OUTBOX_KEY_FILE', raising=False)
+    database = tmp_path / 'source.sqlite3'
+    app = create_app(database, email_delivery=RecordingDelivery(), start_email_worker=False)
+    with TestClient(app) as client:
+        assert client.post('/auth/register', json={'email': 'queued@example.test', 'name': 'Queued',
+            'password': 'Backup-test-2026!', 'confirmation': 'Backup-test-2026!'}).status_code == 201
+    original_key = app.state.email_queue.key_path.read_bytes()
+    wrong_key = bytes([original_key[0] ^ 1]) + original_key[1:]
+    key_path = tmp_path / 'other.mail-key'
+    key_path.write_bytes(wrong_key)
+    with pytest.raises(ValueError, match='does not match'):
+        backup(database, tmp_path / 'bad-backup', key_path)
+    assert not (tmp_path / 'bad-backup/manifest.json').exists()
+    assert app.state.email_queue.key_path.read_bytes() == original_key
+
+    valid = tmp_path / 'valid-backup'
+    backup(database, valid)
+    # Hashes alone cannot detect pairing a valid DB with another server's key.
+    (valid / 'app.sqlite3.mail-key').write_bytes(wrong_key)
+    manifest = json.loads((valid / 'manifest.json').read_text())
+    manifest['sha256']['app.sqlite3.mail-key'] = hashlib.sha256(wrong_key).hexdigest()
+    (valid / 'manifest.json').write_text(json.dumps(manifest))
+    with pytest.raises(ValueError, match='does not match'):
+        restore(valid, tmp_path / 'bad-restore')
+    assert not (tmp_path / 'bad-restore').exists()
+
+
+@pytest.mark.parametrize('manifest', [[], None, {'version': 1, 'sha256': None},
+                                     {'version': 1, 'sha256': ['app.sqlite3']}])
+def test_malformed_manifest_is_rejected_before_creating_restore_target(tmp_path, manifest):
+    source = tmp_path / 'backup'
+    source.mkdir()
+    (source / 'manifest.json').write_text(json.dumps(manifest))
+    with pytest.raises(ValueError, match='manifest'):
+        restore(source, tmp_path / 'restored')
+    assert not (tmp_path / 'restored').exists()
+    result = subprocess.run([sys.executable, '-m', 'backend.backup', 'restore',
+        '--backup', str(source), '--destination', str(tmp_path / 'cli-restored')],
+        capture_output=True, text=True)
+    assert result.returncode == 2
+    assert 'Traceback' not in result.stderr and str(source) not in result.stderr
+    assert not (tmp_path / 'cli-restored').exists()

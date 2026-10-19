@@ -15,6 +15,13 @@ import time
 from uuid import uuid4
 
 
+def derive_mail_code(key, user_id, kind, nonce):
+    """Stable PRF shared by delivery and offline backup/key-pair validation."""
+    message = json.dumps(['NoteTogether:mail:v1', user_id, kind, nonce.hex()],
+                         separators=(',', ':')).encode()
+    return base64.urlsafe_b64encode(hmac.digest(key, message, 'sha256')).decode().rstrip('=')
+
+
 class EmailQueue:
     def __init__(self, db, delivery, key_path, *, clock=time.time):
         self.db, self.delivery = db, delivery
@@ -47,9 +54,7 @@ class EmailQueue:
         return self._key_bytes
 
     def code(self, conn, user_id, kind, nonce):
-        message = json.dumps(['NoteTogether:mail:v1', user_id, kind, nonce.hex()],
-                             separators=(',', ':')).encode()
-        return base64.urlsafe_b64encode(hmac.digest(self.key(conn), message, 'sha256')).decode().rstrip('=')
+        return derive_mail_code(self.key(conn), user_id, kind, nonce)
 
     def issue(self, conn, user_id, kind):
         enabled = self.delivery.mode != 'not_configured'

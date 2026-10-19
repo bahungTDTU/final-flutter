@@ -1,5 +1,11 @@
 # Nhóm và đóng góp thật
 
+19/10 Nguyễn Bảo Long yêu cầu cập nhật GitHub, tiếp tục và commit/push dưới danh tính
+Nguyễn Bảo Long <523k0014@student.tdtu.edu.vn>. Base d59fdfd sau PR8/9; bổ sung
+kiểm tra cặp mail key/snapshot và manifest trong backup/restore, regression tests,
+tài liệu/evidence. Có AI hỗ trợ; không giả contribution/review hoặc tự merge.
+
+
 12/10 Nguyễn Bảo Long yêu cầu cập nhật GitHub và tiếp tục lộ trình, commit/push từng
 chặng dưới Nguyễn Bảo Long <523k0014@student.tdtu.edu.vn> (Long-D176). Lượt này bắt đầu
 từ master46df286 sạch: tái lập native QA máy mới, sửa integration selectors theo
