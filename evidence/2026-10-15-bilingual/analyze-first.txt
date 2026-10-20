@@ -1,0 +1,16 @@
+
+┌─────────────────────────────────────────────────────────┐
+│ A new version of Flutter is available!                  │
+│                                                         │
+│ To update to the latest version, run "flutter upgrade". │
+└─────────────────────────────────────────────────────────┘
+Analyzing flutter cuoi ki...                                    
+
+   info - Statements in an if should be enclosed in a block. Try wrapping the statement in a block - lib\state\app_controller.dart:183:7 - curly_braces_in_flow_control_structures
+warning - Unused import: 'language_picker.dart'. Try removing the import directive - lib\ui\editor.dart:12:8 - unused_import
+   info - Statements in an if should be enclosed in a block. Try wrapping the statement in a block - lib\ui\editor.dart:246:11 - curly_braces_in_flow_control_structures
+   info - Statements in an if should be enclosed in a block. Try wrapping the statement in a block - lib\ui\language_picker.dart:26:13 - curly_braces_in_flow_control_structures
+   info - Don't use 'BuildContext's across async gaps. Try rewriting the code to not use the 'BuildContext', or guard the use with a 'mounted' check - lib\ui\note_protection.dart:358:9 - use_build_context_synchronously
+   info - Don't use 'BuildContext's across async gaps. Try rewriting the code to not use the 'BuildContext', or guard the use with a 'mounted' check - lib\ui\workspace.dart:615:31 - use_build_context_synchronously
+
+6 issues found. (ran in 57.7s)

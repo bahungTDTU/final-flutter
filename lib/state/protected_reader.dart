@@ -396,6 +396,11 @@ class ProtectedReader extends ChangeNotifier {
     List<String>? labels,
   }) async {
     if (!canEdit || requiresReopen || _lease == null) return;
+    if (labels != null && labels.length > maxNoteLabels) {
+      error = 'Tối đa 30 nhãn cho mỗi ghi chú.';
+      notifyListeners();
+      return;
+    }
     draft = {
       'title': title,
       'content': content,
@@ -416,7 +421,13 @@ class ProtectedReader extends ChangeNotifier {
         localWriteFailed) {
       return;
     }
-    if (!validNote(draft!['title'] as String, draft!['content'] as String)) {
+    final validation = noteValidationError(
+      draft!['title'] as String,
+      draft!['content'] as String,
+    );
+    if (validation != null) {
+      error = validation;
+      notifyListeners();
       return;
     }
     final epoch = _epoch;
@@ -464,9 +475,11 @@ class ProtectedReader extends ChangeNotifier {
       unawaited(controller.synchronize());
     } on ApiException catch (e) {
       if (!active || epoch != _epoch) return;
-      if (e.status == 409) {
+      if (e.status == 409 || e.status == 422) {
         conflicted = true;
-        error = 'Có phiên bản mới trên máy chủ. Bản nháp của bạn được giữ; chọn bản máy chủ hoặc tạo ghi chú riêng.';
+        error = e.status == 422
+            ? 'Máy chủ từ chối thay đổi. Bản nháp được giữ; hãy tạo bản sao để sửa.'
+            : 'Có phiên bản mới trên máy chủ. Bản nháp của bạn được giữ; chọn bản máy chủ hoặc tạo ghi chú riêng.';
         await persist();
       } else if ([401, 403, 404, 423].contains(e.status)) {
         await controller.invalidateProtectedVault(id, account!);

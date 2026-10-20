@@ -1,3 +1,5 @@
+import '../l10n/app_strings.dart';
+
 import 'package:flutter/material.dart';
 
 /// A bounded, naturally sized section; labels never share the input's paint area.
@@ -78,7 +80,7 @@ class NoteTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final compact = MediaQuery.sizeOf(context).width < 600;
-    final label = titleMode ? 'Tiêu đề' : 'Nội dung';
+    final label = titleMode ? context.tr("Tiêu đề") : context.tr("Nội dung");
     final radius = BorderRadius.circular(12);
     return NoteSection(
       label: label,
@@ -101,8 +103,8 @@ class NoteTextField extends StatelessWidget {
               : TextStyle(fontSize: fontSize, height: 1.6),
           decoration: InputDecoration(
             hintText: titleMode
-                ? 'Đặt tên cho ghi chú…'
-                : 'Viết nội dung của bạn…',
+                ? context.tr("Đặt tên cho ghi chú…")
+                : context.tr("Viết nội dung của bạn…"),
             hintStyle: theme.textTheme.bodyLarge?.copyWith(
               color: theme.colorScheme.onSurfaceVariant,
             ),
@@ -133,7 +135,10 @@ class NoteTextField extends StatelessWidget {
                 return Padding(
                   padding: const EdgeInsets.only(top: 4),
                   child: Text(
-                    '${locale.formatDecimal(currentLength)} / ${locale.formatDecimal(maxLength!)} ký tự',
+                    context.tr("{0} / {1} ký tự", [
+                      locale.formatDecimal(currentLength),
+                      locale.formatDecimal(maxLength!),
+                    ]),
                     style: theme.textTheme.bodySmall,
                   ),
                 );

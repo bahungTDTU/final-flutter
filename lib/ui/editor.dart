@@ -1,3 +1,5 @@
+import '../l10n/app_strings.dart';
+
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -7,6 +9,8 @@ import '../domain/writing_tools.dart';
 import '../state/focus_session.dart';
 import '../state/app_controller.dart';
 import 'design_system.dart';
+import 'language_picker.dart';
+import 'palette_picker.dart';
 import 'attachments.dart';
 import 'sharing.dart';
 import 'ai.dart';
@@ -76,9 +80,9 @@ class _EditorScreenState extends State<EditorScreen>
     );
     dirty = draft != null;
     if (dirty) {
-      feedback = validNote(title.text, content.text)
-          ? 'Bản nháp đã lưu trên thiết bị'
-          : 'Nhập tiêu đề và nội dung để tạo ghi chú';
+      feedback =
+          noteValidationError(title.text, content.text) ??
+          'Bản nháp đã lưu trên thiết bị';
     }
     c.addListener(changed);
   }
@@ -164,15 +168,16 @@ class _EditorScreenState extends State<EditorScreen>
     editVersion++;
     dirty = true;
     debounce?.cancel();
-    setState(() => feedback = 'Đang lưu trên thiết bị…');
+    setState(() => feedback = context.tr("Đang lưu trên thiết bị…"));
     try {
       if (!authorized) return;
       await c.draft(widget.id, title.text, content.text);
       if (mounted) {
         setState(
-          () => feedback = validNote(title.text, content.text)
-              ? 'Bản nháp đã lưu trên thiết bị'
-              : 'Nhập tiêu đề và nội dung để tạo ghi chú',
+          () => feedback = context.trMessage(
+            noteValidationError(title.text, content.text) ??
+                'Bản nháp đã lưu trên thiết bị',
+          ),
         );
       }
       debounce = Timer(
@@ -183,7 +188,9 @@ class _EditorScreenState extends State<EditorScreen>
       if (mounted) {
         setState(() {
           saveFailed = true;
-          feedback = 'Chưa lưu được thay đổi trên thiết bị. Vui lòng thử lại.';
+          feedback = context.tr(
+            "Chưa lưu được thay đổi trên thiết bị. Vui lòng thử lại.",
+          );
         });
       }
     }
@@ -227,7 +234,8 @@ class _EditorScreenState extends State<EditorScreen>
     try {
       await c.draft(widget.id, titleValue, contentValue);
       if (version != editVersion || !authorized) return;
-      if (validNote(titleValue, contentValue)) {
+      final validation = noteValidationError(titleValue, contentValue);
+      if (validation == null) {
         await c.save(
           widget.id,
           titleValue,
@@ -237,7 +245,11 @@ class _EditorScreenState extends State<EditorScreen>
         baseRevision =
             c.notes.where((n) => n.id == widget.id).firstOrNull?.revision ??
             baseRevision;
-        if (mounted) setState(() => feedback = 'Đã lưu trên thiết bị');
+        if (mounted) {
+          setState(() => feedback = context.tr("Đã lưu trên thiết bị"));
+        }
+      } else if (mounted) {
+        setState(() => feedback = context.trMessage(validation));
       }
       dirty = version != editVersion;
     } catch (e) {
@@ -245,7 +257,9 @@ class _EditorScreenState extends State<EditorScreen>
       if (mounted) {
         setState(() {
           saveFailed = true;
-          feedback = 'Chưa lưu được thay đổi trên thiết bị. Vui lòng thử lại.';
+          feedback = context.tr(
+            "Chưa lưu được thay đổi trên thiết bị. Vui lòng thử lại.",
+          );
         });
       }
     }
@@ -276,6 +290,8 @@ class _EditorScreenState extends State<EditorScreen>
             ),
           );
         }
+      case 'palette':
+        await showPalettePicker(context, c);
       case 'theme':
         await c.setPreferences({'dark': !c.dark});
       case 'sync':
@@ -332,41 +348,43 @@ class _EditorScreenState extends State<EditorScreen>
     if (!authorized) {
       return Scaffold(
         appBar: noteAppBar(),
-        body: const Center(child: Text('Phiên tài khoản đã kết thúc.')),
+        body: Center(child: Text(context.tr("Phiên tài khoản đã kết thúc."))),
       );
     }
     final note = c.notes.where((n) => n.id == widget.id).firstOrNull;
     if (note?.locked == true) {
       return Scaffold(
         appBar: noteAppBar(),
-        body: const Center(child: Text('Ghi chú đã bị khóa.')),
+        body: Center(child: Text(context.tr("Ghi chú đã bị khóa."))),
       );
     }
 
     if (existedAtOpen && note == null && !c.hasPending(widget.id)) {
       return Scaffold(
         appBar: noteAppBar(),
-        body: const EmptyNotes(
-          title: 'Bạn không còn quyền truy cập ghi chú này.',
-          detail: 'Quay lại danh sách để tiếp tục.',
+        body: EmptyNotes(
+          title: context.tr("Bạn không còn quyền truy cập ghi chú này."),
+          detail: context.tr("Quay lại danh sách để tiếp tục."),
         ),
       );
     }
     final status = saveFailed
-        ? feedback
+        ? context.trMessage(feedback)
         : c.conflicts.containsKey(widget.id)
-        ? 'Có hai phiên bản thay đổi · xử lý trong danh sách'
+        ? c.conflicts[widget.id]['status'] == 422
+              ? context.tr('Máy chủ từ chối thay đổi · xử lý trong danh sách')
+              : context.tr("Có hai phiên bản thay đổi · xử lý trong danh sách")
         : dirty || c.drafts.containsKey(widget.id)
-        ? feedback
+        ? context.trMessage(feedback)
         : c.hasPending(widget.id)
         ? c.syncing
-              ? 'Đang đồng bộ…'
+              ? context.tr("Đang đồng bộ…")
               : c.online
-              ? 'Đã lưu trên thiết bị · chờ đồng bộ'
-              : 'Đã lưu trên thiết bị. Sẽ đồng bộ khi có kết nối.'
+              ? context.tr("Đã lưu trên thiết bị · chờ đồng bộ")
+              : context.tr("Đã lưu trên thiết bị. Sẽ đồng bộ khi có kết nối.")
         : note != null && note.revision > 0
-        ? 'Đã đồng bộ'
-        : 'Bắt đầu ghi chú mới';
+        ? context.tr("Đã đồng bộ")
+        : context.tr("Bắt đầu ghi chú mới");
     final compactTools =
         MediaQuery.sizeOf(context).width < 600 ||
         MediaQuery.textScalerOf(context).scale(18) > 24 ||
@@ -379,23 +397,25 @@ class _EditorScreenState extends State<EditorScreen>
       child: Scaffold(
         appBar: noteAppBar(
           leading: IconButton(
-            tooltip: 'Quay lại',
+            tooltip: context.tr("Quay lại"),
             onPressed: leave,
             icon: const Icon(Icons.arrow_back),
           ),
           title: Text(
             focusMode
-                ? 'Viết tập trung'
+                ? context.tr("Viết tập trung")
                 : editable
-                ? 'Không gian viết'
-                : 'Chỉ xem',
+                ? context.tr("Không gian viết")
+                : context.tr("Chỉ xem"),
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),
           actions: [
             IconButton(
               key: const Key('focus-mode'),
-              tooltip: focusMode ? 'Thoát tập trung' : 'Viết tập trung',
+              tooltip: focusMode
+                  ? context.tr("Thoát tập trung")
+                  : context.tr("Viết tập trung"),
               icon: Icon(
                 focusMode
                     ? Icons.fullscreen_exit
@@ -409,15 +429,16 @@ class _EditorScreenState extends State<EditorScreen>
                 }
               },
             ),
+            if (compactTools) LanguagePicker(controller: c, iconOnly: true),
             if (compactTools)
               PopupMenuButton<String>(
                 key: const Key('editor-tools-menu'),
-                tooltip: 'Công cụ ghi chú',
+                tooltip: context.tr("Công cụ ghi chú"),
                 onSelected: (action) => unawaited(toolAction(action)),
                 itemBuilder: (_) => [
-                  const PopupMenuItem(
+                  PopupMenuItem(
                     value: 'outline',
-                    child: Text('Dàn ý & checklist'),
+                    child: Text(context.tr("Dàn ý & checklist")),
                   ),
                   if (note != null)
                     PopupMenuItem(
@@ -426,28 +447,35 @@ class _EditorScreenState extends State<EditorScreen>
                           !dirty &&
                           !c.hasPending(widget.id) &&
                           !c.drafts.containsKey(widget.id),
-                      child: const Text('Tóm tắt bằng AI'),
+                      child: Text(context.tr("Tóm tắt bằng AI")),
                     ),
                   if (note?.role == 'owner' && !c.hasPending(widget.id))
-                    const PopupMenuItem(
+                    PopupMenuItem(
                       value: 'share',
-                      child: Text('Chia sẻ ghi chú'),
+                      child: Text(context.tr("Chia sẻ ghi chú")),
                     ),
                   if (note != null && !c.hasPending(widget.id))
-                    const PopupMenuItem(
+                    PopupMenuItem(
                       value: 'files',
-                      child: Text('Đính kèm'),
+                      child: Text(context.tr("Đính kèm")),
                     ),
-                  const PopupMenuItem(
-                    value: 'theme',
-                    child: Text('Đổi giao diện'),
+                  PopupMenuItem(
+                    value: 'palette',
+                    child: Text(context.tr('Bảng màu giao diện')),
                   ),
-                  const PopupMenuItem(value: 'sync', child: Text('Đồng bộ')),
+                  PopupMenuItem(
+                    value: 'theme',
+                    child: Text(context.tr("Đổi giao diện")),
+                  ),
+                  PopupMenuItem(
+                    value: 'sync',
+                    child: Text(context.tr("Đồng bộ")),
+                  ),
                 ],
               ),
             if (!compactTools) ...[
               IconButton(
-                tooltip: 'Dàn ý & checklist',
+                tooltip: context.tr("Dàn ý & checklist"),
                 onPressed: () {
                   final target = toolsKey.currentContext;
                   if (target != null) {
@@ -464,7 +492,7 @@ class _EditorScreenState extends State<EditorScreen>
               ),
               if (!focusMode && note != null)
                 IconButton(
-                  tooltip: 'Tóm tắt bằng AI',
+                  tooltip: context.tr("Tóm tắt bằng AI"),
                   icon: const Icon(Icons.auto_awesome_outlined),
                   onPressed:
                       dirty ||
@@ -481,7 +509,7 @@ class _EditorScreenState extends State<EditorScreen>
                   note?.role == 'owner' &&
                   !c.hasPending(widget.id))
                 IconButton(
-                  tooltip: 'Chia sẻ ghi chú',
+                  tooltip: context.tr("Chia sẻ ghi chú"),
                   icon: const Icon(Icons.person_add_alt_outlined),
                   onPressed: () => showDialog<void>(
                     context: context,
@@ -491,7 +519,7 @@ class _EditorScreenState extends State<EditorScreen>
                 ),
               if (!focusMode && note != null && !c.hasPending(widget.id))
                 IconButton(
-                  tooltip: 'Đính kèm',
+                  tooltip: context.tr("Đính kèm"),
                   icon: const Icon(Icons.attach_file),
                   onPressed: () => showDialog<void>(
                     context: context,
@@ -502,15 +530,21 @@ class _EditorScreenState extends State<EditorScreen>
                     ),
                   ),
                 ),
+              LanguagePicker(controller: c, iconOnly: true),
               IconButton(
-                tooltip: 'Đổi giao diện',
+                tooltip: context.tr('Bảng màu giao diện'),
+                icon: const Icon(Icons.palette_outlined),
+                onPressed: () => showPalettePicker(context, c),
+              ),
+              IconButton(
+                tooltip: context.tr("Đổi giao diện"),
                 onPressed: () => c.setPreferences({'dark': !c.dark}),
                 icon: Icon(
                   c.dark ? Icons.light_mode_outlined : Icons.dark_mode_outlined,
                 ),
               ),
               IconButton(
-                tooltip: 'Đồng bộ',
+                tooltip: context.tr("Đồng bộ"),
                 onPressed: () async {
                   await flush();
                   await c.synchronize();
@@ -574,7 +608,9 @@ class _EditorScreenState extends State<EditorScreen>
                       ),
                       if (c.realtime != null && c.online)
                         MetadataPill(
-                          c.realtimeLive ? 'Trực tiếp' : 'Đang nối lại',
+                          c.realtimeLive
+                              ? context.tr("Trực tiếp")
+                              : context.tr("Đang nối lại"),
                           icon: Icons.cloud_outlined,
                         ),
                       if (saveFailed)
@@ -583,17 +619,19 @@ class _EditorScreenState extends State<EditorScreen>
                             saveFailed = false;
                             await flush();
                           },
-                          child: const Text('Thử lại'),
+                          child: Text(context.tr("Thử lại")),
                         ),
                     ],
                   ),
                 ),
               ),
               if (!editable)
-                const Padding(
+                Padding(
                   padding: EdgeInsets.only(top: 16),
                   child: StatusNotice(
-                    message: 'Bạn có quyền chỉ xem. Nội dung có thể chọn và sao chép.',
+                    message: context.tr(
+                      "Bạn có quyền chỉ xem. Nội dung có thể chọn và sao chép.",
+                    ),
                     icon: Icons.visibility_outlined,
                   ),
                 ),
@@ -603,8 +641,10 @@ class _EditorScreenState extends State<EditorScreen>
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const StatusNotice(
-                        message: 'Đã nhận phiên bản mới. Bắt đầu phiên chỉnh sửa mới để tiếp tục.',
+                      StatusNotice(
+                        message: context.tr(
+                          "Đã nhận phiên bản mới. Bắt đầu phiên chỉnh sửa mới để tiếp tục.",
+                        ),
                         icon: Icons.sync_outlined,
                       ),
                       TextButton(
@@ -616,7 +656,7 @@ class _EditorScreenState extends State<EditorScreen>
                             ),
                           );
                         },
-                        child: const Text('Chỉnh sửa phiên bản mới'),
+                        child: Text(context.tr("Chỉnh sửa phiên bản mới")),
                       ),
                     ],
                   ),
@@ -629,7 +669,7 @@ class _EditorScreenState extends State<EditorScreen>
               if (!focusMode && note != null && note.role == 'owner') ...[
                 const SizedBox(height: 16),
                 NoteSection(
-                  label: 'Sắp xếp',
+                  label: context.tr("Sắp xếp"),
                   icon: Icons.label_outline,
                   child: Wrap(
                     spacing: 8,
@@ -643,7 +683,9 @@ class _EditorScreenState extends State<EditorScreen>
                           size: 18,
                         ),
                         label: Text(
-                          note.pinnedAt == null ? 'Ghim ghi chú' : 'Đã ghim',
+                          note.pinnedAt == null
+                              ? context.tr("Ghim ghi chú")
+                              : context.tr("Đã ghim"),
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                         ),
@@ -669,6 +711,8 @@ class _EditorScreenState extends State<EditorScreen>
                                     baseRevision;
                               },
                       ),
+                      if (note.labels.length >= maxNoteLabels)
+                        Text(context.tr('Tối đa 30 nhãn cho mỗi ghi chú.')),
                       ...c.labels.map(
                         (label) => FilterChip(
                           label: Text(
@@ -677,7 +721,10 @@ class _EditorScreenState extends State<EditorScreen>
                             overflow: TextOverflow.ellipsis,
                           ),
                           selected: note.labels.contains(label),
-                          onSelected: requiresReopen
+                          onSelected:
+                              requiresReopen ||
+                                  (note.labels.length >= maxNoteLabels &&
+                                      !note.labels.contains(label))
                               ? null
                               : (v) async {
                                   await flush();
@@ -719,7 +766,7 @@ class _EditorScreenState extends State<EditorScreen>
             if (note != null)
               InspectorAction(
                 icon: Icons.attach_file,
-                label: 'Đính kèm',
+                label: context.tr("Đính kèm"),
                 onPressed: !c.hasPending(widget.id)
                     ? () => unawaited(toolAction('files'))
                     : null,
@@ -727,7 +774,7 @@ class _EditorScreenState extends State<EditorScreen>
             if (note != null)
               InspectorAction(
                 icon: Icons.auto_awesome_outlined,
-                label: 'Tóm tắt AI',
+                label: context.tr("Tóm tắt AI"),
                 onPressed:
                     !dirty &&
                         !c.hasPending(widget.id) &&
@@ -738,7 +785,7 @@ class _EditorScreenState extends State<EditorScreen>
             if (note?.role == 'owner')
               InspectorAction(
                 icon: Icons.lock_outline,
-                label: 'Bảo vệ ghi chú',
+                label: context.tr("Bảo vệ ghi chú"),
                 onPressed:
                     !dirty &&
                         !c.hasPending(widget.id) &&

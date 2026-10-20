@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 
+import 'palette_tokens.dart';
+
 /// Decorative tones are derived from opaque IDs, never stored as note metadata.
 @immutable
 class PrismTone {
@@ -320,102 +322,135 @@ class _PrismCardState extends State<PrismCard> {
     final dark = Theme.of(context).brightness == Brightness.dark;
     final rich = widget.rich && tone != null;
     return RepaintBoundary(
-      child: AnimatedContainer(
-        duration: PrismMotion.duration(context, PrismMotion.hover),
-        curve: Curves.easeOutCubic,
-        transformAlignment: Alignment.center,
-        transform:
-            Matrix4.diagonal3Values(
-              pressed && !MediaQuery.disableAnimationsOf(context) ? .985 : 1,
-              pressed && !MediaQuery.disableAnimationsOf(context) ? .985 : 1,
-              1,
-            )..setTranslationRaw(
-              0,
-              active && !pressed && !MediaQuery.disableAnimationsOf(context)
-                  ? -2
-                  : 0,
-              0,
-            ),
-        padding: const EdgeInsets.all(1),
-        decoration: BoxDecoration(
+      // Keep pointer/focus/tap bounds fixed; only the painted card moves.
+      // Moving InkWell itself can repeatedly exit/re-enter at a stationary edge.
+      child: Material(
+        type: MaterialType.transparency,
+        child: InkWell(
+          onTap: widget.onTap,
+          hoverDuration: PrismMotion.duration(context, PrismMotion.hover),
+          onHover: (v) => setState(() => hovered = v),
+          onFocusChange: (v) => setState(() => focused = v),
+          onHighlightChanged: (v) => setState(() => pressed = v),
           borderRadius: BorderRadius.circular(12),
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: tone == null
-                ? [colors.outlineVariant, colors.outlineVariant]
-                : [
-                    Color.lerp(p.rim[0], accent, active ? .8 : .45)!,
-                    p.rim[1],
-                    Color.lerp(p.rim[2], accent, .3)!,
-                  ],
-          ),
-          boxShadow: [
-            BoxShadow(
-              color: accent.withValues(alpha: active ? .16 : .06),
-              blurRadius: active ? 22 : 14,
-              offset: Offset(0, active ? 8 : 4),
-            ),
-          ],
-        ),
-        child: Material(
-          color: colors.surface,
-          borderRadius: BorderRadius.circular(11),
-          clipBehavior: Clip.antiAlias,
-          child: Ink(
+          child: AnimatedContainer(
+            duration: PrismMotion.duration(context, PrismMotion.hover),
+            curve: Curves.easeOutCubic,
+            transformAlignment: Alignment.center,
+            transform:
+                Matrix4.diagonal3Values(
+                  pressed && !MediaQuery.disableAnimationsOf(context)
+                      ? .985
+                      : 1,
+                  pressed && !MediaQuery.disableAnimationsOf(context)
+                      ? .985
+                      : 1,
+                  1,
+                )..setTranslationRaw(
+                  0,
+                  active && !pressed && !MediaQuery.disableAnimationsOf(context)
+                      ? -2
+                      : 0,
+                  0,
+                ),
+            padding: const EdgeInsets.all(1),
             decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(12),
               gradient: LinearGradient(
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
-                colors: [
-                  Color.alphaBlend(
-                    accent.withValues(
-                      alpha: tone == null
-                          ? .025
-                          : rich
-                          ? (dark ? .05 : .045)
-                          : .03,
-                    ),
-                    colors.surface,
-                  ),
-                  Color.alphaBlend(
-                    accent.withValues(alpha: rich ? (dark ? .03 : .025) : 0),
-                    colors.surface,
-                  ),
-                ],
-                stops: [0, rich ? 1 : .72],
+                colors: tone == null
+                    ? [colors.outlineVariant, colors.outlineVariant]
+                    : [
+                        Color.lerp(p.rim[0], accent, active ? .8 : .45)!,
+                        p.rim[1],
+                        Color.lerp(p.rim[2], accent, .3)!,
+                      ],
               ),
+              boxShadow: [
+                BoxShadow(
+                  color: accent.withValues(alpha: active ? .16 : .06),
+                  blurRadius: active ? 14 : 6,
+                  offset: Offset(0, active ? 5 : 2),
+                ),
+              ],
             ),
-            child: InkWell(
-              onTap: widget.onTap,
-              hoverDuration: PrismMotion.duration(context, PrismMotion.hover),
-              onHover: (v) => setState(() => hovered = v),
-              onFocusChange: (v) => setState(() => focused = v),
-              onHighlightChanged: (v) => setState(() => pressed = v),
-              borderRadius: BorderRadius.circular(11),
-              child: Stack(
-                children: [
-                  if (tone != null)
-                    Positioned(
-                      top: 0,
-                      left: 16,
-                      width: 52,
-                      height: 3,
-                      child: ExcludeSemantics(
-                        child: DecoratedBox(
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              colors: [tone.ink, tone.light],
-                            ),
-                            borderRadius: const BorderRadius.vertical(
-                              bottom: Radius.circular(3),
+            child: RepaintBoundary(
+              child: Material(
+                color: colors.surface,
+                borderRadius: BorderRadius.circular(11),
+                clipBehavior: Clip.antiAlias,
+                child: Ink(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [
+                        Color.alphaBlend(
+                          accent.withValues(
+                            alpha: pressed
+                                ? .09
+                                : tone == null
+                                ? .025
+                                : rich
+                                ? (dark ? .05 : .045)
+                                : .03,
+                          ),
+                          colors.surface,
+                        ),
+                        Color.alphaBlend(
+                          accent.withValues(
+                            alpha: rich ? (dark ? .03 : .025) : 0,
+                          ),
+                          colors.surface,
+                        ),
+                      ],
+                      stops: [0, rich ? 1 : .72],
+                    ),
+                  ),
+                  child: Stack(
+                    children: [
+                      if (tone != null)
+                        Positioned(
+                          top: 0,
+                          left: 16,
+                          width: 52,
+                          height: 3,
+                          child: ExcludeSemantics(
+                            child: DecoratedBox(
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  colors: [tone.ink, tone.light],
+                                ),
+                                borderRadius: const BorderRadius.vertical(
+                                  bottom: Radius.circular(3),
+                                ),
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ),
-                  widget.child,
-                ],
+                      widget.child,
+                      // Native ink is beneath the opaque body; paint focus above it.
+                      if (focused)
+                        Positioned.fill(
+                          child: IgnorePointer(
+                            child: ExcludeSemantics(
+                              child: DecoratedBox(
+                                key: const Key('prism-card-focus-ring'),
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color: colors.primary,
+                                    width: 2,
+                                  ),
+                                  borderRadius: BorderRadius.circular(11),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                    ],
+                  ),
+                ),
               ),
             ),
           ),
@@ -446,7 +481,7 @@ class PrismAction extends StatelessWidget {
       decoration: BoxDecoration(
         gradient: onPressed == null
             ? null
-            : const LinearGradient(colors: PrismPalette.actionColors),
+            : LinearGradient(colors: PaletteTokens.of(context).brand),
         borderRadius: BorderRadius.circular(8),
       ),
       child: icon == null

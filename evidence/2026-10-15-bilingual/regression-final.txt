@@ -1,0 +1,64 @@
+00:00 +0: loading D:/flutter cuoi ki/test/ui_redesign_test.dart
+00:00 +0: D:/flutter cuoi ki/test/ui_redesign_test.dart: Grid accommodates largest note font, long labels and conflict action
+00:00 +1: D:/flutter cuoi ki/test/ui_redesign_test.dart: Grid accommodates largest note font, long labels and conflict action
+00:00 +2: D:/flutter cuoi ki/test/ui_redesign_test.dart: Grid accommodates largest note font, long labels and conflict action
+00:00 +3: D:/flutter cuoi ki/test/ui_redesign_test.dart: Grid accommodates largest note font, long labels and conflict action
+00:00 +4: D:/flutter cuoi ki/test/ui_redesign_test.dart: Grid accommodates largest note font, long labels and conflict action
+00:00 +5: D:/flutter cuoi ki/test/ui_redesign_test.dart: Grid accommodates largest note font, long labels and conflict action
+00:01 +6: D:/flutter cuoi ki/test/ui_redesign_test.dart: Grid accommodates largest note font, long labels and conflict action
+00:01 +7: D:/flutter cuoi ki/test/writing_studio_test.dart: Template cancel is inert; explicit choice persists one editable account draft
+00:01 +8: D:/flutter cuoi ki/test/writing_studio_test.dart: Template cancel is inert; explicit choice persists one editable account draft
+00:02 +9: D:/flutter cuoi ki/test/writing_studio_test.dart: Template cancel is inert; explicit choice persists one editable account draft
+00:02 +10: D:/flutter cuoi ki/test/writing_studio_test.dart: Template cancel is inert; explicit choice persists one editable account draft
+00:02 +11: D:/flutter cuoi ki/test/writing_studio_test.dart: Template cancel is inert; explicit choice persists one editable account draft
+00:02 +12: D:/flutter cuoi ki/test/writing_studio_test.dart: Template cancel is inert; explicit choice persists one editable account draft
+00:02 +13: D:/flutter cuoi ki/test/localization_test.dart: Live locale switch preserves rich draft, selection, note identity and frozen revision
+00:02 +14: D:/flutter cuoi ki/test/localization_test.dart: Live locale switch preserves rich draft, selection, note identity and frozen revision
+00:02 +15: D:/flutter cuoi ki/test/localization_test.dart: Live locale switch preserves rich draft, selection, note identity and frozen revision
+00:03 +16: D:/flutter cuoi ki/test/localization_test.dart: Live locale switch preserves rich draft, selection, note identity and frozen revision
+00:03 +17: D:/flutter cuoi ki/test/localization_test.dart: Live locale switch preserves rich draft, selection, note identity and frozen revision
+00:03 +18: D:/flutter cuoi ki/test/localization_test.dart: Live locale switch preserves rich draft, selection, note identity and frozen revision
+00:03 +19: D:/flutter cuoi ki/test/localization_test.dart: Live locale switch preserves rich draft, selection, note identity and frozen revision
+00:03 +20: D:/flutter cuoi ki/test/localization_test.dart: Live locale switch preserves rich draft, selection, note identity and frozen revision
+00:03 +21: D:/flutter cuoi ki/test/localization_test.dart: Live locale switch preserves rich draft, selection, note identity and frozen revision
+00:03 +22: D:/flutter cuoi ki/test/localization_test.dart: Live locale switch preserves rich draft, selection, note identity and frozen revision
+00:03 +23: D:/flutter cuoi ki/test/localization_test.dart: Live locale switch preserves rich draft, selection, note identity and frozen revision
+00:03 +24: D:/flutter cuoi ki/test/localization_test.dart: Live locale switch preserves rich draft, selection, note identity and frozen revision
+00:03 +25: D:/flutter cuoi ki/test/localization_test.dart: Live locale switch preserves rich draft, selection, note identity and frozen revision
+00:03 +26: D:/flutter cuoi ki/test/localization_test.dart: Live locale switch preserves rich draft, selection, note identity and frozen revision
+00:03 +27: D:/flutter cuoi ki/test/localization_test.dart: Live locale switch preserves rich draft, selection, note identity and frozen revision
+00:03 +28: D:/flutter cuoi ki/test/localization_test.dart: Live locale switch preserves rich draft, selection, note identity and frozen revision
+00:03 +29: D:/flutter cuoi ki/test/localization_test.dart: Live locale switch preserves rich draft, selection, note identity and frozen revision
+00:03 +30: D:/flutter cuoi ki/test/localization_test.dart: Live locale switch preserves rich draft, selection, note identity and frozen revision
+00:04 +31: D:/flutter cuoi ki/test/localization_test.dart: Live locale switch preserves rich draft, selection, note identity and frozen revision
+00:04 +32: D:/flutter cuoi ki/test/ui_upgrade_test.dart: Management sheets and auth fit Size(320.0, 640.0) with 200 percent text
+00:04 +33: D:/flutter cuoi ki/test/writing_studio_test.dart: Checklist keeps frozen base and selection across peer update, focus, theme and resize
+00:04 +34: D:/flutter cuoi ki/test/writing_studio_test.dart: Checklist keeps frozen base and selection across peer update, focus, theme and resize
+00:04 +35: D:/flutter cuoi ki/test/localization_test.dart: English Home retains user titles, private lock boundaries, query and layout across themes and resize
+00:04 +36: D:/flutter cuoi ki/test/localization_test.dart: English Home retains user titles, private lock boundaries, query and layout across themes and resize
+00:04 +37: D:/flutter cuoi ki/test/localization_test.dart: English Home retains user titles, private lock boundaries, query and layout across themes and resize
+00:05 +38: D:/flutter cuoi ki/test/writing_studio_test.dart: Viewer and clean newer revision cannot toggle source checklist
+00:05 +39: D:/flutter cuoi ki/test/ui_upgrade_test.dart: Management sheets and auth fit Size(1280.0, 600.0) with 200 percent text
+00:05 +40: D:/flutter cuoi ki/test/ui_upgrade_test.dart: Management sheets and auth fit Size(1280.0, 600.0) with 200 percent text
+00:05 +41: D:/flutter cuoi ki/test/ui_upgrade_test.dart: Management sheets and auth fit Size(1280.0, 600.0) with 200 percent text
+00:05 +42: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(390.0, 844.0) at scale 2.0
+00:05 +43: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(390.0, 844.0) at scale 2.0
+00:05 +44: D:/flutter cuoi ki/test/writing_studio_test.dart: Template gallery and focus layout fit 320px at 200 percent text and reduced motion
+00:05 +45: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(844.0, 390.0) at scale 1.0
+00:05 +46: D:/flutter cuoi ki/test/writing_studio_test.dart: Outline jumps to a Unicode heading without changing content
+00:05 +47: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(844.0, 390.0) at scale 1.5
+00:05 +48: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(844.0, 390.0) at scale 1.5
+00:06 +49: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(844.0, 390.0) at scale 2.0
+00:06 +50: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(768.0, 1024.0) at scale 1.0
+00:06 +51: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(768.0, 1024.0) at scale 1.5
+00:06 +52: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(768.0, 1024.0) at scale 2.0
+00:06 +53: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(1280.0, 800.0) at scale 1.0
+00:07 +54: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(1280.0, 800.0) at scale 1.5
+00:07 +55: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(1280.0, 800.0) at scale 2.0
+00:07 +56: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(1440.0, 900.0) at scale 1.0
+00:07 +57: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(1440.0, 900.0) at scale 1.5
+00:07 +58: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(1440.0, 900.0) at scale 2.0
+00:08 +59: D:/flutter cuoi ki/test/ui_redesign_test.dart: Locked card never exposes title content or labels; viewer has no owner menu
+00:08 +60: D:/flutter cuoi ki/test/ui_redesign_test.dart: Search clear and AND filter preserve note list and distinguish empty results
+00:08 +61: D:/flutter cuoi ki/test/ui_redesign_test.dart: Resize and theme retain editor text selection, ID and frozen revision
+00:09 +62: All tests passed!

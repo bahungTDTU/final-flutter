@@ -12,6 +12,12 @@ và git diff whitespace checks PASS. Không rerun UI/native vì không sửa cli
 [Evidence và phạm vi](../evidence/2026-10-19-backup-hardening/INDEX.md).
 SMTP/Gemini thật, Docker engine/HTTPS/signing/native thủ công và bộ nộp vẫn là gate riêng.
 
+## Local song ngữ —16/10/2026
+
+Web và backend mới hỗ trợ locale vi/en; cần nâng cấp backend cùng client để nhận trường locale.
+State cũ không cần migration schema; thiếu locale mặc định vi. Client legacy PATCH giữ locale mới.
+Lựa chọn public trước login và lựa chọn account có phạm vi riêng; xem [BILINGUAL_UI](BILINGUAL_UI.md).
+Acceptance mới tại [INDEX](../evidence/2026-10-15-bilingual/INDEX.md), không đóng provider/native/release gates.
 
 ## Clone sạch và hai UI độc lập —12/10/2026
 
@@ -103,25 +109,23 @@ Backend mặc định8000/Web7357. Khi QA dùng DB tmp riêng; không dùng DB n
 .env.example là template; secret chỉ qua process environment/file ignored.
 Kết quả lệnh và giới hạn xem evidence/2026-10-12-local-baseline/INDEX.md.
 
-## Backlog gốc tại chặng1 — snapshot lịch sử
+## Backlog — cập nhật đối chiếu14–15/10; evidence lịch sử ở đầu tài liệu
 
-Bảng dưới giữ trạng thái lúc lập baseline, không dùng để chọn việc hiện hành.
-Bảng gate đang áp dụng nằm ở [REMAINING_GATES](REMAINING_GATES.md); trình tự C0–C5
-ở [kế hoạch hoàn thiện19/10](COMPLETION_PLAN_2026-10-19.md). R01 guard và backup
-đã có code; các nghiệm thu OS/provider/release còn riêng.
+Tham chiếu gate hiện hành tại [REMAINING_GATES](REMAINING_GATES.md) và
+[kế hoạch C0–C5 ngày19/10](COMPLETION_PLAN_2026-10-19.md); các kết quả bên trên giữ phạm vi source/target riêng.
 
-| ID | Chặng / việc | Điều kiện nghiệm thu | Trạng thái ở chặng1 |
+| ID | Chặng / việc | Điều kiện nghiệm thu | Trạng thái / evidence gần nhất |
 |---|---|---|---|
 | B01 | Baseline máy mới | Setup/check/backend/Web, exact source và giới hạn ghi rõ | Xem evidence baseline |
-| N01 | Android editor hiện tại | IME tiếng Việt, selection/paste/undo/format/autosave/theme/resize trên native thật | NOT RUN |
+| N01 | Android editor hiện tại | IME tiếng Việt, selection/paste/undo/format/autosave/theme/resize trên native thật | Native12/10 injected input PASS; IME thật/artifact cuối NOT RUN |
 | N02 | Lifecycle/offline | Web reload và Android OS relaunch, rich text cùng ID/format, reconnect không mất draft | NOT RUN trên source cuối |
 | N03 | Conflict/recovery | Hai client dirty409; remote lock/delete/revoke giữ local copy và không vượt quyền | HTTP baseline có; UI hai client cần QA |
 | N04 | Protected lifecycle | Unlock/change/disable/TTL/background/relock, không lộ visual/semantics/cache trước unlock | Native source cuối cần QA |
 | N05 | Tệp/nhãn/tài khoản | Protected OS picker/TXT/cancel; native AND filters/rename; đổi password→manual login→old session401 | NOT RUN trên hai bản cuối |
 | P01 | SMTP Internet | Inbox receipt→verify/reset trên Web/Android, resend/expiry/reuse/error | NOT RUN; cần nhóm cấu hình |
 | P02 | Gemini thật | Summary/regenerate/no overwrite; Q&A nhiều nguồn/citations/no-info/ACL/injection evaluation | NOT RUN; thay/config key an toàn |
-| R01 | Production preflight | HTTPS API explicit, từ chối loopback/fixture, signing riêng không debug fallback | Chưa triển khai |
-| R02 | Backend bền | Persistent SQLite/files/mail key, recreate giữ data, backup→restore bản sao→ACL/hash đúng | Chưa nghiệm thu |
+| R01 | Production preflight | HTTPS API explicit, từ chối loopback/fixture, signing riêng không debug fallback | Guard đã code/test12/10; signing/HTTPS thực NOT RUN |
+| R02 | Backend bền | Persistent SQLite/files/mail key, recreate giữ data, backup→restore bản sao→ACL/hash đúng | Backup→restore bản sao/ACL/hash12/10 PASS; Docker recreate NOT RUN |
 | R03 | Public release | Web/backend HTTPS, SSE qua proxy, APK install/run cùng source từ mạng độc lập | NOT RUN |
 | R04 | Clean clone | Clone đúng commit giữ.git, setup/check/build theo README trên thư mục QA riêng | B01 là clone máy mới; release clean-clone vẫn cần |
 | S01 | Video/Rubric/ZIP | 32ID có timestamp thật; core hai target; Rubric gốc/URLs/APK/Readme/source.git; unpack verify | Chưa có đầu ra cuối |

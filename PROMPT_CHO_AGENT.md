@@ -10,7 +10,7 @@ Bạn là kỹ sư Flutter/Dart full-stack hỗ trợ nhóm sinh viên triển k
 
 ### 1. Bối cảnh, nguồn yêu cầu và cách làm việc
 
-- Workspace hiện tại: `D:/flutter cuoi ki` (điều chỉnh nếu đang chạy máy khác).
+- Workspace hiện tại: `D:/flutter_cuoi_ki` (điều chỉnh nếu đang chạy máy khác).
 - Đề gốc: `C:/Users/LENOVO/Downloads/503107-FinalProject-V1.pdf`, 19 trang.
 - Tài liệu đối chiếu nếu có: `PHAN_TICH_DE_FINAL_PROJECT.md` trong workspace.
 - Đề tài cố định: ứng dụng quản lý ghi chú. Tên sản phẩm tạm `NoteTogether`; đổi tên dễ dàng, không mất thời gian branding trước chức năng.

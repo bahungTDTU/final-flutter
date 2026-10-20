@@ -1,0 +1,24 @@
+{
+  "captured_at_utc": "2026-10-16T07:54:39.374061+00:00",
+  "target": "http://127.0.0.1:8063",
+  "result": "PASS",
+  "browser_palette_and_dark_and_language_ack": {
+    "grid": true,
+    "dark": true,
+    "font_size": 16,
+    "locale": "en",
+    "palette": "amber"
+  },
+  "all_six_ids": true,
+  "anonymous": 401,
+  "bad_id_and_owner_id": 422,
+  "changed_replay": 409,
+  "old_replay_cannot_undo_newer_palette": true,
+  "legacy_patch_retains_palette_and_language": true,
+  "account_isolation": true,
+  "note_array_identical_before_after_preferences": true,
+  "locked_listing_redacted": true,
+  "notes": 4,
+  "edited_note_revision": 2,
+  "edited_body_sha256": "50f2c294b0bfcd4832177bfbb6bcf3698b222bb6e0b2ad9b79f778be16ab10c3"
+}

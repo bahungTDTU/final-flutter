@@ -1,0 +1,36 @@
+- group "NoteTogether":
+  - group "Main navigation":
+    - button "Notes"
+    - button "Shared"
+    - button "Ask notes"
+  - button "Quick Find · Ctrl+K"
+  - button "New note"
+  - button "Profile & preferences Default avatar Q Profile & preferences" [active]:
+    - text: Profile & preferences Default avatar Q
+    - generic: Profile & preferences
+  - generic: NOTEBOOK / NOTETOGETHER
+  - heading "Your notes" [level=2]
+  - generic: Ideas, lessons and plans — together in one place.
+  - generic: "Notes: 1"
+  - button "Live"
+  - generic: Your email has not been verified.
+  - button "Verify"
+  - textbox "Search notes"
+  - button "Clear search"
+  - generic: Search as you type · Ctrl + F to focus search
+  - button "Grid"
+  - button "List"
+  - generic: Pinned
+  - generic: "1"
+  - group "Kế hoạch học tập Bản nháp giữ nguyên khi đổi bảng màu. Pinned 16/10/2026":
+    - button "Note actions"
+  - generic: DESK DRAWER
+  - generic: From idea to draft.
+  - generic: Small tools, always within reach.
+  - button "Note studio Start from a template"
+  - button "Workspace Planning, tasks and focus"
+  - generic "Manage labels":
+    - button "Manage labels"
+  - button "Preferences"
+  - generic: SHORTCUTS
+  - generic: Ctrl + F / Search library Ctrl + K / Quick Find

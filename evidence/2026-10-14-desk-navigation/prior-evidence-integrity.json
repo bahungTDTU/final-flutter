@@ -1,0 +1,18 @@
+{
+  "2026-10-13-inspector-ui": {
+    "payloads": 38,
+    "result": "PASS integrity only"
+  },
+  "2026-10-13-master-integration": {
+    "payloads": 4,
+    "result": "PASS integrity only"
+  },
+  "2026-10-14-publish-resume": {
+    "payloads": 3,
+    "result": "PASS integrity only"
+  },
+  "2026-10-14-dashboard-polish": {
+    "payloads": 73,
+    "result": "PASS integrity only"
+  }
+}

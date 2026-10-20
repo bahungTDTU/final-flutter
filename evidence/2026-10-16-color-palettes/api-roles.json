@@ -1,0 +1,23 @@
+{
+  "date_utc": "2026-10-16T07:45:24.288599+00:00",
+  "target": "http://127.0.0.1:8063",
+  "result": "PASS",
+  "roles": {
+    "owner": "upload/replay/list/grant/private download",
+    "editor": "upload/delete/revoke404",
+    "viewer": "read hash200/write403/locked423",
+    "stranger": "list404/anonymous401"
+  },
+  "attachment_fields": [
+    "created_at",
+    "id",
+    "kind",
+    "media_type",
+    "name",
+    "size"
+  ],
+  "download_sha256": "e8836828cfe60c119fea1f702795c11083feca6f6ceb8266d87dd27982eae1ae",
+  "browser_note": "cb021d9c-467c-4c3c-9871-961e91157bc7",
+  "browser_base_revision": 3,
+  "real_mail_llm_or_release": false
+}

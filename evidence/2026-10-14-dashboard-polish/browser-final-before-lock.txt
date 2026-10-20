@@ -1,0 +1,39 @@
+Browser tab: 3, Title: "NoteTogether", URL: "http://127.0.0.1:7377/".
+0 AXWebArea NoteTogether, URL: 127.0.0.1:7377/
+	1 container
+		2 container flt-semantic-node-4
+			33 container flt-semantic-node-164
+				34 heading NoteTogether, Value: 2, ID: flt-semantic-node-165
+					35 text NoteTogether
+				36 button Ghi chú mới, ID: flt-semantic-node-166
+				37 button Xưởng ghi chú, ID: flt-semantic-node-167
+				38 button Hồ sơ và tùy chỉnh, ID: flt-semantic-node-168
+			9 container flt-semantic-node-49
+				54 text 1 ghi chú
+				42 button Trực tiếp, ID: flt-semantic-node-157
+				16 text Email của bạn chưa được xác minh.
+				17 button Xác minh, ID: flt-semantic-node-35
+				18 container flt-semantic-node-36
+					19 text field (settable) Description: Tìm ghi chú, Value: Bản nháp cộng tác
+					43 button Xóa tìm kiếm, ID: flt-semantic-node-152
+				44 button Lưới, ID: flt-semantic-node-158
+				45 button Danh sách, ID: flt-semantic-node-160
+				46 button Quản lý nhãn, ID: flt-semantic-node-162
+				47 button (collapsed) Công cụ thư viện, ID: flt-semantic-node-163, Secondary Actions: Expand
+				23 checkbox Description: Benchmark 00 Benchmark 00, Value: 0, ID: flt-semantic-node-42
+				24 checkbox Description: Benchmark 01 Benchmark 01, Value: 0, ID: flt-semantic-node-43
+				25 checkbox Description: Benchmark 02 Benchmark 02, Value: 0, ID: flt-semantic-node-44
+				26 checkbox Description: Benchmark 03 Benchmark 03, Value: 0, ID: flt-semantic-node-45
+				27 checkbox Description: Benchmark 04 Benchmark 04, Value: 0, ID: flt-semantic-node-46
+				28 checkbox Description: Benchmark 05 Benchmark 05, Value: 0, ID: flt-semantic-node-47
+				29 button Bộ lọc nhãn, ID: flt-semantic-node-48
+				56 text Tất cả ghi chú
+				57 text 1
+				58 container ID: flt-semantic-node-175, Description: Bản nháp cộng tác từ xa Preview đã nhận cập nhật mới — QA_REMOTE_CONTENT_FINAL_20261014. #Benchmark 16 14/10/2026
+					59 button (collapsed) Thao tác ghi chú, ID: flt-semantic-node-176, Secondary Actions: Expand
+			50 tab group flt-semantic-node-169
+				51 tab (selected, settable, boolean) Description: Ghi chú, Value: 1, ID: flt-semantic-node-170
+				52 tab (selectable, settable, boolean) Description: Được chia sẻ, Value: 0, ID: flt-semantic-node-171
+				53 tab (selectable, settable, boolean) Description: Hỏi ghi chú, Value: 0, ID: flt-semantic-node-172
+
+The focused UI element is 19 text field (settable) Description: Tìm ghi chú, Value: Bản nháp cộng tác

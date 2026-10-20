@@ -1,0 +1,13 @@
+{
+  "captured_at_utc": "2026-10-16T07:58:08.627682+00:00",
+  "result": "PASS",
+  "preferences": {
+    "grid": true,
+    "dark": true,
+    "font_size": 16.0,
+    "locale": "en",
+    "palette": "iris"
+  },
+  "notes_equal_after_browser_palette_roundtrip_and_reopen": true,
+  "note_array_sha256": "938e676af08a76415fc57965bb5c3603049268de069f73948a398b7e3b80079d"
+}

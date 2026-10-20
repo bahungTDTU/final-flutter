@@ -1,7 +1,7 @@
 # NoteTogether — Editorial Atelier, 12/10/2026
 
 Người dùng yêu cầu một bố cục mới độc đáo, hiện đại và sang trọng qua skill
-`D:/flutter cuoi ki/.agents/skills/ui-ux-pro-max/SKILL.md`. Đây là implementation UI,
+`D:/flutter_cuoi_ki/.agents/skills/ui-ux-pro-max/SKILL.md`. Đây là implementation UI,
 không phải mockup hoặc một landing page thay cho ứng dụng. Source trên
 `codex/ui-system-refresh`, base `f3b17a3`; working changes chưa commit/push.
 

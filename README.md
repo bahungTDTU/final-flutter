@@ -35,6 +35,88 @@ và git diff whitespace checks PASS. Không rerun UI/native vì không sửa cli
 [Evidence và phạm vi](evidence/2026-10-19-backup-hardening/INDEX.md).
 SMTP/Gemini thật, Docker engine/HTTPS/signing/native thủ công và bộ nộp vẫn là gate riêng.
 
+## Sửa validation và đồng bộ —18/10/2026 buổi tối
+
+Đã sửa F01–F04:422 cô lập theo note và vẫn refresh quyền; Unicode title/content
+validate trước outbox, giữ draft; copy conflict vừa200codepoints; chặn nhãn thứ31.
+Giữ immutable operations/frozen revision/vault. PASS direct Dart format/analyze,
+10case Dart↔Pydantic và synchronous handlers+SQLite4roles. Thêm8regressions nhưng
+Flutter runtime bị SDK cache lock; full suite/HTTP/Web/native/build/CI NOT RUN.
+[Bản sửa](docs/VALIDATION_SYNC_FIXES_2026-10-18.md),
+[evidence](evidence/2026-10-18-validation-fixes/INDEX.md). Chưa commit/push/deploy.
+Các mục audit và PASS phía dưới là snapshots trước sửa, không phải nghiệm thu mới.
+
+## Audit toàn dự án —18/10/2026
+
+Đối chiếu PDF gốc19trang và32tiêu chí; phát hiện4vấn đề còn mở:422 chặn queue,
+Unicode title lệch giới hạn, copy conflict vượt200ký tự và chọn31nhãn. Chưa sửa code.
+PASS direct Dart format129files0changes/analyze,22backend preflight tests và
+synchronous handlers+SQLite4roles; không phải HTTP. Full Flutter/backend suite bị
+môi trường chặn SDK lock/socket; browser/native/build/provider/CI mới NOT RUN.
+308Flutter/147backendPASS16/10 là lịch sử. Xem [báo cáo](docs/PROJECT_AUDIT_2026-10-18.md)
+và [evidence](evidence/2026-10-18-project-audit/INDEX.md). Không commit/push/deploy.
+
+## Sáu tổ hợp màu giao diện —16/10/2026
+
+Atelier/Đại dương/Diên vĩ/Thạch anh hồng/Hổ phách/Rừng ngọc, mỗi tổ hợp có sáng/tối.
+Chọn ở hồ sơ/tùy chỉnh hoặc ngay trong editor PC/menu điện thoại. Preview+check/keyboard,
+Việt–Anh, responsive và chữ200%; dùng semantic tokens đồng bộ toàn UI, cache12ThemeData.
+Palette lưu offline/immutable queue/sync theo tài khoản; client cũ không reset palette/locale.
+Giữ draft/selection/ID/frozen revision, query/filter/scroll, rich text và privacy note khóa.
+PASS format/analyze/308Flutter/147backend; Web thật PC/tablet/phone/landscape, API4roles,
+palette ACK/replay/account/reload và note-array unchanged; Web/APKdebug compile PASS.
+Native runtime/FPS/provider/CI/release NOT RUN. Không commit/push/merge/deploy lượt này.
+[Thiết kế và hướng dẫn](docs/COLOR_PALETTES.md), [bằng chứng](evidence/2026-10-16-color-palettes/INDEX.md).
+Các mục dưới giữ phạm vi snapshot trước.
+
+## Song ngữ Việt–Anh —15–16/10/2026
+
+Thêm bộ chọn ở đăng nhập, Hồ sơ và tùy chỉnh và editor PC/điện thoại.
+Locale theo tài khoản dùng immutable pending_preferences, lưu offline/retry/merge;
+legacy PATCH không xóa lựa chọn ngôn ngữ. Dịch giao diện, giữ nguyên nội dung ghi chú,
+nhãn/mẫu cá nhân và AI. Đổi khi đang viết giữ document, selection, ID và frozen revision.
+Sửa hồi quy initState của draft và dropdown chữ lớn; dịch cả hướng dẫn thẻ khóa/nhãn ghim.
+PASS format/analyze/302Flutter,145backend; Web thật hai locale/hai theme/PC-phone-landscape,
+đổi khi gõ→server ACK/reload giữ locale; API4roles và locale replay/account isolation.
+Web release local và APK debug compile PASS; Android runtime/FPS/provider/CI/release chưa chạy.
+[Tính năng và phạm vi](docs/BILINGUAL_UI.md), [bằng chứng](evidence/2026-10-15-bilingual/INDEX.md).
+Chưa commit/push; base4a196ef, branch `codex/dashboard-motion-performance`. Các mục dưới là snapshots cũ.
+
+## Đối chiếu đề và sửa quản lý nhãn —14–15/10/2026
+
+Đọc lại PDF gốc19trang; có luồng code cho1–31, mục32 mới build/config local.
+Không đánh đồng IMPLEMENTED với FULL POINT trên hai artifact nộp. SMTP Internet,
+Gemini thật, native OS/IME/picker/TTL/profile FPS và release/video/Rubric vẫn có gate riêng.
+Sửa manager1.000nhãn từ1.000→6mounted rows trong probe, search/clear/no-result,
+footer riêng và conflict action xuống dòng;320px/chữ200% hai theme/keyboard-inset PASS.
+Dialog gắn account/token, xóa input khi session đổi; rename/delete không hỏng note.
+PASS121files0changes/analyze/295Flutter143backend; actual Web1000labels/rename→server ACK,
+Web/APKdebug compile. FPS/native runtime/providers/CI/release NOT RUN lượt này.
+[Báo cáo32ID và đề xuất](docs/RUBRIC_AND_UX_AUDIT_2026-10-14.md),
+[evidence](evidence/2026-10-14-rubric-ux-audit/INDEX.md).
+Chưa commit/push. Các mục trước dưới đây giữ phạm vi historical, không thay gate mới.
+
+
+## Thanh điều hướng PC rõ hơn —14/10/2026
+
+Ba mục có biểu tượng, chữ đậm, vùng bấm riêng; mục đang chọn có nền tương phản và tick,
+viền focus/Tab/Enter, hỗ trợ hai theme và chữ lớn. Giữ query/filter qua chuyển mục/resize.
+PASS119files0changes/analyze/290Flutter/143backend; Web thật PC/phone/rail, API4roles,
+Web và APK debug compile. Chưa commit/push; branch `codex/dashboard-motion-performance`.
+[Chi tiết](docs/UI_DESK_NAVIGATION.md), [ảnh/log](evidence/2026-10-14-desk-navigation/INDEX.md).
+Các mục dưới là snapshots trước lượt sửa thanh điều hướng này.
+
+## Dashboard: UI, motion và hiệu năng —14/10/2026
+
+Sửa hover rung ở mép thẻ, clear-all bị debounce ghi đè và rebuild thư viện khi chỉ đổi
+trạng thái đồng bộ. Giữ chủ đề Deskbook, bóng nhẹ/phản hồi nhấn, vùng bấm cố định.
+PASS118files0changes/analyze/287Flutter/143backend; WebIAB500notes, hai theme, PC/phone/
+rail, menu/tìm kiếm/realtime update/remote lock, API4roles và APK debug compile. Probe500richnotes với20
+thông báo kết nối: số lần đọc lại preview120→0; chưa đo FPS hoặc Android runtime lượt này.
+[Chi tiết và giới hạn](docs/DASHBOARD_MOTION_AND_PERFORMANCE.md),
+[ảnh/log](evidence/2026-10-14-dashboard-polish/INDEX.md).
+Source local `codex/dashboard-motion-performance`, base `4a196ef`, chưa commit/push.
+Bản Web chạy thủ công giữ API8000. Các trạng thái bên dưới là snapshots lịch sử.
 
 ## Tiếp tục publication —14/10/2026
 
@@ -61,7 +143,7 @@ giữ snapshot trước integration, gồm trạng thái PR8 trước khi đư�
 
 Người dùng ủy quyền xuất bản bản hiện tại trên `codex/bug-audit-fixes`, PR vào `master`.
 Mã đã nghiệm thu không đổi:279 Flutter/119 backend, format/analyze, Web/APK debug compile;
-browser/API có phạm vi riêng trong evidence audit và inspector. Branch base `46df286`.
+browser/API có phạm vi riêng trong evidence audit và inspector. Branch base `46df287`.
 [Gate publication](evidence/2026-10-13-ui-publication/INDEX.md),
 [branch GitHub](https://github.com/bahungTDTU/final-flutter/tree/codex/bug-audit-fixes).
 CI mới nhất và human approval được kiểm ở PR thật; không tự merge hoặc đóng release gates.
@@ -76,7 +158,7 @@ PASS format/analyze,279 Flutter/119 backend; WebIAB PC-phone/hai theme, edit/pin
 owner/viewer/private relock; Web và APK debug compile. Android runtime/IME/FPS chưa chạy.
 [Thiết kế và giới hạn](docs/UI_INSPECTOR_REFINEMENT.md),
 [ảnh và kết quả](evidence/2026-10-13-inspector-ui/INDEX.md).
-Source local `codex/bug-audit-fixes`, base `46df286`, chưa commit/push; các mục dưới là
+Source local `codex/bug-audit-fixes`, base `46df287`, chưa commit/push; các mục dưới là
 snapshots trước lượt UI này. Bản Web local7357 dùng backend8000.
 
 ## Rà lỗi —12/10/2026
@@ -86,7 +168,7 @@ và byte range gây 500. Format/analyze/275 Flutter/119 backend PASS; Chrome th�
 realtime/remote lock/DOM purge, PC-phone/hai theme và cache; Web/APK debug compile PASS.
 [Báo cáo và giới hạn](docs/BUG_AUDIT_2026-10-12.md),
 [bằng chứng](evidence/2026-10-12-bug-audit/INDEX.md).
-Source local `codex/bug-audit-fixes` từ master `46df286`, chưa commit/push.
+Source local `codex/bug-audit-fixes` từ master `46df287`, chưa commit/push.
 Native runtime/IME/FPS, provider, release và CI mới chưa chạy; bên dưới là snapshots lịch sử.
 
 ## Clone sạch và hai UI độc lập —12/10/2026
@@ -119,7 +201,7 @@ IME/OS relaunch/picker/two-UI còn gate mở. PR#8 thiếu approval người kh�
 
 ## Nghiệm thu tiếp tục trên source mới —12/10/2026
 
-Sau merge PR#5/#6/#7, tiếp tục từ master46df286 trên nhánh codex/current-source-acceptance.
+Sau merge PR#5/#6/#7, tiếp tục từ master46df287 trên nhánh codex/current-source-acceptance.
 Native API36 note_flow/sharing/realtime/protected_editing và Web release local autosave/rich text/offline
 reload/reconnect đã chạy; xem [evidence hiện hành](evidence/2026-10-12-current-source-acceptance/INDEX.md).
 Không đóng toàn chặng2: IME native thật, OS relaunch, hai UI độc lập, protected picker/

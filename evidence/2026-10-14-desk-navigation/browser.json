@@ -1,0 +1,19 @@
+{
+  "date_utc": "2026-10-14T15:20:49.730Z",
+  "target": "http://127.0.0.1:7378",
+  "api": "http://127.0.0.1:8060",
+  "synthetic_fixture": true,
+  "checks": {
+    "all_three_destinations": "PASS",
+    "light_dark": "PASS",
+    "desktop_1280x1000": "PASS",
+    "desktop_1180x800": "PASS",
+    "phone_375x812": "PASS",
+    "rail_844x390": "PASS",
+    "query_and_destination_retained": "PASS",
+    "keyboard_shift_tab_enter": "PASS"
+  },
+  "screen_reader_run": false,
+  "fps_measured": false,
+  "errors": []
+}

@@ -1,0 +1,8 @@
+00:00 +0: loading D:/flutter cuoi ki/test/localization_test.dart
+00:00 +0: Resources preserve placeholders and never translate argument data
+00:00 +1: Public language reopens offline; account language and immutable queue stay isolated
+00:00 +2: Locale changed during sync overlays the response without mutating the in-flight operation
+00:00 +3: Language picker works before sign-in and updates cached validation without losing input
+00:01 +4: Live locale switch preserves rich draft, selection, note identity and frozen revision
+00:02 +5: English Home retains user titles, private lock boundaries, query and layout across themes and resize
+00:02 +6: All tests passed!

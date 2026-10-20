@@ -1,0 +1,22 @@
+{
+  "result": "PASS",
+  "github_head": "6fba5a64e5f91818d364cd9d806776a06fe3ae6f",
+  "working_files_preserved_except_incoming_and_listed_edits": true,
+  "new_edits_to_existing_files": [
+    "docs/UI_UX_QA.md",
+    "lib/state/share_session.dart",
+    "lib/ui/document_workspace.dart",
+    "lib/ui/sharing.dart"
+  ],
+  "no_conflicts": true,
+  "index_empty": true,
+  "readme_parity": true,
+  "source_manifest_verified": true,
+  "qa_servers_stopped": [
+    8064,
+    7383
+  ],
+  "qa_tab_closed": true,
+  "viewport_reset": true,
+  "pushed": false
+}

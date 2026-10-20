@@ -1,0 +1,17 @@
+00:00 +0: loading D:/flutter cuoi ki/test/dashboard_polish_regression_test.dart
+00:00 +0: D:/flutter cuoi ki/test/dashboard_polish_regression_test.dart: Hover at the card edge settles without a stationary-pointer loop
+00:00 +1: D:/flutter cuoi ki/test/prism_motion_test.dart: Hover lifts only the card, settles, and returns without a loop
+00:00 +2: D:/flutter cuoi ki/test/dashboard_polish_regression_test.dart: Clear filters cancels a newer query still waiting for debounce
+00:00 +3: D:/flutter cuoi ki/test/dashboard_polish_regression_test.dart: Clear filters cancels a newer query still waiting for debounce
+00:01 +4: D:/flutter cuoi ki/test/dashboard_polish_regression_test.dart: Clear filters cancels a newer query still waiting for debounce
+00:01 +5: D:/flutter cuoi ki/test/dashboard_polish_regression_test.dart: Clear filters cancels a newer query still waiting for debounce
+00:01 +6: D:/flutter cuoi ki/test/dashboard_polish_regression_test.dart: Clear filters cancels a newer query still waiting for debounce
+00:01 +7: D:/flutter cuoi ki/test/dashboard_polish_regression_test.dart: Sync status pulses update without rebuilding the library
+DASHBOARD_PULSE_PROBE replacements=0 preview_projections=0
+00:01 +8: D:/flutter cuoi ki/test/dashboard_polish_regression_test.dart: Pressed card retains the entire edge tap target
+00:01 +9: D:/flutter cuoi ki/test/dashboard_polish_regression_test.dart: Keyboard focus is visible above the card and Enter activates it
+00:01 +10: D:/flutter cuoi ki/test/dashboard_polish_regression_test.dart: Preview survives theme/font changes and purges immediately on remote lock
+00:01 +11: D:/flutter cuoi ki/test/dashboard_polish_regression_test.dart: Home still reacts to profile, label rename, deletion and pending-note changes
+00:02 +12: D:/flutter cuoi ki/test/dashboard_polish_regression_test.dart: 500 rich notes remain lazy during sync pulses and view toggling
+DASHBOARD_500_PROBE visible_projections=6 pulse_projections=0 pulse_wall_us=84770
+00:02 +13: All tests passed!

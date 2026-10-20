@@ -1,0 +1,2 @@
+Formatted test\validation_sync_regression_test.dart
+Formatted 130 files (1 changed) in 1.48 seconds.

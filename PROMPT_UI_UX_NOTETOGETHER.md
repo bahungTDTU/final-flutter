@@ -4,7 +4,7 @@ Bạn là Product Designer và Flutter UI Engineer phụ trách cải tiến to�
 
 ### 1. Bối cảnh và ràng buộc phải đọc trước
 
-Workspace: `D:/flutter cuoi ki`.
+Workspace: `D:/flutter_cuoi_ki`.
 
 Đọc `AGENTS.md`, `PROMPT_CHO_AGENT.md`, `PHAN_TICH_DE_FINAL_PROJECT.md`, `STATUS.md`, `docs/TEAM_CONTRIBUTIONS.md`, `docs/REQUIREMENTS_MATRIX.md`, `README.md`, `Readme.txt`; đối chiếu PDF gốc `C:/Users/LENOVO/Downloads/503107-FinalProject-V1.pdf` nếu cần làm rõ yêu cầu. Sau đó đọc UI/controller/model và tests liên quan.
 

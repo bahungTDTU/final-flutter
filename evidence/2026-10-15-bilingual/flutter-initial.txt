@@ -1,0 +1,1275 @@
+00:00 +0: loading D:/flutter cuoi ki/test/ai_test.dart
+lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+ - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                  context.trMessage(message),
+                          ^^^^^^^^^
+00:00 +0 -1: loading D:/flutter cuoi ki/test/ai_test.dart [E]
+  Failed to load "D:/flutter cuoi ki/test/ai_test.dart":
+  Compilation failed for testPath=D:/flutter cuoi ki/test/ai_test.dart: lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+   - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+  Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                    context.trMessage(message),
+                            ^^^^^^^^^
+  .
+  Error: The Dart compiler exited unexpectedly.
+  package:flutter_tools/src/base/common.dart 34:3  throwToolExit
+  package:flutter_tools/src/compile.dart 1024:11   DefaultResidentCompiler._compile.<fn>
+  dart:async/zone_root.dart 48:47                  _rootRunUnary
+  dart:async/zone.dart 816:35                      _CustomZone.runUnary
+  dart:async/future_impl.dart 948:45               Future._propagateToListeners.handleValueCallback
+  dart:async/future_impl.dart 977:13               Future._propagateToListeners
+  dart:async/future_impl.dart 862:9                Future._propagateToListeners
+  dart:async/future_impl.dart 720:5                Future._completeWithValue
+  dart:async/future_impl.dart 804:7                Future._asyncCompleteWithValue.<fn>
+  dart:async/zone_root.dart 35:13                  _rootRun
+  dart:async/zone.dart 810:35                      _CustomZone.run
+  dart:async/zone.dart 702:7                       _CustomZone.runGuarded
+  dart:async/zone.dart 743:23                      _CustomZone.bindCallbackGuarded.<fn>
+  dart:async/schedule_microtask.dart 40:35         _microtaskLoop
+  dart:async/schedule_microtask.dart 49:5          _startMicrotaskLoop
+  dart:isolate-patch/isolate_patch.dart 127:13     _runPendingImmediateCallback
+  dart:isolate-patch/isolate_patch.dart 193:5      _RawReceivePort._handleMessage
+  
+lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+ - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                  context.trMessage(message),
+                          ^^^^^^^^^
+00:00 +0 -2: loading D:/flutter cuoi ki/test/atelier_ui_test.dart [E]
+  Failed to load "D:/flutter cuoi ki/test/atelier_ui_test.dart":
+  Compilation failed for testPath=D:/flutter cuoi ki/test/atelier_ui_test.dart: lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+   - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+  Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                    context.trMessage(message),
+                            ^^^^^^^^^
+  .
+00:00 +0 -2: loading D:/flutter cuoi ki/test/ai_test.dart [E]
+  Error: The Dart compiler exited unexpectedly.
+  package:flutter_tools/src/base/common.dart 34:3  throwToolExit
+  package:flutter_tools/src/compile.dart 1024:11   DefaultResidentCompiler._compile.<fn>
+  dart:async/zone_root.dart 48:47                  _rootRunUnary
+  dart:async/zone.dart 816:35                      _CustomZone.runUnary
+  dart:async/future_impl.dart 948:45               Future._propagateToListeners.handleValueCallback
+  dart:async/future_impl.dart 977:13               Future._propagateToListeners
+  dart:async/future_impl.dart 862:9                Future._propagateToListeners
+  dart:async/future_impl.dart 720:5                Future._completeWithValue
+  dart:async/future_impl.dart 804:7                Future._asyncCompleteWithValue.<fn>
+  dart:async/zone_root.dart 35:13                  _rootRun
+  dart:async/zone.dart 810:35                      _CustomZone.run
+  dart:async/zone.dart 702:7                       _CustomZone.runGuarded
+  dart:async/zone.dart 743:23                      _CustomZone.bindCallbackGuarded.<fn>
+  dart:async/schedule_microtask.dart 40:35         _microtaskLoop
+  dart:async/schedule_microtask.dart 49:5          _startMicrotaskLoop
+  dart:isolate-patch/isolate_patch.dart 127:13     _runPendingImmediateCallback
+  dart:isolate-patch/isolate_patch.dart 193:5      _RawReceivePort._handleMessage
+  
+lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+ - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                  context.trMessage(message),
+                          ^^^^^^^^^
+00:00 +0 -3: loading D:/flutter cuoi ki/test/attachments_test.dart [E]
+  Failed to load "D:/flutter cuoi ki/test/attachments_test.dart":
+  Compilation failed for testPath=D:/flutter cuoi ki/test/attachments_test.dart: lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+   - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+  Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                    context.trMessage(message),
+                            ^^^^^^^^^
+  .
+00:00 +0 -3: loading D:/flutter cuoi ki/test/ai_test.dart [E]
+  Error: The Dart compiler exited unexpectedly.
+  package:flutter_tools/src/base/common.dart 34:3  throwToolExit
+  package:flutter_tools/src/compile.dart 1024:11   DefaultResidentCompiler._compile.<fn>
+  dart:async/zone_root.dart 48:47                  _rootRunUnary
+  dart:async/zone.dart 816:35                      _CustomZone.runUnary
+  dart:async/future_impl.dart 948:45               Future._propagateToListeners.handleValueCallback
+  dart:async/future_impl.dart 977:13               Future._propagateToListeners
+  dart:async/future_impl.dart 862:9                Future._propagateToListeners
+  dart:async/future_impl.dart 720:5                Future._completeWithValue
+  dart:async/future_impl.dart 804:7                Future._asyncCompleteWithValue.<fn>
+  dart:async/zone_root.dart 35:13                  _rootRun
+  dart:async/zone.dart 810:35                      _CustomZone.run
+  dart:async/zone.dart 702:7                       _CustomZone.runGuarded
+  dart:async/zone.dart 743:23                      _CustomZone.bindCallbackGuarded.<fn>
+  dart:async/schedule_microtask.dart 40:35         _microtaskLoop
+  dart:async/schedule_microtask.dart 49:5          _startMicrotaskLoop
+  dart:isolate-patch/isolate_patch.dart 127:13     _runPendingImmediateCallback
+  dart:isolate-patch/isolate_patch.dart 193:5      _RawReceivePort._handleMessage
+  
+lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+ - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                  context.trMessage(message),
+                          ^^^^^^^^^
+00:00 +0 -4: loading D:/flutter cuoi ki/test/avatar_labels_test.dart [E]
+  Failed to load "D:/flutter cuoi ki/test/avatar_labels_test.dart":
+  Compilation failed for testPath=D:/flutter cuoi ki/test/avatar_labels_test.dart: lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+   - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+  Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                    context.trMessage(message),
+                            ^^^^^^^^^
+  .
+00:00 +0 -4: loading D:/flutter cuoi ki/test/ai_test.dart [E]
+  Error: The Dart compiler exited unexpectedly.
+  package:flutter_tools/src/base/common.dart 34:3  throwToolExit
+  package:flutter_tools/src/compile.dart 1024:11   DefaultResidentCompiler._compile.<fn>
+  dart:async/zone_root.dart 48:47                  _rootRunUnary
+  dart:async/zone.dart 816:35                      _CustomZone.runUnary
+  dart:async/future_impl.dart 948:45               Future._propagateToListeners.handleValueCallback
+  dart:async/future_impl.dart 977:13               Future._propagateToListeners
+  dart:async/future_impl.dart 862:9                Future._propagateToListeners
+  dart:async/future_impl.dart 720:5                Future._completeWithValue
+  dart:async/future_impl.dart 804:7                Future._asyncCompleteWithValue.<fn>
+  dart:async/zone_root.dart 35:13                  _rootRun
+  dart:async/zone.dart 810:35                      _CustomZone.run
+  dart:async/zone.dart 702:7                       _CustomZone.runGuarded
+  dart:async/zone.dart 743:23                      _CustomZone.bindCallbackGuarded.<fn>
+  dart:async/schedule_microtask.dart 40:35         _microtaskLoop
+  dart:async/schedule_microtask.dart 49:5          _startMicrotaskLoop
+  dart:isolate-patch/isolate_patch.dart 127:13     _runPendingImmediateCallback
+  dart:isolate-patch/isolate_patch.dart 193:5      _RawReceivePort._handleMessage
+  
+lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+ - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                  context.trMessage(message),
+                          ^^^^^^^^^
+00:00 +0 -5: loading D:/flutter cuoi ki/test/bug_audit_regression_test.dart [E]
+  Failed to load "D:/flutter cuoi ki/test/bug_audit_regression_test.dart":
+  Compilation failed for testPath=D:/flutter cuoi ki/test/bug_audit_regression_test.dart: lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+   - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+  Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                    context.trMessage(message),
+                            ^^^^^^^^^
+  .
+00:00 +0 -5: loading D:/flutter cuoi ki/test/ai_test.dart [E]
+  Error: The Dart compiler exited unexpectedly.
+  package:flutter_tools/src/base/common.dart 34:3  throwToolExit
+  package:flutter_tools/src/compile.dart 1024:11   DefaultResidentCompiler._compile.<fn>
+  dart:async/zone_root.dart 48:47                  _rootRunUnary
+  dart:async/zone.dart 816:35                      _CustomZone.runUnary
+  dart:async/future_impl.dart 948:45               Future._propagateToListeners.handleValueCallback
+  dart:async/future_impl.dart 977:13               Future._propagateToListeners
+  dart:async/future_impl.dart 862:9                Future._propagateToListeners
+  dart:async/future_impl.dart 720:5                Future._completeWithValue
+  dart:async/future_impl.dart 804:7                Future._asyncCompleteWithValue.<fn>
+  dart:async/zone_root.dart 35:13                  _rootRun
+  dart:async/zone.dart 810:35                      _CustomZone.run
+  dart:async/zone.dart 702:7                       _CustomZone.runGuarded
+  dart:async/zone.dart 743:23                      _CustomZone.bindCallbackGuarded.<fn>
+  dart:async/schedule_microtask.dart 40:35         _microtaskLoop
+  dart:async/schedule_microtask.dart 49:5          _startMicrotaskLoop
+  dart:isolate-patch/isolate_patch.dart 127:13     _runPendingImmediateCallback
+  dart:isolate-patch/isolate_patch.dart 193:5      _RawReceivePort._handleMessage
+  
+lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+ - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                  context.trMessage(message),
+                          ^^^^^^^^^
+00:00 +0 -6: loading D:/flutter cuoi ki/test/dashboard_polish_regression_test.dart [E]
+  Failed to load "D:/flutter cuoi ki/test/dashboard_polish_regression_test.dart":
+  Compilation failed for testPath=D:/flutter cuoi ki/test/dashboard_polish_regression_test.dart: lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+   - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+  Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                    context.trMessage(message),
+                            ^^^^^^^^^
+  .
+00:00 +0 -6: loading D:/flutter cuoi ki/test/ai_test.dart [E]
+  Error: The Dart compiler exited unexpectedly.
+  package:flutter_tools/src/base/common.dart 34:3  throwToolExit
+  package:flutter_tools/src/compile.dart 1024:11   DefaultResidentCompiler._compile.<fn>
+  dart:async/zone_root.dart 48:47                  _rootRunUnary
+  dart:async/zone.dart 816:35                      _CustomZone.runUnary
+  dart:async/future_impl.dart 948:45               Future._propagateToListeners.handleValueCallback
+  dart:async/future_impl.dart 977:13               Future._propagateToListeners
+  dart:async/future_impl.dart 862:9                Future._propagateToListeners
+  dart:async/future_impl.dart 720:5                Future._completeWithValue
+  dart:async/future_impl.dart 804:7                Future._asyncCompleteWithValue.<fn>
+  dart:async/zone_root.dart 35:13                  _rootRun
+  dart:async/zone.dart 810:35                      _CustomZone.run
+  dart:async/zone.dart 702:7                       _CustomZone.runGuarded
+  dart:async/zone.dart 743:23                      _CustomZone.bindCallbackGuarded.<fn>
+  dart:async/schedule_microtask.dart 40:35         _microtaskLoop
+  dart:async/schedule_microtask.dart 49:5          _startMicrotaskLoop
+  dart:isolate-patch/isolate_patch.dart 127:13     _runPendingImmediateCallback
+  dart:isolate-patch/isolate_patch.dart 193:5      _RawReceivePort._handleMessage
+  
+lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+ - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                  context.trMessage(message),
+                          ^^^^^^^^^
+00:00 +0 -7: loading D:/flutter cuoi ki/test/deskbook_layout_test.dart [E]
+  Failed to load "D:/flutter cuoi ki/test/deskbook_layout_test.dart":
+  Compilation failed for testPath=D:/flutter cuoi ki/test/deskbook_layout_test.dart: lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+   - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+  Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                    context.trMessage(message),
+                            ^^^^^^^^^
+  .
+00:00 +0 -7: loading D:/flutter cuoi ki/test/ai_test.dart [E]
+  Error: The Dart compiler exited unexpectedly.
+  package:flutter_tools/src/base/common.dart 34:3  throwToolExit
+  package:flutter_tools/src/compile.dart 1024:11   DefaultResidentCompiler._compile.<fn>
+  dart:async/zone_root.dart 48:47                  _rootRunUnary
+  dart:async/zone.dart 816:35                      _CustomZone.runUnary
+  dart:async/future_impl.dart 948:45               Future._propagateToListeners.handleValueCallback
+  dart:async/future_impl.dart 977:13               Future._propagateToListeners
+  dart:async/future_impl.dart 862:9                Future._propagateToListeners
+  dart:async/future_impl.dart 720:5                Future._completeWithValue
+  dart:async/future_impl.dart 804:7                Future._asyncCompleteWithValue.<fn>
+  dart:async/zone_root.dart 35:13                  _rootRun
+  dart:async/zone.dart 810:35                      _CustomZone.run
+  dart:async/zone.dart 702:7                       _CustomZone.runGuarded
+  dart:async/zone.dart 743:23                      _CustomZone.bindCallbackGuarded.<fn>
+  dart:async/schedule_microtask.dart 40:35         _microtaskLoop
+  dart:async/schedule_microtask.dart 49:5          _startMicrotaskLoop
+  dart:isolate-patch/isolate_patch.dart 127:13     _runPendingImmediateCallback
+  dart:isolate-patch/isolate_patch.dart 193:5      _RawReceivePort._handleMessage
+  
+lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+ - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                  context.trMessage(message),
+                          ^^^^^^^^^
+00:00 +0 -8: loading D:/flutter cuoi ki/test/desk_navigation_test.dart [E]
+  Failed to load "D:/flutter cuoi ki/test/desk_navigation_test.dart":
+  Compilation failed for testPath=D:/flutter cuoi ki/test/desk_navigation_test.dart: lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+   - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+  Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                    context.trMessage(message),
+                            ^^^^^^^^^
+  .
+00:00 +0 -8: loading D:/flutter cuoi ki/test/ai_test.dart [E]
+  Error: The Dart compiler exited unexpectedly.
+  package:flutter_tools/src/base/common.dart 34:3  throwToolExit
+  package:flutter_tools/src/compile.dart 1024:11   DefaultResidentCompiler._compile.<fn>
+  dart:async/zone_root.dart 48:47                  _rootRunUnary
+  dart:async/zone.dart 816:35                      _CustomZone.runUnary
+  dart:async/future_impl.dart 948:45               Future._propagateToListeners.handleValueCallback
+  dart:async/future_impl.dart 977:13               Future._propagateToListeners
+  dart:async/future_impl.dart 862:9                Future._propagateToListeners
+  dart:async/future_impl.dart 720:5                Future._completeWithValue
+  dart:async/future_impl.dart 804:7                Future._asyncCompleteWithValue.<fn>
+  dart:async/zone_root.dart 35:13                  _rootRun
+  dart:async/zone.dart 810:35                      _CustomZone.run
+  dart:async/zone.dart 702:7                       _CustomZone.runGuarded
+  dart:async/zone.dart 743:23                      _CustomZone.bindCallbackGuarded.<fn>
+  dart:async/schedule_microtask.dart 40:35         _microtaskLoop
+  dart:async/schedule_microtask.dart 49:5          _startMicrotaskLoop
+  dart:isolate-patch/isolate_patch.dart 127:13     _runPendingImmediateCallback
+  dart:isolate-patch/isolate_patch.dart 193:5      _RawReceivePort._handleMessage
+  
+lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+ - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                  context.trMessage(message),
+                          ^^^^^^^^^
+00:00 +0 -9: loading D:/flutter cuoi ki/test/domain_test.dart [E]
+  Failed to load "D:/flutter cuoi ki/test/domain_test.dart":
+  Compilation failed for testPath=D:/flutter cuoi ki/test/domain_test.dart: lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+   - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+  Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                    context.trMessage(message),
+                            ^^^^^^^^^
+  .
+00:00 +0 -9: loading D:/flutter cuoi ki/test/ai_test.dart [E]
+  Error: The Dart compiler exited unexpectedly.
+  package:flutter_tools/src/base/common.dart 34:3  throwToolExit
+  package:flutter_tools/src/compile.dart 1024:11   DefaultResidentCompiler._compile.<fn>
+  dart:async/zone_root.dart 48:47                  _rootRunUnary
+  dart:async/zone.dart 816:35                      _CustomZone.runUnary
+  dart:async/future_impl.dart 948:45               Future._propagateToListeners.handleValueCallback
+  dart:async/future_impl.dart 977:13               Future._propagateToListeners
+  dart:async/future_impl.dart 862:9                Future._propagateToListeners
+  dart:async/future_impl.dart 720:5                Future._completeWithValue
+  dart:async/future_impl.dart 804:7                Future._asyncCompleteWithValue.<fn>
+  dart:async/zone_root.dart 35:13                  _rootRun
+  dart:async/zone.dart 810:35                      _CustomZone.run
+  dart:async/zone.dart 702:7                       _CustomZone.runGuarded
+  dart:async/zone.dart 743:23                      _CustomZone.bindCallbackGuarded.<fn>
+  dart:async/schedule_microtask.dart 40:35         _microtaskLoop
+  dart:async/schedule_microtask.dart 49:5          _startMicrotaskLoop
+  dart:isolate-patch/isolate_patch.dart 127:13     _runPendingImmediateCallback
+  dart:isolate-patch/isolate_patch.dart 193:5      _RawReceivePort._handleMessage
+  
+lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+ - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                  context.trMessage(message),
+                          ^^^^^^^^^
+00:00 +0 -10: loading D:/flutter cuoi ki/test/draft_projection_test.dart [E]
+  Failed to load "D:/flutter cuoi ki/test/draft_projection_test.dart":
+  Compilation failed for testPath=D:/flutter cuoi ki/test/draft_projection_test.dart: lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+   - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+  Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                    context.trMessage(message),
+                            ^^^^^^^^^
+  .
+00:00 +0 -10: loading D:/flutter cuoi ki/test/ai_test.dart [E]
+  Error: The Dart compiler exited unexpectedly.
+  package:flutter_tools/src/base/common.dart 34:3  throwToolExit
+  package:flutter_tools/src/compile.dart 1024:11   DefaultResidentCompiler._compile.<fn>
+  dart:async/zone_root.dart 48:47                  _rootRunUnary
+  dart:async/zone.dart 816:35                      _CustomZone.runUnary
+  dart:async/future_impl.dart 948:45               Future._propagateToListeners.handleValueCallback
+  dart:async/future_impl.dart 977:13               Future._propagateToListeners
+  dart:async/future_impl.dart 862:9                Future._propagateToListeners
+  dart:async/future_impl.dart 720:5                Future._completeWithValue
+  dart:async/future_impl.dart 804:7                Future._asyncCompleteWithValue.<fn>
+  dart:async/zone_root.dart 35:13                  _rootRun
+  dart:async/zone.dart 810:35                      _CustomZone.run
+  dart:async/zone.dart 702:7                       _CustomZone.runGuarded
+  dart:async/zone.dart 743:23                      _CustomZone.bindCallbackGuarded.<fn>
+  dart:async/schedule_microtask.dart 40:35         _microtaskLoop
+  dart:async/schedule_microtask.dart 49:5          _startMicrotaskLoop
+  dart:isolate-patch/isolate_patch.dart 127:13     _runPendingImmediateCallback
+  dart:isolate-patch/isolate_patch.dart 193:5      _RawReceivePort._handleMessage
+  
+lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+ - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                  context.trMessage(message),
+                          ^^^^^^^^^
+00:00 +0 -11: loading D:/flutter cuoi ki/test/editor_sections_test.dart [E]
+  Failed to load "D:/flutter cuoi ki/test/editor_sections_test.dart":
+  Compilation failed for testPath=D:/flutter cuoi ki/test/editor_sections_test.dart: lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+   - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+  Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                    context.trMessage(message),
+                            ^^^^^^^^^
+  .
+00:00 +0 -11: loading D:/flutter cuoi ki/test/ai_test.dart [E]
+  Error: The Dart compiler exited unexpectedly.
+  package:flutter_tools/src/base/common.dart 34:3  throwToolExit
+  package:flutter_tools/src/compile.dart 1024:11   DefaultResidentCompiler._compile.<fn>
+  dart:async/zone_root.dart 48:47                  _rootRunUnary
+  dart:async/zone.dart 816:35                      _CustomZone.runUnary
+  dart:async/future_impl.dart 948:45               Future._propagateToListeners.handleValueCallback
+  dart:async/future_impl.dart 977:13               Future._propagateToListeners
+  dart:async/future_impl.dart 862:9                Future._propagateToListeners
+  dart:async/future_impl.dart 720:5                Future._completeWithValue
+  dart:async/future_impl.dart 804:7                Future._asyncCompleteWithValue.<fn>
+  dart:async/zone_root.dart 35:13                  _rootRun
+  dart:async/zone.dart 810:35                      _CustomZone.run
+  dart:async/zone.dart 702:7                       _CustomZone.runGuarded
+  dart:async/zone.dart 743:23                      _CustomZone.bindCallbackGuarded.<fn>
+  dart:async/schedule_microtask.dart 40:35         _microtaskLoop
+  dart:async/schedule_microtask.dart 49:5          _startMicrotaskLoop
+  dart:isolate-patch/isolate_patch.dart 127:13     _runPendingImmediateCallback
+  dart:isolate-patch/isolate_patch.dart 193:5      _RawReceivePort._handleMessage
+  
+lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+ - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                  context.trMessage(message),
+                          ^^^^^^^^^
+00:00 +0 -12: loading D:/flutter cuoi ki/test/email_flow_test.dart [E]
+  Failed to load "D:/flutter cuoi ki/test/email_flow_test.dart":
+  Compilation failed for testPath=D:/flutter cuoi ki/test/email_flow_test.dart: lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+   - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+  Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                    context.trMessage(message),
+                            ^^^^^^^^^
+  .
+00:00 +0 -12: loading D:/flutter cuoi ki/test/ai_test.dart [E]
+  Error: The Dart compiler exited unexpectedly.
+  package:flutter_tools/src/base/common.dart 34:3  throwToolExit
+  package:flutter_tools/src/compile.dart 1024:11   DefaultResidentCompiler._compile.<fn>
+  dart:async/zone_root.dart 48:47                  _rootRunUnary
+  dart:async/zone.dart 816:35                      _CustomZone.runUnary
+  dart:async/future_impl.dart 948:45               Future._propagateToListeners.handleValueCallback
+  dart:async/future_impl.dart 977:13               Future._propagateToListeners
+  dart:async/future_impl.dart 862:9                Future._propagateToListeners
+  dart:async/future_impl.dart 720:5                Future._completeWithValue
+  dart:async/future_impl.dart 804:7                Future._asyncCompleteWithValue.<fn>
+  dart:async/zone_root.dart 35:13                  _rootRun
+  dart:async/zone.dart 810:35                      _CustomZone.run
+  dart:async/zone.dart 702:7                       _CustomZone.runGuarded
+  dart:async/zone.dart 743:23                      _CustomZone.bindCallbackGuarded.<fn>
+  dart:async/schedule_microtask.dart 40:35         _microtaskLoop
+  dart:async/schedule_microtask.dart 49:5          _startMicrotaskLoop
+  dart:isolate-patch/isolate_patch.dart 127:13     _runPendingImmediateCallback
+  dart:isolate-patch/isolate_patch.dart 193:5      _RawReceivePort._handleMessage
+  
+lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+ - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                  context.trMessage(message),
+                          ^^^^^^^^^
+00:00 +0 -13: loading D:/flutter cuoi ki/test/encrypted_recovery_test.dart [E]
+  Failed to load "D:/flutter cuoi ki/test/encrypted_recovery_test.dart":
+  Compilation failed for testPath=D:/flutter cuoi ki/test/encrypted_recovery_test.dart: lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+   - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+  Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                    context.trMessage(message),
+                            ^^^^^^^^^
+  .
+00:00 +0 -13: loading D:/flutter cuoi ki/test/ai_test.dart [E]
+  Error: The Dart compiler exited unexpectedly.
+  package:flutter_tools/src/base/common.dart 34:3  throwToolExit
+  package:flutter_tools/src/compile.dart 1024:11   DefaultResidentCompiler._compile.<fn>
+  dart:async/zone_root.dart 48:47                  _rootRunUnary
+  dart:async/zone.dart 816:35                      _CustomZone.runUnary
+  dart:async/future_impl.dart 948:45               Future._propagateToListeners.handleValueCallback
+  dart:async/future_impl.dart 977:13               Future._propagateToListeners
+  dart:async/future_impl.dart 862:9                Future._propagateToListeners
+  dart:async/future_impl.dart 720:5                Future._completeWithValue
+  dart:async/future_impl.dart 804:7                Future._asyncCompleteWithValue.<fn>
+  dart:async/zone_root.dart 35:13                  _rootRun
+  dart:async/zone.dart 810:35                      _CustomZone.run
+  dart:async/zone.dart 702:7                       _CustomZone.runGuarded
+  dart:async/zone.dart 743:23                      _CustomZone.bindCallbackGuarded.<fn>
+  dart:async/schedule_microtask.dart 40:35         _microtaskLoop
+  dart:async/schedule_microtask.dart 49:5          _startMicrotaskLoop
+  dart:isolate-patch/isolate_patch.dart 127:13     _runPendingImmediateCallback
+  dart:isolate-patch/isolate_patch.dart 193:5      _RawReceivePort._handleMessage
+  
+lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+ - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                  context.trMessage(message),
+                          ^^^^^^^^^
+00:00 +0 -14: loading D:/flutter cuoi ki/test/home_experience_test.dart [E]
+  Failed to load "D:/flutter cuoi ki/test/home_experience_test.dart":
+  Compilation failed for testPath=D:/flutter cuoi ki/test/home_experience_test.dart: lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+   - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+  Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                    context.trMessage(message),
+                            ^^^^^^^^^
+  .
+00:00 +0 -14: loading D:/flutter cuoi ki/test/ai_test.dart [E]
+  Error: The Dart compiler exited unexpectedly.
+  package:flutter_tools/src/base/common.dart 34:3  throwToolExit
+  package:flutter_tools/src/compile.dart 1024:11   DefaultResidentCompiler._compile.<fn>
+  dart:async/zone_root.dart 48:47                  _rootRunUnary
+  dart:async/zone.dart 816:35                      _CustomZone.runUnary
+  dart:async/future_impl.dart 948:45               Future._propagateToListeners.handleValueCallback
+  dart:async/future_impl.dart 977:13               Future._propagateToListeners
+  dart:async/future_impl.dart 862:9                Future._propagateToListeners
+  dart:async/future_impl.dart 720:5                Future._completeWithValue
+  dart:async/future_impl.dart 804:7                Future._asyncCompleteWithValue.<fn>
+  dart:async/zone_root.dart 35:13                  _rootRun
+  dart:async/zone.dart 810:35                      _CustomZone.run
+  dart:async/zone.dart 702:7                       _CustomZone.runGuarded
+  dart:async/zone.dart 743:23                      _CustomZone.bindCallbackGuarded.<fn>
+  dart:async/schedule_microtask.dart 40:35         _microtaskLoop
+  dart:async/schedule_microtask.dart 49:5          _startMicrotaskLoop
+  dart:isolate-patch/isolate_patch.dart 127:13     _runPendingImmediateCallback
+  dart:isolate-patch/isolate_patch.dart 193:5      _RawReceivePort._handleMessage
+  
+lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+ - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                  context.trMessage(message),
+                          ^^^^^^^^^
+00:00 +0 -15: loading D:/flutter cuoi ki/test/inspector_ui_test.dart [E]
+  Failed to load "D:/flutter cuoi ki/test/inspector_ui_test.dart":
+  Compilation failed for testPath=D:/flutter cuoi ki/test/inspector_ui_test.dart: lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+   - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+  Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                    context.trMessage(message),
+                            ^^^^^^^^^
+  .
+00:00 +0 -15: loading D:/flutter cuoi ki/test/ai_test.dart [E]
+  Error: The Dart compiler exited unexpectedly.
+  package:flutter_tools/src/base/common.dart 34:3  throwToolExit
+  package:flutter_tools/src/compile.dart 1024:11   DefaultResidentCompiler._compile.<fn>
+  dart:async/zone_root.dart 48:47                  _rootRunUnary
+  dart:async/zone.dart 816:35                      _CustomZone.runUnary
+  dart:async/future_impl.dart 948:45               Future._propagateToListeners.handleValueCallback
+  dart:async/future_impl.dart 977:13               Future._propagateToListeners
+  dart:async/future_impl.dart 862:9                Future._propagateToListeners
+  dart:async/future_impl.dart 720:5                Future._completeWithValue
+  dart:async/future_impl.dart 804:7                Future._asyncCompleteWithValue.<fn>
+  dart:async/zone_root.dart 35:13                  _rootRun
+  dart:async/zone.dart 810:35                      _CustomZone.run
+  dart:async/zone.dart 702:7                       _CustomZone.runGuarded
+  dart:async/zone.dart 743:23                      _CustomZone.bindCallbackGuarded.<fn>
+  dart:async/schedule_microtask.dart 40:35         _microtaskLoop
+  dart:async/schedule_microtask.dart 49:5          _startMicrotaskLoop
+  dart:isolate-patch/isolate_patch.dart 127:13     _runPendingImmediateCallback
+  dart:isolate-patch/isolate_patch.dart 193:5      _RawReceivePort._handleMessage
+  
+lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+ - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                  context.trMessage(message),
+                          ^^^^^^^^^
+00:00 +0 -16: loading D:/flutter cuoi ki/test/label_manager_regression_test.dart [E]
+  Failed to load "D:/flutter cuoi ki/test/label_manager_regression_test.dart":
+  Compilation failed for testPath=D:/flutter cuoi ki/test/label_manager_regression_test.dart: lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+   - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+  Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                    context.trMessage(message),
+                            ^^^^^^^^^
+  .
+00:00 +0 -16: loading D:/flutter cuoi ki/test/ai_test.dart [E]
+  Error: The Dart compiler exited unexpectedly.
+  package:flutter_tools/src/base/common.dart 34:3  throwToolExit
+  package:flutter_tools/src/compile.dart 1024:11   DefaultResidentCompiler._compile.<fn>
+  dart:async/zone_root.dart 48:47                  _rootRunUnary
+  dart:async/zone.dart 816:35                      _CustomZone.runUnary
+  dart:async/future_impl.dart 948:45               Future._propagateToListeners.handleValueCallback
+  dart:async/future_impl.dart 977:13               Future._propagateToListeners
+  dart:async/future_impl.dart 862:9                Future._propagateToListeners
+  dart:async/future_impl.dart 720:5                Future._completeWithValue
+  dart:async/future_impl.dart 804:7                Future._asyncCompleteWithValue.<fn>
+  dart:async/zone_root.dart 35:13                  _rootRun
+  dart:async/zone.dart 810:35                      _CustomZone.run
+  dart:async/zone.dart 702:7                       _CustomZone.runGuarded
+  dart:async/zone.dart 743:23                      _CustomZone.bindCallbackGuarded.<fn>
+  dart:async/schedule_microtask.dart 40:35         _microtaskLoop
+  dart:async/schedule_microtask.dart 49:5          _startMicrotaskLoop
+  dart:isolate-patch/isolate_patch.dart 127:13     _runPendingImmediateCallback
+  dart:isolate-patch/isolate_patch.dart 193:5      _RawReceivePort._handleMessage
+  
+lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+ - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                  context.trMessage(message),
+                          ^^^^^^^^^
+00:00 +0 -17: loading D:/flutter cuoi ki/test/locked_status_test.dart [E]
+  Failed to load "D:/flutter cuoi ki/test/locked_status_test.dart":
+  Compilation failed for testPath=D:/flutter cuoi ki/test/locked_status_test.dart: lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+   - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+  Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                    context.trMessage(message),
+                            ^^^^^^^^^
+  .
+00:00 +0 -17: loading D:/flutter cuoi ki/test/ai_test.dart [E]
+  Error: The Dart compiler exited unexpectedly.
+  package:flutter_tools/src/base/common.dart 34:3  throwToolExit
+  package:flutter_tools/src/compile.dart 1024:11   DefaultResidentCompiler._compile.<fn>
+  dart:async/zone_root.dart 48:47                  _rootRunUnary
+  dart:async/zone.dart 816:35                      _CustomZone.runUnary
+  dart:async/future_impl.dart 948:45               Future._propagateToListeners.handleValueCallback
+  dart:async/future_impl.dart 977:13               Future._propagateToListeners
+  dart:async/future_impl.dart 862:9                Future._propagateToListeners
+  dart:async/future_impl.dart 720:5                Future._completeWithValue
+  dart:async/future_impl.dart 804:7                Future._asyncCompleteWithValue.<fn>
+  dart:async/zone_root.dart 35:13                  _rootRun
+  dart:async/zone.dart 810:35                      _CustomZone.run
+  dart:async/zone.dart 702:7                       _CustomZone.runGuarded
+  dart:async/zone.dart 743:23                      _CustomZone.bindCallbackGuarded.<fn>
+  dart:async/schedule_microtask.dart 40:35         _microtaskLoop
+  dart:async/schedule_microtask.dart 49:5          _startMicrotaskLoop
+  dart:isolate-patch/isolate_patch.dart 127:13     _runPendingImmediateCallback
+  dart:isolate-patch/isolate_patch.dart 193:5      _RawReceivePort._handleMessage
+  
+lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+ - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                  context.trMessage(message),
+                          ^^^^^^^^^
+00:00 +0 -18: loading D:/flutter cuoi ki/test/maintenance_regression_test.dart [E]
+  Failed to load "D:/flutter cuoi ki/test/maintenance_regression_test.dart":
+  Compilation failed for testPath=D:/flutter cuoi ki/test/maintenance_regression_test.dart: lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+   - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+  Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                    context.trMessage(message),
+                            ^^^^^^^^^
+  .
+00:00 +0 -18: loading D:/flutter cuoi ki/test/ai_test.dart [E]
+  Error: The Dart compiler exited unexpectedly.
+  package:flutter_tools/src/base/common.dart 34:3  throwToolExit
+  package:flutter_tools/src/compile.dart 1024:11   DefaultResidentCompiler._compile.<fn>
+  dart:async/zone_root.dart 48:47                  _rootRunUnary
+  dart:async/zone.dart 816:35                      _CustomZone.runUnary
+  dart:async/future_impl.dart 948:45               Future._propagateToListeners.handleValueCallback
+  dart:async/future_impl.dart 977:13               Future._propagateToListeners
+  dart:async/future_impl.dart 862:9                Future._propagateToListeners
+  dart:async/future_impl.dart 720:5                Future._completeWithValue
+  dart:async/future_impl.dart 804:7                Future._asyncCompleteWithValue.<fn>
+  dart:async/zone_root.dart 35:13                  _rootRun
+  dart:async/zone.dart 810:35                      _CustomZone.run
+  dart:async/zone.dart 702:7                       _CustomZone.runGuarded
+  dart:async/zone.dart 743:23                      _CustomZone.bindCallbackGuarded.<fn>
+  dart:async/schedule_microtask.dart 40:35         _microtaskLoop
+  dart:async/schedule_microtask.dart 49:5          _startMicrotaskLoop
+  dart:isolate-patch/isolate_patch.dart 127:13     _runPendingImmediateCallback
+  dart:isolate-patch/isolate_patch.dart 193:5      _RawReceivePort._handleMessage
+  
+lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+ - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                  context.trMessage(message),
+                          ^^^^^^^^^
+00:00 +0 -19: loading D:/flutter cuoi ki/test/note_document_test.dart [E]
+  Failed to load "D:/flutter cuoi ki/test/note_document_test.dart":
+  Compilation failed for testPath=D:/flutter cuoi ki/test/note_document_test.dart: lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+   - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+  Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                    context.trMessage(message),
+                            ^^^^^^^^^
+  .
+00:00 +0 -19: loading D:/flutter cuoi ki/test/ai_test.dart [E]
+  Error: The Dart compiler exited unexpectedly.
+  package:flutter_tools/src/base/common.dart 34:3  throwToolExit
+  package:flutter_tools/src/compile.dart 1024:11   DefaultResidentCompiler._compile.<fn>
+  dart:async/zone_root.dart 48:47                  _rootRunUnary
+  dart:async/zone.dart 816:35                      _CustomZone.runUnary
+  dart:async/future_impl.dart 948:45               Future._propagateToListeners.handleValueCallback
+  dart:async/future_impl.dart 977:13               Future._propagateToListeners
+  dart:async/future_impl.dart 862:9                Future._propagateToListeners
+  dart:async/future_impl.dart 720:5                Future._completeWithValue
+  dart:async/future_impl.dart 804:7                Future._asyncCompleteWithValue.<fn>
+  dart:async/zone_root.dart 35:13                  _rootRun
+  dart:async/zone.dart 810:35                      _CustomZone.run
+  dart:async/zone.dart 702:7                       _CustomZone.runGuarded
+  dart:async/zone.dart 743:23                      _CustomZone.bindCallbackGuarded.<fn>
+  dart:async/schedule_microtask.dart 40:35         _microtaskLoop
+  dart:async/schedule_microtask.dart 49:5          _startMicrotaskLoop
+  dart:isolate-patch/isolate_patch.dart 127:13     _runPendingImmediateCallback
+  dart:isolate-patch/isolate_patch.dart 193:5      _RawReceivePort._handleMessage
+  
+lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+ - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                  context.trMessage(message),
+                          ^^^^^^^^^
+00:00 +0 -20: loading D:/flutter cuoi ki/test/note_ordering_test.dart [E]
+  Failed to load "D:/flutter cuoi ki/test/note_ordering_test.dart":
+  Compilation failed for testPath=D:/flutter cuoi ki/test/note_ordering_test.dart: lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+   - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+  Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                    context.trMessage(message),
+                            ^^^^^^^^^
+  .
+00:00 +0 -20: loading D:/flutter cuoi ki/test/ai_test.dart [E]
+  Error: The Dart compiler exited unexpectedly.
+  package:flutter_tools/src/base/common.dart 34:3  throwToolExit
+  package:flutter_tools/src/compile.dart 1024:11   DefaultResidentCompiler._compile.<fn>
+  dart:async/zone_root.dart 48:47                  _rootRunUnary
+  dart:async/zone.dart 816:35                      _CustomZone.runUnary
+  dart:async/future_impl.dart 948:45               Future._propagateToListeners.handleValueCallback
+  dart:async/future_impl.dart 977:13               Future._propagateToListeners
+  dart:async/future_impl.dart 862:9                Future._propagateToListeners
+  dart:async/future_impl.dart 720:5                Future._completeWithValue
+  dart:async/future_impl.dart 804:7                Future._asyncCompleteWithValue.<fn>
+  dart:async/zone_root.dart 35:13                  _rootRun
+  dart:async/zone.dart 810:35                      _CustomZone.run
+  dart:async/zone.dart 702:7                       _CustomZone.runGuarded
+  dart:async/zone.dart 743:23                      _CustomZone.bindCallbackGuarded.<fn>
+  dart:async/schedule_microtask.dart 40:35         _microtaskLoop
+  dart:async/schedule_microtask.dart 49:5          _startMicrotaskLoop
+  dart:isolate-patch/isolate_patch.dart 127:13     _runPendingImmediateCallback
+  dart:isolate-patch/isolate_patch.dart 193:5      _RawReceivePort._handleMessage
+  
+lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+ - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                  context.trMessage(message),
+                          ^^^^^^^^^
+00:00 +0 -21: loading D:/flutter cuoi ki/test/note_protection_test.dart [E]
+  Failed to load "D:/flutter cuoi ki/test/note_protection_test.dart":
+  Compilation failed for testPath=D:/flutter cuoi ki/test/note_protection_test.dart: lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+   - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+  Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                    context.trMessage(message),
+                            ^^^^^^^^^
+  .
+00:00 +0 -21: loading D:/flutter cuoi ki/test/ai_test.dart [E]
+  Error: The Dart compiler exited unexpectedly.
+  package:flutter_tools/src/base/common.dart 34:3  throwToolExit
+  package:flutter_tools/src/compile.dart 1024:11   DefaultResidentCompiler._compile.<fn>
+  dart:async/zone_root.dart 48:47                  _rootRunUnary
+  dart:async/zone.dart 816:35                      _CustomZone.runUnary
+  dart:async/future_impl.dart 948:45               Future._propagateToListeners.handleValueCallback
+  dart:async/future_impl.dart 977:13               Future._propagateToListeners
+  dart:async/future_impl.dart 862:9                Future._propagateToListeners
+  dart:async/future_impl.dart 720:5                Future._completeWithValue
+  dart:async/future_impl.dart 804:7                Future._asyncCompleteWithValue.<fn>
+  dart:async/zone_root.dart 35:13                  _rootRun
+  dart:async/zone.dart 810:35                      _CustomZone.run
+  dart:async/zone.dart 702:7                       _CustomZone.runGuarded
+  dart:async/zone.dart 743:23                      _CustomZone.bindCallbackGuarded.<fn>
+  dart:async/schedule_microtask.dart 40:35         _microtaskLoop
+  dart:async/schedule_microtask.dart 49:5          _startMicrotaskLoop
+  dart:isolate-patch/isolate_patch.dart 127:13     _runPendingImmediateCallback
+  dart:isolate-patch/isolate_patch.dart 193:5      _RawReceivePort._handleMessage
+  
+lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+ - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                  context.trMessage(message),
+                          ^^^^^^^^^
+00:00 +0 -22: loading D:/flutter cuoi ki/test/planner_test.dart [E]
+  Failed to load "D:/flutter cuoi ki/test/planner_test.dart":
+  Compilation failed for testPath=D:/flutter cuoi ki/test/planner_test.dart: lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+   - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+  Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                    context.trMessage(message),
+                            ^^^^^^^^^
+  .
+00:00 +0 -22: loading D:/flutter cuoi ki/test/ai_test.dart [E]
+  Error: The Dart compiler exited unexpectedly.
+  package:flutter_tools/src/base/common.dart 34:3  throwToolExit
+  package:flutter_tools/src/compile.dart 1024:11   DefaultResidentCompiler._compile.<fn>
+  dart:async/zone_root.dart 48:47                  _rootRunUnary
+  dart:async/zone.dart 816:35                      _CustomZone.runUnary
+  dart:async/future_impl.dart 948:45               Future._propagateToListeners.handleValueCallback
+  dart:async/future_impl.dart 977:13               Future._propagateToListeners
+  dart:async/future_impl.dart 862:9                Future._propagateToListeners
+  dart:async/future_impl.dart 720:5                Future._completeWithValue
+  dart:async/future_impl.dart 804:7                Future._asyncCompleteWithValue.<fn>
+  dart:async/zone_root.dart 35:13                  _rootRun
+  dart:async/zone.dart 810:35                      _CustomZone.run
+  dart:async/zone.dart 702:7                       _CustomZone.runGuarded
+  dart:async/zone.dart 743:23                      _CustomZone.bindCallbackGuarded.<fn>
+  dart:async/schedule_microtask.dart 40:35         _microtaskLoop
+  dart:async/schedule_microtask.dart 49:5          _startMicrotaskLoop
+  dart:isolate-patch/isolate_patch.dart 127:13     _runPendingImmediateCallback
+  dart:isolate-patch/isolate_patch.dart 193:5      _RawReceivePort._handleMessage
+  
+lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+ - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                  context.trMessage(message),
+                          ^^^^^^^^^
+00:00 +0 -23: loading D:/flutter cuoi ki/test/preferences_test.dart [E]
+  Failed to load "D:/flutter cuoi ki/test/preferences_test.dart":
+  Compilation failed for testPath=D:/flutter cuoi ki/test/preferences_test.dart: lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+   - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+  Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                    context.trMessage(message),
+                            ^^^^^^^^^
+  .
+00:00 +0 -23: loading D:/flutter cuoi ki/test/ai_test.dart [E]
+  Error: The Dart compiler exited unexpectedly.
+  package:flutter_tools/src/base/common.dart 34:3  throwToolExit
+  package:flutter_tools/src/compile.dart 1024:11   DefaultResidentCompiler._compile.<fn>
+  dart:async/zone_root.dart 48:47                  _rootRunUnary
+  dart:async/zone.dart 816:35                      _CustomZone.runUnary
+  dart:async/future_impl.dart 948:45               Future._propagateToListeners.handleValueCallback
+  dart:async/future_impl.dart 977:13               Future._propagateToListeners
+  dart:async/future_impl.dart 862:9                Future._propagateToListeners
+  dart:async/future_impl.dart 720:5                Future._completeWithValue
+  dart:async/future_impl.dart 804:7                Future._asyncCompleteWithValue.<fn>
+  dart:async/zone_root.dart 35:13                  _rootRun
+  dart:async/zone.dart 810:35                      _CustomZone.run
+  dart:async/zone.dart 702:7                       _CustomZone.runGuarded
+  dart:async/zone.dart 743:23                      _CustomZone.bindCallbackGuarded.<fn>
+  dart:async/schedule_microtask.dart 40:35         _microtaskLoop
+  dart:async/schedule_microtask.dart 49:5          _startMicrotaskLoop
+  dart:isolate-patch/isolate_patch.dart 127:13     _runPendingImmediateCallback
+  dart:isolate-patch/isolate_patch.dart 193:5      _RawReceivePort._handleMessage
+  
+lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+ - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                  context.trMessage(message),
+                          ^^^^^^^^^
+00:00 +0 -24: loading D:/flutter cuoi ki/test/prism_motion_test.dart [E]
+  Failed to load "D:/flutter cuoi ki/test/prism_motion_test.dart":
+  Compilation failed for testPath=D:/flutter cuoi ki/test/prism_motion_test.dart: lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+   - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+  Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                    context.trMessage(message),
+                            ^^^^^^^^^
+  .
+00:00 +0 -24: loading D:/flutter cuoi ki/test/ai_test.dart [E]
+  Error: The Dart compiler exited unexpectedly.
+  package:flutter_tools/src/base/common.dart 34:3  throwToolExit
+  package:flutter_tools/src/compile.dart 1024:11   DefaultResidentCompiler._compile.<fn>
+  dart:async/zone_root.dart 48:47                  _rootRunUnary
+  dart:async/zone.dart 816:35                      _CustomZone.runUnary
+  dart:async/future_impl.dart 948:45               Future._propagateToListeners.handleValueCallback
+  dart:async/future_impl.dart 977:13               Future._propagateToListeners
+  dart:async/future_impl.dart 862:9                Future._propagateToListeners
+  dart:async/future_impl.dart 720:5                Future._completeWithValue
+  dart:async/future_impl.dart 804:7                Future._asyncCompleteWithValue.<fn>
+  dart:async/zone_root.dart 35:13                  _rootRun
+  dart:async/zone.dart 810:35                      _CustomZone.run
+  dart:async/zone.dart 702:7                       _CustomZone.runGuarded
+  dart:async/zone.dart 743:23                      _CustomZone.bindCallbackGuarded.<fn>
+  dart:async/schedule_microtask.dart 40:35         _microtaskLoop
+  dart:async/schedule_microtask.dart 49:5          _startMicrotaskLoop
+  dart:isolate-patch/isolate_patch.dart 127:13     _runPendingImmediateCallback
+  dart:isolate-patch/isolate_patch.dart 193:5      _RawReceivePort._handleMessage
+  
+lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+ - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                  context.trMessage(message),
+                          ^^^^^^^^^
+00:00 +0 -25: loading D:/flutter cuoi ki/test/protected_editing_test.dart [E]
+  Failed to load "D:/flutter cuoi ki/test/protected_editing_test.dart":
+  Compilation failed for testPath=D:/flutter cuoi ki/test/protected_editing_test.dart: lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+   - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+  Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                    context.trMessage(message),
+                            ^^^^^^^^^
+  .
+00:00 +0 -25: loading D:/flutter cuoi ki/test/ai_test.dart [E]
+  Error: The Dart compiler exited unexpectedly.
+  package:flutter_tools/src/base/common.dart 34:3  throwToolExit
+  package:flutter_tools/src/compile.dart 1024:11   DefaultResidentCompiler._compile.<fn>
+  dart:async/zone_root.dart 48:47                  _rootRunUnary
+  dart:async/zone.dart 816:35                      _CustomZone.runUnary
+  dart:async/future_impl.dart 948:45               Future._propagateToListeners.handleValueCallback
+  dart:async/future_impl.dart 977:13               Future._propagateToListeners
+  dart:async/future_impl.dart 862:9                Future._propagateToListeners
+  dart:async/future_impl.dart 720:5                Future._completeWithValue
+  dart:async/future_impl.dart 804:7                Future._asyncCompleteWithValue.<fn>
+  dart:async/zone_root.dart 35:13                  _rootRun
+  dart:async/zone.dart 810:35                      _CustomZone.run
+  dart:async/zone.dart 702:7                       _CustomZone.runGuarded
+  dart:async/zone.dart 743:23                      _CustomZone.bindCallbackGuarded.<fn>
+  dart:async/schedule_microtask.dart 40:35         _microtaskLoop
+  dart:async/schedule_microtask.dart 49:5          _startMicrotaskLoop
+  dart:isolate-patch/isolate_patch.dart 127:13     _runPendingImmediateCallback
+  dart:isolate-patch/isolate_patch.dart 193:5      _RawReceivePort._handleMessage
+  
+lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+ - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                  context.trMessage(message),
+                          ^^^^^^^^^
+00:00 +0 -26: loading D:/flutter cuoi ki/test/realtime_test.dart [E]
+  Failed to load "D:/flutter cuoi ki/test/realtime_test.dart":
+  Compilation failed for testPath=D:/flutter cuoi ki/test/realtime_test.dart: lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+   - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+  Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                    context.trMessage(message),
+                            ^^^^^^^^^
+  .
+00:00 +0 -26: loading D:/flutter cuoi ki/test/ai_test.dart [E]
+  Error: The Dart compiler exited unexpectedly.
+  package:flutter_tools/src/base/common.dart 34:3  throwToolExit
+  package:flutter_tools/src/compile.dart 1024:11   DefaultResidentCompiler._compile.<fn>
+  dart:async/zone_root.dart 48:47                  _rootRunUnary
+  dart:async/zone.dart 816:35                      _CustomZone.runUnary
+  dart:async/future_impl.dart 948:45               Future._propagateToListeners.handleValueCallback
+  dart:async/future_impl.dart 977:13               Future._propagateToListeners
+  dart:async/future_impl.dart 862:9                Future._propagateToListeners
+  dart:async/future_impl.dart 720:5                Future._completeWithValue
+  dart:async/future_impl.dart 804:7                Future._asyncCompleteWithValue.<fn>
+  dart:async/zone_root.dart 35:13                  _rootRun
+  dart:async/zone.dart 810:35                      _CustomZone.run
+  dart:async/zone.dart 702:7                       _CustomZone.runGuarded
+  dart:async/zone.dart 743:23                      _CustomZone.bindCallbackGuarded.<fn>
+  dart:async/schedule_microtask.dart 40:35         _microtaskLoop
+  dart:async/schedule_microtask.dart 49:5          _startMicrotaskLoop
+  dart:isolate-patch/isolate_patch.dart 127:13     _runPendingImmediateCallback
+  dart:isolate-patch/isolate_patch.dart 193:5      _RawReceivePort._handleMessage
+  
+lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+ - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                  context.trMessage(message),
+                          ^^^^^^^^^
+00:00 +0 -27: loading D:/flutter cuoi ki/test/security_center_test.dart [E]
+  Failed to load "D:/flutter cuoi ki/test/security_center_test.dart":
+  Compilation failed for testPath=D:/flutter cuoi ki/test/security_center_test.dart: lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+   - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+  Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                    context.trMessage(message),
+                            ^^^^^^^^^
+  .
+00:00 +0 -27: loading D:/flutter cuoi ki/test/ai_test.dart [E]
+  Error: The Dart compiler exited unexpectedly.
+  package:flutter_tools/src/base/common.dart 34:3  throwToolExit
+  package:flutter_tools/src/compile.dart 1024:11   DefaultResidentCompiler._compile.<fn>
+  dart:async/zone_root.dart 48:47                  _rootRunUnary
+  dart:async/zone.dart 816:35                      _CustomZone.runUnary
+  dart:async/future_impl.dart 948:45               Future._propagateToListeners.handleValueCallback
+  dart:async/future_impl.dart 977:13               Future._propagateToListeners
+  dart:async/future_impl.dart 862:9                Future._propagateToListeners
+  dart:async/future_impl.dart 720:5                Future._completeWithValue
+  dart:async/future_impl.dart 804:7                Future._asyncCompleteWithValue.<fn>
+  dart:async/zone_root.dart 35:13                  _rootRun
+  dart:async/zone.dart 810:35                      _CustomZone.run
+  dart:async/zone.dart 702:7                       _CustomZone.runGuarded
+  dart:async/zone.dart 743:23                      _CustomZone.bindCallbackGuarded.<fn>
+  dart:async/schedule_microtask.dart 40:35         _microtaskLoop
+  dart:async/schedule_microtask.dart 49:5          _startMicrotaskLoop
+  dart:isolate-patch/isolate_patch.dart 127:13     _runPendingImmediateCallback
+  dart:isolate-patch/isolate_patch.dart 193:5      _RawReceivePort._handleMessage
+  
+lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+ - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                  context.trMessage(message),
+                          ^^^^^^^^^
+00:00 +0 -28: loading D:/flutter cuoi ki/test/session_storage_test.dart [E]
+  Failed to load "D:/flutter cuoi ki/test/session_storage_test.dart":
+  Compilation failed for testPath=D:/flutter cuoi ki/test/session_storage_test.dart: lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+   - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+  Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                    context.trMessage(message),
+                            ^^^^^^^^^
+  .
+00:00 +0 -28: loading D:/flutter cuoi ki/test/ai_test.dart [E]
+  Error: The Dart compiler exited unexpectedly.
+  package:flutter_tools/src/base/common.dart 34:3  throwToolExit
+  package:flutter_tools/src/compile.dart 1024:11   DefaultResidentCompiler._compile.<fn>
+  dart:async/zone_root.dart 48:47                  _rootRunUnary
+  dart:async/zone.dart 816:35                      _CustomZone.runUnary
+  dart:async/future_impl.dart 948:45               Future._propagateToListeners.handleValueCallback
+  dart:async/future_impl.dart 977:13               Future._propagateToListeners
+  dart:async/future_impl.dart 862:9                Future._propagateToListeners
+  dart:async/future_impl.dart 720:5                Future._completeWithValue
+  dart:async/future_impl.dart 804:7                Future._asyncCompleteWithValue.<fn>
+  dart:async/zone_root.dart 35:13                  _rootRun
+  dart:async/zone.dart 810:35                      _CustomZone.run
+  dart:async/zone.dart 702:7                       _CustomZone.runGuarded
+  dart:async/zone.dart 743:23                      _CustomZone.bindCallbackGuarded.<fn>
+  dart:async/schedule_microtask.dart 40:35         _microtaskLoop
+  dart:async/schedule_microtask.dart 49:5          _startMicrotaskLoop
+  dart:isolate-patch/isolate_patch.dart 127:13     _runPendingImmediateCallback
+  dart:isolate-patch/isolate_patch.dart 193:5      _RawReceivePort._handleMessage
+  
+lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+ - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                  context.trMessage(message),
+                          ^^^^^^^^^
+00:00 +0 -29: loading D:/flutter cuoi ki/test/sharing_test.dart [E]
+  Failed to load "D:/flutter cuoi ki/test/sharing_test.dart":
+  Compilation failed for testPath=D:/flutter cuoi ki/test/sharing_test.dart: lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+   - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+  Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                    context.trMessage(message),
+                            ^^^^^^^^^
+  .
+00:00 +0 -29: loading D:/flutter cuoi ki/test/ai_test.dart [E]
+  Error: The Dart compiler exited unexpectedly.
+  package:flutter_tools/src/base/common.dart 34:3  throwToolExit
+  package:flutter_tools/src/compile.dart 1024:11   DefaultResidentCompiler._compile.<fn>
+  dart:async/zone_root.dart 48:47                  _rootRunUnary
+  dart:async/zone.dart 816:35                      _CustomZone.runUnary
+  dart:async/future_impl.dart 948:45               Future._propagateToListeners.handleValueCallback
+  dart:async/future_impl.dart 977:13               Future._propagateToListeners
+  dart:async/future_impl.dart 862:9                Future._propagateToListeners
+  dart:async/future_impl.dart 720:5                Future._completeWithValue
+  dart:async/future_impl.dart 804:7                Future._asyncCompleteWithValue.<fn>
+  dart:async/zone_root.dart 35:13                  _rootRun
+  dart:async/zone.dart 810:35                      _CustomZone.run
+  dart:async/zone.dart 702:7                       _CustomZone.runGuarded
+  dart:async/zone.dart 743:23                      _CustomZone.bindCallbackGuarded.<fn>
+  dart:async/schedule_microtask.dart 40:35         _microtaskLoop
+  dart:async/schedule_microtask.dart 49:5          _startMicrotaskLoop
+  dart:isolate-patch/isolate_patch.dart 127:13     _runPendingImmediateCallback
+  dart:isolate-patch/isolate_patch.dart 193:5      _RawReceivePort._handleMessage
+  
+lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+ - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                  context.trMessage(message),
+                          ^^^^^^^^^
+00:00 +0 -30: loading D:/flutter cuoi ki/test/sync_durability_test.dart [E]
+  Failed to load "D:/flutter cuoi ki/test/sync_durability_test.dart":
+  Compilation failed for testPath=D:/flutter cuoi ki/test/sync_durability_test.dart: lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+   - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+  Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                    context.trMessage(message),
+                            ^^^^^^^^^
+  .
+00:00 +0 -30: loading D:/flutter cuoi ki/test/ai_test.dart [E]
+  Error: The Dart compiler exited unexpectedly.
+  package:flutter_tools/src/base/common.dart 34:3  throwToolExit
+  package:flutter_tools/src/compile.dart 1024:11   DefaultResidentCompiler._compile.<fn>
+  dart:async/zone_root.dart 48:47                  _rootRunUnary
+  dart:async/zone.dart 816:35                      _CustomZone.runUnary
+  dart:async/future_impl.dart 948:45               Future._propagateToListeners.handleValueCallback
+  dart:async/future_impl.dart 977:13               Future._propagateToListeners
+  dart:async/future_impl.dart 862:9                Future._propagateToListeners
+  dart:async/future_impl.dart 720:5                Future._completeWithValue
+  dart:async/future_impl.dart 804:7                Future._asyncCompleteWithValue.<fn>
+  dart:async/zone_root.dart 35:13                  _rootRun
+  dart:async/zone.dart 810:35                      _CustomZone.run
+  dart:async/zone.dart 702:7                       _CustomZone.runGuarded
+  dart:async/zone.dart 743:23                      _CustomZone.bindCallbackGuarded.<fn>
+  dart:async/schedule_microtask.dart 40:35         _microtaskLoop
+  dart:async/schedule_microtask.dart 49:5          _startMicrotaskLoop
+  dart:isolate-patch/isolate_patch.dart 127:13     _runPendingImmediateCallback
+  dart:isolate-patch/isolate_patch.dart 193:5      _RawReceivePort._handleMessage
+  
+lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+ - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                  context.trMessage(message),
+                          ^^^^^^^^^
+00:00 +0 -31: loading D:/flutter cuoi ki/test/ui_cohesion_test.dart [E]
+  Failed to load "D:/flutter cuoi ki/test/ui_cohesion_test.dart":
+  Compilation failed for testPath=D:/flutter cuoi ki/test/ui_cohesion_test.dart: lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+   - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+  Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                    context.trMessage(message),
+                            ^^^^^^^^^
+  .
+00:00 +0 -31: loading D:/flutter cuoi ki/test/ai_test.dart [E]
+  Error: The Dart compiler exited unexpectedly.
+  package:flutter_tools/src/base/common.dart 34:3  throwToolExit
+  package:flutter_tools/src/compile.dart 1024:11   DefaultResidentCompiler._compile.<fn>
+  dart:async/zone_root.dart 48:47                  _rootRunUnary
+  dart:async/zone.dart 816:35                      _CustomZone.runUnary
+  dart:async/future_impl.dart 948:45               Future._propagateToListeners.handleValueCallback
+  dart:async/future_impl.dart 977:13               Future._propagateToListeners
+  dart:async/future_impl.dart 862:9                Future._propagateToListeners
+  dart:async/future_impl.dart 720:5                Future._completeWithValue
+  dart:async/future_impl.dart 804:7                Future._asyncCompleteWithValue.<fn>
+  dart:async/zone_root.dart 35:13                  _rootRun
+  dart:async/zone.dart 810:35                      _CustomZone.run
+  dart:async/zone.dart 702:7                       _CustomZone.runGuarded
+  dart:async/zone.dart 743:23                      _CustomZone.bindCallbackGuarded.<fn>
+  dart:async/schedule_microtask.dart 40:35         _microtaskLoop
+  dart:async/schedule_microtask.dart 49:5          _startMicrotaskLoop
+  dart:isolate-patch/isolate_patch.dart 127:13     _runPendingImmediateCallback
+  dart:isolate-patch/isolate_patch.dart 193:5      _RawReceivePort._handleMessage
+  
+lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+ - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                  context.trMessage(message),
+                          ^^^^^^^^^
+00:00 +0 -32: loading D:/flutter cuoi ki/test/ui_preview_test.dart [E]
+  Failed to load "D:/flutter cuoi ki/test/ui_preview_test.dart":
+  Compilation failed for testPath=D:/flutter cuoi ki/test/ui_preview_test.dart: lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+   - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+  Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                    context.trMessage(message),
+                            ^^^^^^^^^
+  .
+00:00 +0 -32: loading D:/flutter cuoi ki/test/ai_test.dart [E]
+  Error: The Dart compiler exited unexpectedly.
+  package:flutter_tools/src/base/common.dart 34:3  throwToolExit
+  package:flutter_tools/src/compile.dart 1024:11   DefaultResidentCompiler._compile.<fn>
+  dart:async/zone_root.dart 48:47                  _rootRunUnary
+  dart:async/zone.dart 816:35                      _CustomZone.runUnary
+  dart:async/future_impl.dart 948:45               Future._propagateToListeners.handleValueCallback
+  dart:async/future_impl.dart 977:13               Future._propagateToListeners
+  dart:async/future_impl.dart 862:9                Future._propagateToListeners
+  dart:async/future_impl.dart 720:5                Future._completeWithValue
+  dart:async/future_impl.dart 804:7                Future._asyncCompleteWithValue.<fn>
+  dart:async/zone_root.dart 35:13                  _rootRun
+  dart:async/zone.dart 810:35                      _CustomZone.run
+  dart:async/zone.dart 702:7                       _CustomZone.runGuarded
+  dart:async/zone.dart 743:23                      _CustomZone.bindCallbackGuarded.<fn>
+  dart:async/schedule_microtask.dart 40:35         _microtaskLoop
+  dart:async/schedule_microtask.dart 49:5          _startMicrotaskLoop
+  dart:isolate-patch/isolate_patch.dart 127:13     _runPendingImmediateCallback
+  dart:isolate-patch/isolate_patch.dart 193:5      _RawReceivePort._handleMessage
+  
+lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+ - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                  context.trMessage(message),
+                          ^^^^^^^^^
+00:00 +0 -33: loading D:/flutter cuoi ki/test/ui_redesign_test.dart [E]
+  Failed to load "D:/flutter cuoi ki/test/ui_redesign_test.dart":
+  Compilation failed for testPath=D:/flutter cuoi ki/test/ui_redesign_test.dart: lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+   - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+  Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                    context.trMessage(message),
+                            ^^^^^^^^^
+  .
+00:00 +0 -33: loading D:/flutter cuoi ki/test/ai_test.dart [E]
+  Error: The Dart compiler exited unexpectedly.
+  package:flutter_tools/src/base/common.dart 34:3  throwToolExit
+  package:flutter_tools/src/compile.dart 1024:11   DefaultResidentCompiler._compile.<fn>
+  dart:async/zone_root.dart 48:47                  _rootRunUnary
+  dart:async/zone.dart 816:35                      _CustomZone.runUnary
+  dart:async/future_impl.dart 948:45               Future._propagateToListeners.handleValueCallback
+  dart:async/future_impl.dart 977:13               Future._propagateToListeners
+  dart:async/future_impl.dart 862:9                Future._propagateToListeners
+  dart:async/future_impl.dart 720:5                Future._completeWithValue
+  dart:async/future_impl.dart 804:7                Future._asyncCompleteWithValue.<fn>
+  dart:async/zone_root.dart 35:13                  _rootRun
+  dart:async/zone.dart 810:35                      _CustomZone.run
+  dart:async/zone.dart 702:7                       _CustomZone.runGuarded
+  dart:async/zone.dart 743:23                      _CustomZone.bindCallbackGuarded.<fn>
+  dart:async/schedule_microtask.dart 40:35         _microtaskLoop
+  dart:async/schedule_microtask.dart 49:5          _startMicrotaskLoop
+  dart:isolate-patch/isolate_patch.dart 127:13     _runPendingImmediateCallback
+  dart:isolate-patch/isolate_patch.dart 193:5      _RawReceivePort._handleMessage
+  
+lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+ - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                  context.trMessage(message),
+                          ^^^^^^^^^
+00:00 +0 -34: loading D:/flutter cuoi ki/test/ui_system_refresh_test.dart [E]
+  Failed to load "D:/flutter cuoi ki/test/ui_system_refresh_test.dart":
+  Compilation failed for testPath=D:/flutter cuoi ki/test/ui_system_refresh_test.dart: lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+   - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+  Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                    context.trMessage(message),
+                            ^^^^^^^^^
+  .
+00:00 +0 -34: loading D:/flutter cuoi ki/test/ai_test.dart [E]
+  Error: The Dart compiler exited unexpectedly.
+  package:flutter_tools/src/base/common.dart 34:3  throwToolExit
+  package:flutter_tools/src/compile.dart 1024:11   DefaultResidentCompiler._compile.<fn>
+  dart:async/zone_root.dart 48:47                  _rootRunUnary
+  dart:async/zone.dart 816:35                      _CustomZone.runUnary
+  dart:async/future_impl.dart 948:45               Future._propagateToListeners.handleValueCallback
+  dart:async/future_impl.dart 977:13               Future._propagateToListeners
+  dart:async/future_impl.dart 862:9                Future._propagateToListeners
+  dart:async/future_impl.dart 720:5                Future._completeWithValue
+  dart:async/future_impl.dart 804:7                Future._asyncCompleteWithValue.<fn>
+  dart:async/zone_root.dart 35:13                  _rootRun
+  dart:async/zone.dart 810:35                      _CustomZone.run
+  dart:async/zone.dart 702:7                       _CustomZone.runGuarded
+  dart:async/zone.dart 743:23                      _CustomZone.bindCallbackGuarded.<fn>
+  dart:async/schedule_microtask.dart 40:35         _microtaskLoop
+  dart:async/schedule_microtask.dart 49:5          _startMicrotaskLoop
+  dart:isolate-patch/isolate_patch.dart 127:13     _runPendingImmediateCallback
+  dart:isolate-patch/isolate_patch.dart 193:5      _RawReceivePort._handleMessage
+  
+lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+ - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                  context.trMessage(message),
+                          ^^^^^^^^^
+00:00 +0 -35: loading D:/flutter cuoi ki/test/ui_upgrade_test.dart [E]
+  Failed to load "D:/flutter cuoi ki/test/ui_upgrade_test.dart":
+  Compilation failed for testPath=D:/flutter cuoi ki/test/ui_upgrade_test.dart: lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+   - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+  Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                    context.trMessage(message),
+                            ^^^^^^^^^
+  .
+00:00 +0 -35: loading D:/flutter cuoi ki/test/ai_test.dart [E]
+  Error: The Dart compiler exited unexpectedly.
+  package:flutter_tools/src/base/common.dart 34:3  throwToolExit
+  package:flutter_tools/src/compile.dart 1024:11   DefaultResidentCompiler._compile.<fn>
+  dart:async/zone_root.dart 48:47                  _rootRunUnary
+  dart:async/zone.dart 816:35                      _CustomZone.runUnary
+  dart:async/future_impl.dart 948:45               Future._propagateToListeners.handleValueCallback
+  dart:async/future_impl.dart 977:13               Future._propagateToListeners
+  dart:async/future_impl.dart 862:9                Future._propagateToListeners
+  dart:async/future_impl.dart 720:5                Future._completeWithValue
+  dart:async/future_impl.dart 804:7                Future._asyncCompleteWithValue.<fn>
+  dart:async/zone_root.dart 35:13                  _rootRun
+  dart:async/zone.dart 810:35                      _CustomZone.run
+  dart:async/zone.dart 702:7                       _CustomZone.runGuarded
+  dart:async/zone.dart 743:23                      _CustomZone.bindCallbackGuarded.<fn>
+  dart:async/schedule_microtask.dart 40:35         _microtaskLoop
+  dart:async/schedule_microtask.dart 49:5          _startMicrotaskLoop
+  dart:isolate-patch/isolate_patch.dart 127:13     _runPendingImmediateCallback
+  dart:isolate-patch/isolate_patch.dart 193:5      _RawReceivePort._handleMessage
+  
+lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+ - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                  context.trMessage(message),
+                          ^^^^^^^^^
+00:00 +0 -36: loading D:/flutter cuoi ki/test/widgets_test.dart [E]
+  Failed to load "D:/flutter cuoi ki/test/widgets_test.dart":
+  Compilation failed for testPath=D:/flutter cuoi ki/test/widgets_test.dart: lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+   - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+  Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                    context.trMessage(message),
+                            ^^^^^^^^^
+  .
+00:00 +0 -36: loading D:/flutter cuoi ki/test/ai_test.dart [E]
+  Error: The Dart compiler exited unexpectedly.
+  package:flutter_tools/src/base/common.dart 34:3  throwToolExit
+  package:flutter_tools/src/compile.dart 1024:11   DefaultResidentCompiler._compile.<fn>
+  dart:async/zone_root.dart 48:47                  _rootRunUnary
+  dart:async/zone.dart 816:35                      _CustomZone.runUnary
+  dart:async/future_impl.dart 948:45               Future._propagateToListeners.handleValueCallback
+  dart:async/future_impl.dart 977:13               Future._propagateToListeners
+  dart:async/future_impl.dart 862:9                Future._propagateToListeners
+  dart:async/future_impl.dart 720:5                Future._completeWithValue
+  dart:async/future_impl.dart 804:7                Future._asyncCompleteWithValue.<fn>
+  dart:async/zone_root.dart 35:13                  _rootRun
+  dart:async/zone.dart 810:35                      _CustomZone.run
+  dart:async/zone.dart 702:7                       _CustomZone.runGuarded
+  dart:async/zone.dart 743:23                      _CustomZone.bindCallbackGuarded.<fn>
+  dart:async/schedule_microtask.dart 40:35         _microtaskLoop
+  dart:async/schedule_microtask.dart 49:5          _startMicrotaskLoop
+  dart:isolate-patch/isolate_patch.dart 127:13     _runPendingImmediateCallback
+  dart:isolate-patch/isolate_patch.dart 193:5      _RawReceivePort._handleMessage
+  
+lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+ - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                  context.trMessage(message),
+                          ^^^^^^^^^
+00:00 +0 -37: loading D:/flutter cuoi ki/test/workspace_polish_test.dart [E]
+  Failed to load "D:/flutter cuoi ki/test/workspace_polish_test.dart":
+  Compilation failed for testPath=D:/flutter cuoi ki/test/workspace_polish_test.dart: lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+   - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+  Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                    context.trMessage(message),
+                            ^^^^^^^^^
+  .
+00:00 +0 -37: loading D:/flutter cuoi ki/test/ai_test.dart [E]
+  Error: The Dart compiler exited unexpectedly.
+  package:flutter_tools/src/base/common.dart 34:3  throwToolExit
+  package:flutter_tools/src/compile.dart 1024:11   DefaultResidentCompiler._compile.<fn>
+  dart:async/zone_root.dart 48:47                  _rootRunUnary
+  dart:async/zone.dart 816:35                      _CustomZone.runUnary
+  dart:async/future_impl.dart 948:45               Future._propagateToListeners.handleValueCallback
+  dart:async/future_impl.dart 977:13               Future._propagateToListeners
+  dart:async/future_impl.dart 862:9                Future._propagateToListeners
+  dart:async/future_impl.dart 720:5                Future._completeWithValue
+  dart:async/future_impl.dart 804:7                Future._asyncCompleteWithValue.<fn>
+  dart:async/zone_root.dart 35:13                  _rootRun
+  dart:async/zone.dart 810:35                      _CustomZone.run
+  dart:async/zone.dart 702:7                       _CustomZone.runGuarded
+  dart:async/zone.dart 743:23                      _CustomZone.bindCallbackGuarded.<fn>
+  dart:async/schedule_microtask.dart 40:35         _microtaskLoop
+  dart:async/schedule_microtask.dart 49:5          _startMicrotaskLoop
+  dart:isolate-patch/isolate_patch.dart 127:13     _runPendingImmediateCallback
+  dart:isolate-patch/isolate_patch.dart 193:5      _RawReceivePort._handleMessage
+  
+lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+ - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                  context.trMessage(message),
+                          ^^^^^^^^^
+00:00 +0 -38: loading D:/flutter cuoi ki/test/workspace_test.dart [E]
+  Failed to load "D:/flutter cuoi ki/test/workspace_test.dart":
+  Compilation failed for testPath=D:/flutter cuoi ki/test/workspace_test.dart: lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+   - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+  Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                    context.trMessage(message),
+                            ^^^^^^^^^
+  .
+00:00 +0 -38: loading D:/flutter cuoi ki/test/ai_test.dart [E]
+  Error: The Dart compiler exited unexpectedly.
+  package:flutter_tools/src/base/common.dart 34:3  throwToolExit
+  package:flutter_tools/src/compile.dart 1024:11   DefaultResidentCompiler._compile.<fn>
+  dart:async/zone_root.dart 48:47                  _rootRunUnary
+  dart:async/zone.dart 816:35                      _CustomZone.runUnary
+  dart:async/future_impl.dart 948:45               Future._propagateToListeners.handleValueCallback
+  dart:async/future_impl.dart 977:13               Future._propagateToListeners
+  dart:async/future_impl.dart 862:9                Future._propagateToListeners
+  dart:async/future_impl.dart 720:5                Future._completeWithValue
+  dart:async/future_impl.dart 804:7                Future._asyncCompleteWithValue.<fn>
+  dart:async/zone_root.dart 35:13                  _rootRun
+  dart:async/zone.dart 810:35                      _CustomZone.run
+  dart:async/zone.dart 702:7                       _CustomZone.runGuarded
+  dart:async/zone.dart 743:23                      _CustomZone.bindCallbackGuarded.<fn>
+  dart:async/schedule_microtask.dart 40:35         _microtaskLoop
+  dart:async/schedule_microtask.dart 49:5          _startMicrotaskLoop
+  dart:isolate-patch/isolate_patch.dart 127:13     _runPendingImmediateCallback
+  dart:isolate-patch/isolate_patch.dart 193:5      _RawReceivePort._handleMessage
+  
+lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+ - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                  context.trMessage(message),
+                          ^^^^^^^^^
+00:00 +0 -39: loading D:/flutter cuoi ki/test/writing_studio_test.dart [E]
+  Failed to load "D:/flutter cuoi ki/test/writing_studio_test.dart":
+  Compilation failed for testPath=D:/flutter cuoi ki/test/writing_studio_test.dart: lib/ui/design_system.dart:527:27: Error: The method 'trMessage' isn't defined for the type 'BuildContext'.
+   - 'BuildContext' is from 'package:flutter/src/widgets/framework.dart' ('/C:/Users/LENOVO/flutter-sdk/packages/flutter/lib/src/widgets/framework.dart').
+  Try correcting the name to the name of an existing method, or defining a method named 'trMessage'.
+                    context.trMessage(message),
+                            ^^^^^^^^^
+  .
+00:00 +0 -39: Some tests failed.
+
+Failing tests:
+  D:/flutter cuoi ki/test/ai_test.dart: loading D:/flutter cuoi ki/test/ai_test.dart
+  D:/flutter cuoi ki/test/atelier_ui_test.dart: loading D:/flutter cuoi ki/test/atelier_ui_test.dart
+  D:/flutter cuoi ki/test/attachments_test.dart: loading D:/flutter cuoi ki/test/attachments_test.dart
+  D:/flutter cuoi ki/test/avatar_labels_test.dart: loading D:/flutter cuoi ki/test/avatar_labels_test.dart
+  ... and 35 more

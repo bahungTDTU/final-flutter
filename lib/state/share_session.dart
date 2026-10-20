@@ -114,8 +114,9 @@ class ShareSession extends ChangeNotifier {
     }
   }
 
-  Future<void> submit(Map<String, dynamic> mutation) async {
-    if (busy || !canManage || pending != null) return;
+  /// Whether this attempt received an ACK in the same active sharing session.
+  Future<bool> submit(Map<String, dynamic> mutation) async {
+    if (busy || !canManage || pending != null) return false;
     pending = Map<String, dynamic>.from(
       jsonDecode(
         jsonEncode({
@@ -125,11 +126,11 @@ class ShareSession extends ChangeNotifier {
         }),
       ) as Map,
     );
-    await retry();
+    return retry();
   }
 
-  Future<void> retry() async {
-    if (busy || !canManage || pending == null) return;
+  Future<bool> retry() async {
+    if (busy || !canManage || pending == null) return false;
     final attempt = epoch;
     final operation = pending!;
     busy = true;
@@ -142,13 +143,14 @@ class ShareSession extends ChangeNotifier {
         token: sessionToken,
         body: operation,
       );
-      if (!active || attempt != epoch) return;
+      if (!active || attempt != epoch) return false;
       accept(result);
       pending = null;
       message = 'Server đã cập nhật chia sẻ.';
       await controller.synchronize();
+      return active && attempt == epoch;
     } on ApiException catch (e) {
-      if (!active || attempt != epoch) return;
+      if (!active || attempt != epoch) return false;
       if (e.status == 409) {
         final current = e.detail is Map ? e.detail['current'] : null;
         if (current != null) accept(current);
@@ -175,6 +177,7 @@ class ShareSession extends ChangeNotifier {
       busy = false;
       if (!disposed) notifyListeners();
     }
+    return false;
   }
 
   @override

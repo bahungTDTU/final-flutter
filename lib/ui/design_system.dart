@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
+import '../l10n/app_strings.dart';
+
 import 'prism.dart';
+import 'palette_tokens.dart';
+export 'palette_tokens.dart';
 export 'prism.dart';
 
 abstract final class Space {
@@ -47,9 +51,7 @@ class BrandGradient extends StatelessWidget {
       gradient: LinearGradient(
         begin: Alignment.topLeft,
         end: Alignment.bottomRight,
-        colors: Theme.of(context).brightness == Brightness.dark
-            ? DashboardColors.darkHeader
-            : DashboardColors.header,
+        colors: PaletteTokens.of(context).brand,
       ),
     ),
     child: child,
@@ -58,15 +60,7 @@ class BrandGradient extends StatelessWidget {
 
 /// AppBar remains the framework widget so navigation, focus and menus keep their behavior.
 AppBar noteAppBar({Widget? title, Widget? leading, List<Widget>? actions}) =>
-    AppBar(
-      title: title,
-      leading: leading,
-      actions: actions,
-      toolbarHeight: 64,
-      shape: const Border(
-        bottom: BorderSide(color: Color(0xff858a7d), width: .5),
-      ),
-    );
+    AppBar(title: title, leading: leading, actions: actions, toolbarHeight: 64);
 
 class BrandPanel extends StatelessWidget {
   const BrandPanel({
@@ -145,23 +139,26 @@ class ReadingCanvas extends StatelessWidget {
 
 // Immutable themes are shared by the app shell and contrasting editorial covers.
 // A controller pulse must not regenerate seeded colors and typography per cover.
-final _noteThemes = <Brightness, ThemeData>{};
-ThemeData noteTheme(Brightness brightness) =>
-    _noteThemes.putIfAbsent(brightness, () => _buildNoteTheme(brightness));
+final _noteThemes = <(Brightness, AppPalette), ThemeData>{};
+ThemeData noteTheme(
+  Brightness brightness, {
+  AppPalette palette = AppPalette.atelier,
+}) => _noteThemes.putIfAbsent((
+  brightness,
+  palette,
+), () => _buildNoteTheme(brightness, palette));
 
-ThemeData _buildNoteTheme(Brightness brightness) {
+ThemeData _buildNoteTheme(Brightness brightness, AppPalette selected) {
   final dark = brightness == Brightness.dark;
-  final palette = PrismPalette.forBrightness(brightness).copyWith(
-    canvas: dark ? DashboardColors.darkCanvas : DashboardColors.canvas,
-  );
-  final canvas = palette.canvas;
-  final surface = Color(dark ? 0xff242822 : 0xfffcfaf5);
-  final primary = dark ? const Color(0xffd7b87f) : DashboardColors.header.first;
-  final ink = Color(dark ? 0xfff4f0e6 : 0xff272b25);
-  final muted = Color(dark ? 0xffc4c5b8 : 0xff555b51);
-  final outline = Color(dark ? 0xffa6ac9a : 0xff858a7d);
-  final scheme =
-      ColorScheme.fromSeed(seedColor: primary, brightness: brightness).copyWith(
+  final spec = PaletteSpec.forPalette(selected);
+  final canvas = spec.canvas(brightness);
+  var surface = Color(dark ? 0xff242822 : 0xfffcfaf5);
+  var primary = dark ? const Color(0xffd7b87f) : DashboardColors.header.first;
+  var ink = Color(dark ? 0xfff4f0e6 : 0xff272b25);
+  var muted = Color(dark ? 0xffc4c5b8 : 0xff555b51);
+  var outline = Color(dark ? 0xffa6ac9a : 0xff858a7d);
+  var scheme = ColorScheme.fromSeed(seedColor: primary, brightness: brightness)
+      .copyWith(
         primary: primary,
         secondary: Color(dark ? 0xffbed0b7 : 0xff394a40),
         onSecondary: Color(dark ? 0xff203022 : 0xffffffff),
@@ -183,11 +180,43 @@ ThemeData _buildNoteTheme(Brightness brightness) {
         outlineVariant: Color(dark ? 0xff505747 : 0xffd2d2c4),
         error: Color(dark ? 0xffffb4ab : 0xffa52b24),
       );
+  if (selected != AppPalette.atelier) {
+    scheme = spec.scheme(brightness);
+    surface = scheme.surface;
+    primary = scheme.primary;
+    ink = scheme.onSurface;
+    muted = scheme.onSurfaceVariant;
+    outline = scheme.outline;
+  }
+  final basePalette = PrismPalette.forBrightness(brightness);
+  final accents = [
+    spec.seed,
+    spec.secondary,
+    spec.accent,
+    Color.lerp(spec.seed, spec.secondary, .5)!,
+    Color.lerp(spec.secondary, spec.accent, .5)!,
+    Color.lerp(spec.seed, spec.accent, .5)!,
+  ];
+  final palette = basePalette.copyWith(
+    canvas: canvas,
+    tones: selected == AppPalette.atelier
+        ? null
+        : [
+            for (final c in accents)
+              PrismTone(
+                dark ? Color.lerp(c, Colors.white, .72)! : c,
+                Color.lerp(c, Colors.white, .72)!,
+              ),
+          ],
+    rim: selected == AppPalette.atelier
+        ? null
+        : List.filled(3, scheme.outlineVariant),
+  );
   final base = ThemeData(
     useMaterial3: true,
     colorScheme: scheme,
     fontFamily: 'NotoSans',
-    extensions: [palette],
+    extensions: [palette, PaletteTokens.forPalette(selected)],
   );
   return base.copyWith(
     scaffoldBackgroundColor: canvas,
@@ -221,6 +250,9 @@ ThemeData _buildNoteTheme(Brightness brightness) {
         )
         .apply(fontFamily: 'NotoSans'),
     appBarTheme: AppBarTheme(
+      shape: Border(
+        bottom: BorderSide(color: scheme.outlineVariant, width: .5),
+      ),
       backgroundColor: surface,
       foregroundColor: ink,
       surfaceTintColor: Colors.transparent,
@@ -447,7 +479,7 @@ class Brand extends StatelessWidget {
         width: 40,
         height: 40,
         decoration: BoxDecoration(
-          gradient: const LinearGradient(colors: PrismPalette.actionColors),
+          gradient: LinearGradient(colors: PaletteTokens.of(context).brand),
           borderRadius: BorderRadius.circular(8.0),
         ),
         child: Icon(Icons.auto_stories_outlined, color: Colors.white),
@@ -524,7 +556,7 @@ class StatusNotice extends StatelessWidget {
               const SizedBox(width: 12),
               Expanded(
                 child: Text(
-                  message,
+                  context.trMessage(message),
                   style: TextStyle(
                     color: error ? colors.onErrorContainer : colors.onSurface,
                   ),

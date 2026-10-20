@@ -1,3 +1,5 @@
+import '../l10n/app_strings.dart';
+
 import 'dart:math' as math;
 import 'dart:async';
 
@@ -117,7 +119,7 @@ class _PlannerSliverState extends State<PlannerSliver>
         setState(
           () => error = e is StateError
               ? e.message.toString()
-              : 'Chưa lưu được kế hoạch. Hãy thử lại.',
+              : context.tr("Chưa lưu được kế hoạch. Hãy thử lại."),
         );
       }
     } finally {
@@ -146,16 +148,16 @@ class _PlannerSliverState extends State<PlannerSliver>
     final accepted = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Bỏ khỏi kế hoạch?'),
-        content: const Text('Ghi chú vẫn được giữ nguyên.'),
+        title: Text(context.tr("Bỏ khỏi kế hoạch?")),
+        content: Text(context.tr("Ghi chú vẫn được giữ nguyên.")),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
-            child: const Text('Hủy'),
+            child: Text(context.tr("Hủy")),
           ),
           FilledButton(
             onPressed: () => Navigator.pop(context, true),
-            child: const Text('Bỏ khỏi kế hoạch'),
+            child: Text(context.tr("Bỏ khỏi kế hoạch")),
           ),
         ],
       ),
@@ -192,7 +194,7 @@ class _PlannerSliverState extends State<PlannerSliver>
                   ),
                   PopupMenuButton<String>(
                     enabled: !busy.contains(n.id),
-                    tooltip: 'Thao tác kế hoạch ${n.title}',
+                    tooltip: context.tr("Thao tác kế hoạch {0}", [n.title]),
                     onSelected: (value) {
                       if (value == 'edit') {
                         edit(n.id);
@@ -212,16 +214,20 @@ class _PlannerSliverState extends State<PlannerSliver>
                       for (final stage in PlanStage.values)
                         PopupMenuItem(
                           value: stage.name,
-                          child: Text('Chuyển sang ${stage.label}'),
+                          child: Text(
+                            context.tr("Chuyển sang {0}", [
+                              context.tr(stage.label),
+                            ]),
+                          ),
                         ),
                       const PopupMenuDivider(),
-                      const PopupMenuItem(
+                      PopupMenuItem(
                         value: 'edit',
-                        child: Text('Ưu tiên và ngày hạn'),
+                        child: Text(context.tr("Ưu tiên và ngày hạn")),
                       ),
-                      const PopupMenuItem(
+                      PopupMenuItem(
                         value: 'remove',
-                        child: Text('Bỏ khỏi kế hoạch'),
+                        child: Text(context.tr("Bỏ khỏi kế hoạch")),
                       ),
                     ],
                   ),
@@ -242,18 +248,23 @@ class _PlannerSliverState extends State<PlannerSliver>
                 spacing: 8,
                 runSpacing: 8,
                 children: [
-                  MetadataPill('Ưu tiên ${plan.priority.label.toLowerCase()}'),
+                  MetadataPill(
+                    context.tr("Ưu tiên {0}", [
+                      context.tr(plan.priority.label).toLowerCase(),
+                    ]),
+                  ),
                   if (plan.dueDay != null)
                     MetadataPill(
-                      '${plan.overdue(now) ? 'Quá hạn' : 'Hạn'} ${_dateLabel(plan.dueDay!)}',
+                      '${plan.overdue(now) ? context.tr("Quá hạn") : context.tr("Hạn")} ${_dateLabel(plan.dueDay!)}',
                     ),
-                  if (n.role != 'owner') const MetadataPill('Được chia sẻ'),
+                  if (n.role != 'owner')
+                    MetadataPill(context.tr("Được chia sẻ")),
                 ],
               ),
               if (busy.contains(n.id))
-                const Padding(
+                Padding(
                   padding: EdgeInsets.only(top: 10),
-                  child: Text('Đang lưu…'),
+                  child: Text(context.tr("Đang lưu…")),
                 ),
             ],
           ),
@@ -310,7 +321,7 @@ class _PlannerSliverState extends State<PlannerSliver>
             const SizedBox(width: 8),
             Expanded(
               child: Text(
-                stage.label,
+                context.tr(stage.label),
                 style: Theme.of(context).textTheme.titleMedium,
               ),
             ),
@@ -332,11 +343,13 @@ class _PlannerSliverState extends State<PlannerSliver>
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        const PageIntro(
-                          title: 'Từ ý tưởng đến hoàn thành',
-                          detail: 'Chọn ghi chú, đặt ưu tiên và chia công việc thành ba chặng rõ ràng.',
+                        PageIntro(
+                          title: context.tr("Từ ý tưởng đến hoàn thành"),
+                          detail: context.tr(
+                            "Chọn ghi chú, đặt ưu tiên và chia công việc thành ba chặng rõ ràng.",
+                          ),
                           icon: Icons.view_kanban_outlined,
-                          eyebrow: 'KẾ HOẠCH CÁ NHÂN',
+                          eyebrow: context.tr("KẾ HOẠCH CÁ NHÂN"),
                           panel: false,
                         ),
                         const SizedBox(height: 20),
@@ -345,16 +358,22 @@ class _PlannerSliverState extends State<PlannerSliver>
                           runSpacing: 12,
                           children: [
                             MetadataPill(
-                              '${all.length} ghi chú trong kế hoạch',
+                              context.tr("{0} ghi chú trong kế hoạch", [
+                                all.length,
+                              ]),
                             ),
-                            MetadataPill('$completed hoàn thành'),
                             MetadataPill(
-                              '${all.where((p) => p.overdue(now)).length} quá hạn',
+                              context.tr("{0} hoàn thành", [completed]),
+                            ),
+                            MetadataPill(
+                              context.tr("{0} quá hạn", [
+                                all.where((p) => p.overdue(now)).length,
+                              ]),
                             ),
                             FilledButton.icon(
                               onPressed: add,
                               icon: const Icon(Icons.add),
-                              label: const Text('Thêm vào kế hoạch'),
+                              label: Text(context.tr("Thêm vào kế hoạch")),
                             ),
                           ],
                         ),
@@ -370,7 +389,9 @@ class _PlannerSliverState extends State<PlannerSliver>
                         ),
                         const SizedBox(height: 12),
                         Text(
-                          'Kế hoạch cá nhân được mã hóa trên thiết bị. Ghi chú khóa hoặc mất quyền được ẩn. Ngày hạn chỉ hiển thị trong ứng dụng.',
+                          context.tr(
+                            "Kế hoạch cá nhân được mã hóa trên thiết bị. Ghi chú khóa hoặc mất quyền được ẩn. Ngày hạn chỉ hiển thị trong ứng dụng.",
+                          ),
                           style: Theme.of(context).textTheme.bodySmall,
                         ),
                       ],
@@ -382,12 +403,12 @@ class _PlannerSliverState extends State<PlannerSliver>
                   controller: view.query,
                   maxLength: 200,
                   decoration: InputDecoration(
-                    labelText: 'Tìm trong kế hoạch',
+                    labelText: context.tr("Tìm trong kế hoạch"),
                     prefixIcon: const Icon(Icons.search),
                     suffixIcon: view.query.text.isEmpty
                         ? null
                         : IconButton(
-                            tooltip: 'Xóa tìm kế hoạch',
+                            tooltip: context.tr("Xóa tìm kế hoạch"),
                             onPressed: view.query.clear,
                             icon: const Icon(Icons.close),
                           ),
@@ -401,17 +422,17 @@ class _PlannerSliverState extends State<PlannerSliver>
                       ChoiceChip(
                         label: Text(
                           [
-                            'Tất cả ngày',
-                            'Quá hạn',
-                            'Hôm nay',
-                            '7 ngày tới',
+                            context.tr("Tất cả ngày"),
+                            context.tr("Quá hạn"),
+                            context.tr("Hôm nay"),
+                            context.tr("7 ngày tới"),
                           ][window.index],
                         ),
                         selected: view.window == window,
                         onSelected: (_) => view.selectWindow(window),
                       ),
                     FilterChip(
-                      label: const Text('Ưu tiên cao'),
+                      label: Text(context.tr("Ưu tiên cao")),
                       selected: view.highOnly,
                       onSelected: view.selectHigh,
                     ),
@@ -428,15 +449,15 @@ class _PlannerSliverState extends State<PlannerSliver>
                     key: ValueKey(view.stage),
                     initialValue: view.stage,
                     isExpanded: true,
-                    decoration: const InputDecoration(
-                      labelText: 'Chặng đang xem',
+                    decoration: InputDecoration(
+                      labelText: context.tr("Chặng đang xem"),
                     ),
                     items: [
                       for (final stage in PlanStage.values)
                         DropdownMenuItem(
                           value: stage,
                           child: Text(
-                            '${stage.label} (${groups[stage]!.length})',
+                            '${context.tr(stage.label)} (${groups[stage]!.length})',
                           ),
                         ),
                     ],
@@ -469,8 +490,10 @@ class _PlannerSliverState extends State<PlannerSliver>
                               heading(stage),
                               Expanded(
                                 child: groups[stage]!.isEmpty
-                                    ? const Center(
-                                        child: Text('Chưa có ghi chú'),
+                                    ? Center(
+                                        child: Text(
+                                          context.tr("Chưa có ghi chú"),
+                                        ),
                                       )
                                     : ListView.builder(
                                         key: PageStorageKey(
@@ -494,9 +517,9 @@ class _PlannerSliverState extends State<PlannerSliver>
               ),
             )
           else if (selected.isEmpty)
-            const SliverToBoxAdapter(
+            SliverToBoxAdapter(
               child: StatusNotice(
-                message: 'Chưa có ghi chú phù hợp trong chặng này.',
+                message: context.tr("Chưa có ghi chú phù hợp trong chặng này."),
               ),
             )
           else
@@ -549,9 +572,9 @@ class _PlanPickerState extends State<_PlanPicker> {
           : <Note>[];
       return AlertDialog(
         scrollable: true,
-        title: const Text('Chọn ghi chú cho kế hoạch'),
+        title: Text(context.tr("Chọn ghi chú cho kế hoạch")),
         content: !active
-            ? const Text('Phiên đăng nhập đã thay đổi.')
+            ? Text(context.tr("Phiên đăng nhập đã thay đổi."))
             : SizedBox(
                 width: 520,
                 height: 340,
@@ -562,8 +585,8 @@ class _PlanPickerState extends State<_PlanPicker> {
                       enabled: active,
                       maxLength: 200,
                       onChanged: (_) => setState(() {}),
-                      decoration: const InputDecoration(
-                        labelText: 'Tìm ghi chú để lên kế hoạch',
+                      decoration: InputDecoration(
+                        labelText: context.tr("Tìm ghi chú để lên kế hoạch"),
                         prefixIcon: Icon(Icons.search),
                       ),
                     ),
@@ -571,8 +594,10 @@ class _PlanPickerState extends State<_PlanPicker> {
                     Expanded(
                       child: notes.isEmpty
                           ? Center(
-                              child: const Text(
-                                'Không có ghi chú phù hợp chưa nằm trong kế hoạch.',
+                              child: Text(
+                                context.tr(
+                                  "Không có ghi chú phù hợp chưa nằm trong kế hoạch.",
+                                ),
                               ),
                             )
                           : ListView.builder(
@@ -587,8 +612,8 @@ class _PlanPickerState extends State<_PlanPicker> {
                                   ),
                                   subtitle: Text(
                                     n.role == 'owner'
-                                        ? 'Ghi chú của bạn'
-                                        : 'Được chia sẻ',
+                                        ? context.tr("Ghi chú của bạn")
+                                        : context.tr("Được chia sẻ"),
                                   ),
                                   onTap: () => Navigator.pop(context, n.id),
                                 );
@@ -601,7 +626,7 @@ class _PlanPickerState extends State<_PlanPicker> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Hủy'),
+            child: Text(context.tr("Hủy")),
           ),
         ],
       );
@@ -646,11 +671,11 @@ class _PlanFormState extends State<_PlanForm> {
         builder: (context, _) => active
             ? child!
             : AlertDialog(
-                content: const Text('Ghi chú không còn khả dụng.'),
+                content: Text(context.tr("Ghi chú không còn khả dụng.")),
                 actions: [
                   TextButton(
                     onPressed: () => Navigator.pop(context),
-                    child: const Text('Đóng'),
+                    child: Text(context.tr("Đóng")),
                   ),
                 ],
               ),
@@ -678,7 +703,9 @@ class _PlanFormState extends State<_PlanForm> {
         setState(
           () => error = e is StateError
               ? e.message.toString()
-              : 'Chưa lưu được kế hoạch. Dữ liệu vẫn ở đây để bạn thử lại.',
+              : context.tr(
+                  "Chưa lưu được kế hoạch. Dữ liệu vẫn ở đây để bạn thử lại.",
+                ),
         );
       }
     } finally {
@@ -693,7 +720,7 @@ class _PlanFormState extends State<_PlanForm> {
       canPop: !busy,
       child: AlertDialog(
         scrollable: true,
-        title: const Text('Ưu tiên và ngày hạn'),
+        title: Text(context.tr("Ưu tiên và ngày hạn")),
         content: SizedBox(
           width: 520,
           child: active
@@ -706,14 +733,14 @@ class _PlanFormState extends State<_PlanForm> {
                       DropdownButtonFormField<PlanStage>(
                         initialValue: stage,
                         isExpanded: true,
-                        decoration: const InputDecoration(
-                          labelText: 'Chặng kế hoạch',
+                        decoration: InputDecoration(
+                          labelText: context.tr("Chặng kế hoạch"),
                         ),
                         items: [
                           for (final value in PlanStage.values)
                             DropdownMenuItem(
                               value: value,
-                              child: Text(value.label),
+                              child: Text(context.tr(value.label)),
                             ),
                         ],
                         onChanged: (value) {
@@ -724,14 +751,14 @@ class _PlanFormState extends State<_PlanForm> {
                       DropdownButtonFormField<PlanPriority>(
                         initialValue: priority,
                         isExpanded: true,
-                        decoration: const InputDecoration(
-                          labelText: 'Mức ưu tiên',
+                        decoration: InputDecoration(
+                          labelText: context.tr("Mức ưu tiên"),
                         ),
                         items: [
                           for (final value in PlanPriority.values)
                             DropdownMenuItem(
                               value: value,
-                              child: Text(value.label),
+                              child: Text(context.tr(value.label)),
                             ),
                         ],
                         onChanged: (value) {
@@ -748,13 +775,15 @@ class _PlanFormState extends State<_PlanForm> {
                             icon: const Icon(Icons.event_outlined),
                             label: Text(
                               dueDay == null
-                                  ? 'Chọn ngày hạn'
-                                  : 'Hạn: ${_dateLabel(dueDay!)}',
+                                  ? context.tr("Chọn ngày hạn")
+                                  : context.tr("Hạn: {0}", [
+                                      _dateLabel(dueDay!),
+                                    ]),
                             ),
                           ),
                           if (dueDay != null)
                             IconButton(
-                              tooltip: 'Xóa ngày hạn',
+                              tooltip: context.tr("Xóa ngày hạn"),
                               onPressed: () => setState(() => dueDay = null),
                               icon: const Icon(Icons.close),
                             ),
@@ -779,17 +808,19 @@ class _PlanFormState extends State<_PlanForm> {
                               },
                               child: Text(
                                 offset == 0
-                                    ? 'Hôm nay'
+                                    ? context.tr("Hôm nay")
                                     : offset == 1
-                                    ? 'Ngày mai'
-                                    : '+7 ngày',
+                                    ? context.tr("Ngày mai")
+                                    : context.tr("+7 ngày"),
                               ),
                             ),
                         ],
                       ),
                       const SizedBox(height: 12),
-                      const Text(
-                        'Ngày hạn và trạng thái là kế hoạch cá nhân trên thiết bị, không thay đổi nội dung hoặc quyền ghi chú.',
+                      Text(
+                        context.tr(
+                          "Ngày hạn và trạng thái là kế hoạch cá nhân trên thiết bị, không thay đổi nội dung hoặc quyền ghi chú.",
+                        ),
                       ),
                       if (error != null)
                         Padding(
@@ -799,18 +830,22 @@ class _PlanFormState extends State<_PlanForm> {
                     ],
                   ),
                 )
-              : const Text(
-                  'Ghi chú bị khóa, mất quyền hoặc tài khoản đã thay đổi.',
+              : Text(
+                  context.tr(
+                    "Ghi chú bị khóa, mất quyền hoặc tài khoản đã thay đổi.",
+                  ),
                 ),
         ),
         actions: [
           TextButton(
             onPressed: busy ? null : () => Navigator.pop(context),
-            child: const Text('Hủy'),
+            child: Text(context.tr("Hủy")),
           ),
           FilledButton(
             onPressed: busy || !active ? null : save,
-            child: Text(busy ? 'Đang lưu…' : 'Lưu kế hoạch'),
+            child: Text(
+              busy ? context.tr("Đang lưu…") : context.tr("Lưu kế hoạch"),
+            ),
           ),
         ],
       ),

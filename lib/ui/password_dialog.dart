@@ -1,3 +1,5 @@
+import '../l10n/app_strings.dart';
+
 import 'package:flutter/material.dart';
 
 import '../state/app_controller.dart';
@@ -57,7 +59,10 @@ class _PasswordChangeDialogState extends State<PasswordChangeDialog> {
   Widget build(BuildContext context) => PopScope(
     canPop: !busy,
     child: AlertDialog(
-      title: const DialogHeading('Đổi mật khẩu', icon: Icons.password_outlined),
+      title: DialogHeading(
+        context.tr("Đổi mật khẩu"),
+        icon: Icons.password_outlined,
+      ),
       content: SingleChildScrollView(
         child: Form(
           key: form,
@@ -65,47 +70,59 @@ class _PasswordChangeDialogState extends State<PasswordChangeDialog> {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              const Text(
-                'Sau khi đổi mật khẩu, hãy đăng nhập lại. Thay đổi đã lưu trên thiết bị giữ trong tài khoản này.',
+              Text(
+                context.tr(
+                  "Sau khi đổi mật khẩu, hãy đăng nhập lại. Thay đổi đã lưu trên thiết bị giữ trong tài khoản này.",
+                ),
               ),
               const SizedBox(height: 16),
               TextFormField(
+                errorBuilder: (context, message) =>
+                    Text(context.trMessage(message)),
                 controller: current,
                 obscureText: !visible,
                 enabled: !busy,
-                decoration: const InputDecoration(
-                  labelText: 'Mật khẩu hiện tại',
+                decoration: InputDecoration(
+                  labelText: context.tr("Mật khẩu hiện tại"),
                 ),
-                validator: (v) =>
-                    v == null || v.isEmpty ? 'Nhập mật khẩu hiện tại' : null,
-                textInputAction: TextInputAction.next,
-              ),
-              const SizedBox(height: 12),
-              TextFormField(
-                controller: next,
-                obscureText: !visible,
-                enabled: !busy,
-                decoration: const InputDecoration(labelText: 'Mật khẩu mới'),
-                validator: (v) => v == null || v.length < 10 || v.length > 128
-                    ? 'Mật khẩu từ 10 đến 128 ký tự'
+                validator: (v) => v == null || v.isEmpty
+                    ? context.tr("Nhập mật khẩu hiện tại")
                     : null,
                 textInputAction: TextInputAction.next,
               ),
               const SizedBox(height: 12),
               TextFormField(
+                errorBuilder: (context, message) =>
+                    Text(context.trMessage(message)),
+                controller: next,
+                obscureText: !visible,
+                enabled: !busy,
+                decoration: InputDecoration(
+                  labelText: context.tr("Mật khẩu mới"),
+                ),
+                validator: (v) => v == null || v.length < 10 || v.length > 128
+                    ? context.tr("Mật khẩu từ 10 đến 128 ký tự")
+                    : null,
+                textInputAction: TextInputAction.next,
+              ),
+              const SizedBox(height: 12),
+              TextFormField(
+                errorBuilder: (context, message) =>
+                    Text(context.trMessage(message)),
                 controller: confirm,
                 obscureText: !visible,
                 enabled: !busy,
-                decoration: const InputDecoration(
-                  labelText: 'Nhập lại mật khẩu mới',
+                decoration: InputDecoration(
+                  labelText: context.tr("Nhập lại mật khẩu mới"),
                 ),
-                validator: (v) =>
-                    v != next.text ? 'Hai mật khẩu chưa khớp' : null,
+                validator: (v) => v != next.text
+                    ? context.tr("Hai mật khẩu chưa khớp")
+                    : null,
                 onFieldSubmitted: (_) => submit(),
               ),
               CheckboxListTile(
                 contentPadding: EdgeInsets.zero,
-                title: const Text('Hiện mật khẩu'),
+                title: Text(context.tr("Hiện mật khẩu")),
                 value: visible,
                 onChanged: busy
                     ? null
@@ -113,7 +130,7 @@ class _PasswordChangeDialogState extends State<PasswordChangeDialog> {
               ),
               if (error != null)
                 Text(
-                  error!,
+                  context.trMessage(error!),
                   style: TextStyle(color: Theme.of(context).colorScheme.error),
                 ),
             ],
@@ -123,11 +140,13 @@ class _PasswordChangeDialogState extends State<PasswordChangeDialog> {
       actions: [
         TextButton(
           onPressed: busy ? null : () => Navigator.pop(context),
-          child: const Text('Hủy'),
+          child: Text(context.tr("Hủy")),
         ),
         FilledButton(
           onPressed: busy ? null : submit,
-          child: Text(busy ? 'Đang xử lý…' : 'Đổi mật khẩu'),
+          child: Text(
+            busy ? context.tr("Đang xử lý…") : context.tr("Đổi mật khẩu"),
+          ),
         ),
       ],
     ),

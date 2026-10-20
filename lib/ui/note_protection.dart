@@ -1,3 +1,5 @@
+import '../l10n/app_strings.dart';
+
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -9,6 +11,7 @@ import 'document_workspace.dart';
 import 'note_inspector.dart';
 
 import '../state/app_controller.dart';
+import '../domain/note.dart';
 import '../state/protected_reader.dart';
 import '../data/protected_note_vault.dart';
 import '../data/api.dart';
@@ -59,9 +62,9 @@ class _NoteProtectionDialogState extends State<NoteProtectionDialog> {
   bool busy = false, visible = false;
   String? error;
   String get title => switch (widget.action) {
-    ProtectionAction.enable => 'Bật khóa ghi chú',
-    ProtectionAction.change => 'Đổi mật khẩu ghi chú',
-    ProtectionAction.disable => 'Tắt khóa ghi chú',
+    ProtectionAction.enable => context.tr("Bật khóa ghi chú"),
+    ProtectionAction.change => context.tr("Đổi mật khẩu ghi chú"),
+    ProtectionAction.disable => context.tr("Tắt khóa ghi chú"),
   };
   Future<void> submit() async {
     if (busy || !form.currentState!.validate()) return;
@@ -112,60 +115,72 @@ class _NoteProtectionDialogState extends State<NoteProtectionDialog> {
               children: [
                 Text(
                   widget.action == ProtectionAction.disable
-                      ? 'Sau khi tắt khóa, người có quyền đọc sẽ xem được ghi chú mà không cần mật khẩu ghi chú.'
-                      : 'Mật khẩu riêng cho ghi chú. Bật hoặc đổi mật khẩu sẽ đóng các phiên mở khóa đang có.',
+                      ? context.tr(
+                          "Sau khi tắt khóa, người có quyền đọc sẽ xem được ghi chú mà không cần mật khẩu ghi chú.",
+                        )
+                      : context.tr(
+                          "Mật khẩu riêng cho ghi chú. Bật hoặc đổi mật khẩu sẽ đóng các phiên mở khóa đang có.",
+                        ),
                 ),
                 const SizedBox(height: 16),
                 if (widget.action != ProtectionAction.enable)
                   TextFormField(
+                    errorBuilder: (context, message) =>
+                        Text(context.trMessage(message)),
                     key: const Key('note-current-password'),
                     controller: current,
                     enabled: !busy,
                     obscureText: !visible,
-                    decoration: const InputDecoration(
-                      labelText: 'Mật khẩu ghi chú hiện tại',
+                    decoration: InputDecoration(
+                      labelText: context.tr("Mật khẩu ghi chú hiện tại"),
                     ),
-                    validator: (v) =>
-                        (v ?? '').isEmpty ? 'Nhập mật khẩu hiện tại' : null,
+                    validator: (v) => (v ?? '').isEmpty
+                        ? context.tr("Nhập mật khẩu hiện tại")
+                        : null,
                   ),
                 if (widget.action != ProtectionAction.disable) ...[
                   const SizedBox(height: 12),
                   TextFormField(
+                    errorBuilder: (context, message) =>
+                        Text(context.trMessage(message)),
                     key: const Key('note-new-password'),
                     controller: next,
                     enabled: !busy,
                     obscureText: !visible,
-                    decoration: const InputDecoration(
-                      labelText: 'Mật khẩu ghi chú mới',
+                    decoration: InputDecoration(
+                      labelText: context.tr("Mật khẩu ghi chú mới"),
                     ),
                     validator: (v) =>
                         (v ?? '').length < 10 || (v ?? '').length > 128
-                        ? 'Dùng 10–128 ký tự'
+                        ? context.tr("Dùng 10–128 ký tự")
                         : null,
                   ),
                   const SizedBox(height: 12),
                   TextFormField(
+                    errorBuilder: (context, message) =>
+                        Text(context.trMessage(message)),
                     key: const Key('note-confirm-password'),
                     controller: confirm,
                     enabled: !busy,
                     obscureText: !visible,
-                    decoration: const InputDecoration(
-                      labelText: 'Nhập lại mật khẩu ghi chú mới',
+                    decoration: InputDecoration(
+                      labelText: context.tr("Nhập lại mật khẩu ghi chú mới"),
                     ),
-                    validator: (v) =>
-                        v != next.text ? 'Hai mật khẩu chưa khớp' : null,
+                    validator: (v) => v != next.text
+                        ? context.tr("Hai mật khẩu chưa khớp")
+                        : null,
                     onFieldSubmitted: (_) => unawaited(submit()),
                   ),
                 ],
                 CheckboxListTile(
                   contentPadding: EdgeInsets.zero,
-                  title: const Text('Hiện mật khẩu'),
+                  title: Text(context.tr("Hiện mật khẩu")),
                   value: visible,
                   onChanged: busy ? null : (v) => setState(() => visible = v!),
                 ),
                 if (error != null)
                   Text(
-                    error!,
+                    context.trMessage(error!),
                     style: TextStyle(
                       color: Theme.of(context).colorScheme.error,
                     ),
@@ -178,12 +193,12 @@ class _NoteProtectionDialogState extends State<NoteProtectionDialog> {
       actions: [
         TextButton(
           onPressed: busy ? null : () => Navigator.pop(context, false),
-          child: const Text('Hủy'),
+          child: Text(context.tr("Hủy")),
         ),
         FilledButton(
           key: const Key('confirm-note-protection'),
           onPressed: busy ? null : submit,
-          child: Text(busy ? 'Đang xử lý…' : title),
+          child: Text(busy ? context.tr("Đang xử lý…") : title),
         ),
       ],
     ),
@@ -287,7 +302,9 @@ class _ProtectedNoteScreenState extends State<ProtectedNoteScreen>
         reader.obscureForPicker();
       } else {
         unawaited(
-          reader.relock('Ứng dụng đã chuyển nền. Mở khóa lại để tiếp tục.'),
+          reader.relock(
+            context.tr("Ứng dụng đã chuyển nền. Mở khóa lại để tiếp tục."),
+          ),
         );
       }
     }
@@ -329,7 +346,7 @@ class _ProtectedNoteScreenState extends State<ProtectedNoteScreen>
       if (mounted) {
         showMessage(
           context,
-          'Bản nháp chưa ghi bền. Giữ màn hình mở và thử lại.',
+          context.tr("Bản nháp chưa ghi bền. Giữ màn hình mở và thử lại."),
         );
       }
     }
@@ -343,8 +360,11 @@ class _ProtectedNoteScreenState extends State<ProtectedNoteScreen>
       builder: (_) =>
           NoteProtectionDialog(controller: c, id: widget.id, action: action),
     );
+    if (!mounted) return;
     if (changed == true) {
-      await reader.relock('Khóa đã cập nhật. Các phiên mở khóa cũ đã đóng.');
+      await reader.relock(
+        context.tr("Khóa đã cập nhật. Các phiên mở khóa cũ đã đóng."),
+      );
       if (action == ProtectionAction.disable && mounted) {
         setState(() => allowPop = true);
         Navigator.pop(context);
@@ -356,18 +376,20 @@ class _ProtectedNoteScreenState extends State<ProtectedNoteScreen>
     final accepted = await showDialog<bool>(
       context: context,
       builder: (_) => AlertDialog(
-        title: const Text('Tạo ghi chú riêng từ bản nháp?'),
-        content: const Text(
-          'Bản chỉnh sửa sẽ trở thành ghi chú riêng trong tài khoản của bạn. Thao tác này không mở khóa hoặc sửa ghi chú nguồn.',
+        title: Text(context.tr("Tạo ghi chú riêng từ bản nháp?")),
+        content: Text(
+          context.tr(
+            "Bản chỉnh sửa sẽ trở thành ghi chú riêng trong tài khoản của bạn. Thao tác này không mở khóa hoặc sửa ghi chú nguồn.",
+          ),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
-            child: const Text('Hủy'),
+            child: Text(context.tr("Hủy")),
           ),
           FilledButton(
             onPressed: () => Navigator.pop(context, true),
-            child: const Text('Tạo bản riêng'),
+            child: Text(context.tr("Tạo bản riêng")),
           ),
         ],
       ),
@@ -386,7 +408,7 @@ class _ProtectedNoteScreenState extends State<ProtectedNoteScreen>
       if (mounted) {
         showMessage(
           context,
-          'Chưa tạo được bản riêng. Bản nháp mã hóa vẫn được giữ.',
+          context.tr("Chưa tạo được bản riêng. Bản nháp mã hóa vẫn được giữ."),
         );
       }
     }
@@ -403,23 +425,27 @@ class _ProtectedNoteScreenState extends State<ProtectedNoteScreen>
               reader.note?.role == 'owner' &&
               !reader.dirty;
           return AlertDialog(
-            title: const Text('Xóa ghi chú bảo vệ?'),
+            title: Text(context.tr("Xóa ghi chú bảo vệ?")),
             content: Text(
               available
-                  ? '“${reader.note!.title}” sẽ bị xóa trên máy chủ.'
-                  : 'Quyền hoặc phiên mở khóa đã đổi. Không thể xóa.',
+                  ? context.tr("“{0}” sẽ bị xóa trên máy chủ.", [
+                      reader.note!.title,
+                    ])
+                  : context.tr(
+                      "Quyền hoặc phiên mở khóa đã đổi. Không thể xóa.",
+                    ),
             ),
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context, false),
-                child: const Text('Hủy'),
+                child: Text(context.tr("Hủy")),
               ),
               FilledButton(
                 key: const Key('protected-delete-confirm'),
                 onPressed: available
                     ? () => Navigator.pop(context, true)
                     : null,
-                child: const Text('Xóa'),
+                child: Text(context.tr("Xóa")),
               ),
             ],
           );
@@ -458,19 +484,21 @@ class _ProtectedNoteScreenState extends State<ProtectedNoteScreen>
       child: Scaffold(
         appBar: noteAppBar(
           leading: IconButton(
-            tooltip: 'Quay lại',
+            tooltip: context.tr("Quay lại"),
             onPressed: leave,
             icon: const Icon(Icons.arrow_back),
           ),
           title: Text(
-            widget.recoveryMode ? 'Bản nháp bảo vệ' : 'Ghi chú bảo vệ',
+            widget.recoveryMode
+                ? context.tr("Bản nháp bảo vệ")
+                : context.tr("Ghi chú bảo vệ"),
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),
           actions: [
             if (note != null)
               IconButton(
-                tooltip: 'Khóa lại',
+                tooltip: context.tr("Khóa lại"),
                 onPressed: () => reader.relock(),
                 icon: const Icon(Icons.lock_outline),
               ),
@@ -484,27 +512,35 @@ class _ProtectedNoteScreenState extends State<ProtectedNoteScreen>
                     Icon(Icons.lock_outline, size: 48),
                     const SizedBox(height: 16),
                     Text(
-                      'Mở khóa để tiếp tục',
+                      context.tr("Mở khóa để tiếp tục"),
                       style: Theme.of(context).textTheme.headlineSmall,
                     ),
                     const SizedBox(height: 8),
                     Text(
                       widget.recoveryMode
-                          ? 'Nhập mật khẩu từng dùng cho bản nháp cục bộ. Không cấp quyền lên máy chủ.'
-                          : 'Phiên tối đa 5 phút. Offline chỉ mở được bản đã tải và mã hóa trên thiết bị này.',
+                          ? context.tr(
+                              "Nhập mật khẩu từng dùng cho bản nháp cục bộ. Không cấp quyền lên máy chủ.",
+                            )
+                          : context.tr(
+                              "Phiên tối đa 5 phút. Offline chỉ mở được bản đã tải và mã hóa trên thiết bị này.",
+                            ),
                     ),
                     const SizedBox(height: 24),
                     Form(
                       key: form,
                       child: TextFormField(
+                        errorBuilder: (context, message) =>
+                            Text(context.trMessage(message)),
                         key: const Key('unlock-note-password'),
                         controller: password,
                         enabled: !reader.busy && reader.active,
                         obscureText: !visible,
                         decoration: InputDecoration(
-                          labelText: 'Mật khẩu ghi chú',
+                          labelText: context.tr("Mật khẩu ghi chú"),
                           suffixIcon: IconButton(
-                            tooltip: visible ? 'Ẩn mật khẩu' : 'Hiện mật khẩu',
+                            tooltip: visible
+                                ? context.tr("Ẩn mật khẩu")
+                                : context.tr("Hiện mật khẩu"),
                             onPressed: reader.busy
                                 ? null
                                 : () => setState(() => visible = !visible),
@@ -515,8 +551,9 @@ class _ProtectedNoteScreenState extends State<ProtectedNoteScreen>
                             ),
                           ),
                         ),
-                        validator: (v) =>
-                            (v ?? '').isEmpty ? 'Nhập mật khẩu ghi chú' : null,
+                        validator: (v) => (v ?? '').isEmpty
+                            ? context.tr("Nhập mật khẩu ghi chú")
+                            : null,
                         onFieldSubmitted: (_) => unawaited(unlock()),
                       ),
                     ),
@@ -524,12 +561,16 @@ class _ProtectedNoteScreenState extends State<ProtectedNoteScreen>
                     FilledButton(
                       key: const Key('unlock-note'),
                       onPressed: reader.busy || !reader.active ? null : unlock,
-                      child: Text(reader.busy ? 'Đang mở khóa…' : 'Mở khóa'),
+                      child: Text(
+                        reader.busy
+                            ? context.tr("Đang mở khóa…")
+                            : context.tr("Mở khóa"),
+                      ),
                     ),
                     if (reader.error != null)
                       Padding(
                         padding: const EdgeInsets.only(top: 16),
-                        child: Text(reader.error!),
+                        child: Text(context.trMessage(reader.error!)),
                       ),
                   ],
                 ),
@@ -557,10 +598,16 @@ class _ProtectedNoteScreenState extends State<ProtectedNoteScreen>
                   children: [
                     StatusNotice(
                       message: widget.recoveryMode
-                          ? 'Bản chỉnh sửa riêng · nguồn không được mở khóa.'
+                          ? context.tr(
+                              "Bản chỉnh sửa riêng · nguồn không được mở khóa.",
+                            )
                           : reader.onlineLease
-                          ? 'Đã mở khóa · nội dung không xuất hiện trong cache hoặc tìm kiếm thường.'
-                          : 'Đang dùng bản cục bộ offline · chưa xác nhận quyền hiện tại trên server.',
+                          ? context.tr(
+                              "Đã mở khóa · nội dung không xuất hiện trong cache hoặc tìm kiếm thường.",
+                            )
+                          : context.tr(
+                              "Đang dùng bản cục bộ offline · chưa xác nhận quyền hiện tại trên server.",
+                            ),
                       icon: Icons.lock_open_outlined,
                     ),
                     const SizedBox(height: 16),
@@ -572,16 +619,18 @@ class _ProtectedNoteScreenState extends State<ProtectedNoteScreen>
                     if (editing)
                       Text(
                         reader.saving
-                            ? 'Đang đồng bộ…'
+                            ? context.tr("Đang đồng bộ…")
                             : reader.dirty
-                            ? 'Bản nháp mã hóa trên thiết bị · chưa đồng bộ'
-                            : 'Đã đồng bộ',
+                            ? context.tr(
+                                "Bản nháp mã hóa trên thiết bị · chưa đồng bộ",
+                              )
+                            : context.tr("Đã đồng bộ"),
                         key: const Key('protected-save-status'),
                       ),
                   ],
                 ),
                 organisation: InspectorSection(
-                  title: 'Thông tin ghi chú',
+                  title: context.tr("Thông tin ghi chú"),
                   icon: Icons.info_outline,
                   children: [
                     Wrap(
@@ -589,39 +638,44 @@ class _ProtectedNoteScreenState extends State<ProtectedNoteScreen>
                       runSpacing: 8,
                       children: [
                         if (note.pinnedAt != null)
-                          const InspectorBadge(
-                            'Đã ghim',
+                          InspectorBadge(
+                            context.tr("Đã ghim"),
                             icon: Icons.push_pin_outlined,
                           ),
                         if (note.sharedCount > 0 || note.role != 'owner')
-                          const InspectorBadge(
-                            'Đã chia sẻ',
+                          InspectorBadge(
+                            context.tr("Đã chia sẻ"),
                             icon: Icons.people_outline,
                           ),
                         InspectorBadge(
                           note.role == 'viewer'
-                              ? 'Chỉ xem'
+                              ? context.tr("Chỉ xem")
                               : note.role == 'editor'
-                              ? 'Có thể chỉnh sửa'
-                              : 'Chủ sở hữu',
+                              ? context.tr("Có thể chỉnh sửa")
+                              : context.tr("Chủ sở hữu"),
                         ),
                       ],
                     ),
                     if (note.role != 'owner')
                       Text(
-                        'Từ ${note.sharedByName ?? note.sharedByEmail ?? 'Chủ sở hữu'} · ${note.sharedAt ?? ''}',
+                        context.tr("Từ {0} · {1}", [
+                          note.sharedByName ??
+                              note.sharedByEmail ??
+                              context.tr("Chủ sở hữu"),
+                          note.sharedAt ?? '',
+                        ]),
                       ),
                     if (!widget.recoveryMode && note.role == 'owner') ...[
                       const SizedBox(height: 4),
                       Text(
-                        'Ghim & nhãn',
+                        context.tr("Ghim & nhãn"),
                         style: Theme.of(context).textTheme.labelLarge,
                       ),
                       InspectorAction(
                         icon: Icons.push_pin_outlined,
                         label: reader.effectivePin == null
-                            ? 'Ghim ghi chú'
-                            : 'Đã ghim',
+                            ? context.tr("Ghim ghi chú")
+                            : context.tr("Đã ghim"),
                         onPressed: reader.requiresReopen || reader.saving
                             ? null
                             : () async {
@@ -641,6 +695,10 @@ class _ProtectedNoteScreenState extends State<ProtectedNoteScreen>
                         spacing: 8,
                         runSpacing: 8,
                         children: [
+                          if ((reader.draft?['labels'] as List? ?? note.labels)
+                                  .length >=
+                              maxNoteLabels)
+                            Text(context.tr('Tối đa 30 nhãn cho mỗi ghi chú.')),
                           ...c.labels.map(
                             (label) => FilterChip(
                               label: Text(c.labelName(label, note)),
@@ -648,7 +706,16 @@ class _ProtectedNoteScreenState extends State<ProtectedNoteScreen>
                                   (reader.draft?['labels'] as List? ??
                                           note.labels)
                                       .contains(label),
-                              onSelected: reader.requiresReopen || reader.saving
+                              onSelected:
+                                  reader.requiresReopen ||
+                                      reader.saving ||
+                                      ((reader.draft?['labels'] as List? ??
+                                                      note.labels)
+                                                  .length >=
+                                              maxNoteLabels &&
+                                          !(reader.draft?['labels'] as List? ??
+                                                  note.labels)
+                                              .contains(label))
                                   ? null
                                   : (selected) async {
                                       final labels =
@@ -692,8 +759,8 @@ class _ProtectedNoteScreenState extends State<ProtectedNoteScreen>
                               },
                         icon: Icons.edit_outlined,
                         label: reader.requiresReopen
-                            ? 'Chỉnh sửa phiên bản mới'
-                            : 'Chỉnh sửa',
+                            ? context.tr("Chỉnh sửa phiên bản mới")
+                            : context.tr("Chỉnh sửa"),
                       ),
                     if (reader.canEdit && reader.dirty)
                       InspectorAction(
@@ -708,8 +775,8 @@ class _ProtectedNoteScreenState extends State<ProtectedNoteScreen>
                             ? reader.flush
                             : null,
                         label: reader.localWriteFailed
-                            ? 'Thử ghi bản nháp lại'
-                            : 'Đồng bộ bản nháp',
+                            ? context.tr("Thử ghi bản nháp lại")
+                            : context.tr("Đồng bộ bản nháp"),
                       ),
                   ],
                 ),
@@ -719,13 +786,15 @@ class _ProtectedNoteScreenState extends State<ProtectedNoteScreen>
                     if (reader.dirty &&
                         (reader.conflicted || widget.recoveryMode)) ...[
                       InspectorSection(
-                        title: 'Bản nháp cần xử lý',
+                        title: context.tr("Bản nháp cần xử lý"),
                         icon: Icons.restore_outlined,
                         children: [
                           InspectorAction(
                             onPressed: copy,
                             icon: Icons.copy_outlined,
-                            label: 'Giữ bản nháp thành ghi chú riêng',
+                            label: context.tr(
+                              "Giữ bản nháp thành ghi chú riêng",
+                            ),
                           ),
                           if (reader.serverGate)
                             InspectorAction(
@@ -734,26 +803,30 @@ class _ProtectedNoteScreenState extends State<ProtectedNoteScreen>
                                 final confirm = await showDialog<bool>(
                                   context: context,
                                   builder: (_) => AlertDialog(
-                                    title: const Text(
-                                      'Bỏ bản nháp và dùng bản máy chủ?',
+                                    title: Text(
+                                      context.tr(
+                                        "Bỏ bản nháp và dùng bản máy chủ?",
+                                      ),
                                     ),
                                     actions: [
                                       TextButton(
                                         onPressed: () =>
                                             Navigator.pop(context, false),
-                                        child: const Text('Hủy'),
+                                        child: Text(context.tr("Hủy")),
                                       ),
                                       FilledButton(
                                         onPressed: () =>
                                             Navigator.pop(context, true),
-                                        child: const Text('Dùng bản máy chủ'),
+                                        child: Text(
+                                          context.tr("Dùng bản máy chủ"),
+                                        ),
                                       ),
                                     ],
                                   ),
                                 );
                                 if (confirm == true) await reader.useRemote();
                               },
-                              label: 'Dùng bản máy chủ',
+                              label: context.tr("Dùng bản máy chủ"),
                             ),
                         ],
                       ),
@@ -761,7 +834,7 @@ class _ProtectedNoteScreenState extends State<ProtectedNoteScreen>
                     ],
                     if (!widget.recoveryMode) ...[
                       InspectorSection(
-                        title: 'Trợ lý AI',
+                        title: context.tr("Trợ lý AI"),
                         icon: Icons.auto_awesome_outlined,
                         children: [
                           InspectorAction(
@@ -777,7 +850,7 @@ class _ProtectedNoteScreenState extends State<ProtectedNoteScreen>
                                   )
                                 : null,
                             icon: Icons.auto_awesome_outlined,
-                            label: 'Tóm tắt AI',
+                            label: context.tr("Tóm tắt AI"),
                           ),
                           InspectorAction(
                             onPressed: reader.canUseAi
@@ -792,7 +865,7 @@ class _ProtectedNoteScreenState extends State<ProtectedNoteScreen>
                                   )
                                 : null,
                             icon: Icons.question_answer_outlined,
-                            label: 'Hỏi AI',
+                            label: context.tr("Hỏi AI"),
                           ),
                         ],
                       ),
@@ -800,7 +873,7 @@ class _ProtectedNoteScreenState extends State<ProtectedNoteScreen>
                     ],
                     if (reader.serverGate) ...[
                       InspectorSection(
-                        title: 'Công cụ ghi chú',
+                        title: context.tr("Công cụ ghi chú"),
                         icon: Icons.tune_outlined,
                         children: [
                           InspectorAction(
@@ -817,13 +890,13 @@ class _ProtectedNoteScreenState extends State<ProtectedNoteScreen>
                             ),
                             icon: Icons.attach_file,
                             label: reader.canEdit
-                                ? 'Quản lý đính kèm'
-                                : 'Xem đính kèm',
+                                ? context.tr("Quản lý đính kèm")
+                                : context.tr("Xem đính kèm"),
                           ),
                           InspectorAction(
                             onPressed: reader.busy ? null : reader.refresh,
                             icon: Icons.refresh,
-                            label: 'Kiểm tra quyền và cập nhật',
+                            label: context.tr("Kiểm tra quyền và cập nhật"),
                           ),
                           if (note.role == 'owner')
                             InspectorAction(
@@ -839,14 +912,14 @@ class _ProtectedNoteScreenState extends State<ProtectedNoteScreen>
                                 ),
                               ),
                               icon: Icons.people_outline,
-                              label: 'Quản lý chia sẻ',
+                              label: context.tr("Quản lý chia sẻ"),
                             ),
                         ],
                       ),
                       if (note.role == 'owner') ...[
                         const SizedBox(height: 16),
                         InspectorSection(
-                          title: 'Bảo vệ & quản lý',
+                          title: context.tr("Bảo vệ & quản lý"),
                           icon: Icons.security_outlined,
                           children: [
                             InspectorAction(
@@ -854,14 +927,14 @@ class _ProtectedNoteScreenState extends State<ProtectedNoteScreen>
                               onPressed: reader.dirty || reader.saving
                                   ? null
                                   : () => manage(ProtectionAction.change),
-                              label: 'Đổi mật khẩu ghi chú',
+                              label: context.tr("Đổi mật khẩu ghi chú"),
                             ),
                             InspectorAction(
                               icon: Icons.lock_open_outlined,
                               onPressed: reader.dirty || reader.saving
                                   ? null
                                   : () => manage(ProtectionAction.disable),
-                              label: 'Tắt khóa ghi chú',
+                              label: context.tr("Tắt khóa ghi chú"),
                             ),
                             const Divider(height: 8),
                             InspectorAction(
@@ -871,7 +944,7 @@ class _ProtectedNoteScreenState extends State<ProtectedNoteScreen>
                                   ? null
                                   : delete,
                               icon: Icons.delete_outline,
-                              label: 'Xóa ghi chú',
+                              label: context.tr("Xóa ghi chú"),
                             ),
                           ],
                         ),

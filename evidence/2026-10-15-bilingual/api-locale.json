@@ -1,0 +1,15 @@
+{
+  "captured_at_utc": "2026-10-16T07:20:55.932896+00:00",
+  "target": "http://127.0.0.1:8062",
+  "result": "PASS",
+  "browser_vi_and_dark_received": true,
+  "anonymous": 401,
+  "invalid_locale_and_owner_id": 422,
+  "altered_replay": 409,
+  "old_operation_cannot_undo_vi": true,
+  "legacy_patch_retains_en": true,
+  "account_isolation": true,
+  "note_array_identical_before_after_preferences": true,
+  "locked_listing_redacted": true,
+  "notes": 3
+}

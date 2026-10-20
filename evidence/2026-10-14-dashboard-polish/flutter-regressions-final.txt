@@ -1,0 +1,6 @@
+00:00 +0: loading D:/flutter cuoi ki/test/dashboard_polish_regression_test.dart
+00:00 +0: Hover at the card edge settles without a stationary-pointer loop
+00:00 +1: Clear filters cancels a newer query still waiting for debounce
+00:01 +2: Sync status pulses update without rebuilding the library
+DASHBOARD_PULSE_PROBE replacements=0 preview_projections=0
+00:01 +3: All tests passed!

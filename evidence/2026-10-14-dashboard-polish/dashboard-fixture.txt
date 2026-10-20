@@ -1,0 +1,1 @@
+Dashboard fixture: 500 notes, 2 pinned, 1 remote-update target; synthetic account only.

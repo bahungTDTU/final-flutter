@@ -1,3 +1,5 @@
+import '../l10n/app_strings.dart';
+
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -6,6 +8,7 @@ import 'package:flutter_quill/flutter_quill.dart';
 
 import '../state/app_controller.dart';
 import 'home.dart';
+import 'language_picker.dart';
 import 'design_system.dart';
 
 class NoteTogetherApp extends StatefulWidget {
@@ -18,11 +21,18 @@ class NoteTogetherApp extends StatefulWidget {
 class _NoteTogetherAppState extends State<NoteTogetherApp>
     with WidgetsBindingObserver {
   AppController get controller => widget.controller;
-  late (bool, String?, bool) shellState;
-  late final lightTheme = noteTheme(Brightness.light);
-  late final darkTheme = noteTheme(Brightness.dark);
-  (bool, String?, bool) get currentShellState =>
-      (controller.ready, controller.user?['id'] as String?, controller.dark);
+  late (bool, String?, bool, String, AppPalette) shellState;
+  ThemeData get lightTheme =>
+      noteTheme(Brightness.light, palette: controller.palette);
+  ThemeData get darkTheme =>
+      noteTheme(Brightness.dark, palette: controller.palette);
+  (bool, String?, bool, String, AppPalette) get currentShellState => (
+    controller.ready,
+    controller.user?['id'] as String?,
+    controller.dark,
+    controller.language,
+    controller.palette,
+  );
 
   void shellChanged() {
     final next = currentShellState;
@@ -63,9 +73,10 @@ class _NoteTogetherAppState extends State<NoteTogetherApp>
   @override
   Widget build(BuildContext context) => MaterialApp(
     title: 'NoteTogether',
-    locale: const Locale('vi'),
-    supportedLocales: const [Locale('vi')],
+    locale: Locale(controller.language),
+    supportedLocales: AppStrings.supportedLocales,
     localizationsDelegates: const [
+      AppStrings.delegate,
       ...GlobalMaterialLocalizations.delegates,
       FlutterQuillLocalizations.delegate,
     ],
@@ -159,13 +170,13 @@ class _AuthScreenState extends State<AuthScreen> {
                   children: [
                     const Brand(),
                     const Spacer(),
-                    const Text(
-                      'KHÔNG GIAN CHO Ý TƯỞNG',
+                    Text(
+                      context.tr("KHÔNG GIAN CHO Ý TƯỞNG"),
                       style: TextStyle(letterSpacing: 2, fontSize: 12),
                     ),
                     const SizedBox(height: 24),
                     Text(
-                      'Ghi lại.\nKết nối.\nCùng tạo nên.',
+                      context.tr("Ghi lại.\nKết nối.\nCùng tạo nên."),
                       style: Theme.of(context).textTheme.displayLarge?.copyWith(
                         fontSize: 54,
                         height: 1.15,
@@ -174,8 +185,10 @@ class _AuthScreenState extends State<AuthScreen> {
                       ),
                     ),
                     const SizedBox(height: 28),
-                    const Text(
-                      'Từ một ý tưởng nhỏ đến những điều đáng giữ.\nMột cuốn sổ riêng. Một không gian chung.',
+                    Text(
+                      context.tr(
+                        "Từ một ý tưởng nhỏ đến những điều đáng giữ.\nMột cuốn sổ riêng. Một không gian chung.",
+                      ),
                     ),
                     const Spacer(),
                     const Divider(color: Color(0xff9ba28e)),
@@ -213,21 +226,32 @@ class _AuthScreenState extends State<AuthScreen> {
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         const Brand(),
+                        Align(
+                          alignment: Alignment.centerRight,
+                          child: LanguagePicker(
+                            controller: widget.controller,
+                            compact: true,
+                          ),
+                        ),
                         const SizedBox(height: 24),
                         const Divider(),
                         const SizedBox(height: 24),
                         Text(
                           register
-                              ? 'Bắt đầu không gian của bạn'
-                              : 'Chào mừng trở lại',
+                              ? context.tr("Bắt đầu không gian của bạn")
+                              : context.tr("Chào mừng trở lại"),
                           style: Theme.of(context).textTheme.headlineLarge,
                         ),
                         const SizedBox(height: 8),
-                        const Text(
-                          'Ghi lại hôm nay. Dễ dàng tìm lại ngày mai.',
+                        Text(
+                          context.tr(
+                            "Ghi lại hôm nay. Dễ dàng tìm lại ngày mai.",
+                          ),
                         ),
                         const SizedBox(height: 32),
                         TextFormField(
+                          errorBuilder: (context, message) =>
+                              Text(context.trMessage(message)),
                           key: const Key('auth-email'),
                           controller: email,
                           enabled: !widget.controller.busy,
@@ -242,26 +266,31 @@ class _AuthScreenState extends State<AuthScreen> {
                               v == null ||
                                   !RegExp(r'^[^\s@]+@[^\s@]+\.[^\s@]+$')
                                       .hasMatch(v.trim())
-                              ? 'Nhập email hợp lệ'
+                              ? context.tr("Nhập email hợp lệ")
                               : null,
                         ),
                         if (register) ...[
                           const SizedBox(height: 16),
                           TextFormField(
+                            errorBuilder: (context, message) =>
+                                Text(context.trMessage(message)),
                             key: const Key('auth-name'),
                             controller: name,
                             enabled: !widget.controller.busy,
                             textInputAction: TextInputAction.next,
                             autofillHints: const [AutofillHints.name],
-                            decoration: const InputDecoration(
-                              labelText: 'Tên hiển thị',
+                            decoration: InputDecoration(
+                              labelText: context.tr("Tên hiển thị"),
                             ),
-                            validator: (v) =>
-                                v!.trim().isEmpty ? 'Nhập tên hiển thị' : null,
+                            validator: (v) => v!.trim().isEmpty
+                                ? context.tr("Nhập tên hiển thị")
+                                : null,
                           ),
                         ],
                         const SizedBox(height: 16),
                         TextFormField(
+                          errorBuilder: (context, message) =>
+                              Text(context.trMessage(message)),
                           key: const Key('auth-password'),
                           controller: password,
                           enabled: !widget.controller.busy,
@@ -275,12 +304,12 @@ class _AuthScreenState extends State<AuthScreen> {
                                 : AutofillHints.password,
                           ],
                           decoration: InputDecoration(
-                            labelText: 'Mật khẩu',
+                            labelText: context.tr("Mật khẩu"),
                             prefixIcon: const Icon(Icons.lock_outline),
                             suffixIcon: IconButton(
                               tooltip: showPassword
-                                  ? 'Ẩn mật khẩu'
-                                  : 'Hiện mật khẩu',
+                                  ? context.tr("Ẩn mật khẩu")
+                                  : context.tr("Hiện mật khẩu"),
                               onPressed: () =>
                                   setState(() => showPassword = !showPassword),
                               icon: Icon(
@@ -293,23 +322,25 @@ class _AuthScreenState extends State<AuthScreen> {
                           onFieldSubmitted: (_) =>
                               register ? null : unawaited(submit()),
                           validator: (v) => v == null || v.length < 10
-                              ? 'Ít nhất 10 ký tự'
+                              ? context.tr("Ít nhất 10 ký tự")
                               : null,
                         ),
                         if (register) ...[
                           const SizedBox(height: 16),
                           TextFormField(
+                            errorBuilder: (context, message) =>
+                                Text(context.trMessage(message)),
                             key: const Key('auth-confirmation'),
                             controller: confirm,
                             enabled: !widget.controller.busy,
                             textInputAction: TextInputAction.done,
                             autofillHints: const [AutofillHints.newPassword],
                             obscureText: !showPassword,
-                            decoration: const InputDecoration(
-                              labelText: 'Nhập lại mật khẩu',
+                            decoration: InputDecoration(
+                              labelText: context.tr("Nhập lại mật khẩu"),
                             ),
                             validator: (v) => v != password.text
-                                ? 'Mật khẩu chưa khớp'
+                                ? context.tr("Mật khẩu chưa khớp")
                                 : null,
                             onFieldSubmitted: (_) => unawaited(submit()),
                           ),
@@ -330,7 +361,9 @@ class _AuthScreenState extends State<AuthScreen> {
                             child: OutlinedButton.icon(
                               onPressed: () async => widget.controller.logout(),
                               icon: const Icon(Icons.refresh),
-                              label: const Text('Thử xóa phiên trên thiết bị'),
+                              label: Text(
+                                context.tr("Thử xóa phiên trên thiết bị"),
+                              ),
                             ),
                           ),
                         PrismAction(
@@ -338,10 +371,10 @@ class _AuthScreenState extends State<AuthScreen> {
                           onPressed: widget.controller.busy ? null : submit,
                           child: Text(
                             widget.controller.busy
-                                ? 'Đang xử lý…'
+                                ? context.tr("Đang xử lý…")
                                 : register
-                                ? 'Đăng ký'
-                                : 'Đăng nhập',
+                                ? context.tr("Đăng ký")
+                                : context.tr("Đăng nhập"),
                           ),
                         ),
                         const SizedBox(height: 12),
@@ -354,8 +387,8 @@ class _AuthScreenState extends State<AuthScreen> {
                                 }),
                           child: Text(
                             register
-                                ? 'Đã có tài khoản? Đăng nhập'
-                                : 'Chưa có tài khoản? Đăng ký',
+                                ? context.tr("Đã có tài khoản? Đăng nhập")
+                                : context.tr("Chưa có tài khoản? Đăng ký"),
                           ),
                         ),
                         Wrap(
@@ -365,7 +398,7 @@ class _AuthScreenState extends State<AuthScreen> {
                               onPressed: widget.controller.busy
                                   ? null
                                   : () => _forgot(context),
-                              child: const Text('Quên mật khẩu'),
+                              child: Text(context.tr("Quên mật khẩu")),
                             ),
                             TextButton(
                               onPressed: widget.controller.busy
@@ -377,7 +410,7 @@ class _AuthScreenState extends State<AuthScreen> {
                                         ),
                                       ),
                                     ),
-                              child: const Text('Kích hoạt / đặt lại'),
+                              child: Text(context.tr("Kích hoạt / đặt lại")),
                             ),
                           ],
                         ),
@@ -396,7 +429,7 @@ class _AuthScreenState extends State<AuthScreen> {
   Future<void> _forgot(BuildContext context) async {
     final value = await askText(
       context,
-      'Email khôi phục',
+      context.tr("Email khôi phục"),
       initial: email.text,
     );
     if (value == null) return;
@@ -421,7 +454,9 @@ class _AuthScreenState extends State<AuthScreen> {
           );
           showMessage(
             context,
-            'Nếu email có tài khoản, mã khôi phục sẽ được gửi. Kiểm tra hộp thư và spam.',
+            context.tr(
+              "Nếu email có tài khoản, mã khôi phục sẽ được gửi. Kiểm tra hộp thư và spam.",
+            ),
           );
         }
       }
@@ -483,7 +518,7 @@ class _TokenScreenState extends State<TokenScreen> {
         if (mounted) {
           setState(() {
             checked = true;
-            message = 'Mã hợp lệ. Nhập mật khẩu mới.';
+            message = context.tr("Mã hợp lệ. Nhập mật khẩu mới.");
           });
         }
         return;
@@ -503,7 +538,7 @@ class _TokenScreenState extends State<TokenScreen> {
           Navigator.of(context).popUntil((route) => route.isFirst);
           showMessage(
             context,
-            'Đã đặt lại mật khẩu. Đăng nhập bằng mật khẩu mới.',
+            context.tr("Đã đặt lại mật khẩu. Đăng nhập bằng mật khẩu mới."),
           );
         }
       } else {
@@ -512,7 +547,7 @@ class _TokenScreenState extends State<TokenScreen> {
           setState(() {
             complete = true;
             token.clear();
-            message = 'Mã xác minh đã được chấp nhận.';
+            message = context.tr("Mã xác minh đã được chấp nhận.");
           });
         }
       }
@@ -527,7 +562,7 @@ class _TokenScreenState extends State<TokenScreen> {
     if (busy || (!reset && widget.controller.token == null)) return;
     if (reset &&
         (resetEmail.text.trim().isEmpty || resetEmail.text.length > 254)) {
-      setState(() => message = 'Nhập email nhận mã khôi phục.');
+      setState(() => message = context.tr("Nhập email nhận mã khôi phục."));
       return;
     }
     setState(() => busy = true);
@@ -584,7 +619,7 @@ class _TokenScreenState extends State<TokenScreen> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-    appBar: noteAppBar(title: const Text('Kích hoạt / đặt lại mật khẩu')),
+    appBar: noteAppBar(title: Text(context.tr("Kích hoạt / đặt lại mật khẩu"))),
     body: Center(
       child: SingleChildScrollView(
         padding: const EdgeInsets.all(24),
@@ -597,18 +632,20 @@ class _TokenScreenState extends State<TokenScreen> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   SectionHeading(
-                    reset ? 'Khôi phục tài khoản' : 'Xác minh email',
+                    reset
+                        ? context.tr("Khôi phục tài khoản")
+                        : context.tr("Xác minh email"),
                     detail: reset
                         ? checked
-                              ? 'Bước 2 · Chọn mật khẩu mới'
-                              : 'Bước 1 · Kiểm tra mã trong email'
-                        : 'Nhập mã nhận được để hoàn tất xác minh.',
+                              ? context.tr("Bước 2 · Chọn mật khẩu mới")
+                              : context.tr("Bước 1 · Kiểm tra mã trong email")
+                        : context.tr("Nhập mã nhận được để hoàn tất xác minh."),
                     icon: reset
                         ? Icons.password_outlined
                         : Icons.mark_email_read_outlined,
                   ),
                   SwitchListTile(
-                    title: const Text('Đặt lại mật khẩu'),
+                    title: Text(context.tr("Đặt lại mật khẩu")),
                     value: reset,
                     onChanged: busy
                         ? null
@@ -623,6 +660,8 @@ class _TokenScreenState extends State<TokenScreen> {
                           }),
                   ),
                   TextFormField(
+                    errorBuilder: (context, message) =>
+                        Text(context.trMessage(message)),
                     key: const Key('email-code'),
                     controller: token,
                     enabled: !busy && !complete,
@@ -631,37 +670,42 @@ class _TokenScreenState extends State<TokenScreen> {
                     enableSuggestions: false,
                     validator: (v) =>
                         (v ?? '').trim().isEmpty || (v ?? '').length > 128
-                        ? 'Nhập mã trong email (tối đa 128 ký tự).'
+                        ? context.tr("Nhập mã trong email (tối đa 128 ký tự).")
                         : null,
-                    decoration: const InputDecoration(
-                      labelText: 'Mã xác minh trong email',
+                    decoration: InputDecoration(
+                      labelText: context.tr("Mã xác minh trong email"),
                     ),
                   ),
                   const SizedBox(height: 16),
                   if (reset && checked) ...[
                     TextFormField(
+                      errorBuilder: (context, message) =>
+                          Text(context.trMessage(message)),
                       key: const Key('email-reset-password'),
                       controller: password,
                       enabled: !busy,
                       obscureText: true,
                       validator: (v) =>
                           (v ?? '').length < 10 || (v ?? '').length > 128
-                          ? 'Dùng 10–128 ký tự'
+                          ? context.tr("Dùng 10–128 ký tự")
                           : null,
-                      decoration: const InputDecoration(
-                        labelText: 'Mật khẩu mới',
+                      decoration: InputDecoration(
+                        labelText: context.tr("Mật khẩu mới"),
                       ),
                     ),
                     const SizedBox(height: 16),
                     TextFormField(
+                      errorBuilder: (context, message) =>
+                          Text(context.trMessage(message)),
                       key: const Key('email-reset-confirmation'),
                       controller: confirm,
                       enabled: !busy,
                       obscureText: true,
-                      validator: (v) =>
-                          v != password.text ? 'Hai mật khẩu chưa khớp' : null,
-                      decoration: const InputDecoration(
-                        labelText: 'Nhập lại mật khẩu',
+                      validator: (v) => v != password.text
+                          ? context.tr("Hai mật khẩu chưa khớp")
+                          : null,
+                      decoration: InputDecoration(
+                        labelText: context.tr("Nhập lại mật khẩu"),
                       ),
                     ),
                   ],
@@ -671,10 +715,10 @@ class _TokenScreenState extends State<TokenScreen> {
                     onPressed: busy || complete ? null : submit,
                     child: Text(
                       busy
-                          ? 'Đang xử lý…'
+                          ? context.tr("Đang xử lý…")
                           : reset && !checked
-                          ? 'Kiểm tra mã'
-                          : 'Xác nhận',
+                          ? context.tr("Kiểm tra mã")
+                          : context.tr("Xác nhận"),
                     ),
                   ),
                   if (reset && checked)
@@ -687,7 +731,7 @@ class _TokenScreenState extends State<TokenScreen> {
                               password.clear();
                               confirm.clear();
                             }),
-                      child: const Text('Nhập mã khác'),
+                      child: Text(context.tr("Nhập mã khác")),
                     ),
                   if (reset && !checked) ...[
                     TextField(
@@ -695,14 +739,14 @@ class _TokenScreenState extends State<TokenScreen> {
                       controller: resetEmail,
                       enabled: !busy,
                       keyboardType: TextInputType.emailAddress,
-                      decoration: const InputDecoration(
-                        labelText: 'Email nhận mã khôi phục',
+                      decoration: InputDecoration(
+                        labelText: context.tr("Email nhận mã khôi phục"),
                       ),
                     ),
                     TextButton(
                       key: const Key('resend-reset-code'),
                       onPressed: busy ? null : resend,
-                      child: const Text('Yêu cầu gửi lại mã'),
+                      child: Text(context.tr("Yêu cầu gửi lại mã")),
                     ),
                   ],
                   if (!reset &&
@@ -711,12 +755,12 @@ class _TokenScreenState extends State<TokenScreen> {
                     TextButton(
                       key: const Key('resend-email-code'),
                       onPressed: busy ? null : resend,
-                      child: const Text('Gửi lại mã xác minh'),
+                      child: Text(context.tr("Gửi lại mã xác minh")),
                     ),
                     TextButton(
                       key: const Key('email-delivery-status'),
                       onPressed: busy ? null : checkDelivery,
-                      child: const Text('Kiểm tra trạng thái gửi'),
+                      child: Text(context.tr("Kiểm tra trạng thái gửi")),
                     ),
                   ],
                   if (message != null)
@@ -730,8 +774,10 @@ class _TokenScreenState extends State<TokenScreen> {
                       ),
                     ),
                   const SizedBox(height: 16),
-                  const Text(
-                    'Nhập mã dùng một lần trong email NoteTogether. Mã hết hạn sau 30 phút; gửi lại sẽ thay mã cũ. Bạn vẫn dùng được ghi chú khi chưa xác minh.',
+                  Text(
+                    context.tr(
+                      "Nhập mã dùng một lần trong email NoteTogether. Mã hết hạn sau 30 phút; gửi lại sẽ thay mã cũ. Bạn vẫn dùng được ghi chú khi chưa xác minh.",
+                    ),
                   ),
                 ],
               ),
@@ -777,6 +823,7 @@ Future<String?> askText(
       content: Form(
         key: form,
         child: TextFormField(
+          errorBuilder: (context, message) => Text(context.trMessage(message)),
           decoration: InputDecoration(labelText: title),
           controller: input,
           validator: (value) => validator?.call(value ?? ''),
@@ -789,7 +836,7 @@ Future<String?> askText(
       actions: [
         TextButton(
           onPressed: () => Navigator.pop(context),
-          child: const Text('Hủy'),
+          child: Text(context.tr("Hủy")),
         ),
         FilledButton(
           onPressed: () {
@@ -797,7 +844,7 @@ Future<String?> askText(
               Navigator.pop(context, input.text);
             }
           },
-          child: const Text('Xác nhận'),
+          child: Text(context.tr("Xác nhận")),
         ),
       ],
     ),
@@ -809,7 +856,7 @@ Future<String?> askText(
 
 void showMessage(BuildContext context, String message) =>
     ScaffoldMessenger.of(context)
-        .showSnackBar(SnackBar(content: Text(message)));
+        .showSnackBar(SnackBar(content: Text(context.trMessage(message))));
 
 String friendlyError(Object error) {
   final text = '$error';

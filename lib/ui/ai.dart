@@ -1,3 +1,5 @@
+import '../l10n/app_strings.dart';
+
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -72,35 +74,42 @@ class _AiQuestionsPanelState extends State<AiQuestionsPanel>
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        const PageIntro(
-          title: 'Hỏi từ những ghi chú của bạn',
-          detail: 'AI tổng hợp từ ghi chú đã đồng bộ mà bạn có quyền đọc. Kết quả kèm nguồn để bạn kiểm tra.',
+        PageIntro(
+          title: context.tr("Hỏi từ những ghi chú của bạn"),
+          detail: context.tr(
+            "AI tổng hợp từ ghi chú đã đồng bộ mà bạn có quyền đọc. Kết quả kèm nguồn để bạn kiểm tra.",
+          ),
           icon: Icons.auto_awesome_outlined,
-          eyebrow: 'TRỢ LÝ GHI CHÚ',
+          eyebrow: context.tr("TRỢ LÝ GHI CHÚ"),
           accent: 2,
         ),
         const SizedBox(height: 16),
-        const StatusNotice(
-          message: 'Nội dung liên quan sẽ được gửi tới Gemini. Với free tier, Google có thể dùng dữ liệu để cải thiện sản phẩm. Chỉ gửi nội dung phù hợp.',
+        StatusNotice(
+          message: context.tr(
+            "Nội dung liên quan sẽ được gửi tới Gemini. Với free tier, Google có thể dùng dữ liệu để cải thiện sản phẩm. Chỉ gửi nội dung phù hợp.",
+          ),
           icon: Icons.info_outline,
         ),
         const SizedBox(height: 24),
         Form(
           key: form,
           child: TextFormField(
+            errorBuilder: (context, message) =>
+                Text(context.trMessage(message)),
             key: const Key('ai-question'),
             controller: question,
             enabled: !session.busy && session.active,
             minLines: 2,
             maxLines: 5,
             maxLength: 1000,
-            decoration: const InputDecoration(
-              labelText: 'Câu hỏi của bạn',
-              hintText:
-                  'Ví dụ: Các mốc nộp bài trong những ghi chú của mình là gì?',
+            decoration: InputDecoration(
+              labelText: context.tr("Câu hỏi của bạn"),
+              hintText: context.tr(
+                "Ví dụ: Các mốc nộp bài trong những ghi chú của mình là gì?",
+              ),
             ),
             validator: (v) => (v ?? '').trim().length < 3
-                ? 'Nhập câu hỏi ít nhất 3 ký tự.'
+                ? context.tr("Nhập câu hỏi ít nhất 3 ký tự.")
                 : null,
           ),
         ),
@@ -113,12 +122,20 @@ class _AiQuestionsPanelState extends State<AiQuestionsPanel>
               key: const Key('ai-ask'),
               onPressed: session.active && !session.busy ? ask : null,
               icon: const Icon(Icons.auto_awesome),
-              label: Text(session.busy ? 'Đang tổng hợp…' : 'Hỏi AI'),
+              label: Text(
+                session.busy
+                    ? context.tr("Đang tổng hợp…")
+                    : context.tr("Hỏi AI"),
+              ),
             ),
             if (session.busy || session.result != null)
               TextButton(
                 onPressed: () => session.clear(),
-                child: Text(session.busy ? 'Hủy yêu cầu' : 'Xóa kết quả'),
+                child: Text(
+                  session.busy
+                      ? context.tr("Hủy yêu cầu")
+                      : context.tr("Xóa kết quả"),
+                ),
               ),
           ],
         ),
@@ -140,8 +157,10 @@ class _AiQuestionsPanelState extends State<AiQuestionsPanel>
           AiResult(session: session),
         ],
         const SizedBox(height: 24),
-        const Text(
-          'Ghi chú đang khóa được loại khỏi nguồn. Để hỏi về ghi chú bảo vệ, mở khóa ghi chú rồi chọn “Hỏi AI”. Kết quả AI có thể sai; hãy kiểm tra nguồn.',
+        Text(
+          context.tr(
+            "Ghi chú đang khóa được loại khỏi nguồn. Để hỏi về ghi chú bảo vệ, mở khóa ghi chú rồi chọn “Hỏi AI”. Kết quả AI có thể sai; hãy kiểm tra nguồn.",
+          ),
         ),
       ],
     ),
@@ -160,7 +179,7 @@ class AiQuestionsScreen extends StatelessWidget {
   final Listenable gateChanges;
   @override
   Widget build(BuildContext context) => Scaffold(
-    appBar: noteAppBar(title: const Text('Hỏi ghi chú')),
+    appBar: noteAppBar(title: Text(context.tr("Hỏi ghi chú"))),
     body: SafeArea(
       child: AiQuestionsPanel(
         controller: controller,
@@ -237,24 +256,28 @@ class _AiSummaryDialogState extends State<AiSummaryDialog>
               children: [
                 Expanded(
                   child: Text(
-                    'Tóm tắt bằng AI',
+                    context.tr("Tóm tắt bằng AI"),
                     style: Theme.of(context).textTheme.headlineSmall,
                   ),
                 ),
                 IconButton(
-                  tooltip: 'Đóng',
+                  tooltip: context.tr("Đóng"),
                   onPressed: () => Navigator.pop(context),
                   icon: const Icon(Icons.close),
                 ),
               ],
             ),
             const SizedBox(height: 12),
-            const Text(
-              'Gemini đọc phiên bản đã đồng bộ. Tóm tắt không ghi đè nội dung gốc và không được lưu vào ghi chú.',
+            Text(
+              context.tr(
+                "Gemini đọc phiên bản đã đồng bộ. Tóm tắt không ghi đè nội dung gốc và không được lưu vào ghi chú.",
+              ),
             ),
             const SizedBox(height: 12),
-            const Text(
-              'Nội dung sẽ được gửi tới Google. Free tier có thể dùng dữ liệu để cải thiện sản phẩm; hãy dùng ghi chú phù hợp.',
+            Text(
+              context.tr(
+                "Nội dung sẽ được gửi tới Google. Free tier có thể dùng dữ liệu để cải thiện sản phẩm; hãy dùng ghi chú phù hợp.",
+              ),
             ),
             const SizedBox(height: 20),
             Wrap(
@@ -269,16 +292,16 @@ class _AiSummaryDialogState extends State<AiSummaryDialog>
                   icon: const Icon(Icons.auto_awesome),
                   label: Text(
                     session.busy
-                        ? 'Đang tóm tắt…'
+                        ? context.tr("Đang tóm tắt…")
                         : session.result == null
-                        ? 'Tạo tóm tắt'
-                        : 'Tạo lại',
+                        ? context.tr("Tạo tóm tắt")
+                        : context.tr("Tạo lại"),
                   ),
                 ),
                 if (session.busy)
                   TextButton(
                     onPressed: () => session.clear(),
-                    child: const Text('Hủy yêu cầu'),
+                    child: Text(context.tr("Hủy yêu cầu")),
                   ),
               ],
             ),
@@ -326,7 +349,9 @@ class AiResult extends StatelessWidget {
     crossAxisAlignment: CrossAxisAlignment.stretch,
     children: [
       Text(
-        session.noteId == null ? 'Câu trả lời' : 'Bản tóm tắt',
+        session.noteId == null
+            ? context.tr("Câu trả lời")
+            : context.tr("Bản tóm tắt"),
         style: Theme.of(context).textTheme.titleLarge,
       ),
       const SizedBox(height: 12),
@@ -339,7 +364,10 @@ class AiResult extends StatelessWidget {
       ),
       if (session.sources.isNotEmpty) ...[
         const SizedBox(height: 20),
-        Text('Ghi chú nguồn', style: Theme.of(context).textTheme.titleSmall),
+        Text(
+          context.tr("Ghi chú nguồn"),
+          style: Theme.of(context).textTheme.titleSmall,
+        ),
         const SizedBox(height: 8),
         ...session.sources.map(
           (s) => Padding(
@@ -359,7 +387,7 @@ class AiResult extends StatelessWidget {
       ],
       const SizedBox(height: 12),
       Text(
-        'Kết quả tạm thời · kiểm tra lại nguồn trước khi sử dụng.',
+        context.tr("Kết quả tạm thời · kiểm tra lại nguồn trước khi sử dụng."),
         style: Theme.of(context).textTheme.bodySmall,
       ),
     ],

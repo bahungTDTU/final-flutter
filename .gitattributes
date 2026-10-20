@@ -84,3 +84,39 @@ evidence/2026-10-14-publish-resume/*.txt -whitespace
 # Keep 19/10 backup regression CLI bytes; only the raw traceback has padded locations.
 evidence/2026-10-19-backup-hardening/*.txt -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 evidence/2026-10-19-backup-hardening/regression-before.txt -whitespace
+
+# Dashboard regressions and browser acceptance preserve exact captured bytes.
+evidence/2026-10-14-dashboard-polish/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+evidence/2026-10-14-dashboard-polish/*.txt -whitespace
+
+# Navigation refinement preserves screenshots, logs and manifests as captured.
+evidence/2026-10-14-desk-navigation/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+evidence/2026-10-14-desk-navigation/*.txt -whitespace
+
+# Rubric/label UX audit preserves raw probes and captured screenshots.
+evidence/2026-10-14-rubric-ux-audit/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+evidence/2026-10-14-rubric-ux-audit/*.txt -whitespace
+
+# Preserve exact UI audit screenshots and raw CLI diagnostics.
+evidence/2026-10-20-ui-ux-audit/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+evidence/2026-10-20-ui-ux-audit/*.txt -whitespace
+
+# Preserve captured evidence bytes when publishing local acceptance.
+evidence/2026-10-15-bilingual/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+evidence/2026-10-15-bilingual/*.txt -whitespace
+
+# Preserve captured evidence bytes when publishing local acceptance.
+evidence/2026-10-16-color-palettes/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+evidence/2026-10-16-color-palettes/*.txt -whitespace
+
+# Preserve captured evidence bytes when publishing local acceptance.
+evidence/2026-10-18-project-audit/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+evidence/2026-10-18-project-audit/*.txt -whitespace
+
+# Preserve captured evidence bytes when publishing local acceptance.
+evidence/2026-10-18-validation-fixes/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+evidence/2026-10-18-validation-fixes/*.txt -whitespace
+
+# Retain the captured final blank line in these historical audit documents.
+docs/RUBRIC_AND_UX_AUDIT_2026-10-14.md whitespace=-blank-at-eof
+evidence/2026-10-14-rubric-ux-audit/INDEX.md whitespace=-blank-at-eof

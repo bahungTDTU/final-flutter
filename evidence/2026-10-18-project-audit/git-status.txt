@@ -1,0 +1,69 @@
+M .gitattributes
+ M README.md
+ M Readme.txt
+ M STATUS.md
+ M backend/app.py
+ M backend/tests/test_preferences.py
+ M docs/ARCHITECTURE.md
+ M docs/LOCAL_BASELINE_AND_ROADMAP.md
+ M docs/PREFERENCES_SYNC.md
+ M docs/REQUIREMENTS_MATRIX.md
+ M docs/UI_UX_DESIGN.md
+ M docs/UI_UX_QA.md
+ M lib/state/app_controller.dart
+ M lib/ui/ai.dart
+ M lib/ui/app.dart
+ M lib/ui/attachments.dart
+ M lib/ui/avatar_editor.dart
+ M lib/ui/dashboard.dart
+ M lib/ui/design_system.dart
+ M lib/ui/deskbook.dart
+ M lib/ui/document_workspace.dart
+ M lib/ui/editor.dart
+ M lib/ui/focus_panel.dart
+ M lib/ui/home.dart
+ M lib/ui/note_filters.dart
+ M lib/ui/note_inspector.dart
+ M lib/ui/note_protection.dart
+ M lib/ui/note_text_field.dart
+ M lib/ui/password_dialog.dart
+ M lib/ui/planner.dart
+ M lib/ui/prism.dart
+ M lib/ui/rich_note_field.dart
+ M lib/ui/security_center.dart
+ M lib/ui/sharing.dart
+ M lib/ui/workspace.dart
+ M lib/ui/writing_studio.dart
+ M test/deskbook_layout_test.dart
+ M test/prism_motion_test.dart
+ M test/widgets_test.dart
+?? .agents/
+?? design-system/notetogether-deskbook/pages/color-palettes.md
+?? design-system/notetogether-deskbook/pages/dashboard-motion.md
+?? design-system/notetogether-deskbook/pages/desk-navigation.md
+?? design-system/notetogether-deskbook/pages/label-manager.md
+?? docs/BILINGUAL_UI.md
+?? docs/COLOR_PALETTES.md
+?? docs/DASHBOARD_MOTION_AND_PERFORMANCE.md
+?? docs/PROJECT_AUDIT_2026-10-18.md
+?? docs/RUBRIC_AND_UX_AUDIT_2026-10-14.md
+?? docs/UI_DESK_NAVIGATION.md
+?? evidence/2026-10-14-dashboard-polish/
+?? evidence/2026-10-14-desk-navigation/
+?? evidence/2026-10-14-rubric-ux-audit/
+?? evidence/2026-10-15-bilingual/
+?? evidence/2026-10-16-color-palettes/
+?? evidence/2026-10-18-project-audit/
+?? lib/domain/app_palette.dart
+?? lib/l10n/
+?? lib/ui/dashboard_sync.dart
+?? lib/ui/label_manager.dart
+?? lib/ui/language_picker.dart
+?? lib/ui/note_preview.dart
+?? lib/ui/palette_picker.dart
+?? lib/ui/palette_tokens.dart
+?? test/color_palette_test.dart
+?? test/dashboard_polish_regression_test.dart
+?? test/desk_navigation_test.dart
+?? test/label_manager_regression_test.dart
+?? test/localization_test.dart

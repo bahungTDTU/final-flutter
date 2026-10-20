@@ -8,6 +8,7 @@ import '../data/api.dart';
 import '../data/local_store.dart';
 import '../data/realtime_feed.dart';
 import '../domain/note.dart';
+import '../domain/app_palette.dart';
 import '../domain/workspace.dart';
 import '../domain/note_plan.dart';
 import '../domain/focus_session.dart';
@@ -139,6 +140,7 @@ class AppController extends ChangeNotifier {
     'grid': true,
     'dark': false,
     'font_size': 16.0,
+    'locale': 'vi',
   };
   Timer? _retry;
   Future<void> _writes = Future.value();
@@ -172,6 +174,29 @@ class AppController extends ChangeNotifier {
 
   String get accountKey => 'account:${user!['id']}';
   bool get grid => preferences['grid'] as bool? ?? true;
+  String _publicLocale = 'vi';
+  String get language => user == null
+      ? _publicLocale
+      : (preferences['locale'] == 'en' ? 'en' : 'vi');
+
+  Future<void> setLanguage(String locale) async {
+    if (!['vi', 'en'].contains(locale)) {
+      throw ArgumentError('Unsupported locale');
+    }
+    if (user != null) {
+      await setPreferences({'locale': locale});
+    } else {
+      await _queueWrite(() => local.write('ui:locale', {'locale': locale}));
+      if (_disposed) return;
+      _publicLocale = locale;
+      notifyListeners();
+    }
+  }
+
+  AppPalette get palette => user == null
+      ? AppPalette.atelier
+      : AppPalette.parse(preferences['palette']);
+
   bool get dark => preferences['dark'] as bool? ?? false;
   double get fontSize => (preferences['font_size'] as num? ?? 16).toDouble();
   bool hasPending(String id) => pending.any((op) => op['note_id'] == id);
@@ -234,6 +259,8 @@ class AppController extends ChangeNotifier {
   Future<void> initialize() async {
     if (_disposed) return;
     try {
+      final publicPreferences = await local.read('ui:locale');
+      _publicLocale = publicPreferences?['locale'] == 'en' ? 'en' : 'vi';
       final session = await local.read('session');
       if (_disposed) return;
       if (session != null) {
@@ -277,7 +304,12 @@ class AppController extends ChangeNotifier {
     avatarBytes = null;
     cachedAvatarRevision = 0;
     avatarError = null;
-    preferences = {'grid': true, 'dark': false, 'font_size': 16.0};
+    preferences = {
+      'grid': true,
+      'dark': false,
+      'font_size': 16.0,
+      'locale': 'vi',
+    };
     await _writes.catchError((_) {});
     final durable = await local.read(accountKey);
     _hasAccountSnapshot = durable != null;
@@ -330,7 +362,7 @@ class AppController extends ChangeNotifier {
     preferences = Map<String, dynamic>.from(
       cached['preferences'] as Map? ??
           user?['preferences'] as Map? ??
-          {'grid': true, 'dark': false, 'font_size': 16.0},
+          {'grid': true, 'dark': false, 'font_size': 16.0, 'locale': 'vi'},
     );
     _accountLoaded = true;
   }
@@ -576,6 +608,9 @@ class AppController extends ChangeNotifier {
       final session = {'user': user, 'token': token};
       await _queueWrite(() => local.write('session', session));
       sessionRemovalFailed = false;
+      if (!preferences.containsKey('locale') && _publicLocale == 'en') {
+        await setPreferences({'locale': 'en'});
+      }
       online = true;
       _startRealtime();
       unawaited(synchronize());
@@ -629,7 +664,12 @@ class AppController extends ChangeNotifier {
     avatarBytes = null;
     cachedAvatarRevision = 0;
     avatarError = null;
-    preferences = {'grid': true, 'dark': false, 'font_size': 16.0};
+    preferences = {
+      'grid': true,
+      'dark': false,
+      'font_size': 16.0,
+      'locale': 'vi',
+    };
     error = null;
     emailDelivery = null;
     notifyListeners();
@@ -1016,14 +1056,21 @@ class AppController extends ChangeNotifier {
     bool updatePin = false,
     int? baseRevision,
   }) async {
-    if (user == null || !validNote(title, content)) return;
+    if (user == null) return;
     if (accessUnavailable.contains(id)) return;
     final existing = notes.where((n) => n.id == id).firstOrNull;
     if (existing?.locked == true || existing?.role == 'viewer') return;
+    if (!validNote(title, content)) {
+      await draft(id, title, content);
+      return;
+    }
     final pin = updatePin ? pinnedAt : existing?.pinnedAt;
     final selectedLabels = List<String>.from(
       noteLabels ?? existing?.labels ?? [],
     );
+    if (selectedLabels.length > maxNoteLabels) {
+      throw ArgumentError('Tối đa 30 nhãn cho mỗi ghi chú.');
+    }
     if (existing != null &&
         existing.title == title.trim() &&
         existing.content == content &&
@@ -1129,6 +1176,7 @@ class AppController extends ChangeNotifier {
         'grid': true,
         'dark': false,
         'font_size': 16.0,
+        'locale': 'vi',
         ...Map<String, dynamic>.from(user!['preferences'] as Map? ?? {}),
       };
       for (final op in pendingPreferences) {
@@ -1184,7 +1232,7 @@ class AppController extends ChangeNotifier {
             );
             notifyListeners();
             await _persist();
-          } else if ([403, 404, 409].contains(e.status)) {
+          } else if ([403, 404, 409, 422].contains(e.status)) {
             final source = notes.where((n) => n.id == id).firstOrNull;
             if ([403, 404].contains(e.status) &&
                 source != null &&
@@ -1192,6 +1240,9 @@ class AppController extends ChangeNotifier {
               _archiveAccessLoss(id, reason: 'permission');
               notifyListeners();
             } else {
+              // Quarantine this note and its dependent operations. Keep the
+              // immutable payload for recovery; unrelated notes and ACL refresh
+              // must still progress after a permanent validation rejection.
               conflicts[id] = {'status': e.status, 'detail': e.detail};
             }
             await _persist();
@@ -1360,7 +1411,7 @@ class AppController extends ChangeNotifier {
     if (keepCopy && note != null && !note.locked) {
       final copyId = uuid.v4();
       if (validNote(title, content)) {
-        final copyTitle = '${title.trim()} (bản phục hồi)';
+        final copyTitle = recoveryNoteTitle(title);
         pending = [
           ...pending,
           {
@@ -1444,10 +1495,15 @@ class AppController extends ChangeNotifier {
     if (user == null) return;
     if (changes.isEmpty ||
         changes.keys.any(
-          (key) => !['grid', 'dark', 'font_size'].contains(key),
+          (key) =>
+              !['grid', 'dark', 'font_size', 'locale', 'palette'].contains(key),
         ) ||
         changes.entries.any(
-          (entry) => entry.key == 'font_size'
+          (entry) => entry.key == 'palette'
+              ? !AppPalette.accepts(entry.value)
+              : entry.key == 'locale'
+              ? !['vi', 'en'].contains(entry.value)
+              : entry.key == 'font_size'
               ? entry.value is! num ||
                     !(entry.value as num).isFinite ||
                     entry.value < 14 ||

@@ -8,6 +8,7 @@ import time
 from contextlib import contextmanager, asynccontextmanager
 from datetime import datetime, timezone
 from pathlib import Path
+from typing import Literal
 from uuid import uuid4
 
 from argon2 import PasswordHasher
@@ -86,10 +87,15 @@ class ProfileUpdate(BaseModel):
     name: str = Field(min_length=1, max_length=100)
 
 
+PaletteId = Literal['atelier', 'ocean', 'iris', 'rose', 'amber', 'forest']
+
+
 class Preferences(BaseModel):
     grid: bool = True
     dark: bool = False
     font_size: float = Field(default=16, ge=14, le=24)
+    locale: Literal['vi', 'en'] = 'vi'
+    palette: PaletteId = 'atelier'
 
 
 class PreferenceOperation(BaseModel):
@@ -98,6 +104,8 @@ class PreferenceOperation(BaseModel):
     grid: bool | None = None
     dark: bool | None = None
     font_size: float | None = Field(default=None, ge=14, le=24)
+    locale: Literal['vi', 'en'] | None = None
+    palette: PaletteId | None = None
 
     @model_validator(mode='after')
     def valid_patch(self):
@@ -400,7 +408,15 @@ def create_app(db_path=None, *, email_delivery=None, ai_provider=None, start_ema
     def preferences(body: Preferences, identity=Depends(authenticate)):
         with db() as conn:
             validate_session(conn, identity)
-            conn.execute('UPDATE users SET preferences=? WHERE id=?', (body.model_dump_json(), identity[0]))
+            current = profile(conn, identity[0])['preferences']
+            payload = body.model_dump(exclude={'locale', 'palette'})
+            for field in ('locale', 'palette'):
+                if field in body.model_fields_set:
+                    payload[field] = getattr(body, field)
+                elif field in current:
+                    # Older clients must not reset newly added preferences.
+                    payload[field] = current[field]
+            conn.execute('UPDATE users SET preferences=? WHERE id=?', (json.dumps(payload), identity[0]))
             return profile(conn, identity[0])
 
     @app.post('/me/preferences/sync')

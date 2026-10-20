@@ -1,0 +1,10 @@
+{
+  "other_services_untouched": true,
+  "viewport_reset": true,
+  "tab_closed": true,
+  "stopped_own_helpers": [
+    "backend",
+    "web"
+  ],
+  "captured_at_utc": "2026-10-16T07:58:08.9173470Z"
+}

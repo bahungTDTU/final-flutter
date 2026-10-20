@@ -1,0 +1,3 @@
+Formatted lib\ui\document_workspace.dart
+Formatted lib\ui\editor.dart
+Formatted 130 files (2 changed) in 1.82 seconds.

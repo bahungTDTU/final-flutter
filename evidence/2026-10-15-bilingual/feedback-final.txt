@@ -1,0 +1,27 @@
+00:00 +0: loading D:/flutter cuoi ki/test/localization_test.dart
+00:00 +0: D:/flutter cuoi ki/test/localization_test.dart: English auth, settings and live editor fit a phone with 200% text
+00:00 +1: D:/flutter cuoi ki/test/localization_test.dart: English auth, settings and live editor fit a phone with 200% text
+00:00 +2: D:/flutter cuoi ki/test/localization_test.dart: English auth, settings and live editor fit a phone with 200% text
+00:00 +3: D:/flutter cuoi ki/test/localization_test.dart: English auth, settings and live editor fit a phone with 200% text
+00:00 +4: D:/flutter cuoi ki/test/localization_test.dart: English auth, settings and live editor fit a phone with 200% text
+00:00 +5: D:/flutter cuoi ki/test/localization_test.dart: English auth, settings and live editor fit a phone with 200% text
+00:00 +6: D:/flutter cuoi ki/test/localization_test.dart: English auth, settings and live editor fit a phone with 200% text
+00:00 +7: D:/flutter cuoi ki/test/localization_test.dart: English auth, settings and live editor fit a phone with 200% text
+00:01 +8: D:/flutter cuoi ki/test/localization_test.dart: English auth, settings and live editor fit a phone with 200% text
+00:01 +9: D:/flutter cuoi ki/test/localization_test.dart: English auth, settings and live editor fit a phone with 200% text
+00:01 +10: D:/flutter cuoi ki/test/localization_test.dart: English auth, settings and live editor fit a phone with 200% text
+00:01 +11: D:/flutter cuoi ki/test/localization_test.dart: English auth, settings and live editor fit a phone with 200% text
+00:01 +12: D:/flutter cuoi ki/test/localization_test.dart: English auth, settings and live editor fit a phone with 200% text
+00:01 +13: D:/flutter cuoi ki/test/localization_test.dart: English auth, settings and live editor fit a phone with 200% text
+00:01 +14: D:/flutter cuoi ki/test/localization_test.dart: English auth, settings and live editor fit a phone with 200% text
+00:01 +15: D:/flutter cuoi ki/test/localization_test.dart: English auth, settings and live editor fit a phone with 200% text
+00:01 +16: D:/flutter cuoi ki/test/localization_test.dart: English auth, settings and live editor fit a phone with 200% text
+00:01 +17: D:/flutter cuoi ki/test/localization_test.dart: English auth, settings and live editor fit a phone with 200% text
+00:02 +18: D:/flutter cuoi ki/test/localization_test.dart: English auth, settings and live editor fit a phone with 200% text
+00:02 +19: D:/flutter cuoi ki/test/localization_test.dart: Resources preserve placeholders and never translate argument data
+00:02 +20: D:/flutter cuoi ki/test/localization_test.dart: Public language reopens offline; account language and immutable queue stay isolated
+00:02 +21: D:/flutter cuoi ki/test/localization_test.dart: Locale changed during sync overlays the response without mutating the in-flight operation
+00:02 +22: D:/flutter cuoi ki/test/localization_test.dart: Language picker works before sign-in and updates cached validation without losing input
+00:03 +23: D:/flutter cuoi ki/test/localization_test.dart: Live locale switch preserves rich draft, selection, note identity and frozen revision
+00:03 +24: D:/flutter cuoi ki/test/localization_test.dart: English Home retains user titles, private lock boundaries, query and layout across themes and resize
+00:04 +25: All tests passed!

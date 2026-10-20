@@ -1,0 +1,26 @@
+{
+  "captured_at_utc": "2026-10-16T07:57:44.031Z",
+  "result": "PASS scoped",
+  "web": "http://127.0.0.1:7382/",
+  "api": "http://127.0.0.1:8063",
+  "checks": [
+    "Atelier initial; Ocean, Iris, Rose quartz, Amber and Jade forest selected through real UI",
+    "Palette gallery previews light/dark; editor and dashboard inherit palette",
+    "1280x1000 PC,768x1024 tablet,375x812 phone,844x390 landscape",
+    "Phone menu opens palette gallery; scroll to last choices; select Amber",
+    "VI and EN labels; typed Vietnamese body remains through palette and language changes",
+    "HTTP ACK for forest then amber+dark+en, unchanged title and accepted typed body",
+    "Search Kế hoạch retained after selecting Iris; reload restores palette/account",
+    "Locked fixture title/body absent from DOM before and after reload"
+  ],
+  "not_run": [
+    "Android runtime",
+    "browser/OS 200% scaling (widget tested separately)",
+    "screen reader",
+    "FPS/GPU",
+    "real providers",
+    "CI/public release"
+  ],
+  "console_errors": [],
+  "proof": "screenshots and browser-server-ack.json/api-palettes.json"
+}

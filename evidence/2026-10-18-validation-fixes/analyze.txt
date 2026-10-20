@@ -1,0 +1,6 @@
+Analyzing lib, test, integration_test, test_driver...
+
+  error - test\validation_sync_regression_test.dart:207:15 - The method 'open' isn't defined for the type 'ProtectedReader'. Try correcting the name to the name of an existing method, or defining a method named 'open'. - undefined_method
+   info - test\validation_sync_regression_test.dart:119:19 - Statements in an if should be enclosed in a block. Try wrapping the statement in a block. - curly_braces_in_flow_control_structures
+
+2 issues found.

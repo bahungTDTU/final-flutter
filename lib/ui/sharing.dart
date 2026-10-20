@@ -1,3 +1,5 @@
+import '../l10n/app_strings.dart';
+
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -59,13 +61,19 @@ class _ShareDialogState extends State<ShareDialog> with WidgetsBindingObserver {
       .toList();
   Future<void> add() async {
     if (!form.currentState!.validate()) return;
-    await session.submit({
+    final accepted = await session.submit({
       'action': 'add',
       'recipients': parsed().map((e) => {'email': e, 'role': role}).toList(),
     });
-    if (mounted && session.message == 'Server đã cập nhật chia sẻ.') {
+    if (mounted && accepted) {
       emails.clear();
     }
+  }
+
+  Future<void> retry() async {
+    final inviting = session.pending?['action'] == 'add';
+    final accepted = await session.retry();
+    if (mounted && inviting && accepted) emails.clear();
   }
 
   Future<void> revoke(Map<String, dynamic> row) async {
@@ -78,22 +86,25 @@ class _ShareDialogState extends State<ShareDialog> with WidgetsBindingObserver {
               session.canManage &&
               session.recipients.any((r) => r['user_id'] == row['user_id']);
           return AlertDialog(
-            title: const Text('Thu hồi quyền truy cập?'),
+            title: Text(context.tr("Thu hồi quyền truy cập?")),
             content: Text(
               available
-                  ? '${row['email']} sẽ không còn đọc hoặc sửa ghi chú qua server.'
-                  : 'Quyền đã thay đổi. Đóng và kiểm tra lại.',
+                  ? context.tr(
+                      "{0} sẽ không còn đọc hoặc sửa ghi chú qua server.",
+                      [row['email']],
+                    )
+                  : context.tr("Quyền đã thay đổi. Đóng và kiểm tra lại."),
             ),
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context, false),
-                child: const Text('Hủy'),
+                child: Text(context.tr("Hủy")),
               ),
               FilledButton(
                 onPressed: available
                     ? () => Navigator.pop(context, true)
                     : null,
-                child: const Text('Thu hồi'),
+                child: Text(context.tr("Thu hồi")),
               ),
             ],
           );
@@ -114,8 +125,8 @@ class _ShareDialogState extends State<ShareDialog> with WidgetsBindingObserver {
       return PopScope(
         canPop: !session.busy,
         child: AlertDialog(
-          title: const DialogHeading(
-            'Chia sẻ ghi chú',
+          title: DialogHeading(
+            context.tr("Chia sẻ ghi chú"),
             icon: Icons.people_outline,
           ),
           scrollable: true,
@@ -125,50 +136,57 @@ class _ShareDialogState extends State<ShareDialog> with WidgetsBindingObserver {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                const StatusNotice(
-                  message: 'Người nhận cần có tài khoản. Chia sẻ bản đã đồng bộ và quản lý quyền khi có kết nối.',
+                StatusNotice(
+                  message: context.tr(
+                    "Người nhận cần có tài khoản. Chia sẻ bản đã đồng bộ và quản lý quyền khi có kết nối.",
+                  ),
                   icon: Icons.shield_outlined,
                 ),
                 const SizedBox(height: 20),
                 if (session.message != null)
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 12),
-                    child: Text(session.message!),
+                    child: Text(context.trMessage(session.message!)),
                   ),
                 if (session.canManage) ...[
-                  const SectionHeading(
-                    'Mời người cộng tác',
-                    detail:
-                        'Thêm một hoặc nhiều email, rồi chọn quyền truy cập.',
+                  SectionHeading(
+                    context.tr("Mời người cộng tác"),
+                    detail: context.tr(
+                      "Thêm một hoặc nhiều email, rồi chọn quyền truy cập.",
+                    ),
                   ),
                   Form(
                     key: form,
                     child: TextFormField(
+                      errorBuilder: (context, message) =>
+                          Text(context.trMessage(message)),
                       key: const Key('share-emails'),
                       controller: emails,
                       enabled: enabled,
                       maxLines: 3,
-                      decoration: const InputDecoration(
-                        labelText: 'Email người nhận',
-                        hintText: 'Mỗi email một dòng, hoặc ngăn bằng dấu phẩy',
+                      decoration: InputDecoration(
+                        labelText: context.tr("Email người nhận"),
+                        hintText: context.tr(
+                          "Mỗi email một dòng, hoặc ngăn bằng dấu phẩy",
+                        ),
                       ),
                       validator: (_) {
                         final values = parsed();
                         if (values.isEmpty || values.length > 20) {
-                          return 'Nhập từ 1 đến 20 email.';
+                          return context.tr("Nhập từ 1 đến 20 email.");
                         }
                         if (values.toSet().length != values.length) {
-                          return 'Không nhập email trùng.';
+                          return context.tr("Không nhập email trùng.");
                         }
                         if (values.any(
                           (e) =>
                               !RegExp(r'^[^@\s]+@[^@\s]+\.[^@\s]+$')
                                   .hasMatch(e),
                         )) {
-                          return 'Email chưa hợp lệ.';
+                          return context.tr("Email chưa hợp lệ.");
                         }
                         if (values.contains(widget.controller.user?['email'])) {
-                          return 'Không chia sẻ cho chính mình.';
+                          return context.tr("Không chia sẻ cho chính mình.");
                         }
                         return null;
                       },
@@ -177,15 +195,18 @@ class _ShareDialogState extends State<ShareDialog> with WidgetsBindingObserver {
                   const SizedBox(height: 12),
                   DropdownButtonFormField<String>(
                     initialValue: role,
-                    decoration: const InputDecoration(
-                      labelText: 'Quyền khi thêm',
+                    decoration: InputDecoration(
+                      labelText: context.tr("Quyền khi thêm"),
                     ),
                     isExpanded: true,
-                    items: const [
-                      DropdownMenuItem(value: 'viewer', child: Text('Chỉ xem')),
+                    items: [
+                      DropdownMenuItem(
+                        value: 'viewer',
+                        child: Text(context.tr("Chỉ xem")),
+                      ),
                       DropdownMenuItem(
                         value: 'editor',
-                        child: Text('Có thể chỉnh sửa'),
+                        child: Text(context.tr("Có thể chỉnh sửa")),
                       ),
                     ],
                     onChanged: enabled
@@ -196,15 +217,17 @@ class _ShareDialogState extends State<ShareDialog> with WidgetsBindingObserver {
                   FilledButton(
                     key: const Key('share-add'),
                     onPressed: enabled ? add : null,
-                    child: const Text('Thêm người nhận'),
+                    child: Text(context.tr("Thêm người nhận")),
                   ),
                   const SizedBox(height: 24),
                   SectionHeading(
-                    'Người có quyền truy cập',
-                    detail: '${session.recipients.length} người nhận',
+                    context.tr("Người có quyền truy cập"),
+                    detail: context.tr("{0} người nhận", [
+                      session.recipients.length,
+                    ]),
                   ),
                   if (session.recipients.isEmpty)
-                    const Text('Chưa có người nhận.'),
+                    Text(context.tr("Chưa có người nhận.")),
                   for (final row in session.recipients)
                     Card(
                       child: Padding(
@@ -218,22 +241,26 @@ class _ShareDialogState extends State<ShareDialog> with WidgetsBindingObserver {
                             ),
                             Text(row['email'] as String),
                             Text(
-                              'Chia sẻ: ${sharingDate(row['shared_at'] as String)}',
+                              context.tr("Chia sẻ: {0}", [
+                                sharingDate(row['shared_at'] as String),
+                              ]),
                             ),
                             Semantics(
-                              label: 'Quyền của ${row['email']}',
+                              label: context.tr("Quyền của {0}", [
+                                row['email'],
+                              ]),
                               child: DropdownButton<String>(
                                 key: ValueKey('share-role-${row['user_id']}'),
                                 value: row['role'] as String,
                                 isExpanded: true,
-                                items: const [
+                                items: [
                                   DropdownMenuItem(
                                     value: 'viewer',
-                                    child: Text('Chỉ xem'),
+                                    child: Text(context.tr("Chỉ xem")),
                                   ),
                                   DropdownMenuItem(
                                     value: 'editor',
-                                    child: Text('Có thể chỉnh sửa'),
+                                    child: Text(context.tr("Có thể chỉnh sửa")),
                                   ),
                                 ],
                                 onChanged: enabled
@@ -249,7 +276,7 @@ class _ShareDialogState extends State<ShareDialog> with WidgetsBindingObserver {
                               alignment: Alignment.centerLeft,
                               child: TextButton(
                                 onPressed: enabled ? () => revoke(row) : null,
-                                child: const Text('Thu hồi quyền'),
+                                child: Text(context.tr("Thu hồi quyền")),
                               ),
                             ),
                           ],
@@ -259,14 +286,14 @@ class _ShareDialogState extends State<ShareDialog> with WidgetsBindingObserver {
                 ],
                 if (session.pending != null)
                   TextButton(
-                    onPressed: session.busy ? null : session.retry,
-                    child: const Text('Thử lại thao tác'),
+                    onPressed: session.busy ? null : retry,
+                    child: Text(context.tr("Thử lại thao tác")),
                   ),
                 TextButton(
                   onPressed: session.busy || !session.active
                       ? null
                       : session.refresh,
-                  child: const Text('Kiểm tra quyền và cập nhật'),
+                  child: Text(context.tr("Kiểm tra quyền và cập nhật")),
                 ),
                 if (session.busy) const LinearProgressIndicator(),
               ],
@@ -275,7 +302,7 @@ class _ShareDialogState extends State<ShareDialog> with WidgetsBindingObserver {
           actions: [
             TextButton(
               onPressed: session.busy ? null : () => Navigator.pop(context),
-              child: const Text('Đóng'),
+              child: Text(context.tr("Đóng")),
             ),
           ],
         ),

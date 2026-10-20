@@ -1,3 +1,5 @@
+import '../l10n/app_strings.dart';
+
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
@@ -55,7 +57,9 @@ class _AttachmentsDialogState extends State<AttachmentsDialog>
   void didChangeAppLifecycleState(AppLifecycleState state) {
     if (state != AppLifecycleState.resumed) {
       session.hide(
-        'Nội dung đã che khi ứng dụng ra nền. Kiểm tra lại khi trở về.',
+        context.tr(
+          "Nội dung đã che khi ứng dụng ra nền. Kiểm tra lại khi trở về.",
+        ),
       );
     }
   }
@@ -93,7 +97,7 @@ class _AttachmentsDialogState extends State<AttachmentsDialog>
     builder: (context, _) => PopScope(
       canPop: !busy,
       child: AlertDialog(
-        title: const DialogHeading('Đính kèm', icon: Icons.attach_file),
+        title: DialogHeading(context.tr("Đính kèm"), icon: Icons.attach_file),
         scrollable: true,
         content: SizedBox(
           width: 540,
@@ -101,30 +105,38 @@ class _AttachmentsDialogState extends State<AttachmentsDialog>
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              const StatusNotice(
-                message: 'Tệp được bảo vệ theo quyền của ghi chú. Cần kết nối để tải lên, tải xuống và xem trước.',
+              StatusNotice(
+                message: context.tr(
+                  "Tệp được bảo vệ theo quyền của ghi chú. Cần kết nối để tải lên, tải xuống và xem trước.",
+                ),
                 icon: Icons.shield_outlined,
               ),
               const SizedBox(height: 12),
               Text(
-                'Tối đa 10 tệp/ghi chú · PNG/JPEG: 10 MiB · MP4/PDF/TXT/CSV/ZIP: 20 MiB',
+                context.tr(
+                  "Tối đa 10 tệp/ghi chú · PNG/JPEG: 10 MiB · MP4/PDF/TXT/CSV/ZIP: 20 MiB",
+                ),
                 style: Theme.of(context).textTheme.bodySmall,
               ),
               const SizedBox(height: 20),
               SectionHeading(
-                'Tệp của ghi chú',
-                detail: '${session.files.length} tệp',
+                context.tr("Tệp của ghi chú"),
+                detail: context.tr("{0} tệp", [session.files.length]),
               ),
-              if (session.error != null) Text(session.error!),
+              if (session.error != null)
+                Text(context.trMessage(session.error!)),
               if (message != null)
-                Text(message!, key: const Key('attachment-message')),
+                Text(
+                  context.trMessage(message!),
+                  key: const Key('attachment-message'),
+                ),
               if (!session.active)
-                const Text('Đóng cửa sổ này và mở lại ghi chú.'),
+                Text(context.tr("Đóng cửa sổ này và mở lại ghi chú.")),
               if (session.active) ...[
                 if (session.files.isEmpty && !session.busy)
-                  const Padding(
+                  Padding(
                     padding: EdgeInsets.all(12),
-                    child: Text('Chưa có tệp đính kèm.'),
+                    child: Text(context.tr("Chưa có tệp đính kèm.")),
                   ),
                 for (final file in session.files)
                   Card(
@@ -141,10 +153,10 @@ class _AttachmentsDialogState extends State<AttachmentsDialog>
                             padding: const EdgeInsets.symmetric(vertical: 8),
                             child: MetadataPill(
                               '${file['kind'] == 'image'
-                                  ? 'Ảnh'
+                                  ? context.tr("Ảnh")
                                   : file['kind'] == 'video'
                                   ? 'Video'
-                                  : 'Tệp'} · ${((file['size'] as int) / 1024).ceil()} KiB',
+                                  : context.tr("Tệp")} · ${((file['size'] as int) / 1024).ceil()} KiB',
                               icon: file['kind'] == 'image'
                                   ? Icons.image_outlined
                                   : file['kind'] == 'video'
@@ -167,7 +179,7 @@ class _AttachmentsDialogState extends State<AttachmentsDialog>
                                             file: file,
                                           ),
                                         ),
-                                  child: const Text('Xem trước'),
+                                  child: Text(context.tr("Xem trước")),
                                 ),
                               TextButton(
                                 onPressed: busy
@@ -187,13 +199,19 @@ class _AttachmentsDialogState extends State<AttachmentsDialog>
                                           setState(
                                             () => message = saved
                                                 ? (kIsWeb
-                                                      ? 'Đã chuyển file cho trình duyệt tải xuống.'
-                                                      : 'Đã lưu file vào vị trí bạn chọn.')
-                                                : 'Đã hủy lưu file.',
+                                                      ? context.tr(
+                                                          "Đã chuyển file cho trình duyệt tải xuống.",
+                                                        )
+                                                      : context.tr(
+                                                          "Đã lưu file vào vị trí bạn chọn.",
+                                                        ))
+                                                : context.tr(
+                                                    "Đã hủy lưu file.",
+                                                  ),
                                           );
                                         }
                                       }),
-                                child: const Text('Tải xuống'),
+                                child: Text(context.tr("Tải xuống")),
                               ),
                               if (widget.canEdit && session.canEdit)
                                 TextButton(
@@ -213,13 +231,20 @@ class _AttachmentsDialogState extends State<AttachmentsDialog>
                                                           file['id'],
                                                     );
                                                 return AlertDialog(
-                                                  title: const Text(
-                                                    'Xóa tệp đính kèm?',
+                                                  title: Text(
+                                                    context.tr(
+                                                      "Xóa tệp đính kèm?",
+                                                    ),
                                                   ),
                                                   content: Text(
                                                     available
-                                                        ? 'Xóa ${file['name']}; nội dung ghi chú vẫn giữ.'
-                                                        : 'Quyền truy cập đã thay đổi. Đóng và kiểm tra lại.',
+                                                        ? context.tr(
+                                                            "Xóa {0}; nội dung ghi chú vẫn giữ.",
+                                                            [file['name']],
+                                                          )
+                                                        : context.tr(
+                                                            "Quyền truy cập đã thay đổi. Đóng và kiểm tra lại.",
+                                                          ),
                                                   ),
                                                   actions: [
                                                     TextButton(
@@ -228,7 +253,9 @@ class _AttachmentsDialogState extends State<AttachmentsDialog>
                                                             context,
                                                             false,
                                                           ),
-                                                      child: const Text('Hủy'),
+                                                      child: Text(
+                                                        context.tr("Hủy"),
+                                                      ),
                                                     ),
                                                     FilledButton(
                                                       onPressed: available
@@ -237,8 +264,8 @@ class _AttachmentsDialogState extends State<AttachmentsDialog>
                                                               true,
                                                             )
                                                           : null,
-                                                      child: const Text(
-                                                        'Xóa tệp',
+                                                      child: Text(
+                                                        context.tr("Xóa tệp"),
                                                       ),
                                                     ),
                                                   ],
@@ -254,7 +281,7 @@ class _AttachmentsDialogState extends State<AttachmentsDialog>
                                             );
                                           }
                                         },
-                                  child: const Text('Xóa'),
+                                  child: Text(context.tr("Xóa")),
                                 ),
                             ],
                           ),
@@ -266,9 +293,11 @@ class _AttachmentsDialogState extends State<AttachmentsDialog>
                   for (final file in selected)
                     Row(
                       children: [
-                        Expanded(child: Text('Chờ tải: ${file.name}')),
+                        Expanded(
+                          child: Text(context.tr("Chờ tải: {0}", [file.name])),
+                        ),
                         IconButton(
-                          tooltip: 'Bỏ ${file.name}',
+                          tooltip: context.tr("Bỏ {0}", [file.name]),
                           onPressed: busy
                               ? null
                               : () => setState(
@@ -297,7 +326,7 @@ class _AttachmentsDialogState extends State<AttachmentsDialog>
                             }
                           }),
                     icon: const Icon(Icons.attach_file),
-                    label: const Text('Chọn tệp'),
+                    label: Text(context.tr("Chọn tệp")),
                   ),
                   FilledButton(
                     key: const Key('attachment-upload'),
@@ -317,16 +346,22 @@ class _AttachmentsDialogState extends State<AttachmentsDialog>
                             }
                             if (mounted) {
                               setState(
-                                () => message = 'Server đã lưu tệp đính kèm.',
+                                () => message = context.tr(
+                                  "Server đã lưu tệp đính kèm.",
+                                ),
                               );
                             }
                           }),
-                    child: Text(busy ? 'Đang xử lý…' : 'Tải tệp lên'),
+                    child: Text(
+                      busy
+                          ? context.tr("Đang xử lý…")
+                          : context.tr("Tải tệp lên"),
+                    ),
                   ),
                 ],
                 TextButton(
                   onPressed: busy || session.busy ? null : session.refresh,
-                  child: const Text('Kiểm tra quyền và cập nhật'),
+                  child: Text(context.tr("Kiểm tra quyền và cập nhật")),
                 ),
               ],
             ],
@@ -335,7 +370,7 @@ class _AttachmentsDialogState extends State<AttachmentsDialog>
         actions: [
           TextButton(
             onPressed: busy ? null : () => Navigator.pop(context),
-            child: const Text('Đóng'),
+            child: Text(context.tr("Đóng")),
           ),
         ],
       ),
@@ -398,8 +433,9 @@ class _AttachmentPreviewState extends State<AttachmentPreview> {
         bytes = data;
       }
     } catch (_) {
-      error =
-          'Chưa xem được tệp. Kiểm tra quyền, kết nối hoặc định dạng video.';
+      error = context.tr(
+        "Chưa xem được tệp. Kiểm tra quyền, kết nối hoặc định dạng video.",
+      );
     }
     if (mounted) setState(() {});
   }
@@ -414,13 +450,15 @@ class _AttachmentPreviewState extends State<AttachmentPreview> {
 
   @override
   Widget build(BuildContext context) => AlertDialog(
-    title: Text(active ? widget.file['name'] as String : 'Phiên xem đã đóng'),
+    title: Text(
+      active ? widget.file['name'] as String : context.tr("Phiên xem đã đóng"),
+    ),
     content: SizedBox(
       width: 540,
       child: !active
-          ? const Text('Nội dung đã được che.')
+          ? Text(context.tr("Nội dung đã được che."))
           : error != null
-          ? Text(error!)
+          ? Text(context.trMessage(error!))
           : video != null && video!.controller.value.isInitialized
           ? Column(
               mainAxisSize: MainAxisSize.min,
@@ -439,8 +477,8 @@ class _AttachmentPreviewState extends State<AttachmentPreview> {
                   },
                   child: Text(
                     video!.controller.value.isPlaying
-                        ? 'Tạm dừng'
-                        : 'Phát video',
+                        ? context.tr("Tạm dừng")
+                        : context.tr("Phát video"),
                   ),
                 ),
               ],
@@ -449,7 +487,8 @@ class _AttachmentPreviewState extends State<AttachmentPreview> {
           ? Image.memory(
               bytes!,
               fit: BoxFit.contain,
-              errorBuilder: (_, _, _) => const Text('Không đọc được ảnh.'),
+              errorBuilder: (_, _, _) =>
+                  Text(context.tr("Không đọc được ảnh.")),
             )
           : const SizedBox(
               height: 48,
@@ -459,7 +498,7 @@ class _AttachmentPreviewState extends State<AttachmentPreview> {
     actions: [
       TextButton(
         onPressed: () => Navigator.pop(context),
-        child: const Text('Đóng xem trước'),
+        child: Text(context.tr("Đóng xem trước")),
       ),
     ],
   );

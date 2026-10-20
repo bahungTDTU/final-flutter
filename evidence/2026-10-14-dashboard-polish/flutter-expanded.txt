@@ -1,0 +1,39 @@
+00:00 +0: loading D:/flutter cuoi ki/test/dashboard_polish_regression_test.dart
+00:00 +0: Hover at the card edge settles without a stationary-pointer loop
+00:00 +1: Clear filters cancels a newer query still waiting for debounce
+00:01 +2: Sync status pulses update without rebuilding the library
+DASHBOARD_PULSE_PROBE replacements=0 preview_projections=0
+00:01 +3: Pressed card retains the entire edge tap target
+00:01 +4: Preview survives theme/font changes and purges immediately on remote lock
+00:01 +5: Home still reacts to profile, label rename, deletion and pending-note changes
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: exactly one matching candidate
+  Actual: _TextWidgetFinder:<Found 0 widgets with text "#Chủ đề cũ": []>
+   Which: means none were found but one was expected
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///D:/flutter%20cuoi%20ki/test/dashboard_polish_regression_test.dart:245:7)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1953:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///D:/flutter%20cuoi%20ki/test/dashboard_polish_regression_test.dart line 245
+The test description was:
+  Home still reacts to profile, label rename, deletion and pending-note changes
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:02 +5 -1: Home still reacts to profile, label rename, deletion and pending-note changes [E]
+  Test failed. See exception logs above.
+  The test description was: Home still reacts to profile, label rename, deletion and pending-note changes
+  
+00:02 +5 -1: 500 rich notes remain lazy during sync pulses and view toggling
+DASHBOARD_500_PROBE visible_projections=6 pulse_projections=0 pulse_wall_us=101782
+00:02 +6 -1: Some tests failed.
+
+Failing tests:
+  D:/flutter cuoi ki/test/dashboard_polish_regression_test.dart: Home still reacts to profile, label rename, deletion and pending-note changes

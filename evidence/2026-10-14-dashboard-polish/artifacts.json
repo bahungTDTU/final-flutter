@@ -1,0 +1,22 @@
+{
+  "build/web/main.dart.js": {
+    "bytes": 4929395,
+    "sha256": "9674222f536b0a8e4e5142f7cf2ec187852b2b83ea30855080326c9b3e38b976"
+  },
+  "build/web/offline_worker.js": {
+    "bytes": 2957,
+    "sha256": "3a244cec838d12210c955b52547e3436503c7a3d928f4d4ebd8155718ebaae00"
+  },
+  "tmp/dashboard-web-2026-10-14/main.dart.js": {
+    "bytes": 4929395,
+    "sha256": "d7e5104c6f1bb1843a987470814ff24d76d607d9bf87ed24f02f46b7859f22cd"
+  },
+  "tmp/dashboard-web-2026-10-14/offline_worker.js": {
+    "bytes": 2957,
+    "sha256": "1189ba1a1db21eecc5918e07520cd87888cd777c337a9b80e45652d0ad10851b"
+  },
+  "build/app/outputs/flutter-apk/app-debug.apk": {
+    "bytes": 195273248,
+    "sha256": "f733e731697e1b68604b810ffa105b6a53732ef8a866423ad36f575801503f0c"
+  }
+}

@@ -1,0 +1,8 @@
+00:00 +0: loading D:/flutter cuoi ki/test/desk_navigation_test.dart
+00:00 +0: D:/flutter cuoi ki/test/desk_navigation_test.dart: Desktop destinations support keyboard activation and selected semantics
+00:00 +1: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:01 +2: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:01 +3: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:02 +4: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Phone reveals working tools without hiding label filters
+00:02 +5: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Document drawers preserve rich selection, draft and frozen revision
+00:03 +6: All tests passed!
