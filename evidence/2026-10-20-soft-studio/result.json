@@ -1,0 +1,26 @@
+{
+  "base": "87f9e4953d9d9c8b36ef164fb052a0f3209f54e2",
+  "branch": "codex/soft-studio-refresh",
+  "format_files": 134,
+  "flutter_tests": 324,
+  "backend_tests": 152,
+  "backend_unchanged": true,
+  "analyze": "PASS",
+  "themes_contrast": "12 variants >=4.5 composed text",
+  "web_qa_and_regular_build": "PASS, 40 static assets each",
+  "apk_debug_build": "PASS",
+  "browser": "IAB synthetic API/SQLite, PC1280x1000, phone375x812, tablet768x1024, landscape844x390, vi/en and light/dark",
+  "new_regressions": 4,
+  "dependency_changes": false,
+  "package_fetch": "--no-pub after blocked pub get; installed lockfile closure unchanged",
+  "historical_evidence_unchanged": true,
+  "pushed": false,
+  "not_run": [
+    "Android runtime/IME",
+    "manual screen reader",
+    "FPS/GPU profiling",
+    "live SMTP/Gemini",
+    "new CI",
+    "signed release/deployment"
+  ]
+}

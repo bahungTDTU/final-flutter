@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 
 import 'palette_tokens.dart';
+import 'studio.dart';
 
 /// Decorative tones are derived from opaque IDs, never stored as note metadata.
 @immutable
@@ -216,7 +217,26 @@ class _Atmosphere extends CustomPainter {
   final PrismPalette palette;
   @override
   void paint(Canvas canvas, Size size) {
-    canvas.drawRect(Offset.zero & size, Paint()..color = palette.canvas);
+    final area = Offset.zero & size;
+    canvas.drawRect(
+      area,
+      Paint()
+        ..shader = LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [
+            Color.alphaBlend(
+              palette.tones[0].light.withValues(alpha: .045),
+              palette.canvas,
+            ),
+            palette.canvas,
+            Color.alphaBlend(
+              palette.tones[2].light.withValues(alpha: .025),
+              palette.canvas,
+            ),
+          ],
+        ).createShader(area),
+    );
   }
 
   @override
@@ -247,7 +267,7 @@ class PrismSurface extends StatelessWidget {
           end: Alignment.bottomRight,
           colors: p.rim,
         ),
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(StudioStyle.card),
         boxShadow: [
           BoxShadow(
             color: Theme.of(context).colorScheme.onSurface.withValues(
@@ -264,7 +284,7 @@ class PrismSurface extends StatelessWidget {
         padding: const EdgeInsets.all(1),
         child: Material(
           color: surface,
-          borderRadius: BorderRadius.circular(11),
+          borderRadius: BorderRadius.circular(StudioStyle.card - 1),
           clipBehavior: Clip.antiAlias,
           child: Ink(
             decoration: BoxDecoration(
@@ -332,7 +352,7 @@ class _PrismCardState extends State<PrismCard> {
           onHover: (v) => setState(() => hovered = v),
           onFocusChange: (v) => setState(() => focused = v),
           onHighlightChanged: (v) => setState(() => pressed = v),
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(StudioStyle.card),
           child: AnimatedContainer(
             duration: PrismMotion.duration(context, PrismMotion.hover),
             curve: Curves.easeOutCubic,
@@ -355,7 +375,7 @@ class _PrismCardState extends State<PrismCard> {
                 ),
             padding: const EdgeInsets.all(1),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(StudioStyle.card),
               gradient: LinearGradient(
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
@@ -369,8 +389,8 @@ class _PrismCardState extends State<PrismCard> {
               ),
               boxShadow: [
                 BoxShadow(
-                  color: accent.withValues(alpha: active ? .16 : .06),
-                  blurRadius: active ? 14 : 6,
+                  color: accent.withValues(alpha: active ? .15 : .07),
+                  blurRadius: active ? 20 : 12,
                   offset: Offset(0, active ? 5 : 2),
                 ),
               ],
@@ -378,7 +398,7 @@ class _PrismCardState extends State<PrismCard> {
             child: RepaintBoundary(
               child: Material(
                 color: colors.surface,
-                borderRadius: BorderRadius.circular(11),
+                borderRadius: BorderRadius.circular(StudioStyle.card - 1),
                 clipBehavior: Clip.antiAlias,
                 child: Ink(
                   decoration: BoxDecoration(
@@ -393,14 +413,14 @@ class _PrismCardState extends State<PrismCard> {
                                 : tone == null
                                 ? .025
                                 : rich
-                                ? (dark ? .05 : .045)
+                                ? (dark ? .075 : .085)
                                 : .03,
                           ),
                           colors.surface,
                         ),
                         Color.alphaBlend(
                           accent.withValues(
-                            alpha: rich ? (dark ? .03 : .025) : 0,
+                            alpha: rich ? (dark ? .035 : .025) : 0,
                           ),
                           colors.surface,
                         ),
@@ -442,7 +462,9 @@ class _PrismCardState extends State<PrismCard> {
                                     color: colors.primary,
                                     width: 2,
                                   ),
-                                  borderRadius: BorderRadius.circular(11),
+                                  borderRadius: BorderRadius.circular(
+                                    StudioStyle.card - 1,
+                                  ),
                                 ),
                               ),
                             ),
@@ -482,7 +504,7 @@ class PrismAction extends StatelessWidget {
         gradient: onPressed == null
             ? null
             : LinearGradient(colors: PaletteTokens.of(context).brand),
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(StudioStyle.control),
       ),
       child: icon == null
           ? FilledButton(onPressed: onPressed, style: style, child: child)

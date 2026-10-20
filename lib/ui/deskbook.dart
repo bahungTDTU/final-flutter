@@ -91,7 +91,7 @@ class DeskDestinationStrip extends StatelessWidget {
         decoration: BoxDecoration(
           color: colors.surfaceContainerLow,
           border: Border.all(color: colors.outlineVariant),
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: BorderRadius.circular(18),
         ),
         child: Padding(
           padding: const EdgeInsets.all(4),
@@ -118,23 +118,27 @@ class DeskDestinationStrip extends StatelessWidget {
                             PrismMotion.hover,
                           ),
                           backgroundColor: WidgetStatePropertyAll(
-                            i == selected ? colors.primary : Colors.transparent,
+                            i == selected
+                                ? colors.primaryContainer
+                                : Colors.transparent,
                           ),
                           foregroundColor: WidgetStatePropertyAll(
-                            i == selected ? colors.onPrimary : colors.onSurface,
+                            i == selected
+                                ? colors.onPrimaryContainer
+                                : colors.onSurface,
                           ),
                           overlayColor: WidgetStateProperty.resolveWith((
                             states,
                           ) {
                             if (states.contains(WidgetState.pressed)) {
                               return (i == selected
-                                      ? colors.onPrimary
+                                      ? colors.onPrimaryContainer
                                       : colors.primary)
                                   .withValues(alpha: .12);
                             }
                             if (states.contains(WidgetState.hovered)) {
                               return (i == selected
-                                      ? colors.onPrimary
+                                      ? colors.onPrimaryContainer
                                       : colors.primary)
                                   .withValues(alpha: .06);
                             }
@@ -149,7 +153,7 @@ class DeskDestinationStrip extends StatelessWidget {
                             (states) => BorderSide(
                               color: states.contains(WidgetState.focused)
                                   ? i == selected
-                                        ? colors.onPrimary
+                                        ? colors.onPrimaryContainer
                                         : colors.primary
                                   : Colors.transparent,
                               width: 2,
@@ -217,8 +221,14 @@ class DeskToolDrawer extends StatelessWidget {
       key: const Key('desk-tool-drawer'),
       width: 244,
       decoration: BoxDecoration(
-        color: colors.surfaceContainerLow,
-        border: Border(left: BorderSide(color: colors.outlineVariant)),
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [colors.surface, colors.surfaceContainerLow],
+        ),
+        borderRadius: BorderRadius.circular(StudioStyle.panel),
+        border: Border.all(color: colors.outlineVariant),
+        boxShadow: StudioStyle.shadows(context),
       ),
       child: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
@@ -236,7 +246,7 @@ class DeskToolDrawer extends StatelessWidget {
             Text(
               context.tr("Từ ý tưởng\nđến bản nháp."),
               style: theme.textTheme.headlineSmall?.copyWith(
-                fontWeight: FontWeight.w500,
+                fontWeight: FontWeight.w600,
               ),
             ),
             const SizedBox(height: 12),
@@ -319,7 +329,32 @@ class _DrawerAction extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                ExcludeSemantics(child: Icon(icon, color: colors.primary)),
+                Row(
+                  children: [
+                    ExcludeSemantics(
+                      child: Container(
+                        padding: const EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          color: colors.primaryContainer,
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: Icon(
+                          icon,
+                          color: colors.onPrimaryContainer,
+                          size: 22,
+                        ),
+                      ),
+                    ),
+                    const Spacer(),
+                    ExcludeSemantics(
+                      child: Icon(
+                        Icons.north_east_rounded,
+                        size: 18,
+                        color: colors.onSurfaceVariant,
+                      ),
+                    ),
+                  ],
+                ),
                 const SizedBox(height: 16),
                 Text(title, style: Theme.of(context).textTheme.titleSmall),
                 const SizedBox(height: 8),
@@ -344,67 +379,76 @@ class NotebookTitle extends StatelessWidget {
   final String title, detail;
   final int count;
   final Widget sync;
+
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context), colors = Theme.of(context).colorScheme;
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        ExcludeSemantics(
-          child: Container(
-            width: 52,
-            height: 92,
-            decoration: BoxDecoration(
-              color: colors.primary,
-              borderRadius: const BorderRadius.vertical(
-                bottom: Radius.circular(26),
-              ),
-            ),
-            child: Icon(
-              Icons.auto_stories_outlined,
-              color: colors.onPrimary,
-              size: 26,
-            ),
-          ),
-        ),
-        const SizedBox(width: 24),
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                context.tr("SỔ GHI / NOTETOGETHER"),
-                style: theme.textTheme.bodySmall?.copyWith(letterSpacing: 1.5),
-              ),
-              const SizedBox(height: 12),
-              Semantics(
-                header: true,
-                child: Text(
-                  title,
-                  style: theme.textTheme.headlineLarge?.copyWith(
-                    fontSize: 38,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ),
-              const SizedBox(height: 8),
-              Text(detail, style: theme.textTheme.bodyMedium),
-              const SizedBox(height: 8),
-              Wrap(
-                spacing: 16,
-                crossAxisAlignment: WrapCrossAlignment.center,
+    final theme = Theme.of(context), colors = theme.colorScheme;
+    return StudioHeaderPanel(
+      child: LayoutBuilder(
+        builder: (context, area) => Row(
+          children: [
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    context.tr("{0} ghi chú", [count]),
-                    style: theme.textTheme.bodySmall,
+                    context.tr("SỔ GHI / NOTETOGETHER"),
+                    style: theme.textTheme.bodySmall?.copyWith(
+                      letterSpacing: 1.5,
+                      color: colors.onSurfaceVariant,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
-                  sync,
+                  const SizedBox(height: 10),
+                  Semantics(
+                    header: true,
+                    child: Text(
+                      title,
+                      style: theme.textTheme.headlineLarge?.copyWith(
+                        fontSize: 38,
+                        fontWeight: FontWeight.w600,
+                        height: 1.2,
+                        letterSpacing: -.8,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  Text(detail, style: theme.textTheme.bodyMedium),
+                  const SizedBox(height: 12),
+                  Wrap(
+                    spacing: 12,
+                    runSpacing: 4,
+                    crossAxisAlignment: WrapCrossAlignment.center,
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 12,
+                          vertical: 7,
+                        ),
+                        decoration: BoxDecoration(
+                          color: colors.surface,
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(color: colors.outlineVariant),
+                        ),
+                        child: Text(
+                          context.tr("{0} ghi chú", [count]),
+                          style: theme.textTheme.bodySmall,
+                        ),
+                      ),
+                      sync,
+                    ],
+                  ),
                 ],
               ),
+            ),
+            if (area.maxWidth >= 760 &&
+                MediaQuery.textScalerOf(context).scale(1) < 1.3) ...[
+              const SizedBox(width: 24),
+              const StudioNotebookArt(),
             ],
-          ),
+          ],
         ),
-      ],
+      ),
     );
   }
 }

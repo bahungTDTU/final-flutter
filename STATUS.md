@@ -1,5 +1,15 @@
 # NoteTogether - trạng thái 20/10/2026
 
+## Soft Studio UI/UX — 20/10/2026
+
+Nâng cấp semantic surfaces/hero/cards/navigation/editor/dialogs theo ui-ux-pro-max,
+CTA theo palette, nhãn phone một hàng cuộn với nút lọc cố định, header ngang gọn.
+Giữ state/privacy, 6 palettes, dependency và backend. PASS: 134 format (0 changes), analyze, 324 Flutter tests,
+152 backend tests trên mã không đổi; Web QA/API 8000 và APK debug compile. Actual Web PC/phone/
+tablet/landscape vi/en sáng/tối; native/FPS/providers/CI/release NOT RUN trong snapshot local. Trạng thái PR/CI được theo dõi trên GitHub.
+[Báo cáo](docs/SOFT_STUDIO_UI_2026-10-20.md), [ảnh/log](evidence/2026-10-20-soft-studio/INDEX.md).
+Các mục phía dưới là snapshots trước.
+
 ## UI/UX trên base GitHub mới nhất —20/10/2026
 
 Đã fast-forward nhánh làm việc tới6fba5a6 trước khi sửa, giữ source local và ghép docs.

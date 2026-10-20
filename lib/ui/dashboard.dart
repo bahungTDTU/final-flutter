@@ -10,10 +10,7 @@ class DashboardBackdrop extends StatelessWidget {
   const DashboardBackdrop({super.key, required this.child});
   final Widget child;
   @override
-  Widget build(BuildContext context) => ColoredBox(
-    color: Theme.of(context).scaffoldBackgroundColor,
-    child: child,
-  );
+  Widget build(BuildContext context) => PrismBackdrop(child: child);
 }
 
 class DashboardSidebar extends StatelessWidget {
@@ -144,26 +141,82 @@ class DashboardHeader extends StatelessWidget {
                 !compact &&
                 area.maxWidth >= 700 &&
                 MediaQuery.textScalerOf(context).scale(1) < 1.5;
+            if (!workbench &&
+                compact &&
+                area.maxWidth >= 480 &&
+                MediaQuery.sizeOf(context).height < 500 &&
+                MediaQuery.textScalerOf(context).scale(1) < 1.5) {
+              return StudioHeaderPanel(
+                compact: true,
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Semantics(
+                            header: true,
+                            child: Text(
+                              title,
+                              style: theme.textTheme.headlineSmall?.copyWith(
+                                fontSize: 26,
+                                height: 1.2,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 4),
+                          Text(
+                            context.tr("{0} ghi chú", [count]),
+                            style: theme.textTheme.bodySmall,
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    sync,
+                    if (action != null) ...[const SizedBox(width: 8), action!],
+                  ],
+                ),
+              );
+            }
+            final inlineAction =
+                area.maxWidth >= 480 &&
+                MediaQuery.textScalerOf(context).scale(1) < 1.5;
             final titleBlock = Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Semantics(
-                  header: true,
-                  child: Text(
-                    title,
-                    style: theme.textTheme.headlineLarge?.copyWith(
-                      fontSize: compact ? 28 : 46,
-                      fontWeight: FontWeight.w500,
-                      letterSpacing: -1.2,
-                      height: 1.2,
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: Semantics(
+                        header: true,
+                        child: Text(
+                          title,
+                          style: theme.textTheme.headlineLarge?.copyWith(
+                            fontSize: compact ? 28 : 44,
+                            fontWeight: FontWeight.w600,
+                            letterSpacing: -1.2,
+                            height: 1.2,
+                          ),
+                        ),
+                      ),
                     ),
-                  ),
+                    if (action != null && inlineAction) ...[
+                      const SizedBox(width: 12),
+                      action!,
+                    ],
+                  ],
                 ),
                 if (!compact) ...[
                   const SizedBox(height: 12),
                   Text(detail, style: theme.textTheme.bodyMedium),
                 ],
-                if (action != null) ...[const SizedBox(height: 20), action!],
+                if (action != null && !inlineAction) ...[
+                  const SizedBox(height: 20),
+                  action!,
+                ],
                 if (!wide) ...[
                   const SizedBox(height: 8),
                   Wrap(
@@ -188,60 +241,65 @@ class DashboardHeader extends StatelessWidget {
                 sync: sync,
               );
             }
-            if (!wide) return titleBlock;
-            return Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Expanded(child: titleBlock),
-                const SizedBox(width: 36),
-                SizedBox(
-                  width: 220,
-                  child: Theme(
-                    data: noteTheme(
-                      theme.brightness == Brightness.light
-                          ? Brightness.dark
-                          : Brightness.light,
-                      palette: PaletteTokens.of(context).id,
-                    ),
-                    child: Builder(
-                      builder: (context) {
-                        final plate = Theme.of(context);
-                        return Container(
-                          key: const Key('library-count-plate'),
-                          padding: const EdgeInsets.fromLTRB(24, 20, 16, 12),
-                          decoration: BoxDecoration(
-                            color: plate.colorScheme.surface,
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              ExcludeSemantics(
-                                child: Text(
-                                  '$count'.padLeft(2, '0'),
-                                  style: plate.textTheme.displayLarge?.copyWith(
-                                    fontSize: 64,
-                                    fontWeight: FontWeight.w300,
-                                    height: 1.05,
+            if (!wide) {
+              return StudioHeaderPanel(compact: compact, child: titleBlock);
+            }
+            return StudioHeaderPanel(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(child: titleBlock),
+                  const SizedBox(width: 36),
+                  SizedBox(
+                    width: 220,
+                    child: Theme(
+                      data: noteTheme(
+                        theme.brightness == Brightness.light
+                            ? Brightness.dark
+                            : Brightness.light,
+                        palette: PaletteTokens.of(context).id,
+                      ),
+                      child: Builder(
+                        builder: (context) {
+                          final plate = Theme.of(context);
+                          return Container(
+                            key: const Key('library-count-plate'),
+                            padding: const EdgeInsets.fromLTRB(24, 20, 16, 12),
+                            decoration: BoxDecoration(
+                              color: plate.colorScheme.surface,
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                ExcludeSemantics(
+                                  child: Text(
+                                    '$count'.padLeft(2, '0'),
+                                    style: plate.textTheme.displayLarge
+                                        ?.copyWith(
+                                          fontSize: 56,
+                                          fontWeight: FontWeight.w300,
+                                          height: 1.05,
+                                        ),
                                   ),
                                 ),
-                              ),
-                              const SizedBox(height: 8),
-                              Text(
-                                context.tr("{0} ghi chú", [count]),
-                                style: plate.textTheme.bodySmall,
-                              ),
-                              const SizedBox(height: 12),
-                              const Divider(),
-                              sync,
-                            ],
-                          ),
-                        );
-                      },
+                                const SizedBox(height: 8),
+                                Text(
+                                  context.tr("{0} ghi chú", [count]),
+                                  style: plate.textTheme.bodySmall,
+                                ),
+                                const SizedBox(height: 12),
+                                const Divider(),
+                                sync,
+                              ],
+                            ),
+                          );
+                        },
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             );
           },
         ),
@@ -268,7 +326,7 @@ class DashboardHeader extends StatelessWidget {
           ),
         ],
         const SizedBox(height: 20),
-        Divider(color: colors.onSurface, thickness: 1),
+        Divider(color: colors.outlineVariant),
       ],
     );
   }
