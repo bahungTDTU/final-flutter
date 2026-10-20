@@ -1,0 +1,37 @@
+00:00 +0: loading D:/flutter cuoi ki/test/localization_test.dart
+00:00 +0: English auth, settings and live editor fit a phone with 200% text
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following assertion was thrown running a test:
+The finder "Found 0 widgets with widget matching predicate: []" (used in a call to "tap()") could
+not find any matching widgets.
+
+When the exception was thrown, this was the stack:
+#0      WidgetController._getElementPoint (package:flutter_test/src/controller.dart:2095:7)
+#1      WidgetController.getCenter (package:flutter_test/src/controller.dart:1947:12)
+#2      WidgetController.tap (package:flutter_test/src/controller.dart:1080:7)
+#3      main.<anonymous closure> (file:///D:/flutter%20cuoi%20ki/test/localization_test.dart:43:20)
+<asynchronous suspension>
+#4      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#5      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1953:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+The test description was:
+  English auth, settings and live editor fit a phone with 200% text
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:01 +0 -1: English auth, settings and live editor fit a phone with 200% text [E]
+  Test failed. See exception logs above.
+  The test description was: English auth, settings and live editor fit a phone with 200% text
+  
+00:01 +0 -1: Resources preserve placeholders and never translate argument data
+00:01 +1 -1: Public language reopens offline; account language and immutable queue stay isolated
+00:01 +2 -1: Locale changed during sync overlays the response without mutating the in-flight operation
+00:01 +3 -1: Language picker works before sign-in and updates cached validation without losing input
+00:02 +4 -1: Live locale switch preserves rich draft, selection, note identity and frozen revision
+00:04 +5 -1: English Home retains user titles, private lock boundaries, query and layout across themes and resize
+00:05 +6 -1: Some tests failed.
+
+Failing tests:
+  D:/flutter cuoi ki/test/localization_test.dart: English auth, settings and live editor fit a phone with 200% text

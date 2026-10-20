@@ -1,3 +1,5 @@
+import '../l10n/app_strings.dart';
+
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -61,8 +63,8 @@ class _SecurityCenterScreenState extends State<SecurityCenterScreen> {
           children: [
             Text(s.label, style: Theme.of(context).textTheme.titleMedium),
             if (s.current)
-              const MetadataPill(
-                'Phiên này',
+              MetadataPill(
+                context.tr("Phiên này"),
                 icon: Icons.verified_user_outlined,
               ),
           ],
@@ -70,23 +72,23 @@ class _SecurityCenterScreenState extends State<SecurityCenterScreen> {
         const SizedBox(height: 12),
         Text(
           s.createdAt == null
-              ? 'Đăng nhập: trước khi nâng cấp'
-              : 'Đăng nhập: ${sessionDate(s.createdAt!)}',
+              ? context.tr("Đăng nhập: trước khi nâng cấp")
+              : context.tr("Đăng nhập: {0}", [sessionDate(s.createdAt!)]),
         ),
         const SizedBox(height: 4),
         Text(
-          'Hết hạn: ${sessionDate(s.expiresAt)}',
+          context.tr("Hết hạn: {0}", [sessionDate(s.expiresAt)]),
           style: Theme.of(context).textTheme.bodySmall,
         ),
       ],
     );
     final action = s.current
-        ? const Text('Đang dùng')
+        ? Text(context.tr("Đang dùng"))
         : OutlinedButton.icon(
             key: ValueKey('revoke-${s.id}'),
             onPressed: session.canManage ? () => confirm(id: s.id) : null,
             icon: const Icon(Icons.logout, size: 18),
-            label: Text('Thu hồi phiên ${index + 1}'),
+            label: Text(context.tr("Thu hồi phiên {0}", [index + 1])),
           );
     return Padding(
       padding: const EdgeInsets.only(bottom: 16),
@@ -119,8 +121,8 @@ class _SecurityCenterScreenState extends State<SecurityCenterScreen> {
           MediaQuery.textScalerOf(context).scale(1) < 1.5;
       return Scaffold(
         appBar: noteAppBar(
-          title: const Text(
-            'Trung tâm bảo mật',
+          title: Text(
+            context.tr("Trung tâm bảo mật"),
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),
@@ -142,11 +144,15 @@ class _SecurityCenterScreenState extends State<SecurityCenterScreen> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const PageIntro(
-                                title: 'Bạn kiểm soát phiên đăng nhập',
+                              PageIntro(
+                                title: context.tr(
+                                  "Bạn kiểm soát phiên đăng nhập",
+                                ),
                                 icon: Icons.shield_outlined,
-                                detail: 'Xem các phiên đang hoạt động và kết thúc phiên bạn không còn sử dụng.',
-                                eyebrow: 'TRUNG TÂM BẢO MẬT',
+                                detail: context.tr(
+                                  "Xem các phiên đang hoạt động và kết thúc phiên bạn không còn sử dụng.",
+                                ),
+                                eyebrow: context.tr("TRUNG TÂM BẢO MẬT"),
                                 panel: false,
                               ),
                               const SizedBox(height: 20),
@@ -156,19 +162,23 @@ class _SecurityCenterScreenState extends State<SecurityCenterScreen> {
                                 children: [
                                   MetadataPill(
                                     session.validated
-                                        ? '${session.total} phiên hoạt động'
-                                        : 'Cần kết nối máy chủ',
+                                        ? context.tr("{0} phiên hoạt động", [
+                                            session.total,
+                                          ])
+                                        : context.tr("Cần kết nối máy chủ"),
                                     icon: Icons.devices,
                                   ),
-                                  const MetadataPill(
-                                    'Xác nhận bằng mật khẩu',
+                                  MetadataPill(
+                                    context.tr("Xác nhận bằng mật khẩu"),
                                     icon: Icons.password_outlined,
                                   ),
                                 ],
                               ),
                               const SizedBox(height: 16),
-                              const Text(
-                                'Tên trình duyệt chỉ mang tính tham khảo. Thu hồi phiên không xóa dữ liệu đã lưu trên thiết bị khác.',
+                              Text(
+                                context.tr(
+                                  "Tên trình duyệt chỉ mang tính tham khảo. Thu hồi phiên không xóa dữ liệu đã lưu trên thiết bị khác.",
+                                ),
                               ),
                             ],
                           ),
@@ -192,7 +202,7 @@ class _SecurityCenterScreenState extends State<SecurityCenterScreen> {
                                       ? session.refresh
                                       : null,
                                   icon: const Icon(Icons.refresh),
-                                  label: const Text('Tải lại phiên'),
+                                  label: Text(context.tr("Tải lại phiên")),
                                 ),
                                 FilledButton.icon(
                                   onPressed:
@@ -201,7 +211,9 @@ class _SecurityCenterScreenState extends State<SecurityCenterScreen> {
                                       ? () => confirm()
                                       : null,
                                   icon: const Icon(Icons.phonelink_erase),
-                                  label: const Text('Thu hồi các phiên khác'),
+                                  label: Text(
+                                    context.tr("Thu hồi các phiên khác"),
+                                  ),
                                 ),
                               ],
                             ),
@@ -223,7 +235,10 @@ class _SecurityCenterScreenState extends State<SecurityCenterScreen> {
                               Padding(
                                 padding: const EdgeInsets.only(top: 12),
                                 child: Text(
-                                  'Đang hiển thị ${session.limit} phiên. Thu hồi các phiên khác áp dụng cho toàn bộ tài khoản.',
+                                  context.tr(
+                                    "Đang hiển thị {0} phiên. Thu hồi các phiên khác áp dụng cho toàn bộ tài khoản.",
+                                    [session.limit],
+                                  ),
                                 ),
                               ),
                           ],
@@ -239,9 +254,11 @@ class _SecurityCenterScreenState extends State<SecurityCenterScreen> {
                   else if (!session.busy)
                     SliverToBoxAdapter(
                       child: bounded(
-                        const SurfacePanel(
+                        SurfacePanel(
                           child: Text(
-                            'Thông tin phiên chỉ hiển thị khi đã kết nối và xác thực.',
+                            context.tr(
+                              "Thông tin phiên chỉ hiển thị khi đã kết nối và xác thực.",
+                            ),
                           ),
                         ),
                       ),
@@ -306,12 +323,12 @@ class _RevokeDialogState extends State<_RevokeDialog> {
         canPop: !s.busy,
         child: AlertDialog(
           scrollable: true,
-          title: const DialogHeading(
-            'Xác nhận thu hồi phiên',
+          title: DialogHeading(
+            context.tr("Xác nhận thu hồi phiên"),
             icon: Icons.shield_outlined,
           ),
           content: !s.active
-              ? const Text('Phiên đã đóng hoặc ứng dụng đang ở nền.')
+              ? Text(context.tr("Phiên đã đóng hoặc ứng dụng đang ở nền."))
               : SizedBox(
                   width: 440,
                   child: Form(
@@ -322,20 +339,28 @@ class _RevokeDialogState extends State<_RevokeDialog> {
                       children: [
                         Text(
                           widget.id == null
-                              ? 'Các phiên khác sẽ cần đăng nhập lại. Phiên hiện tại được giữ nguyên.'
-                              : 'Phiên được chọn sẽ cần đăng nhập lại.',
+                              ? context.tr(
+                                  "Các phiên khác sẽ cần đăng nhập lại. Phiên hiện tại được giữ nguyên.",
+                                )
+                              : context.tr(
+                                  "Phiên được chọn sẽ cần đăng nhập lại.",
+                                ),
                         ),
                         const SizedBox(height: 20),
                         TextFormField(
+                          errorBuilder: (context, message) =>
+                              Text(context.trMessage(message)),
                           controller: password,
                           enabled: !s.busy,
                           obscureText: !show,
                           maxLength: 128,
                           autofillHints: const [AutofillHints.password],
                           decoration: InputDecoration(
-                            labelText: 'Mật khẩu tài khoản',
+                            labelText: context.tr("Mật khẩu tài khoản"),
                             suffixIcon: IconButton(
-                              tooltip: show ? 'Ẩn mật khẩu' : 'Hiện mật khẩu',
+                              tooltip: show
+                                  ? context.tr("Ẩn mật khẩu")
+                                  : context.tr("Hiện mật khẩu"),
                               onPressed: s.busy
                                   ? null
                                   : () => setState(() => show = !show),
@@ -347,14 +372,16 @@ class _RevokeDialogState extends State<_RevokeDialog> {
                             ),
                           ),
                           validator: (v) => v == null || v.isEmpty
-                              ? 'Nhập mật khẩu tài khoản để xác nhận.'
+                              ? context.tr(
+                                  "Nhập mật khẩu tài khoản để xác nhận.",
+                                )
                               : null,
                           onFieldSubmitted: (_) => submit(),
                         ),
                         if (s.message != null)
                           Padding(
                             padding: const EdgeInsets.only(top: 8),
-                            child: Text(s.message!),
+                            child: Text(context.trMessage(s.message!)),
                           ),
                       ],
                     ),
@@ -363,11 +390,15 @@ class _RevokeDialogState extends State<_RevokeDialog> {
           actions: [
             TextButton(
               onPressed: s.busy ? null : () => Navigator.pop(context),
-              child: const Text('Hủy'),
+              child: Text(context.tr("Hủy")),
             ),
             FilledButton(
               onPressed: s.active && !s.busy && s.validated ? submit : null,
-              child: Text(s.busy ? 'Đang thu hồi…' : 'Xác nhận thu hồi'),
+              child: Text(
+                s.busy
+                    ? context.tr("Đang thu hồi…")
+                    : context.tr("Xác nhận thu hồi"),
+              ),
             ),
           ],
         ),

@@ -1,0 +1,2 @@
+warning: in the working copy of 'test/deskbook_layout_test.dart', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'test/prism_motion_test.dart', LF will be replaced by CRLF the next time Git touches it

@@ -1,0 +1,6 @@
+warning: in the working copy of 'lib/domain/note.dart', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'lib/state/protected_reader.dart', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'pubspec.lock', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'pubspec.yaml', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'test/deskbook_layout_test.dart', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'test/prism_motion_test.dart', LF will be replaced by CRLF the next time Git touches it

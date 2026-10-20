@@ -1,3 +1,5 @@
+import '../l10n/app_strings.dart';
+
 import 'package:flutter/material.dart';
 
 import '../data/avatar_picker.dart';
@@ -12,8 +14,8 @@ class AccountAvatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Semantics(
     label: controller.avatarBytes == null
-        ? 'Ảnh đại diện mặc định'
-        : 'Ảnh đại diện của bạn',
+        ? context.tr("Ảnh đại diện mặc định")
+        : context.tr("Ảnh đại diện của bạn"),
     image: true,
     child: CircleAvatar(
       radius: radius,
@@ -63,7 +65,7 @@ class _AvatarEditorState extends State<AvatarEditor> {
       final file = await widget.picker();
       if (mounted && active && file != null) {
         if (file.bytes.isEmpty || file.bytes.length > 2 * 1024 * 1024) {
-          throw ArgumentError('Chọn ảnh tối đa 2 MiB');
+          throw ArgumentError(context.tr("Chọn ảnh tối đa 2 MiB"));
         }
         avatarContentType(file.bytes);
         setState(() => selected = file);
@@ -73,8 +75,9 @@ class _AvatarEditorState extends State<AvatarEditor> {
     } catch (_) {
       if (mounted) {
         setState(
-          () => message =
-              'Không mở được ảnh. Kiểm tra quyền truy cập file và thử lại.',
+          () => message = context.tr(
+            "Không mở được ảnh. Kiểm tra quyền truy cập file và thử lại.",
+          ),
         );
       }
     } finally {
@@ -101,8 +104,8 @@ class _AvatarEditorState extends State<AvatarEditor> {
         setState(() {
           selected = null;
           message = remove
-              ? 'Đã dùng ảnh mặc định.'
-              : 'Server đã lưu ảnh đại diện.';
+              ? context.tr("Đã dùng ảnh mặc định.")
+              : context.tr("Server đã lưu ảnh đại diện.");
         });
       }
     } catch (e) {
@@ -120,8 +123,8 @@ class _AvatarEditorState extends State<AvatarEditor> {
     child: AnimatedBuilder(
       animation: c,
       builder: (context, _) => AlertDialog(
-        title: const DialogHeading(
-          'Ảnh đại diện',
+        title: DialogHeading(
+          context.tr("Ảnh đại diện"),
           icon: Icons.account_circle_outlined,
         ),
         scrollable: true,
@@ -131,25 +134,35 @@ class _AvatarEditorState extends State<AvatarEditor> {
           children: [
             Center(child: AccountAvatar(controller: c, radius: 48)),
             const SizedBox(height: 16),
-            const StatusNotice(
-              message: 'Chọn ảnh PNG/JPEG tối đa 2 MiB. Cần kết nối để cập nhật ảnh đại diện cho tài khoản.',
+            StatusNotice(
+              message: context.tr(
+                "Chọn ảnh PNG/JPEG tối đa 2 MiB. Cần kết nối để cập nhật ảnh đại diện cho tài khoản.",
+              ),
               icon: Icons.image_outlined,
             ),
             if (selected != null)
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 12),
                 child: Text(
-                  'Đã chọn: ${selected!.name} · ${(selected!.bytes.length / 1024).ceil()} KiB',
+                  context.tr("Đã chọn: {0} · {1} KiB", [
+                    selected!.name,
+                    (selected!.bytes.length / 1024).ceil(),
+                  ]),
                 ),
               ),
-            if (c.avatarError != null) Text(c.avatarError!),
+            if (c.avatarError != null) Text(context.trMessage(c.avatarError!)),
             if (message != null)
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 12),
-                child: Text(message!, key: const Key('avatar-message')),
+                child: Text(
+                  context.trMessage(message!),
+                  key: const Key('avatar-message'),
+                ),
               ),
             if (!active)
-              const Text('Tài khoản đã thay đổi. Đóng cửa sổ này và mở lại.'),
+              Text(
+                context.tr("Tài khoản đã thay đổi. Đóng cửa sổ này và mở lại."),
+              ),
             Wrap(
               spacing: 8,
               runSpacing: 8,
@@ -158,7 +171,7 @@ class _AvatarEditorState extends State<AvatarEditor> {
                   key: const Key('avatar-pick'),
                   onPressed: busy || !active ? null : choose,
                   icon: const Icon(Icons.image_outlined),
-                  label: const Text('Chọn ảnh'),
+                  label: Text(context.tr("Chọn ảnh")),
                 ),
                 if (c.user?['has_avatar'] == true)
                   TextButton(
@@ -166,7 +179,7 @@ class _AvatarEditorState extends State<AvatarEditor> {
                     onPressed: busy || !active
                         ? null
                         : () => submit(remove: true),
-                    child: const Text('Dùng ảnh mặc định'),
+                    child: Text(context.tr("Dùng ảnh mặc định")),
                   ),
                 TextButton(
                   onPressed: busy || !active
@@ -178,13 +191,17 @@ class _AvatarEditorState extends State<AvatarEditor> {
                               () => message =
                                   c.avatarError ??
                                   (c.online && c.error == null
-                                      ? 'Đã kiểm tra lại trạng thái trên server.'
+                                      ? context.tr(
+                                          "Đã kiểm tra lại trạng thái trên server.",
+                                        )
                                       : c.error ??
-                                            'Chưa kiểm tra được trạng thái trên server.'),
+                                            context.tr(
+                                              "Chưa kiểm tra được trạng thái trên server.",
+                                            )),
                             );
                           }
                         },
-                  child: const Text('Kiểm tra trạng thái'),
+                  child: Text(context.tr("Kiểm tra trạng thái")),
                 ),
               ],
             ),
@@ -193,7 +210,7 @@ class _AvatarEditorState extends State<AvatarEditor> {
         actions: [
           TextButton(
             onPressed: busy ? null : () => Navigator.pop(context),
-            child: const Text('Đóng'),
+            child: Text(context.tr("Đóng")),
           ),
           FilledButton(
             key: const Key('avatar-upload'),
@@ -204,7 +221,7 @@ class _AvatarEditorState extends State<AvatarEditor> {
                     height: 18,
                     child: CircularProgressIndicator(strokeWidth: 2),
                   )
-                : const Text('Tải ảnh lên'),
+                : Text(context.tr("Tải ảnh lên")),
           ),
         ],
       ),

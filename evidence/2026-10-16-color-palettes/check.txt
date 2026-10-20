@@ -1,0 +1,9 @@
+Formatted 129 files (0 changed) in 1.43 seconds.
+Analyzing flutter cuoi ki...                                    
+
+   info - Don't invoke 'print' in production code. Try using a logging framework - test\color_palette_test.dart:74:9 - avoid_print
+   info - Statements in a for should be enclosed in a block. Try wrapping the statement in a block - test\color_palette_test.dart:179:9 - curly_braces_in_flow_control_structures
+   info - Statements in a for should be enclosed in a block. Try wrapping the statement in a block - test\color_palette_test.dart:180:11 - curly_braces_in_flow_control_structures
+   info - 'hasFlag' is deprecated and shouldn't be used. Use flagsCollection instead. This feature was deprecated after v3.32.0-0.0.pre. Try replacing the use of the deprecated member with the replacement - test\color_palette_test.dart:234:14 - deprecated_member_use
+
+4 issues found. (ran in 5.2s)

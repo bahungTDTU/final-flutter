@@ -1,0 +1,18 @@
+{
+  "browser-api-after.json": "9b4e92cfff2d9ce2dcf76818a1ebd465c50c032c9d21668505aaf687e54f2aa1",
+  "build-apk.txt": "e7a345b87c443cd433f0dad79e5f0e48d2eb8d3743b04d4f3a32ff6f3f36b25d",
+  "build-web.txt": "878ff90feca986d7229dcae043ca7dd9ea039b17a0bef9510c2134c41ecccbb4",
+  "check.txt": "7862744d53ddc4388d979deb4a5e9add6705b089f15260fc609ce2297eb58284",
+  "INDEX.md": "5171188dd32dcb0100701b7be43ee151d6888d56d8db4934a94812e809427137",
+  "regression-before.txt": "82b95b3b4d238c150a616977a8785caf6748c7511b199661689bce775f09c1e5",
+  "result.json": "35f5be686032042bafa7261636662073042898f9a76403ba6de78cc73bf5784e",
+  "screenshots/dashboard-pc-dark.png": "bd82e3c9b9e4656814a17d860ae14a8fbccf5dfdf7c042fc8a5db6a4f57572e7",
+  "screenshots/dashboard-pc.png": "0b2ca8345be89790b036f46f274e4398ff6a09583dcd0bd3bd19e6575f8a8e16",
+  "screenshots/dashboard-phone-dark.png": "84b70c1756d6d75f5bdf0a13ebffde7a40bb6cd95523f383b0fbe2aaac12f5a3",
+  "screenshots/editor-landscape-dark.png": "9dd52b8b6603490f22a1c973eecaef476abf0702395c247ec8d00c1a74a3dbb0",
+  "screenshots/editor-phone-dark-validation.png": "52125f5d7ef0ef30a30d6794612eea472694ccd857838d16b8bb99c0051c16d8",
+  "screenshots/editor-phone-validation.png": "d247761d5a03d42100afa3fb8457947165db25795da1bc93897cd84accfeae47",
+  "screenshots/sharing-en-success.png": "b622511250842ee9ad5f442b6b2a11c4829385631a4983bb509c70ae29d7b8b0",
+  "source-manifest.json": "de432b1f98bdb35ece205628bce7a5f74ec004ca1de0fcfd4d8a8eec8d54e01f",
+  "verification.json": "3bd48e090887c80531eaec653a2f9c79bad9d35b1d52657d0d9a4e6f09069ee3"
+}

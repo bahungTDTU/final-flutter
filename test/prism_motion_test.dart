@@ -105,7 +105,11 @@ void main() {
         final material = find
             .descendant(
               of: find.byType(PrismCard),
-              matching: find.byType(Material),
+              matching: find.byWidgetPredicate(
+                (widget) =>
+                    widget is Material &&
+                    widget.type != MaterialType.transparency,
+              ),
             )
             .first;
         final before = tester.getRect(material);

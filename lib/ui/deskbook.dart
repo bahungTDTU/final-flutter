@@ -1,3 +1,5 @@
+import '../l10n/app_strings.dart';
+
 import 'package:flutter/material.dart';
 
 import 'design_system.dart';
@@ -26,7 +28,7 @@ class DeskMasthead extends StatelessWidget {
       color: colors.surface,
       child: Container(
         key: const Key('desk-masthead'),
-        padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 12),
         decoration: BoxDecoration(
           border: Border(bottom: BorderSide(color: colors.outlineVariant)),
         ),
@@ -35,47 +37,14 @@ class DeskMasthead extends StatelessWidget {
             const Brand(),
             const SizedBox(width: 36),
             Expanded(
-              child: Row(
-                children: [
-                  for (var i = 0; i < destinations.length; i++) ...[
-                    Expanded(
-                      child: Semantics(
-                        selected: i == selected,
-                        child: DecoratedBox(
-                          decoration: BoxDecoration(
-                            border: Border(
-                              bottom: BorderSide(
-                                color: i == selected
-                                    ? colors.primary
-                                    : Colors.transparent,
-                                width: 2,
-                              ),
-                            ),
-                          ),
-                          child: TextButton.icon(
-                            onPressed: () => onSelected(i),
-                            style: TextButton.styleFrom(
-                              foregroundColor: i == selected
-                                  ? colors.onSurface
-                                  : colors.onSurfaceVariant,
-                            ),
-                            icon: ExcludeSemantics(
-                              child: Text(
-                                '${i + 1}'.padLeft(2, '0'),
-                                style: Theme.of(context).textTheme.bodySmall,
-                              ),
-                            ),
-                            label: Text(destinations[i]),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ],
+              child: DeskDestinationStrip(
+                destinations: destinations,
+                selected: selected,
+                onSelected: onSelected,
               ),
             ),
             IconButton(
-              tooltip: 'Tìm nhanh · Ctrl+K',
+              tooltip: context.tr("Tìm nhanh · Ctrl+K"),
               onPressed: onQuickFind,
               icon: const Icon(Icons.manage_search),
             ),
@@ -83,11 +52,149 @@ class DeskMasthead extends StatelessWidget {
             create,
             const SizedBox(width: 16),
             IconButton(
-              tooltip: 'Hồ sơ và tùy chỉnh',
+              tooltip: context.tr("Hồ sơ và tùy chỉnh"),
               onPressed: onAccount,
               icon: avatar,
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+/// Three clearly bounded destinations; framework buttons own focus and input.
+class DeskDestinationStrip extends StatelessWidget {
+  const DeskDestinationStrip({
+    super.key,
+    required this.destinations,
+    required this.selected,
+    required this.onSelected,
+  });
+  final List<String> destinations;
+  final int selected;
+  final ValueChanged<int> onSelected;
+  static const icons = [
+    Icons.notes_rounded,
+    Icons.people_outline_rounded,
+    Icons.auto_awesome_outlined,
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context), colors = theme.colorScheme;
+    return Semantics(
+      container: true,
+      explicitChildNodes: true,
+      label: context.tr("Điều hướng chính"),
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          color: colors.surfaceContainerLow,
+          border: Border.all(color: colors.outlineVariant),
+          borderRadius: BorderRadius.circular(14),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(4),
+          child: Row(
+            children: [
+              for (var i = 0; i < destinations.length; i++) ...[
+                if (i > 0) const SizedBox(width: 4),
+                Expanded(
+                  child: MergeSemantics(
+                    child: Semantics(
+                      selected: i == selected,
+                      child: TextButton(
+                        key: ValueKey('desk-destination-$i'),
+                        onPressed: () => onSelected(i),
+                        style: ButtonStyle(
+                          minimumSize: const WidgetStatePropertyAll(
+                            Size(0, 52),
+                          ),
+                          padding: const WidgetStatePropertyAll(
+                            EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+                          ),
+                          animationDuration: PrismMotion.duration(
+                            context,
+                            PrismMotion.hover,
+                          ),
+                          backgroundColor: WidgetStatePropertyAll(
+                            i == selected ? colors.primary : Colors.transparent,
+                          ),
+                          foregroundColor: WidgetStatePropertyAll(
+                            i == selected ? colors.onPrimary : colors.onSurface,
+                          ),
+                          overlayColor: WidgetStateProperty.resolveWith((
+                            states,
+                          ) {
+                            if (states.contains(WidgetState.pressed)) {
+                              return (i == selected
+                                      ? colors.onPrimary
+                                      : colors.primary)
+                                  .withValues(alpha: .12);
+                            }
+                            if (states.contains(WidgetState.hovered)) {
+                              return (i == selected
+                                      ? colors.onPrimary
+                                      : colors.primary)
+                                  .withValues(alpha: .06);
+                            }
+                            return Colors.transparent;
+                          }),
+                          shape: WidgetStatePropertyAll(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
+                          side: WidgetStateProperty.resolveWith(
+                            (states) => BorderSide(
+                              color: states.contains(WidgetState.focused)
+                                  ? i == selected
+                                        ? colors.onPrimary
+                                        : colors.primary
+                                  : Colors.transparent,
+                              width: 2,
+                            ),
+                          ),
+                          textStyle: WidgetStatePropertyAll(
+                            theme.textTheme.labelLarge?.copyWith(
+                              fontSize: 14,
+                              height: 1.3,
+                              fontWeight: i == selected
+                                  ? FontWeight.w700
+                                  : FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                        child: Row(
+                          children: [
+                            ExcludeSemantics(
+                              child: Icon(
+                                i < icons.length
+                                    ? icons[i]
+                                    : Icons.notes_rounded,
+                                size: 20,
+                              ),
+                            ),
+                            const SizedBox(width: 8),
+                            Expanded(child: Text(context.tr(destinations[i]))),
+                            const SizedBox(width: 6),
+                            ExcludeSemantics(
+                              child: SizedBox(
+                                width: 16,
+                                child: i == selected
+                                    ? const Icon(Icons.check_rounded, size: 16)
+                                    : null,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ],
+          ),
         ),
       ),
     );
@@ -119,7 +226,7 @@ class DeskToolDrawer extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
-              'NGĂN BÀN',
+              context.tr("NGĂN BÀN"),
               style: theme.textTheme.bodySmall?.copyWith(
                 letterSpacing: 2,
                 fontWeight: FontWeight.w700,
@@ -127,54 +234,56 @@ class DeskToolDrawer extends StatelessWidget {
             ),
             const SizedBox(height: 24),
             Text(
-              'Từ ý tưởng\nđến bản nháp.',
+              context.tr("Từ ý tưởng\nđến bản nháp."),
               style: theme.textTheme.headlineSmall?.copyWith(
                 fontWeight: FontWeight.w500,
               ),
             ),
             const SizedBox(height: 12),
             Text(
-              'Những công cụ nhỏ, luôn trong tầm tay.',
+              context.tr("Những công cụ nhỏ, luôn trong tầm tay."),
               style: theme.textTheme.bodySmall,
             ),
             const SizedBox(height: 24),
             _DrawerAction(
               icon: Icons.auto_awesome_mosaic_outlined,
-              title: 'Xưởng ghi chú',
-              detail: 'Bắt đầu từ một mẫu',
+              title: context.tr("Xưởng ghi chú"),
+              detail: context.tr("Bắt đầu từ một mẫu"),
               onTap: onTemplates,
             ),
             const SizedBox(height: 12),
             _DrawerAction(
               icon: Icons.space_dashboard_outlined,
-              title: 'Không gian làm việc',
-              detail: 'Kế hoạch, việc cần làm và tập trung',
+              title: context.tr("Không gian làm việc"),
+              detail: context.tr("Kế hoạch, việc cần làm và tập trung"),
               onTap: onWorkspace,
             ),
             const SizedBox(height: 24),
             const Divider(),
             const SizedBox(height: 12),
             Tooltip(
-              message: 'Quản lý nhãn',
+              message: context.tr("Quản lý nhãn"),
               child: TextButton.icon(
                 onPressed: onLabels,
                 icon: const Icon(Icons.label_outline),
-                label: const Text('Quản lý nhãn'),
+                label: Text(context.tr("Quản lý nhãn")),
               ),
             ),
             TextButton.icon(
               onPressed: onAccount,
               icon: const Icon(Icons.tune),
-              label: const Text('Tùy chỉnh'),
+              label: Text(context.tr("Tùy chỉnh")),
             ),
             const SizedBox(height: 36),
             Text(
-              'ĐƯỜNG TẮT',
+              context.tr("ĐƯỜNG TẮT"),
               style: theme.textTheme.bodySmall?.copyWith(letterSpacing: 1.5),
             ),
             const SizedBox(height: 12),
             Text(
-              'Ctrl + F  /  Tìm trong thư viện\nCtrl + K  /  Tìm nhanh',
+              context.tr(
+                "Ctrl + F  /  Tìm trong thư viện\nCtrl + K  /  Tìm nhanh",
+              ),
               style: theme.textTheme.bodySmall?.copyWith(height: 2),
             ),
           ],
@@ -264,7 +373,7 @@ class NotebookTitle extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'SỔ GHI / NOTETOGETHER',
+                context.tr("SỔ GHI / NOTETOGETHER"),
                 style: theme.textTheme.bodySmall?.copyWith(letterSpacing: 1.5),
               ),
               const SizedBox(height: 12),
@@ -285,7 +394,10 @@ class NotebookTitle extends StatelessWidget {
                 spacing: 16,
                 crossAxisAlignment: WrapCrossAlignment.center,
                 children: [
-                  Text('$count ghi chú', style: theme.textTheme.bodySmall),
+                  Text(
+                    context.tr("{0} ghi chú", [count]),
+                    style: theme.textTheme.bodySmall,
+                  ),
                   sync,
                 ],
               ),

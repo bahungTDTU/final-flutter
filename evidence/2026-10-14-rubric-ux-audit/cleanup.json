@@ -1,0 +1,7 @@
+{
+  "browser_old_qa_tabs": "No longer present after app restart; current user tab retained",
+  "date": "2026-10-15T08:42:06.2541236+07:00",
+  "only_matching_qa_commands": true,
+  "stopped_qa_processes": [],
+  "viewport": "reset"
+}

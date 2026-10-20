@@ -15,6 +15,7 @@ void main() {
       await tester.pumpWidget(NoteTogetherApp(controller: c));
       await tester.tap(find.byTooltip('Hồ sơ và tùy chỉnh'));
       await tester.pumpAndSettle();
+      await tester.ensureVisible(find.text('Giao diện tối'));
       await tester.tap(find.text('Giao diện tối'));
       await tester.pumpAndSettle();
       expect(c.dark, true);

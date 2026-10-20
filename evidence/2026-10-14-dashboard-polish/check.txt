@@ -1,0 +1,6 @@
+Formatted 118 files (0 changed) in 1.36 seconds.
+Analyzing flutter cuoi ki...                                    
+
+   info - Parameter 'id' could be a super parameter. Trying converting 'id' to a super parameter - test\dashboard_polish_regression_test.dart:15:3 - use_super_parameters
+
+1 issue found. (ran in 40.1s)

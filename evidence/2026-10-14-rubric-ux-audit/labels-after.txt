@@ -1,0 +1,5 @@
+00:00 +0: loading D:/flutter cuoi ki/test/label_manager_regression_test.dart
+00:00 +0: Label management mounts only visible rows for a large catalogue
+LABEL_ROWS mounted=6 total=1000
+00:02 +1: Long label conflicts fit a compact window with enlarged text
+00:02 +2: All tests passed!

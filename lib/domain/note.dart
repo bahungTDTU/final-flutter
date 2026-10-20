@@ -1,3 +1,5 @@
+import 'package:characters/characters.dart';
+
 import 'note_document.dart';
 
 class Note {
@@ -124,5 +126,37 @@ int compareNotes(Note a, Note b) {
   return time != 0 ? time : a.id.compareTo(b.id);
 }
 
+const maxNoteTitleCodePoints = 200;
+const maxNoteContentCodePoints = 100000;
+const maxNoteLabels = 30;
+
+/// Match the server's Unicode code-point limits, not UTF-16 or grapheme count.
+String? noteValidationError(String title, String content) {
+  if (title.trim().isEmpty || plainNoteContent(content).trim().isEmpty) {
+    return 'Nhập tiêu đề và nội dung để tạo ghi chú';
+  }
+  if (title.runes.length > maxNoteTitleCodePoints) {
+    return 'Tiêu đề vượt giới hạn 200 mã Unicode. Bản nháp vẫn được giữ.';
+  }
+  if (content.runes.length > maxNoteContentCodePoints) {
+    return 'Nội dung vượt giới hạn lưu trữ. Hãy rút gọn; bản nháp vẫn được giữ.';
+  }
+  return null;
+}
+
 bool validNote(String title, String content) =>
-    title.trim().isNotEmpty && plainNoteContent(content).trim().isNotEmpty;
+    noteValidationError(title, content) == null;
+
+/// Reserve space for the suffix without cutting a user's grapheme in half.
+String recoveryNoteTitle(String title) {
+  const suffix = ' (bản phục hồi)';
+  var remaining = maxNoteTitleCodePoints - suffix.runes.length;
+  final prefix = StringBuffer();
+  for (final character in title.trim().characters) {
+    final size = character.runes.length;
+    if (size > remaining) break;
+    prefix.write(character);
+    remaining -= size;
+  }
+  return '${prefix.toString().trimRight()}$suffix'.trim();
+}

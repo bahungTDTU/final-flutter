@@ -1,0 +1,66 @@
+00:00 +0: loading D:/flutter cuoi ki/test/localization_test.dart
+00:00 +0: D:/flutter cuoi ki/test/localization_test.dart: English auth, settings and live editor fit a phone with 200% text
+00:00 +1: D:/flutter cuoi ki/test/localization_test.dart: English auth, settings and live editor fit a phone with 200% text
+00:01 +2: D:/flutter cuoi ki/test/localization_test.dart: English auth, settings and live editor fit a phone with 200% text
+00:01 +3: D:/flutter cuoi ki/test/localization_test.dart: English auth, settings and live editor fit a phone with 200% text
+00:01 +4: D:/flutter cuoi ki/test/localization_test.dart: English auth, settings and live editor fit a phone with 200% text
+00:01 +5: D:/flutter cuoi ki/test/localization_test.dart: English auth, settings and live editor fit a phone with 200% text
+00:01 +6: D:/flutter cuoi ki/test/localization_test.dart: English auth, settings and live editor fit a phone with 200% text
+00:01 +7: D:/flutter cuoi ki/test/localization_test.dart: English auth, settings and live editor fit a phone with 200% text
+00:01 +8: D:/flutter cuoi ki/test/localization_test.dart: English auth, settings and live editor fit a phone with 200% text
+00:01 +9: D:/flutter cuoi ki/test/localization_test.dart: English auth, settings and live editor fit a phone with 200% text
+00:01 +10: D:/flutter cuoi ki/test/localization_test.dart: English auth, settings and live editor fit a phone with 200% text
+00:01 +11: D:/flutter cuoi ki/test/localization_test.dart: English auth, settings and live editor fit a phone with 200% text
+00:01 +11: D:/flutter cuoi ki/test/dashboard_polish_regression_test.dart: Sync status pulses update without rebuilding the library
+DASHBOARD_PULSE_PROBE replacements=0 preview_projections=0
+00:01 +12: D:/flutter cuoi ki/test/localization_test.dart: English auth, settings and live editor fit a phone with 200% text
+00:01 +13: D:/flutter cuoi ki/test/localization_test.dart: English auth, settings and live editor fit a phone with 200% text
+00:02 +14: D:/flutter cuoi ki/test/localization_test.dart: English auth, settings and live editor fit a phone with 200% text
+00:02 +15: D:/flutter cuoi ki/test/localization_test.dart: English auth, settings and live editor fit a phone with 200% text
+00:02 +16: D:/flutter cuoi ki/test/dashboard_polish_regression_test.dart: Preview survives theme/font changes and purges immediately on remote lock
+00:02 +17: D:/flutter cuoi ki/test/dashboard_polish_regression_test.dart: Preview survives theme/font changes and purges immediately on remote lock
+00:02 +18: D:/flutter cuoi ki/test/dashboard_polish_regression_test.dart: Preview survives theme/font changes and purges immediately on remote lock
+00:02 +19: D:/flutter cuoi ki/test/dashboard_polish_regression_test.dart: Preview survives theme/font changes and purges immediately on remote lock
+00:02 +20: D:/flutter cuoi ki/test/ui_upgrade_test.dart: Ctrl F focuses search and clearing labels preserves the query
+00:02 +21: D:/flutter cuoi ki/test/localization_test.dart: Language picker works before sign-in and updates cached validation without losing input
+00:02 +22: D:/flutter cuoi ki/test/dashboard_polish_regression_test.dart: Home still reacts to profile, label rename, deletion and pending-note changes
+00:02 +23: D:/flutter cuoi ki/test/dashboard_polish_regression_test.dart: Home still reacts to profile, label rename, deletion and pending-note changes
+00:02 +24: D:/flutter cuoi ki/test/localization_test.dart: Live locale switch preserves rich draft, selection, note identity and frozen revision
+00:03 +24: D:/flutter cuoi ki/test/dashboard_polish_regression_test.dart: 500 rich notes remain lazy during sync pulses and view toggling
+DASHBOARD_500_PROBE visible_projections=6 pulse_projections=0 pulse_wall_us=138251
+00:03 +25: D:/flutter cuoi ki/test/localization_test.dart: Live locale switch preserves rich draft, selection, note identity and frozen revision
+00:03 +26: D:/flutter cuoi ki/test/localization_test.dart: Live locale switch preserves rich draft, selection, note identity and frozen revision
+00:03 +27: D:/flutter cuoi ki/test/ui_upgrade_test.dart: Management sheets and auth fit Size(844.0, 390.0) with 200 percent text
+00:03 +28: D:/flutter cuoi ki/test/localization_test.dart: English Home retains user titles, private lock boundaries, query and layout across themes and resize
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: exactly one matching candidate
+  Actual: _TextWidgetFinder:<Found 0 widgets with text "Your notes": []>
+   Which: means none were found but one was expected
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///D:/flutter%20cuoi%20ki/test/localization_test.dart:300:11)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1953:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///D:/flutter%20cuoi%20ki/test/localization_test.dart line 300
+The test description was:
+  English Home retains user titles, private lock boundaries, query and layout across themes and
+  resize
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:04 +28 -1: D:/flutter cuoi ki/test/ui_upgrade_test.dart: Management sheets and auth fit Size(1280.0, 600.0) with 200 percent text
+00:04 +28 -1: D:/flutter cuoi ki/test/localization_test.dart: English Home retains user titles, private lock boundaries, query and layout across themes and resize [E]
+  Test failed. See exception logs above.
+  The test description was: English Home retains user titles, private lock boundaries, query and layout across themes and resize
+  
+00:04 +29 -1: D:/flutter cuoi ki/test/ui_upgrade_test.dart: Short desktop falls back to rail without sidebar overflow
+00:04 +30 -1: Some tests failed.
+
+Failing tests:
+  D:/flutter cuoi ki/test/localization_test.dart: English Home retains user titles, private lock boundaries, query and layout across themes and resize

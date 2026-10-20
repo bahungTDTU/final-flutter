@@ -1,0 +1,33 @@
+00:00 +0: loading D:/flutter cuoi ki/test/localization_test.dart
+00:00 +0: D:/flutter cuoi ki/test/localization_test.dart: English auth, settings and live editor fit a phone with 200% text
+00:01 +1: D:/flutter cuoi ki/test/localization_test.dart: English auth, settings and live editor fit a phone with 200% text
+00:01 +2: D:/flutter cuoi ki/test/localization_test.dart: English auth, settings and live editor fit a phone with 200% text
+00:02 +3: D:/flutter cuoi ki/test/localization_test.dart: English auth, settings and live editor fit a phone with 200% text
+00:02 +4: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(360.0, 800.0) at scale 1.0
+00:02 +5: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(360.0, 800.0) at scale 1.0
+00:02 +6: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(360.0, 800.0) at scale 1.0
+00:02 +7: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(360.0, 800.0) at scale 1.0
+00:02 +8: D:/flutter cuoi ki/test/localization_test.dart: Language picker works before sign-in and updates cached validation without losing input
+00:02 +9: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(360.0, 800.0) at scale 1.5
+00:03 +10: D:/flutter cuoi ki/test/localization_test.dart: Live locale switch preserves rich draft, selection, note identity and frozen revision
+00:03 +11: D:/flutter cuoi ki/test/localization_test.dart: Live locale switch preserves rich draft, selection, note identity and frozen revision
+00:03 +12: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(390.0, 844.0) at scale 1.0
+00:04 +13: D:/flutter cuoi ki/test/localization_test.dart: English Home retains user titles, private lock boundaries, query and layout across themes and resize
+00:04 +14: D:/flutter cuoi ki/test/localization_test.dart: English Home retains user titles, private lock boundaries, query and layout across themes and resize
+00:04 +15: D:/flutter cuoi ki/test/localization_test.dart: English Home retains user titles, private lock boundaries, query and layout across themes and resize
+00:05 +16: D:/flutter cuoi ki/test/localization_test.dart: English Home retains user titles, private lock boundaries, query and layout across themes and resize
+00:05 +17: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(844.0, 390.0) at scale 1.5
+00:05 +18: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(844.0, 390.0) at scale 2.0
+00:05 +19: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(768.0, 1024.0) at scale 1.0
+00:05 +20: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(768.0, 1024.0) at scale 1.5
+00:06 +21: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(768.0, 1024.0) at scale 2.0
+00:06 +22: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(1280.0, 800.0) at scale 1.0
+00:06 +23: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(1280.0, 800.0) at scale 1.5
+00:06 +24: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(1280.0, 800.0) at scale 2.0
+00:07 +25: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(1440.0, 900.0) at scale 1.0
+00:07 +26: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(1440.0, 900.0) at scale 1.5
+00:07 +27: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(1440.0, 900.0) at scale 2.0
+00:07 +28: D:/flutter cuoi ki/test/ui_redesign_test.dart: Locked card never exposes title content or labels; viewer has no owner menu
+00:08 +29: D:/flutter cuoi ki/test/ui_redesign_test.dart: Search clear and AND filter preserve note list and distinguish empty results
+00:08 +30: D:/flutter cuoi ki/test/ui_redesign_test.dart: Resize and theme retain editor text selection, ID and frozen revision
+00:09 +31: All tests passed!

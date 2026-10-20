@@ -1,4 +1,44 @@
-# NoteTogether – UI/UX design, cập nhật 13/10/2026
+# NoteTogether – UI/UX design, cập nhật 14/10/2026
+
+## Bảng màu16/10
+
+Sáu tổ hợp sáng/tối, semantic tokens toàn UI và previews/check/selected semantics; palette modal có header cố định, gallery cuộn. Settings đặt công tắc sáng/tối trước gallery. Giữ Deskbook/NotoSans. [Override](../design-system/notetogether-deskbook/pages/color-palettes.md), [chi tiết](COLOR_PALETTES.md).
+
+## Song ngữ —16/10/2026
+
+Giữ Atelier/Deskbook tokens, NotoSans và bố cục PC/mobile. Bộ chọn đăng nhập có autonym,
+phone/chữ lớn dùng menu biểu tượng; settings có helper giải thích phạm vi; editor có icon translate.
+Tất cả label/hint/tooltip/validator/status chuẩn được dịch ở UI; private/user data giữ nguyên.
+Không thêm transition giữ nội dung cũ, không remount editor khi locale thay đổi.
+[Phạm vi và invariants](BILINGUAL_UI.md).
+
+## Quản lý nhãn —14–15/10/2026
+
+LabelManager account/token-scoped; surface/card/input/footer dùng Atelier tokens/NotoSans.
+Sliver list có search/header cuộn chung, footer actions riêng và Wrap; inset theo keyboard,
+room90%/max720, compact padding12. Mỗi row có tên wrap+menu48dp; conflict action đặt
+bên dưới divider để không chiếm trailing width. Không thêm animation/blur của danh sách.
+[Audit](RUBRIC_AND_UX_AUDIT_2026-10-14.md), [spec](../design-system/notetogether-deskbook/pages/label-manager.md).
+
+
+## Thanh điều hướng PC —14/10/2026
+
+Override cách trình bày masthead: bỏ ordinal/gạch dưới dài, dùng nhóm ba nút native có
+Material icons/chữ14 weight600/700; selected primary/onPrimary + tick, min52dp, focus2dp,
+gap/inset4/radius14. Nhãn wrap, chỗ tick cố định;180ms/reduced motion0, không transform.
+Giữ theme/bố cục và callback; phone/rail giữ components hiện có.
+[Spec](../design-system/notetogether-deskbook/pages/desk-navigation.md),
+[kết quả](UI_DESK_NAVIGATION.md). Các mục dưới là snapshots trước lượt này.
+
+## Dashboard — interaction refinement14/10/2026
+
+Giữ bố cục Deskbook và màu/font Atelier. Hit bounds của thẻ đứng yên; chỉ phần hình ảnh
+dịch2dp/scale.985 trong180ms, easeOutCubic. Bóng blur6/14, offset2/5 và pressed tint.09
+nhẹ hơn; viền focus2dp vẽ trên nền thẻ, body paint riêng; reduced motion tắt transform/duration. Status sync cập nhật
+riêng; excerpt480 giới hạn trong mounted widget, khóa/update thay ngay, không exit cache.
+Clear-all hủy debounce trước khi xóa. Không thay searchindex/editor/revision/selection.
+[Spec](../design-system/notetogether-deskbook/pages/dashboard-motion.md),
+[kết quả](DASHBOARD_MOTION_AND_PERFORMANCE.md). Các mục dưới giữ snapshots trước lượt này.
 
 ## Inspector — bố cục hiện hành13/10/2026
 

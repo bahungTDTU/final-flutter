@@ -1,3 +1,5 @@
+import '../l10n/app_strings.dart';
+
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -59,7 +61,7 @@ class _FocusPanelState extends State<FocusPanel> {
         failedCompletion = completing;
         error = e is StateError
             ? e.message.toString()
-            : 'Chưa lưu được đồng hồ. Hãy thử lại.';
+            : context.tr("Chưa lưu được đồng hồ. Hãy thử lại.");
       }
     } finally {
       if (mounted) setState(() => busy = false);
@@ -74,22 +76,24 @@ class _FocusPanelState extends State<FocusPanel> {
       builder: (_) => AnimatedBuilder(
         animation: c,
         builder: (context, _) => AlertDialog(
-          title: const Text('Kết thúc phiên hiện tại?'),
+          title: Text(context.tr("Kết thúc phiên hiện tại?")),
           content: Text(
             c.user?['id'] == account
-                ? 'Phiên chưa hết giờ sẽ không tính vào mục tiêu. Bạn có thể tạm dừng để tiếp tục sau.'
-                : 'Phiên đăng nhập đã thay đổi.',
+                ? context.tr(
+                    "Phiên chưa hết giờ sẽ không tính vào mục tiêu. Bạn có thể tạm dừng để tiếp tục sau.",
+                  )
+                : context.tr("Phiên đăng nhập đã thay đổi."),
           ),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context, false),
-              child: const Text('Quay lại'),
+              child: Text(context.tr("Quay lại")),
             ),
             FilledButton(
               onPressed: c.user?['id'] != account
                   ? null
                   : () => Navigator.pop(context, true),
-              child: const Text('Kết thúc phiên'),
+              child: Text(context.tr("Kết thúc phiên")),
             ),
           ],
         ),
@@ -128,18 +132,20 @@ class _FocusPanelState extends State<FocusPanel> {
               children: [
                 PageIntro(
                   title: s?.breakTime == true
-                      ? 'Nghỉ ngắn'
-                      : 'Tập trung từng phiên',
-                  detail: 'Làm một việc, nghỉ một chút và ghi nhận tiến độ của bạn.',
+                      ? context.tr("Nghỉ ngắn")
+                      : context.tr("Tập trung từng phiên"),
+                  detail: context.tr(
+                    "Làm một việc, nghỉ một chút và ghi nhận tiến độ của bạn.",
+                  ),
                   icon: Icons.timer_outlined,
-                  eyebrow: 'THỜI GIAN CỦA BẠN',
+                  eyebrow: context.tr("THỜI GIAN CỦA BẠN"),
                   accent: 2,
                   panel: false,
                 ),
                 const SizedBox(height: 16),
                 Center(
                   child: Semantics(
-                    label: 'Thời gian còn lại $time',
+                    label: context.tr("Thời gian còn lại {0}", [time]),
                     liveRegion: false,
                     child: ExcludeSemantics(
                       child: FittedBox(
@@ -162,10 +168,12 @@ class _FocusPanelState extends State<FocusPanel> {
                   const SizedBox(height: 12),
                   Text(
                     remaining == 0
-                        ? 'Đã hết giờ. Đang ghi nhận phiên…'
+                        ? context.tr("Đã hết giờ. Đang ghi nhận phiên…")
                         : s.running
-                        ? 'Đang chạy · có thể rời màn hình và quay lại'
-                        : 'Đã tạm dừng',
+                        ? context.tr(
+                            "Đang chạy · có thể rời màn hình và quay lại",
+                          )
+                        : context.tr("Đã tạm dừng"),
                   ),
                 ] else
                   Wrap(
@@ -174,7 +182,7 @@ class _FocusPanelState extends State<FocusPanel> {
                     children: [
                       for (final v in [5, 15, 25, 50])
                         ChoiceChip(
-                          label: Text('$v phút'),
+                          label: Text(context.tr("{0} phút", [v])),
                           selected: minutes == v,
                           onSelected: busy
                               ? null
@@ -193,14 +201,14 @@ class _FocusPanelState extends State<FocusPanel> {
                             ? null
                             : () => act(() => c.startFocus(minutes)),
                         icon: const Icon(Icons.play_arrow_rounded),
-                        label: const Text('Bắt đầu'),
+                        label: Text(context.tr("Bắt đầu")),
                       ),
                       OutlinedButton.icon(
                         onPressed: busy
                             ? null
                             : () => act(() => c.startFocus(5, breakTime: true)),
                         icon: const Icon(Icons.coffee_outlined),
-                        label: const Text('Nghỉ 5 phút'),
+                        label: Text(context.tr("Nghỉ 5 phút")),
                       ),
                     ] else ...[
                       FilledButton.icon(
@@ -215,11 +223,15 @@ class _FocusPanelState extends State<FocusPanel> {
                         icon: Icon(
                           s.running ? Icons.pause : Icons.play_arrow_rounded,
                         ),
-                        label: Text(s.running ? 'Tạm dừng' : 'Tiếp tục'),
+                        label: Text(
+                          s.running
+                              ? context.tr("Tạm dừng")
+                              : context.tr("Tiếp tục"),
+                        ),
                       ),
                       TextButton(
                         onPressed: busy ? null : reset,
-                        child: const Text('Kết thúc phiên'),
+                        child: Text(context.tr("Kết thúc phiên")),
                       ),
                     ],
                   ],
@@ -240,7 +252,7 @@ class _FocusPanelState extends State<FocusPanel> {
                               () => c.changeFocus(s.id, 'finish'),
                               completing: s.id,
                             ),
-                      child: const Text('Thử lưu lại'),
+                      child: Text(context.tr("Thử lưu lại")),
                     ),
                 ],
               ],
@@ -252,9 +264,12 @@ class _FocusPanelState extends State<FocusPanel> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 SectionHeading(
-                  'Nhịp làm việc hôm nay',
-                  detail:
-                      '${today.length}/${data.dailyGoal} phiên · ${today.fold<int>(0, (sum, v) => sum + v.seconds) ~/ 60} phút hoàn thành',
+                  context.tr("Nhịp làm việc hôm nay"),
+                  detail: context.tr("{0}/{1} phiên · {2} phút hoàn thành", [
+                    today.length,
+                    data.dailyGoal,
+                    today.fold<int>(0, (sum, v) => sum + v.seconds) ~/ 60,
+                  ]),
                 ),
                 PrismProgress(
                   value: (today.length / data.dailyGoal).clamp(0, 1),
@@ -264,12 +279,15 @@ class _FocusPanelState extends State<FocusPanel> {
                   key: ValueKey('focus-goal-${data.dailyGoal}'),
                   isExpanded: true,
                   initialValue: data.dailyGoal,
-                  decoration: const InputDecoration(
-                    labelText: 'Mục tiêu mỗi ngày',
+                  decoration: InputDecoration(
+                    labelText: context.tr("Mục tiêu mỗi ngày"),
                   ),
                   items: [
                     for (int i = 1; i <= 12; i++)
-                      DropdownMenuItem(value: i, child: Text('$i phiên')),
+                      DropdownMenuItem(
+                        value: i,
+                        child: Text(context.tr("{0} phiên", [i])),
+                      ),
                   ],
                   onChanged: busy
                       ? null
@@ -280,7 +298,7 @@ class _FocusPanelState extends State<FocusPanel> {
                         },
                 ),
                 const SizedBox(height: 20),
-                const Text('7 ngày gần đây'),
+                Text(context.tr("7 ngày gần đây")),
                 const SizedBox(height: 8),
                 Wrap(
                   spacing: 8,
@@ -295,15 +313,21 @@ class _FocusPanelState extends State<FocusPanel> {
                             clock.value.day - i,
                           );
                           return MetadataPill(
-                            '${day.day}/${day.month} · ${data.onDay(day).length} phiên',
+                            context.tr("{0}/{1} · {2} phiên", [
+                              day.day,
+                              day.month,
+                              data.onDay(day).length,
+                            ]),
                           );
                         },
                       ),
                   ],
                 ),
                 const SizedBox(height: 16),
-                const Text(
-                  'Đồng hồ, mục tiêu và tối đa 100 phiên được mã hóa trên thiết bị này. Phiên hết giờ được ghi nhận khi bạn quay lại; thời gian nghỉ không tính vào mục tiêu. Không có thông báo hệ thống khi ứng dụng đã đóng.',
+                Text(
+                  context.tr(
+                    "Đồng hồ, mục tiêu và tối đa 100 phiên được mã hóa trên thiết bị này. Phiên hết giờ được ghi nhận khi bạn quay lại; thời gian nghỉ không tính vào mục tiêu. Không có thông báo hệ thống khi ứng dụng đã đóng.",
+                  ),
                 ),
               ],
             ),

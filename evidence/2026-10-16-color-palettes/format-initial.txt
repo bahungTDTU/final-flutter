@@ -1,0 +1,11 @@
+Formatted lib\domain\app_palette.dart
+Formatted lib\l10n\strings_en.dart
+Formatted lib\state\app_controller.dart
+Formatted lib\ui\app.dart
+Formatted lib\ui\design_system.dart
+Formatted lib\ui\editor.dart
+Formatted lib\ui\home.dart
+Formatted lib\ui\palette_picker.dart
+Formatted lib\ui\palette_tokens.dart
+Formatted lib\ui\prism.dart
+Formatted 61 files (10 changed) in 1.07 seconds.

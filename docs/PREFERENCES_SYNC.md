@@ -1,8 +1,9 @@
 # Tiêu chí 8 – tùy chỉnh theo tài khoản
 
-Ba tùy chọn: theme sáng/tối, cỡ chữ note 14–24, grid/list (grid mặc định).
+Năm tùy chọn: theme sáng/tối, cỡ chữ note14–24, grid/list (grid mặc định),
+ngôn ngữ giao diện vi/en (mặc định vi), palette6ID (mặc định atelier).
 UI áp dụng sau khi local transaction commit, lưu trong `account:<UUID>` cùng immutable
-`pending_preferences`. Logout trả theme/font/view về mặc định; hàng đợi cũ giữ trong namespace
+`pending_preferences`. Logout trả theme/font/view về mặc định; locale dùng lựa chọn công khai trước login; hàng đợi cũ giữ trong namespace
 của tài khoản cũ, không gửi bằng session tài khoản mới.
 
 Mỗi operation chứa UUID và chỉ các trường người dùng đổi. Đồng bộ gửi tuần tự trước note queue,
@@ -32,3 +33,14 @@ widget theme/pending/logout; integration Android real HTTP+Sembast offline port6
 reconnect và second session. Actual browser scope/result ở evidence/2026-10-01-preferences.
 Native test là emulator/debug; DB reopen cùng process, chưa OS kill/physical device.
 Chưa public deploy, video hoặc timestamp chấm.
+
+## Locale Việt–Anh —16/10/2026
+
+`ui:locale` chỉ giữ lựa chọn màn đăng nhập; không sao chép lựa chọn của tài khoản A
+sang B. Locale tài khoản dùng cùng pending_preferences/idempotency, không tạo queue riêng.
+Legacy PATCH thiếu locale giữ giá trị locale trên server; tài khoản thiếu trường mặc định vi.
+Xem [BILINGUAL_UI](BILINGUAL_UI.md) và [evidence](../evidence/2026-10-15-bilingual/INDEX.md).
+
+## Palette —16/10/2026
+
+Palette dùng chung immutable operations/field merge/account namespace. Strict6ID, không nhận màu tùy ý hoặc owner/permission. Legacy PATCH không reset palette/locale khi thiếu trường. Màn public dùng Atelier; account cũ thiếu palette fallback Atelier. Xem [COLOR_PALETTES](COLOR_PALETTES.md).

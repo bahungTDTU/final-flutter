@@ -1,0 +1,105 @@
+00:00 +0: loading D:/flutter cuoi ki/test/dashboard_polish_regression_test.dart
+00:00 +0: Hover at the card edge settles without a stationary-pointer loop
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: <0>
+  Actual: <1>
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///D:/flutter%20cuoi%20ki/test/dashboard_polish_regression_test.dart:59:5)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1953:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///D:/flutter%20cuoi%20ki/test/dashboard_polish_regression_test.dart line 59
+The test description was:
+  Hover at the card edge settles without a stationary-pointer loop
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:00 +0 -1: Hover at the card edge settles without a stationary-pointer loop [E]
+  Test failed. See exception logs above.
+  The test description was: Hover at the card edge settles without a stationary-pointer loop
+  
+00:00 +0 -1: Clear filters cancels a newer query still waiting for debounce
+
+Warning: A call to tap() with finder "Found 1 widget with text "Xóa tìm kiếm và bộ lọc": [
+  Text("Xóa tìm kiếm và bộ lọc", dependencies: [DefaultSelectionStyle, DefaultTextStyle, MediaQuery]),
+]" derived an Offset (Offset(492.5, 787.0)) that would not hit test on the specified widget.
+Maybe the widget is actually off-screen, or another widget is obscuring it, or the widget cannot receive pointer events.
+Indeed, Offset(492.5, 787.0) is outside the bounds of the root of the render tree, Size(800.0, 600.0).
+The finder corresponds to this RenderBox: RenderParagraph#7602b relayoutBoundary=up16
+The hit test result at that offset is: HitTestResult(HitTestEntry<HitTestTarget>#91a0c(_ReusableRenderView#f201d), HitTestEntry<HitTestTarget>#f01b1(<AutomatedTestWidgetsFlutterBinding>))
+#0      WidgetController._getElementPoint (package:flutter_test/src/controller.dart:2165:25)
+#1      WidgetController.getCenter (package:flutter_test/src/controller.dart:1947:12)
+#2      WidgetController.tap (package:flutter_test/src/controller.dart:1080:7)
+#3      main.<anonymous closure> (file:///D:/flutter%20cuoi%20ki/test/dashboard_polish_regression_test.dart:77:18)
+<asynchronous suspension>
+#4      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#5      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1953:5)
+<asynchronous suspension>
+#6      StackZoneSpecification._registerCallback.<anonymous closure> (package:stack_trace/src/stack_zone_specification.dart:114:42)
+<asynchronous suspension>
+To silence this warning, pass "warnIfMissed: false" to "tap()".
+To make this warning fatal, set WidgetController.hitTestWarningShouldBeFatal to true.
+
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: empty
+  Actual: 'truy vấn đang chờ'
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///D:/flutter%20cuoi%20ki/test/dashboard_polish_regression_test.dart:79:5)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1953:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///D:/flutter%20cuoi%20ki/test/dashboard_polish_regression_test.dart line 79
+The test description was:
+  Clear filters cancels a newer query still waiting for debounce
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:01 +0 -2: Clear filters cancels a newer query still waiting for debounce [E]
+  Test failed. See exception logs above.
+  The test description was: Clear filters cancels a newer query still waiting for debounce
+  
+00:01 +0 -2: Sync status pulses update without rebuilding the library
+DASHBOARD_PULSE_PROBE replacements=20 preview_projections=20
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: <0>
+  Actual: <20>
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///D:/flutter%20cuoi%20ki/test/dashboard_polish_regression_test.dart:114:5)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1953:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///D:/flutter%20cuoi%20ki/test/dashboard_polish_regression_test.dart line 114
+The test description was:
+  Sync status pulses update without rebuilding the library
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:02 +0 -3: Sync status pulses update without rebuilding the library [E]
+  Test failed. See exception logs above.
+  The test description was: Sync status pulses update without rebuilding the library
+  
+00:02 +0 -3: Some tests failed.
+
+Failing tests:
+  D:/flutter cuoi ki/test/dashboard_polish_regression_test.dart: Clear filters cancels a newer query still waiting for debounce
+  D:/flutter cuoi ki/test/dashboard_polish_regression_test.dart: Hover at the card edge settles without a stationary-pointer loop
+  D:/flutter cuoi ki/test/dashboard_polish_regression_test.dart: Sync status pulses update without rebuilding the library

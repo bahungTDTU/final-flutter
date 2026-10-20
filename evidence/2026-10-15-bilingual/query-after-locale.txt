@@ -1,0 +1,34 @@
+- group "NoteTogether":
+  - group "Điều hướng chính":
+    - button "Ghi chú"
+    - button "Được chia sẻ"
+    - button "Hỏi ghi chú"
+  - button "Tìm nhanh · Ctrl+K"
+  - button "Ghi chú mới"
+  - button "Hồ sơ và tùy chỉnh Ảnh đại diện mặc định Q" [active]
+  - generic: SỔ GHI / NOTETOGETHER
+  - heading "Ghi chú của bạn" [level=2]
+  - generic: Ý tưởng, bài học và kế hoạch — gọn trong một nơi.
+  - generic: 1 ghi chú
+  - button "Trực tiếp"
+  - generic: Email của bạn chưa được xác minh.
+  - button "Xác minh"
+  - textbox "Tìm ghi chú"
+  - button "Xóa tìm kiếm"
+  - generic: Tìm ngay khi nhập · Ctrl + F để đến ô tìm kiếm
+  - button "Lưới"
+  - button "Danh sách"
+  - generic: Tất cả ghi chú
+  - generic: "1"
+  - group "Kế hoạch học tập Bản nháp song ngữ — giữ nguyên 123. 16/10/2026":
+    - button "Thao tác ghi chú"
+  - generic: NGĂN BÀN
+  - generic: Từ ý tưởng đến bản nháp.
+  - generic: Những công cụ nhỏ, luôn trong tầm tay.
+  - button "Xưởng ghi chú Bắt đầu từ một mẫu"
+  - button "Không gian làm việc Kế hoạch, việc cần làm và tập trung"
+  - generic "Quản lý nhãn":
+    - button "Quản lý nhãn"
+  - button "Tùy chỉnh"
+  - generic: ĐƯỜNG TẮT
+  - generic: Ctrl + F / Tìm trong thư viện Ctrl + K / Tìm nhanh

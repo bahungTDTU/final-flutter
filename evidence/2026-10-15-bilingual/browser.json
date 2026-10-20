@@ -1,0 +1,27 @@
+{
+  "captured_at_utc": "2026-10-16T07:23:53.441Z",
+  "target": "http://127.0.0.1:7380/",
+  "backend": "http://127.0.0.1:8062",
+  "result": "PASS scoped",
+  "fixtures": "Disposable users and three notes; one protected",
+  "checks": [
+    "Before-login English selection; server ACK after sign-in",
+    "Reload retains English, then Vietnamese/dark account choice",
+    "English/Vietnamese forms, dashboard, editor and settings",
+    "PC 1280x1000 light/dark, phone 375x812 light/dark, landscape 844x390 dark",
+    "Vietnamese typed draft survives locale round trip and resize; HTTP accepts unchanged title and typed body",
+    "Final build mobile editor language menu switches to English; final reading-time copy visible",
+    "Locked title/body not present in dashboard DOM; guide translates",
+    "Search Kế hoạch retained after settings language change"
+  ],
+  "console_errors": [],
+  "not_run": [
+    "Android runtime",
+    "system text scaling in browser; widget 200% text tested separately",
+    "screen reader",
+    "GPU/FPS",
+    "real provider",
+    "public release"
+  ],
+  "final_build": "build-web-verified.txt"
+}

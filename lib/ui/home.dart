@@ -1,6 +1,9 @@
+import '../l10n/app_strings.dart';
+
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
 import '../domain/note.dart';
@@ -8,7 +11,12 @@ import '../domain/writing_tools.dart';
 import '../state/app_controller.dart';
 import '../state/note_listing.dart';
 import 'note_filters.dart';
+import 'label_manager.dart';
+import 'language_picker.dart';
+import 'palette_picker.dart';
 import 'dashboard.dart';
+import 'dashboard_sync.dart';
+import 'note_preview.dart';
 import 'deskbook.dart';
 import 'app.dart';
 import 'editor.dart';
@@ -30,11 +38,13 @@ class UnverifiedBanner extends StatelessWidget {
   Widget build(BuildContext context) => StatusNotice(
     icon: Icons.mark_email_unread_outlined,
     message: ['not_configured', 'delivery_failed', 'failed'].contains(delivery)
-        ? 'Email chưa xác minh. Chưa gửi được mã.'
+        ? context.tr("Email chưa xác minh. Chưa gửi được mã.")
         : ['queued', 'retrying'].contains(delivery)
-        ? 'Email chưa xác minh. Mã đang chờ gửi; ghi chú vẫn dùng được.'
-        : 'Email của bạn chưa được xác minh.',
-    action: TextButton(onPressed: onCheck, child: const Text('Xác minh')),
+        ? context.tr(
+            "Email chưa xác minh. Mã đang chờ gửi; ghi chú vẫn dùng được.",
+          )
+        : context.tr("Email của bạn chưa được xác minh."),
+    action: TextButton(onPressed: onCheck, child: Text(context.tr("Xác minh"))),
   );
 }
 
@@ -42,16 +52,16 @@ Future<bool> confirmDelete(BuildContext context, String title) async =>
     await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Xóa ghi chú?'),
-        content: Text('“$title” sẽ bị xóa sau khi đồng bộ.'),
+        title: Text(context.tr("Xóa ghi chú?")),
+        content: Text(context.tr("“{0}” sẽ bị xóa sau khi đồng bộ.", [title])),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
-            child: const Text('Hủy'),
+            child: Text(context.tr("Hủy")),
           ),
           FilledButton(
             onPressed: () => Navigator.pop(context, true),
-            child: const Text('Xóa'),
+            child: Text(context.tr("Xóa")),
           ),
         ],
       ),
@@ -74,12 +84,44 @@ class _HomeScreenState extends State<HomeScreen> {
   Timer? searchDelay;
   final listingCache = NoteListingCache();
   bool routeCurrent = true;
+  late List<Object?> observedView;
   AppController get c => widget.controller;
   @override
   void initState() {
     super.initState();
+    observedView = captureView();
     c.addListener(controllerChanged);
   }
+
+  // Metadata needed by this view; no private body/search index is added.
+  // Sync-only fields belong to DashboardSync, which listens independently.
+  List<Object?> captureView() => [
+    c.user?['id'],
+    c.user?['name'],
+    c.user?['verified'],
+    c.avatarBytes,
+    c.cachedAvatarRevision,
+    c.grid,
+    c.dark,
+    c.language,
+    c.palette,
+    c.fontSize,
+    c.error,
+    c.localWriteFailed,
+    if (c.error != null) c.online,
+    c.emailDelivery,
+    c.recoveries.length,
+    c.protectedVaults.values.any((v) => v['dirty'] == true),
+    for (final id in c.drafts.keys) ('draft', id),
+    for (final id
+        in (c.pending.map((op) => op['note_id']).toSet().toList()
+          ..sort((a, b) => '$a'.compareTo('$b'))))
+      ('pending', id),
+    for (final id in (c.conflicts.keys.toList()..sort())) ('conflict', id),
+    for (final id in c.labels) ('label-order', id),
+    for (final entry in c.labelCatalogue.entries)
+      ('label', entry.key, entry.value['name'], entry.value['deleted']),
+  ];
 
   void controllerChanged() {
     // Source changes also purge private widgets retained behind a route.
@@ -87,7 +129,12 @@ class _HomeScreenState extends State<HomeScreen> {
       c.user?['id'] as String?,
       c.notes,
     );
-    if (mounted && (routeCurrent || sourceChanged)) setState(() {});
+    final nextView = captureView();
+    final viewChanged = !listEquals(observedView, nextView);
+    observedView = nextView;
+    if (mounted && (sourceChanged || routeCurrent && viewChanged)) {
+      setState(() {});
+    }
   }
 
   @override
@@ -119,6 +166,7 @@ class _HomeScreenState extends State<HomeScreen> {
     if (oldWidget.controller != c) {
       oldWidget.controller.removeListener(controllerChanged);
       listingCache.clear();
+      observedView = captureView();
       c.addListener(controllerChanged);
     }
   }
@@ -171,7 +219,10 @@ class _HomeScreenState extends State<HomeScreen> {
       if (mounted && c.user?['id'] == account) open(draftId: id);
     } catch (e) {
       if (mounted) {
-        showMessage(context, 'Chưa lưu được bản nháp từ mẫu. Hãy thử lại.');
+        showMessage(
+          context,
+          context.tr("Chưa lưu được bản nháp từ mẫu. Hãy thử lại."),
+        );
       }
     }
   }
@@ -185,7 +236,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget createButton({bool compact = false}) => compact
       ? IconButton.filled(
           key: const Key('new-note'),
-          tooltip: 'Ghi chú mới',
+          tooltip: context.tr("Ghi chú mới"),
           onPressed: () => open(),
           style: IconButton.styleFrom(
             backgroundColor: DashboardColors.action,
@@ -201,7 +252,7 @@ class _HomeScreenState extends State<HomeScreen> {
             foregroundColor: DashboardColors.actionInk,
           ),
           icon: const Icon(Icons.add),
-          label: const Text('Ghi chú mới'),
+          label: Text(context.tr("Ghi chú mới")),
         );
 
   Widget dashboardHeader(
@@ -213,13 +264,16 @@ class _HomeScreenState extends State<HomeScreen> {
     key: const Key('dashboard-header'),
     workbench: studio,
     title: destination == 1
-        ? (small ? 'Được chia sẻ' : 'Được chia sẻ với bạn')
-        : 'Ghi chú của bạn',
+        ? (small
+              ? context.tr("Được chia sẻ")
+              : context.tr("Được chia sẻ với bạn"))
+        : context.tr("Ghi chú của bạn"),
     detail: destination == 1
-        ? 'Cùng theo dõi những điều quan trọng của nhóm.'
-        : 'Ý tưởng, bài học và kế hoạch — gọn trong một nơi.',
+        ? context.tr("Cùng theo dõi những điều quan trọng của nhóm.")
+        : context.tr("Ý tưởng, bài học và kế hoạch — gọn trong một nơi."),
     count: count,
     syncLabel: syncLabel,
+    syncIndicator: DashboardSync(controller: c),
     online: c.online,
     onSync: c.synchronize,
     action: small || studio
@@ -248,12 +302,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   message: c.localWriteFailed
                       ? c.error!
                       : c.online
-                      ? 'Chưa thể đồng bộ. Hãy thử lại.'
-                      : 'Đang offline. Các thay đổi đã lưu trên thiết bị đang chờ kết nối.',
+                      ? context.tr("Chưa thể đồng bộ. Hãy thử lại.")
+                      : context.tr(
+                          "Đang offline. Các thay đổi đã lưu trên thiết bị đang chờ kết nối.",
+                        ),
                   icon: Icons.cloud_off_outlined,
                   action: TextButton(
                     onPressed: c.synchronize,
-                    child: const Text('Thử lại'),
+                    child: Text(context.tr("Thử lại")),
                   ),
                 ),
               ],
@@ -280,12 +336,12 @@ class _HomeScreenState extends State<HomeScreen> {
           ButtonSegment(
             value: true,
             icon: small ? null : const Icon(Icons.grid_view),
-            label: const Text('Lưới'),
+            label: Text(context.tr("Lưới")),
           ),
           ButtonSegment(
             value: false,
             icon: small ? null : const Icon(Icons.view_list_outlined),
-            label: const Text('Danh sách'),
+            label: Text(context.tr("Danh sách")),
           ),
         ],
         selected: {c.grid},
@@ -297,31 +353,31 @@ class _HomeScreenState extends State<HomeScreen> {
           key: const Key('note-templates'),
           onPressed: createFromTemplate,
           icon: const Icon(Icons.auto_awesome_mosaic_outlined),
-          label: const Text('Xưởng ghi chú'),
+          label: Text(context.tr("Xưởng ghi chú")),
         ),
       if (!sidebar && !small)
         TextButton.icon(
           key: const Key('open-workspace'),
           onPressed: openWorkspace,
           icon: const Icon(Icons.space_dashboard_outlined),
-          label: const Text('Không gian làm việc'),
+          label: Text(context.tr("Không gian làm việc")),
         ),
       if (!sidebar && !small)
         IconButton(
-          tooltip: 'Tìm nhanh · Ctrl+K',
+          tooltip: context.tr("Tìm nhanh · Ctrl+K"),
           onPressed: () => showQuickFind(context, c),
           icon: const Icon(Icons.manage_search),
         ),
       if (!sidebar)
         IconButton(
-          tooltip: 'Quản lý nhãn',
+          tooltip: context.tr("Quản lý nhãn"),
           onPressed: manageLabels,
           icon: const Icon(Icons.label_outline),
         ),
       if (small)
         PopupMenuButton<String>(
           key: const Key('library-tools'),
-          tooltip: 'Công cụ thư viện',
+          tooltip: context.tr("Công cụ thư viện"),
           icon: const Icon(Icons.more_horiz),
           onSelected: (value) {
             if (value == 'workspace') {
@@ -330,12 +386,12 @@ class _HomeScreenState extends State<HomeScreen> {
               showQuickFind(context, c);
             }
           },
-          itemBuilder: (_) => const [
+          itemBuilder: (_) => [
             PopupMenuItem(
               value: 'workspace',
-              child: Text('Không gian làm việc'),
+              child: Text(context.tr("Không gian làm việc")),
             ),
-            PopupMenuItem(value: 'find', child: Text('Tìm nhanh')),
+            PopupMenuItem(value: 'find', child: Text(context.tr("Tìm nhanh"))),
           ],
         ),
     ];
@@ -421,8 +477,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   icon: const Icon(Icons.tune, size: 18),
                   label: Text(
                     selectedLabels.isEmpty
-                        ? 'Bộ lọc nhãn'
-                        : 'Bộ lọc (${selectedLabels.length})',
+                        ? context.tr("Bộ lọc nhãn")
+                        : context.tr("Bộ lọc ({0})", [selectedLabels.length]),
                   ),
                 ),
               ],
@@ -436,12 +492,14 @@ class _HomeScreenState extends State<HomeScreen> {
               runSpacing: 4,
               children: [
                 Text(
-                  'Khớp tất cả ${selectedLabels.length} nhãn đã chọn',
+                  context.tr("Khớp tất cả {0} nhãn đã chọn", [
+                    selectedLabels.length,
+                  ]),
                   style: Theme.of(context).textTheme.bodySmall,
                 ),
                 TextButton(
                   onPressed: () => setState(selectedLabels.clear),
-                  child: const Text('Bỏ bộ lọc nhãn'),
+                  child: Text(context.tr("Bỏ bộ lọc nhãn")),
                 ),
               ],
             ),
@@ -465,16 +523,16 @@ class _HomeScreenState extends State<HomeScreen> {
           c.pendingPreferences.length +
           c.pendingLabels.length;
       final syncLabel = c.syncing
-          ? 'Đang đồng bộ…'
+          ? context.tr("Đang đồng bộ…")
           : !c.online
-          ? 'Offline · $totalPending thay đổi chờ'
+          ? context.tr("Offline · {0} thay đổi chờ", [totalPending])
           : totalPending > 0
-          ? '$totalPending thay đổi chờ đồng bộ'
+          ? context.tr("{0} thay đổi chờ đồng bộ", [totalPending])
           : c.realtimeLive
-          ? 'Trực tiếp'
+          ? context.tr("Trực tiếp")
           : c.realtime != null
-          ? 'Đang nối lại'
-          : 'Đã đồng bộ';
+          ? context.tr("Đang nối lại")
+          : context.tr("Đã đồng bộ");
       return CallbackShortcuts(
         bindings: {
           const SingleActivator(LogicalKeyboardKey.keyF, control: true): () =>
@@ -502,18 +560,18 @@ class _HomeScreenState extends State<HomeScreen> {
                                 .onPrimary,
                           ),
                           key: const Key('new-note'),
-                          tooltip: 'Ghi chú mới',
+                          tooltip: context.tr("Ghi chú mới"),
                           onPressed: () => open(),
                           icon: const Icon(Icons.add),
                         ),
                       IconButton(
                         key: const Key('note-templates'),
-                        tooltip: 'Xưởng ghi chú',
+                        tooltip: context.tr("Xưởng ghi chú"),
                         onPressed: createFromTemplate,
                         icon: const Icon(Icons.auto_awesome_mosaic_outlined),
                       ),
                       IconButton(
-                        tooltip: 'Hồ sơ và tùy chỉnh',
+                        tooltip: context.tr("Hồ sơ và tùy chỉnh"),
                         onPressed: settings,
                         icon: const Icon(Icons.account_circle_outlined),
                       ),
@@ -529,7 +587,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       3,
                       (i) => NavigationDestination(
                         icon: Icon(icons[i]),
-                        label: destinations[i],
+                        label: context.tr(destinations[i]),
                       ),
                     ),
                   )
@@ -540,7 +598,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     if (sidebar)
                       DeskMasthead(
-                        destinations: destinations,
+                        destinations: destinations
+                            .map((s) => context.tr(s))
+                            .toList(),
                         selected: destination,
                         onSelected: (value) =>
                             setState(() => destination = value),
@@ -561,7 +621,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 child: Brand(compact: true),
                               ),
                               trailing: IconButton(
-                                tooltip: 'Hồ sơ và tùy chỉnh',
+                                tooltip: context.tr("Hồ sơ và tùy chỉnh"),
                                 onPressed: settings,
                                 icon: const Icon(Icons.account_circle_outlined),
                               ),
@@ -571,7 +631,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 3,
                                 (i) => NavigationRailDestination(
                                   icon: Icon(icons[i]),
-                                  label: Text(destinations[i]),
+                                  label: Text(context.tr(destinations[i])),
                                 ),
                               ),
                             ),
@@ -638,19 +698,28 @@ class _HomeScreenState extends State<HomeScreen> {
                                                       prefixIcon: const Icon(
                                                         Icons.search,
                                                       ),
-                                                      hintText: 'Tìm trong tiêu đề và nội dung',
-                                                      labelText: 'Tìm ghi chú',
+                                                      hintText: context.tr(
+                                                        "Tìm trong tiêu đề và nội dung",
+                                                      ),
+                                                      labelText: context.tr(
+                                                        "Tìm ghi chú",
+                                                      ),
                                                       helperText:
                                                           area.maxWidth < 800
                                                           ? null
-                                                          : 'Tìm ngay khi nhập · Ctrl + F để đến ô tìm kiếm',
+                                                          : context.tr(
+                                                              "Tìm ngay khi nhập · Ctrl + F để đến ô tìm kiếm",
+                                                            ),
                                                       suffixIcon: ValueListenableBuilder<TextEditingValue>(
                                                         valueListenable: search,
                                                         builder: (_, value, _) =>
                                                             value.text.isEmpty
                                                             ? const SizedBox.shrink()
                                                             : IconButton(
-                                                                tooltip: 'Xóa tìm kiếm',
+                                                                tooltip: context
+                                                                    .tr(
+                                                                      "Xóa tìm kiếm",
+                                                                    ),
                                                                 icon: const Icon(
                                                                   Icons.close,
                                                                 ),
@@ -697,8 +766,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                                               avatar: const Icon(
                                                                 Icons.edit_note,
                                                               ),
-                                                              label: const Text(
-                                                                'Khôi phục bản nháp',
+                                                              label: Text(
+                                                                context.tr(
+                                                                  "Khôi phục bản nháp",
+                                                                ),
                                                               ),
                                                               onPressed: () =>
                                                                   open(
@@ -721,15 +792,19 @@ class _HomeScreenState extends State<HomeScreen> {
                                                       child: StatusNotice(
                                                         icon:
                                                             Icons.lock_outline,
-                                                        message: 'Có bản nháp bảo vệ được giữ mã hóa trên thiết bị.',
+                                                        message: context.tr(
+                                                          "Có bản nháp bảo vệ được giữ mã hóa trên thiết bị.",
+                                                        ),
                                                         action: TextButton(
                                                           key: const Key(
                                                             'open-protected-recovery',
                                                           ),
                                                           onPressed:
                                                               protectedRecovery,
-                                                          child: const Text(
-                                                            'Bản nháp bảo vệ',
+                                                          child: Text(
+                                                            context.tr(
+                                                              "Bản nháp bảo vệ",
+                                                            ),
                                                           ),
                                                         ),
                                                       ),
@@ -743,15 +818,19 @@ class _HomeScreenState extends State<HomeScreen> {
                                                       child: StatusNotice(
                                                         icon: Icons
                                                             .enhanced_encryption_outlined,
-                                                        message:
-                                                            '${c.recoveries.length} bản chỉnh sửa đã được giữ an toàn trên thiết bị.',
+                                                        message: context.tr(
+                                                          "{0} bản chỉnh sửa đã được giữ an toàn trên thiết bị.",
+                                                          [c.recoveries.length],
+                                                        ),
                                                         action: TextButton(
                                                           key: const Key(
                                                             'open-recovery',
                                                           ),
                                                           onPressed: recovery,
-                                                          child: const Text(
-                                                            'Phục hồi',
+                                                          child: Text(
+                                                            context.tr(
+                                                              "Phục hồi",
+                                                            ),
                                                           ),
                                                         ),
                                                       ),
@@ -767,24 +846,37 @@ class _HomeScreenState extends State<HomeScreen> {
                                                     query.isNotEmpty ||
                                                         selectedLabels
                                                             .isNotEmpty
-                                                    ? 'Không tìm thấy ghi chú phù hợp'
+                                                    ? context.tr(
+                                                        "Không tìm thấy ghi chú phù hợp",
+                                                      )
                                                     : destination == 1
-                                                    ? 'Chưa có ghi chú được chia sẻ'
-                                                    : 'Bắt đầu với ghi chú đầu tiên',
+                                                    ? context.tr(
+                                                        "Chưa có ghi chú được chia sẻ",
+                                                      )
+                                                    : context.tr(
+                                                        "Bắt đầu với ghi chú đầu tiên",
+                                                      ),
                                                 detail:
                                                     query.isNotEmpty ||
                                                         selectedLabels
                                                             .isNotEmpty
-                                                    ? 'Thử từ khóa khác hoặc bỏ bớt nhãn.'
+                                                    ? context.tr(
+                                                        "Thử từ khóa khác hoặc bỏ bớt nhãn.",
+                                                      )
                                                     : destination == 1
-                                                    ? 'Ghi chú được chia sẻ với tài khoản của bạn sẽ xuất hiện ở đây.'
-                                                    : 'Một ý tưởng, một bài học, một điều cần nhớ.',
+                                                    ? context.tr(
+                                                        "Ghi chú được chia sẻ với tài khoản của bạn sẽ xuất hiện ở đây.",
+                                                      )
+                                                    : context.tr(
+                                                        "Một ý tưởng, một bài học, một điều cần nhớ.",
+                                                      ),
                                                 action:
                                                     query.isNotEmpty ||
                                                         selectedLabels
                                                             .isNotEmpty
                                                     ? TextButton(
                                                         onPressed: () {
+                                                          searchDelay?.cancel();
                                                           search.clear();
                                                           setState(() {
                                                             query = '';
@@ -792,8 +884,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                 .clear();
                                                           });
                                                         },
-                                                        child: const Text(
-                                                          'Xóa tìm kiếm và bộ lọc',
+                                                        child: Text(
+                                                          context.tr(
+                                                            "Xóa tìm kiếm và bộ lọc",
+                                                          ),
                                                         ),
                                                       )
                                                     : null,
@@ -801,7 +895,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                             ),
                                           if (pinned.isNotEmpty)
                                             ...section(
-                                              'Đã ghim',
+                                              context.tr("Đã ghim"),
                                               pinned,
                                               area.maxWidth,
                                               padding,
@@ -810,8 +904,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                           if (remaining.isNotEmpty)
                                             ...section(
                                               pinned.isEmpty
-                                                  ? 'Tất cả ghi chú'
-                                                  : 'Các ghi chú khác',
+                                                  ? context.tr("Tất cả ghi chú")
+                                                  : context.tr(
+                                                      "Các ghi chú khác",
+                                                    ),
                                               remaining,
                                               area.maxWidth,
                                               padding,
@@ -857,7 +953,7 @@ class _HomeScreenState extends State<HomeScreen> {
     final tiles = c.grid && scale < 1.5;
     final shelf =
         tiles &&
-        title == 'Đã ghim' &&
+        title == context.tr("Đã ghim") &&
         notes.length >= 2 &&
         width - padding * 2 >= 800;
     final extent =
@@ -873,6 +969,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Theme.of(context).brightness == Brightness.light
                   ? Brightness.dark
                   : Brightness.light,
+              palette: c.palette,
             ),
             child: Builder(
               builder: (appearance) =>
@@ -885,7 +982,7 @@ class _HomeScreenState extends State<HomeScreen> {
         sliver: SliverToBoxAdapter(
           child: Row(
             children: [
-              if (title == 'Đã ghim') ...[
+              if (title == context.tr("Đã ghim")) ...[
                 Icon(
                   Icons.push_pin_outlined,
                   size: 18,
@@ -921,7 +1018,7 @@ class _HomeScreenState extends State<HomeScreen> {
       if (!shelf || notes.length > 2)
         SliverPadding(
           padding: EdgeInsets.symmetric(horizontal: padding),
-          sliver: tiles && title == 'Đã ghim' && notes.length == 1
+          sliver: tiles && title == context.tr("Đã ghim") && notes.length == 1
               ? SliverToBoxAdapter(child: noteCard(notes.single, compact: true))
               : tiles
               ? SliverGrid(
@@ -1013,7 +1110,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 const SizedBox(width: 8),
                 Expanded(
                   child: Text(
-                    note.locked ? 'Ghi chú đã khóa' : note.title,
+                    note.locked ? context.tr("Ghi chú đã khóa") : note.title,
                     maxLines: compact ? 1 : 2,
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(visual).textTheme.titleMedium?.copyWith(
@@ -1026,7 +1123,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 if (note.role == 'owner' && !note.locked)
                   PopupMenuButton<String>(
-                    tooltip: 'Thao tác ghi chú',
+                    tooltip: context.tr("Thao tác ghi chú"),
                     onSelected: (action) async {
                       if (action == 'pin') {
                         await c.save(
@@ -1064,19 +1161,26 @@ class _HomeScreenState extends State<HomeScreen> {
                       }
                     },
                     itemBuilder: (_) => [
-                      const PopupMenuItem(
+                      PopupMenuItem(
                         value: 'share',
-                        child: Text('Chia sẻ'),
+                        child: Text(context.tr("Chia sẻ")),
                       ),
                       PopupMenuItem(
                         value: 'pin',
-                        child: Text(note.pinnedAt == null ? 'Ghim' : 'Bỏ ghim'),
+                        child: Text(
+                          note.pinnedAt == null
+                              ? context.tr('Ghim')
+                              : context.tr("Bỏ ghim"),
+                        ),
                       ),
-                      const PopupMenuItem(
+                      PopupMenuItem(
                         value: 'protect',
-                        child: Text('Bật khóa ghi chú'),
+                        child: Text(context.tr("Bật khóa ghi chú")),
                       ),
-                      const PopupMenuItem(value: 'delete', child: Text('Xóa')),
+                      PopupMenuItem(
+                        value: 'delete',
+                        child: Text(context.tr("Xóa")),
+                      ),
                     ],
                   ),
               ],
@@ -1084,10 +1188,9 @@ class _HomeScreenState extends State<HomeScreen> {
             const SizedBox(height: 12),
             const Divider(),
             const SizedBox(height: 12),
-            Text(
-              noteCardPreview(note),
+            NotePreview(
+              note: note,
               maxLines: tile ? 4 : 2,
-              overflow: TextOverflow.ellipsis,
               style: TextStyle(
                 fontSize: c.fontSize,
                 height: 1.5,
@@ -1098,7 +1201,12 @@ class _HomeScreenState extends State<HomeScreen> {
             if (tile) const Spacer(),
             if (!note.locked && note.role != 'owner')
               Text(
-                'Từ ${note.sharedByName ?? note.sharedByEmail ?? 'Chủ sở hữu'} · ${sharingDate(note.sharedAt ?? '')}',
+                context.tr("Từ {0} · {1}", [
+                  note.sharedByName ??
+                      note.sharedByEmail ??
+                      context.tr("Chủ sở hữu"),
+                  sharingDate(note.sharedAt ?? ''),
+                ]),
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
                 style: Theme.of(visual).textTheme.bodySmall,
@@ -1109,32 +1217,36 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 if (note.pinnedAt != null)
                   MetadataPill(
-                    'Đã ghim',
+                    context.tr("Đã ghim"),
                     icon: Icons.push_pin_outlined,
                     tone: palette.tones[4],
                   ),
                 if (note.isShared)
                   Tooltip(
                     message: note.locked
-                        ? 'Ghi chú được chia sẻ'
+                        ? context.tr("Ghi chú được chia sẻ")
                         : note.role == 'owner'
-                        ? 'Đã chia sẻ cho ${note.sharedCount} người'
-                        : 'Được chia sẻ với bạn',
-                    child: const Icon(
+                        ? context.tr("Đã chia sẻ cho {0} người", [
+                            note.sharedCount,
+                          ])
+                        : context.tr("Được chia sẻ với bạn"),
+                    child: Icon(
                       Icons.people_outline,
                       size: 20,
-                      semanticLabel: 'Ghi chú được chia sẻ',
+                      semanticLabel: context.tr("Ghi chú được chia sẻ"),
                     ),
                   ),
                 if (note.locked)
-                  const Icon(
+                  Icon(
                     Icons.lock_outline,
                     size: 20,
-                    semanticLabel: 'Đã khóa',
+                    semanticLabel: context.tr("Đã khóa"),
                   ),
                 if (note.role != 'owner')
                   Text(
-                    note.role == 'viewer' ? 'Chỉ xem' : 'Có thể chỉnh sửa',
+                    note.role == 'viewer'
+                        ? context.tr("Chỉ xem")
+                        : context.tr("Có thể chỉnh sửa"),
                     style: Theme.of(visual).textTheme.bodySmall,
                   ),
                 if (!note.locked)
@@ -1148,7 +1260,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                 if (!note.locked && labelIds.length > 2)
                   Text(
-                    '+${labelIds.length - 2} nhãn',
+                    context.tr("+{0} nhãn", [labelIds.length - 2]),
                     style: Theme.of(visual).textTheme.bodySmall,
                   ),
               ],
@@ -1161,12 +1273,18 @@ class _HomeScreenState extends State<HomeScreen> {
                 Text(dateText, style: Theme.of(visual).textTheme.bodySmall),
                 if (c.hasPending(note.id))
                   Text(
-                    'Chờ đồng bộ',
+                    context.tr("Chờ đồng bộ"),
                     style: TextStyle(color: colors.primary, fontSize: 13),
                   ),
                 if (c.conflicts.containsKey(note.id))
                   ActionChip(
-                    label: const Text('Xử lý xung đột'),
+                    label: Text(
+                      context.tr(
+                        c.conflicts[note.id]['status'] == 422
+                            ? 'Xử lý thay đổi bị từ chối'
+                            : "Xử lý xung đột",
+                      ),
+                    ),
                     onPressed: () => conflict(note.id),
                   ),
               ],
@@ -1184,18 +1302,20 @@ class _HomeScreenState extends State<HomeScreen> {
     final id = await showDialog<String>(
       context: context,
       builder: (_) => SimpleDialog(
-        title: const Text('Bản nháp bảo vệ'),
+        title: Text(context.tr("Bản nháp bảo vệ")),
         children: [
-          const Padding(
+          Padding(
             padding: EdgeInsets.all(16),
             child: Text(
-              'Cần mật khẩu cũ để đọc bản chỉnh sửa riêng. Không cấp quyền truy cập lên máy chủ.',
+              context.tr(
+                "Cần mật khẩu cũ để đọc bản chỉnh sửa riêng. Không cấp quyền truy cập lên máy chủ.",
+              ),
             ),
           ),
           for (var i = 0; i < items.length; i++)
             SimpleDialogOption(
               onPressed: () => Navigator.pop(context, items[i].key),
-              child: Text('Bản chỉnh sửa ${i + 1}'),
+              child: Text(context.tr("Bản chỉnh sửa {0}", [i + 1])),
             ),
         ],
       ),
@@ -1214,8 +1334,8 @@ class _HomeScreenState extends State<HomeScreen> {
     final choice = await showDialog<String>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const DialogHeading(
-          'Phục hồi chỉnh sửa local',
+        title: DialogHeading(
+          context.tr("Phục hồi chỉnh sửa local"),
           icon: Icons.restore_outlined,
         ),
         content: SizedBox(
@@ -1224,15 +1344,21 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                const Text(
-                  'Tạo ghi chú mới từ nội dung bạn đã gõ trước khi quyền truy cập thay đổi. Bản phục hồi chỉ có trên thiết bị này; ghi chú gốc vẫn giữ quyền bảo vệ của nó.',
+                Text(
+                  context.tr(
+                    "Tạo ghi chú mới từ nội dung bạn đã gõ trước khi quyền truy cập thay đổi. Bản phục hồi chỉ có trên thiết bị này; ghi chú gốc vẫn giữ quyền bảo vệ của nó.",
+                  ),
                 ),
                 const SizedBox(height: 16),
                 ...c.recoveries.entries.map(
                   (entry) => ListTile(
                     leading: const Icon(Icons.enhanced_encryption_outlined),
-                    title: const Text('Bản chỉnh sửa đã giữ'),
-                    subtitle: Text('Lưu: ${(entry.value as Map)['saved_at']}'),
+                    title: Text(context.tr("Bản chỉnh sửa đã giữ")),
+                    subtitle: Text(
+                      context.tr("Lưu: {0}", [
+                        (entry.value as Map)['saved_at'],
+                      ]),
+                    ),
                     trailing: const Icon(Icons.chevron_right),
                     onTap: () => Navigator.pop(context, entry.key),
                   ),
@@ -1244,7 +1370,7 @@ class _HomeScreenState extends State<HomeScreen> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Đóng'),
+            child: Text(context.tr("Đóng")),
           ),
         ],
       ),
@@ -1257,7 +1383,9 @@ class _HomeScreenState extends State<HomeScreen> {
       if (mounted) {
         showMessage(
           context,
-          'Chưa tạo được bản nháp phục hồi. Bản mã hóa vẫn được giữ; hãy thử lại.',
+          context.tr(
+            "Chưa tạo được bản nháp phục hồi. Bản mã hóa vẫn được giữ; hãy thử lại.",
+          ),
         );
       }
     }
@@ -1270,18 +1398,20 @@ class _HomeScreenState extends State<HomeScreen> {
       final accepted = await showDialog<bool>(
         context: context,
         builder: (context) => AlertDialog(
-          title: const Text('Đăng xuất khi còn thay đổi?'),
-          content: const Text(
-            'Thay đổi đã lưu trên thiết bị sẽ nằm trong tài khoản này. Đăng nhập lại để tiếp tục đồng bộ.',
+          title: Text(context.tr("Đăng xuất khi còn thay đổi?")),
+          content: Text(
+            context.tr(
+              "Thay đổi đã lưu trên thiết bị sẽ nằm trong tài khoản này. Đăng nhập lại để tiếp tục đồng bộ.",
+            ),
           ),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context, false),
-              child: const Text('Ở lại'),
+              child: Text(context.tr("Ở lại")),
             ),
             FilledButton(
               onPressed: () => Navigator.pop(context, true),
-              child: const Text('Đăng xuất'),
+              child: Text(context.tr("Đăng xuất")),
             ),
           ],
         ),
@@ -1296,8 +1426,12 @@ class _HomeScreenState extends State<HomeScreen> {
     final action = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const DialogHeading(
-          'Có hai phiên bản thay đổi',
+        title: DialogHeading(
+          context.tr(
+            c.conflicts[id]?['status'] == 422
+                ? 'Máy chủ từ chối thay đổi'
+                : "Có hai phiên bản thay đổi",
+          ),
           icon: Icons.difference_outlined,
         ),
         content: SingleChildScrollView(
@@ -1305,12 +1439,14 @@ class _HomeScreenState extends State<HomeScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-              const Text(
-                'Giữ bản của bạn dưới dạng ghi chú mới, hoặc dùng bản từ máy chủ và bỏ thay đổi chưa đồng bộ.',
+              Text(
+                context.tr(
+                  "Giữ bản của bạn dưới dạng ghi chú mới, hoặc dùng bản từ máy chủ và bỏ thay đổi chưa đồng bộ.",
+                ),
               ),
               if (local != null && !local.locked) ...[
                 const SizedBox(height: 16),
-                const Text('Bản trên thiết bị'),
+                Text(context.tr("Bản trên thiết bị")),
                 Text(local.title),
                 Text(
                   local.plainContent,
@@ -1324,15 +1460,15 @@ class _HomeScreenState extends State<HomeScreen> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Để sau'),
+            child: Text(context.tr("Để sau")),
           ),
           TextButton(
             onPressed: () => Navigator.pop(context, false),
-            child: const Text('Dùng bản máy chủ'),
+            child: Text(context.tr("Dùng bản máy chủ")),
           ),
           FilledButton(
             onPressed: () => Navigator.pop(context, true),
-            child: const Text('Giữ bản sao của tôi'),
+            child: Text(context.tr("Giữ bản sao của tôi")),
           ),
         ],
       ),
@@ -1344,7 +1480,9 @@ class _HomeScreenState extends State<HomeScreen> {
         if (mounted) {
           showMessage(
             context,
-            'Chưa lưu được lựa chọn phục hồi. Bản cũ vẫn được giữ; hãy thử lại.',
+            context.tr(
+              "Chưa lưu được lựa chọn phục hồi. Bản cũ vẫn được giữ; hãy thử lại.",
+            ),
           );
         }
       }
@@ -1352,151 +1490,17 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> manageLabels() async {
+    final account = c.user?['id'];
     await showModalBottomSheet<void>(
       context: context,
       isScrollControlled: true,
-      builder: (context) => AnimatedBuilder(
-        animation: c,
-        builder: (context, _) => SafeArea(
-          child: SingleChildScrollView(
-            padding: EdgeInsets.fromLTRB(
-              24,
-              8,
-              24,
-              24 + MediaQuery.viewInsetsOf(context).bottom,
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const SectionHeading(
-                  'Nhãn của tôi',
-                  detail: 'Sắp xếp ghi chú theo chủ đề. Nhãn được đồng bộ theo tài khoản.',
-                  icon: Icons.label_outline,
-                ),
-                ListView(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  children: c.labels
-                      .map(
-                        (l) => ListTile(
-                          leading: const Icon(Icons.label_outline),
-                          contentPadding: EdgeInsets.zero,
-                          title: Text(c.labelName(l)),
-                          subtitle: c.labelConflicts.containsKey(l)
-                              ? const Text(
-                                  'Tên nhãn có thay đổi khác trên máy chủ.',
-                                )
-                              : null,
-                          trailing: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              IconButton(
-                                tooltip: 'Đổi tên ${c.labelName(l)}',
-                                icon: const Icon(Icons.edit_outlined),
-                                onPressed: () async {
-                                  final name = await askText(
-                                    context,
-                                    'Tên nhãn mới',
-                                    initial: c.labelName(l),
-                                    validator: (value) =>
-                                        c.validateLabelName(value, l),
-                                  );
-                                  if (name != null) {
-                                    await labelAction(
-                                      () => c.renameLabel(l, name),
-                                    );
-                                  }
-                                },
-                              ),
-                              IconButton(
-                                tooltip: 'Xóa nhãn ${c.labelName(l)}',
-                                icon: const Icon(Icons.delete_outline),
-                                onPressed: () async {
-                                  final accepted = await showDialog<bool>(
-                                    context: context,
-                                    builder: (context) => AlertDialog(
-                                      title: const Text('Xóa nhãn?'),
-                                      content: Text(
-                                        'Bỏ nhãn “${c.labelName(l)}”; các ghi chú vẫn còn.',
-                                      ),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () =>
-                                              Navigator.pop(context, false),
-                                          child: const Text('Hủy'),
-                                        ),
-                                        FilledButton(
-                                          onPressed: () =>
-                                              Navigator.pop(context, true),
-                                          child: const Text('Xóa nhãn'),
-                                        ),
-                                      ],
-                                    ),
-                                  );
-                                  if (accepted == true) {
-                                    await labelAction(() => c.removeLabel(l));
-                                  }
-                                },
-                              ),
-                            ],
-                          ),
-                        ),
-                      )
-                      .toList(),
-                ),
-                if (c.labels.isEmpty)
-                  const Padding(
-                    padding: EdgeInsets.all(16),
-                    child: Text('Chưa có nhãn. Thêm nhãn để sắp xếp ghi chú.'),
-                  ),
-                const Text('Xóa nhãn chỉ bỏ nhãn; ghi chú vẫn còn.'),
-                Text(
-                  c.pendingLabels.isEmpty
-                      ? 'Nhãn theo tài khoản; thiết bị khác nhận khi đồng bộ.'
-                      : '${c.pendingLabels.length} thay đổi nhãn chờ đồng bộ.',
-                ),
-                for (final id in c.labelConflicts.keys)
-                  ListTile(
-                    title: Text('Xung đột nhãn “${c.labelName(id)}”'),
-                    subtitle: const Text(
-                      'Đổi tên để giữ lựa chọn của bạn, hoặc dùng nhãn trên máy chủ.',
-                    ),
-                    trailing: TextButton(
-                      onPressed: c.syncing
-                          ? null
-                          : () => labelAction(() => c.useRemoteLabel(id)),
-                      child: const Text('Dùng bản máy chủ'),
-                    ),
-                  ),
-                TextButton.icon(
-                  onPressed: c.syncing ? null : c.synchronize,
-                  icon: const Icon(Icons.sync),
-                  label: const Text('Đồng bộ nhãn'),
-                ),
-                FilledButton.icon(
-                  onPressed: () async {
-                    final name = await askText(
-                      context,
-                      'Thêm nhãn',
-                      validator: c.validateLabelName,
-                    );
-                    if (name != null) await labelAction(() => c.addLabel(name));
-                  },
-                  icon: const Icon(Icons.add),
-                  label: const Text('Thêm nhãn'),
-                ),
-                TextButton(
-                  onPressed: () => Navigator.pop(context),
-                  child: const Text('Đóng'),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
+      showDragHandle: true,
+      constraints: const BoxConstraints(maxWidth: 640),
+      builder: (_) => LabelManager(controller: c),
     );
+    if (!mounted || account != c.user?['id']) return;
     selectedLabels.removeWhere((l) => !c.labels.contains(l));
-    if (mounted) setState(() {});
+    setState(() {});
   }
 
   Future<void> settings() => showModalBottomSheet<void>(
@@ -1514,14 +1518,14 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 Row(
                   children: [
-                    const Expanded(
+                    Expanded(
                       child: SectionHeading(
-                        'Hồ sơ và tùy chỉnh',
+                        context.tr("Hồ sơ và tùy chỉnh"),
                         icon: Icons.tune_outlined,
                       ),
                     ),
                     IconButton(
-                      tooltip: 'Đóng tùy chỉnh',
+                      tooltip: context.tr("Đóng tùy chỉnh"),
                       onPressed: () => Navigator.pop(context),
                       icon: const Icon(Icons.close),
                     ),
@@ -1541,12 +1545,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   leading: AccountAvatar(controller: c),
                   title: Text(c.user?['name'] as String? ?? ''),
                   trailing: IconButton(
-                    tooltip: 'Sửa tên hiển thị',
+                    tooltip: context.tr("Sửa tên hiển thị"),
                     icon: const Icon(Icons.edit_outlined),
                     onPressed: () async {
                       final name = await askText(
                         context,
-                        'Tên hiển thị',
+                        context.tr("Tên hiển thị"),
                         initial: c.user?['name'] as String? ?? '',
                       );
                       if (name == null) return;
@@ -1577,25 +1581,33 @@ class _HomeScreenState extends State<HomeScreen> {
                     builder: (_) => AvatarEditor(controller: c),
                   ),
                   icon: const Icon(Icons.image_outlined),
-                  label: const Text('Đổi ảnh đại diện'),
+                  label: Text(context.tr("Đổi ảnh đại diện")),
                 ),
                 const SizedBox(height: 16),
                 const Divider(),
                 const SizedBox(height: 20),
-                const SectionHeading(
-                  'Giao diện',
-                  detail: 'Chọn không gian dễ đọc nhất với bạn.',
+                SectionHeading(
+                  context.tr("Giao diện"),
+                  detail: context.tr("Chọn không gian dễ đọc nhất với bạn."),
                   icon: Icons.palette_outlined,
                 ),
+                LanguagePicker(controller: c),
+                const SizedBox(height: 16),
                 SwitchListTile(
-                  title: const Text('Giao diện tối'),
+                  title: Text(context.tr("Giao diện tối")),
                   value: c.dark,
                   onChanged: (v) => c.setPreferences({'dark': v}),
                 ),
-                const SizedBox(height: 16),
-                const SectionHeading('Ghi chú', icon: Icons.text_fields),
+                const SizedBox(height: 24),
+                SectionHeading(
+                  context.tr('Bảng màu giao diện'),
+                  icon: Icons.palette_outlined,
+                ),
+                PalettePicker(controller: c),
+                const SizedBox(height: 24),
+                SectionHeading(context.tr("Ghi chú"), icon: Icons.text_fields),
                 const SizedBox(height: 8),
-                Text('Cỡ chữ ghi chú: ${c.fontSize.round()}'),
+                Text(context.tr("Cỡ chữ ghi chú: {0}", [c.fontSize.round()])),
                 Slider(
                   value: c.fontSize,
                   min: 14,
@@ -1614,34 +1626,39 @@ class _HomeScreenState extends State<HomeScreen> {
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Text(
-                    'Một ý tưởng đáng giữ. Một ghi chú dễ đọc.',
+                    context.tr("Một ý tưởng đáng giữ. Một ghi chú dễ đọc."),
                     style: TextStyle(fontSize: c.fontSize, height: 1.6),
                   ),
                 ),
                 Text(
                   c.pendingPreferences.isNotEmpty
-                      ? 'Đã lưu trên thiết bị · ${c.pendingPreferences.length} tùy chỉnh chờ đồng bộ.'
+                      ? context.tr(
+                          "Đã lưu trên thiết bị · {0} tùy chỉnh chờ đồng bộ.",
+                          [c.pendingPreferences.length],
+                        )
                       : c.online
-                      ? 'Tùy chỉnh theo tài khoản; thiết bị khác nhận khi đồng bộ.'
-                      : 'Đang dùng tùy chỉnh đã lưu trên thiết bị.',
+                      ? context.tr(
+                          "Tùy chỉnh theo tài khoản; thiết bị khác nhận khi đồng bộ.",
+                        )
+                      : context.tr("Đang dùng tùy chỉnh đã lưu trên thiết bị."),
                 ),
-                if (c.error != null) Text(c.error!),
+                if (c.error != null) Text(context.trMessage(c.error!)),
                 TextButton.icon(
                   onPressed: c.synchronize,
                   icon: const Icon(Icons.sync),
-                  label: const Text('Đồng bộ tùy chỉnh'),
+                  label: Text(context.tr("Đồng bộ tùy chỉnh")),
                 ),
                 const SizedBox(height: 24),
                 const Divider(),
                 const SizedBox(height: 20),
-                const SectionHeading(
-                  'Tài khoản',
+                SectionHeading(
+                  context.tr("Tài khoản"),
                   icon: Icons.verified_user_outlined,
                 ),
                 Text(
                   c.user?['verified'] == true
-                      ? 'Email đã xác minh'
-                      : 'Email chưa xác minh',
+                      ? context.tr("Email đã xác minh")
+                      : context.tr("Email chưa xác minh"),
                 ),
                 TextButton.icon(
                   onPressed: () {
@@ -1649,7 +1666,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     unawaited(logout());
                   },
                   icon: const Icon(Icons.logout),
-                  label: const Text('Đăng xuất'),
+                  label: Text(context.tr("Đăng xuất")),
                 ),
                 TextButton.icon(
                   onPressed: () {
@@ -1661,14 +1678,14 @@ class _HomeScreenState extends State<HomeScreen> {
                     );
                   },
                   icon: const Icon(Icons.shield_outlined),
-                  label: const Text('Trung tâm bảo mật'),
+                  label: Text(context.tr("Trung tâm bảo mật")),
                 ),
                 TextButton(
                   onPressed: () {
                     Navigator.pop(context);
                     changePassword();
                   },
-                  child: const Text('Đổi mật khẩu'),
+                  child: Text(context.tr("Đổi mật khẩu")),
                 ),
               ],
             ),
@@ -1677,21 +1694,6 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     ),
   );
-
-  Future<void> labelAction(Future<void> Function() action) async {
-    try {
-      await action();
-    } catch (e) {
-      if (mounted) {
-        showMessage(
-          context,
-          c.localWriteFailed
-              ? 'Chưa ghi được thay đổi nhãn trên thiết bị. Giữ app mở và thử lại.'
-              : friendlyError(e),
-        );
-      }
-    }
-  }
 
   Future<void> changePassword() => showDialog<void>(
     context: context,

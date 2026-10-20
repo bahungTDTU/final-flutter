@@ -1,8 +1,11 @@
+import '../l10n/app_strings.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_quill/flutter_quill.dart' as quill;
 
 import '../domain/writing_tools.dart';
+import '../domain/note.dart';
 import 'design_system.dart';
 import 'note_inspector.dart';
 import 'rich_note_field.dart';
@@ -108,7 +111,7 @@ class _DocumentWorkspaceState extends State<DocumentWorkspace> {
               children: [
                 Expanded(
                   child: Text(
-                    'NOTETOGETHER / TÀI LIỆU',
+                    context.tr("NOTETOGETHER / TÀI LIỆU"),
                     style: theme.textTheme.bodySmall?.copyWith(
                       letterSpacing: 1.5,
                     ),
@@ -130,7 +133,7 @@ class _DocumentWorkspaceState extends State<DocumentWorkspace> {
                 const SizedBox(width: 8),
                 Expanded(
                   child: Text(
-                    'Tiêu đề',
+                    context.tr("Tiêu đề"),
                     style: theme.textTheme.bodySmall?.copyWith(
                       fontWeight: FontWeight.w700,
                     ),
@@ -141,12 +144,12 @@ class _DocumentWorkspaceState extends State<DocumentWorkspace> {
           ),
           const SizedBox(height: 10),
           Semantics(
-            label: 'Tiêu đề',
+            label: context.tr("Tiêu đề"),
             child: TextField(
               key: widget.titleKey,
               controller: widget.title,
               readOnly: readOnly,
-              maxLength: 200,
+              maxLength: maxNoteTitleCodePoints,
               minLines: 1,
               maxLines: null,
               style: theme.textTheme.headlineLarge?.copyWith(
@@ -154,8 +157,17 @@ class _DocumentWorkspaceState extends State<DocumentWorkspace> {
                 fontWeight: FontWeight.w500,
                 height: 1.4,
               ),
-              decoration: const InputDecoration(
-                hintText: 'Đặt tên cho ghi chú…',
+              decoration: InputDecoration(
+                counterText:
+                    '${widget.title.text.runes.length} / $maxNoteTitleCodePoints',
+                error: widget.title.text.runes.length > maxNoteTitleCodePoints
+                    ? Text(
+                        context.tr(
+                          'Tiêu đề vượt giới hạn 200 mã Unicode. Bản nháp vẫn được giữ.',
+                        ),
+                      )
+                    : null,
+                hintText: context.tr("Đặt tên cho ghi chú…"),
                 filled: false,
                 border: InputBorder.none,
                 enabledBorder: InputBorder.none,
@@ -182,7 +194,7 @@ class _DocumentWorkspaceState extends State<DocumentWorkspace> {
                 const SizedBox(width: 8),
                 Expanded(
                   child: Text(
-                    'Nội dung',
+                    context.tr("Nội dung"),
                     style: theme.textTheme.bodySmall?.copyWith(
                       fontWeight: FontWeight.w700,
                     ),
@@ -231,7 +243,7 @@ class _DocumentWorkspaceState extends State<DocumentWorkspace> {
       ],
       if (widget.actions.isNotEmpty) ...[
         InspectorSection(
-          title: 'Công cụ',
+          title: context.tr("Công cụ"),
           icon: Icons.tune_outlined,
           children: widget.actions,
         ),
@@ -255,7 +267,7 @@ class _DocumentWorkspaceState extends State<DocumentWorkspace> {
               child: Semantics(
                 header: true,
                 child: Text(
-                  'Mục lục',
+                  ctx.tr("Mục lục"),
                   style: Theme.of(ctx).textTheme.titleMedium,
                 ),
               ),
@@ -265,7 +277,7 @@ class _DocumentWorkspaceState extends State<DocumentWorkspace> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 12),
                 child: Text(
-                  'Dùng kiểu Tiêu đề để tạo mục lục.',
+                  ctx.tr("Dùng kiểu Tiêu đề để tạo mục lục."),
                   style: Theme.of(ctx).textTheme.bodySmall,
                 ),
               ),
@@ -291,7 +303,7 @@ class _DocumentWorkspaceState extends State<DocumentWorkspace> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12),
               child: Text(
-                'Chọn tiêu đề để di chuyển',
+                ctx.tr("Chọn tiêu đề để di chuyển"),
                 style: Theme.of(ctx).textTheme.bodySmall,
               ),
             ),
@@ -316,12 +328,15 @@ class _DocumentWorkspaceState extends State<DocumentWorkspace> {
                 if (desktop) ...[
                   const Icon(Icons.cloud_done_outlined, size: 18),
                   const SizedBox(width: 8),
-                  Text(readOnly ? 'Chỉ đọc' : 'Tự động lưu'),
+                  Text(readOnly ? ctx.tr("Chỉ đọc") : ctx.tr("Tự động lưu")),
                   const Spacer(),
                 ],
                 Expanded(
                   child: Text(
-                    '${stats.words} từ · ${stats.characters} ký tự',
+                    ctx.tr("{0} từ · {1} ký tự", [
+                      stats.words,
+                      stats.characters,
+                    ]),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(ctx).textTheme.bodySmall,
@@ -331,7 +346,7 @@ class _DocumentWorkspaceState extends State<DocumentWorkspace> {
                 if (desktop) ...[
                   const Spacer(),
                   IconButton(
-                    tooltip: 'Thu nhỏ tài liệu',
+                    tooltip: ctx.tr("Thu nhỏ tài liệu"),
                     onPressed: zoom > .8
                         ? () =>
                               setState(() => zoom = (zoom - .1).clamp(.8, 1.4))
@@ -340,7 +355,7 @@ class _DocumentWorkspaceState extends State<DocumentWorkspace> {
                   ),
                   Text('${(zoom * 100).round()}%'),
                   IconButton(
-                    tooltip: 'Phóng to tài liệu',
+                    tooltip: ctx.tr("Phóng to tài liệu"),
                     onPressed: zoom < 1.4
                         ? () =>
                               setState(() => zoom = (zoom + .1).clamp(.8, 1.4))
@@ -491,7 +506,7 @@ class _DocumentWorkspaceState extends State<DocumentWorkspace> {
                     children: [
                       if (!widget.focusMode)
                         IconButton(
-                          tooltip: 'Hiện/ẩn mục lục',
+                          tooltip: ctx.tr("Hiện/ẩn mục lục"),
                           isSelected: showOutline,
                           icon: const Icon(Icons.view_sidebar_outlined),
                           onPressed: () =>
@@ -522,7 +537,7 @@ class _DocumentWorkspaceState extends State<DocumentWorkspace> {
                                 size: 20,
                               ),
                               const SizedBox(width: 10),
-                              const Text('Trang viết'),
+                              Text(ctx.tr("Trang viết")),
                             ],
                           ),
                         ),
@@ -530,7 +545,7 @@ class _DocumentWorkspaceState extends State<DocumentWorkspace> {
                       const Spacer(),
                       if (!widget.focusMode)
                         IconButton(
-                          tooltip: 'Hiện/ẩn thông tin',
+                          tooltip: ctx.tr("Hiện/ẩn thông tin"),
                           isSelected: inspectorOpen,
                           icon: const Icon(Icons.tune),
                           onPressed: () =>
@@ -545,7 +560,9 @@ class _DocumentWorkspaceState extends State<DocumentWorkspace> {
                 children: [
                   Expanded(child: toolbar),
                   IconButton(
-                    tooltip: reading ? 'Tiếp tục soạn thảo' : 'Chế độ đọc',
+                    tooltip: reading
+                        ? ctx.tr("Tiếp tục soạn thảo")
+                        : ctx.tr("Chế độ đọc"),
                     onPressed: () => setState(() => reading = !reading),
                     icon: Icon(
                       reading ? Icons.edit_outlined : Icons.visibility_outlined,
@@ -692,7 +709,7 @@ class _DocumentFindDialogState extends State<DocumentFindDialog> {
     }
     setState(() {
       refresh();
-      message = 'Đã thay $count kết quả.';
+      message = context.tr("Đã thay {0} kết quả.", [count]);
     });
   }
 
@@ -711,7 +728,10 @@ class _DocumentFindDialogState extends State<DocumentFindDialog> {
     // Recreate native web semantics inputs on a private purge. Clearing an
     // unfocused TextField alone can leave its previous DOM value behind.
     key: ValueKey(inputEpoch),
-    title: const DialogHeading('Tìm và thay thế', icon: Icons.find_replace),
+    title: DialogHeading(
+      context.tr("Tìm và thay thế"),
+      icon: Icons.find_replace,
+    ),
     content: SizedBox(
       width: 460,
       child: SingleChildScrollView(
@@ -723,16 +743,21 @@ class _DocumentFindDialogState extends State<DocumentFindDialog> {
               key: const Key('document-find'),
               controller: query,
               autofocus: true,
-              decoration: const InputDecoration(labelText: 'Tìm trong ghi chú'),
+              decoration: InputDecoration(
+                labelText: context.tr("Tìm trong ghi chú"),
+              ),
               onChanged: (_) => setState(refresh),
               onSubmitted: (_) => next(1),
             ),
             const SizedBox(height: 12),
             Text(
-              '${matches.length} kết quả${active >= 0 ? ' · ${active + 1}/${matches.length}' : ''}',
+              context.tr("{0} kết quả{1}", [
+                matches.length,
+                active >= 0 ? ' · ${active + 1}/${matches.length}' : '',
+              ]),
             ),
             CheckboxListTile(
-              title: const Text('Phân biệt hoa/thường'),
+              title: Text(context.tr("Phân biệt hoa/thường")),
               value: matchCase,
               onChanged: (v) => setState(() {
                 matchCase = v!;
@@ -745,12 +770,12 @@ class _DocumentFindDialogState extends State<DocumentFindDialog> {
                 TextButton.icon(
                   onPressed: matches.isEmpty ? null : () => next(-1),
                   icon: const Icon(Icons.navigate_before),
-                  label: const Text('Trước'),
+                  label: Text(context.tr("Trước")),
                 ),
                 TextButton.icon(
                   onPressed: matches.isEmpty ? null : () => next(1),
                   icon: const Icon(Icons.navigate_next),
-                  label: const Text('Tiếp'),
+                  label: Text(context.tr("Tiếp")),
                 ),
               ],
             ),
@@ -760,7 +785,7 @@ class _DocumentFindDialogState extends State<DocumentFindDialog> {
                 key: const Key('document-replacement'),
                 controller: replacement,
                 enabled: canReplace,
-                decoration: const InputDecoration(labelText: 'Thay bằng'),
+                decoration: InputDecoration(labelText: context.tr("Thay bằng")),
               ),
               const SizedBox(height: 12),
               Wrap(
@@ -771,27 +796,29 @@ class _DocumentFindDialogState extends State<DocumentFindDialog> {
                     onPressed: !canReplace || matches.isEmpty
                         ? null
                         : () => replace(false),
-                    child: const Text('Thay một'),
+                    child: Text(context.tr("Thay một")),
                   ),
                   FilledButton(
                     onPressed: !canReplace || matches.isEmpty
                         ? null
                         : () => replace(true),
-                    child: const Text('Thay tất cả'),
+                    child: Text(context.tr("Thay tất cả")),
                   ),
                 ],
               ),
               if (!canReplace) ...[
                 const SizedBox(height: 12),
-                const Text(
-                  'Phiên soạn thảo đã thay đổi. Đóng hộp tìm kiếm và mở lại ghi chú để chỉnh sửa.',
+                Text(
+                  context.tr(
+                    "Phiên soạn thảo đã thay đổi. Đóng hộp tìm kiếm và mở lại ghi chú để chỉnh sửa.",
+                  ),
                 ),
               ],
             ],
             if (message != null)
               Padding(
                 padding: const EdgeInsets.only(top: 12),
-                child: Text(message!),
+                child: Text(context.trMessage(message!)),
               ),
           ],
         ),
@@ -803,7 +830,7 @@ class _DocumentFindDialogState extends State<DocumentFindDialog> {
           Navigator.pop(context);
           widget.focusNode.requestFocus();
         },
-        child: const Text('Đóng'),
+        child: Text(context.tr("Đóng")),
       ),
     ],
   );

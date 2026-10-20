@@ -1,3 +1,5 @@
+import '../l10n/app_strings.dart';
+
 import 'dart:async';
 
 import 'package:file_selector/file_selector.dart';
@@ -36,7 +38,7 @@ Future<void> openWorkspaceNote(
     );
   } catch (_) {
     if (context.mounted) {
-      showMessage(context, 'Chưa thể mở ghi chú. Hãy thử lại.');
+      showMessage(context, context.tr("Chưa thể mở ghi chú. Hãy thử lại."));
     }
   }
 }
@@ -58,7 +60,7 @@ Future<void> createWorkspaceDraft(
     );
   } catch (_) {
     if (context.mounted) {
-      showMessage(context, 'Chưa lưu được bản nháp. Hãy thử lại.');
+      showMessage(context, context.tr("Chưa lưu được bản nháp. Hãy thử lại."));
     }
   }
 }
@@ -91,7 +93,9 @@ class _QuickFindState extends State<_QuickFind> {
     builder: (context, _) {
       final c = widget.controller;
       if (account == null || c.user?['id'] != account) {
-        return const AlertDialog(content: Text('Phiên đăng nhập đã thay đổi.'));
+        return AlertDialog(
+          content: Text(context.tr("Phiên đăng nhập đã thay đổi.")),
+        );
       }
       final q = query.text.trim().toLowerCase();
       final notes = c.workspaceNotes
@@ -118,9 +122,11 @@ class _QuickFindState extends State<_QuickFind> {
             child: ListView(
               shrinkWrap: true,
               children: [
-                const SectionHeading(
-                  'Tìm nhanh',
-                  detail: 'Tối đa 30 kết quả. Chỉ tìm trong ghi chú chưa khóa.',
+                SectionHeading(
+                  context.tr("Tìm nhanh"),
+                  detail: context.tr(
+                    "Tối đa 30 kết quả. Chỉ tìm trong ghi chú chưa khóa.",
+                  ),
                   icon: Icons.search,
                 ),
                 TextField(
@@ -128,8 +134,8 @@ class _QuickFindState extends State<_QuickFind> {
                   controller: query,
                   autofocus: true,
                   maxLength: 200,
-                  decoration: const InputDecoration(
-                    hintText: 'Tên hoặc nội dung ghi chú',
+                  decoration: InputDecoration(
+                    hintText: context.tr("Tên hoặc nội dung ghi chú"),
                     prefixIcon: Icon(Icons.search),
                   ),
                   onChanged: (_) => setState(() {}),
@@ -141,7 +147,7 @@ class _QuickFindState extends State<_QuickFind> {
                 if (q.isEmpty) ...[
                   ListTile(
                     leading: const Icon(Icons.space_dashboard_outlined),
-                    title: const Text('Mở không gian làm việc'),
+                    title: Text(context.tr("Mở không gian làm việc")),
                     onTap: () {
                       final nav = Navigator.of(context);
                       nav.pop();
@@ -154,7 +160,7 @@ class _QuickFindState extends State<_QuickFind> {
                   ),
                   ListTile(
                     leading: const Icon(Icons.today_outlined),
-                    title: const Text('Viết nhật ký hôm nay'),
+                    title: Text(context.tr("Viết nhật ký hôm nay")),
                     onTap: () {
                       final nav = Navigator.of(context);
                       nav.pop();
@@ -170,9 +176,9 @@ class _QuickFindState extends State<_QuickFind> {
                   const Divider(),
                 ],
                 if (notes.isEmpty)
-                  const Padding(
+                  Padding(
                     padding: EdgeInsets.all(16),
-                    child: Text('Không tìm thấy ghi chú phù hợp.'),
+                    child: Text(context.tr("Không tìm thấy ghi chú phù hợp.")),
                   ),
                 for (final n in notes)
                   ListTile(
@@ -187,13 +193,15 @@ class _QuickFindState extends State<_QuickFind> {
                       overflow: TextOverflow.ellipsis,
                     ),
                     subtitle: Text(
-                      n.role == 'owner' ? 'Ghi chú của bạn' : 'Được chia sẻ',
+                      n.role == 'owner'
+                          ? context.tr("Ghi chú của bạn")
+                          : context.tr("Được chia sẻ"),
                     ),
                     onTap: () => open(n.id),
                     trailing: IconButton(
                       tooltip: c.workspace.favorites.contains(n.id)
-                          ? 'Bỏ yêu thích'
-                          : 'Yêu thích',
+                          ? context.tr("Bỏ yêu thích")
+                          : context.tr("Yêu thích"),
                       icon: Icon(
                         c.workspace.favorites.contains(n.id)
                             ? Icons.star
@@ -204,7 +212,10 @@ class _QuickFindState extends State<_QuickFind> {
                           await c.toggleFavorite(n.id);
                         } catch (_) {
                           if (context.mounted) {
-                            showMessage(context, 'Chưa lưu được yêu thích.');
+                            showMessage(
+                              context,
+                              context.tr("Chưa lưu được yêu thích."),
+                            );
                           }
                         }
                       },
@@ -214,7 +225,7 @@ class _QuickFindState extends State<_QuickFind> {
                   alignment: Alignment.centerRight,
                   child: TextButton(
                     onPressed: () => Navigator.pop(context),
-                    child: const Text('Đóng'),
+                    child: Text(context.tr("Đóng")),
                   ),
                 ),
               ],
@@ -260,7 +271,7 @@ class _WorkspaceSaveDialogState extends State<_WorkspaceSaveDialog> {
           saving = false;
           error = e is StateError
               ? e.message.toString()
-              : 'Chưa lưu được. Dữ liệu vẫn ở đây; hãy thử lại.';
+              : context.tr("Chưa lưu được. Dữ liệu vẫn ở đây; hãy thử lại.");
         });
       }
     }
@@ -292,11 +303,11 @@ class _WorkspaceSaveDialogState extends State<_WorkspaceSaveDialog> {
       actions: [
         TextButton(
           onPressed: saving ? null : () => Navigator.pop(context, false),
-          child: const Text('Hủy'),
+          child: Text(context.tr("Hủy")),
         ),
         FilledButton(
           onPressed: saving ? null : save,
-          child: Text(saving ? 'Đang lưu…' : widget.saveLabel),
+          child: Text(saving ? context.tr("Đang lưu…") : widget.saveLabel),
         ),
       ],
     ),
@@ -331,7 +342,7 @@ class _WorkspaceScreenState extends State<WorkspaceScreen> {
           context,
           e is StateError
               ? e.message.toString()
-              : 'Thao tác chưa hoàn tất. Hãy thử lại.',
+              : context.tr("Thao tác chưa hoàn tất. Hãy thử lại."),
         );
       }
     }
@@ -353,11 +364,11 @@ class _WorkspaceScreenState extends State<WorkspaceScreen> {
           builder: (context, _) => account == c.user?['id']
               ? builder(context)
               : AlertDialog(
-                  content: const Text('Phiên đăng nhập đã thay đổi.'),
+                  content: Text(context.tr("Phiên đăng nhập đã thay đổi.")),
                   actions: [
                     TextButton(
                       onPressed: () => Navigator.pop(context),
-                      child: const Text('Đóng'),
+                      child: Text(context.tr("Đóng")),
                     ),
                   ],
                 ),
@@ -365,7 +376,9 @@ class _WorkspaceScreenState extends State<WorkspaceScreen> {
       );
 
   Future<void> editView([WorkspaceView? value]) async {
-    final name = TextEditingController(text: value?.name ?? 'Bộ sưu tập mới');
+    final name = TextEditingController(
+      text: value?.name ?? context.tr("Bộ sưu tập mới"),
+    );
     final query = TextEditingController(text: value?.query ?? '');
     final selected = {...?value?.labels};
     bool shared = value?.shared ?? false;
@@ -373,7 +386,9 @@ class _WorkspaceScreenState extends State<WorkspaceScreen> {
       builder: (_) => StatefulBuilder(
         builder: (context, update) => _WorkspaceSaveDialog(
           title: Text(
-            value == null ? 'Tạo bộ sưu tập thông minh' : 'Sửa bộ sưu tập',
+            value == null
+                ? context.tr("Tạo bộ sưu tập thông minh")
+                : context.tr("Sửa bộ sưu tập"),
           ),
           content: SizedBox(
             width: 520,
@@ -385,28 +400,32 @@ class _WorkspaceScreenState extends State<WorkspaceScreen> {
                   TextField(
                     controller: name,
                     maxLength: 60,
-                    decoration: const InputDecoration(
-                      labelText: 'Tên bộ sưu tập',
+                    decoration: InputDecoration(
+                      labelText: context.tr("Tên bộ sưu tập"),
                     ),
                   ),
                   const SizedBox(height: 12),
                   TextField(
                     controller: query,
                     maxLength: 200,
-                    decoration: const InputDecoration(
-                      labelText: 'Từ khóa trong tên hoặc nội dung',
+                    decoration: InputDecoration(
+                      labelText: context.tr("Từ khóa trong tên hoặc nội dung"),
                     ),
                   ),
                   SwitchListTile(
                     contentPadding: EdgeInsets.zero,
-                    title: const Text('Ghi chú được chia sẻ'),
-                    subtitle: const Text('Tắt để tìm trong ghi chú của bạn.'),
+                    title: Text(context.tr("Ghi chú được chia sẻ")),
+                    subtitle: Text(
+                      context.tr("Tắt để tìm trong ghi chú của bạn."),
+                    ),
                     value: shared,
                     onChanged: (v) => update(() => shared = v),
                   ),
                   OutlinedButton.icon(
                     icon: const Icon(Icons.filter_alt_outlined),
-                    label: Text('Chọn nhãn (${selected.length}/30)'),
+                    label: Text(
+                      context.tr("Chọn nhãn ({0}/30)", [selected.length]),
+                    ),
                     onPressed: () async {
                       final result = await showModalBottomSheet<Set<String>>(
                         context: context,
@@ -425,7 +444,9 @@ class _WorkspaceScreenState extends State<WorkspaceScreen> {
                         if (context.mounted) {
                           showMessage(
                             context,
-                            'Chọn tối đa 30 nhãn cho một bộ sưu tập.',
+                            context.tr(
+                              "Chọn tối đa 30 nhãn cho một bộ sưu tập.",
+                            ),
                           );
                         }
                         return;
@@ -453,10 +474,10 @@ class _WorkspaceScreenState extends State<WorkspaceScreen> {
               ),
             ),
           ),
-          saveLabel: 'Lưu bộ sưu tập',
+          saveLabel: context.tr("Lưu bộ sưu tập"),
           onSave: () async {
             if (account != c.user?['id']) {
-              throw StateError('Tài khoản đã thay đổi.');
+              throw StateError(context.tr("Tài khoản đã thay đổi."));
             }
             await c.saveWorkspaceView(
               name.text,
@@ -471,7 +492,7 @@ class _WorkspaceScreenState extends State<WorkspaceScreen> {
     );
     if (save == true && mounted && account == c.user?['id']) {
       setState(() => viewId = c.workspace.views.firstOrNull?.id);
-      showMessage(context, 'Đã lưu bộ sưu tập.');
+      showMessage(context, context.tr("Đã lưu bộ sưu tập."));
     }
     // Dialog controllers live until its exit animation has completed.
     await Future<void>.delayed(const Duration(milliseconds: 300));
@@ -480,14 +501,20 @@ class _WorkspaceScreenState extends State<WorkspaceScreen> {
   }
 
   Future<void> editTemplate([NoteTemplate? value]) async {
-    final title = TextEditingController(text: value?.title ?? 'Mẫu mới');
+    final title = TextEditingController(
+      text: value?.title ?? context.tr("Mẫu mới"),
+    );
     final description = TextEditingController(text: value?.description ?? '');
     final body = TextEditingController(
-      text: value?.content ?? '## Mục tiêu\n\n- [ ] Việc cần làm',
+      text: value?.content ?? context.tr("## Mục tiêu\n\n- [ ] Việc cần làm"),
     );
     final saved = await accountDialog<bool>(
       builder: (_) => _WorkspaceSaveDialog(
-        title: Text(value == null ? 'Tạo mẫu riêng' : 'Sửa mẫu riêng'),
+        title: Text(
+          value == null
+              ? context.tr("Tạo mẫu riêng")
+              : context.tr("Sửa mẫu riêng"),
+        ),
         content: SizedBox(
           width: 600,
           child: SingleChildScrollView(
@@ -497,13 +524,15 @@ class _WorkspaceScreenState extends State<WorkspaceScreen> {
                 TextField(
                   controller: title,
                   maxLength: 200,
-                  decoration: const InputDecoration(labelText: 'Tên mẫu'),
+                  decoration: InputDecoration(labelText: context.tr("Tên mẫu")),
                 ),
                 const SizedBox(height: 12),
                 TextField(
                   controller: description,
                   maxLength: 140,
-                  decoration: const InputDecoration(labelText: 'Mô tả ngắn'),
+                  decoration: InputDecoration(
+                    labelText: context.tr("Mô tả ngắn"),
+                  ),
                 ),
                 const SizedBox(height: 12),
                 TextField(
@@ -511,18 +540,18 @@ class _WorkspaceScreenState extends State<WorkspaceScreen> {
                   minLines: 6,
                   maxLines: 12,
                   maxLength: 100000,
-                  decoration: const InputDecoration(
-                    labelText: 'Nội dung khởi đầu (Markdown)',
+                  decoration: InputDecoration(
+                    labelText: context.tr("Nội dung khởi đầu (Markdown)"),
                   ),
                 ),
               ],
             ),
           ),
         ),
-        saveLabel: 'Lưu mẫu',
+        saveLabel: context.tr("Lưu mẫu"),
         onSave: () async {
           if (account != c.user?['id']) {
-            throw StateError('Tài khoản đã thay đổi.');
+            throw StateError(context.tr("Tài khoản đã thay đổi."));
           }
           await c.savePersonalTemplate(
             title.text,
@@ -534,7 +563,7 @@ class _WorkspaceScreenState extends State<WorkspaceScreen> {
       ),
     );
     if (saved == true && mounted && account == c.user?['id']) {
-      showMessage(context, 'Đã lưu mẫu riêng.');
+      showMessage(context, context.tr("Đã lưu mẫu riêng."));
     }
     await Future<void>.delayed(const Duration(milliseconds: 300));
     title.dispose();
@@ -548,24 +577,27 @@ class _WorkspaceScreenState extends State<WorkspaceScreen> {
   ) async {
     final accepted = await accountDialog<bool>(
       builder: (_) => _WorkspaceSaveDialog(
-        title: const Text('Xóa khỏi không gian làm việc?'),
+        title: Text(context.tr("Xóa khỏi không gian làm việc?")),
         content: SizedBox(
           width: 440,
           child: Text(
-            '“$title” sẽ bị xóa. Các ghi chú đã tạo hoặc nằm trong bộ sưu tập vẫn được giữ lại.',
+            context.tr(
+              "“{0}” sẽ bị xóa. Các ghi chú đã tạo hoặc nằm trong bộ sưu tập vẫn được giữ lại.",
+              [title],
+            ),
           ),
         ),
-        saveLabel: 'Xóa',
+        saveLabel: context.tr("Xóa"),
         onSave: () async {
           if (account != c.user?['id']) {
-            throw StateError('Tài khoản đã thay đổi.');
+            throw StateError(context.tr("Tài khoản đã thay đổi."));
           }
           await remove();
         },
       ),
     );
     if (accepted == true && mounted && account == c.user?['id']) {
-      showMessage(context, 'Đã xóa.');
+      showMessage(context, context.tr("Đã xóa."));
     }
   }
 
@@ -586,7 +618,7 @@ class _WorkspaceScreenState extends State<WorkspaceScreen> {
       if (!mounted || account != c.user?['id']) return;
       final accepted = await accountDialog<bool>(
         builder: (_) => AlertDialog(
-          title: Text('Nhập ${imported.length} ghi chú?'),
+          title: Text(context.tr("Nhập {0} ghi chú?", [imported.length])),
           content: SizedBox(
             width: 520,
             child: SingleChildScrollView(
@@ -594,8 +626,10 @@ class _WorkspaceScreenState extends State<WorkspaceScreen> {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    'Mỗi ghi chú được tạo mới trong tài khoản của bạn, rồi đồng bộ khi có mạng. File chỉ chứa tiêu đề và nội dung; tệp đính kèm không được nhập.',
+                  Text(
+                    context.tr(
+                      "Mỗi ghi chú được tạo mới trong tài khoản của bạn, rồi đồng bộ khi có mạng. File chỉ chứa tiêu đề và nội dung; tệp đính kèm không được nhập.",
+                    ),
                   ),
                   const SizedBox(height: 16),
                   for (final n in imported)
@@ -614,11 +648,11 @@ class _WorkspaceScreenState extends State<WorkspaceScreen> {
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context, false),
-              child: const Text('Hủy'),
+              child: Text(context.tr("Hủy")),
             ),
             FilledButton(
               onPressed: () => Navigator.pop(context, true),
-              child: const Text('Tạo các ghi chú mới'),
+              child: Text(context.tr("Tạo các ghi chú mới")),
             ),
           ],
         ),
@@ -628,7 +662,7 @@ class _WorkspaceScreenState extends State<WorkspaceScreen> {
         if (mounted && account == c.user?['id']) {
           showMessage(
             context,
-            'Đã lưu ${imported.length} ghi chú vào thiết bị.',
+            context.tr("Đã lưu {0} ghi chú vào thiết bị.", [imported.length]),
           );
         }
       }
@@ -638,7 +672,7 @@ class _WorkspaceScreenState extends State<WorkspaceScreen> {
           context,
           e is FormatException
               ? e.message
-              : 'Chưa nhập được ghi chú. Hãy thử lại.',
+              : context.tr("Chưa nhập được ghi chú. Hãy thử lại."),
         );
       }
     } finally {
@@ -648,7 +682,7 @@ class _WorkspaceScreenState extends State<WorkspaceScreen> {
 
   Future<void> exportFile() async {
     if (!c.workspaceNotes.any((n) => n.role == 'owner')) {
-      showMessage(context, 'Chưa có ghi chú của bạn để xuất.');
+      showMessage(context, context.tr("Chưa có ghi chú của bạn để xuất."));
       return;
     }
     final selected = <String>{};
@@ -659,17 +693,19 @@ class _WorkspaceScreenState extends State<WorkspaceScreen> {
               .where((n) => n.role == 'owner')
               .toList();
           return AlertDialog(
-            title: Text('Xuất ghi chú (${selected.length}/50)'),
+            title: Text(context.tr("Xuất ghi chú ({0}/50)", [selected.length])),
             content: SizedBox(
               width: 560,
               height: 380,
               child: CustomScrollView(
                 slivers: [
-                  const SliverToBoxAdapter(
+                  SliverToBoxAdapter(
                     child: Padding(
                       padding: EdgeInsets.only(bottom: 12),
                       child: Text(
-                        'File xuất không mã hóa. Chỉ chứa tên và nội dung của ghi chú chưa khóa; không gồm tệp đính kèm.',
+                        context.tr(
+                          "File xuất không mã hóa. Chỉ chứa tên và nội dung của ghi chú chưa khóa; không gồm tệp đính kèm.",
+                        ),
                       ),
                     ),
                   ),
@@ -702,13 +738,13 @@ class _WorkspaceScreenState extends State<WorkspaceScreen> {
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context, false),
-                child: const Text('Hủy'),
+                child: Text(context.tr("Hủy")),
               ),
               FilledButton(
                 onPressed: selected.isEmpty
                     ? null
                     : () => Navigator.pop(context, true),
-                child: const Text('Xuất file'),
+                child: Text(context.tr("Xuất file")),
               ),
             ],
           );
@@ -721,7 +757,10 @@ class _WorkspaceScreenState extends State<WorkspaceScreen> {
         .where((n) => selected.contains(n.id) && n.role == 'owner')
         .toList();
     if (source.length != selected.length) {
-      showMessage(context, 'Quyền truy cập đã thay đổi. Hãy chọn lại.');
+      showMessage(
+        context,
+        context.tr("Quyền truy cập đã thay đổi. Hãy chọn lại."),
+      );
       return;
     }
     try {
@@ -736,15 +775,15 @@ class _WorkspaceScreenState extends State<WorkspaceScreen> {
         showMessage(
           context,
           dispatched
-              ? 'Đã gửi file tới trình lưu của thiết bị.'
-              : 'Chưa lưu file.',
+              ? context.tr("Đã gửi file tới trình lưu của thiết bị.")
+              : context.tr("Chưa lưu file."),
         );
       }
     } catch (e) {
       if (mounted && account == c.user?['id']) {
         showMessage(
           context,
-          e is FormatException ? e.message : 'Chưa xuất được file.',
+          e is FormatException ? e.message : context.tr("Chưa xuất được file."),
         );
       }
     }
@@ -758,16 +797,16 @@ class _WorkspaceScreenState extends State<WorkspaceScreen> {
       title: Text(n.title, maxLines: 2, overflow: TextOverflow.ellipsis),
       subtitle: Text(
         n.role == 'owner'
-            ? 'Ghi chú của bạn'
+            ? context.tr("Ghi chú của bạn")
             : n.role == 'viewer'
-            ? 'Chỉ xem'
-            : 'Có thể chỉnh sửa',
+            ? context.tr("Chỉ xem")
+            : context.tr("Có thể chỉnh sửa"),
       ),
       onTap: () => openWorkspaceNote(context, c, n.id),
       trailing: IconButton(
         tooltip: c.workspace.favorites.contains(n.id)
-            ? 'Bỏ yêu thích'
-            : 'Yêu thích',
+            ? context.tr("Bỏ yêu thích")
+            : context.tr("Yêu thích"),
         onPressed: () => run(() => c.toggleFavorite(n.id)),
         icon: Icon(
           c.workspace.favorites.contains(n.id)
@@ -787,8 +826,8 @@ class _WorkspaceScreenState extends State<WorkspaceScreen> {
     builder: (context, _) {
       if (account == null || c.user?['id'] != account) {
         tasks.clear();
-        return const Scaffold(
-          body: Center(child: Text('Phiên đăng nhập đã thay đổi.')),
+        return Scaffold(
+          body: Center(child: Text(context.tr("Phiên đăng nhập đã thay đổi."))),
         );
       }
       final visible = c.workspaceNotes;
@@ -830,15 +869,15 @@ class _WorkspaceScreenState extends State<WorkspaceScreen> {
       final taskProgressIds = scopedTasks.map((r) => r.note.id).toSet().toList()
         ..sort();
       final titles = [
-        'Tổng quan',
-        'Yêu thích',
-        'Gần đây',
-        'Bộ sưu tập',
-        'Công việc',
-        'Mẫu riêng',
-        'Nhập / xuất',
-        'Tập trung',
-        'Kế hoạch',
+        context.tr("Tổng quan"),
+        context.tr("Yêu thích"),
+        context.tr("Gần đây"),
+        context.tr("Bộ sưu tập"),
+        context.tr("Công việc"),
+        context.tr("Mẫu riêng"),
+        context.tr("Nhập / xuất"),
+        context.tr("Tập trung"),
+        context.tr("Kế hoạch"),
       ];
       final icons = [
         Icons.space_dashboard_outlined,
@@ -866,20 +905,26 @@ class _WorkspaceScreenState extends State<WorkspaceScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              const SectionHeading(
-                'Một nơi cho những việc quan trọng',
-                detail: 'Ghi chú thành kế hoạch, lưu ý tưởng thành mẫu và quay lại đúng nơi bạn đang làm.',
+              SectionHeading(
+                context.tr("Một nơi cho những việc quan trọng"),
+                detail: context.tr(
+                  "Ghi chú thành kế hoạch, lưu ý tưởng thành mẫu và quay lại đúng nơi bạn đang làm.",
+                ),
                 icon: Icons.auto_awesome,
               ),
               Wrap(
                 spacing: 12,
                 runSpacing: 12,
                 children: [
-                  MetadataPill('${favorite.length} yêu thích'),
+                  MetadataPill(context.tr("{0} yêu thích", [favorite.length])),
                   MetadataPill(
-                    '${allTasks.where((r) => !r.task.done).length} việc cần làm',
+                    context.tr("{0} việc cần làm", [
+                      allTasks.where((r) => !r.task.done).length,
+                    ]),
                   ),
-                  MetadataPill('${c.workspace.templates.length} mẫu riêng'),
+                  MetadataPill(
+                    context.tr("{0} mẫu riêng", [c.workspace.templates.length]),
+                  ),
                 ],
               ),
               const SizedBox(height: 24),
@@ -894,33 +939,35 @@ class _WorkspaceScreenState extends State<WorkspaceScreen> {
                       journalTemplate(DateTime.now()),
                     ),
                     icon: const Icon(Icons.today_outlined),
-                    label: const Text('Nhật ký hôm nay'),
+                    label: Text(context.tr("Nhật ký hôm nay")),
                   ),
                   OutlinedButton.icon(
                     onPressed: () => setState(() => tab = 4),
                     icon: const Icon(Icons.checklist),
-                    label: const Text('Xem công việc'),
+                    label: Text(context.tr("Xem công việc")),
                   ),
                   OutlinedButton.icon(
                     onPressed: () => setState(() => tab = 5),
                     icon: const Icon(Icons.auto_awesome_mosaic_outlined),
-                    label: const Text('Mẫu của tôi'),
+                    label: Text(context.tr("Mẫu của tôi")),
                   ),
                   OutlinedButton.icon(
                     onPressed: () => setState(() => tab = 7),
                     icon: const Icon(Icons.timer_outlined),
-                    label: const Text('Phiên tập trung'),
+                    label: Text(context.tr("Phiên tập trung")),
                   ),
                   OutlinedButton.icon(
                     onPressed: () => setState(() => tab = 8),
                     icon: const Icon(Icons.view_kanban_outlined),
-                    label: const Text('Bảng kế hoạch'),
+                    label: Text(context.tr("Bảng kế hoạch")),
                   ),
                 ],
               ),
               const SizedBox(height: 20),
-              const Text(
-                'Yêu thích, lịch sử mở, bộ sưu tập và mẫu riêng được mã hóa theo tài khoản trên thiết bị này. Nội dung ghi chú vẫn đồng bộ qua server như bình thường.',
+              Text(
+                context.tr(
+                  "Yêu thích, lịch sử mở, bộ sưu tập và mẫu riêng được mã hóa theo tài khoản trên thiết bị này. Nội dung ghi chú vẫn đồng bộ qua server như bình thường.",
+                ),
               ),
             ],
           ),
@@ -930,8 +977,12 @@ class _WorkspaceScreenState extends State<WorkspaceScreen> {
         content = source.isEmpty
             ? StatusNotice(
                 message: tab == 1
-                    ? 'Chọn ngôi sao trong Tìm nhanh hoặc bộ sưu tập để giữ ghi chú ở đây.'
-                    : 'Ghi chú bạn mở sẽ xuất hiện ở đây. Ghi chú khóa và mất quyền luôn được ẩn.',
+                    ? context.tr(
+                        "Chọn ngôi sao trong Tìm nhanh hoặc bộ sưu tập để giữ ghi chú ở đây.",
+                      )
+                    : context.tr(
+                        "Ghi chú bạn mở sẽ xuất hiện ở đây. Ghi chú khóa và mất quyền luôn được ẩn.",
+                      ),
               )
             : const SizedBox.shrink();
         itemSliver = noteSliver(source);
@@ -955,7 +1006,7 @@ class _WorkspaceScreenState extends State<WorkspaceScreen> {
                   ),
                 ActionChip(
                   avatar: const Icon(Icons.add),
-                  label: const Text('Tạo bộ sưu tập'),
+                  label: Text(context.tr("Tạo bộ sưu tập")),
                   onPressed: () => editView(),
                 ),
               ],
@@ -964,25 +1015,34 @@ class _WorkspaceScreenState extends State<WorkspaceScreen> {
             if (view != null) ...[
               SectionHeading(
                 view.name,
-                detail:
-                    '${view.shared ? 'Được chia sẻ' : 'Của bạn'} · ${view.query.isEmpty ? 'Mọi từ khóa' : view.query} · ${collectionNotes.length} ghi chú',
+                detail: context.tr("{0} · {1} · {2} ghi chú", [
+                  view.shared
+                      ? context.tr("Được chia sẻ")
+                      : context.tr("Của bạn"),
+                  view.query.isEmpty ? context.tr("Mọi từ khóa") : view.query,
+                  collectionNotes.length,
+                ]),
               ),
               Align(
                 alignment: Alignment.centerLeft,
                 child: TextButton.icon(
                   onPressed: () => editView(view),
                   icon: const Icon(Icons.edit_outlined),
-                  label: const Text('Sửa điều kiện'),
+                  label: Text(context.tr("Sửa điều kiện")),
                 ),
               ),
               const SizedBox(height: 12),
               if (collectionNotes.isEmpty)
-                const StatusNotice(
-                  message: 'Chưa có ghi chú khớp điều kiện. Bộ sưu tập tự cập nhật khi ghi chú thay đổi.',
+                StatusNotice(
+                  message: context.tr(
+                    "Chưa có ghi chú khớp điều kiện. Bộ sưu tập tự cập nhật khi ghi chú thay đổi.",
+                  ),
                 ),
             ] else
-              const StatusNotice(
-                message: 'Tạo và chọn bộ sưu tập để lưu điều kiện tìm kiếm theo từ khóa, nhãn và nguồn ghi chú.',
+              StatusNotice(
+                message: context.tr(
+                  "Tạo và chọn bộ sưu tập để lưu điều kiện tìm kiếm theo từ khóa, nhãn và nguồn ghi chú.",
+                ),
               ),
           ],
         );
@@ -991,9 +1051,11 @@ class _WorkspaceScreenState extends State<WorkspaceScreen> {
         content = Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const SectionHeading(
-              'Checklist thành bảng công việc',
-              detail: 'Đọc tối đa 200 ghi chú chưa khóa và 100 mục mỗi ghi chú. Mở ghi chú để xử lý bản nháp hoặc xung đột.',
+            SectionHeading(
+              context.tr("Checklist thành bảng công việc"),
+              detail: context.tr(
+                "Đọc tối đa 200 ghi chú chưa khóa và 100 mục mỗi ghi chú. Mở ghi chú để xử lý bản nháp hoặc xung đột.",
+              ),
               icon: Icons.checklist,
             ),
             Wrap(
@@ -1001,7 +1063,7 @@ class _WorkspaceScreenState extends State<WorkspaceScreen> {
               runSpacing: 8,
               children: [
                 ChoiceChip(
-                  label: const Text('Cần làm'),
+                  label: Text(context.tr("Cần làm")),
                   selected: !allStatuses && !done,
                   onSelected: (_) => setState(() {
                     done = false;
@@ -1009,7 +1071,7 @@ class _WorkspaceScreenState extends State<WorkspaceScreen> {
                   }),
                 ),
                 ChoiceChip(
-                  label: const Text('Hoàn thành'),
+                  label: Text(context.tr("Hoàn thành")),
                   selected: !allStatuses && done,
                   onSelected: (_) => setState(() {
                     done = true;
@@ -1017,7 +1079,7 @@ class _WorkspaceScreenState extends State<WorkspaceScreen> {
                   }),
                 ),
                 ChoiceChip(
-                  label: const Text('Tất cả trạng thái'),
+                  label: Text(context.tr("Tất cả trạng thái")),
                   selected: allStatuses,
                   onSelected: (_) => setState(() => allStatuses = true),
                 ),
@@ -1030,12 +1092,12 @@ class _WorkspaceScreenState extends State<WorkspaceScreen> {
               maxLength: 200,
               onChanged: (_) => setState(() {}),
               decoration: InputDecoration(
-                labelText: 'Tìm công việc hoặc tên ghi chú',
+                labelText: context.tr("Tìm công việc hoặc tên ghi chú"),
                 prefixIcon: const Icon(Icons.search),
                 suffixIcon: taskQuery.text.isEmpty
                     ? null
                     : IconButton(
-                        tooltip: 'Xóa tìm công việc',
+                        tooltip: context.tr("Xóa tìm công việc"),
                         onPressed: () => setState(taskQuery.clear),
                         icon: const Icon(Icons.close),
                       ),
@@ -1048,7 +1110,13 @@ class _WorkspaceScreenState extends State<WorkspaceScreen> {
               children: [
                 for (int i = 0; i < 3; i++)
                   ChoiceChip(
-                    label: Text(['Mọi nguồn', 'Của bạn', 'Được chia sẻ'][i]),
+                    label: Text(
+                      [
+                        context.tr("Mọi nguồn"),
+                        context.tr("Của bạn"),
+                        context.tr("Được chia sẻ"),
+                      ][i],
+                    ),
                     selected: taskScope == i,
                     onSelected: (_) => setState(() => taskScope = i),
                   ),
@@ -1056,7 +1124,11 @@ class _WorkspaceScreenState extends State<WorkspaceScreen> {
             ),
             const SizedBox(height: 16),
             Text(
-              '$completed/${scopedTasks.length} hoàn thành · ${rows.length} kết quả',
+              context.tr("{0}/{1} hoàn thành · {2} kết quả", [
+                completed,
+                scopedTasks.length,
+                rows.length,
+              ]),
               key: const Key('workspace-task-progress'),
             ),
             const SizedBox(height: 8),
@@ -1070,8 +1142,12 @@ class _WorkspaceScreenState extends State<WorkspaceScreen> {
             if (rows.isEmpty)
               StatusNotice(
                 message: allTasks.isEmpty
-                    ? 'Chưa có công việc. Thêm checklist trong ghi chú để theo dõi ở đây.'
-                    : 'Không có công việc khớp bộ lọc. Hãy đổi trạng thái, nguồn hoặc từ khóa.',
+                    ? context.tr(
+                        "Chưa có công việc. Thêm checklist trong ghi chú để theo dõi ở đây.",
+                      )
+                    : context.tr(
+                        "Không có công việc khớp bộ lọc. Hãy đổi trạng thái, nguồn hoặc từ khóa.",
+                      ),
               ),
           ],
         );
@@ -1110,7 +1186,7 @@ class _WorkspaceScreenState extends State<WorkspaceScreen> {
                         contentPadding: EdgeInsets.zero,
                         title: Text(row.task.text),
                         subtitle: Text(
-                          '${row.note.title}${editable ? '' : ' · Mở để xem / xử lý'}',
+                          '${row.note.title}${editable ? '' : context.tr(" · Mở để xem / xử lý")}',
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                         ),
@@ -1132,13 +1208,15 @@ class _WorkspaceScreenState extends State<WorkspaceScreen> {
               child: FilledButton.icon(
                 onPressed: () => editTemplate(),
                 icon: const Icon(Icons.add),
-                label: const Text('Tạo mẫu riêng'),
+                label: Text(context.tr("Tạo mẫu riêng")),
               ),
             ),
             const SizedBox(height: 16),
             if (c.workspace.templates.isEmpty)
-              const StatusNotice(
-                message: 'Lưu cấu trúc bạn hay dùng. Mỗi lần sử dụng sẽ tạo một bản nháp mới.',
+              StatusNotice(
+                message: context.tr(
+                  "Lưu cấu trúc bạn hay dùng. Mỗi lần sử dụng sẽ tạo một bản nháp mới.",
+                ),
               ),
             for (final t in c.workspace.templates)
               Padding(
@@ -1155,18 +1233,18 @@ class _WorkspaceScreenState extends State<WorkspaceScreen> {
                           FilledButton.tonal(
                             onPressed: () =>
                                 createWorkspaceDraft(context, c, t),
-                            child: const Text('Dùng mẫu'),
+                            child: Text(context.tr("Dùng mẫu")),
                           ),
                           TextButton(
                             onPressed: () => editTemplate(t),
-                            child: const Text('Sửa mẫu'),
+                            child: Text(context.tr("Sửa mẫu")),
                           ),
                           TextButton(
                             onPressed: () => confirmDelete(
                               t.title,
                               () => c.deletePersonalTemplate(t.id),
                             ),
-                            child: const Text('Xóa mẫu'),
+                            child: Text(context.tr("Xóa mẫu")),
                           ),
                         ],
                       ),
@@ -1190,13 +1268,17 @@ class _WorkspaceScreenState extends State<WorkspaceScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              const SectionHeading(
-                'Mang ghi chú theo bạn',
-                detail: 'File NoteTogether JSON giữ nội dung và định dạng soạn thảo. Tối đa 50 ghi chú / 5 MiB một lần.',
+              SectionHeading(
+                context.tr("Mang ghi chú theo bạn"),
+                detail: context.tr(
+                  "File NoteTogether JSON giữ nội dung và định dạng soạn thảo. Tối đa 50 ghi chú / 5 MiB một lần.",
+                ),
                 icon: Icons.import_export,
               ),
-              const Text(
-                'Bản xuất không mã hóa, không gồm ghi chú khóa, ghi chú được chia sẻ hoặc tệp đính kèm. Nhập sẽ tạo ID mới và không thay đổi quyền hay ghi đè ghi chú hiện có.',
+              Text(
+                context.tr(
+                  "Bản xuất không mã hóa, không gồm ghi chú khóa, ghi chú được chia sẻ hoặc tệp đính kèm. Nhập sẽ tạo ID mới và không thay đổi quyền hay ghi đè ghi chú hiện có.",
+                ),
               ),
               const SizedBox(height: 20),
               Wrap(
@@ -1206,12 +1288,14 @@ class _WorkspaceScreenState extends State<WorkspaceScreen> {
                   FilledButton.icon(
                     onPressed: busy ? null : importFile,
                     icon: const Icon(Icons.file_upload_outlined),
-                    label: Text(busy ? 'Đang nhập…' : 'Nhập file'),
+                    label: Text(
+                      busy ? context.tr("Đang nhập…") : context.tr("Nhập file"),
+                    ),
                   ),
                   OutlinedButton.icon(
                     onPressed: busy ? null : exportFile,
                     icon: const Icon(Icons.file_download_outlined),
-                    label: const Text('Xuất ghi chú'),
+                    label: Text(context.tr("Xuất ghi chú")),
                   ),
                 ],
               ),
@@ -1230,14 +1314,14 @@ class _WorkspaceScreenState extends State<WorkspaceScreen> {
           autofocus: true,
           child: Scaffold(
             appBar: noteAppBar(
-              title: const Text(
-                'Không gian làm việc',
+              title: Text(
+                context.tr("Không gian làm việc"),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
               ),
               actions: [
                 IconButton(
-                  tooltip: 'Tìm nhanh · Ctrl+K',
+                  tooltip: context.tr("Tìm nhanh · Ctrl+K"),
                   onPressed: () => showQuickFind(context, c),
                   icon: const Icon(Icons.search),
                 ),
@@ -1262,9 +1346,13 @@ class _WorkspaceScreenState extends State<WorkspaceScreen> {
                                 MediaQuery.sizeOf(context).height >= 700 &&
                                 MediaQuery.textScalerOf(context).scale(1) <
                                     1.5) ...[
-                              const PageIntro(
-                                title: 'Không gian của những ý tưởng',
-                                detail: 'Tìm lại ghi chú, sắp xếp công việc và dành thời gian cho điều quan trọng.',
+                              PageIntro(
+                                title: context.tr(
+                                  "Không gian của những ý tưởng",
+                                ),
+                                detail: context.tr(
+                                  "Tìm lại ghi chú, sắp xếp công việc và dành thời gian cho điều quan trọng.",
+                                ),
                                 icon: Icons.space_dashboard_outlined,
                                 eyebrow: 'WORKSPACE',
                                 accent: 2,
@@ -1278,8 +1366,8 @@ class _WorkspaceScreenState extends State<WorkspaceScreen> {
                                 key: ValueKey('workspace-navigation-$tab'),
                                 initialValue: tab,
                                 isExpanded: true,
-                                decoration: const InputDecoration(
-                                  labelText: 'Phần đang xem',
+                                decoration: InputDecoration(
+                                  labelText: context.tr("Phần đang xem"),
                                 ),
                                 items: [
                                   for (int i = 0; i < titles.length; i++)

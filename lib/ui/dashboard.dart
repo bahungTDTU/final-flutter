@@ -1,3 +1,5 @@
+import '../l10n/app_strings.dart';
+
 import 'package:flutter/material.dart';
 
 import 'design_system.dart';
@@ -87,6 +89,7 @@ class DashboardHeader extends StatelessWidget {
     this.action,
     this.notice,
     this.workbench = false,
+    this.syncIndicator,
   });
   final String title, detail, syncLabel;
   final int count;
@@ -94,6 +97,7 @@ class DashboardHeader extends StatelessWidget {
   final VoidCallback onSync;
   final Widget? action, notice;
   final bool workbench;
+  final Widget? syncIndicator;
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -101,14 +105,16 @@ class DashboardHeader extends StatelessWidget {
     final compact =
         MediaQuery.sizeOf(context).width < 600 ||
         MediaQuery.sizeOf(context).height < 740;
-    final sync = TextButton.icon(
-      onPressed: onSync,
-      icon: Icon(
-        online ? Icons.cloud_done_outlined : Icons.cloud_off_outlined,
-        size: 18,
-      ),
-      label: Text(syncLabel),
-    );
+    final sync =
+        syncIndicator ??
+        TextButton.icon(
+          onPressed: onSync,
+          icon: Icon(
+            online ? Icons.cloud_done_outlined : Icons.cloud_off_outlined,
+            size: 18,
+          ),
+          label: Text(syncLabel),
+        );
     return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -119,7 +125,7 @@ class DashboardHeader extends StatelessWidget {
               Expanded(
                 flex: 4,
                 child: Text(
-                  'KHÔNG GIAN GHI CHÚ',
+                  context.tr("KHÔNG GIAN GHI CHÚ"),
                   style: theme.textTheme.bodySmall?.copyWith(
                     letterSpacing: 2,
                     fontWeight: FontWeight.w600,
@@ -164,7 +170,10 @@ class DashboardHeader extends StatelessWidget {
                     spacing: 12,
                     crossAxisAlignment: WrapCrossAlignment.center,
                     children: [
-                      Text('$count ghi chú', style: theme.textTheme.bodySmall),
+                      Text(
+                        context.tr("{0} ghi chú", [count]),
+                        style: theme.textTheme.bodySmall,
+                      ),
                       sync,
                     ],
                   ),
@@ -192,6 +201,7 @@ class DashboardHeader extends StatelessWidget {
                       theme.brightness == Brightness.light
                           ? Brightness.dark
                           : Brightness.light,
+                      palette: PaletteTokens.of(context).id,
                     ),
                     child: Builder(
                       builder: (context) {
@@ -218,7 +228,7 @@ class DashboardHeader extends StatelessWidget {
                               ),
                               const SizedBox(height: 8),
                               Text(
-                                '$count ghi chú',
+                                context.tr("{0} ghi chú", [count]),
                                 style: plate.textTheme.bodySmall,
                               ),
                               const SizedBox(height: 12),

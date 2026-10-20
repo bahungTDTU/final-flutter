@@ -1,0 +1,40 @@
+- group "NoteTogether":
+  - group "Main navigation":
+    - button "Notes"
+    - button "Shared"
+    - button "Ask notes"
+  - button "Quick Find · Ctrl+K"
+  - button "New note"
+  - button "Profile & preferences Default avatar Q"
+  - generic: NOTEBOOK / NOTETOGETHER
+  - heading "Your notes" [level=2]
+  - generic: Ideas, lessons and plans — together in one place.
+  - generic: "Notes: 4"
+  - button "Live"
+  - generic: Your email has not been verified.
+  - button "Verify"
+  - textbox "Search notes"
+  - generic: Search as you type · Ctrl + F to focus search
+  - button "Grid"
+  - button "List"
+  - generic: Pinned
+  - generic: "2"
+  - group "Kế hoạch học tập Bản nháp giữ nguyên khi đổi bảng màu. Pinned 16/10/2026" [active]:
+    - button "Note actions"
+  - 'group "Thiết kế không gian làm việc ## Ý tưởng Màu sắc có chủ đích, nội dung dễ đọc. - [ ] Hoàn thiện bộ màu Pinned 16/10/2026"':
+    - button "Note actions"
+  - generic: Other notes
+  - generic: "2"
+  - button "Locked note Unlock to view content. Locked"
+  - group "Shared with 1 Browser performance note Original server content Shared note 16/10/2026":
+    - button "Note actions"
+  - generic: DESK DRAWER
+  - generic: From idea to draft.
+  - generic: Small tools, always within reach.
+  - button "Note studio Start from a template"
+  - button "Workspace Planning, tasks and focus"
+  - generic "Manage labels":
+    - button "Manage labels"
+  - button "Preferences"
+  - generic: SHORTCUTS
+  - generic: Ctrl + F / Search library Ctrl + K / Quick Find

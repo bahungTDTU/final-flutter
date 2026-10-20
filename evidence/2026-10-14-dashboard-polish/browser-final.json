@@ -1,0 +1,26 @@
+{
+  "date_utc": "2026-10-13T20:53:04.921Z",
+  "target": "http://127.0.0.1:7377",
+  "api": "http://127.0.0.1:8059",
+  "synthetic_notes": 500,
+  "synthetic_labels": 30,
+  "checks": {
+    "desktop_light_1280x1000": "PASS",
+    "desktop_dark_1280x1000": "PASS",
+    "phone_light_375x812": "PASS",
+    "phone_dark_375x812": "PASS",
+    "short_rail_dark_844x390": "PASS",
+    "card_popup_does_not_open_editor": "PASS",
+    "empty_search_clear_restores_500": "PASS",
+    "grid_list_and_scroll": "PASS",
+    "search_retained_pc_to_phone": "PASS",
+    "realtime_preview_replacement": "PASS",
+    "remote_lock_visual_and_semantics": "PASS"
+  },
+  "errors": [],
+  "fps_measured": false,
+  "screen_reader_run": false,
+  "source_stage": "final focus ring; reloaded after new static worker installation",
+  "keyboard_focus": "PASS widget Tab/Enter both themes; full browser focus order not asserted",
+  "private_title_and_preview_removed_after_remote_lock": true
+}

@@ -1,0 +1,26 @@
+Browser tab: 3, Title: "NoteTogether", URL: "http://127.0.0.1:7377/".
+0 AXWebArea NoteTogether, URL: 127.0.0.1:7377/
+	1 container
+		2 container flt-semantic-node-4
+			33 container flt-semantic-node-164
+				34 heading NoteTogether, Value: 2, ID: flt-semantic-node-165
+					35 text NoteTogether
+				36 button Ghi chú mới, ID: flt-semantic-node-166
+				37 button Xưởng ghi chú, ID: flt-semantic-node-167
+				38 button Hồ sơ và tùy chỉnh, ID: flt-semantic-node-168
+			9 container flt-semantic-node-49
+				54 container ID: flt-semantic-node-189, Description: Ý tưởng cho NoteTogether Mục tiêu: xây dựng một thư viện ghi chú dễ đọc, có nhịp điệu và tập trung. Tách rõ tiêu đề, nội dung và công cụ để thao tác thoải mái. Đã ghim #Benchmark 19 14/10/2026
+					55 button (collapsed) Thao tác ghi chú, ID: flt-semantic-node-190, Secondary Actions: Expand
+				56 text Các ghi chú khác
+				57 text 498
+				64 button Ghi chú đã khóa Mở khóa để xem nội dung. Đã khóa, ID: flt-semantic-node-181
+				60 container ID: flt-semantic-node-183, Description: Benchmark note 498 ## Performance fixture Nội dung mẫu để đo cuộn ghi chú. Nội dung mẫu để đo cuộn ghi chú. Nội dung mẫu để đo cuộn ghi chú. Nội dung mẫu để đo cuộn ghi chú. Nội dung mẫu để đo cuộn ghi chú. Nội dung mẫu để đo cuộn ghi chú. Nội dung mẫu để đo cuộn ghi chú. Nội dung mẫu để đo cuộn ghi chú. Nội dung mẫu để đo cuộn ghi chú. Nội dung mẫu để đo cuộn ghi chú. Nội dung mẫu để đo cuộn ghi chú. Nội dung mẫu để đo cuộn ghi chú. Nội dung mẫu để đo cuộn ghi chú. Nội dung mẫu để đo cuộn ghi … #Benchmark 18 14/10/2026
+					61 button (collapsed) Thao tác ghi chú, ID: flt-semantic-node-184, Secondary Actions: Expand
+				62 container ID: flt-semantic-node-185, Description: Benchmark note 495 ## Performance fixture Nội dung mẫu để đo cuộn ghi chú. Nội dung mẫu để đo cuộn ghi chú. Nội dung mẫu để đo cuộn ghi chú. Nội dung mẫu để đo cuộn ghi chú. Nội dung mẫu để đo cuộn ghi chú. Nội dung mẫu để đo cuộn ghi chú. Nội dung mẫu để đo cuộn ghi chú. Nội dung mẫu để đo cuộn ghi chú. Nội dung mẫu để đo cuộn ghi chú. Nội dung mẫu để đo cuộn ghi chú. Nội dung mẫu để đo cuộn ghi chú. Nội dung mẫu để đo cuộn ghi chú. Nội dung mẫu để đo cuộn ghi chú. Nội dung mẫu để đo cuộn ghi … #Benchmark 15 14/10/2026
+					63 button (collapsed) Thao tác ghi chú, ID: flt-semantic-node-186, Secondary Actions: Expand
+			50 tab group flt-semantic-node-169
+				51 tab (selected, settable, boolean) Description: Ghi chú, Value: 1, ID: flt-semantic-node-170
+				52 tab (selectable, settable, boolean) Description: Được chia sẻ, Value: 0, ID: flt-semantic-node-171
+				53 tab (selectable, settable, boolean) Description: Hỏi ghi chú, Value: 0, ID: flt-semantic-node-172
+
+The focused UI element is 65 container

@@ -1,0 +1,8 @@
+{
+  "email": "frames-019f93db-01e4-4c22-9032-f7c3b6ccfb60@example.test",
+  "notes": 500,
+  "labels": 30,
+  "url": "http://127.0.0.1:8059",
+  "get_notes_ms": 30.605500000092434,
+  "seed_request_count": 532
+}

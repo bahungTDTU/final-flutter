@@ -1,0 +1,31 @@
+{
+  "base_commit": "6fba5a64e5f91818d364cd9d806776a06fe3ae6f",
+  "branch": "codex/dashboard-motion-performance",
+  "working_tree": "dirty; local changes preserved",
+  "before_edit_github_sync": "fast-forward from d59fdfd to 6fba5a6; backup zip verified; 6 overlapping docs merged",
+  "last_fetch_head_ahead_behind": [
+    0,
+    0
+  ],
+  "format_files": 132,
+  "analyze": "PASS",
+  "flutter_tests": 320,
+  "backend_tests": 152,
+  "web_build": "PASS; isolated QA API 8064; 40 static assets",
+  "android_debug_build": "PASS; not installed or run",
+  "browser": "IAB, actual loopback API+SQLite, 1280x960/360x800/844x390, light/dark",
+  "browser_errors": [],
+  "new_widget_tests": 4,
+  "old_evidence_payloads_unchanged": 1971,
+  "source_files_hashed": 169,
+  "not_run": [
+    "Android runtime",
+    "IME",
+    "screen-reader manual",
+    "FPS/GPU profiling",
+    "live providers",
+    "signed release",
+    "new CI"
+  ],
+  "pushed": false
+}

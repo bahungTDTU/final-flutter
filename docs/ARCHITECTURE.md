@@ -1,5 +1,20 @@
 # Kiến trúc NoteTogether
 
+Palette preference16/10: domain AppPalette enum → controller getter/strict validation → immutable pending_preferences → FastAPI PaletteId. MaterialApp shell tracks palette without remounting route; noteTheme caches12 (brightness,palette), PaletteTokens+PrismPalette interpolate. See [COLOR_PALETTES](COLOR_PALETTES.md).
+
+15–16/10: MaterialApp locale vi/en + AppStrings delegate, GlobalMaterial/Widgets/Cupertino/Quill.
+Tài nguyên UI riêng; public ui:locale khác namespace tài khoản. Locale account dùng pending_preferences
+và POST /me/preferences/sync, strict vi/en, field merge/idempotency và legacy PATCH giữ locale.
+Navigator/editor controllers giữ nguyên; text UI đổi qua Localizations. Chỉ cache resource patterns,
+không cache dữ liệu runtime trong l10n. [Thiết kế](BILINGUAL_UI.md), [evidence](../evidence/2026-10-15-bilingual/INDEX.md).
+
+14–15/10: Home mở route-scoped LabelManager, lazy SliverList+account/token gate+catalogue
+metadata listener. Gọi lại AppController addLabel/renameLabel/removeLabel/useRemoteLabel;
+không thay immutable operations, schema hoặc server authorization. Modal name/confirm
+bỏ riêng tư khi account/token/label gate đổi. Fullcheck295Flutter143backend PASS.
+[Audit source/gates hiện tại](RUBRIC_AND_UX_AUDIT_2026-10-14.md); các đoạn dưới giữ lịch sử.
+
+
 11–12/10 SecurityCenterScreen → route-owned SecuritySession → /me/sessions(GET) và
 /me/sessions/revoke(POST). Catalogue/password RAM-only, cancellable HTTP + account/token/
 lifecycle epoch; không qua durable outbox. UUID handle riêng/session_details FK cascade,

@@ -1,0 +1,11 @@
+{
+  "android_runtime": "NOT RUN; adb devices empty",
+  "browser_tab_closed": true,
+  "captured_at_utc": "2026-10-16T07:25:04.3327998Z",
+  "stopped_own_helpers": [
+    "backend",
+    "web"
+  ],
+  "viewport_reset": true,
+  "other_services_untouched": true
+}

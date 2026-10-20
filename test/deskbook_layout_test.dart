@@ -41,6 +41,11 @@ void main() {
       await revealHome(tester, find.widgetWithText(FilterChip, 'Dự án'));
       await tester.tap(find.widgetWithText(FilterChip, 'Dự án'));
       await tester.pumpAndSettle();
+      await tester.tap(find.byKey(const ValueKey('desk-destination-1')));
+      await tester.pumpAndSettle();
+      expect(find.text('Được chia sẻ với bạn'), findsOneWidget);
+      await tester.tap(find.byKey(const ValueKey('desk-destination-0')));
+      await tester.pumpAndSettle();
       for (final size in [
         const Size(1440, 600),
         const Size(390, 844),

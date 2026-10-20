@@ -1,0 +1,11 @@
+00:00 +0: loading D:/flutter cuoi ki/test/dashboard_polish_regression_test.dart
+00:00 +0: Hover at the card edge settles without a stationary-pointer loop
+00:00 +1: Clear filters cancels a newer query still waiting for debounce
+00:01 +2: Sync status pulses update without rebuilding the library
+DASHBOARD_PULSE_PROBE replacements=0 preview_projections=0
+00:01 +3: Pressed card retains the entire edge tap target
+00:01 +4: Preview survives theme/font changes and purges immediately on remote lock
+00:01 +5: Home still reacts to profile, label rename, deletion and pending-note changes
+00:01 +6: 500 rich notes remain lazy during sync pulses and view toggling
+DASHBOARD_500_PROBE visible_projections=6 pulse_projections=0 pulse_wall_us=77334
+00:02 +7: All tests passed!

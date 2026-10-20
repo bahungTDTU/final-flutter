@@ -1,0 +1,20 @@
+00:00 +0: loading D:/flutter cuoi ki/test/color_palette_test.dart
+00:00 +0: All six palettes meet text contrast in twelve themes; chrome stays distinct and cached
+PALETTE_CONTRAST atelier dark body_min=5.35
+PALETTE_CONTRAST atelier light body_min=4.93
+PALETTE_CONTRAST ocean dark body_min=7.69
+PALETTE_CONTRAST ocean light body_min=5.62
+PALETTE_CONTRAST iris dark body_min=7.73
+PALETTE_CONTRAST iris light body_min=5.51
+PALETTE_CONTRAST rose dark body_min=7.43
+PALETTE_CONTRAST rose light body_min=5.60
+PALETTE_CONTRAST amber dark body_min=7.29
+PALETTE_CONTRAST amber light body_min=5.77
+PALETTE_CONTRAST forest dark body_min=7.33
+PALETTE_CONTRAST forest light body_min=5.69
+00:00 +1: Palette is durable offline and queues remain isolated after account switch
+00:00 +2: Changing palette during sync preserves operation bytes and newer local overlay
+00:00 +3: Picker wraps on small and landscape screens at 200% in both languages and themes
+00:01 +4: Native palette buttons expose selected state, work with keyboard and reject an account change
+00:01 +5: Editor picker changes global colors without replacing document, selection or frozen base
+00:03 +6: All tests passed!

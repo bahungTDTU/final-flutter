@@ -1,4 +1,57 @@
-# UI/UX QA – cập nhật 13/10/2026
+# UI/UX QA – cập nhật20/10/2026
+
+## Audit trên base6fba5a6
+
+PASS132format0changes/analyze/320Flutter152backend; sửa ACK form chia sẻvi/en và lỗi tiêu đề bị cắt320px/chữ200%. Actual Web PC/phone/landscape, sáng/tối, API/DB riêng; Web/APKdebug compile. Native/FPS/providers/release/CI mới NOT RUN. [Báo cáo](UI_UX_AUDIT_2026-10-20.md), [INDEX](../evidence/2026-10-20-ui-ux-audit/INDEX.md). Các mục dưới là snapshots lịch sử.
+
+## Bảng màu16/10
+
+PASS129format0changes/analyze/308Flutter147backend;12theme contrast>=4.5, outline>=3, gallery320px/chữ200% hai locale/mode, keyboard/semantics/account gate, editor document/selection/base7. Actual Web7382 PC/tablet/phone/landscape, live selection/dark/English/query/reload/privacy/HTTP ACK; API4roles/palette merge/replay/legacy/account. Web/APK debug compile PASS. Native runtime/FPS/screen reader/provider/CI/release NOT RUN. [INDEX](../evidence/2026-10-16-color-palettes/INDEX.md).
+
+## Song ngữ —15–16/10/2026
+
+PASS format/analyze/302Flutter/145backend;7 test locale mới gồm English360px/chữ200%,
+validator đổi trực tiếp, document/selection/frozen revision, account/immutable queue và privacy.
+Sửa dropdown auth chữ lớn và initState draft; actual Web bắt sót locked helper/pin label và đã sửa.
+Web IAB hai locale/hai theme,1280×1000/375×812/844×390; gõ tiếng Việt→đổi locale→HTTP ACK,
+server locale/reload/settings/editor/menu và locked visual/semantics được kiểm trong phạm vi log.
+Web release local/APKdebug compile PASS. Không thay thế Android runtime, OS/IME/FPS/screen reader
+hoặc provider/release. [INDEX](../evidence/2026-10-15-bilingual/INDEX.md).
+
+## Quản lý nhãn —14–15/10/2026
+
+Hai baseline FAIL được tái hiện:1.000rows eager và trailing chiếm toàn tile ở320px/chữ200%.
+5regression mới PASS:6mounted rows/20pulses không thay widget, search/rename validation/delete
+confirm/cancel/immutable ops/note content giữ; remote rename, account switch purge,
+2theme×3viewport với text200% và keyboard insets.121format/analyze/295Flutter143backend PASS.
+Actual Web1000labels:PC1280×1000 light/dark,375×812 light/dark,844×390dark; tìm0999,
+rename→revision2 server/note content+revision3 giữ nguyên, no-result/clear, Tab/Enter menu/form,
+resize giữquery. Web/APKdebug compile PASS. Android runtime/FPS/IME/screen reader/providers/CI mới
+vẫn NOT RUN. [INDEX](../evidence/2026-10-14-rubric-ux-audit/INDEX.md).
+
+
+## Thanh điều hướng PC —14/10/2026
+
+PASS format119files0changes/analyze/290Flutter/143backend.3 test mới về keyboard/selected
+semantics/layout100–140% hai theme/contrast; regression query/filter qua đổi mục và resize.
+Actual WebIAB1280×1000 hai theme/1180×800 tối, ba mục đúng view; Shift+Tab/Enter hoạt động.
+Phone375×812/rail844×390 tối/trở lại PC giữ query “Kế hoạch” và mục chia sẻ. API4roles,
+Web/APK debug compile PASS. Screen reader/native runtime/IME/FPS/provider/CI/release NOT RUN.
+[Báo cáo](UI_DESK_NAVIGATION.md), [INDEX](../evidence/2026-10-14-desk-navigation/INDEX.md).
+Các mục dưới giữ snapshots trước lượt này.
+
+## Dashboard — nghiệm thu14/10/2026
+
+PASS format118files0changes/analyze/287Flutter/143backend.8 regression mới; baseline
+4a196ef FAIL3 lỗi hover/clear/sync được tái hiện độc lập rồi PASS trên source sửa.
+500richnotes/20pulses: preview projections thêm120→0; là widget workload, không phải FPS.
+Actual WebIAB/API8059/DB tổng hợp500notes:1280×1000 hai theme,375×812 hai theme,
+844×390 tối; menu thẻ không mở editor, query giữ qua resize, clear-all/lưới/list/cuộn;
+remote update hiện preview mới, remote lock xóa title/body khỏi visual và semantics.
+API4roles/Web release/APK debug compile PASS; console error0 trong phiên kiểm tra đã ghi nhận.
+Android runtime/IME/FPS/profile GPU/screen reader/provider/CI mới/release NOT RUN lượt này.
+[Báo cáo](DASHBOARD_MOTION_AND_PERFORMANCE.md),
+[INDEX](../evidence/2026-10-14-dashboard-polish/INDEX.md). Các mục dưới giữ evidence lịch sử.
 
 ## Inspector — nghiệm thu hiện hành13/10/2026
 

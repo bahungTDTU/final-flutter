@@ -1,0 +1,22 @@
+{
+  "build/web/main.dart.js": {
+    "bytes": 4937521,
+    "sha256": "36b235c9944968ae8d9dc7412fcd781dc41190b417ca8af1f06c78bd3f6b39c8"
+  },
+  "build/web/offline_worker.js": {
+    "bytes": 2957,
+    "sha256": "9119ef252ecf3db7bd77af3b2dd14e0621f9bab70668799de7e95c7dfb36c4ab"
+  },
+  "tmp/rubric-ux-web-2026-10-14/main.dart.js": {
+    "bytes": 4937594,
+    "sha256": "d174edadffb91526a80eb25863cd21b195b53b37cb720ae66a833552da8aae9e"
+  },
+  "tmp/rubric-ux-web-2026-10-14/offline_worker.js": {
+    "bytes": 2913,
+    "sha256": "bad41d12e1d4959ea95f5c6b80dace4826f233d56afe99d08b20b91010464656"
+  },
+  "build/app/outputs/flutter-apk/app-debug.apk": {
+    "bytes": 195283825,
+    "sha256": "fe0c4e6b006f1de731507da367bf192fe4cacc61b21533196e4349f17ebc6ec7"
+  }
+}

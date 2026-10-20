@@ -1,3 +1,5 @@
+import '../l10n/app_strings.dart';
+
 import 'package:flutter/material.dart';
 
 import '../state/app_controller.dart';
@@ -69,12 +71,16 @@ class _NoteLabelFilterState extends State<NoteLabelFilter> {
                                 children: [
                                   Expanded(
                                     child: SectionHeading(
-                                      'Bộ lọc nhãn',
-                                      detail: compact ? null : 'Ghi chú cần có tất cả nhãn đã chọn.',
+                                      context.tr("Bộ lọc nhãn"),
+                                      detail: compact
+                                          ? null
+                                          : context.tr(
+                                              "Ghi chú cần có tất cả nhãn đã chọn.",
+                                            ),
                                     ),
                                   ),
                                   IconButton(
-                                    tooltip: 'Đóng bộ lọc',
+                                    tooltip: context.tr("Đóng bộ lọc"),
                                     onPressed: () => Navigator.pop(context),
                                     icon: const Icon(Icons.close),
                                   ),
@@ -84,8 +90,8 @@ class _NoteLabelFilterState extends State<NoteLabelFilter> {
                               TextField(
                                 key: const Key('label-filter-search'),
                                 controller: search,
-                                decoration: const InputDecoration(
-                                  labelText: 'Tìm nhãn',
+                                decoration: InputDecoration(
+                                  labelText: context.tr("Tìm nhãn"),
                                   prefixIcon: Icon(Icons.search),
                                 ),
                                 onChanged: (_) => setState(() {}),
@@ -95,10 +101,10 @@ class _NoteLabelFilterState extends State<NoteLabelFilter> {
                           ),
                         ),
                         if (matches.isEmpty)
-                          const SliverToBoxAdapter(
+                          SliverToBoxAdapter(
                             child: Padding(
                               padding: EdgeInsets.all(20),
-                              child: Text('Không có nhãn phù hợp.'),
+                              child: Text(context.tr("Không có nhãn phù hợp.")),
                             ),
                           )
                         else
@@ -137,14 +143,16 @@ class _NoteLabelFilterState extends State<NoteLabelFilter> {
                         onPressed: selected.isEmpty
                             ? null
                             : () => setState(selected.clear),
-                        child: const Text('Bỏ chọn'),
+                        child: Text(context.tr("Bỏ chọn")),
                       ),
                       FilledButton(
                         key: const Key('apply-label-filter'),
                         onPressed: () =>
                             Navigator.pop(context, Set.of(selected)),
                         child: Text(
-                          compact ? 'Áp dụng' : 'Áp dụng (${selected.length})',
+                          compact
+                              ? context.tr("Áp dụng")
+                              : context.tr("Áp dụng ({0})", [selected.length]),
                         ),
                       ),
                     ],

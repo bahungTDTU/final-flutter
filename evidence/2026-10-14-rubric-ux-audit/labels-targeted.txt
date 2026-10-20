@@ -1,0 +1,8 @@
+00:00 +0: loading D:/flutter cuoi ki/test/label_manager_regression_test.dart
+00:00 +0: Label management mounts only visible rows for a large catalogue
+LABEL_ROWS mounted=6 total=1000
+00:01 +1: Long label conflicts fit a compact window with enlarged text
+00:02 +2: Label search, rename validation and confirmed delete preserve note content
+00:03 +3: Sync pulses retain rows; remote rename refreshes search; account change purges dialogs
+00:03 +4: Label actions remain reachable across themes, phone landscape and keyboard insets
+00:03 +5: All tests passed!

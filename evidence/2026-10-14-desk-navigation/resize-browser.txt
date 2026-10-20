@@ -1,0 +1,42 @@
+Browser tab: 2, Title: "NoteTogether", URL: "http://127.0.0.1:7378/".
+0 AXWebArea NoteTogether, URL: 127.0.0.1:7378/
+	1 container
+		2 container Description: NoteTogether, ID: flt-semantic-node-21
+			3 container Description: Điều hướng chính, ID: flt-semantic-node-327
+				4 button Ghi chú, ID: flt-semantic-node-328
+				5 button Được chia sẻ, ID: flt-semantic-node-330
+				6 button Hỏi ghi chú, ID: flt-semantic-node-332
+			7 button Tìm nhanh · Ctrl+K, ID: flt-semantic-node-334
+			8 button Ghi chú mới, ID: flt-semantic-node-335
+			9 button Hồ sơ và tùy chỉnh Ảnh đại diện mặc định Q, ID: flt-semantic-node-336
+			10 container flt-semantic-node-355
+				11 text SỔ GHI / NOTETOGETHER
+				12 heading Được chia sẻ với bạn, Value: 2, ID: flt-semantic-node-342
+					13 text Được chia sẻ với bạn
+				14 text Cùng theo dõi những điều quan trọng của nhóm.
+				15 text 1 ghi chú
+				16 button Trực tiếp, ID: flt-semantic-node-345
+				17 text Email của bạn chưa được xác minh.
+				18 button Xác minh, ID: flt-semantic-node-347
+				19 container flt-semantic-node-348
+					20 text field (settable) Description: Tìm ghi chú, Value: Kế hoạch
+					21 button Xóa tìm kiếm, ID: flt-semantic-node-349
+					22 text Tìm ngay khi nhập · Ctrl + F để đến ô tìm kiếm
+				23 button Lưới, ID: flt-semantic-node-351
+				24 button Danh sách, ID: flt-semantic-node-353
+				25 text Tất cả ghi chú
+				26 text 1
+				27 button ID: flt-semantic-node-338, Được chia sẻ với bạn Kế hoạch chung của nhóm Ghi chú tổng hợp để kiểm tra thanh điều hướng và thư viện cộng tác. Từ QA cộng tác · 14/10/2026 21:49 Ghi chú được chia sẻ Có thể chỉnh sửa 14/10/2026
+			28 container flt-semantic-node-356
+				29 text NGĂN BÀN
+				30 text Từ ý tưởng đến bản nháp.
+				31 text Những công cụ nhỏ, luôn trong tầm tay.
+				32 button Xưởng ghi chú Bắt đầu từ một mẫu, ID: flt-semantic-node-360
+				33 button Không gian làm việc Kế hoạch, việc cần làm và tập trung, ID: flt-semantic-node-361
+				34 container Description: Quản lý nhãn, ID: flt-semantic-node-362
+					35 button Quản lý nhãn, ID: flt-semantic-node-363
+				36 button Tùy chỉnh, ID: flt-semantic-node-364
+				37 text ĐƯỜNG TẮT
+				38 text Ctrl + F / Tìm trong thư viện Ctrl + K / Tìm nhanh
+
+The focused UI element is 20 text field (settable) Description: Tìm ghi chú, Value: Kế hoạch

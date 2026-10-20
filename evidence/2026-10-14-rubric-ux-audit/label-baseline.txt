@@ -1,0 +1,56 @@
+00:00 +0: loading D:/flutter cuoi ki/test/label_manager_regression_test.dart
+00:00 +0: Label management mounts only visible rows for a large catalogue
+LABEL_ROWS mounted=1000 total=1000
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: a value less than <30>
+  Actual: <1000>
+   Which: is not a value less than <30>
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///D:/flutter%20cuoi%20ki/test/label_manager_regression_test.dart:28:5)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1953:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///D:/flutter%20cuoi%20ki/test/label_manager_regression_test.dart line 28
+The test description was:
+  Label management mounts only visible rows for a large catalogue
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:44 +0 -1: Label management mounts only visible rows for a large catalogue [E]
+  Test failed. See exception logs above.
+  The test description was: Label management mounts only visible rows for a large catalogue
+  
+00:44 +0 -1: Long label conflicts fit a compact window with enlarged text
+
+Warning: A call to tap() with finder "Found 1 widget with widget matching predicate (ignoring all but first): [
+  RawTooltip-[LabeledGlobalKey<RawTooltipState>#bf634]("Quản lý nhãn", hover delay: 0:00:00.000000, touch delay: 0:00:01.500000, dismiss delay: 0:00:00.100000, triggerMode: TooltipTriggerMode.longPress, enableFeedback: true, positionDelegate: Closure: (TooltipPositionContext) => Offset from Function '_getDefaultPositionDelegate@1192220820':., state: RawTooltipState#e9eab),
+]" derived an Offset (Offset(1049.9, 1047.0)) that would not hit test on the specified widget.
+Maybe the widget is actually off-screen, or another widget is obscuring it, or the widget cannot receive pointer events.
+Indeed, Offset(1049.9, 1047.0) is outside the bounds of the root of the render tree, Size(1280.0, 1000.0).
+The finder corresponds to this RenderBox: _RenderLayoutSurrogateProxyBox#ec258 relayoutBoundary=up19
+The hit test result at that offset is: HitTestResult(HitTestEntry<HitTestTarget>#a91f8(_ReusableRenderView#e7247), HitTestEntry<HitTestTarget>#5b077(<AutomatedTestWidgetsFlutterBinding>))
+#0      WidgetController._getElementPoint (package:flutter_test/src/controller.dart:2165:25)
+#1      WidgetController.getCenter (package:flutter_test/src/controller.dart:1947:12)
+#2      WidgetController.tap (package:flutter_test/src/controller.dart:1080:7)
+#3      openLabels (file:///D:/flutter%20cuoi%20ki/test/label_manager_regression_test.dart:9:16)
+#4      main.<anonymous closure> (file:///D:/flutter%20cuoi%20ki/test/label_manager_regression_test.dart:42:11)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1953:5)
+<asynchronous suspension>
+#7      StackZoneSpecification._registerCallback.<anonymous closure> (package:stack_trace/src/stack_zone_specification.dart:114:42)
+<asynchronous suspension>
+To silence this warning, pass "warnIfMissed: false" to "tap()".
+To make this warning fatal, set WidgetController.hitTestWarningShouldBeFatal to true.
+
+00:45 +1 -1: Some tests failed.
+
+Failing tests:
+  D:/flutter cuoi ki/test/label_manager_regression_test.dart: Label management mounts only visible rows for a large catalogue

@@ -1,3 +1,5 @@
+import '../l10n/app_strings.dart';
+
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -39,12 +41,12 @@ class _TemplateGalleryState extends State<TemplateGallery> {
                 children: [
                   Expanded(
                     child: DialogHeading(
-                      selected.title,
+                      context.tr(selected.title),
                       icon: _templateIcons[selected.id]!,
                     ),
                   ),
                   IconButton(
-                    tooltip: 'Đóng xem trước',
+                    tooltip: context.tr("Đóng xem trước"),
                     onPressed: () => Navigator.pop(context),
                     icon: const Icon(Icons.close),
                   ),
@@ -65,8 +67,8 @@ class _TemplateGalleryState extends State<TemplateGallery> {
   @override
   Widget build(BuildContext context) => Scaffold(
     appBar: noteAppBar(
-      title: const Text(
-        'Xưởng ghi chú',
+      title: Text(
+        context.tr("Xưởng ghi chú"),
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
       ),
@@ -81,8 +83,10 @@ class _TemplateGalleryState extends State<TemplateGallery> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               if (!compact) ...[
-                const Flexible(
-                  child: Text('Tạo bản nháp riêng · dùng được offline'),
+                Flexible(
+                  child: Text(
+                    context.tr("Tạo bản nháp riêng · dùng được offline"),
+                  ),
                 ),
                 const SizedBox(width: 16),
               ],
@@ -92,7 +96,7 @@ class _TemplateGalleryState extends State<TemplateGallery> {
                     key: const Key('use-template'),
                     onPressed: () => Navigator.pop(context, selected),
                     icon: const Icon(Icons.add),
-                    label: const Text('Dùng mẫu'),
+                    label: Text(context.tr("Dùng mẫu")),
                   ),
                 ),
               if (!compact)
@@ -100,12 +104,12 @@ class _TemplateGalleryState extends State<TemplateGallery> {
                   key: const Key('use-template'),
                   onPressed: () => Navigator.pop(context, selected),
                   icon: const Icon(Icons.add),
-                  label: const Text('Dùng mẫu này'),
+                  label: Text(context.tr("Dùng mẫu này")),
                 ),
               const SizedBox(width: 8),
               IconButton(
                 key: const Key('preview-template'),
-                tooltip: 'Xem trước mẫu',
+                tooltip: context.tr("Xem trước mẫu"),
                 onPressed: previewTemplate,
                 icon: const Icon(Icons.preview_outlined),
               ),
@@ -122,9 +126,11 @@ class _TemplateGalleryState extends State<TemplateGallery> {
               area.maxHeight >= 440 &&
               MediaQuery.textScalerOf(context).scale(1) < 1.4;
           final cards = [
-            const SectionHeading(
-              'Bắt đầu từ một cấu trúc tốt',
-              detail: 'Chọn một mẫu, rồi viết lại theo cách của bạn. Mẫu không dùng AI.',
+            SectionHeading(
+              context.tr("Bắt đầu từ một cấu trúc tốt"),
+              detail: context.tr(
+                "Chọn một mẫu, rồi viết lại theo cách của bạn. Mẫu không dùng AI.",
+              ),
               icon: Icons.auto_awesome_mosaic_outlined,
             ),
             const SizedBox(height: 20),
@@ -144,8 +150,8 @@ class _TemplateGalleryState extends State<TemplateGallery> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SectionHeading(
-                  selected.title,
-                  detail: 'Xem trước nội dung có thể chỉnh sửa',
+                  context.tr(selected.title),
+                  detail: context.tr("Xem trước nội dung có thể chỉnh sửa"),
                   icon: _templateIcons[selected.id],
                 ),
                 const SizedBox(height: 16),
@@ -238,11 +244,11 @@ class _TemplateCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        template.title,
+                        context.tr(template.title),
                         style: Theme.of(context).textTheme.titleMedium,
                       ),
                       const SizedBox(height: 4),
-                      Text(template.description),
+                      Text(context.tr(template.description)),
                     ],
                   ),
                 ),
@@ -330,12 +336,24 @@ class _WritingToolsPanelState extends State<WritingToolsPanel> {
         spacing: 12,
         runSpacing: 8,
         children: [
-          Text('${snapshot.words} từ · ${snapshot.characters} ký tự'),
           Text(
-            'Đọc khoảng ${snapshot.readingMinutes < 1 ? 1 : snapshot.readingMinutes} phút',
+            context.tr("{0} từ · {1} ký tự", [
+              snapshot.words,
+              snapshot.characters,
+            ]),
+          ),
+          Text(
+            context.tr("Đọc khoảng {0} phút", [
+              snapshot.readingMinutes < 1 ? 1 : snapshot.readingMinutes,
+            ]),
           ),
           if (snapshot.taskCount > 0)
-            Text('${snapshot.completed}/${snapshot.taskCount} việc đã xong'),
+            Text(
+              context.tr("{0}/{1} việc đã xong", [
+                snapshot.completed,
+                snapshot.taskCount,
+              ]),
+            ),
         ],
       ),
       const SizedBox(height: 12),
@@ -346,10 +364,10 @@ class _WritingToolsPanelState extends State<WritingToolsPanel> {
           title: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text('Dàn ý & checklist'),
+              Text(context.tr("Dàn ý & checklist")),
               const SizedBox(height: 6),
               Text(
-                'Tiêu đề đoạn và danh sách công việc',
+                context.tr("Tiêu đề đoạn và danh sách công việc"),
                 style: Theme.of(context).textTheme.bodySmall,
               ),
             ],
@@ -361,16 +379,20 @@ class _WritingToolsPanelState extends State<WritingToolsPanel> {
             if (snapshot.taskCount > 0) ...[
               LinearProgressIndicator(
                 value: snapshot.completed / snapshot.taskCount,
-                semanticsLabel:
-                    'Tiến độ checklist: ${snapshot.completed} trên ${snapshot.taskCount}',
+                semanticsLabel: context.tr("Tiến độ checklist: {0} trên {1}", [
+                  snapshot.completed,
+                  snapshot.taskCount,
+                ]),
               ),
               const SizedBox(height: 12),
             ],
             if (snapshot.headings.isEmpty && snapshot.tasks.isEmpty)
-              const Padding(
+              Padding(
                 padding: EdgeInsets.all(12),
                 child: Text(
-                  'Chưa có dàn ý hoặc checklist. Ví dụ: “## Ý chính” và “- [ ] Ôn bài”.',
+                  context.tr(
+                    "Chưa có dàn ý hoặc checklist. Ví dụ: “## Ý chính” và “- [ ] Ôn bài”.",
+                  ),
                 ),
               ),
             ...snapshot.headings.map(
@@ -403,11 +425,13 @@ class _WritingToolsPanelState extends State<WritingToolsPanel> {
               ),
             ),
             if (snapshot.taskCount > 100 || snapshot.headings.length == 100)
-              const Text(
-                'Hiển thị tối đa 100 mục mỗi loại để giữ giao diện gọn.',
+              Text(
+                context.tr(
+                  "Hiển thị tối đa 100 mục mỗi loại để giữ giao diện gọn.",
+                ),
               ),
             if (widget.readOnly)
-              const Text('Chỉ xem · checklist giữ nguyên nội dung.'),
+              Text(context.tr("Chỉ xem · checklist giữ nguyên nội dung.")),
           ],
         ),
       ),
@@ -435,8 +459,8 @@ class FocusBar extends StatelessWidget {
             const Icon(Icons.timelapse_outlined),
             Text(
               session.complete
-                  ? 'Phiên tập trung hoàn tất'
-                  : 'Phiên tập trung · $clock',
+                  ? context.tr("Phiên tập trung hoàn tất")
+                  : context.tr("Phiên tập trung · {0}", [clock]),
               key: const Key('focus-clock'),
               style: Theme.of(context).textTheme.titleMedium,
             ),
@@ -448,14 +472,18 @@ class FocusBar extends StatelessWidget {
                   ? session.pause
                   : session.start,
               icon: Icon(session.running ? Icons.pause : Icons.play_arrow),
-              label: Text(session.running ? 'Tạm dừng' : 'Bắt đầu'),
+              label: Text(
+                session.running
+                    ? context.tr("Tạm dừng")
+                    : context.tr("Bắt đầu"),
+              ),
             ),
             IconButton(
-              tooltip: 'Đặt lại 25 phút',
+              tooltip: context.tr("Đặt lại 25 phút"),
               onPressed: session.reset,
               icon: const Icon(Icons.restart_alt),
             ),
-            const Text('Rời app sẽ tạm dừng phiên'),
+            Text(context.tr("Rời app sẽ tạm dừng phiên")),
           ],
         ),
       );

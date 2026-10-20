@@ -1,0 +1,857 @@
+Formatted 125 files (0 changed) in 1.23 seconds.
+Analyzing flutter cuoi ki...                                    
+No issues found! (ran in 5.4s)
+00:00 +0: loading D:/flutter cuoi ki/test/ai_test.dart
+00:00 +0: D:/flutter cuoi ki/test/ai_test.dart: Summary regeneration stays RAM-only and cannot overwrite notes or outbox
+00:00 +1: D:/flutter cuoi ki/test/ai_test.dart: Unsent draft blocks summary of stale server version
+00:00 +2: D:/flutter cuoi ki/test/ai_test.dart: Removing an uncited context source clears the whole answer
+00:00 +3: D:/flutter cuoi ki/test/ai_test.dart: Account switch during inference discards late answer and source metadata
+00:00 +4: D:/flutter cuoi ki/test/ai_test.dart: Validation failure and citation open both enforce current server permission
+00:00 +5: D:/flutter cuoi ki/test/ai_test.dart: Protected gate expiry and background hide output immediately
+00:00 +6: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:00 +7: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:00 +8: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:00 +9: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:00 +10: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:00 +11: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:00 +12: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:00 +13: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:00 +14: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:01 +15: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:01 +16: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:01 +17: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:01 +18: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:01 +19: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:01 +20: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:01 +21: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:01 +22: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:01 +23: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:01 +24: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:01 +25: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:02 +26: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:02 +27: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:02 +28: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:02 +29: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:02 +30: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:02 +31: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:02 +32: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:02 +33: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:02 +34: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:02 +35: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:03 +36: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:03 +37: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:03 +38: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:03 +39: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:03 +40: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:03 +41: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:03 +41: D:/flutter cuoi ki/test/dashboard_polish_regression_test.dart: Sync status pulses update without rebuilding the library
+DASHBOARD_PULSE_PROBE replacements=0 preview_projections=0
+00:03 +42: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:03 +43: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:03 +44: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:03 +45: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:03 +46: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:03 +47: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:03 +48: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:04 +49: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:04 +50: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:04 +51: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:04 +52: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:04 +53: D:/flutter cuoi ki/test/editor_sections_test.dart: Writing labels, text and counters never overlap at Size(320.0, 568.0) / 200 percent
+00:04 +54: D:/flutter cuoi ki/test/editor_sections_test.dart: Writing labels, text and counters never overlap at Size(320.0, 568.0) / 200 percent
+00:04 +55: D:/flutter cuoi ki/test/editor_sections_test.dart: Writing labels, text and counters never overlap at Size(320.0, 568.0) / 200 percent
+00:04 +56: D:/flutter cuoi ki/test/editor_sections_test.dart: Writing labels, text and counters never overlap at Size(320.0, 568.0) / 200 percent
+00:04 +57: D:/flutter cuoi ki/test/editor_sections_test.dart: Writing labels, text and counters never overlap at Size(320.0, 568.0) / 200 percent
+00:04 +58: D:/flutter cuoi ki/test/editor_sections_test.dart: Writing labels, text and counters never overlap at Size(320.0, 568.0) / 200 percent
+00:05 +59: D:/flutter cuoi ki/test/editor_sections_test.dart: Writing labels, text and counters never overlap at Size(320.0, 568.0) / 200 percent
+00:05 +60: D:/flutter cuoi ki/test/editor_sections_test.dart: Writing labels, text and counters never overlap at Size(320.0, 568.0) / 200 percent
+00:05 +61: D:/flutter cuoi ki/test/email_flow_test.dart: verification queue status updates only after an authenticated check
+00:05 +62: D:/flutter cuoi ki/test/email_flow_test.dart: verification queue status updates only after an authenticated check
+00:05 +63: D:/flutter cuoi ki/test/home_experience_test.dart: Controller pulses update Home without rebuilding the app shell
+00:05 +64: D:/flutter cuoi ki/test/home_experience_test.dart: Controller pulses update Home without rebuilding the app shell
+00:05 +65: D:/flutter cuoi ki/test/home_experience_test.dart: Controller pulses update Home without rebuilding the app shell
+00:05 +65: D:/flutter cuoi ki/test/dashboard_polish_regression_test.dart: 500 rich notes remain lazy during sync pulses and view toggling
+DASHBOARD_500_PROBE visible_projections=6 pulse_projections=0 pulse_wall_us=263128
+00:05 +66: D:/flutter cuoi ki/test/home_experience_test.dart: Controller pulses update Home without rebuilding the app shell
+00:05 +67: D:/flutter cuoi ki/test/home_experience_test.dart: Controller pulses update Home without rebuilding the app shell
+00:06 +68: D:/flutter cuoi ki/test/home_experience_test.dart: Controller pulses update Home without rebuilding the app shell
+00:06 +69: D:/flutter cuoi ki/test/home_experience_test.dart: Controller pulses update Home without rebuilding the app shell
+00:06 +70: D:/flutter cuoi ki/test/home_experience_test.dart: Controller pulses update Home without rebuilding the app shell
+00:06 +71: D:/flutter cuoi ki/test/home_experience_test.dart: Controller pulses update Home without rebuilding the app shell
+00:06 +72: D:/flutter cuoi ki/test/home_experience_test.dart: Controller pulses update Home without rebuilding the app shell
+00:06 +73: D:/flutter cuoi ki/test/home_experience_test.dart: Controller pulses update Home without rebuilding the app shell
+00:06 +74: D:/flutter cuoi ki/test/home_experience_test.dart: Controller pulses update Home without rebuilding the app shell
+SHELL_PROBE {"pulses":20,"shell_replacements":0,"fps_measured":false}
+00:06 +75: D:/flutter cuoi ki/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:07 +76: D:/flutter cuoi ki/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:07 +77: D:/flutter cuoi ki/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:07 +78: D:/flutter cuoi ki/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:07 +79: D:/flutter cuoi ki/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:07 +80: D:/flutter cuoi ki/test/label_manager_regression_test.dart: Label management mounts only visible rows for a large catalogue
+00:07 +81: D:/flutter cuoi ki/test/label_manager_regression_test.dart: Label management mounts only visible rows for a large catalogue
+00:08 +82: D:/flutter cuoi ki/test/label_manager_regression_test.dart: Label management mounts only visible rows for a large catalogue
+00:08 +83: D:/flutter cuoi ki/test/label_manager_regression_test.dart: Label management mounts only visible rows for a large catalogue
+00:08 +84: D:/flutter cuoi ki/test/label_manager_regression_test.dart: Label management mounts only visible rows for a large catalogue
+00:08 +85: D:/flutter cuoi ki/test/label_manager_regression_test.dart: Label management mounts only visible rows for a large catalogue
+00:08 +86: D:/flutter cuoi ki/test/label_manager_regression_test.dart: Label management mounts only visible rows for a large catalogue
+LABEL_ROWS mounted=6 total=1000
+00:08 +87: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:08 +88: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:08 +89: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:08 +90: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:08 +91: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:09 +92: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:09 +92: D:/flutter cuoi ki/test/encrypted_recovery_test.dart: Recovery dialog hides content until explicit copy and opens a new draft
+══╡ EXCEPTION CAUGHT BY WIDGETS LIBRARY ╞═══════════════════════════════════════════════════════════
+The following assertion was thrown building Builder:
+dependOnInheritedWidgetOfExactType<_LocalizationsScope>() or dependOnInheritedElement() was called
+before _EditorScreenState.initState() completed.
+When an inherited widget changes, for example if the value of Theme.of() changes, its dependent
+widgets are rebuilt. If the dependent widget's reference to the inherited widget is in a constructor
+or an initState() method, then the rebuilt dependent widget will not reflect the changes in the
+inherited widget.
+Typically references to inherited widgets should occur in widget build() methods. Alternatively,
+initialization based on inherited widgets can be placed in the didChangeDependencies method, which
+is called after initState and whenever the dependencies change thereafter.
+
+The relevant error-causing widget was:
+  SlideTransition SlideTransition:file:///D:/flutter%20cuoi%20ki/lib/ui/prism.dart:178:14
+
+When the exception was thrown, this was the stack:
+#0      StatefulElement.dependOnInheritedElement.<anonymous closure> (package:flutter/src/widgets/framework.dart:6067:9)
+#1      StatefulElement.dependOnInheritedElement (package:flutter/src/widgets/framework.dart:6114:6)
+#2      Element.dependOnInheritedWidgetOfExactType (package:flutter/src/widgets/framework.dart:5098:14)
+#3      Localizations.of (package:flutter/src/widgets/localizations.dart:621:10)
+#4      AppStrings.of (package:note_together/l10n/app_strings.dart:13:21)
+#5      TranslateUi.tr (package:note_together/l10n/app_strings.dart:85:18)
+#6      _EditorScreenState.initState (package:note_together/ui/editor.dart:83:21)
+#7      StatefulElement._firstBuild (package:flutter/src/widgets/framework.dart:5963:55)
+#8      ComponentElement.mount (package:flutter/src/widgets/framework.dart:5806:5)
+...     Normal element mounting (182 frames)
+#190    Element.inflateWidget (package:flutter/src/widgets/framework.dart:4600:20)
+#191    MultiChildRenderObjectElement.inflateWidget (package:flutter/src/widgets/framework.dart:7277:36)
+#192    Element.updateChild (package:flutter/src/widgets/framework.dart:4072:18)
+#193    Element.updateChildren (package:flutter/src/widgets/framework.dart:4268:32)
+#194    MultiChildRenderObjectElement.update (package:flutter/src/widgets/framework.dart:7308:17)
+#195    Element.updateChild (package:flutter/src/widgets/framework.dart:4050:15)
+#196    ComponentElement.performRebuild (package:flutter/src/widgets/framework.dart:5854:16)
+#197    StatefulElement.performRebuild (package:flutter/src/widgets/framework.dart:5995:11)
+#198    Element.rebuild (package:flutter/src/widgets/framework.dart:5542:7)
+#199    StatefulElement.update (package:flutter/src/widgets/framework.dart:6020:5)
+#200    Element.updateChild (package:flutter/src/widgets/framework.dart:4050:15)
+#201    ComponentElement.performRebuild (package:flutter/src/widgets/framework.dart:5854:16)
+#202    Element.rebuild (package:flutter/src/widgets/framework.dart:5542:7)
+#203    ProxyElement.update (package:flutter/src/widgets/framework.dart:6162:5)
+#204    Element.updateChild (package:flutter/src/widgets/framework.dart:4050:15)
+#205    ComponentElement.performRebuild (package:flutter/src/widgets/framework.dart:5854:16)
+#206    Element.rebuild (package:flutter/src/widgets/framework.dart:5542:7)
+#207    ProxyElement.update (package:flutter/src/widgets/framework.dart:6162:5)
+#208    _InheritedNotifierElement.update (package:flutter/src/widgets/inherited_notifier.dart:108:11)
+#209    Element.updateChild (package:flutter/src/widgets/framework.dart:4050:15)
+#210    ComponentElement.performRebuild (package:flutter/src/widgets/framework.dart:5854:16)
+#211    StatefulElement.performRebuild (package:flutter/src/widgets/framework.dart:5995:11)
+#212    Element.rebuild (package:flutter/src/widgets/framework.dart:5542:7)
+#213    StatefulElement.update (package:flutter/src/widgets/framework.dart:6020:5)
+#214    Element.updateChild (package:flutter/src/widgets/framework.dart:4050:15)
+#215    ComponentElement.performRebuild (package:flutter/src/widgets/framework.dart:5854:16)
+#216    Element.rebuild (package:flutter/src/widgets/framework.dart:5542:7)
+#217    ProxyElement.update (package:flutter/src/widgets/framework.dart:6162:5)
+#218    _InheritedNotifierElement.update (package:flutter/src/widgets/inherited_notifier.dart:108:11)
+#219    Element.updateChild (package:flutter/src/widgets/framework.dart:4050:15)
+#220    ComponentElement.performRebuild (package:flutter/src/widgets/framework.dart:5854:16)
+#221    StatefulElement.performRebuild (package:flutter/src/widgets/framework.dart:5995:11)
+#222    Element.rebuild (package:flutter/src/widgets/framework.dart:5542:7)
+#223    StatefulElement.update (package:flutter/src/widgets/framework.dart:6020:5)
+#224    Element.updateChild (package:flutter/src/widgets/framework.dart:4050:15)
+#225    ComponentElement.performRebuild (package:flutter/src/widgets/framework.dart:5854:16)
+#226    StatefulElement.performRebuild (package:flutter/src/widgets/framework.dart:5995:11)
+#227    Element.rebuild (package:flutter/src/widgets/framework.dart:5542:7)
+#228    StatefulElement.update (package:flutter/src/widgets/framework.dart:6020:5)
+#229    Element.updateChild (package:flutter/src/widgets/framework.dart:4050:15)
+#230    SingleChildRenderObjectElement.update (package:flutter/src/widgets/framework.dart:7135:14)
+#231    Element.updateChild (package:flutter/src/widgets/framework.dart:4050:15)
+#232    SingleChildRenderObjectElement.update (package:flutter/src/widgets/framework.dart:7135:14)
+#233    Element.updateChild (package:flutter/src/widgets/framework.dart:4050:15)
+#234    ComponentElement.performRebuild (package:flutter/src/widgets/framework.dart:5854:16)
+#235    Element.rebuild (package:flutter/src/widgets/framework.dart:5542:7)
+#236    ProxyElement.update (package:flutter/src/widgets/framework.dart:6162:5)
+#237    Element.updateChild (package:flutter/src/widgets/framework.dart:4050:15)
+#238    ComponentElement.performRebuild (package:flutter/src/widgets/framework.dart:5854:16)
+#239    Element.rebuild (package:flutter/src/widgets/framework.dart:5542:7)
+#240    ProxyElement.update (package:flutter/src/widgets/framework.dart:6162:5)
+#241    Element.updateChild (package:flutter/src/widgets/framework.dart:4050:15)
+#242    ComponentElement.performRebuild (package:flutter/src/widgets/framework.dart:5854:16)
+#243    StatefulElement.performRebuild (package:flutter/src/widgets/framework.dart:5995:11)
+#244    Element.rebuild (package:flutter/src/widgets/framework.dart:5542:7)
+#245    BuildScope._tryRebuild (package:flutter/src/widgets/framework.dart:2763:15)
+#246    BuildScope._flushDirtyElements (package:flutter/src/widgets/framework.dart:2820:11)
+#247    BuildOwner.buildScope (package:flutter/src/widgets/framework.dart:3124:18)
+#248    AutomatedTestWidgetsFlutterBinding.drawFrame (package:flutter_test/src/binding.dart:2432:19)
+#249    RendererBinding._handlePersistentFrameCallback (package:flutter/src/rendering/binding.dart:558:5)
+#250    SchedulerBinding._invokeFrameCallback (package:flutter/src/scheduler/binding.dart:1430:15)
+#251    SchedulerBinding.handleDrawFrame (package:flutter/src/scheduler/binding.dart:1345:9)
+#252    AutomatedTestWidgetsFlutterBinding.pump.<anonymous closure> (package:flutter_test/src/binding.dart:2261:9)
+#255    TestAsyncUtils.guard (package:flutter_test/src/test_async_utils.dart:74:41)
+#256    AutomatedTestWidgetsFlutterBinding.pump (package:flutter_test/src/binding.dart:2250:27)
+#257    WidgetTester.pumpAndSettle.<anonymous closure> (package:flutter_test/src/widget_tester.dart:719:23)
+#260    TestAsyncUtils.guard (package:flutter_test/src/test_async_utils.dart:74:41)
+#261    WidgetTester.pumpAndSettle (package:flutter_test/src/widget_tester.dart:712:27)
+#262    main.<anonymous closure> (file:///D:/flutter%20cuoi%20ki/test/encrypted_recovery_test.dart:262:20)
+<asynchronous suspension>
+#263    testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#264    TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1953:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided 5 frames from dart:async and package:stack_trace)
+
+════════════════════════════════════════════════════════════════════════════════════════════════════
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following StateError was thrown running a test:
+Bad state: No element
+
+When the exception was thrown, this was the stack:
+#0      Iterable.single (dart:core/iterable.dart:694:25)
+#1      WidgetController.widget (package:flutter_test/src/controller.dart:828:30)
+#2      main.<anonymous closure> (file:///D:/flutter%20cuoi%20ki/test/encrypted_recovery_test.dart:267:14)
+<asynchronous suspension>
+#3      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#4      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1953:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+The test description was:
+  Recovery dialog hides content until explicit copy and opens a new draft
+════════════════════════════════════════════════════════════════════════════════════════════════════
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following message was thrown:
+Multiple exceptions (2) were detected during the running of the current test, and at least one was
+unexpected.
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:09 +92 -1: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:09 +92 -1: D:/flutter cuoi ki/test/encrypted_recovery_test.dart: Recovery dialog hides content until explicit copy and opens a new draft [E]
+  Test failed. See exception logs above.
+  The test description was: Recovery dialog hides content until explicit copy and opens a new draft
+  
+00:09 +93 -1: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:09 +94 -1: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:09 +95 -1: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:09 +96 -1: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:09 +97 -1: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:09 +98 -1: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:09 +99 -1: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:09 +100 -1: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:09 +101 -1: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:09 +102 -1: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:09 +103 -1: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:09 +104 -1: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:09 +105 -1: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:09 +106 -1: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:10 +107 -1: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:10 +108 -1: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:10 +109 -1: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:10 +110 -1: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:10 +111 -1: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:10 +112 -1: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:10 +113 -1: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:10 +114 -1: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:10 +115 -1: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:10 +116 -1: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:10 +117 -1: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:11 +118 -1: D:/flutter cuoi ki/test/localization_test.dart: Live locale switch preserves rich draft, selection, note identity and frozen revision
+00:11 +119 -1: D:/flutter cuoi ki/test/localization_test.dart: Live locale switch preserves rich draft, selection, note identity and frozen revision
+00:11 +120 -1: D:/flutter cuoi ki/test/localization_test.dart: Live locale switch preserves rich draft, selection, note identity and frozen revision
+00:11 +121 -1: D:/flutter cuoi ki/test/localization_test.dart: Live locale switch preserves rich draft, selection, note identity and frozen revision
+00:11 +122 -1: D:/flutter cuoi ki/test/note_document_test.dart: Ctrl F from rich input opens document search without saving
+00:11 +123 -1: D:/flutter cuoi ki/test/note_document_test.dart: Ctrl F from rich input opens document search without saving
+00:12 +124 -1: D:/flutter cuoi ki/test/note_document_test.dart: Ctrl F from rich input opens document search without saving
+00:12 +125 -1: D:/flutter cuoi ki/test/note_document_test.dart: Ctrl F from rich input opens document search without saving
+00:12 +126 -1: D:/flutter cuoi ki/test/note_document_test.dart: Ctrl F from rich input opens document search without saving
+00:12 +127 -1: D:/flutter cuoi ki/test/note_document_test.dart: Ctrl F from rich input opens document search without saving
+00:12 +128 -1: D:/flutter cuoi ki/test/note_document_test.dart: Ctrl F from rich input opens document search without saving
+00:12 +129 -1: D:/flutter cuoi ki/test/note_ordering_test.dart: Home grid renders locked newest before ordinary older
+00:12 +130 -1: D:/flutter cuoi ki/test/home_experience_test.dart: Large label catalogue is lazy; Apply and Cancel preserve search
+00:12 +131 -1: D:/flutter cuoi ki/test/note_protection_test.dart: viewer reader has no owner controls and hides on app background
+00:12 +132 -1: D:/flutter cuoi ki/test/note_protection_test.dart: viewer reader has no owner controls and hides on app background
+00:12 +133 -1: D:/flutter cuoi ki/test/note_protection_test.dart: viewer reader has no owner controls and hides on app background
+00:12 +134 -1: D:/flutter cuoi ki/test/note_protection_test.dart: viewer reader has no owner controls and hides on app background
+00:12 +135 -1: D:/flutter cuoi ki/test/note_protection_test.dart: viewer reader has no owner controls and hides on app background
+00:12 +136 -1: D:/flutter cuoi ki/test/localization_test.dart: English Home retains user titles, private lock boundaries, query and layout across themes and resize
+00:12 +137 -1: D:/flutter cuoi ki/test/localization_test.dart: English Home retains user titles, private lock boundaries, query and layout across themes and resize
+00:12 +138 -1: D:/flutter cuoi ki/test/localization_test.dart: English Home retains user titles, private lock boundaries, query and layout across themes and resize
+00:12 +139 -1: D:/flutter cuoi ki/test/localization_test.dart: English Home retains user titles, private lock boundaries, query and layout across themes and resize
+00:12 +140 -1: D:/flutter cuoi ki/test/localization_test.dart: English Home retains user titles, private lock boundaries, query and layout across themes and resize
+00:12 +141 -1: D:/flutter cuoi ki/test/localization_test.dart: English Home retains user titles, private lock boundaries, query and layout across themes and resize
+00:12 +142 -1: D:/flutter cuoi ki/test/localization_test.dart: English Home retains user titles, private lock boundaries, query and layout across themes and resize
+00:12 +143 -1: D:/flutter cuoi ki/test/localization_test.dart: English Home retains user titles, private lock boundaries, query and layout across themes and resize
+00:13 +144 -1: D:/flutter cuoi ki/test/localization_test.dart: English Home retains user titles, private lock boundaries, query and layout across themes and resize
+00:13 +145 -1: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:13 +146 -1: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:13 +147 -1: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:13 +148 -1: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:13 +149 -1: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:13 +150 -1: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:13 +151 -1: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:13 +152 -1: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:13 +153 -1: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:14 +154 -1: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:14 +155 -1: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:14 +156 -1: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:14 +157 -1: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:14 +158 -1: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:14 +159 -1: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:14 +160 -1: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:14 +161 -1: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:14 +162 -1: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:14 +163 -1: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:14 +164 -1: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:14 +165 -1: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:14 +166 -1: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:14 +167 -1: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:14 +168 -1: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:14 +169 -1: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:14 +170 -1: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:14 +171 -1: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:14 +172 -1: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:14 +173 -1: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:14 +174 -1: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:15 +175 -1: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:15 +176 -1: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:15 +177 -1: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:15 +178 -1: D:/flutter cuoi ki/test/protected_editing_test.dart: Protected editor autosaves; revoked delete confirmation removes name and disables action
+00:15 +179 -1: D:/flutter cuoi ki/test/protected_editing_test.dart: Protected editor autosaves; revoked delete confirmation removes name and disables action
+00:15 +180 -1: D:/flutter cuoi ki/test/protected_editing_test.dart: Protected editor autosaves; revoked delete confirmation removes name and disables action
+00:16 +181 -1: D:/flutter cuoi ki/test/protected_editing_test.dart: Protected editor autosaves; revoked delete confirmation removes name and disables action
+00:16 +182 -1: D:/flutter cuoi ki/test/protected_editing_test.dart: Protected editor autosaves; revoked delete confirmation removes name and disables action
+00:16 +183 -1: D:/flutter cuoi ki/test/protected_editing_test.dart: Protected editor autosaves; revoked delete confirmation removes name and disables action
+00:16 +184 -1: D:/flutter cuoi ki/test/realtime_test.dart: Clean live editor preserves selection and explicitly opens a new base
+00:16 +185 -1: D:/flutter cuoi ki/test/realtime_test.dart: Clean live editor preserves selection and explicitly opens a new base
+00:16 +186 -1: D:/flutter cuoi ki/test/realtime_test.dart: Clean live editor preserves selection and explicitly opens a new base
+00:16 +187 -1: D:/flutter cuoi ki/test/realtime_test.dart: Clean live editor preserves selection and explicitly opens a new base
+00:16 +188 -1: D:/flutter cuoi ki/test/realtime_test.dart: Clean live editor preserves selection and explicitly opens a new base
+00:16 +189 -1: D:/flutter cuoi ki/test/realtime_test.dart: Clean live editor preserves selection and explicitly opens a new base
+00:16 +190 -1: D:/flutter cuoi ki/test/realtime_test.dart: Clean live editor preserves selection and explicitly opens a new base
+00:16 +191 -1: D:/flutter cuoi ki/test/realtime_test.dart: Clean live editor preserves selection and explicitly opens a new base
+00:16 +192 -1: D:/flutter cuoi ki/test/realtime_test.dart: Clean live editor preserves selection and explicitly opens a new base
+00:16 +193 -1: D:/flutter cuoi ki/test/realtime_test.dart: Clean live editor preserves selection and explicitly opens a new base
+00:16 +194 -1: D:/flutter cuoi ki/test/realtime_test.dart: Clean live editor preserves selection and explicitly opens a new base
+00:16 +195 -1: D:/flutter cuoi ki/test/realtime_test.dart: Clean live editor preserves selection and explicitly opens a new base
+00:16 +196 -1: D:/flutter cuoi ki/test/realtime_test.dart: Clean live editor preserves selection and explicitly opens a new base
+00:16 +197 -1: D:/flutter cuoi ki/test/realtime_test.dart: Clean live editor preserves selection and explicitly opens a new base
+00:16 +198 -1: D:/flutter cuoi ki/test/planner_test.dart: remote lock immediately removes private cards during entry and clears open calendar
+00:16 +199 -1: D:/flutter cuoi ki/test/sharing_test.dart: Downgrade while typing shows server read-only and preserves draft
+00:17 +200 -1: D:/flutter cuoi ki/test/sharing_test.dart: Downgrade while typing shows server read-only and preserves draft
+00:17 +201 -1: D:/flutter cuoi ki/test/sharing_test.dart: Downgrade while typing shows server read-only and preserves draft
+00:17 +202 -1: D:/flutter cuoi ki/test/sharing_test.dart: Downgrade while typing shows server read-only and preserves draft
+00:17 +203 -1: D:/flutter cuoi ki/test/sharing_test.dart: Downgrade while typing shows server read-only and preserves draft
+00:18 +204 -1: D:/flutter cuoi ki/test/sharing_test.dart: Downgrade while typing shows server read-only and preserves draft
+00:18 +205 -1: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:18 +206 -1: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:18 +207 -1: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:18 +208 -1: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:18 +209 -1: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:18 +210 -1: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:18 +211 -1: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:19 +212 -1: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:19 +213 -1: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:19 +214 -1: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:19 +215 -1: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:19 +216 -1: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:19 +217 -1: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:19 +218 -1: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:19 +219 -1: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:19 +220 -1: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:20 +221 -1: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:20 +222 -1: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:20 +223 -1: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:20 +224 -1: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:20 +225 -1: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:21 +226 -1: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:21 +227 -1: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:21 +228 -1: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:21 +229 -1: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:21 +230 -1: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:21 +230 -1: D:/flutter cuoi ki/test/ui_upgrade_test.dart: Reopened incomplete draft stays local and never claims synchronized
+══╡ EXCEPTION CAUGHT BY WIDGETS LIBRARY ╞═══════════════════════════════════════════════════════════
+The following assertion was thrown building Builder:
+dependOnInheritedWidgetOfExactType<_LocalizationsScope>() or dependOnInheritedElement() was called
+before _EditorScreenState.initState() completed.
+When an inherited widget changes, for example if the value of Theme.of() changes, its dependent
+widgets are rebuilt. If the dependent widget's reference to the inherited widget is in a constructor
+or an initState() method, then the rebuilt dependent widget will not reflect the changes in the
+inherited widget.
+Typically references to inherited widgets should occur in widget build() methods. Alternatively,
+initialization based on inherited widgets can be placed in the didChangeDependencies method, which
+is called after initState and whenever the dependencies change thereafter.
+
+The relevant error-causing widget was:
+  SlideTransition SlideTransition:file:///D:/flutter%20cuoi%20ki/lib/ui/prism.dart:178:14
+
+When the exception was thrown, this was the stack:
+#0      StatefulElement.dependOnInheritedElement.<anonymous closure> (package:flutter/src/widgets/framework.dart:6067:9)
+#1      StatefulElement.dependOnInheritedElement (package:flutter/src/widgets/framework.dart:6114:6)
+#2      Element.dependOnInheritedWidgetOfExactType (package:flutter/src/widgets/framework.dart:5098:14)
+#3      Localizations.of (package:flutter/src/widgets/localizations.dart:621:10)
+#4      AppStrings.of (package:note_together/l10n/app_strings.dart:13:21)
+#5      TranslateUi.tr (package:note_together/l10n/app_strings.dart:85:18)
+#6      _EditorScreenState.initState (package:note_together/ui/editor.dart:84:21)
+#7      StatefulElement._firstBuild (package:flutter/src/widgets/framework.dart:5963:55)
+#8      ComponentElement.mount (package:flutter/src/widgets/framework.dart:5806:5)
+...     Normal element mounting (182 frames)
+#190    Element.inflateWidget (package:flutter/src/widgets/framework.dart:4600:20)
+#191    MultiChildRenderObjectElement.inflateWidget (package:flutter/src/widgets/framework.dart:7277:36)
+#192    MultiChildRenderObjectElement.mount (package:flutter/src/widgets/framework.dart:7292:32)
+...     Normal element mounting (467 frames)
+#659    Element.inflateWidget (package:flutter/src/widgets/framework.dart:4600:20)
+#660    Element.updateChild (package:flutter/src/widgets/framework.dart:4066:20)
+#661    ComponentElement.performRebuild (package:flutter/src/widgets/framework.dart:5854:16)
+#662    Element.rebuild (package:flutter/src/widgets/framework.dart:5542:7)
+#663    ProxyElement.update (package:flutter/src/widgets/framework.dart:6162:5)
+#664    _InheritedNotifierElement.update (package:flutter/src/widgets/inherited_notifier.dart:108:11)
+#665    Element.updateChild (package:flutter/src/widgets/framework.dart:4050:15)
+#666    ComponentElement.performRebuild (package:flutter/src/widgets/framework.dart:5854:16)
+#667    StatefulElement.performRebuild (package:flutter/src/widgets/framework.dart:5995:11)
+#668    Element.rebuild (package:flutter/src/widgets/framework.dart:5542:7)
+#669    StatefulElement.update (package:flutter/src/widgets/framework.dart:6020:5)
+#670    Element.updateChild (package:flutter/src/widgets/framework.dart:4050:15)
+#671    ComponentElement.performRebuild (package:flutter/src/widgets/framework.dart:5854:16)
+#672    Element.rebuild (package:flutter/src/widgets/framework.dart:5542:7)
+#673    ProxyElement.update (package:flutter/src/widgets/framework.dart:6162:5)
+#674    _InheritedNotifierElement.update (package:flutter/src/widgets/inherited_notifier.dart:108:11)
+#675    Element.updateChild (package:flutter/src/widgets/framework.dart:4050:15)
+#676    ComponentElement.performRebuild (package:flutter/src/widgets/framework.dart:5854:16)
+#677    StatefulElement.performRebuild (package:flutter/src/widgets/framework.dart:5995:11)
+#678    Element.rebuild (package:flutter/src/widgets/framework.dart:5542:7)
+#679    StatefulElement.update (package:flutter/src/widgets/framework.dart:6020:5)
+#680    Element.updateChild (package:flutter/src/widgets/framework.dart:4050:15)
+#681    ComponentElement.performRebuild (package:flutter/src/widgets/framework.dart:5854:16)
+#682    StatefulElement.performRebuild (package:flutter/src/widgets/framework.dart:5995:11)
+#683    Element.rebuild (package:flutter/src/widgets/framework.dart:5542:7)
+#684    StatefulElement.update (package:flutter/src/widgets/framework.dart:6020:5)
+#685    Element.updateChild (package:flutter/src/widgets/framework.dart:4050:15)
+#686    ComponentElement.performRebuild (package:flutter/src/widgets/framework.dart:5854:16)
+#687    Element.rebuild (package:flutter/src/widgets/framework.dart:5542:7)
+#688    ProxyElement.update (package:flutter/src/widgets/framework.dart:6162:5)
+#689    Element.updateChild (package:flutter/src/widgets/framework.dart:4050:15)
+#690    ComponentElement.performRebuild (package:flutter/src/widgets/framework.dart:5854:16)
+#691    StatefulElement.performRebuild (package:flutter/src/widgets/framework.dart:5995:11)
+#692    Element.rebuild (package:flutter/src/widgets/framework.dart:5542:7)
+#693    StatefulElement.update (package:flutter/src/widgets/framework.dart:6020:5)
+#694    Element.updateChild (package:flutter/src/widgets/framework.dart:4050:15)
+#695    ComponentElement.performRebuild (package:flutter/src/widgets/framework.dart:5854:16)
+#696    Element.rebuild (package:flutter/src/widgets/framework.dart:5542:7)
+#697    ProxyElement.update (package:flutter/src/widgets/framework.dart:6162:5)
+#698    Element.updateChild (package:flutter/src/widgets/framework.dart:4050:15)
+#699    ComponentElement.performRebuild (package:flutter/src/widgets/framework.dart:5854:16)
+#700    Element.rebuild (package:flutter/src/widgets/framework.dart:5542:7)
+#701    ProxyElement.update (package:flutter/src/widgets/framework.dart:6162:5)
+#702    Element.updateChild (package:flutter/src/widgets/framework.dart:4050:15)
+#703    _RawViewElement._updateChild (package:flutter/src/widgets/view.dart:488:16)
+#704    _RawViewElement.update (package:flutter/src/widgets/view.dart:575:5)
+#705    Element.updateChild (package:flutter/src/widgets/framework.dart:4050:15)
+#706    ComponentElement.performRebuild (package:flutter/src/widgets/framework.dart:5854:16)
+#707    Element.rebuild (package:flutter/src/widgets/framework.dart:5542:7)
+#708    StatelessElement.update (package:flutter/src/widgets/framework.dart:5908:5)
+#709    Element.updateChild (package:flutter/src/widgets/framework.dart:4050:15)
+#710    ComponentElement.performRebuild (package:flutter/src/widgets/framework.dart:5854:16)
+#711    StatefulElement.performRebuild (package:flutter/src/widgets/framework.dart:5995:11)
+#712    Element.rebuild (package:flutter/src/widgets/framework.dart:5542:7)
+#713    StatefulElement.update (package:flutter/src/widgets/framework.dart:6020:5)
+#714    Element.updateChild (package:flutter/src/widgets/framework.dart:4050:15)
+#715    RootElement._rebuild (package:flutter/src/widgets/binding.dart:2091:16)
+#716    RootElement.update (package:flutter/src/widgets/binding.dart:2069:5)
+#717    RootElement.performRebuild (package:flutter/src/widgets/binding.dart:2083:7)
+#718    Element.rebuild (package:flutter/src/widgets/framework.dart:5542:7)
+#719    BuildScope._tryRebuild (package:flutter/src/widgets/framework.dart:2763:15)
+#720    BuildScope._flushDirtyElements (package:flutter/src/widgets/framework.dart:2820:11)
+#721    BuildOwner.buildScope (package:flutter/src/widgets/framework.dart:3124:18)
+#722    AutomatedTestWidgetsFlutterBinding.drawFrame (package:flutter_test/src/binding.dart:2432:19)
+#723    RendererBinding._handlePersistentFrameCallback (package:flutter/src/rendering/binding.dart:558:5)
+#724    SchedulerBinding._invokeFrameCallback (package:flutter/src/scheduler/binding.dart:1430:15)
+#725    SchedulerBinding.handleDrawFrame (package:flutter/src/scheduler/binding.dart:1345:9)
+#726    AutomatedTestWidgetsFlutterBinding.pump.<anonymous closure> (package:flutter_test/src/binding.dart:2261:9)
+#729    TestAsyncUtils.guard (package:flutter_test/src/test_async_utils.dart:74:41)
+#730    AutomatedTestWidgetsFlutterBinding.pump (package:flutter_test/src/binding.dart:2250:27)
+#731    WidgetTester.pumpWidget.<anonymous closure> (package:flutter_test/src/widget_tester.dart:598:22)
+#734    TestAsyncUtils.guard (package:flutter_test/src/test_async_utils.dart:74:41)
+#735    WidgetTester.pumpWidget (package:flutter_test/src/widget_tester.dart:595:27)
+#736    main.<anonymous closure> (file:///D:/flutter%20cuoi%20ki/test/ui_upgrade_test.dart:138:20)
+<asynchronous suspension>
+#737    testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#738    TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1953:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided 5 frames from dart:async and package:stack_trace)
+
+════════════════════════════════════════════════════════════════════════════════════════════════════
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: exactly one matching candidate
+  Actual: _TextWidgetFinder:<Found 0 widgets with text "Nhập tiêu đề và nội dung để tạo ghi chú":
+[]>
+   Which: means none were found but one was expected
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///D:/flutter%20cuoi%20ki/test/ui_upgrade_test.dart:145:7)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1953:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///D:/flutter%20cuoi%20ki/test/ui_upgrade_test.dart line 145
+The test description was:
+  Reopened incomplete draft stays local and never claims synchronized
+════════════════════════════════════════════════════════════════════════════════════════════════════
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following message was thrown:
+Multiple exceptions (2) were detected during the running of the current test, and at least one was
+unexpected.
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:21 +230 -2: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:21 +230 -2: D:/flutter cuoi ki/test/ui_upgrade_test.dart: Reopened incomplete draft stays local and never claims synchronized [E]
+  Test failed. See exception logs above.
+  The test description was: Reopened incomplete draft stays local and never claims synchronized
+  
+00:21 +231 -2: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:22 +231 -2: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(360.0, 800.0) at scale 1.5
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: null
+  Actual: FlutterError:<A RenderFlex overflowed by 50 pixels on the right.>
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///D:/flutter%20cuoi%20ki/test/ui_redesign_test.dart:151:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1953:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///D:/flutter%20cuoi%20ki/test/ui_redesign_test.dart line 151
+The test description was:
+  Home/auth/editor/settings fit Size(360.0, 800.0) at scale 1.5
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:22 +231 -3: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:22 +231 -3: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(360.0, 800.0) at scale 1.5 [E]
+  Test failed. See exception logs above.
+  The test description was: Home/auth/editor/settings fit Size(360.0, 800.0) at scale 1.5
+  
+00:22 +232 -3: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:22 +233 -3: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:22 +234 -3: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:22 +235 -3: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:22 +236 -3: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:22 +237 -3: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:22 +238 -3: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:22 +239 -3: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:22 +240 -3: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:22 +241 -3: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:22 +242 -3: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:23 +242 -3: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(360.0, 800.0) at scale 2.0
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: null
+  Actual: FlutterError:<A RenderFlex overflowed by 140 pixels on the right.>
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///D:/flutter%20cuoi%20ki/test/ui_redesign_test.dart:151:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1953:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///D:/flutter%20cuoi%20ki/test/ui_redesign_test.dart line 151
+The test description was:
+  Home/auth/editor/settings fit Size(360.0, 800.0) at scale 2.0
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:23 +242 -4: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:23 +242 -4: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(360.0, 800.0) at scale 2.0 [E]
+  Test failed. See exception logs above.
+  The test description was: Home/auth/editor/settings fit Size(360.0, 800.0) at scale 2.0
+  
+00:23 +243 -4: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:23 +244 -4: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:23 +245 -4: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:23 +246 -4: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:23 +247 -4: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:23 +248 -4: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:23 +249 -4: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:23 +249 -4: D:/flutter cuoi ki/test/ui_upgrade_test.dart: Management sheets and auth fit Size(320.0, 640.0) with 200 percent text
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: null
+  Actual: FlutterError:<A RenderFlex overflowed by 180 pixels on the right.>
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///D:/flutter%20cuoi%20ki/test/ui_upgrade_test.dart:226:7)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1953:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///D:/flutter%20cuoi%20ki/test/ui_upgrade_test.dart line 226
+The test description was:
+  Management sheets and auth fit Size(320.0, 640.0) with 200 percent text
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:23 +249 -5: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:23 +249 -5: D:/flutter cuoi ki/test/ui_upgrade_test.dart: Management sheets and auth fit Size(320.0, 640.0) with 200 percent text [E]
+  Test failed. See exception logs above.
+  The test description was: Management sheets and auth fit Size(320.0, 640.0) with 200 percent text
+  
+00:23 +249 -5: D:/flutter cuoi ki/test/writing_studio_test.dart: Template cancel is inert; explicit choice persists one editable account draft
+══╡ EXCEPTION CAUGHT BY WIDGETS LIBRARY ╞═══════════════════════════════════════════════════════════
+The following assertion was thrown building Builder:
+dependOnInheritedWidgetOfExactType<_LocalizationsScope>() or dependOnInheritedElement() was called
+before _EditorScreenState.initState() completed.
+When an inherited widget changes, for example if the value of Theme.of() changes, its dependent
+widgets are rebuilt. If the dependent widget's reference to the inherited widget is in a constructor
+or an initState() method, then the rebuilt dependent widget will not reflect the changes in the
+inherited widget.
+Typically references to inherited widgets should occur in widget build() methods. Alternatively,
+initialization based on inherited widgets can be placed in the didChangeDependencies method, which
+is called after initState and whenever the dependencies change thereafter.
+
+The relevant error-causing widget was:
+  SlideTransition SlideTransition:file:///D:/flutter%20cuoi%20ki/lib/ui/prism.dart:178:14
+
+When the exception was thrown, this was the stack:
+#0      StatefulElement.dependOnInheritedElement.<anonymous closure> (package:flutter/src/widgets/framework.dart:6067:9)
+#1      StatefulElement.dependOnInheritedElement (package:flutter/src/widgets/framework.dart:6114:6)
+#2      Element.dependOnInheritedWidgetOfExactType (package:flutter/src/widgets/framework.dart:5098:14)
+#3      Localizations.of (package:flutter/src/widgets/localizations.dart:621:10)
+#4      AppStrings.of (package:note_together/l10n/app_strings.dart:13:21)
+#5      TranslateUi.tr (package:note_together/l10n/app_strings.dart:85:18)
+#6      _EditorScreenState.initState (package:note_together/ui/editor.dart:83:21)
+#7      StatefulElement._firstBuild (package:flutter/src/widgets/framework.dart:5963:55)
+#8      ComponentElement.mount (package:flutter/src/widgets/framework.dart:5806:5)
+...     Normal element mounting (182 frames)
+#190    Element.inflateWidget (package:flutter/src/widgets/framework.dart:4600:20)
+#191    MultiChildRenderObjectElement.inflateWidget (package:flutter/src/widgets/framework.dart:7277:36)
+#192    Element.updateChild (package:flutter/src/widgets/framework.dart:4072:18)
+#193    Element.updateChildren (package:flutter/src/widgets/framework.dart:4268:32)
+#194    MultiChildRenderObjectElement.update (package:flutter/src/widgets/framework.dart:7308:17)
+#195    Element.updateChild (package:flutter/src/widgets/framework.dart:4050:15)
+#196    ComponentElement.performRebuild (package:flutter/src/widgets/framework.dart:5854:16)
+#197    StatefulElement.performRebuild (package:flutter/src/widgets/framework.dart:5995:11)
+#198    Element.rebuild (package:flutter/src/widgets/framework.dart:5542:7)
+#199    StatefulElement.update (package:flutter/src/widgets/framework.dart:6020:5)
+#200    Element.updateChild (package:flutter/src/widgets/framework.dart:4050:15)
+#201    ComponentElement.performRebuild (package:flutter/src/widgets/framework.dart:5854:16)
+#202    Element.rebuild (package:flutter/src/widgets/framework.dart:5542:7)
+#203    ProxyElement.update (package:flutter/src/widgets/framework.dart:6162:5)
+#204    Element.updateChild (package:flutter/src/widgets/framework.dart:4050:15)
+#205    ComponentElement.performRebuild (package:flutter/src/widgets/framework.dart:5854:16)
+#206    Element.rebuild (package:flutter/src/widgets/framework.dart:5542:7)
+#207    ProxyElement.update (package:flutter/src/widgets/framework.dart:6162:5)
+#208    _InheritedNotifierElement.update (package:flutter/src/widgets/inherited_notifier.dart:108:11)
+#209    Element.updateChild (package:flutter/src/widgets/framework.dart:4050:15)
+#210    ComponentElement.performRebuild (package:flutter/src/widgets/framework.dart:5854:16)
+#211    StatefulElement.performRebuild (package:flutter/src/widgets/framework.dart:5995:11)
+#212    Element.rebuild (package:flutter/src/widgets/framework.dart:5542:7)
+#213    StatefulElement.update (package:flutter/src/widgets/framework.dart:6020:5)
+#214    Element.updateChild (package:flutter/src/widgets/framework.dart:4050:15)
+#215    ComponentElement.performRebuild (package:flutter/src/widgets/framework.dart:5854:16)
+#216    Element.rebuild (package:flutter/src/widgets/framework.dart:5542:7)
+#217    ProxyElement.update (package:flutter/src/widgets/framework.dart:6162:5)
+#218    _InheritedNotifierElement.update (package:flutter/src/widgets/inherited_notifier.dart:108:11)
+#219    Element.updateChild (package:flutter/src/widgets/framework.dart:4050:15)
+#220    ComponentElement.performRebuild (package:flutter/src/widgets/framework.dart:5854:16)
+#221    StatefulElement.performRebuild (package:flutter/src/widgets/framework.dart:5995:11)
+#222    Element.rebuild (package:flutter/src/widgets/framework.dart:5542:7)
+#223    StatefulElement.update (package:flutter/src/widgets/framework.dart:6020:5)
+#224    Element.updateChild (package:flutter/src/widgets/framework.dart:4050:15)
+#225    ComponentElement.performRebuild (package:flutter/src/widgets/framework.dart:5854:16)
+#226    StatefulElement.performRebuild (package:flutter/src/widgets/framework.dart:5995:11)
+#227    Element.rebuild (package:flutter/src/widgets/framework.dart:5542:7)
+#228    StatefulElement.update (package:flutter/src/widgets/framework.dart:6020:5)
+#229    Element.updateChild (package:flutter/src/widgets/framework.dart:4050:15)
+#230    SingleChildRenderObjectElement.update (package:flutter/src/widgets/framework.dart:7135:14)
+#231    Element.updateChild (package:flutter/src/widgets/framework.dart:4050:15)
+#232    SingleChildRenderObjectElement.update (package:flutter/src/widgets/framework.dart:7135:14)
+#233    Element.updateChild (package:flutter/src/widgets/framework.dart:4050:15)
+#234    ComponentElement.performRebuild (package:flutter/src/widgets/framework.dart:5854:16)
+#235    Element.rebuild (package:flutter/src/widgets/framework.dart:5542:7)
+#236    ProxyElement.update (package:flutter/src/widgets/framework.dart:6162:5)
+#237    Element.updateChild (package:flutter/src/widgets/framework.dart:4050:15)
+#238    ComponentElement.performRebuild (package:flutter/src/widgets/framework.dart:5854:16)
+#239    Element.rebuild (package:flutter/src/widgets/framework.dart:5542:7)
+#240    ProxyElement.update (package:flutter/src/widgets/framework.dart:6162:5)
+#241    Element.updateChild (package:flutter/src/widgets/framework.dart:4050:15)
+#242    ComponentElement.performRebuild (package:flutter/src/widgets/framework.dart:5854:16)
+#243    StatefulElement.performRebuild (package:flutter/src/widgets/framework.dart:5995:11)
+#244    Element.rebuild (package:flutter/src/widgets/framework.dart:5542:7)
+#245    BuildScope._tryRebuild (package:flutter/src/widgets/framework.dart:2763:15)
+#246    BuildScope._flushDirtyElements (package:flutter/src/widgets/framework.dart:2820:11)
+#247    BuildOwner.buildScope (package:flutter/src/widgets/framework.dart:3124:18)
+#248    AutomatedTestWidgetsFlutterBinding.drawFrame (package:flutter_test/src/binding.dart:2432:19)
+#249    RendererBinding._handlePersistentFrameCallback (package:flutter/src/rendering/binding.dart:558:5)
+#250    SchedulerBinding._invokeFrameCallback (package:flutter/src/scheduler/binding.dart:1430:15)
+#251    SchedulerBinding.handleDrawFrame (package:flutter/src/scheduler/binding.dart:1345:9)
+#252    AutomatedTestWidgetsFlutterBinding.pump.<anonymous closure> (package:flutter_test/src/binding.dart:2261:9)
+#255    TestAsyncUtils.guard (package:flutter_test/src/test_async_utils.dart:74:41)
+#256    AutomatedTestWidgetsFlutterBinding.pump (package:flutter_test/src/binding.dart:2250:27)
+#257    WidgetTester.pumpAndSettle.<anonymous closure> (package:flutter_test/src/widget_tester.dart:719:23)
+#260    TestAsyncUtils.guard (package:flutter_test/src/test_async_utils.dart:74:41)
+#261    WidgetTester.pumpAndSettle (package:flutter_test/src/widget_tester.dart:712:27)
+#262    main.<anonymous closure> (file:///D:/flutter%20cuoi%20ki/test/writing_studio_test.dart:70:20)
+<asynchronous suspension>
+#263    testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#264    TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1953:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided 5 frames from dart:async and package:stack_trace)
+
+════════════════════════════════════════════════════════════════════════════════════════════════════
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following StateError was thrown running a test:
+Bad state: No element
+
+When the exception was thrown, this was the stack:
+#0      Iterable.single (dart:core/iterable.dart:694:25)
+#1      WidgetController.widget (package:flutter_test/src/controller.dart:828:30)
+#2      main.<anonymous closure> (file:///D:/flutter%20cuoi%20ki/test/writing_studio_test.dart:76:14)
+<asynchronous suspension>
+#3      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#4      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1953:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+The test description was:
+  Template cancel is inert; explicit choice persists one editable account draft
+════════════════════════════════════════════════════════════════════════════════════════════════════
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following message was thrown:
+Multiple exceptions (2) were detected during the running of the current test, and at least one was
+unexpected.
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:23 +249 -6: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:23 +249 -6: D:/flutter cuoi ki/test/writing_studio_test.dart: Template cancel is inert; explicit choice persists one editable account draft [E]
+  Test failed. See exception logs above.
+  The test description was: Template cancel is inert; explicit choice persists one editable account draft
+  
+00:23 +250 -6: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:23 +251 -6: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:24 +252 -6: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:24 +253 -6: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:24 +254 -6: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:24 +254 -6: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(390.0, 844.0) at scale 1.5
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: null
+  Actual: FlutterError:<A RenderFlex overflowed by 20 pixels on the right.>
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///D:/flutter%20cuoi%20ki/test/ui_redesign_test.dart:151:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1953:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///D:/flutter%20cuoi%20ki/test/ui_redesign_test.dart line 151
+The test description was:
+  Home/auth/editor/settings fit Size(390.0, 844.0) at scale 1.5
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:24 +254 -7: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:24 +254 -7: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(390.0, 844.0) at scale 1.5 [E]
+  Test failed. See exception logs above.
+  The test description was: Home/auth/editor/settings fit Size(390.0, 844.0) at scale 1.5
+  
+00:24 +255 -7: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:24 +256 -7: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:24 +257 -7: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:24 +258 -7: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:24 +258 -7: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(390.0, 844.0) at scale 2.0
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: null
+  Actual: FlutterError:<A RenderFlex overflowed by 110 pixels on the right.>
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///D:/flutter%20cuoi%20ki/test/ui_redesign_test.dart:151:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1953:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///D:/flutter%20cuoi%20ki/test/ui_redesign_test.dart line 151
+The test description was:
+  Home/auth/editor/settings fit Size(390.0, 844.0) at scale 2.0
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:24 +258 -8: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:24 +258 -8: D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(390.0, 844.0) at scale 2.0 [E]
+  Test failed. See exception logs above.
+  The test description was: Home/auth/editor/settings fit Size(390.0, 844.0) at scale 2.0
+  
+00:25 +259 -8: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:25 +260 -8: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:25 +261 -8: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:25 +262 -8: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:25 +263 -8: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:25 +264 -8: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:25 +265 -8: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:25 +266 -8: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:25 +267 -8: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:26 +268 -8: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:26 +269 -8: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:26 +270 -8: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:26 +271 -8: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:26 +272 -8: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:26 +273 -8: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:26 +274 -8: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:26 +275 -8: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:27 +276 -8: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:27 +277 -8: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:27 +278 -8: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:27 +279 -8: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:27 +280 -8: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:27 +280 -8: D:/flutter cuoi ki/test/ui_cohesion_test.dart: Controlled NotoSans shaping and cached-query benchmark; timings are evidence, not FPS assertions
+UI_BENCHMARK {"target":"host Flutter test engine/NotoSans","iterations":11,"note_chars":100000,"preview_chars":481,"paragraph_full_median_us":12886,"paragraph_preview_median_us":201,"notes":500,"baseline_query_median_us":387520,"optimized_query_median_us":453,"cached_query_median_us":10,"fps_measured":false}
+00:27 +281 -8: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:28 +282 -8: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:28 +283 -8: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:39 +284 -8: D:/flutter cuoi ki/test/protected_editing_test.dart: Delete conflict requires new confirmation and revoked delete hides content
+00:39 +285 -8: D:/flutter cuoi ki/test/protected_editing_test.dart: Offline draft survives encrypted Sembast close/reopen and never enters ordinary outbox
+00:40 +286 -8: D:/flutter cuoi ki/test/protected_editing_test.dart: A copied old-password draft permits new-password unlock without losing the private copy
+00:40 +287 -8: D:/flutter cuoi ki/test/protected_editing_test.dart: Lost acknowledgement replays the same immutable operation after reopen
+00:40 +288 -8: D:/flutter cuoi ki/test/protected_editing_test.dart: Typing while protected operation is inflight keeps newest draft and chains own ack
+00:40 +289 -8: D:/flutter cuoi ki/test/protected_editing_test.dart: Realtime clean content updates keep frozen base; dirty content remains on conflict
+00:40 +290 -8: D:/flutter cuoi ki/test/protected_editing_test.dart: Revoke hides content and preserves password-bound recovery; copy never mutates source
+00:40 +291 -8: D:/flutter cuoi ki/test/protected_editing_test.dart: Encrypted field merge survives ordinary snapshot capture and account switch mid-write
+00:40 +292 -8: D:/flutter cuoi ki/test/protected_editing_test.dart: Delegated picker obscures content and rechecks grant before showing it again
+00:40 +293 -8: Some tests failed.
+
+Failing tests:
+  D:/flutter cuoi ki/test/encrypted_recovery_test.dart: Recovery dialog hides content until explicit copy and opens a new draft
+  D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(360.0, 800.0) at scale 1.5
+  D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(360.0, 800.0) at scale 2.0
+  D:/flutter cuoi ki/test/ui_redesign_test.dart: Home/auth/editor/settings fit Size(390.0, 844.0) at scale 1.5
+  ... and 4 more

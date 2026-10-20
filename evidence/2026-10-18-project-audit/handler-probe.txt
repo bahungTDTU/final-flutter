@@ -1,0 +1,40 @@
+{
+  "date_utc": "2026-10-18T11:49:47.776157+00:00",
+  "scope": "synchronous route functions + actual SQLite; no HTTP/middleware",
+  "acl_result": "PASS owner/viewer/editor/stranger, locked projection, unlock, revoke",
+  "validation_rejections": {
+    "50_family_emoji_title": [
+      {
+        "field": [
+          "title"
+        ],
+        "type": "string_too_long"
+      }
+    ],
+    "conflict_copy_of_valid_200_char_title": [
+      {
+        "field": [
+          "title"
+        ],
+        "type": "string_too_long"
+      }
+    ],
+    "31_labels": [
+      {
+        "field": [
+          "labels"
+        ],
+        "type": "too_long"
+      }
+    ],
+    "100001_plain_content": [
+      {
+        "field": [
+          "content"
+        ],
+        "type": "string_too_long"
+      }
+    ]
+  },
+  "network_and_providers_used": false
+}

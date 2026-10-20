@@ -1,0 +1,1 @@
+{"target":"actual Dart domain validator, not widget runtime","title_graphemes":50,"title_codepoints":350,"ui_maxLength":200,"validNote":true,"oversize_plain_content_validNote":true}

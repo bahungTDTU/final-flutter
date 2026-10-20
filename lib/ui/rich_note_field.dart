@@ -1,3 +1,5 @@
+import '../l10n/app_strings.dart';
+
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -312,7 +314,7 @@ class NoteRichTextField extends StatelessWidget {
       child: ListenableBuilder(
         listenable: Listenable.merge([focusNode, document]),
         builder: (context, _) => Semantics(
-          label: 'Nội dung',
+          label: context.tr("Nội dung"),
           textField: true,
           multiline: true,
           enabled: true,
@@ -352,7 +354,7 @@ class NoteRichTextField extends StatelessWidget {
               scrollable: false,
               minHeight: minHeight,
               padding: const EdgeInsets.symmetric(vertical: 8),
-              placeholder: 'Viết nội dung của bạn…',
+              placeholder: context.tr("Viết nội dung của bạn…"),
               checkBoxReadOnly: readOnly,
               customStyles: quill.DefaultStyles(
                 paragraph: style(defaults.paragraph, fontSize),
@@ -418,7 +420,7 @@ class DocumentToolbar extends StatelessWidget {
     final result = await showDialog<(String, String)>(
       context: context,
       builder: (ctx) => AlertDialog(
-        title: const DialogHeading('Chèn liên kết', icon: Icons.link),
+        title: DialogHeading(ctx.tr("Chèn liên kết"), icon: Icons.link),
         content: SizedBox(
           width: 420,
           child: Form(
@@ -427,20 +429,27 @@ class DocumentToolbar extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 TextFormField(
+                  errorBuilder: (context, message) =>
+                      Text(context.trMessage(message)),
                   controller: label,
-                  decoration: const InputDecoration(labelText: 'Chữ hiển thị'),
-                  validator: (v) =>
-                      v?.trim().isEmpty != false ? 'Nhập chữ hiển thị.' : null,
+                  decoration: InputDecoration(
+                    labelText: ctx.tr("Chữ hiển thị"),
+                  ),
+                  validator: (v) => v?.trim().isEmpty != false
+                      ? ctx.tr("Nhập chữ hiển thị.")
+                      : null,
                 ),
                 const SizedBox(height: 12),
                 TextFormField(
+                  errorBuilder: (context, message) =>
+                      Text(context.trMessage(message)),
                   controller: address,
-                  decoration: const InputDecoration(
-                    labelText: 'Địa chỉ liên kết',
+                  decoration: InputDecoration(
+                    labelText: ctx.tr("Địa chỉ liên kết"),
                   ),
                   validator: (v) => safeDocumentLink(v ?? '')
                       ? null
-                      : 'Dùng https://, http:// hoặc mailto:.',
+                      : ctx.tr("Dùng https://, http:// hoặc mailto:."),
                 ),
               ],
             ),
@@ -449,7 +458,7 @@ class DocumentToolbar extends StatelessWidget {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx),
-            child: const Text('Hủy'),
+            child: Text(ctx.tr("Hủy")),
           ),
           FilledButton(
             onPressed: () {
@@ -457,7 +466,7 @@ class DocumentToolbar extends StatelessWidget {
                 Navigator.pop(ctx, (label.text, address.text.trim()));
               }
             },
-            child: const Text('Chèn'),
+            child: Text(ctx.tr("Chèn")),
           ),
         ],
       ),
@@ -497,14 +506,16 @@ class DocumentToolbar extends StatelessWidget {
     final result = await showDialog<String>(
       context: context,
       builder: (ctx) => AlertDialog(
-        title: Text(key == 'color' ? 'Màu chữ' : 'Màu đánh dấu'),
+        title: Text(
+          key == 'color' ? ctx.tr("Màu chữ") : ctx.tr("Màu đánh dấu"),
+        ),
         content: Wrap(
           spacing: 12,
           runSpacing: 12,
           children: [
             for (final hex in colors)
               Semantics(
-                label: 'Màu $hex',
+                label: ctx.tr("Màu {0}", [hex]),
                 button: true,
                 child: InkWell(
                   onTap: () => Navigator.pop(ctx, hex),
@@ -529,11 +540,11 @@ class DocumentToolbar extends StatelessWidget {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx, 'default'),
-            child: const Text('Màu mặc định'),
+            child: Text(ctx.tr("Màu mặc định")),
           ),
           TextButton(
             onPressed: () => Navigator.pop(ctx),
-            child: const Text('Đóng'),
+            child: Text(ctx.tr("Đóng")),
           ),
         ],
       ),
@@ -585,14 +596,14 @@ class DocumentToolbar extends StatelessWidget {
       );
       final controls = <Widget>[
         action(
-          'Hoàn tác (Ctrl+Z)',
+          ctx.tr("Hoàn tác (Ctrl+Z)"),
           Icons.undo,
           !readOnly && document.controller.hasUndo
               ? document.controller.undo
               : null,
         ),
         action(
-          'Làm lại (Ctrl+Y)',
+          ctx.tr("Làm lại (Ctrl+Y)"),
           Icons.redo,
           !readOnly && document.controller.hasRedo
               ? document.controller.redo
@@ -600,7 +611,7 @@ class DocumentToolbar extends StatelessWidget {
         ),
         if (!compact) ...[
           PopupMenuButton<int>(
-            tooltip: 'Kiểu đoạn văn',
+            tooltip: ctx.tr("Kiểu đoạn văn"),
             enabled: !readOnly,
             onSelected: (level) {
               document.format('header', level == 0 ? null : level);
@@ -610,7 +621,9 @@ class DocumentToolbar extends StatelessWidget {
               for (var i = 0; i <= 3; i++)
                 PopupMenuItem(
                   value: i,
-                  child: Text(i == 0 ? 'Văn bản' : 'Tiêu đề $i'),
+                  child: Text(
+                    i == 0 ? ctx.tr("Văn bản") : ctx.tr("Tiêu đề {0}", [i]),
+                  ),
                 ),
             ],
             child: Padding(
@@ -624,8 +637,13 @@ class DocumentToolbar extends StatelessWidget {
                                 .attributes['header']
                                 ?.value ==
                             null
-                        ? 'Văn bản'
-                        : 'Tiêu đề ${document.controller.getSelectionStyle().attributes['header']!.value}',
+                        ? ctx.tr("Văn bản")
+                        : ctx.tr("Tiêu đề {0}", [
+                            document.controller
+                                .getSelectionStyle()
+                                .attributes['header']!
+                                .value,
+                          ]),
                   ),
                   const Icon(Icons.expand_more, size: 18),
                 ],
@@ -633,7 +651,7 @@ class DocumentToolbar extends StatelessWidget {
             ),
           ),
           PopupMenuButton<int>(
-            tooltip: 'Cỡ chữ',
+            tooltip: ctx.tr("Cỡ chữ"),
             enabled: !readOnly,
             onSelected: (size) {
               document.format('size', size.toString());
@@ -657,58 +675,82 @@ class DocumentToolbar extends StatelessWidget {
             ),
           ),
         ],
-        toggle('In đậm (Ctrl+B)', Icons.format_bold, 'bold'),
-        toggle('In nghiêng (Ctrl+I)', Icons.format_italic, 'italic'),
-        toggle('Gạch chân (Ctrl+U)', Icons.format_underlined, 'underline'),
+        toggle(ctx.tr("In đậm (Ctrl+B)"), Icons.format_bold, 'bold'),
+        toggle(ctx.tr("In nghiêng (Ctrl+I)"), Icons.format_italic, 'italic'),
+        toggle(
+          ctx.tr("Gạch chân (Ctrl+U)"),
+          Icons.format_underlined,
+          'underline',
+        ),
         if (!compact) ...[
-          toggle('Gạch ngang', Icons.format_strikethrough, 'strike'),
+          toggle(ctx.tr("Gạch ngang"), Icons.format_strikethrough, 'strike'),
           action(
-            'Màu chữ',
+            ctx.tr("Màu chữ"),
             Icons.format_color_text,
             readOnly ? null : () => color(ctx, 'color'),
           ),
           action(
-            'Đánh dấu màu',
+            ctx.tr("Đánh dấu màu"),
             Icons.format_color_fill,
             readOnly ? null : () => color(ctx, 'background'),
           ),
-          toggle('Căn trái', Icons.format_align_left, 'align', 'left'),
-          toggle('Căn giữa', Icons.format_align_center, 'align', 'center'),
-          toggle('Căn phải', Icons.format_align_right, 'align', 'right'),
-          toggle('Căn đều', Icons.format_align_justify, 'align', 'justify'),
+          toggle(ctx.tr("Căn trái"), Icons.format_align_left, 'align', 'left'),
+          toggle(
+            ctx.tr("Căn giữa"),
+            Icons.format_align_center,
+            'align',
+            'center',
+          ),
+          toggle(
+            ctx.tr("Căn phải"),
+            Icons.format_align_right,
+            'align',
+            'right',
+          ),
+          toggle(
+            ctx.tr("Căn đều"),
+            Icons.format_align_justify,
+            'align',
+            'justify',
+          ),
         ],
         toggle(
-          'Danh sách dấu đầu dòng',
+          ctx.tr("Danh sách dấu đầu dòng"),
           Icons.format_list_bulleted,
           'list',
           'bullet',
         ),
         if (!compact)
           toggle(
-            'Danh sách đánh số',
+            ctx.tr("Danh sách đánh số"),
             Icons.format_list_numbered,
             'list',
             'ordered',
           ),
-        toggle('Danh sách công việc', Icons.checklist, 'list', 'unchecked'),
+        toggle(
+          ctx.tr("Danh sách công việc"),
+          Icons.checklist,
+          'list',
+          'unchecked',
+        ),
         if (!compact) ...[
-          toggle('Trích dẫn', Icons.format_quote, 'blockquote'),
-          toggle('Khối mã', Icons.code, 'code-block'),
+          toggle(ctx.tr("Trích dẫn"), Icons.format_quote, 'blockquote'),
+          toggle(ctx.tr("Khối mã"), Icons.code, 'code-block'),
           action(
-            'Chèn liên kết',
+            ctx.tr("Chèn liên kết"),
             Icons.link,
             readOnly ? null : () => link(ctx),
           ),
           action(
-            'Xóa định dạng',
+            ctx.tr("Xóa định dạng"),
             Icons.format_clear,
             readOnly ? null : document.clearFormat,
           ),
         ],
-        action('Tìm và thay thế (Ctrl+F)', Icons.search, onSearch),
+        action(ctx.tr("Tìm và thay thế (Ctrl+F)"), Icons.search, onSearch),
         if (compact)
           PopupMenuButton<String>(
-            tooltip: 'Định dạng khác',
+            tooltip: ctx.tr("Định dạng khác"),
             enabled: !readOnly,
             onSelected: (key) {
               switch (key) {
@@ -726,13 +768,25 @@ class DocumentToolbar extends StatelessWidget {
                   document.toggle('align', 'center');
               }
             },
-            itemBuilder: (_) => const [
-              PopupMenuItem(value: 'header', child: Text('Tiêu đề đoạn')),
-              PopupMenuItem(value: 'ordered', child: Text('Danh sách đánh số')),
-              PopupMenuItem(value: 'center', child: Text('Căn giữa')),
-              PopupMenuItem(value: 'color', child: Text('Màu chữ')),
-              PopupMenuItem(value: 'link', child: Text('Chèn liên kết')),
-              PopupMenuItem(value: 'clear', child: Text('Xóa định dạng')),
+            itemBuilder: (_) => [
+              PopupMenuItem(
+                value: 'header',
+                child: Text(ctx.tr("Tiêu đề đoạn")),
+              ),
+              PopupMenuItem(
+                value: 'ordered',
+                child: Text(ctx.tr("Danh sách đánh số")),
+              ),
+              PopupMenuItem(value: 'center', child: Text(ctx.tr("Căn giữa"))),
+              PopupMenuItem(value: 'color', child: Text(ctx.tr("Màu chữ"))),
+              PopupMenuItem(
+                value: 'link',
+                child: Text(ctx.tr("Chèn liên kết")),
+              ),
+              PopupMenuItem(
+                value: 'clear',
+                child: Text(ctx.tr("Xóa định dạng")),
+              ),
             ],
           ),
       ];

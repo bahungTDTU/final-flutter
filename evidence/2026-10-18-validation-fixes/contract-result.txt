@@ -1,0 +1,56 @@
+{
+  "result": "PASS",
+  "cases": [
+    {
+      "case": "emoji_grapheme_overflow",
+      "dart_accepts": false,
+      "server_accepts": false
+    },
+    {
+      "case": "200_astral_codepoints",
+      "dart_accepts": true,
+      "server_accepts": true
+    },
+    {
+      "case": "200_combining_codepoints",
+      "dart_accepts": true,
+      "server_accepts": true
+    },
+    {
+      "case": "202_combining_codepoints",
+      "dart_accepts": false,
+      "server_accepts": false
+    },
+    {
+      "case": "raw_title_with_trailing_space",
+      "dart_accepts": false,
+      "server_accepts": false
+    },
+    {
+      "case": "content_limit",
+      "dart_accepts": true,
+      "server_accepts": true
+    },
+    {
+      "case": "content_overflow",
+      "dart_accepts": false,
+      "server_accepts": false
+    },
+    {
+      "case": "recovery_ascii",
+      "dart_accepts": true,
+      "server_accepts": true
+    },
+    {
+      "case": "recovery_combining",
+      "dart_accepts": true,
+      "server_accepts": true
+    },
+    {
+      "case": "recovery_emoji",
+      "dart_accepts": true,
+      "server_accepts": true
+    }
+  ],
+  "scope": "Dart domain + Pydantic; no HTTP or Flutter runtime"
+}

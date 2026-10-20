@@ -1,0 +1,319 @@
+Formatted 121 files (0 changed) in 1.89 seconds.
+Analyzing flutter cuoi ki...                                    
+No issues found! (ran in 9.3s)
+00:00 +0: loading D:/flutter cuoi ki/test/ai_test.dart
+00:00 +0: D:/flutter cuoi ki/test/ai_test.dart: Summary regeneration stays RAM-only and cannot overwrite notes or outbox
+00:00 +1: D:/flutter cuoi ki/test/atelier_ui_test.dart: Secondary text meets 4.5:1 on the strongest container in both themes
+00:00 +2: D:/flutter cuoi ki/test/atelier_ui_test.dart: Secondary text meets 4.5:1 on the strongest container in both themes
+00:00 +3: D:/flutter cuoi ki/test/atelier_ui_test.dart: Secondary text meets 4.5:1 on the strongest container in both themes
+00:00 +4: D:/flutter cuoi ki/test/atelier_ui_test.dart: Secondary text meets 4.5:1 on the strongest container in both themes
+00:00 +5: D:/flutter cuoi ki/test/atelier_ui_test.dart: Secondary text meets 4.5:1 on the strongest container in both themes
+00:00 +6: D:/flutter cuoi ki/test/atelier_ui_test.dart: Secondary text meets 4.5:1 on the strongest container in both themes
+00:00 +7: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:01 +8: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:01 +9: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:01 +10: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:01 +11: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:01 +12: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:01 +13: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:01 +14: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:02 +15: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:03 +16: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:03 +17: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:03 +18: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:03 +19: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:03 +20: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:03 +21: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:03 +22: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:03 +23: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:04 +24: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:04 +25: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:04 +26: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:04 +27: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:04 +28: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:04 +29: D:/flutter cuoi ki/test/ai_test.dart: Question UI validates input, displays synthesis and opens the exact source
+00:04 +30: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:05 +31: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:05 +32: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:05 +33: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:05 +34: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:06 +35: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:06 +36: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:06 +37: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:06 +38: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:06 +39: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:06 +40: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:06 +41: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:07 +41: D:/flutter cuoi ki/test/dashboard_polish_regression_test.dart: Sync status pulses update without rebuilding the library
+DASHBOARD_PULSE_PROBE replacements=0 preview_projections=0
+00:07 +42: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:07 +43: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:07 +44: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:08 +45: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:08 +46: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:08 +47: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:08 +48: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:08 +49: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:08 +50: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:08 +51: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:08 +52: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:08 +53: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:08 +54: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Desk navigation and tool drawer survive rail/phone transitions with filters
+00:09 +55: D:/flutter cuoi ki/test/editor_sections_test.dart: Writing labels, text and counters never overlap at Size(320.0, 568.0) / 200 percent
+00:09 +56: D:/flutter cuoi ki/test/editor_sections_test.dart: Writing labels, text and counters never overlap at Size(320.0, 568.0) / 200 percent
+00:10 +57: D:/flutter cuoi ki/test/editor_sections_test.dart: Writing labels, text and counters never overlap at Size(320.0, 568.0) / 200 percent
+00:10 +58: D:/flutter cuoi ki/test/email_flow_test.dart: verification queue status updates only after an authenticated check
+00:10 +59: D:/flutter cuoi ki/test/email_flow_test.dart: verification queue status updates only after an authenticated check
+00:10 +60: D:/flutter cuoi ki/test/email_flow_test.dart: verification queue status updates only after an authenticated check
+00:11 +61: D:/flutter cuoi ki/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:11 +62: D:/flutter cuoi ki/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:11 +63: D:/flutter cuoi ki/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:11 +64: D:/flutter cuoi ki/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:11 +65: D:/flutter cuoi ki/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:12 +66: D:/flutter cuoi ki/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:12 +67: D:/flutter cuoi ki/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:12 +68: D:/flutter cuoi ki/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:12 +68: D:/flutter cuoi ki/test/dashboard_polish_regression_test.dart: 500 rich notes remain lazy during sync pulses and view toggling
+DASHBOARD_500_PROBE visible_projections=6 pulse_projections=0 pulse_wall_us=530718
+00:12 +69: D:/flutter cuoi ki/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:12 +70: D:/flutter cuoi ki/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:13 +71: D:/flutter cuoi ki/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:14 +71: D:/flutter cuoi ki/test/home_experience_test.dart: Controller pulses update Home without rebuilding the app shell
+SHELL_PROBE {"pulses":20,"shell_replacements":0,"fps_measured":false}
+00:14 +72: D:/flutter cuoi ki/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:14 +73: D:/flutter cuoi ki/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:14 +74: D:/flutter cuoi ki/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:14 +75: D:/flutter cuoi ki/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:14 +76: D:/flutter cuoi ki/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:14 +77: D:/flutter cuoi ki/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:15 +78: D:/flutter cuoi ki/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:15 +79: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Document drawers preserve rich selection, draft and frozen revision
+00:15 +80: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Document drawers preserve rich selection, draft and frozen revision
+00:15 +81: D:/flutter cuoi ki/test/deskbook_layout_test.dart: Document drawers preserve rich selection, draft and frozen revision
+00:16 +82: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:16 +83: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:17 +84: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:17 +85: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:17 +86: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:17 +87: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:17 +88: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:17 +89: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:17 +90: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:17 +91: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:17 +92: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:17 +93: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:17 +94: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:17 +95: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:17 +96: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:17 +97: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:17 +98: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:17 +99: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:17 +100: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:18 +101: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:18 +101: D:/flutter cuoi ki/test/label_manager_regression_test.dart: Label management mounts only visible rows for a large catalogue
+LABEL_ROWS mounted=6 total=1000
+00:18 +102: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:18 +103: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:19 +104: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:19 +105: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:19 +106: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:19 +107: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:19 +108: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:19 +109: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:19 +110: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:19 +111: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:20 +112: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:20 +113: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:20 +114: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:20 +115: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:20 +116: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:21 +117: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:21 +118: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:22 +119: D:/flutter cuoi ki/test/inspector_ui_test.dart: Protected inspector survives theme/resize and disappears immediately on relock
+00:22 +120: D:/flutter cuoi ki/test/note_document_test.dart: Ctrl F from rich input opens document search without saving
+00:22 +121: D:/flutter cuoi ki/test/note_ordering_test.dart: Home grid renders locked newest before ordinary older
+00:22 +122: D:/flutter cuoi ki/test/note_ordering_test.dart: Home grid renders locked newest before ordinary older
+00:22 +123: D:/flutter cuoi ki/test/note_ordering_test.dart: Home grid renders locked newest before ordinary older
+00:22 +124: D:/flutter cuoi ki/test/note_ordering_test.dart: Home grid renders locked newest before ordinary older
+00:22 +125: D:/flutter cuoi ki/test/note_ordering_test.dart: Home grid renders locked newest before ordinary older
+00:22 +126: D:/flutter cuoi ki/test/note_ordering_test.dart: Home grid renders locked newest before ordinary older
+00:23 +127: D:/flutter cuoi ki/test/note_protection_test.dart: viewer reader has no owner controls and hides on app background
+00:23 +128: D:/flutter cuoi ki/test/note_protection_test.dart: viewer reader has no owner controls and hides on app background
+00:23 +129: D:/flutter cuoi ki/test/note_protection_test.dart: viewer reader has no owner controls and hides on app background
+00:23 +130: D:/flutter cuoi ki/test/note_protection_test.dart: viewer reader has no owner controls and hides on app background
+00:23 +131: D:/flutter cuoi ki/test/note_protection_test.dart: viewer reader has no owner controls and hides on app background
+00:23 +132: D:/flutter cuoi ki/test/note_protection_test.dart: viewer reader has no owner controls and hides on app background
+00:23 +133: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:23 +134: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:24 +135: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:24 +136: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:25 +137: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:25 +138: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:25 +139: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:25 +140: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:25 +141: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:25 +142: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:25 +143: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:25 +144: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:26 +145: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:26 +146: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:26 +147: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:26 +148: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:26 +149: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:26 +150: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:27 +151: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:27 +152: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:27 +153: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:27 +154: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:27 +155: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:27 +156: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:27 +157: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:27 +158: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:27 +159: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:27 +160: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:27 +161: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:27 +162: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:28 +163: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:28 +164: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:28 +165: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:28 +166: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:28 +167: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:28 +168: D:/flutter cuoi ki/test/planner_test.dart: plan form keeps priority/deadline after disk failure; move and remove are personal
+00:28 +169: D:/flutter cuoi ki/test/protected_editing_test.dart: Protected editor autosaves; revoked delete confirmation removes name and disables action
+00:30 +170: D:/flutter cuoi ki/test/protected_editing_test.dart: Protected editor autosaves; revoked delete confirmation removes name and disables action
+00:30 +171: D:/flutter cuoi ki/test/protected_editing_test.dart: Protected editor autosaves; revoked delete confirmation removes name and disables action
+00:30 +172: D:/flutter cuoi ki/test/protected_editing_test.dart: Protected editor autosaves; revoked delete confirmation removes name and disables action
+00:30 +173: D:/flutter cuoi ki/test/protected_editing_test.dart: Protected editor autosaves; revoked delete confirmation removes name and disables action
+00:30 +174: D:/flutter cuoi ki/test/protected_editing_test.dart: Protected editor autosaves; revoked delete confirmation removes name and disables action
+00:30 +175: D:/flutter cuoi ki/test/protected_editing_test.dart: Protected editor autosaves; revoked delete confirmation removes name and disables action
+00:30 +176: D:/flutter cuoi ki/test/protected_editing_test.dart: Protected editor autosaves; revoked delete confirmation removes name and disables action
+00:31 +177: D:/flutter cuoi ki/test/protected_editing_test.dart: Protected editor autosaves; revoked delete confirmation removes name and disables action
+00:31 +178: D:/flutter cuoi ki/test/realtime_test.dart: Clean live editor preserves selection and explicitly opens a new base
+00:31 +179: D:/flutter cuoi ki/test/realtime_test.dart: Clean live editor preserves selection and explicitly opens a new base
+00:32 +180: D:/flutter cuoi ki/test/realtime_test.dart: Clean live editor preserves selection and explicitly opens a new base
+00:32 +181: D:/flutter cuoi ki/test/realtime_test.dart: Clean live editor preserves selection and explicitly opens a new base
+00:32 +182: D:/flutter cuoi ki/test/realtime_test.dart: Clean live editor preserves selection and explicitly opens a new base
+00:32 +183: D:/flutter cuoi ki/test/security_center_test.dart: confirmation keeps retry input on resize, clears on background, and handles 320px/200%/keyboard
+00:32 +184: D:/flutter cuoi ki/test/security_center_test.dart: confirmation keeps retry input on resize, clears on background, and handles 320px/200%/keyboard
+00:32 +185: D:/flutter cuoi ki/test/security_center_test.dart: confirmation keeps retry input on resize, clears on background, and handles 320px/200%/keyboard
+00:32 +186: D:/flutter cuoi ki/test/security_center_test.dart: confirmation keeps retry input on resize, clears on background, and handles 320px/200%/keyboard
+00:32 +187: D:/flutter cuoi ki/test/security_center_test.dart: confirmation keeps retry input on resize, clears on background, and handles 320px/200%/keyboard
+00:32 +188: D:/flutter cuoi ki/test/security_center_test.dart: confirmation keeps retry input on resize, clears on background, and handles 320px/200%/keyboard
+00:32 +189: D:/flutter cuoi ki/test/sharing_test.dart: Downgrade while typing shows server read-only and preserves draft
+00:32 +190: D:/flutter cuoi ki/test/sharing_test.dart: Downgrade while typing shows server read-only and preserves draft
+00:32 +191: D:/flutter cuoi ki/test/sharing_test.dart: Downgrade while typing shows server read-only and preserves draft
+00:32 +192: D:/flutter cuoi ki/test/sharing_test.dart: Downgrade while typing shows server read-only and preserves draft
+00:32 +193: D:/flutter cuoi ki/test/sharing_test.dart: Downgrade while typing shows server read-only and preserves draft
+00:33 +194: D:/flutter cuoi ki/test/sharing_test.dart: Downgrade while typing shows server read-only and preserves draft
+00:33 +195: D:/flutter cuoi ki/test/sharing_test.dart: Downgrade while typing shows server read-only and preserves draft
+00:34 +196: D:/flutter cuoi ki/test/sharing_test.dart: Downgrade while typing shows server read-only and preserves draft
+00:35 +197: D:/flutter cuoi ki/test/sharing_test.dart: Downgrade while typing shows server read-only and preserves draft
+00:35 +198: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:35 +199: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:37 +200: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:38 +201: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:38 +202: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:38 +203: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:39 +204: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:39 +205: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:39 +206: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:39 +207: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:39 +208: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:40 +209: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:40 +210: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:40 +211: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:40 +212: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:40 +213: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:40 +214: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:40 +215: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:41 +216: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:41 +217: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:42 +218: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:42 +219: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:42 +220: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:43 +221: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:44 +222: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:45 +223: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:45 +224: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:45 +225: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:45 +226: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:46 +227: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:46 +228: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:47 +229: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:47 +230: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:48 +231: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:48 +232: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:48 +233: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:48 +234: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:48 +235: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:48 +236: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:48 +237: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:48 +238: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:48 +239: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:48 +240: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:48 +241: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:48 +242: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:48 +243: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:49 +244: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:49 +245: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:49 +246: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:49 +247: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:49 +248: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:49 +249: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:49 +250: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:49 +251: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:50 +252: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:50 +253: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:51 +254: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:51 +255: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:52 +256: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:52 +257: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:52 +258: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:52 +259: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:52 +260: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:52 +261: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:52 +262: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:53 +263: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:53 +264: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:53 +265: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:53 +266: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:53 +267: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:54 +268: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:54 +269: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:54 +270: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:55 +271: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:55 +272: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:55 +273: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:56 +274: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:56 +275: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:56 +276: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:56 +277: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:57 +278: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:57 +278: D:/flutter cuoi ki/test/ui_cohesion_test.dart: Controlled NotoSans shaping and cached-query benchmark; timings are evidence, not FPS assertions
+UI_BENCHMARK {"target":"host Flutter test engine/NotoSans","iterations":11,"note_chars":100000,"preview_chars":481,"paragraph_full_median_us":24557,"paragraph_preview_median_us":489,"notes":500,"baseline_query_median_us":836374,"optimized_query_median_us":722,"cached_query_median_us":13,"fps_measured":false}
+00:57 +279: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:57 +280: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:58 +281: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:58 +282: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+00:59 +283: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+01:00 +284: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+01:01 +285: D:/flutter cuoi ki/test/protected_editing_test.dart: Production PBKDF2 envelope authenticates password/account/note and fresh AES nonce
+01:06 +286: D:/flutter cuoi ki/test/protected_editing_test.dart: Delete conflict requires new confirmation and revoked delete hides content
+01:06 +287: D:/flutter cuoi ki/test/protected_editing_test.dart: Offline draft survives encrypted Sembast close/reopen and never enters ordinary outbox
+01:06 +288: D:/flutter cuoi ki/test/protected_editing_test.dart: A copied old-password draft permits new-password unlock without losing the private copy
+01:06 +289: D:/flutter cuoi ki/test/protected_editing_test.dart: Lost acknowledgement replays the same immutable operation after reopen
+01:06 +290: D:/flutter cuoi ki/test/protected_editing_test.dart: Typing while protected operation is inflight keeps newest draft and chains own ack
+01:06 +291: D:/flutter cuoi ki/test/protected_editing_test.dart: Realtime clean content updates keep frozen base; dirty content remains on conflict
+01:06 +292: D:/flutter cuoi ki/test/protected_editing_test.dart: Revoke hides content and preserves password-bound recovery; copy never mutates source
+01:06 +293: D:/flutter cuoi ki/test/protected_editing_test.dart: Encrypted field merge survives ordinary snapshot capture and account switch mid-write
+01:06 +294: D:/flutter cuoi ki/test/protected_editing_test.dart: Delegated picker obscures content and rechecks grant before showing it again
+01:06 +295: All tests passed!
+........................................................................ [ 50%]
+.......................................................................  [100%]
+============================== warnings summary ===============================
+.venv\Lib\site-packages\fastapi\testclient.py:1
+  D:\flutter cuoi ki\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+143 passed, 1 warning in 123.24s (0:02:03)

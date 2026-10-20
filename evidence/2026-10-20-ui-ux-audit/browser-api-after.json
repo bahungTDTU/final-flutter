@@ -1,0 +1,11 @@
+{
+  "result": "PASS",
+  "target": "isolated loopback DB",
+  "notes": 8,
+  "shared_recipients": 1,
+  "recipient_role": "viewer",
+  "title_and_body_retained": true,
+  "theme_saved": true,
+  "language": "en",
+  "real_providers": false
+}

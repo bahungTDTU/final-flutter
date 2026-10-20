@@ -1,0 +1,11 @@
+{
+  "captured_at_utc": "2026-10-16T07:08:58.362148+00:00",
+  "target": "http://127.0.0.1:8062",
+  "result": "PASS",
+  "browser_prelogin_choice": "en",
+  "server_locale_after_browser_login": "en",
+  "original_note_revision": 3,
+  "original_note_title": "Browser performance note",
+  "original_note_content": "Original server content",
+  "synthetic_seed_notes": 2
+}
