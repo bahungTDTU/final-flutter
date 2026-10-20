@@ -1,0 +1,11 @@
+{
+  "viewport": {
+    "width": 768,
+    "height": 1024
+  },
+  "lockedCardMounted": true,
+  "privateTitleRedacted": true,
+  "privateBodyRedacted": true,
+  "consoleErrors": [],
+  "fixtureOnly": true
+}

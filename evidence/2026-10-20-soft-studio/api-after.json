@@ -1,0 +1,12 @@
+{
+  "result": "PASS",
+  "fixture": "fresh loopback SQLite",
+  "notes": 8,
+  "labels": 5,
+  "pins": 2,
+  "note_title_body_revision_unchanged": true,
+  "language": "en",
+  "palette": "ocean",
+  "dark": false,
+  "providers": false
+}

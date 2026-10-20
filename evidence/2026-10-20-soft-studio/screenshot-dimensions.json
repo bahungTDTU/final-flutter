@@ -1,0 +1,57 @@
+{
+  "requested_phone_viewport": [
+    375,
+    812
+  ],
+  "note": "IAB phone capture is 1 pixel shorter than the requested viewport; images preserved without resizing.",
+  "screenshots": {
+    "final-dashboard-pc-dark.jpg": {
+      "captured_pixels": [
+        1280,
+        1000
+      ]
+    },
+    "final-dashboard-pc-vi.jpg": {
+      "captured_pixels": [
+        1280,
+        1000
+      ]
+    },
+    "final-dashboard-phone-vi.jpg": {
+      "captured_pixels": [
+        375,
+        811
+      ]
+    },
+    "final-editor-pc-dark.jpg": {
+      "captured_pixels": [
+        1280,
+        1000
+      ]
+    },
+    "final-editor-pc-vi.jpg": {
+      "captured_pixels": [
+        1280,
+        1000
+      ]
+    },
+    "final-editor-phone-vi.jpg": {
+      "captured_pixels": [
+        375,
+        811
+      ]
+    },
+    "final-landscape-en.jpg": {
+      "captured_pixels": [
+        844,
+        390
+      ]
+    },
+    "final-tablet-dark.jpg": {
+      "captured_pixels": [
+        768,
+        1024
+      ]
+    }
+  }
+}

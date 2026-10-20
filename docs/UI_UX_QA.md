@@ -1,5 +1,9 @@
 # UI/UX QA – cập nhật20/10/2026
 
+## Soft Studio — 20/10
+
+PASS: 134 format (0 changes), analyze, 324 Flutter tests và 152 backend tests (mã backend không đổi). Contrast 12 themes, 200% vi/en, phone quick-label scrolling/filter, compact landscape/tablet; real Web 1280×1000/375×812/768×1024/844×390 sáng/tối. Web QA/API 8000 và APK debug compile. [Báo cáo](SOFT_STUDIO_UI_2026-10-20.md), [INDEX](../evidence/2026-10-20-soft-studio/INDEX.md). Native/FPS/provider/CI/release mới NOT RUN.
+
 ## Audit trên base6fba5a6
 
 PASS132format0changes/analyze/320Flutter152backend; sửa ACK form chia sẻvi/en và lỗi tiêu đề bị cắt320px/chữ200%. Actual Web PC/phone/landscape, sáng/tối, API/DB riêng; Web/APKdebug compile. Native/FPS/providers/release/CI mới NOT RUN. [Báo cáo](UI_UX_AUDIT_2026-10-20.md), [INDEX](../evidence/2026-10-20-ui-ux-audit/INDEX.md). Các mục dưới là snapshots lịch sử.

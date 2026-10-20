@@ -1,0 +1,6 @@
+{
+  "full_log": "check-acceptance.txt",
+  "full_log_sha256": "9a2aa62a6baaab34efbcb12edfe36d3ef02b0469fb0df13bcc6f92c56909c156",
+  "first_pytest_line": 410,
+  "backend_unchanged_from_base": true
+}

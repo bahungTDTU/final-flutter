@@ -91,7 +91,7 @@ class _DocumentWorkspaceState extends State<DocumentWorkspace> {
       ),
       decoration: BoxDecoration(
         color: colors.surfaceContainerLowest,
-        borderRadius: BorderRadius.circular(desktop ? 4 : 12),
+        borderRadius: BorderRadius.circular(StudioStyle.card),
         border: Border.all(color: colors.outlineVariant),
         boxShadow: desktop
             ? [

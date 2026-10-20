@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import '../l10n/app_strings.dart';
 
 import 'prism.dart';
+import 'studio.dart';
 import 'palette_tokens.dart';
 export 'palette_tokens.dart';
 export 'prism.dart';
+export 'studio.dart';
 
 abstract final class Space {
   static const double xs = 4, sm = 8, md = 12, lg = 16, xl = 24, xxl = 32;
@@ -224,7 +226,7 @@ ThemeData _buildNoteTheme(Brightness brightness, AppPalette selected) {
         .copyWith(
           headlineLarge: TextStyle(
             fontSize: 32,
-            fontWeight: FontWeight.w500,
+            fontWeight: FontWeight.w600,
             color: ink,
             height: 1.25,
           ),
@@ -272,13 +274,15 @@ ThemeData _buildNoteTheme(Brightness brightness, AppPalette selected) {
       filled: true,
       fillColor: scheme.surfaceContainerLowest,
       contentPadding: const EdgeInsets.all(Space.lg),
-      border: OutlineInputBorder(borderRadius: BorderRadius.circular(8.0)),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(StudioStyle.control),
+      ),
       enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8.0),
+        borderRadius: BorderRadius.circular(StudioStyle.control),
         borderSide: BorderSide(color: outline),
       ),
       focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8.0),
+        borderRadius: BorderRadius.circular(StudioStyle.control),
         borderSide: BorderSide(color: primary, width: 2),
       ),
     ),
@@ -287,7 +291,7 @@ ThemeData _buildNoteTheme(Brightness brightness, AppPalette selected) {
       margin: EdgeInsets.zero,
       color: scheme.surfaceContainerLowest,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12.0),
+        borderRadius: BorderRadius.circular(StudioStyle.card),
         side: BorderSide(color: scheme.outlineVariant),
       ),
     ),
@@ -297,13 +301,17 @@ ThemeData _buildNoteTheme(Brightness brightness, AppPalette selected) {
         foregroundColor: scheme.onPrimary,
         elevation: 0,
         minimumSize: const Size(48, 48),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(StudioStyle.control),
+        ),
       ),
     ),
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
         minimumSize: const Size(48, 48),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(StudioStyle.control),
+        ),
       ),
     ),
     iconButtonTheme: IconButtonThemeData(
@@ -311,7 +319,7 @@ ThemeData _buildNoteTheme(Brightness brightness, AppPalette selected) {
           IconButton.styleFrom(
             minimumSize: const Size(48, 48),
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8.0),
+              borderRadius: BorderRadius.circular(StudioStyle.control),
             ),
           ).copyWith(
             side: WidgetStateProperty.fromMap({
@@ -324,7 +332,7 @@ ThemeData _buildNoteTheme(Brightness brightness, AppPalette selected) {
       backgroundColor: scheme.surface,
       surfaceTintColor: Colors.transparent,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16.0),
+        borderRadius: BorderRadius.circular(StudioStyle.panel),
         side: BorderSide(color: scheme.outlineVariant),
       ),
     ),
@@ -392,7 +400,9 @@ ThemeData _buildNoteTheme(Brightness brightness, AppPalette selected) {
       iconColor: primary,
       selectedColor: scheme.onPrimaryContainer,
       selectedTileColor: scheme.primaryContainer,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(StudioStyle.control),
+      ),
     ),
     chipTheme: base.chipTheme.copyWith(
       backgroundColor: scheme.surfaceContainerLowest,
@@ -414,7 +424,9 @@ ThemeData _buildNoteTheme(Brightness brightness, AppPalette selected) {
       color: scheme.surfaceContainerLow,
       surfaceTintColor: Colors.transparent,
       textStyle: TextStyle(fontFamily: 'NotoSans', fontSize: 15, color: ink),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(StudioStyle.card),
+      ),
     ),
     snackBarTheme: SnackBarThemeData(
       behavior: SnackBarBehavior.floating,
@@ -423,12 +435,16 @@ ThemeData _buildNoteTheme(Brightness brightness, AppPalette selected) {
         fontFamily: 'NotoSans',
         color: scheme.onInverseSurface,
       ),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(StudioStyle.control),
+      ),
     ),
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
         minimumSize: const Size(48, 48),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(StudioStyle.control),
+        ),
       ),
     ),
     dividerTheme: DividerThemeData(color: scheme.outlineVariant, space: 1),
@@ -480,7 +496,7 @@ class Brand extends StatelessWidget {
         height: 40,
         decoration: BoxDecoration(
           gradient: LinearGradient(colors: PaletteTokens.of(context).brand),
-          borderRadius: BorderRadius.circular(8.0),
+          borderRadius: BorderRadius.circular(StudioStyle.control),
         ),
         child: Icon(Icons.auto_stories_outlined, color: Colors.white),
       ),
@@ -518,7 +534,7 @@ class StatusNotice extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: error ? colors.errorContainer : colors.surfaceContainerHighest,
-        borderRadius: BorderRadius.circular(8.0),
+        borderRadius: BorderRadius.circular(16),
         border: Border.all(
           color: error
               ? colors.error.withValues(alpha: .4)
@@ -594,7 +610,7 @@ class DialogHeading extends StatelessWidget {
           padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
             color: Theme.of(context).colorScheme.primaryContainer,
-            borderRadius: BorderRadius.circular(8.0),
+            borderRadius: BorderRadius.circular(StudioStyle.control),
           ),
           child: Icon(
             icon,
@@ -690,7 +706,9 @@ class PageIntro extends StatelessWidget {
                           tone.light.withValues(alpha: .18),
                           theme.colorScheme.surface,
                         ),
-                        borderRadius: BorderRadius.circular(8.0),
+                        borderRadius: BorderRadius.circular(
+                          StudioStyle.control,
+                        ),
                         border: Border.all(
                           color: tone.light.withValues(alpha: .4),
                         ),

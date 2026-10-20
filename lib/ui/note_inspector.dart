@@ -59,7 +59,7 @@ class InspectorSection extends StatelessWidget {
     return Material(
       color: colors.surfaceContainerLowest,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(18),
         side: BorderSide(color: colors.outlineVariant),
       ),
       child: Padding(
@@ -138,7 +138,7 @@ class InspectorAction extends StatelessWidget {
       ],
     );
     final shape = RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(8),
+      borderRadius: BorderRadius.circular(12),
     );
     if (primary) {
       return FilledButton(

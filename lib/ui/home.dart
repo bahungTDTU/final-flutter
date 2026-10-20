@@ -238,19 +238,11 @@ class _HomeScreenState extends State<HomeScreen> {
           key: const Key('new-note'),
           tooltip: context.tr("Ghi chú mới"),
           onPressed: () => open(),
-          style: IconButton.styleFrom(
-            backgroundColor: DashboardColors.action,
-            foregroundColor: DashboardColors.actionInk,
-          ),
           icon: const Icon(Icons.add),
         )
       : FilledButton.icon(
           key: const Key('new-note'),
           onPressed: () => open(),
-          style: FilledButton.styleFrom(
-            backgroundColor: DashboardColors.action,
-            foregroundColor: DashboardColors.actionInk,
-          ),
           icon: const Icon(Icons.add),
           label: Text(context.tr("Ghi chú mới")),
         );
@@ -325,9 +317,13 @@ class _HomeScreenState extends State<HomeScreen> {
     final colors = Theme.of(context).colorScheme;
     final palette = PrismPalette.of(context);
     // Keep the first viewport useful even with hundreds of labels.
-    final visibleLabels = selectedLabels
+    final quickLabelIds = selectedLabels
         .followedBy(c.labels.where((id) => !selectedLabels.contains(id)))
-        .take(6);
+        .take(6)
+        .toSet();
+    // Keep quick choices in catalog order so tapping a late chip does not
+    // move it out of the horizontal viewport. Selected IDs still get priority.
+    final visibleLabels = c.labels.where(quickLabelIds.contains);
     final tools = <Widget>[
       SegmentedButton<bool>(
         showSelectedIcon: false,
@@ -436,11 +432,9 @@ class _HomeScreenState extends State<HomeScreen> {
             const SizedBox(height: 12),
             const Divider(),
             const SizedBox(height: 12),
-            Wrap(
-              spacing: 8,
-              runSpacing: 8,
-              crossAxisAlignment: WrapCrossAlignment.center,
-              children: [
+            StudioFilterStrip(
+              compact: small,
+              labels: [
                 for (final label in visibleLabels)
                   ConstrainedBox(
                     constraints: const BoxConstraints(maxWidth: 190),
@@ -471,17 +465,17 @@ class _HomeScreenState extends State<HomeScreen> {
                       }),
                     ),
                   ),
-                OutlinedButton.icon(
-                  key: const Key('all-label-filters'),
-                  onPressed: filterLabels,
-                  icon: const Icon(Icons.tune, size: 18),
-                  label: Text(
-                    selectedLabels.isEmpty
-                        ? context.tr("Bộ lọc nhãn")
-                        : context.tr("Bộ lọc ({0})", [selectedLabels.length]),
-                  ),
-                ),
               ],
+              fullFilter: OutlinedButton.icon(
+                key: const Key('all-label-filters'),
+                onPressed: filterLabels,
+                icon: const Icon(Icons.tune, size: 18),
+                label: Text(
+                  selectedLabels.isEmpty
+                      ? context.tr("Bộ lọc nhãn")
+                      : context.tr("Bộ lọc ({0})", [selectedLabels.length]),
+                ),
+              ),
             ),
           ],
           if (selectedLabels.isNotEmpty) ...[
@@ -1078,7 +1072,7 @@ class _HomeScreenState extends State<HomeScreen> {
       rich: true,
       onTap: () => open(note: note),
       child: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(18),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: tile ? MainAxisSize.max : MainAxisSize.min,
