@@ -1,5 +1,13 @@
 # Offline và revision sync
 
+## Remote delete cùng tài khoản — 21/10/2026
+
+Draft/edit của ghi chú đã có trên server được recovery mã hóa khi một thiết bị
+owner khác xóa source; không tạo lại source ID. Reason deleted được đọc lại sau
+reopen. Pending create/base0 bị validation reject vẫn sửa được trong conflict.
+Idle sync giảm profile reads2→1; sau preference ACK vẫn refresh canonical profile.
+[Kiểm thử và giới hạn](FUNCTIONAL_AUDIT_2026-10-21.md).
+
 Session07/10: user/token cũng persist encrypted, legacy migrate/compact trước account load;
 offline reopen không cần gọi server để giải mã record. Logout tombstone retire session bền,
 account/drafts vẫn giữ; server revoke best-effort khi offline. Xem SESSION_STORAGE.md.

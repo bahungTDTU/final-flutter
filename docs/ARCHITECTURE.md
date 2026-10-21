@@ -1,5 +1,13 @@
 # Kiến trúc NoteTogether
 
+## Đồng bộ và remote deletion — 21/10/2026
+
+Owner note biến mất khỏi full server listing được xử lý như access loss: giữ edit
+trong encrypted recovery reason deleted, chặn source ID qua reopen và restore bằng
+UUID mới. Pending create/base0 chưa có trên server vẫn giữ validation/conflict.
+Idle cycle dùng một profile snapshot; preference ACK mới cần GET/me lần nữa.
+[Audit](FUNCTIONAL_AUDIT_2026-10-21.md).
+
 Palette preference16/10: domain AppPalette enum → controller getter/strict validation → immutable pending_preferences → FastAPI PaletteId. MaterialApp shell tracks palette without remounting route; noteTheme caches12 (brightness,palette), PaletteTokens+PrismPalette interpolate. See [COLOR_PALETTES](COLOR_PALETTES.md).
 
 15–16/10: MaterialApp locale vi/en + AppStrings delegate, GlobalMaterial/Widgets/Cupertino/Quill.

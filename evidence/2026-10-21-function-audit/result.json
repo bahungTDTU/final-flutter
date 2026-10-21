@@ -1,0 +1,35 @@
+{
+  "base": "26636e60c69e95a02f5a3c1ada6e499054cefaf7",
+  "branch": "codex/full-function-audit",
+  "pull": "git pull --ff-only origin master before changes",
+  "baseline_flutter": 324,
+  "final_flutter": 329,
+  "backend": 152,
+  "new_regressions": 5,
+  "analyze": "PASS",
+  "format_files": 135,
+  "web_build": "PASS, QA API8071 + 40 static assets",
+  "apk_debug_build": "PASS",
+  "profile_reads_per_idle_sync": {
+    "before": 2,
+    "after": 1,
+    "after_preference_ack": 2
+  },
+  "actual_http": [
+    "owner/viewer/editor/stranger protected/shares/attachments",
+    "register/login/profile/avatar/labels/preferences",
+    "SSE ready frame",
+    "same-owner peer delete and recovered copy ACK"
+  ],
+  "actual_browser": "PC1280x900, phone375x812 requested (capture375x811); invalid draft -> peer delete -> recovery/newUUID -> server ACK -> reload",
+  "external_providers": false,
+  "old_evidence_unchanged": true,
+  "pushed": false,
+  "not_run": [
+    "new Android runtime/IME/picker/OS lifecycle",
+    "FPS/GPU profiling",
+    "Internet SMTP/Gemini",
+    "signed release/public hosting",
+    "new GitHub CI"
+  ]
+}

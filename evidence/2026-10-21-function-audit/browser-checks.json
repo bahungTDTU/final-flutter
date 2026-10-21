@@ -1,0 +1,17 @@
+{
+  "reloadHasRecoveredNote": true,
+  "reloadHasRecoveryEntry": true,
+  "originalTitleAbsent": true,
+  "consoleErrors": [],
+  "requestedViewports": [
+    [
+      1280,
+      900
+    ],
+    [
+      375,
+      812
+    ]
+  ],
+  "fixtureOnly": true
+}

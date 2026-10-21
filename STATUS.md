@@ -1,4 +1,14 @@
-# NoteTogether - trạng thái 20/10/2026
+# NoteTogether - trạng thái 21/10/2026
+
+## Rà soát chức năng và đồng bộ — 21/10/2026
+
+Đã pull master26636e6 trước sửa, trên nhánh `codex/full-function-audit`. Sửa owner
+remote delete giữ draft/edit vào recovery mã hóa qua reopen, bản sao UUID mới;
+không nhận nhầm pending create. Giảm idle GET/me từ2→1, giữ refresh sau preference ACK.
+PASS329 Flutter/analyze/135format,152backend; HTTP4roles/profile/avatar/labels/SSE,
+Web PC/phone recovery→ACK→reload, Web40assets/APKdebug compile. Native/FPS/providers/
+release/CI mới NOT RUN. Kết quả local trước xuất bản; PR/CI kiểm tra riêng trên GitHub. [Báo cáo](docs/FUNCTIONAL_AUDIT_2026-10-21.md).
+Các mục phía dưới là snapshots lịch sử.
 
 ## Soft Studio UI/UX — 20/10/2026
 

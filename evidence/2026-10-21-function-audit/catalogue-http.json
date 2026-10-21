@@ -1,0 +1,14 @@
+{
+  "result": "PASS",
+  "transport": "actual loopback HTTP + SQLite + SSE",
+  "checks": [
+    "register/login/unverified usable",
+    "profile name",
+    "preference ACK + replay",
+    "label create + rename",
+    "avatar upload + private read + delete with revision CAS",
+    "note create/list",
+    "authenticated SSE ready with version only"
+  ],
+  "external_providers": false
+}
