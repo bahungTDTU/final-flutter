@@ -1,5 +1,11 @@
 # Nhóm và đóng góp thật
 
+22/10 Nguyễn Bảo Long ủy quyền dọn cache và push. Nhánh
+`codex/unicode-portability-qa`, base66f11bc, gồm sửa Unicode portability và
+bàn giao QA Android/Web. Commit dùng Nguyễn Bảo Long
+<523k0014@student.tdtu.edu.vn>, có AI hỗ trợ. Không đổi tác giả lịch sử,
+không giả teamwork/review, không tự merge/deploy.
+
 19/10 Nguyễn Bảo Long yêu cầu cập nhật GitHub, tiếp tục và commit/push dưới danh tính
 Nguyễn Bảo Long <523k0014@student.tdtu.edu.vn>. Base d59fdfd sau PR8/9; bổ sung
 kiểm tra cặp mail key/snapshot và manifest trong backup/restore, regression tests,

@@ -1,5 +1,12 @@
 # Nghiệm thu OS Android —19/10/2026
 
+## Bổ sung native/Web21/10
+
+Android16/API36:5 integration workflows và startup main PASS. Bổ sung owner remote
+delete→recovery/newUUID→encrypted reopen. Input injected, DB reopen cùng process,
+không thay IME/OS-kill. [Báo cáo](ANDROID_WEB_QA_2026-10-21.md). Các gate thủ công phía
+dưới vẫn giữ nguyên; ảnh và log run mới nằm riêng.
+
 ## Probe phục hồi core qua process death
 
 `test_driver/os_relaunch_app.dart` là entrypoint QA riêng, không nối production navigation.

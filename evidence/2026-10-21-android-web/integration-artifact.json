@@ -1,0 +1,17 @@
+{
+  "entrypoint": "tmp/android-web-2026-10-21/native_suite.dart",
+  "sha256": "42776d0cc03be1c22434abe080a8aec1f047efbc40d3fb5f0e0379d34ae03a7d",
+  "bytes": 169830672,
+  "integration_response_keys": [
+    "screenshots",
+    "owner_delete_recovery"
+  ],
+  "owner_delete_recovery": {
+    "passed": true,
+    "new_uuid": true,
+    "server_copy_matches": true,
+    "original_404": true,
+    "encrypted_store_reopened": true,
+    "input": "TextInputClient injection, not IME"
+  }
+}

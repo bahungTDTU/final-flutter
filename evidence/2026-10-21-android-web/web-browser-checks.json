@@ -1,0 +1,17 @@
+{
+  "searchResultObserved": 1,
+  "reloadRecoveredNote": true,
+  "sourceAbsent": true,
+  "consoleErrors": [],
+  "requestedViewports": [
+    [
+      1280,
+      900
+    ],
+    [
+      375,
+      812
+    ]
+  ],
+  "fixtureOnly": true
+}

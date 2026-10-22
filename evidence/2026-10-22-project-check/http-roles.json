@@ -1,0 +1,12 @@
+{
+  "date_utc": "2026-10-22T14:32:08.964504+00:00",
+  "url": "http://127.0.0.1:8077",
+  "note_id": "a17cb0e9-c28a-4d66-837b-ab3a8c4b5ccd",
+  "ui_note_id": "f6edc644-e581-4875-9521-3ae087f7c82b",
+  "results": [
+    "PASS actual HTTP owner/viewer/editor/stranger locked + grant + minimal list",
+    "PASS protected edit/replay/frozen revision409/viewer and editor-delete denied",
+    "PASS private attachment upload/read/delete role rules",
+    "PASS revoke/password change invalidates grant/owner confirmed delete"
+  ]
+}

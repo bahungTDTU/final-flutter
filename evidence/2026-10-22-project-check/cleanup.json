@@ -1,0 +1,50 @@
+[
+  {
+    "path": "tmp/bilingual-web-2026-10-16",
+    "files": 43,
+    "bytes": 45718355.0,
+    "removed": true
+  },
+  {
+    "path": "tmp/dashboard-web-2026-10-14",
+    "files": 43,
+    "bytes": 45602247.0,
+    "removed": true
+  },
+  {
+    "path": "tmp/desk-navigation-web-2026-10-14",
+    "files": 43,
+    "bytes": 45604411.0,
+    "removed": true
+  },
+  {
+    "path": "tmp/inspector-web-2026-10-13",
+    "files": 43,
+    "bytes": 45599273.0,
+    "removed": true
+  },
+  {
+    "path": "tmp/palettes-web-2026-10-16",
+    "files": 43,
+    "bytes": 45736374.0,
+    "removed": true
+  },
+  {
+    "path": "tmp/rubric-ux-web-2026-10-14",
+    "files": 42,
+    "bytes": 45439061.0,
+    "removed": true
+  },
+  {
+    "path": "tmp/pdfs",
+    "files": 81,
+    "bytes": 7626666.0,
+    "removed": true
+  },
+  {
+    "path": "tmp/__pycache__",
+    "files": 1,
+    "bytes": 865.0,
+    "removed": true
+  }
+]

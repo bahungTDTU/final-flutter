@@ -1,0 +1,18 @@
+00:00 +0: loading D:/flutter_cuoi_ki/test/portable_unicode_regression_test.dart
+00:00 +0: valid Unicode notes survive export and import without truncation
+00:00 +0 -1: valid Unicode notes survive export and import without truncation [E]
+  FormatException: Chỉ xuất 1–50 ghi chú của bạn chưa khóa.
+  package:note_together/domain/workspace.dart 242:5  encodeNoteBundle
+  test\portable_unicode_regression_test.dart 17:39   main.<fn>
+  
+00:00 +0 -1: Unicode personal templates remain available after snapshot reload
+00:00 +0 -2: Unicode personal templates remain available after snapshot reload [E]
+  Bad state: No element
+  dart:core                                         _Array.single
+  test\portable_unicode_regression_test.dart 31:31  main.<fn>
+  
+00:00 +0 -2: Some tests failed.
+
+Failing tests:
+  D:/flutter_cuoi_ki/test/portable_unicode_regression_test.dart: Unicode personal templates remain available after snapshot reload
+  D:/flutter_cuoi_ki/test/portable_unicode_regression_test.dart: valid Unicode notes survive export and import without truncation

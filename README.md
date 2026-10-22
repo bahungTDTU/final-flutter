@@ -1,5 +1,22 @@
 # NoteTogether - nền tảng triển khai local
 
+## Xuất bản branch/PR — 22/10/2026
+
+Người dùng đã ủy quyền push. Nhánh `codex/unicode-portability-qa` dựa trên
+master `66f11bc` (tree không đổi so với bản đã kiểm tra), gồm sửa Unicode và
+QA Android/Web đang chờ commit. Local gates giữ phạm vi trong báo cáo22/10;
+CI/approval theo PR hiện hành, chưa merge/deploy. Hai cache Access denied còn giữ;
+thay ownership/ACL bị auto-review từ chối, không thay quyền để xóa.
+
+## Kiểm tra và dọn file tạm — 22/10/2026
+
+Sửa nhập/xuất và template Unicode bị từ chối sai do đếm UTF-16. Hai regression
+FAIL trước sửa; PASS137format/analyze/331Flutter/152backend, HTTP4roles,
+Web40assets/APKdebug compile. Dọn1.062file và259symlink cache (~343,45MiB).
+Hai cache bị Access denied giữ lại; backup/dữ liệu/evidence lịch sử được bảo toàn.
+Browser/native runtime/providers/release mới NOT RUN; không commit/push/deploy.
+[Báo cáo](docs/PROJECT_CHECK_2026-10-22.md), [bằng chứng](evidence/2026-10-22-project-check/INDEX.md).
+
 ## Rà soát chức năng — 21/10/2026
 
 Đã pull master26636e6; sửa phục hồi draft khi owner xóa ghi chú từ thiết bị khác và

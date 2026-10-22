@@ -195,8 +195,7 @@ class PortableNote {
 bool validPortable(dynamic title, dynamic content) =>
     title is String &&
     content is String &&
-    title.trim().length <= 200 &&
-    content.length <= 100000 &&
+    // Use the same Unicode code-point limits as saving and the server.
     validNote(title, content) &&
     (!content.startsWith(noteDocumentPrefix) ||
         storedDocumentDelta(content) != null);

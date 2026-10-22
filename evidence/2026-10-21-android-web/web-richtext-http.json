@@ -1,0 +1,7 @@
+{
+  "result": "PASS",
+  "actual_http": true,
+  "source_revision": 2,
+  "rich_delta_bold_persisted": true,
+  "text_matches": true
+}

@@ -1,5 +1,14 @@
 # Ma trận yêu cầu 32 tiêu chí
 
+## Kiểm tra và dọn file tạm — 22/10/2026
+
+Sửa nhập/xuất và template Unicode bị từ chối sai do đếm UTF-16. Hai regression
+FAIL trước sửa; PASS137format/analyze/331Flutter/152backend, HTTP4roles,
+Web40assets/APKdebug compile. Dọn1.062file và259symlink cache (~343,45MiB).
+Hai cache bị Access denied giữ lại; backup/dữ liệu/evidence lịch sử được bảo toàn.
+Browser/native runtime/providers/release mới NOT RUN; không commit/push/deploy.
+[Báo cáo](PROJECT_CHECK_2026-10-22.md), [bằng chứng](../evidence/2026-10-22-project-check/INDEX.md).
+
 ## Cách đọc trạng thái hiện hành —19/10/2026
 
 Bảng32 mục phía dưới là snapshot chi tiết lịch sử; cột Native có câu “rich editor mới

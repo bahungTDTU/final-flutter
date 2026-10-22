@@ -1,0 +1,15 @@
+ M .gitattributes
+ M README.md
+ M Readme.txt
+ M STATUS.md
+ M docs/NATIVE_OS_ACCEPTANCE.md
+ M docs/REQUIREMENTS_MATRIX.md
+ M integration_test/realtime_test.dart
+ M lib/domain/workspace.dart
+?? .agents/
+?? docs/ANDROID_WEB_QA_2026-10-21.md
+?? docs/PROJECT_CHECK_2026-10-22.md
+?? evidence/2026-10-21-android-web/
+?? evidence/2026-10-22-project-check/
+?? integration_test/owner_delete_recovery_test.dart
+?? test/portable_unicode_regression_test.dart

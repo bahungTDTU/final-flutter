@@ -1,0 +1,15 @@
+{
+  "files": 723,
+  "bytes": 78810798,
+  "links": 259,
+  "failures": [
+    {
+      "path": "D:\\flutter_cuoi_ki\\tmp\\pytest-avatar-cache",
+      "error": "Access to the path 'D:\\flutter_cuoi_ki\\tmp\\pytest-avatar-cache' is denied."
+    },
+    {
+      "path": "D:\\flutter_cuoi_ki\\tmp\\pytest-email-cache",
+      "error": "Access to the path 'D:\\flutter_cuoi_ki\\tmp\\pytest-email-cache' is denied."
+    }
+  ]
+}

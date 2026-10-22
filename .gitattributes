@@ -128,3 +128,11 @@ evidence/2026-10-20-soft-studio/*.txt -whitespace
 # Preserve functional-audit acceptance bytes.
 evidence/2026-10-21-function-audit/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 evidence/2026-10-21-function-audit/*.txt -whitespace
+
+# Preserve Android and Web runtime acceptance bytes.
+evidence/2026-10-21-android-web/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+evidence/2026-10-21-android-web/*.txt -whitespace
+
+# Preserve raw project-check console evidence.
+evidence/2026-10-22-project-check/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+evidence/2026-10-22-project-check/*.txt -whitespace
