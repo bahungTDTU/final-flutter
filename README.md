@@ -1,5 +1,12 @@
 # NoteTogether - nền tảng triển khai local
 
+## Rà soát chức năng — 21/10/2026
+
+Đã pull master26636e6; sửa phục hồi draft khi owner xóa ghi chú từ thiết bị khác và
+giảm request profile lặp. PASS329 Flutter/152backend, analyze, Web/APKdebug compile
+và luồng Web phục hồi/HTTP4roles. Native/FPS/providers/release còn gate riêng.
+[Báo cáo và bằng chứng](docs/FUNCTIONAL_AUDIT_2026-10-21.md). Trạng thái PR/CI được theo dõi trên GitHub.
+
 ## Tiếp nối nghiệm thu —19/10/2026
 
 PR10 backup hardening đã merge vào master db64d74. Nhánh nghiệm thu native giữ các commit bàn giao, QA native process death

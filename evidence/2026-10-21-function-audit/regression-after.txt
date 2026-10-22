@@ -1,0 +1,43 @@
+00:00 +0: loading D:/flutter_cuoi_ki/test/full_function_audit_test.dart
+00:00 +0: D:/flutter_cuoi_ki/test/full_function_audit_test.dart: Owner remote deletion preserves draft in encrypted recovery across reopen
+00:00 +1: D:/flutter_cuoi_ki/test/full_function_audit_test.dart: Owner remote deletion preserves rejected edit in encrypted recovery across reopen
+00:00 +2: D:/flutter_cuoi_ki/test/full_function_audit_test.dart: A not-yet-created owner note rejected by validation remains repairable
+00:00 +3: D:/flutter_cuoi_ki/test/full_function_audit_test.dart: Sync avoids duplicate profile fetch
+PROFILE_FETCH_PROBE queued=false reads=1 writes=0
+00:00 +4: D:/flutter_cuoi_ki/test/full_function_audit_test.dart: Sync refreshes after preference ACK
+PROFILE_FETCH_PROBE queued=true reads=2 writes=1
+00:00 +5: D:/flutter_cuoi_ki/test/realtime_test.dart: SSE parser handles chunk boundaries, comments, CRLF and expiration
+00:00 +6: D:/flutter_cuoi_ki/test/realtime_test.dart: Malformed, sensitive or oversized frames are rejected
+00:00 +7: D:/flutter_cuoi_ki/test/realtime_test.dart: Reconnect catches up, deduplicates changes and never puts token in URL
+00:00 +8: D:/flutter_cuoi_ki/test/realtime_test.dart: Account replacement and stop cancel old stream and reconnect timers
+00:00 +9: D:/flutter_cuoi_ki/test/realtime_test.dart: Expired stream calls session handler once and does not retry
+00:00 +10: D:/flutter_cuoi_ki/test/encrypted_recovery_test.dart: 423 archives latest queued edit even when the following list request fails
+00:00 +11: D:/flutter_cuoi_ki/test/encrypted_recovery_test.dart: 423 archives latest queued edit even when the following list request fails
+00:00 +12: D:/flutter_cuoi_ki/test/encrypted_recovery_test.dart: 423 archives latest queued edit even when the following list request fails
+00:00 +13: D:/flutter_cuoi_ki/test/realtime_test.dart: Signal during GET drains another refresh and preserves latest draft
+00:01 +14: D:/flutter_cuoi_ki/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:01 +15: D:/flutter_cuoi_ki/test/encrypted_recovery_test.dart: Open editor clears controllers and stops autosave when lock arrives
+00:02 +16: D:/flutter_cuoi_ki/test/validation_sync_regression_test.dart: Editor keeps over-limit Unicode input as a draft and shows feedback
+00:02 +17: D:/flutter_cuoi_ki/test/validation_sync_regression_test.dart: Editor keeps over-limit Unicode input as a draft and shows feedback
+00:02 +18: D:/flutter_cuoi_ki/test/validation_sync_regression_test.dart: Editor keeps over-limit Unicode input as a draft and shows feedback
+00:02 +19: D:/flutter_cuoi_ki/test/encrypted_recovery_test.dart: Recovery dialog hides content until explicit copy and opens a new draft
+00:03 +20: D:/flutter_cuoi_ki/test/encrypted_recovery_test.dart: Recovery dialog hides content until explicit copy and opens a new draft
+00:03 +21: D:/flutter_cuoi_ki/test/encrypted_recovery_test.dart: Recovery dialog hides content until explicit copy and opens a new draft
+00:03 +22: D:/flutter_cuoi_ki/test/encrypted_recovery_test.dart: Recovery dialog hides content until explicit copy and opens a new draft
+00:03 +23: D:/flutter_cuoi_ki/test/encrypted_recovery_test.dart: Recovery dialog hides content until explicit copy and opens a new draft
+00:03 +24: D:/flutter_cuoi_ki/test/encrypted_recovery_test.dart: Recovery dialog hides content until explicit copy and opens a new draft
+00:03 +25: D:/flutter_cuoi_ki/test/encrypted_recovery_test.dart: Recovery dialog hides content until explicit copy and opens a new draft
+00:03 +26: D:/flutter_cuoi_ki/test/encrypted_recovery_test.dart: Recovery dialog hides content until explicit copy and opens a new draft
+00:03 +27: D:/flutter_cuoi_ki/test/realtime_test.dart: Dirty live editor keeps typed content and frozen base for conflict
+00:03 +28: D:/flutter_cuoi_ki/test/realtime_test.dart: Dirty live editor keeps typed content and frozen base for conflict
+00:03 +29: D:/flutter_cuoi_ki/test/realtime_test.dart: Dirty live editor keeps typed content and frozen base for conflict
+00:03 +30: D:/flutter_cuoi_ki/test/realtime_test.dart: Dirty live editor keeps typed content and frozen base for conflict
+00:03 +31: D:/flutter_cuoi_ki/test/realtime_test.dart: Dirty live editor keeps typed content and frozen base for conflict
+00:03 +32: D:/flutter_cuoi_ki/test/realtime_test.dart: Dirty live editor keeps typed content and frozen base for conflict
+00:03 +33: D:/flutter_cuoi_ki/test/realtime_test.dart: Dirty live editor keeps typed content and frozen base for conflict
+00:03 +34: D:/flutter_cuoi_ki/test/realtime_test.dart: Dirty live editor keeps typed content and frozen base for conflict
+00:03 +35: D:/flutter_cuoi_ki/test/realtime_test.dart: Dirty live editor keeps typed content and frozen base for conflict
+00:03 +36: D:/flutter_cuoi_ki/test/realtime_test.dart: Dirty live editor keeps typed content and frozen base for conflict
+00:03 +37: D:/flutter_cuoi_ki/test/realtime_test.dart: Dirty live editor keeps typed content and frozen base for conflict
+00:03 +38: D:/flutter_cuoi_ki/test/realtime_test.dart: Dirty live editor keeps typed content and frozen base for conflict
+00:03 +39: All tests passed!

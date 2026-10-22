@@ -1,0 +1,7 @@
+{
+  "result": "PASS",
+  "action": "second same-owner session deletes accepted source revision 1",
+  "server_unchanged_by_invalid_draft": true,
+  "original_read_after_delete": 404,
+  "original_note": "51a2f4de-0580-4b5a-8f69-eefe99aab2eb"
+}

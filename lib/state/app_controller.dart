@@ -330,7 +330,9 @@ class AppController extends ChangeNotifier {
     accessUnavailable.addAll(
       recoveries.values
           .whereType<Map>()
-          .where((r) => ['permission', 'revoked'].contains(r['reason']))
+          .where(
+            (r) => ['permission', 'revoked', 'deleted'].contains(r['reason']),
+          )
           .map((r) => r['source_id'] as String),
     );
     pendingPreferences = (cached['pending_preferences'] as List? ?? [])
@@ -1154,6 +1156,7 @@ class AppController extends ChangeNotifier {
       final session = {'user': user, 'token': sessionToken};
       await _queueWrite(() => local.write('session', session));
       if (!active()) return;
+      var preferencesSubmitted = false;
       for (final op in List<Map<String, dynamic>>.from(pendingPreferences)) {
         if (!active()) return;
         await api.call(
@@ -1163,13 +1166,18 @@ class AppController extends ChangeNotifier {
           body: op,
         );
         if (!active()) return;
+        preferencesSubmitted = true;
         pendingPreferences = pendingPreferences
             .where((p) => p['op_id'] != op['op_id'])
             .toList();
         await _persist();
         if (!active()) return;
       }
-      final latestProfile = await api.call('GET', '/me', token: sessionToken);
+      // Only a preference ACK can make our first profile stale within this
+      // cycle. Routine polling reuses it instead of repeating the same request.
+      final latestProfile = preferencesSubmitted
+          ? await api.call('GET', '/me', token: sessionToken)
+          : profile;
       if (!active()) return;
       _acceptProfile(Map<String, dynamic>.from(latestProfile as Map));
       preferences = {
@@ -1266,10 +1274,21 @@ class AppController extends ChangeNotifier {
       for (final n in incoming.where((n) => n.locked)) {
         if (localStateIds.contains(n.id)) _archiveLocked(n);
       }
+      // A rejected offline creation has never existed on the server. Keep it
+      // repairable, while recovering edits to accepted notes deleted by a peer
+      // (including another device signed into this same owner account).
+      final localCreations = pending
+          .where((op) => op['kind'] == 'upsert' && op['base_revision'] == 0)
+          .map((op) => op['note_id'])
+          .toSet();
       for (final old in List<Note>.from(notes)) {
-        if (old.role != 'owner' && !incomingById.containsKey(old.id)) {
+        if (!incomingById.containsKey(old.id) &&
+            (old.role != 'owner' || !localCreations.contains(old.id))) {
           if (localStateIds.contains(old.id)) {
-            _archiveAccessLoss(old.id, reason: 'revoked');
+            _archiveAccessLoss(
+              old.id,
+              reason: old.role == 'owner' ? 'deleted' : 'revoked',
+            );
           } else {
             accessUnavailable.add(old.id);
           }

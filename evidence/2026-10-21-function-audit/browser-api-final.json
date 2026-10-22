@@ -1,0 +1,12 @@
+{
+  "result": "PASS",
+  "target": "actual Web IAB with real HTTP/SQLite/SSE",
+  "flow": "invalid draft -> same-owner peer delete -> recovery UI -> new UUID -> server ACK",
+  "original_404": true,
+  "copy_id_differs": true,
+  "copy_content_matches": true,
+  "other_note_unchanged": true,
+  "new_note": "069e19d1-836e-467f-98d9-e77294627828",
+  "notes_count": 2,
+  "external_providers": false
+}

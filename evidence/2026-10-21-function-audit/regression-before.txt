@@ -1,0 +1,38 @@
+00:00 +0: loading D:/flutter_cuoi_ki/test/full_function_audit_test.dart
+00:00 +0: Owner remote deletion preserves draft in encrypted recovery across reopen
+00:00 +0 -1: Owner remote deletion preserves draft in encrypted recovery across reopen [E]
+  Expected: <false>
+    Actual: <true>
+  
+  package:matcher                                     expect
+  package:flutter_test/src/widget_tester.dart 473:18  expect
+  test\full_function_audit_test.dart 85:9             main.<fn>
+  
+00:00 +0 -1: Owner remote deletion preserves rejected edit in encrypted recovery across reopen
+00:00 +0 -2: Owner remote deletion preserves rejected edit in encrypted recovery across reopen [E]
+  Expected: empty
+    Actual: [Instance of 'Note']
+  
+  package:matcher                                     expect
+  package:flutter_test/src/widget_tester.dart 473:18  expect
+  test\full_function_audit_test.dart 82:9             main.<fn>
+  
+00:00 +0 -2: A not-yet-created owner note rejected by validation remains repairable
+00:00 +1 -2: Sync avoids duplicate profile fetch
+PROFILE_FETCH_PROBE queued=false reads=2 writes=0
+00:00 +1 -3: Sync avoids duplicate profile fetch [E]
+  Expected: <1>
+    Actual: <2>
+  
+  package:matcher                                     expect
+  package:flutter_test/src/widget_tester.dart 473:18  expect
+  test\full_function_audit_test.dart 212:9            main.<fn>
+  
+00:00 +1 -3: Sync refreshes after preference ACK
+PROFILE_FETCH_PROBE queued=true reads=2 writes=1
+00:00 +2 -3: Some tests failed.
+
+Failing tests:
+  D:/flutter_cuoi_ki/test/full_function_audit_test.dart: Owner remote deletion preserves draft in encrypted recovery across reopen
+  D:/flutter_cuoi_ki/test/full_function_audit_test.dart: Owner remote deletion preserves rejected edit in encrypted recovery across reopen
+  D:/flutter_cuoi_ki/test/full_function_audit_test.dart: Sync avoids duplicate profile fetch
