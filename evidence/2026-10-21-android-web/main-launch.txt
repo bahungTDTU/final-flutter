@@ -1,0 +1,1 @@
+Starting: Intent { cmp=vn.edu.notetogether.note_together/.MainActivity (has extras) }

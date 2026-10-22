@@ -1,0 +1,5 @@
+PASS actual HTTP owner/viewer/editor/stranger locked + grant + minimal list
+PASS protected edit/replay/frozen revision409/viewer and editor-delete denied
+PASS private attachment upload/read/delete role rules
+PASS revoke/password change invalidates grant/owner confirmed delete
+Private QA session (ignored): tmp\protected-qa-session-6fb1cea1-668d-43fd-8e4a-38daa83d0cc5.json

@@ -1,0 +1,26 @@
+{
+  "source_commit": "ad21cf8889dd40fc615eebdbe0904fac8dc7123f",
+  "pull": "tracking branch already up to date before tests",
+  "production_source_changed": false,
+  "tests_changed": [
+    "integration_test/realtime_test.dart",
+    "integration_test/owner_delete_recovery_test.dart"
+  ],
+  "android_workflows": 5,
+  "android_final": "PASS",
+  "android_initial": "4 workflows PASS; realtime FAIL due clipped tap; preserved initial log",
+  "web": "PASS browser UI+real HTTP/SQLite/SSE",
+  "main_native_startup": "PASS fresh lib/main.dart debug install opens sign-in screen",
+  "analyze": "PASS",
+  "format": "2 integration files, 0 changes",
+  "not_run": [
+    "IME Telex/VNI or physical keyboard",
+    "profile FPS/GPU or release performance",
+    "OS process-death/offline lifecycle acceptance this run",
+    "native OS picker/camera/TTL",
+    "Internet SMTP/Gemini",
+    "signed production artifact/hosting",
+    "new CI"
+  ],
+  "pushed": false
+}

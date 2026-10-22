@@ -1,0 +1,25 @@
+{
+  "device": "emulator-5580",
+  "avd": "taskflow_api36",
+  "android": "16",
+  "api": "36",
+  "model": "sdk_gphone64_x86_64",
+  "abi": "x86_64",
+  "wm_size": "Physical size: 1080x2400\nOverride size: 720x1280",
+  "emulator_arguments": [
+    "-avd",
+    "taskflow_api36",
+    "-port",
+    "5580",
+    "-read-only",
+    "-no-snapshot",
+    "-no-snapshot-save",
+    "-no-window",
+    "-no-audio",
+    "-gpu",
+    "swiftshader_indirect"
+  ],
+  "renderer": "debug Flutter software rendering, Impeller disabled",
+  "input": "TextInputClient test injection, not IME",
+  "avd_userdata": "temporary copy-on-write, source AVD retained"
+}

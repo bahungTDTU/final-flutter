@@ -1,5 +1,32 @@
 # NoteTogether - trạng thái 21/10/2026
 
+## Xuất bản branch/PR — 22/10/2026
+
+Người dùng đã ủy quyền push. Nhánh `codex/unicode-portability-qa` dựa trên
+master `66f11bc` (tree không đổi so với bản đã kiểm tra), gồm sửa Unicode và
+QA Android/Web đang chờ commit. Local gates giữ phạm vi trong báo cáo22/10;
+CI/approval theo PR hiện hành, chưa merge/deploy. Hai cache Access denied còn giữ;
+thay ownership/ACL bị auto-review từ chối, không thay quyền để xóa.
+
+## Kiểm tra và dọn file tạm — 22/10/2026
+
+Sửa nhập/xuất và template Unicode bị từ chối sai do đếm UTF-16. Hai regression
+FAIL trước sửa; PASS137format/analyze/331Flutter/152backend, HTTP4roles,
+Web40assets/APKdebug compile. Dọn1.062file và259symlink cache (~343,45MiB).
+Hai cache bị Access denied giữ lại; backup/dữ liệu/evidence lịch sử được bảo toàn.
+Browser/native runtime/providers/release mới NOT RUN; không commit/push/deploy.
+[Báo cáo](docs/PROJECT_CHECK_2026-10-22.md), [bằng chứng](evidence/2026-10-22-project-check/INDEX.md).
+
+## Android emulator và Web — 21/10/2026
+
+Sourcead21cf8 sau pull; production không đổi. Android16/API36 AVD copy-on-write:
+5 workflow integration PASS; lỗi tap ngoài vùng hiển thị của harness realtime đã
+sửa bằng ensureVisible/hitTestable, giữ log FAIL đầu. Main debug cài/mở sign-in PASS.
+Web PC/phone rich text/autosave/remote delete/recovery/newUUID/Delta/theme/reload PASS.
+Analyze/format/Web40assets/mainAPKdebug PASS. Input injected, không IME/FPS/OS lifecycle/
+providers/release. Chỉ thay integration tests; chưa push.
+[Báo cáo](docs/ANDROID_WEB_QA_2026-10-21.md), [ảnh/log](evidence/2026-10-21-android-web/INDEX.md).
+
 ## Rà soát chức năng và đồng bộ — 21/10/2026
 
 Đã pull master26636e6 trước sửa, trên nhánh `codex/full-function-audit`. Sửa owner

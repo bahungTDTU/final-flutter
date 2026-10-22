@@ -1,0 +1,18 @@
+{
+  "result": "PASS",
+  "target": "actual IAB Flutter Web + HTTP/SQLite/SSE",
+  "flow": [
+    "login",
+    "search result 1 of 2",
+    "rich text bold autosave",
+    "invalid draft title",
+    "same-owner peer delete",
+    "recovery UI",
+    "new UUID copy ACK"
+  ],
+  "rich_delta_exact_match": true,
+  "source_404": true,
+  "other_note_revision_unchanged": true,
+  "copy_uuid": "b0586848-1c57-44cd-b5ce-25b89e8de130",
+  "rich_content_sha256": "2f0471838b9b07edd6c4ba58beac6549b87cfeb01c9187739ed1fedf7bd3675d"
+}

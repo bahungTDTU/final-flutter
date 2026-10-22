@@ -1,0 +1,19 @@
+{
+  "source": "ad21cf8889dd40fc615eebdbe0904fac8dc7123f",
+  "target": "Android16 API36 x86_64 emulator-5580 read-only AVD",
+  "started_utc": "2026-10-21T11:18:46.6402286Z",
+  "exit_code": 1,
+  "arguments": [
+    "drive",
+    "--no-pub",
+    "--driver=test_driver/ui_cohesion.dart",
+    "--target=tmp/android-web-2026-10-21/native_suite.dart",
+    "-d",
+    "emulator-5580",
+    "--dart-define=API_URL=http://10.0.2.2:8072",
+    "--enable-software-rendering",
+    "--no-enable-impeller"
+  ],
+  "input": "TextInputClient injection, not IME",
+  "scope": "five integration workflows with real HTTP/SQLite/native encrypted store; same-process DB reopen, not OS force-stop"
+}

@@ -134,6 +134,17 @@ void main() {
             .readOnly,
         true,
       );
+      // The writing scroll can retain its offset after reconnect. Center the
+      // action below the app bar before tapping instead of hitting clipped text.
+      await Scrollable.ensureVisible(
+        tester.element(find.text('Chỉnh sửa phiên bản mới')),
+        alignment: .5,
+      );
+      await tester.pumpAndSettle();
+      expect(
+        find.text('Chỉnh sửa phiên bản mới').hitTestable(),
+        findsOneWidget,
+      );
       await tester.tap(find.text('Chỉnh sửa phiên bản mới'));
       await tester.pumpAndSettle();
       await type(
@@ -167,6 +178,17 @@ void main() {
                     .document
                     .text ==
                 'Changed while stream disconnected',
+      );
+      // The writing scroll can retain its offset after reconnect. Center the
+      // action below the app bar before tapping instead of hitting clipped text.
+      await Scrollable.ensureVisible(
+        tester.element(find.text('Chỉnh sửa phiên bản mới')),
+        alignment: .5,
+      );
+      await tester.pumpAndSettle();
+      expect(
+        find.text('Chỉnh sửa phiên bản mới').hitTestable(),
+        findsOneWidget,
       );
       await tester.tap(find.text('Chỉnh sửa phiên bản mới'));
       await tester.pumpAndSettle();

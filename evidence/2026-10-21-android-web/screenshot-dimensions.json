@@ -1,0 +1,38 @@
+{
+  "native/native-main-start.png": [
+    720,
+    1280
+  ],
+  "native/native-owner-deleted-reopened.png": [
+    720,
+    1280
+  ],
+  "native/native-owner-deleted-restored-draft.png": [
+    720,
+    1280
+  ],
+  "native/protected-native-editor.png": [
+    720,
+    1280
+  ],
+  "native/protected-native-reopened.png": [
+    720,
+    1280
+  ],
+  "web/01-web-rich-draft.jpg": [
+    1280,
+    900
+  ],
+  "web/02-web-recovered-pc.jpg": [
+    1280,
+    900
+  ],
+  "web/03-web-recovered-phone-dark.jpg": [
+    375,
+    811
+  ],
+  "web/04-web-reloaded-phone.jpg": [
+    375,
+    811
+  ]
+}
