@@ -1,5 +1,15 @@
 # Các gate còn lại — cập nhật19/10/2026
 
+## GitHub và hiệu năng danh sách — 23/10/2026
+
+PR15 đã merge; master9003d65 và ba CI PASS, không PR mở/GitHub Releases.
+API reviews PR15 rỗng, không suy merge thành có approval. Chưa đủ điều kiện nộp:
+public HTTPS, signed native release, SMTP/LLM thật, Rubric/video/Insights vẫn cần.
+Sửa backend tránh quét ghi chú tài khoản khác: fixture49visible +20kunrelated,
+median11,313→0,354ms, ~905400→7200SQLite steps; không phải FPS/load production.
+PASS153backend tests, listing6tests và HTTP4roles. Backend-only,
+chưa push bản sửa mới, không đổi client/ACL/schema. [Báo cáo](SUBMISSION_PERFORMANCE_AUDIT_2026-10-23.md).
+
 ## Publication tiếp nối —19/10/2026
 
 PR10 đã merge vào master db64d74 trong lúc thực hiện bàn giao. Ba commit C0/native

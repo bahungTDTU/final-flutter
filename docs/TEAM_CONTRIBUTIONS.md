@@ -1,5 +1,10 @@
 # Nhóm và đóng góp thật
 
+26/10 Nguyễn Bảo Long yêu cầu pull mới nhất, kiểm tra/sửa và push GitHub.
+Branch codex/submission-performance-audit gồm tối ưu listing và validation rich JSON,
+regression/evidence; có AI hỗ trợ. Author/committer Nguyễn Bảo Long
+<523k0014@student.tdtu.edu.vn>. Không đổi lịch sử contribution/approval, không tự merge.
+
 22/10 Nguyễn Bảo Long ủy quyền dọn cache và push. Nhánh
 `codex/unicode-portability-qa`, base66f11bc, gồm sửa Unicode portability và
 bàn giao QA Android/Web. Commit dùng Nguyễn Bảo Long

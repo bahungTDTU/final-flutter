@@ -3,7 +3,7 @@ import sqlite3
 
 import pytest
 
-from backend.note_document import PREFIX
+from backend.note_document import PREFIX, validate_content, plain_content
 from backend.tests.test_security import env, headers, operation
 from backend.tests.test_ai import configure, share
 
@@ -13,6 +13,24 @@ def rich(text='Sinh học là môn học thú vị.'):
         {'insert': text[:4], 'attributes': {'bold': True, 'color': '#5c43c9'}},
         {'insert': text[4:]}, {'insert': '\n', 'attributes': {'align': 'center'}},
     ], ensure_ascii=False, separators=(',', ':'))
+
+
+def test_deeply_nested_document_is_rejected_without_breaking_sync(env):
+    client, app, (owner, _, _) = env
+    encoded = PREFIX + '[' * 20000 + '0' + ']' * 20000
+    response = client.post('/sync', headers=headers(owner), json=operation(content=encoded))
+    assert response.status_code == 422
+    with sqlite3.connect(app.state.database) as conn:
+        assert conn.execute('SELECT count(*) FROM notes').fetchone()[0] == 0
+        assert conn.execute('SELECT count(*) FROM operations').fetchone()[0] == 0
+    assert client.post('/sync', headers=headers(owner), json=operation(content=rich())).status_code == 200
+
+
+def test_deep_legacy_document_preserves_plain_fallback():
+    encoded = PREFIX + '[' * 20000 + '0' + ']' * 20000
+    with pytest.raises(ValueError):
+        validate_content(encoded)
+    assert plain_content(encoded) == encoded
 
 
 def test_rich_document_roundtrip_idempotency_roles_and_lock_gate(env):
