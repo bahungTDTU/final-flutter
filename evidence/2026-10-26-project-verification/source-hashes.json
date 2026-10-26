@@ -1,0 +1,18 @@
+[
+  {
+    "Path": "D:\\flutter_cuoi_ki\\backend\\note_document.py",
+    "Hash": "F2109D55C4E64D2B5D8C493DBB32C80670FDADF17B2E85CDBCA236B15CD85303"
+  },
+  {
+    "Path": "D:\\flutter_cuoi_ki\\backend\\note_listing.py",
+    "Hash": "701EE3EF791E6CABF4041E7EA54B4A4B9B650475EB4DD14C2AC2811785822D7C"
+  },
+  {
+    "Path": "D:\\flutter_cuoi_ki\\backend\\tests\\test_note_document.py",
+    "Hash": "77DD969C9DA3688598A40070FF08EE66BBCED66385BB3F610C2B2EB2D144673B"
+  },
+  {
+    "Path": "D:\\flutter_cuoi_ki\\backend\\tests\\test_listing_scaling.py",
+    "Hash": "1F60822888003CC81496F1B8AFC658A0031567D27FEA962BDF67C61D4C793BA0"
+  }
+]

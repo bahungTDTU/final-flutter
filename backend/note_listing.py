@@ -2,6 +2,8 @@
 def list_visible_notes(conn, user_id):
     # The caller validates the session in this same transaction. The recipient
     # join proves access; no owner/role/permission values come from a payload.
+    # Seed candidate IDs using notes_owner/shares_user indexes. An OR across
+    # the joined tables scans unrelated accounts even for an empty library.
     rows = conn.execute('''
         SELECT n.*, CASE WHEN n.owner_id=? THEN 'owner' ELSE s.role END AS role,
                s.shared_at, u.name AS owner_name, u.email AS owner_email,
@@ -9,9 +11,13 @@ def list_visible_notes(conn, user_id):
         FROM notes n
         JOIN users u ON u.id=n.owner_id
         LEFT JOIN shares s ON s.note_id=n.id AND s.user_id=?
-        WHERE n.deleted=0 AND (n.owner_id=? OR s.user_id IS NOT NULL)
+        WHERE n.deleted=0 AND n.id IN (
+            SELECT id FROM notes WHERE owner_id=? AND deleted=0
+            UNION
+            SELECT note_id FROM shares WHERE user_id=?
+        )
         ORDER BY n.updated_at DESC, n.id ASC
-    ''', (user_id, user_id, user_id)).fetchall()
+    ''', (user_id, user_id, user_id, user_id)).fetchall()
     if not rows:
         return []
     # Resolve only labels on visible, unprotected notes. JSON array position
@@ -20,11 +26,14 @@ def list_visible_notes(conn, user_id):
     for row in conn.execute('''
         SELECT n.id AS note_id, l.id, l.name
         FROM notes n
-        LEFT JOIN shares s ON s.note_id=n.id AND s.user_id=?
         JOIN json_each(n.labels) j
         JOIN labels l ON l.id=j.value AND l.owner_id=n.owner_id AND l.deleted=0
         WHERE n.deleted=0 AND (n.password IS NULL OR n.password='')
-              AND (n.owner_id=? OR s.user_id IS NOT NULL)
+              AND n.id IN (
+                  SELECT id FROM notes WHERE owner_id=? AND deleted=0
+                  UNION
+                  SELECT note_id FROM shares WHERE user_id=?
+              )
         ORDER BY n.id, j.key
     ''', (user_id, user_id)):
         ids, names = labels.setdefault(row['note_id'], ([], {}))

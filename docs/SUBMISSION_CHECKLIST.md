@@ -1,5 +1,15 @@
 # Checklist nộp - chưa sẵn sàng
 
+## GitHub và hiệu năng danh sách — 23/10/2026
+
+PR15 đã merge; master9003d65 và ba CI PASS, không PR mở/GitHub Releases.
+API reviews PR15 rỗng, không suy merge thành có approval. Chưa đủ điều kiện nộp:
+public HTTPS, signed native release, SMTP/LLM thật, Rubric/video/Insights vẫn cần.
+Sửa backend tránh quét ghi chú tài khoản khác: fixture49visible +20kunrelated,
+median11,313→0,354ms, ~905400→7200SQLite steps; không phải FPS/load production.
+PASS153backend tests, listing6tests và HTTP4roles. Backend-only,
+chưa push bản sửa mới, không đổi client/ACL/schema. [Báo cáo](SUBMISSION_PERFORMANCE_AUDIT_2026-10-23.md).
+
 - [ ] Deadline/ngày bắt đầu chính thức đã xác nhận.
 - [ ] 32 mục có bằng chứng hai nền tảng theo phạm vi đề; self-assessment trung thực.
 - [ ] Rubric.xlsx gốc giảng viên (chưa có; matrix không thay file này).

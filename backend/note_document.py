@@ -12,7 +12,12 @@ INT_ATTRIBUTES = {'header', 'indent'}
 def document_delta(content):
     if not content.startswith(PREFIX):
         return None
-    ops = json.loads(content[len(PREFIX):])
+    try:
+        ops = json.loads(content[len(PREFIX):])
+    except RecursionError:
+        # Invalid deeply nested input is a validation error, not a server fault.
+        # plain_content also uses this contract to preserve malformed legacy text.
+        raise ValueError('Rich document nesting is too deep') from None
     if not isinstance(ops, list) or not ops:
         raise ValueError('Invalid rich document')
     for op in ops:

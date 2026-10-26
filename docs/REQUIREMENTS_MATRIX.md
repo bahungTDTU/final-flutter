@@ -1,5 +1,25 @@
 # Ma trận yêu cầu 32 tiêu chí
 
+## Kiểm tra và xuất bản bản sửa — 26/10/2026
+
+Đã backup thay đổi local và pull --ff-only origin master trước sửa; master9003d65
+không có commit mới. Giữ tối ưu listing23/10 và sửa RecursionError khi rich JSON
+lồng quá sâu: ghi mới trả422, fallback dữ liệu cũ giữ nội dung. Hai regression
+FAIL trước sửa; PASS format/analyze/331Flutter/155backend, nhóm17tests và HTTP4roles.
+Branch codex/submission-performance-audit được người dùng ủy quyền push/PR;
+không merge/deploy. Không đổi client/schema/permission; release/submission còn mở.
+[Bằng chứng và phạm vi](../evidence/2026-10-26-project-verification/INDEX.md).
+
+## GitHub và hiệu năng danh sách — 23/10/2026
+
+PR15 đã merge; master9003d65 và ba CI PASS, không PR mở/GitHub Releases.
+API reviews PR15 rỗng, không suy merge thành có approval. Chưa đủ điều kiện nộp:
+public HTTPS, signed native release, SMTP/LLM thật, Rubric/video/Insights vẫn cần.
+Sửa backend tránh quét ghi chú tài khoản khác: fixture49visible +20kunrelated,
+median11,313→0,354ms, ~905400→7200SQLite steps; không phải FPS/load production.
+PASS153backend tests, listing6tests và HTTP4roles. Backend-only,
+chưa push bản sửa mới, không đổi client/ACL/schema. [Báo cáo](SUBMISSION_PERFORMANCE_AUDIT_2026-10-23.md).
+
 ## Kiểm tra và dọn file tạm — 22/10/2026
 
 Sửa nhập/xuất và template Unicode bị từ chối sai do đếm UTF-16. Hai regression

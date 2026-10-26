@@ -136,3 +136,9 @@ evidence/2026-10-21-android-web/*.txt -whitespace
 # Preserve raw project-check console evidence.
 evidence/2026-10-22-project-check/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 evidence/2026-10-22-project-check/*.txt -whitespace
+
+# Preserve raw verification logs.
+evidence/2026-10-23-submission-performance/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+evidence/2026-10-23-submission-performance/*.txt -whitespace
+evidence/2026-10-26-project-verification/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+evidence/2026-10-26-project-verification/*.txt -whitespace

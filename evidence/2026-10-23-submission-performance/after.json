@@ -1,0 +1,18 @@
+{
+  "date_utc": "2026-10-22T17:32:15.752976+00:00",
+  "target": "in-memory SQLite projection, 11 runs after warmup; not HTTP/FPS/load",
+  "results": [
+    {
+      "unrelated_notes": 0,
+      "visible_notes": 49,
+      "median_ms": 0.374,
+      "sqlite_steps_approx": 7200
+    },
+    {
+      "unrelated_notes": 20000,
+      "visible_notes": 49,
+      "median_ms": 0.354,
+      "sqlite_steps_approx": 7200
+    }
+  ]
+}

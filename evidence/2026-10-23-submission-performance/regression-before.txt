@@ -1,0 +1,20 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+__________ test_listing_work_does_not_scale_with_unrelated_accounts ___________
+
+    def test_listing_work_does_not_scale_with_unrelated_accounts():
+        conn = listing_fixture()
+        try:
+            before, small = measured_listing(conn)
+            add_unrelated(conn, 20000)
+            after, large = measured_listing(conn)
+            assert after == before
+            assert len(after) == 49
+>           assert large <= small + 100, (small, large)
+E           AssertionError: (53, 9054)
+E           assert 9054 <= (53 + 100)
+
+backend\tests\test_listing_scaling.py:61: AssertionError
+=========================== short test summary info ===========================
+FAILED backend/tests/test_listing_scaling.py::test_listing_work_does_not_scale_with_unrelated_accounts
+1 failed in 0.64s
