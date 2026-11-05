@@ -1,5 +1,10 @@
 # Nhóm và đóng góp thật
 
+05/11 Nguyễn Bảo Long ủy quyền kiểm tra/sửa/bổ sung cần thiết và push GitHub.
+Branch codex/release-readiness-validation: validation rich text, font, tests/evidence
+và biên bản nghiệm thu; có AI hỗ trợ. Author/committer Nguyễn Bảo Long
+<523k0014@student.tdtu.edu.vn>; giữ lịch sử và không tự merge/approve.
+
 26/10 Nguyễn Bảo Long yêu cầu pull mới nhất, kiểm tra/sửa và push GitHub.
 Branch codex/submission-performance-audit gồm tối ưu listing và validation rich JSON,
 regression/evidence; có AI hỗ trợ. Author/committer Nguyễn Bảo Long

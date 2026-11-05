@@ -1,5 +1,27 @@
 # NoteTogether - nền tảng triển khai local
 
+## Sửa validation và chuẩn bị bàn giao — 05/11/2026
+
+Đã backup local, pull --ff-only master7a8e84c và làm trên branch
+codex/release-readiness-validation. Sửa parser rich text client/server lệch grammar,
+chặn màu7chữ số và attributes null khi import; giữ fallback dữ liệu cũ.
+Bổ sung font Cupertino1.0.8 cùng lockfile, hết cảnh báo thiếu font khi build Web.
+PASS format/analyze, 333Flutter/163backend, HTTP4roles, Web41assets và APKdebug compile.
+[Báo cáo bản sửa](docs/PROJECT_FIXES_2026-11-05.md),
+[bằng chứng](evidence/2026-11-05-project-fixes/INDEX.md).
+Provider/HTTPS/native release/UI runtime và bộ nộp vẫn chưa nghiệm thu; không tự merge/deploy.
+
+## Nghiệm thu kỹ thuật local — 05/11/2026
+
+Source ee7c836: PASS format/analyze, 331 Flutter tests, 155 backend tests,
+HTTP owner/viewer/editor/stranger và Web release local (40 offline assets).
+Toolchain thực tế lần này Flutter 3.47.9/Dart 3.13.7; không phải bản 3.47.1
+của evidence lịch sử. Không sửa mã ứng dụng hoặc nâng dependency.
+Nhóm xác nhận chưa có release URLs/APK/SMTP/LLM để nghiệm thu thực tế.
+Chưa nghiệm thu runtime Web/Android mới, providers/HTTPS/bộ nộp; chưa đủ32 tiêu chí.
+[Báo cáo](docs/ACCEPTANCE_2026-11-05.md),
+[bằng chứng](evidence/2026-11-05-acceptance/INDEX.md).
+
 ## Kiểm tra và xuất bản bản sửa — 26/10/2026
 
 Đã backup thay đổi local và pull --ff-only origin master trước sửa; master9003d65

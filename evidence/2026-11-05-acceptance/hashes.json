@@ -1,0 +1,8 @@
+{
+  "source": "ee7c8366506b6ebf66ba7974b0506841c872cddd",
+  "sha256": {
+    "build/web/main.dart.js": "ac1a4b4d404441d5a00c2c6e8e59b815ab711202e8d50e2bb9471889f4aca6a2",
+    "pubspec.lock": "fd854ec732343d049d11dfbfbf0c078e5b047f029212749ce72d203704927730",
+    "backend/requirements.txt": "336bff20d62af72411f3aab653a65b93b122f7d2a074f9bb03a1c4462d39731a"
+  }
+}

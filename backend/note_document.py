@@ -43,7 +43,7 @@ def document_delta(content):
                 if not ((link.scheme in ('http', 'https') and link.netloc)
                         or (link.scheme == 'mailto' and link.path)):
                     raise ValueError('Unsupported link scheme')
-            elif key in ('color', 'background') and not re.fullmatch(r'#[0-9a-fA-F]{6,8}', value):
+            elif key in ('color', 'background') and not re.fullmatch(r'#(?:[0-9a-fA-F]{6}|[0-9a-fA-F]{8})', value):
                 raise ValueError('Invalid rich color')
             elif key == 'align' and value not in ('left', 'center', 'right', 'justify'):
                 raise ValueError('Invalid alignment')
@@ -54,9 +54,9 @@ def document_delta(content):
             elif key == 'script' and value not in ('super', 'sub'):
                 raise ValueError('Invalid script')
             elif key == 'size' and not (value in ('small', 'large', 'huge')
-                    or value.isdigit() and 8 <= int(value) <= 72):
+                    or re.fullmatch(r'[0-9]+', value) and 8 <= int(value) <= 72):
                 raise ValueError('Invalid font size')
-            elif key == 'line-height' and not (re.fullmatch(r'\d+(\.\d+)?', value)
+            elif key == 'line-height' and not (re.fullmatch(r'[0-9]+(\.[0-9]+)?', value)
                     and 1 <= float(value) <= 3):
                 raise ValueError('Invalid line height')
             elif key == 'font' and not value:

@@ -20,7 +20,7 @@ List<Map<String, dynamic>>? storedDocumentDelta(String content) {
         return null;
       }
       final attributes = value['attributes'];
-      if (attributes != null &&
+      if (value.containsKey('attributes') &&
           (attributes is! Map ||
               attributes.keys.any((key) => key is! String) ||
               attributes.values.any(
@@ -64,7 +64,7 @@ bool _validAttribute(String key, Object? value) {
       return safeDocumentLink(value);
     case 'color':
     case 'background':
-      return RegExp(r'^#[0-9a-fA-F]{6,8}$').hasMatch(value);
+      return RegExp(r'^#(?:[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$').hasMatch(value);
     case 'align':
       return {'left', 'center', 'right', 'justify'}.contains(value);
     case 'list':
@@ -76,10 +76,17 @@ bool _validAttribute(String key, Object? value) {
     case 'size':
       final size = int.tryParse(value);
       return {'small', 'large', 'huge'}.contains(value) ||
-          size != null && size >= 8 && size <= 72;
+          RegExp(r'^[0-9]+$').hasMatch(value) &&
+              size != null &&
+              size >= 8 &&
+              size <= 72;
     case 'line-height':
       final height = double.tryParse(value);
-      return height != null && height.isFinite && height >= 1 && height <= 3;
+      return RegExp(r'^[0-9]+(?:\.[0-9]+)?$').hasMatch(value) &&
+          height != null &&
+          height.isFinite &&
+          height >= 1 &&
+          height <= 3;
     case 'font':
       return value.isNotEmpty;
     default:

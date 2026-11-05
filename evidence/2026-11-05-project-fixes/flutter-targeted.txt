@@ -1,0 +1,23 @@
+00:00 +0: loading D:/flutter_cuoi_ki/test/rich_attribute_contract_test.dart
+00:00 +0: D:/flutter_cuoi_ki/test/rich_attribute_contract_test.dart: Reject server-incompatible rich attributes and preserve legacy text
+00:00 +1: D:/flutter_cuoi_ki/test/rich_attribute_contract_test.dart: Canonical rich sizes, spacing and RGB/ARGB colors remain readable
+00:00 +2: D:/flutter_cuoi_ki/test/workspace_test.dart: quick find stays scrollable with keyboard at 200 percent in portrait and landscape
+00:01 +3: D:/flutter_cuoi_ki/test/workspace_test.dart: task controls have accessible labels and collection label picker stays lazy
+00:02 +4: D:/flutter_cuoi_ki/test/workspace_test.dart: portable roundtrip preserves Quill styles and checklist, strips metadata
+00:02 +5: D:/flutter_cuoi_ki/test/workspace_test.dart: bundle rejects permission injection, malformed rich content and size/count abuse
+00:02 +6: D:/flutter_cuoi_ki/test/workspace_test.dart: export refuses protected and non-owner notes
+00:02 +7: D:/flutter_cuoi_ki/test/workspace_test.dart: saved collection matches AND labels and source while excluding locked
+00:02 +8: D:/flutter_cuoi_ki/test/workspace_test.dart: task cache purges locked/revoked source and invalidates changed rich document
+00:02 +9: D:/flutter_cuoi_ki/test/workspace_test.dart: concurrent favorites and recent writes preserve draft/vault and ordinary snapshots
+00:02 +10: D:/flutter_cuoi_ki/test/workspace_test.dart: workspace metadata contains IDs only; failed writes do not update favorites
+00:02 +11: D:/flutter_cuoi_ki/test/workspace_test.dart: account switch during queued workspace write never publishes into another account
+00:02 +12: D:/flutter_cuoi_ki/test/workspace_test.dart: personal workspace is encrypted on disk and reopens across controller restart
+00:03 +13: D:/flutter_cuoi_ki/test/workspace_test.dart: task toggle preserves frozen revision, labels and formatting; stale or pending input is refused
+00:03 +14: D:/flutter_cuoi_ki/test/workspace_test.dart: viewer, dirty draft, conflict, revoked and changed revision cannot toggle tasks
+00:03 +15: D:/flutter_cuoi_ki/test/workspace_test.dart: import is durable before network, uses fresh IDs and immutable retry operations
+00:03 +16: D:/flutter_cuoi_ki/test/workspace_test.dart: failed import rolls back only its batch and never starts network
+00:03 +17: D:/flutter_cuoi_ki/test/workspace_test.dart: template and collection CRUD update without duplicates and require validation
+00:03 +18: D:/flutter_cuoi_ki/test/workspace_test.dart: workspace tabs/dialogs fit 320px at 200% text and hide locked sources
+00:04 +19: D:/flutter_cuoi_ki/test/workspace_test.dart: Ctrl+K palette favorites update live and purge protected content
+00:04 +20: D:/flutter_cuoi_ki/test/workspace_test.dart: task list builds only visible rows for a large workspace
+00:05 +21: All tests passed!
