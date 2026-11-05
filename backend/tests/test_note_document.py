@@ -33,6 +33,20 @@ def test_deep_legacy_document_preserves_plain_fallback():
     assert plain_content(encoded) == encoded
 
 
+@pytest.mark.parametrize('color', ['#123456', '#80123456'])
+def test_canonical_rich_attributes_roundtrip(color):
+    encoded = PREFIX + json.dumps([{'insert': 'Readable\n', 'attributes': {
+        'color': color, 'size': '12', 'line-height': '1.5'}}])
+    assert validate_content(encoded) == encoded
+    assert plain_content(encoded) == 'Readable'
+
+
+def test_legacy_invalid_color_is_preserved_as_text():
+    encoded = PREFIX + json.dumps([{'insert': 'Keep me\n',
+                                   'attributes': {'color': '#1234567'}}])
+    assert plain_content(encoded) == encoded
+
+
 def test_rich_document_roundtrip_idempotency_roles_and_lock_gate(env):
     client, app, (owner, editor, stranger) = env
     viewer = client.post('/auth/register', json={'email': 'viewer-rich@example.test', 'name': 'Viewer',
@@ -93,6 +107,11 @@ def test_ai_reads_visible_text_without_delta_metadata_or_split_word_loss(env):
     [{'insert': 'huge size', 'attributes': {'size': '999999999'}}, {'insert': '\n'}],
     [{'insert': 'bad header\n', 'attributes': {'header': 0}}],
     [{'insert': 'bad height\n', 'attributes': {'line-height': 'Infinity'}}],
+    [{'insert': 'bad color\n', 'attributes': {'color': '#1234567'}}],
+    [{'insert': 'bad background\n', 'attributes': {'background': '#1234567'}}],
+    [{'insert': 'null attributes\n', 'attributes': None}],
+    [{'insert': 'signed size\n', 'attributes': {'size': '+12'}}],
+    [{'insert': 'exponent height\n', 'attributes': {'line-height': '1e0'}}],
     [{'insert': '\n', 'attributes': {'align': 'center'}}],
 ])
 def test_invalid_or_empty_rich_document_cannot_create_note_or_outbox_record(env, ops):

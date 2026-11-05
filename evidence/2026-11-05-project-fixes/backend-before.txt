@@ -1,0 +1,76 @@
+...............FF....                                                    [100%]
+================================== FAILURES ===================================
+_ test_invalid_or_empty_rich_document_cannot_create_note_or_outbox_record[ops11] _
+
+env = (<starlette.testclient.TestClient object at 0x000001DBD4C631A0>, <fastapi.applications.FastAPI object at 0x000001DBD4C...fd02fcf81', 'email': 'stranger@example.com', 'name': 'stranger', 'verified': False, ...}, 'email_delivery': 'queued'}])
+ops = [{'insert': 'bad color\n', 'attributes': {'color': '#1234567'}}]
+
+    @pytest.mark.parametrize('ops', [
+        [], [{'insert': 'missing terminal newline'}],
+        [{'insert': {'image': 'https://example.test/private.png'}}, {'insert': '\n'}],
+        [{'insert': 'unsafe', 'attributes': {'link': 'javascript:alert(1)'}}, {'insert': '\n'}],
+        [{'insert': 'unsafe', 'attributes': {'link': 'file:///private'}}, {'insert': '\n'}],
+        [{'retain': 1}, {'insert': '\n'}],
+        [{'insert': 'bad attrs', 'attributes': {'bold': {'nested': True}}}, {'insert': '\n'}],
+        [{'insert': 'bad size', 'attributes': {'size': 'NaN'}}, {'insert': '\n'}],
+        [{'insert': 'huge size', 'attributes': {'size': '999999999'}}, {'insert': '\n'}],
+        [{'insert': 'bad header\n', 'attributes': {'header': 0}}],
+        [{'insert': 'bad height\n', 'attributes': {'line-height': 'Infinity'}}],
+        [{'insert': 'bad color\n', 'attributes': {'color': '#1234567'}}],
+        [{'insert': 'bad background\n', 'attributes': {'background': '#1234567'}}],
+        [{'insert': 'null attributes\n', 'attributes': None}],
+        [{'insert': 'signed size\n', 'attributes': {'size': '+12'}}],
+        [{'insert': 'exponent height\n', 'attributes': {'line-height': '1e0'}}],
+        [{'insert': '\n', 'attributes': {'align': 'center'}}],
+    ])
+    def test_invalid_or_empty_rich_document_cannot_create_note_or_outbox_record(env, ops):
+        client, app, (owner, _, _) = env
+        encoded = PREFIX + json.dumps(ops)
+        response = client.post('/sync', headers=headers(owner), json=operation(content=encoded))
+>       assert response.status_code == 422
+E       assert 200 == 422
+E        +  where 200 = <Response [200 OK]>.status_code
+
+backend\tests\test_note_document.py:107: AssertionError
+_ test_invalid_or_empty_rich_document_cannot_create_note_or_outbox_record[ops12] _
+
+env = (<starlette.testclient.TestClient object at 0x000001DBD4CCC2F0>, <fastapi.applications.FastAPI object at 0x000001DBD4C...6298b55e8', 'email': 'stranger@example.com', 'name': 'stranger', 'verified': False, ...}, 'email_delivery': 'queued'}])
+ops = [{'insert': 'bad background\n', 'attributes': {'background': '#1234567'}}]
+
+    @pytest.mark.parametrize('ops', [
+        [], [{'insert': 'missing terminal newline'}],
+        [{'insert': {'image': 'https://example.test/private.png'}}, {'insert': '\n'}],
+        [{'insert': 'unsafe', 'attributes': {'link': 'javascript:alert(1)'}}, {'insert': '\n'}],
+        [{'insert': 'unsafe', 'attributes': {'link': 'file:///private'}}, {'insert': '\n'}],
+        [{'retain': 1}, {'insert': '\n'}],
+        [{'insert': 'bad attrs', 'attributes': {'bold': {'nested': True}}}, {'insert': '\n'}],
+        [{'insert': 'bad size', 'attributes': {'size': 'NaN'}}, {'insert': '\n'}],
+        [{'insert': 'huge size', 'attributes': {'size': '999999999'}}, {'insert': '\n'}],
+        [{'insert': 'bad header\n', 'attributes': {'header': 0}}],
+        [{'insert': 'bad height\n', 'attributes': {'line-height': 'Infinity'}}],
+        [{'insert': 'bad color\n', 'attributes': {'color': '#1234567'}}],
+        [{'insert': 'bad background\n', 'attributes': {'background': '#1234567'}}],
+        [{'insert': 'null attributes\n', 'attributes': None}],
+        [{'insert': 'signed size\n', 'attributes': {'size': '+12'}}],
+        [{'insert': 'exponent height\n', 'attributes': {'line-height': '1e0'}}],
+        [{'insert': '\n', 'attributes': {'align': 'center'}}],
+    ])
+    def test_invalid_or_empty_rich_document_cannot_create_note_or_outbox_record(env, ops):
+        client, app, (owner, _, _) = env
+        encoded = PREFIX + json.dumps(ops)
+        response = client.post('/sync', headers=headers(owner), json=operation(content=encoded))
+>       assert response.status_code == 422
+E       assert 200 == 422
+E        +  where 200 = <Response [200 OK]>.status_code
+
+backend\tests\test_note_document.py:107: AssertionError
+============================== warnings summary ===============================
+.venv\Lib\site-packages\fastapi\testclient.py:1
+  D:\flutter_cuoi_ki\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED backend/tests/test_note_document.py::test_invalid_or_empty_rich_document_cannot_create_note_or_outbox_record[ops11]
+FAILED backend/tests/test_note_document.py::test_invalid_or_empty_rich_document_cannot_create_note_or_outbox_record[ops12]
+2 failed, 19 passed, 1 warning in 9.74s

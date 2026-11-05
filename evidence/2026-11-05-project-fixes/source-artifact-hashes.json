@@ -1,0 +1,14 @@
+{
+  "base": "7a8e84c08f0d3f5d5c0b3f6eba4beb258aa09cda",
+  "sha256": {
+    "backend/note_document.py": "ba74e33f0b04efd878b880285c1070660b9f068cb4f9a81a60d305b350e74e54",
+    "backend/tests/test_note_document.py": "464c916c03465551f0e19adc9d46e71905a135dbc4f3fbf65c70bcf17c96fdcf",
+    "lib/domain/note_document.dart": "60dede62f591cce39bb0f76e80449b0841cdeef313eef8dd4858e23879da19b6",
+    "test/rich_attribute_contract_test.dart": "a1d576c30549af5940f013e7f3f9e600142648e373573603bf40402b2b562374",
+    "pubspec.yaml": "14de5e44c61cdaf8a303999fdf00704a34d4ba551df882d1696b61f5dfb34fed",
+    "pubspec.lock": "cab896df0d289fd84dab1f5ee8ff109f801a960b9acb11f0e7ef2ee7924deac3",
+    "build/web/main.dart.js": "272b591ee6bb18bcf8512b8b3cadc4b0df0d1e5dc739f925f68d6bc0d92c72ba",
+    "build/web/assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "3d90c370aa4cf00dc57ee2b902f6652147c0f81e03e483df584a9c08b1687c9d",
+    "build/app/outputs/flutter-apk/app-debug.apk": "08565cb2fdca92a6402ed9700c56c7fc483769a3b5b613a50c9e29cc2b6f3b49"
+  }
+}
