@@ -1,4 +1,13 @@
-# Các gate còn lại — cập nhật19/10/2026
+# Các gate còn lại — cập nhật 15/11/2026
+
+## Đồng bộ và kiểm tra local — 15/11/2026
+
+Source GitHub `9d00fcf` (PR #17), branch local `codex/local-readiness-update`.
+Đã hoàn thiện quickstart README và tách nhật ký, giữ Readme.txt đồng nhất.
+PASS format138, analyze, 333Flutter và163backend; backend chạy Python3.13.7,
+chưa thay baseline3.12. SDK riêng Flutter3.47.9/Dart3.13.7; có workaround đường dẫn Windows.
+Provider thật, native release/HTTPS và bộ nộp vẫn mở. Không đổi mã app hoặc tự đánh dấu đủ32ID.
+[Báo cáo, lệnh và giới hạn](LOCAL_READINESS_2026-11-15.md). Các mục phía dưới là snapshots lịch sử.
 
 ## GitHub và hiệu năng danh sách — 23/10/2026
 

@@ -1,5 +1,11 @@
 # Nhóm và đóng góp thật
 
+15/11 người dùng yêu cầu commit/push dưới tên mình. Theo quy ước hiện hành,
+Nguyễn Bảo Long <523k0014@student.tdtu.edu.vn> là author/committer.
+Branch `codex/local-readiness-update`: đồng bộ source9d00fcf, hoàn thiện quickstart,
+tách nhật ký README và lưu kết quả QA local cùng các giới hạn môi trường.
+Có AI hỗ trợ; không đổi mã ứng dụng/tác giả lịch sử, không tự merge hoặc deploy.
+
 05/11 Nguyễn Bảo Long ủy quyền kiểm tra/sửa/bổ sung cần thiết và push GitHub.
 Branch codex/release-readiness-validation: validation rich text, font, tests/evidence
 và biên bản nghiệm thu; có AI hỗ trợ. Author/committer Nguyễn Bảo Long

@@ -1,0 +1,911 @@
+# Nhật ký README đến 05/11/2026
+
+Snapshot lịch sử, giữ nguyên phạm vi và kết quả lúc ghi. Trạng thái hiện hành: [README](README.md), [STATUS](STATUS.md).
+
+# NoteTogether - nền tảng triển khai local
+
+## Sửa validation và chuẩn bị bàn giao — 05/11/2026
+
+Đã backup local, pull --ff-only master7a8e84c và làm trên branch
+codex/release-readiness-validation. Sửa parser rich text client/server lệch grammar,
+chặn màu7chữ số và attributes null khi import; giữ fallback dữ liệu cũ.
+Bổ sung font Cupertino1.0.8 cùng lockfile, hết cảnh báo thiếu font khi build Web.
+PASS format/analyze, 333Flutter/163backend, HTTP4roles, Web41assets và APKdebug compile.
+[Báo cáo bản sửa](docs/PROJECT_FIXES_2026-11-05.md),
+[bằng chứng](evidence/2026-11-05-project-fixes/INDEX.md).
+Provider/HTTPS/native release/UI runtime và bộ nộp vẫn chưa nghiệm thu; không tự merge/deploy.
+
+## Nghiệm thu kỹ thuật local — 05/11/2026
+
+Source ee7c836: PASS format/analyze, 331 Flutter tests, 155 backend tests,
+HTTP owner/viewer/editor/stranger và Web release local (40 offline assets).
+Toolchain thực tế lần này Flutter 3.47.9/Dart 3.13.7; không phải bản 3.47.1
+của evidence lịch sử. Không sửa mã ứng dụng hoặc nâng dependency.
+Nhóm xác nhận chưa có release URLs/APK/SMTP/LLM để nghiệm thu thực tế.
+Chưa nghiệm thu runtime Web/Android mới, providers/HTTPS/bộ nộp; chưa đủ32 tiêu chí.
+[Báo cáo](docs/ACCEPTANCE_2026-11-05.md),
+[bằng chứng](evidence/2026-11-05-acceptance/INDEX.md).
+
+## Kiểm tra và xuất bản bản sửa — 26/10/2026
+
+Đã backup thay đổi local và pull --ff-only origin master trước sửa; master9003d65
+không có commit mới. Giữ tối ưu listing23/10 và sửa RecursionError khi rich JSON
+lồng quá sâu: ghi mới trả422, fallback dữ liệu cũ giữ nội dung. Hai regression
+FAIL trước sửa; PASS format/analyze/331Flutter/155backend, nhóm17tests và HTTP4roles.
+Branch codex/submission-performance-audit được người dùng ủy quyền push/PR;
+không merge/deploy. Không đổi client/schema/permission; release/submission còn mở.
+[Bằng chứng và phạm vi](evidence/2026-10-26-project-verification/INDEX.md).
+
+## GitHub và hiệu năng danh sách — 23/10/2026
+
+PR15 đã merge; master9003d65 và ba CI PASS, không PR mở/GitHub Releases.
+API reviews PR15 rỗng, không suy merge thành có approval. Chưa đủ điều kiện nộp:
+public HTTPS, signed native release, SMTP/LLM thật, Rubric/video/Insights vẫn cần.
+Sửa backend tránh quét ghi chú tài khoản khác: fixture49visible +20kunrelated,
+median11,313→0,354ms, ~905400→7200SQLite steps; không phải FPS/load production.
+PASS153backend tests, listing6tests và HTTP4roles. Backend-only,
+chưa push bản sửa mới, không đổi client/ACL/schema. [Báo cáo](docs/SUBMISSION_PERFORMANCE_AUDIT_2026-10-23.md).
+
+## Xuất bản branch/PR — 22/10/2026
+
+Người dùng đã ủy quyền push. Nhánh `codex/unicode-portability-qa` dựa trên
+master `66f11bc` (tree không đổi so với bản đã kiểm tra), gồm sửa Unicode và
+QA Android/Web đang chờ commit. Local gates giữ phạm vi trong báo cáo22/10;
+CI/approval theo PR hiện hành, chưa merge/deploy. Hai cache Access denied còn giữ;
+thay ownership/ACL bị auto-review từ chối, không thay quyền để xóa.
+
+## Kiểm tra và dọn file tạm — 22/10/2026
+
+Sửa nhập/xuất và template Unicode bị từ chối sai do đếm UTF-16. Hai regression
+FAIL trước sửa; PASS137format/analyze/331Flutter/152backend, HTTP4roles,
+Web40assets/APKdebug compile. Dọn1.062file và259symlink cache (~343,45MiB).
+Hai cache bị Access denied giữ lại; backup/dữ liệu/evidence lịch sử được bảo toàn.
+Browser/native runtime/providers/release mới NOT RUN; không commit/push/deploy.
+[Báo cáo](docs/PROJECT_CHECK_2026-10-22.md), [bằng chứng](evidence/2026-10-22-project-check/INDEX.md).
+
+## Rà soát chức năng — 21/10/2026
+
+Đã pull master26636e6; sửa phục hồi draft khi owner xóa ghi chú từ thiết bị khác và
+giảm request profile lặp. PASS329 Flutter/152backend, analyze, Web/APKdebug compile
+và luồng Web phục hồi/HTTP4roles. Native/FPS/providers/release còn gate riêng.
+[Báo cáo và bằng chứng](docs/FUNCTIONAL_AUDIT_2026-10-21.md). Trạng thái PR/CI được theo dõi trên GitHub.
+
+## Tiếp nối nghiệm thu —19/10/2026
+
+PR10 backup hardening đã merge vào master db64d74. Nhánh nghiệm thu native giữ các commit bàn giao, QA native process death
+và password UI. 279Flutter/analyze PASS; nghiệm thu/gates và giới hạn cụ thể xem
+[STATUS](STATUS.md), [OS native](docs/NATIVE_OS_ACCEPTANCE.md) và
+[REMAINING_GATES](docs/REMAINING_GATES.md). Chưa đóng full release/provider/submission.
+
+## Bắt đầu và trạng thái hiện hành
+
+Một Flutter app Web/Android, FastAPI/SQLite và Sembast local. Chức năng đã có nhiều
+nghiệm thu local; chưa sẵn sàng public release/nộp bài. Không dùng lịch sử PASS để suy
+provider/IME/OS lifecycle hoặc signed release đã đạt.
+
+- [Gate hiện hành](docs/REMAINING_GATES.md), [kế hoạch C0–C5](docs/COMPLETION_PLAN_2026-10-19.md).
+- [Hướng dẫn setup Windows](#setup-trên-windows), [baseline/toolchain](docs/LOCAL_BASELINE_AND_ROADMAP.md).
+- [Nghiệm thu native](docs/CURRENT_SOURCE_ACCEPTANCE.md), [release/backup](docs/RELEASE_AND_BACKUP.md).
+- [Prompt bàn giao](docs/PROMPT_6_1_SOL_COMPLETION.md), [checklist nộp](docs/SUBMISSION_CHECKLIST.md).
+
+Cần Flutter3.47.1/Dart3.13.1, Python3.12; scripts/setup.ps1 hỗ trợ -Python và FLUTTER_BIN.
+Sau setup dùng scripts/check.ps1, start_backend.ps1 và start_web.ps1 ở các terminal riêng.
+Secret chỉ cấu hình qua process/file ignored. Các mục theo ngày bên dưới là nhật ký
+lịch sử có phạm vi riêng; trạng thái GitHub phải kiểm tra lại trên PR/head mới nhất.
+
+## Tiếp tục từ GitHub —19/10/2026
+
+PR8 và PR9 đã merge; base hiện tại `d59fdfd` gồm sửa editor/tìm kiếm/inspector.
+Lượt này trên `codex/backup-restore-hardening`, tác giả Nguyễn Bảo Long, có AI hỗ trợ.
+Sửa backup/restore nhận nhầm mail key32byte: đối chiếu PRF với nonce/digest của các
+mail job trong snapshot trước khi chấp nhận. Manifest sai kiểu được trả lỗi CLI gọn.
+Giữ thuật toán mã email, ACL/editor/outbox và source UI hiện tại.
+PASS148 backend tests,16 tests backup/emailqueue và7 backup/CLI tests; Python compile
+và git diff whitespace checks PASS. Không rerun UI/native vì không sửa client.
+[Evidence và phạm vi](evidence/2026-10-19-backup-hardening/INDEX.md).
+SMTP/Gemini thật, Docker engine/HTTPS/signing/native thủ công và bộ nộp vẫn là gate riêng.
+
+## Sửa validation và đồng bộ —18/10/2026 buổi tối
+
+Đã sửa F01–F04:422 cô lập theo note và vẫn refresh quyền; Unicode title/content
+validate trước outbox, giữ draft; copy conflict vừa200codepoints; chặn nhãn thứ31.
+Giữ immutable operations/frozen revision/vault. PASS direct Dart format/analyze,
+10case Dart↔Pydantic và synchronous handlers+SQLite4roles. Thêm8regressions nhưng
+Flutter runtime bị SDK cache lock; full suite/HTTP/Web/native/build/CI NOT RUN.
+[Bản sửa](docs/VALIDATION_SYNC_FIXES_2026-10-18.md),
+[evidence](evidence/2026-10-18-validation-fixes/INDEX.md). Chưa commit/push/deploy.
+Các mục audit và PASS phía dưới là snapshots trước sửa, không phải nghiệm thu mới.
+
+## Audit toàn dự án —18/10/2026
+
+Đối chiếu PDF gốc19trang và32tiêu chí; phát hiện4vấn đề còn mở:422 chặn queue,
+Unicode title lệch giới hạn, copy conflict vượt200ký tự và chọn31nhãn. Chưa sửa code.
+PASS direct Dart format129files0changes/analyze,22backend preflight tests và
+synchronous handlers+SQLite4roles; không phải HTTP. Full Flutter/backend suite bị
+môi trường chặn SDK lock/socket; browser/native/build/provider/CI mới NOT RUN.
+308Flutter/147backendPASS16/10 là lịch sử. Xem [báo cáo](docs/PROJECT_AUDIT_2026-10-18.md)
+và [evidence](evidence/2026-10-18-project-audit/INDEX.md). Không commit/push/deploy.
+
+## Sáu tổ hợp màu giao diện —16/10/2026
+
+Atelier/Đại dương/Diên vĩ/Thạch anh hồng/Hổ phách/Rừng ngọc, mỗi tổ hợp có sáng/tối.
+Chọn ở hồ sơ/tùy chỉnh hoặc ngay trong editor PC/menu điện thoại. Preview+check/keyboard,
+Việt–Anh, responsive và chữ200%; dùng semantic tokens đồng bộ toàn UI, cache12ThemeData.
+Palette lưu offline/immutable queue/sync theo tài khoản; client cũ không reset palette/locale.
+Giữ draft/selection/ID/frozen revision, query/filter/scroll, rich text và privacy note khóa.
+PASS format/analyze/308Flutter/147backend; Web thật PC/tablet/phone/landscape, API4roles,
+palette ACK/replay/account/reload và note-array unchanged; Web/APKdebug compile PASS.
+Native runtime/FPS/provider/CI/release NOT RUN. Không commit/push/merge/deploy lượt này.
+[Thiết kế và hướng dẫn](docs/COLOR_PALETTES.md), [bằng chứng](evidence/2026-10-16-color-palettes/INDEX.md).
+Các mục dưới giữ phạm vi snapshot trước.
+
+## Song ngữ Việt–Anh —15–16/10/2026
+
+Thêm bộ chọn ở đăng nhập, Hồ sơ và tùy chỉnh và editor PC/điện thoại.
+Locale theo tài khoản dùng immutable pending_preferences, lưu offline/retry/merge;
+legacy PATCH không xóa lựa chọn ngôn ngữ. Dịch giao diện, giữ nguyên nội dung ghi chú,
+nhãn/mẫu cá nhân và AI. Đổi khi đang viết giữ document, selection, ID và frozen revision.
+Sửa hồi quy initState của draft và dropdown chữ lớn; dịch cả hướng dẫn thẻ khóa/nhãn ghim.
+PASS format/analyze/302Flutter,145backend; Web thật hai locale/hai theme/PC-phone-landscape,
+đổi khi gõ→server ACK/reload giữ locale; API4roles và locale replay/account isolation.
+Web release local và APK debug compile PASS; Android runtime/FPS/provider/CI/release chưa chạy.
+[Tính năng và phạm vi](docs/BILINGUAL_UI.md), [bằng chứng](evidence/2026-10-15-bilingual/INDEX.md).
+Chưa commit/push; base4a196ef, branch `codex/dashboard-motion-performance`. Các mục dưới là snapshots cũ.
+
+## Đối chiếu đề và sửa quản lý nhãn —14–15/10/2026
+
+Đọc lại PDF gốc19trang; có luồng code cho1–31, mục32 mới build/config local.
+Không đánh đồng IMPLEMENTED với FULL POINT trên hai artifact nộp. SMTP Internet,
+Gemini thật, native OS/IME/picker/TTL/profile FPS và release/video/Rubric vẫn có gate riêng.
+Sửa manager1.000nhãn từ1.000→6mounted rows trong probe, search/clear/no-result,
+footer riêng và conflict action xuống dòng;320px/chữ200% hai theme/keyboard-inset PASS.
+Dialog gắn account/token, xóa input khi session đổi; rename/delete không hỏng note.
+PASS121files0changes/analyze/295Flutter143backend; actual Web1000labels/rename→server ACK,
+Web/APKdebug compile. FPS/native runtime/providers/CI/release NOT RUN lượt này.
+[Báo cáo32ID và đề xuất](docs/RUBRIC_AND_UX_AUDIT_2026-10-14.md),
+[evidence](evidence/2026-10-14-rubric-ux-audit/INDEX.md).
+Chưa commit/push. Các mục trước dưới đây giữ phạm vi historical, không thay gate mới.
+
+
+## Thanh điều hướng PC rõ hơn —14/10/2026
+
+Ba mục có biểu tượng, chữ đậm, vùng bấm riêng; mục đang chọn có nền tương phản và tick,
+viền focus/Tab/Enter, hỗ trợ hai theme và chữ lớn. Giữ query/filter qua chuyển mục/resize.
+PASS119files0changes/analyze/290Flutter/143backend; Web thật PC/phone/rail, API4roles,
+Web và APK debug compile. Chưa commit/push; branch `codex/dashboard-motion-performance`.
+[Chi tiết](docs/UI_DESK_NAVIGATION.md), [ảnh/log](evidence/2026-10-14-desk-navigation/INDEX.md).
+Các mục dưới là snapshots trước lượt sửa thanh điều hướng này.
+
+## Dashboard: UI, motion và hiệu năng —14/10/2026
+
+Sửa hover rung ở mép thẻ, clear-all bị debounce ghi đè và rebuild thư viện khi chỉ đổi
+trạng thái đồng bộ. Giữ chủ đề Deskbook, bóng nhẹ/phản hồi nhấn, vùng bấm cố định.
+PASS118files0changes/analyze/287Flutter/143backend; WebIAB500notes, hai theme, PC/phone/
+rail, menu/tìm kiếm/realtime update/remote lock, API4roles và APK debug compile. Probe500richnotes với20
+thông báo kết nối: số lần đọc lại preview120→0; chưa đo FPS hoặc Android runtime lượt này.
+[Chi tiết và giới hạn](docs/DASHBOARD_MOTION_AND_PERFORMANCE.md),
+[ảnh/log](evidence/2026-10-14-dashboard-polish/INDEX.md).
+Source local `codex/dashboard-motion-performance`, base `4a196ef`, chưa commit/push.
+Bản Web chạy thủ công giữ API8000. Các trạng thái bên dưới là snapshots lịch sử.
+
+## Tiếp tục publication —14/10/2026
+
+PR9 được cập nhật từ branch `codex/bug-audit-fixes`, giữ merge history với master `eaf39b4`.
+Local acceptance13/10 sau integration: format/analyze/279Flutter/143backend PASS; source
+chức năng không đổi khi tiếp tục publication. Chỉ thêm thuộc tính bỏ kiểm tra padding cho
+ba thư mục CLI logs của master, không thay bytes evidence hoặc kiểm tra whitespace source.
+[Gate mới](evidence/2026-10-14-publish-resume/INDEX.md),
+[PR9](https://github.com/bahungTDTU/final-flutter/pull/9). CI và human approval phải ở head
+mới nhất; không merge PR/deploy/release. Các trạng thái trước bên dưới là snapshots.
+
+## PR9 cập nhật master —13/10/2026
+
+Branch `codex/bug-audit-fixes` tích hợp master `eaf39b4` sau PR8, giữ cả lịch sử Bahung/
+Nguyễn Bảo Long và các phần nghiệm thu/native/backup/release guards của master mới.
+Format/analyze/279 Flutter/143 backend PASS trên bản tích hợp; UI/library/ACL không đổi
+trong quá trình giải quyết xung đột tài liệu. [PR9](https://github.com/bahungTDTU/final-flutter/pull/9),
+[gate tích hợp](evidence/2026-10-13-master-integration/INDEX.md).
+Ba CI của head ban đầu f0267d1 đã PASS; CI phải chạy lại trên merge head mới, cùng human
+approval sau push cuối. Không merge PR/deploy/phát hành. Các trạng thái/ngày bên dưới
+giữ snapshot trước integration, gồm trạng thái PR8 trước khi được merge.
+
+## Publication UI và sửa lỗi —13/10/2026
+
+Người dùng ủy quyền xuất bản bản hiện tại trên `codex/bug-audit-fixes`, PR vào `master`.
+Mã đã nghiệm thu không đổi:279 Flutter/119 backend, format/analyze, Web/APK debug compile;
+browser/API có phạm vi riêng trong evidence audit và inspector. Branch base `46df287`.
+[Gate publication](evidence/2026-10-13-ui-publication/INDEX.md),
+[branch GitHub](https://github.com/bahungTDTU/final-flutter/tree/codex/bug-audit-fixes).
+CI mới nhất và human approval được kiểm ở PR thật; không tự merge hoặc đóng release gates.
+Các dòng “chưa commit/push” dưới đây thuộc snapshots nghiệm thu trước publication.
+
+## Ngăn công cụ ghi chú —13/10/2026
+
+UI theo skill ui-ux-pro-max người dùng chỉ định: các nhóm thông tin/AI/công cụ/bảo vệ
+thành thẻ riêng; nút cùng chiều rộng, chữ tự xuống dòng, primary edit/error delete và
+badge metadata có semantics đúng. Editor thường dùng chung components.
+PASS format/analyze,279 Flutter/119 backend; WebIAB PC-phone/hai theme, edit/pin/API,
+owner/viewer/private relock; Web và APK debug compile. Android runtime/IME/FPS chưa chạy.
+[Thiết kế và giới hạn](docs/UI_INSPECTOR_REFINEMENT.md),
+[ảnh và kết quả](evidence/2026-10-13-inspector-ui/INDEX.md).
+Source local `codex/bug-audit-fixes`, base `46df287`, chưa commit/push; các mục dưới là
+snapshots trước lượt UI này. Bản Web local7357 dùng backend8000.
+
+## Rà lỗi —12/10/2026
+
+Sửa 7 nhóm lỗi editor/find/outline/responsive, quyền thay thế động, purge input riêng tư
+và byte range gây 500. Format/analyze/275 Flutter/119 backend PASS; Chrome thật kiểm
+realtime/remote lock/DOM purge, PC-phone/hai theme và cache; Web/APK debug compile PASS.
+[Báo cáo và giới hạn](docs/BUG_AUDIT_2026-10-12.md),
+[bằng chứng](evidence/2026-10-12-bug-audit/INDEX.md).
+Source local `codex/bug-audit-fixes` từ master `46df287`, chưa commit/push.
+Native runtime/IME/FPS, provider, release và CI mới chưa chạy; bên dưới là snapshots lịch sử.
+
+## Clone sạch và hai UI độc lập —12/10/2026
+
+Đúng947802a: setup/check PASS270Flutter/142backend, Web release local40resources và
+APK debug build PASS; .git giữ nguyên, working tree sạch. Hai WebUI khác origin/account
+PASS dirty409→bản sao UUID mới; owner revoke khi peer gõ→ẩn nội dung→phục hồi riêng,
+backend xác nhận original không bị ghi đè và bản sao cô lập quyền.
+[Evidence](evidence/2026-10-12-clean-clone-two-ui/INDEX.md),
+[gate/đầu vào còn thiếu](docs/REMAINING_GATES.md). Chưa có approval để merge PR8, provider/HTTPS/key
+release/Rubric/video thực; native IME/OS relaunch/picker/TTL còn riêng.
+
+
+## Chuẩn bị release và phục hồi state —12/10/2026
+
+Đã thêm production HTTPS origin guard và signing Android riêng, không fallback debug.
+Backup SQLite nhất quán + mail key, restore vào thư mục mới có integrity/FK/hash checks.
+142 backend tests PASS; HTTP restore riêng8043 giữ rich Delta/UUID/file bytes/ACL;
+Android debug build PASS, release thiếu key bị từ chối đúng. Native session-storage
+PASS migration mã hóa/offline DB reopen/logout401/manual re-login giữ draft.
+Native protection enable/change/disable và injected lifecycle relock PASS; không thay
+nghiệm thu OS background/TTL thật.
+Compose persistent volume/context filtering đã cấu hình; Docker engine chưa khả dụng
+sau thử khởi động Desktop, chưa nghiệm thu image/recreate. Xem
+[runbook release](docs/RELEASE_AND_BACKUP.md),
+[evidence](evidence/2026-10-12-release-preparation/INDEX.md).
+R01 code guard đã kiểm tra; signing certificate thật/HTTPS/providers/video/Rubric và
+IME/OS relaunch/picker/two-UI còn gate mở. PR#8 thiếu approval người khác trước merge.
+
+
+## Nghiệm thu tiếp tục trên source mới —12/10/2026
+
+Sau merge PR#5/#6/#7, tiếp tục từ master46df287 trên nhánh codex/current-source-acceptance.
+Native API36 note_flow/sharing/realtime/protected_editing và Web release local autosave/rich text/offline
+reload/reconnect đã chạy; xem [evidence hiện hành](evidence/2026-10-12-current-source-acceptance/INDEX.md).
+Không đóng toàn chặng2: IME native thật, OS relaunch, hai UI độc lập, protected picker/
+TTL/background còn riêng. SMTP/Gemini thật chờ nhóm cấu hình; release để sau core.
+
+[Runbook](docs/CURRENT_SOURCE_ACCEPTANCE.md) có lệnh native máy mới. Đặt FLUTTER_BIN
+đúng SDK3.47.1, emulator QA đã boot và backend dùng DB disposable/port riêng:
+
+```powershell
+& scripts/qa_native.ps1 -Device emulator-5554 -ApiUrl http://10.0.2.2:8042 `
+  -JvmSocketDirectory C:\Temp\notetogether-jvm -SoftwareRendering
+& .\.venv\Scripts\python.exe scripts/qa_protected_notes.py --url http://127.0.0.1:8042 `
+  --output output/protected-http-new-run.json
+```
+
+Probe HTTP chỉ nhận backend loopback, từ chối output đã tồn tại để giữ evidence cũ;
+default output là file UUID mới trong output/, session QA riêng ở tmp/ ignored.
+Native driver dùng injected input/DB reopen, không thay real IME/OS restart.
+
+## Publication UI / Deskbook —12/10/2026
+
+Người dùng ủy quyền push bản UI trên `codex/ui-system-refresh`, PR vào `master`.
+Nhánh cập nhật với master `41eb180` (PR#6); tree baseline không đổi so với QA `f3b17a3`.
+270 Flutter/118 backend, format/analyze và Web/APK debug compile PASS; Chrome7viewport/
+hai theme, autosave/privacy/cache được nghiệm thu trong snapshot Deskbook.
+[Gate publication](evidence/2026-10-12-ui-publication/INDEX.md),
+[nhánh GitHub](https://github.com/bahungTDTU/final-flutter/tree/codex/ui-system-refresh).
+Commit cuối/CI được tra trên PR thật; không tự merge hoặc suy human approval từ local QA.
+Các đoạn “chưa commit/push” bên dưới là snapshots trước publication.
+
+## Deskbook — bố cục hiện hành12/10/2026
+
+PC dùng masthead ngang, thư viện trung tâm với bookmark và ngăn công cụ bên phải.
+Editor có tab Trang viết, mục lục/thông tin đóng mở riêng; phone có toolbar gọn và
+menu công cụ. Giữ bộ lọc, scroll, bản nháp, selection và frozen revision khi resize/theme.
+[Thiết kế](docs/UI_DESKBOOK.md), [spec](design-system/notetogether-deskbook/MASTER.md),
+[ảnh và nghiệm thu](evidence/2026-10-12-deskbook-layout/INDEX.md).
+
+PASS: format112files0changes/analyze,270 Flutter/118 backend; Chrome7viewport/hai theme,
+autosave/API/private-reader/cache40static, Web/APK debug compile. Native UI/IME/FPS chưa chạy.
+Source local `codex/ui-system-refresh` từ `f3b17a3`, chưa commit/push/merge.
+Các kết quả bên dưới là snapshots lịch sử của source tương ứng.
+
+## Editorial Atelier — UI mới, 12/10/2026
+
+Thiết kế mới theo ui-ux-pro-max: nền giấy ấm/obsidian/sage/đồng; thư viện đánh số,
+title như trang tạp chí, ô thống kê tương phản và cặp note ghim bất đối xứng7:5.
+PC có bàn viết với folio/outline/inspector; phone có một cột, toolbar dưới/menu công cụ.
+Auth, AI, workspace, reader và dialogs dùng cùng tokens. Theme được cache; bỏ paint
+glow/facet, giữ lazy/reduced-motion và quyền riêng tư trước unlock.
+[Thiết kế và giới hạn](docs/UI_ATELIER.md), [spec](design-system/notetogether-atelier/MASTER.md),
+[ảnh/nghiệm thu source cuối](evidence/2026-10-12-atelier-ui/INDEX.md).
+
+PASS: format110files0changes/analyze,267 Flutter/118 backend; Chrome5viewport/hai theme,
+38ảnh thật, Web và APK debug compile. Native UI/FPS NOT RUN.
+
+Source local `codex/ui-system-refresh` từ `f3b17a3`, chưa commit/push/merge.
+Các phần theo ngày bên dưới là snapshots trước Atelier; native UI/IME/FPS, provider
+thật và release vẫn chưa được nghiệm thu trong đợt này.
+
+## Nâng cấp UI toàn ứng dụng —12/10/2026
+
+Áp dụng ui-ux-pro-max: theme indigo/blue/teal, surfaces sáng/tối rõ hơn, nhãn nhập cố định,
+header/section/action thống nhất và focus state dễ nhận diện. Dashboard phone gọn;
+editor PC ribbon/paper/mục lục khác bố cục phone. Auth, AI, workspace/planner/focus,
+reader bảo vệ, dialogs và sheets nhận cùng theme. [Thiết kế](docs/UI_SYSTEM_REFRESH.md).
+
+PASS262 Flutter/118 backend, format109files0changes/analyze; Chrome5viewport/hai theme,
+autosave/API roundtrip và relock privacy, cache40static khớp SHA256. Web/APK debug compile
+PASS; native UI/IME/FPS và provider/release chưa chạy. [Ảnh và nghiệm thu](evidence/2026-10-12-ui-system-refresh/INDEX.md).
+Source `codex/ui-system-refresh` từ `f3b17a3`; working changes chưa commit/push trong lượt này.
+Các palette/kết quả theo ngày bên dưới là snapshots trước đợt nâng cấp.
+
+## Publication Trung tâm bảo mật —12/10/2026
+
+Người dùng ủy quyền push trên `codex/security-center`. Source bảo mật commit `0fccdc8`
+được tích hợp với master `3eb76e5` sau PR#5, giữ setup portable và contribution baseline.
+[Gate trước publication](evidence/2026-10-12-security-publication/INDEX.md) ghi kiểm tra
+trên nhánh đã cập nhật; raw QA11–12/10 giữ nguyên. Các đoạn “chưa commit/push” bên dưới
+là snapshot trước publication. CI/approval xem PR thực trên GitHub; không tự merge/release.
+
+## Trung tâm bảo mật —11–12/10/2026
+
+Hồ sơ → Trung tâm bảo mật: xem phiên đăng nhập, thu hồi từng phiên/các phiên khác bằng
+mật khẩu. API giới hạn đầu vào, cooldown xác nhận password bền vững, bỏ password/token
+khỏi lỗi422; catalogue RAM-only, che/abort khi background hoặc đổi phiên. Xác thực SQLite
+dùng read transaction để giảm tranh chấp writer; mutation vẫn recheck quyền trong transaction.
+Không xóa dữ liệu offline của máy khác. [Thiết kế/giới hạn](docs/SECURITY_CENTER_AND_AUTH_PERFORMANCE.md),
+[nghiệm thu](evidence/2026-10-11-security-center/INDEX.md). Source local trên
+`codex/security-center` từ master35db810; chưa commit/push, release vẫn để sau.
+
+## Baseline máy mới —12/10/2026
+
+Source `35db810` đã chứa merge PR#4 (workspace/planner); các đoạn chưa push/PR open
+bên dưới là snapshots lịch sử. Baseline và backlog nghiệm thu hiện hành:
+[LOCAL_BASELINE_AND_ROADMAP](docs/LOCAL_BASELINE_AND_ROADMAP.md).
+Không dùng kết quả tests lịch sử thay kết quả máy mới hoặc nghiệm thu release.
+
+## Publication workspace/planner —10/10/2026
+
+Theo yêu cầu push mới, source được chuẩn bị trên `codex/workspace-planner`, từ master
+`13e0ffc` sau PR#3. Gate250 Flutter/109 backend/analyzer/format PASS, source hashes khớp
+bản đã test. [Gate publication](evidence/2026-10-10-workspace-publication/INDEX.md).
+Các đoạn “chưa commit/push” theo ngày bên dưới là snapshot trước publication; không sửa
+raw evidence cũ. Push branch/PR không phải merge hoặc public deployment.
+
+## Bảng kế hoạch và animation —10/10/2026
+
+Workspace → Kế hoạch: Kanban ba chặng, ưu tiên, ngày hạn, tìm/lọc quá hạn/hôm nay/7 ngày.
+PC ba cột; mobile/chữ lớn một danh sách và menu chọn chặng. Kế hoạch local encrypted theo
+account; không sửa nội dung/quyền note, không nhắc OS hoặc cloud sync kế hoạch. Fade/lift
+chuyển phần, press thẻ và progress ngắn, hỗ trợ giảm chuyển động; lock/revoke bỏ nội dung ngay.
+[Hướng dẫn](docs/WORKSPACE_PLANNER_AND_MOTION.md), [ảnh và nghiệm thu](evidence/2026-10-10-planner-motion/INDEX.md).
+
+PASS:250 Flutter/109 backend, analyzer sạch; Chrome4viewport sáng/tối, lọc/sửa/reload và
+calendar lock từ xa.15ảnh trực tiếp; Web mặc định API8000/APK debug compile PASS. Native UI/
+IME/FPS source mới chưa chạy. Source local chưa commit/push trong đợt nâng cấp này.
+
+## Tập trung và checklist nâng cao —10/10/2026
+
+Workspace có Pomodoro/pause/resume, mục tiêu theo ngày và thống kê7 ngày; checklist
+có tìm kiếm, lọc nguồn/trạng thái và progress. Mobile/chữ lớn dùng menu chọn gọn;
+form giữ input khi lưu lỗi, xóa mẫu/bộ sưu tập cần xác nhận. Timer/goal/history local
+mã hóa theo account, tiếp tục sau reload; không có thông báo OS khi đóng ứng dụng.
+[Hướng dẫn và giới hạn](docs/WORKSPACE_FOCUS_AND_UX.md).
+
+Nghiệm thu mới: 242 Flutter/109 backend PASS, analyze sạch; Chrome kiểm tra timer reload,
+checklist lưu server, form/confirmation và 4 viewport sáng/tối. Sửa cache Web tải mã cũ
+khi nâng cấp; SHA256 cache cuối khớp build, chỉ 40 tài nguyên tĩnh. Web/APK debug compile
+PASS; Android UI/IME/FPS mới chưa chạy. [Ảnh và kết quả](evidence/2026-10-10-workspace-polish/INDEX.md).
+
+Nhóm: 523K0006 Nguyễn Bá Hùng; 523K0014 Nguyễn Bảo Long. Deadline trước tháng 12/2026,
+chưa có ngày/giờ cụ thể. Repository: https://github.com/bahungTDTU/final-flutter; cloud chờ nhóm bổ sung. Đây là source do agent hỗ trợ;
+Initial import dùng danh tính Git của người dùng theo yêu cầu; không thay bằng chứng teamwork4 tuần.
+Đọc STATUS.md trước claim hoàn thành.
+
+Từ yêu cầu07/10, chỉ push branch làm việc và tạo PR vào master; merge cần checks CI đạt ở
+code mới nhất và1 approval hợp lệ từ người khác. Xem docs/BRANCH_WORKFLOW.md và
+.github/rulesets/master.json; những đợt direct push phía dưới là lịch sử.
+
+Người dùng đã ủy quyền publication performance và session07/10 lên nhánh master bằng
+danh tính Git Bahung. Xem docs/GITHUB_PUBLISH.md; các trạng thái “chưa commit/push” trong
+snapshots QA theo ngày phản ánh thời điểm trước publication, không thay raw evidence.
+
+Publication UI/performance09/10 được ủy quyền trên branch `codex/ui-ux-performance`, PR
+vào master. Gate trước push chạy lại:198 Flutter/94 backend PASS, format90files0changes và
+analyze sạch; nhánh cập nhật với master `285af64`. Xem
+[evidence publication](evidence/2026-10-09-github-publication/INDEX.md); các snapshot QA bên dưới
+giữ trạng thái tại thời điểm đo. CI/approval trên PR tiếp tục là điều kiện merge.
+
+## Không gian làm việc cá nhân —10/10/2026
+
+Mở từ dashboard/thanh bên: Ctrl+K tìm nhanh, yêu thích, ghi chú gần đây, bộ sưu tập thông
+minh, bảng công việc từ checklist, mẫu riêng, nhật ký ngày và nhập/xuất NoteTogether JSON.
+Có UI PC/phone cùng theme mới. Tổ chức cá nhân mã hóa theo tài khoản trên thiết bị; notes/
+checklist vẫn đồng bộ server. Import tạo bản mới, không mang quyền/ID cũ; export chỉ gồm
+owner notes chưa khóa, không attachments và file xuất không mã hóa.
+234 Flutter/109 backend/analyze PASS; Chrome file roundtrip offline/reload/reconnect đúng2
+UUID mới/nội dung giữ nguyên; Web/APK debug compile PASS. Native runtime/SAF/FPS mới và
+workspace cloud sync chưa nghiệm thu. [Chức năng và giới hạn](docs/PRODUCTIVITY_WORKSPACE.md),
+[ảnh và nghiệm thu](evidence/2026-10-10-productivity-workspace/INDEX.md).
+
+## Hiện trạng ngày10/10/2026
+
+Editor/theme đã được xuất bản ở commit `a5e5ec6`, branch `codex/adaptive-word-editor`,
+[PR#3](https://github.com/bahungTDTU/final-flutter/pull/3); yêu cầu push không tự cho phép merge.
+Bản sửa mới cho tiêu chí17 giữ unpinned locked notes theo thứ tự cập nhật từ server,
+vẫn chỉ sáu public fields trong list/cache. Ordinary edit pending được ưu tiên và cache
+mã hóa giữ thứ tự qua reopen. [Quy tắc và giới hạn](docs/NOTE_LIST_ORDERING.md).
+
+Architecture và matrix đã đối chiếu với code hiện tại; Summary/Q&A, protected edit/offline
+unlock/realtime và SMTP outbox đã triển khai. Gemini thật, inbox Internet, native editor
+runtime/IME/FPS, public HTTPS/signing/video/teamwork vẫn cần nghiệm thu riêng.
+[Bằng chứng bản sửa](evidence/2026-10-10-ordering-and-docs/INDEX.md).
+Gate10/10: format/analyze sạch,215 Flutter/109 backend tests PASS; direct HTTP4roles,
+Chrome grid/list/offline reload/reconnect/mobile390px và Web build PASS trong phạm vi bản sửa.
+Các mục theo ngày phía dưới là snapshots QA; số test/FPS và trạng thái publication giữ
+phạm vi thời điểm đo. Bản sửa10/10 hiện là working changes, chưa commit/push.
+
+## Editor trực tiếp trên PC và điện thoại —09/10/2026
+
+PC có thanh định dạng, trang viết, mục lục và bảng công cụ riêng; điện thoại dùng một cột
+với toolbar dưới. Định dạng trực tiếp như Word: đậm/nghiêng, tiêu đề, cỡ/màu chữ, căn lề,
+lists/checklist, liên kết, trích dẫn/mã, undo/redo, tìm-thay thế, zoom và chế độ đọc/tập trung.
+Định dạng lưu qua server và encrypted draft; note cũ không bị migration chỉ vì mở.
+[Thiết kế, tương thích và giới hạn](docs/ADAPTIVE_DOCUMENT_EDITOR.md),
+[ảnh và gate hiện tại](evidence/2026-10-09-document-editor/INDEX.md).
+Các kết quả theme/FPS dưới đây là snapshot trước editor mới. Editor được publication10/10
+ở a5e5ec6/PR#3; native runtime/FPS của editor mới và release vẫn chưa nghiệm thu.
+
+## Theme toàn ứng dụng —09/10/2026
+
+App bar, auth, editor, ghi chú bảo vệ, AI/studio, dialog, sheet, form và controls dùng chung
+theme tím-xanh/lavender cùng dashboard, có bản dark navy. Tiêu đề/nội dung giữ khối riêng;
+field dễ đọc và selected state rõ. Không thêm animation nền lặp hay font mạng.
+198 Flutter/94 backend/analyze/HTTP4roles PASS; Chrome12luồng/4viewport/24ảnh không lỗi console.
+Web build/offline và APK debug compile PASS; native UI/FPS cho theme mới chưa chạy.
+[Thiết kế và ảnh kiểm tra](docs/THEME_WIDGET_COHESION.md).
+QA theme đo trên working changes sau717f0ab; source đã publication10/10 trong a5e5ec6/PR#3.
+
+## Đo FPS và chạy Android —09/10/2026
+
+Đã chạy3 workflows native API36 và đo profile500 ghi chú/30 nhãn. GPU host Impeller/OpenGLES:
+lưới54.4–56.7FPS, danh sách52.6–54.4FPS; raster p95=23–28ms, chưa60FPS đều trên emulator.
+Web profile có12 samples desktop/mobile và5search/filter PASS; rAF chỉ nhịp callback Chrome.
+Search325–334ms gồm debounce300ms; HTTP500notes p50/p95=36/56ms. Đây không phải FPS điện thoại
+thật/peak memory/release acceptance. [Phương pháp, lệnh chạy lại và evidence](docs/PERFORMANCE_BENCHMARK.md).
+
+## Home UI/UX và performance —09/10/2026
+
+Dashboard được chỉnh màu theo phản hồi: sidebar indigo/navy, header chuyển sắc tím-xanh,
+thẻ pastel rõ hơn, notice amber và nền lăng kính tĩnh. [Ảnh và phạm vi](docs/DASHBOARD_COLOR_REFRESH.md).
+
+Vùng tìm kiếm/kiểu xem/nhãn tách rõ; thẻ phân cách tiêu đề, nội dung và metadata. Bộ lọc có
+tìm nhãn, danh sách lazy, Apply/Cancel và AND; Home chỉ dựng6 chip nhanh. Nút tạo mobile
+đặt trên app bar để không phủ chữ/menu. Chữ lớn dùng thẻ cao tự nhiên, giữ grid preference.
+App shell/themes và Home bị editor che giảm rebuild20→0 lần trong probe20 notifications/
+500notes không đổi source. Khi note/account đổi, Home vẫn dựng lại ngay để xóa nội dung
+riêng tư cũ sau khóa/thu hồi từ xa.198 Flutter/94 backend/analyze PASS; Web/APK debug compile PASS; native UI đợt này
+chưa chạy, không FPS claim. [Chi tiết và bằng chứng](docs/HOME_UI_UX_PERFORMANCE.md).
+QA Home đo trên branch codex/ui-ux-performance trước publication; release vẫn để cuối.
+
+## Session mã hóa và migration —07/10/2026
+
+Token/profile được mã hóa bằng device key riêng, nonce/AAD riêng; session legacy được chuyển
+và compact trước mở Home. Lỗi khóa/ghi giữ dữ liệu, không fallback plaintext. Logout dùng
+tombstone bền, vẫn thử revoke server khi cleanup lỗi; có nút thử lại và giữ account/drafts.
+188 Flutter/94 backend PASS/analyze sạch; actual Web debug offline reload/logout/login/profile
+roundtrip và Android API36 debug migration/file reopen/logout401/manual login giữ draft PASS.
+[Thiết kế và giới hạn Web](docs/SESSION_STORAGE.md) ·
+[Bằng chứng](evidence/2026-10-07-session-storage/INDEX.md). Release vẫn để cuối.
+
+## Performance bản nháp và đính kèm —07/10/2026
+
+Gõ bản nháp thường ghi record mã hóa nhỏ và đợi transaction; full save/sync gộp root +
+drafts nguyên tử. List/replay đính kèm chỉ SELECT metadata, download giữ ACL/private bytes.
+180 Flutter/94 backend PASS/analyze sạch; actual HTTP4roles và Android API36 debug encrypted
+reopen/offline/reconnect PASS; IAB Web debug offline reload/restored draft/same-ID ACK PASS.
+Workload500notes/20updates: encoded JSON16.886.608→4.848B;
+list10×5MiB: peak Python allocations10.536.155→52.505B. Đây là host probes, không FPS/RSS.
+[Thiết kế và giới hạn](docs/PERFORMANCE_DRAFTS_AND_ATTACHMENTS.md) ·
+[Bằng chứng](evidence/2026-10-07-performance/INDEX.md). Chưa commit/push/release đợt này.
+
+## Sửa hai ưu tiên cao —07/10/2026
+
+Unlock/đổi/tắt bảo vệ dùng chung giới hạn5 mật khẩu sai/60s theo user+note, bền qua phiên
+khác/restart; lỗi403 được commit, cooldown trả429 và thông báo rõ. Ghi chú khóa giữ ghim
+trước/đúng thời điểm và hiện ghim–chia sẻ–khóa đồng thời trong list/grid theo lựa chọn người dùng.
+List/cache chỉ có id/locked/revision/role/pinned_at/shared; không title/content/labels/danh tính/
+thời điểm chia sẻ/số người nhận. Reader/password vault vẫn dùng codec nội dung riêng.
+173 Flutter/93 backend PASS, analyzer sạch; HTTP4roles/Web debug + Android API36 debug
+1 workflow mới (và teardown) PASS, gồm encrypted cache close/reopen với socket backend không
+truy cập được. [Chi tiết](docs/PROTECTION_STATUS_FIXES.md) ·
+[Bằng chứng](evidence/2026-10-07-protection-status/INDEX.md). Release/LLM/mail thật vẫn hoãn.
+Các đoạn UI theo ngày trước07/10 giữ policy lịch sử; phần này và STATUS là hiện trạng mới.
+
+## Công nghệ và hiện trạng
+
+Flutter 3.47.1, Dart 3.13.1; Android SDK 36/JDK 21, Python 3.12.
+Một Flutter project Web + Android, ChangeNotifier, HTTP, Sembast/IndexedDB/application-support,
+FastAPI/SQLite/Argon2id. Versions chính xác: pubspec.lock + backend/requirements.txt.
+Architecture/ACL/offline ở docs; ADR so sánh Firebase/custom.
+Email có SMTP/TLS transport + code UI, disabled khi chưa config. Main không giữ mailbox memory;
+internet inbox chưa xác minh. Private attachments và SSE realtime đã có local QA.
+AI Summary/Q&A đã có backend Gemini và UI/citations; local tests + Web/native fixture QA,
+chưa gọi Gemini thật. Không có key sẽ báo AI chưa cấu hình, không trả kết quả giả.
+Local DB schema version2, migration0/1→2 giữ note revisions/content và operation v1.
+Avatar PNG/JPEG lưu private trong SQLite; catalogue nhãn server dùng ID/revision/tombstone.
+Attachment ảnh/video/file dùng private note API và BLOB SQLite, chỉ online; xem docs/PRIVATE_ATTACHMENTS.md.
+
+## UI responsive và performance —06/10/2026
+
+Editor/AI/ghi chú bảo vệ dùng chung khung Prism và spacing thích nghi; gallery có footer gọn/
+preview cho màn hình thấp. Preview note dài giới hạn480+ellipsis, search/editor giữ full content.
+Home cache view theo nguồn/account/query/labels, tìm kiếm literal tránh lowercase toàn note;
+metadata khóa được ẩn.161 Flutter/88 backend PASS, actual Web/native debug local đã chạy.
+[Thay đổi và benchmark có phạm vi](docs/UI_COHESION_AND_PERFORMANCE.md) ·
+[Ảnh/log/evidence](evidence/2026-10-06-ui-cohesion/INDEX.md). Release tiếp tục để sau cùng.
+
+## Công cụ sáng tạo cho ghi chú
+
+Home → **Xưởng ghi chú**:6 mẫu học tập/nhóm có preview; chọn tạo bản nháp riêng và sửa offline.
+Editor → **Dàn ý & checklist**: heading `#`, việc `- [ ]`, bấm đặt caret/tick để tự lưu và đồng bộ.
+**Viết tập trung** thu gọn UI, phiên25 phút bắt đầu/tạm dừng/đặt lại; rời app tạm dừng.
+Thống kê từ/ký tự/thời gian đọc chạy local; không dùng AI hoặc key. Quyền/revision/lock vẫn qua
+luồng note hiện có; công cụ hiện áp dụng editor thường. [Hướng dẫn/demo](docs/WRITING_STUDIO.md).
+Gate06/10:155 Flutter/88 backend, Web debug/API36 debug actual local PASS; xem
+[evidence](evidence/2026-10-06-writing-studio/INDEX.md). Release để sau cùng, không có claim điểm thêm.
+
+## Setup trên Windows
+
+AI: xem [docs/AI_FEATURES.md](docs/AI_FEATURES.md). Dùng Gemini key của project Free tier,
+chỉ cấu hình ở backend, không đặt trong Flutter hoặc Git. Key cũ đã xuất hiện trong output
+công cụ ở lượt05/10 và chưa được lưu/sử dụng; cần thay trước khi cấu hình.
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/configure_ai.ps1
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/start_backend.ps1
+```
+
+Nhập key vào prompt che ký tự. File local `backend/state/gemini-api-key.txt` bị Git bỏ qua;
+không đưa vào gói nộp. `.env.example` có `GEMINI_API_KEY`/`GEMINI_API_KEY_FILE`/`GEMINI_MODEL`.
+`start_backend.ps1` tự chọn file local; backend deployment cần service env/secret store riêng.
+Free tier có thể dùng dữ liệu gửi lên để cải thiện sản phẩm; AI UI có thông báo trước khi gửi.
+
+Nghiệm thu local có provider double tường minh, không gọi Google:
+
+```powershell
+# Terminal fixture; chỉ loopback và ghi nhãn không phải LLM.
+& .\.venv\Scripts\python.exe scripts/ai_fixture.py --allow-test-provider
+& .\.venv\Scripts\python.exe scripts/qa_ai.py --url http://127.0.0.1:8012 --output output/ai-http-fixture.json
+# Android debug/emulator cần adb reverse8012, giống hướng dẫn integration bên dưới.
+& 'D:\Android\sdk\platform-tools\adb.exe' reverse tcp:8012 tcp:8012
+& 'C:\Users\LENOVO\flutter-sdk\bin\flutter.bat' drive --driver=test_driver/ai.dart --target=integration_test/ai_flow_test.dart -d emulator-5554 --dart-define=API_URL=http://127.0.0.1:8012 --enable-software-rendering --no-enable-impeller
+# Chỉ khi đã thay/config key: actual Gemini QA với disposable notes.
+& .\.venv\Scripts\python.exe scripts/qa_ai.py --url http://127.0.0.1:8000 --live --output output/ai-live.json
+```
+
+`--live` từ chối provider fixture; không được gọi fixture PASS là Gemini đã nghiệm thu.
+Hai AI routes chỉ đọc bản server; summary không overwrite/autosave vào note, pending draft
+bị chặn. Q&A retrieval lọc quyền/unlock trước prompt, recheck mọi nguồn sau inference;
+result ở RAM, citation mở note thật với recheck. Hạn mức/giới hạn ở AI_FEATURES.md.
+
+Flutter3.47.1/Dart3.13.1 là phiên bản CI đã chốt; SDK Dart phải thỏa ^3.13.1.
+Flutter3.47.0/Dart3.13.0 không đủ. Đặt Flutter phù hợp trên PATH hoặc FLUTTER_BIN
+(đường dẫn flutter.bat); có thể dùng SDK riêng để không đổi SDK của dự án khác.
+Python 3.12 cần sẵn, cùng phiên bản minor với CI. Khi tạo .venv, setup ưu tiên
+-Python, rồi PYTHON_BIN, rồi py -3.12, cuối cùng python trên PATH. Script kiểm tra
+đúng Python 3.12 trước cài dependencies; không tự tải runtime hoặc xóa .venv cũ.
+Máy dùng runtime ngoài PATH truyền -Python với đường dẫn thật, không dùng WindowsApps stub.
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/setup.ps1
+# Máy khác:
+powershell -ExecutionPolicy Bypass -File scripts/setup.ps1 -Python C:\Python312\python.exe
+powershell -ExecutionPolicy Bypass -File scripts/check.ps1
+```
+
+Chạy backend và Web ở hai terminal:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/start_backend.ps1
+powershell -ExecutionPolicy Bypass -File scripts/start_web.ps1
+```
+
+Nếu7357 đã có server khác, dùng scripts/start_web.ps1 -Port 7358, không dừng server đó.
+Khi dùng port khác, đặt WEB_ORIGINS gồm origin mới trước khi khởi động backend (ví dụ
+http://127.0.0.1:7358,http://localhost:7358); không dùng wildcard.
+
+Backend http://127.0.0.1:8000, /health, /docs. Web port7357 mặc định; start_web phục vụ release local,
+tự build nếu chưa có worker. Sau sửa source chạy scripts/build.ps1 -Target web rồi reload.
+Backend đọc NOTETOGETHER_DB và WEB_ORIGINS từ process environment. .env.example là template;
+code không tự load .env. CORS cần origin chính xác. API_URL chỉ là public URL, không secret.
+Tạo tài khoản test email/display name/password≥10 ký tự hai lần, tự login và giữ banner unverified.
+Không có grading account/public credentials preloaded; production email/AI không được giả success.
+
+## Exact commands lịch sử trên máy triển khai cũ
+
+Các đường dẫn LENOVO dưới đây thuộc máy cũ. Trên máy mới dùng scripts phía trên
+với Flutter trên PATH hoặc FLUTTER_BIN; không chép nguyên đường dẫn này:
+
+```powershell
+& 'C:\Users\LENOVO\flutter-sdk\bin\flutter.bat' analyze
+& 'C:\Users\LENOVO\flutter-sdk\bin\flutter.bat' test
+& '.\.venv\Scripts\python.exe' -m pytest backend/tests -q
+& 'C:\Users\LENOVO\flutter-sdk\bin\flutter.bat' build web --release --no-web-resources-cdn
+& '.\.venv\Scripts\python.exe' scripts\prepare_web_offline.py
+& 'C:\Users\LENOVO\flutter-sdk\bin\flutter.bat' build apk --release
+```
+
+Scripts tương đương và hỗ trợ cấu hình backend:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/build.ps1 -Target web -ApiUrl http://127.0.0.1:8000
+powershell -ExecutionPolicy Bypass -File scripts/build.ps1 -Target apk -ApiUrl https://BACKEND_HOST_TO_CONFIGURE
+```
+
+Build output local: build/web và build/app/outputs/flutter-apk/app-release.apk.
+Không gọi APK spike là final artifact: release scaffold hiện debug-signed, cần keystore production.
+Release Android chỉ HTTPS; HTTP local dành debug. Web public URL/backend hosting chưa có.
+
+Integration native cần backend running, emulator/device online, adb reverse và debug cleartext manifest:
+
+```powershell
+& 'D:\Android\sdk\platform-tools\adb.exe' reverse tcp:8000 tcp:8000
+& 'C:\Users\LENOVO\flutter-sdk\bin\flutter.bat' test integration_test\note_flow_test.dart -d emulator-5554 --dart-define=API_URL=http://127.0.0.1:8000
+```
+
+Kết quả lệnh này phải xem STATUS/evidence; không coi chỉ có source test là pass.
+Web integration automated driver chưa chạy; browser manual automation evidence ghi riêng.
+
+## Offline và limitations
+
+Draft lưu transaction ngay khi input; valid notes debounce 650ms; outbox UUID/payload immutable,
+revision conflict bảo toàn bản local và cho chọn remote/copy. Retry interval 15s, chưa backoff.
+Account namespace + generation guard; account snapshots mã hóa AES-GCM bằng khóa device riêng,
+session/profile cũng mã hóa bằng device key riêng và migrate/compact legacy trước mở Home;
+chi tiết/giới hạn Web ở docs/SESSION_STORAGE.md. Khóa remote giữ local edit trong encrypted recovery,
+Phục hồi tạo draft UUID mới rồi auto-save khi hợp lệ, không mở source. Xem docs/ENCRYPTED_RECOVERY.md.
+Web key store experimental; không chống XSS/browser-profile reader. Key loss/clear storage có thể mất
+recovery; chưa backup/export key. Ghi chú bảo vệ đã tải có password-encrypted cache/draft,
+mở offline bằng mật khẩu ghi chú; reconnect cần xác thực quyền/grant trên server trước sync.
+Labels catalogue server với durable queue riêng;
+Preferences có durable field-patch outbox/idempotency và đồng bộ theo tài khoản; xem docs/PREFERENCES_SYNC.md.
+Sync ghi snapshot thành công trước gửi; session write/logout dùng cùng hàng đợi. Conflict copy giữ
+draft mới nhất và lưu bản thay thế trong cùng transaction. Regression durability ở
+test/sync_durability_test.dart và evidence/2026-10-01-durability; lock recovery ở evidence/2026-10-01-encrypted-recovery.
+Web dùng custom static-only service worker và local CanvasKit qua scripts/build.ps1; API/private data không cache.
+Cold first-load offline chưa hỗ trợ; cập nhật worker/quota/eviction cần regression riêng.
+Known blockers: internet SMTP receipt/production worker operations, attachment offline queue/full OS/release QA,
+key backup/transfer, real Gemini acceptance, HTTPS hosting,
+production signing, release regression, clone sạch, deadline lịch teamwork, video và Rubric.xlsx gốc.
+
+## Deployment và nộp
+
+backend/Dockerfile chuẩn bị một service với SQLite persistent disk cần mount/backup. Chưa build/run Docker
+image và chưa public deploy. Không hứa free tier. WEB_ORIGINS/API_URL phải dùng HTTPS origin thật.
+SMTP/Gemini variables đã được code đọc; thiếu cấu hình thì disabled. Không dán secrets vào chat hoặc commit.
+source nộp phải clone GitHub và giữ .git; local git init không chứng minh teamwork.
+Read docs/SUBMISSION_CHECKLIST.md; repo đã có. Chưa tạo ZIP nộp vì thiếu clean-clone acceptance,
+video/Rubric.xlsx gốc/public URLs/native release-final và đủ lịch sử contribution theo đề.
+Readme.txt được giữ cùng nội dung với README.md. Tài khoản chấm chỉ đưa riêng trong bộ nộp.
+
+## Bảo trì và hiệu năng03/10/2026
+
+GET /notes đọc theo lô giữ server ACL/locked minimal metadata; client merge dùng ID indexes,
+background polling dừng khi app ở nền. HTTP error không phải JSON vẫn giữ mã lỗi, timeout
+abort underlying request; encrypted draft/outbox và frozen editor base giữ regression PASS.
+123 Flutter/56 backend, direct actual HTTP ACL và Android debug API36 Skia software PASS;
+Chrome local release có offline/reload/reconnect + note ID/count/content assertions thật.
+Web40 static resources/APK55.8MB build PASS; chưa physical/release-functional/FPS/HTTPS.
+
+Benchmark local1.000 notes,7 measured requests: owner/viewer SELECT5.803/7.753→4,
+median64/76ms→52/59ms. Không áp dụng như cam kết production hoặc UI FPS.
+Đã dọn309 generated files cũ/trùng, bỏ dependency cupertino_icons/illustration không dùng;
+evidence lịch sử và dữ liệu local được giữ. Legacy teal contrast script đã archive, current
+theme contrast được kiểm tra trong prism_motion_test.dart. Details/commands:
+docs/PERFORMANCE_AND_MAINTENANCE.md và evidence/2026-10-03-maintenance/INDEX.md.
+
+## UI/UX mới
+
+Giao diện hiện tại dùng sáu tông tím/xanh/cyan/hồng/amber/mint, viền chuyển sắc mảnh,
+ánh sáng lăng kính và hero tinh thể vẽ bằng code. Nền đọc kín, màu nhấn có tiết chế;
+hover180ms/theme300ms/reveal420ms, hỗ trợ giảm chuyển động của hệ thống.
+Không blur nặng hoặc animation nền lặp; chưa benchmark FPS trên thiết bị vật lý.
+Theme sáng/tối dùng Noto Sans bundled (OFL ở assets/fonts), tokens/component chung
+trong design_system.dart và PrismPalette extension trong prism.dart.
+Home đổi sidebar/rail/bottom navigation theo logical width; lưới/danh sách có selected state,
+ghim thành nhóm, search clear/AND filters và thẻ khóa neutral. Editor giữ ID/revision/draft,
+vùng viết thoáng và status local/server khác nhau; settings có preview cỡ chữ.
+Password dialog có validation/loading và error giữ input. Tại snapshot02/10, Hỏi ghi chú chưa khả dụng. Từ05/10 Summary/Q&A đã nối backend Gemini;
+thiếu key báo chưa cấu hình, fixture chỉ dùng QA, chưa nghiệm thu Gemini thật.
+
+Chạy/xem bằng scripts/start_backend.ps1 và scripts/start_web.ps1 như trên; build lại Web sau
+sửa code. docs/UI_UX_DESIGN.md là spec/component map, docs/UI_UX_QA.md là phạm vi kiểm chứng,
+evidence/2026-10-02-prism-ui/INDEX.md chứa ảnh, commands, hashes và phạm vi đợt prism02/10:
+118 Flutter/53 backend PASS, Chrome local release và Android debug Skia software PASS,
+Web/APK release build PASS. Các đợt UI trước giữ evidence riêng. scripts/check.ps1 chạy preview harness,
+responsive/scaled layouts và invariant tests. lib/ui/previews.dart không nằm trong production navigation.
+Chưa full browser history/deep link, screen reader thật, release HTTPS hoặc production UI acceptance.
+
+Lệnh native UI driver đã chạy đợt lăng kính (backend/adb reverse như trên):
+
+```powershell
+& 'C:\Users\LENOVO\flutter-sdk\bin\flutter.bat' drive --driver=test_driver/ui_upgrade.dart --target=integration_test/ui_upgrade_test.dart -d emulator-5554 --dart-define=API_URL=http://127.0.0.1:8000 --enable-software-rendering --no-enable-impeller
+```
+
+Hai lượt renderer mặc định mất kết nối emulator; chưa nghiệm thu renderer đó. Software rendering
+chỉ là flags của lệnh QA này, không cấu hình sản phẩm. Chưa physical-device/release-functional.
+
+## Ghi chú bảo vệ — 05/10/2026
+
+Menu ghi chú của mình → Bật khóa ghi chú (mật khẩu2x, ghi chú đã đồng bộ). Chạm thẻ khóa → nhập
+mật khẩu → phiên tối đa5 phút. Owner/editor sửa và autosave; owner xóa-confirm, gắn nhãn,
+đổi/tắt mật khẩu, quản lý chia sẻ. Viewer chỉ đọc. Tệp riêng tư và AI cần online/grant;
+AI chặn khi draft chưa đồng bộ. Policy từ07/10 cho hiện public pin/shared status trước unlock;
+title/content/nhãn/date/share identities/time/count chỉ hiện trong reader sau unlock.
+Nội dung không vào ordinary cache/search/outbox; cache/draft AES-GCM dẫn xuất từ mật khẩu
+ghi chú (PBKDF2-SHA256600000), nằm trong encrypted account snapshot. Không persist password/key.
+Ghi chú đã tải mở offline được trên thiết bị/origin này; reconnect yêu cầu server unlock trước sync.
+Thu hồi/xóa/đổi mật khẩu giữ draft cũ để Home **Bản nháp bảo vệ** → mật khẩu cũ → copy ID mới.
+SSE cập nhật clean content, dirty draft giữ frozen base; lost ack replay immutable operation.
+Khóa lại/background/expiry/logout che nội dung; chọn tệp che tạm rồi revalidate khi trở về.
+Xem docs/NOTE_PROTECTION.md và evidence/2026-10-05-protected-notes/INDEX.md cho scope/giới hạn.
+Integration mới (backend + adb reverse như trên):
+
+```powershell
+& 'C:\Users\LENOVO\flutter-sdk\bin\flutter.bat' test integration_test/note_protection_test.dart -d emulator-5554 --dart-define=API_URL=http://127.0.0.1:8000
+& 'C:\Users\LENOVO\flutter-sdk\bin\flutter.bat' drive --driver=test_driver/protected_notes.dart --target=integration_test/protected_editing_test.dart -d emulator-5554 --dart-define=API_URL=http://127.0.0.1:8000 --enable-software-rendering --no-enable-impeller
+& .\.venv\Scripts\python.exe scripts/qa_protected_notes.py
+```
+
+HTTP probe tạo dữ liệu test disposable trên backend local8000; session chỉ trong tmp ignored,
+không đưa vào evidence/Git/gói nộp. Sau native integration chạy `flutter pub get` trước release build.
+
+## Email xác minh và khôi phục
+
+SMTP_HOST trống thì không gửi thư; account chưa verified vẫn dùng được ghi chú. Cấu hình
+SMTP_HOST/PORT/SECURITY/FROM/USERNAME/PASSWORD trong process environment rồi restart backend;
+chỉ STARTTLS hoặc TLS, verify CA/hostname. Hướng dẫn không lộ secret ở docs/EMAIL_DELIVERY.md.
+Home **Xác minh** cho nhập/gửi lại mã (cooldown60s). **Quên mật khẩu** → kiểm tra mã trước →
+mật khẩu mới2x → login thủ công; code30 phút/one-time. Register/resend trả queued sau lưu DB,
+worker retry/restart cùng mã, không chờ SMTP trong request. UI có kiểm tra trạng thái gửi,
+email reset + yêu cầu gửi lại. smtp_accepted là SMTP nhận thư, chưa chứng minh inbox delivery.
+Job giữ nonce/digest, HMAC server key bên cạnh DB (*.mail-key) hoặc MAIL_OUTBOX_KEY_FILE;
+không mã thô trong SQLite, backup đúng key cùng server state. Key mất/hỏng sau restart giữ job
+và chặn overwrite, không tạo key thay thế. Xem docs/EMAIL_DELIVERY.md cho states/lease/limits.
+Local TLS fixture/Android test có lệnh riêng trong doc; không deploy fixture.
+
+Đợt06/10:146 Flutter/88 backend PASS; HTTP actual roles/TLS và Web debug + Android debug email
+queue/status/verify/reset local QA. Release theo yêu cầu để cuối, không build/deploy đợt này.
+
+```powershell
+# Chỉ local QA, không SMTP Internet; terminal1
+$env:WEB_ORIGINS = 'http://127.0.0.1:7361,http://localhost:7361'
+& .\.venv\Scripts\python.exe scripts/email_fixture.py --allow-code-endpoint
+# Terminal2: HTTP role/email probe; terminal3: Web debug
+& .\.venv\Scripts\python.exe scripts/qa_email_queue.py
+& 'C:\Users\LENOVO\flutter-sdk\bin\flutter.bat' run -d web-server --web-hostname 127.0.0.1 --web-port 7361 --dart-define=API_URL=http://127.0.0.1:8011
+# Android emulator đã online, adb reverse8011/8026 theo docs/EMAIL_DELIVERY.md
+& 'C:\Users\LENOVO\flutter-sdk\bin\flutter.bat' drive --driver=test_driver/email_queue.dart --target=integration_test/email_flow_test.dart -d emulator-5554 --dart-define=API_URL=http://127.0.0.1:8011 --enable-software-rendering --no-enable-impeller
+```
+
+Sau native integration chạy flutter pub get; không sửa generated registrant bằng tay.
+
+## Avatar và nhãn server
+
+Hồ sơ và tùy chỉnh → Đổi ảnh đại diện: chọn PNG/JPEG tối đa2 MiB rồi Tải ảnh lên; server
+decode/thu nhỏ≤512px, bỏ metadata, trả ảnh riêng của tài khoản. Cancel giữ ảnh cũ; có Dùng ảnh
+mặc định. Upload cần online; ảnh đã tải được cache trong snapshot mã hóa để xem khi mở lại offline.
+Quản lý nhãn có thêm/đổi tên/xóa-confirm và xử lý xung đột. Nhãn giữ ID ổn định; đổi tên/xóa
+không sửa nội dung hoặc revision note. Nhãn pending lưu trước request, gửi trước note operations,
+giữ qua reopen offline; thiết bị khác nhận khi sync15s/nút retry. Nhiều filter là AND theo ID.
+Xem docs/AVATAR_AND_LABELS.md cho API/quyền/CAS/migration và giới hạn.
+
+81 Flutter/29 backend PASS; Chrome release390x844 offline/reload/reconnect và Android debug API36
+bộ chọn file OS thật PASS trong evidence/2026-10-01-avatar-labels. Native test cần chọn fixture
+notetogether-avatar.png khi hiện DocumentsUI; kiểm tra denied/cancel chỉ ở widget, chưa OS QA.
+
+```powershell
+& 'D:\Android\sdk\platform-tools\adb.exe' push evidence/2026-10-01-avatar-labels/notetogether-avatar.png /sdcard/Download/notetogether-avatar.png
+& 'C:\Users\LENOVO\flutter-sdk\bin\flutter.bat' test integration_test/avatar_labels_test.dart -d emulator-5554 --dart-define=API_URL=http://127.0.0.1:8000
+```
+
+Fixture PNG đã kèm trong evidence index; backend/adb reverse như phần integration trên.
+Kotlin incremental compilation tắt để tránh cross-drive Pub cache C:/project D:; không chỉnh
+generated plugin registrant. Web/APK build PASS vẫn chưa nghiệm thu signing/HTTPS/physical-device.
+
+## Đính kèm ảnh/video/file riêng tư
+
+Note đã sync → editor Đính kèm → chọn nhiều tệp → Tải tệp lên. PNG/JPEG≤10 MiB,
+MP4/PDF/TXT/CSV/ZIP≤20 MiB, tối đa10 tệp/100 MiB mỗi note. Ảnh canonical PNG bỏ metadata;
+ảnh/video có preview; file tải qua trình duyệt hoặc Android DocumentsUI. Owner/editor xóa-confirm,
+viewer chỉ xem/tải; server kiểm tra ACL/grant khi list/read/upload/delete/retry, không có public URL.
+Attachment operations giữ nguyên content/revision/base editor. Remote lock/revoke hoặc peer delete
+che preview sau kiểm tra quyền/poll15s; không thể thu hồi bản đã xuất. Chọn/upload/xem cần online;
+lựa chọn retry chỉ giữ RAM trong cửa sổ, chưa durable media outbox. Protected reader có nút xem
+đính kèm theo grant nhưng actual UI flow này chưa nghiệm thu.
+
+88 Flutter/40 backend PASS; actual Chrome release chooser/upload/image/video/download/delete/remote
+lock và Android debug API36 OS picker/video/SAF save/delete PASS. File tải/lưu được đối chiếu SHA-256;
+denied/cancel/scale2 chỉ widget doubles. Web/APK release build PASS, chưa release functional/public
+HTTPS/physical-device/video. Exact integration commands/QA fixture server8013 (chỉ test), giới hạn và
+evidence: docs/PRIVATE_ATTACHMENTS.md, evidence/2026-10-01-attachments/INDEX.md.
+
+## Quản lý chia sẻ và quyền người nhận
+
+Note owner đã sync → menu Chia sẻ hoặc editor Chia sẻ ghi chú. Thêm1–20 email đã đăng ký mỗi
+lượt, viewer/editor, batch atomic; đổi quyền bằng dropdown, thu hồi-confirm. Danh sách owner có
+tên/email/thời điểm/quyền; recipient tab Được chia sẻ có owner/time/role, owner có icon/số người.
+API owner/grant, share revision riêng + immutable operation journal; retry không cấp lại quyền
+đã thu hồi. Role/metadata refresh giữ base revision editor và content note. Khi viewer/revoked,
+latest draft/upsert giữ qua encrypted recovery; UI chỉ đọc/che source, phục hồi UUID mới.
+Quản lý online-only, catalogue RAM-only; che khi background/lock/account loss, không poll khi nền.
+
+97 Flutter/48 backend PASS, actual Android debug API36 batch/role/recipient edit/viewer/revoke/
+encrypted offline DB reopen/recovery UI PASS, Chrome local release actual UI/API checks và
+Web/APK release build PASS. Mốc sharing này dùng poll15s; SSE mới xem phần realtime bên dưới. Protected-reader share UI/
+physical/release functional/HTTPS/video chưa nghiệm thu. Xem docs/SHARING_AND_PERMISSIONS.md,
+evidence/2026-10-02-sharing/INDEX.md. Integration cần backend và adb reverse theo README:
+
+```powershell
+& 'C:\Users\LENOVO\flutter-sdk\bin\flutter.bat' test integration_test/sharing_test.dart -d emulator-5554 --dart-define=API_URL=http://127.0.0.1:8000
+```
+
+## Cộng tác realtime —02/10/2026
+
+SSE `/events` authenticated theo account, thông báo chỉ counter và refetch bằng API kiểm tra
+ACL/grant. Hai session thấy thay đổi trong note đang mở không cần tap Đồng bộ; editor đang
+gõ giữ draft/base, stale save409 qua conflict UI. Editor sạch hiển thị mới ngay, muốn sửa tiếp
+chọn “Chỉnh sửa phiên bản mới” để mở base mới rõ ràng. Lock/viewer/revoke giữ encrypted recovery.
+
+Reconnect/backoff/foreground/account guards; HTTP15s vẫn fallback. SQLite counter polling
+250ms phía server, không OT/CRDT. Host106 Flutter/53 backend PASS; Android debug API36 real
+SSE/API/encrypted reopen và Chrome local release QA xem evidence/2026-10-02-realtime/INDEX.md.
+Web/APK build PASS; protected-reader realtime bổ sung QA05/10; physical/release functional/load/HTTPS/video
+chưa nghiệm thu. Chi tiết protocol/races/limits: docs/REALTIME_COLLABORATION.md.
+
+```powershell
+& 'C:\Users\LENOVO\flutter-sdk\bin\flutter.bat' test integration_test/realtime_test.dart -d emulator-5554 --dart-define=API_URL=http://127.0.0.1:8000
+```
+
+Integration cần backend/adb reverse theo hướng dẫn trên. Sau integration chạy `flutter pub get`
+rồi build APK release riêng để SDK sinh lại plugin registration; không sửa GeneratedPluginRegistrant.
+
+## UI/UX toàn diện —02/10/2026
+
+Home có sidebar/rail/bottom navigation, ngữ cảnh tài khoản, thẻ/metadata và hàng ghim gọn;
+Ctrl+F đưa focus vào tìm kiếm. Editor có mặt giấy, trạng thái lưu thật và số ký tự; theme/resize
+giữ ID/base/selection. Auth và các flow hồ sơ/nhãn/avatar/chia sẻ/tệp/bảo vệ/mã email dùng cùng
+components; Material được Việt hóa cả feedback mặc định. Chữ200% và màn hình320px có regression.
+Tại snapshot02/10 AI Q&A chưa khả dụng; implementation05/10 đã thay trạng thái đó. Xem
+docs/AI_FEATURES.md, docs/UI_UX_DESIGN.md, docs/UI_UX_QA.md và
+evidence/2026-10-02-ui-upgrade/INDEX.md cho ảnh trước/sau và phạm vi QA thật.
+
+Native UI integration dùng backend local và emulator như hướng dẫn trên; driver sau xuất ảnh
+thật vào output/native-ui (không phải golden hoặc mock):
+
+```powershell
+& 'C:\Users\LENOVO\flutter-sdk\bin\flutter.bat' test integration_test/ui_upgrade_test.dart -d emulator-5554 --dart-define=API_URL=http://127.0.0.1:8000
+& 'C:\Users\LENOVO\flutter-sdk\bin\flutter.bat' drive --driver=test_driver/ui_upgrade.dart --target=integration_test/ui_upgrade_test.dart -d emulator-5554 --dart-define=API_URL=http://127.0.0.1:8000
+```
+
+NVDA/TalkBack, thiết bị vật lý và kiểm thử đầy đủ APK release vẫn chưa nghiệm thu.
+
+## Phân tách editor và chống chồng chữ —06–07/10/2026
+
+Tiêu đề và nội dung có nhãn cố định bên ngoài vùng nhập, khung/focus riêng và bộ đếm
+ở dòng riêng. Ghim/nhãn nằm trong khối Sắp xếp sau nội dung. Ghi chú bảo vệ dùng cùng
+component và phân nhóm thông tin, công cụ, bảo vệ/quản lý. Thanh công cụ thu vào menu
+khi chữ lớn; heading/hướng dẫn checklist có chiều cao theo nội dung.
+167 Flutter/88 backend PASS;6 regression dùng NotoSans thật, geometry320/390/844/1280
+ở200% và hai theme. IAB Web thực: input→API ack, theme/resize giữ text + selection,
+protected edit→API ack→relock/hết phiên che nội dung. Android API36 debug3 reused
+workflows + teardown PASS46s,8 PNG mới; đây không phải4 feature tests.
+Xem docs/EDITOR_SECTIONS_AND_LAYOUT.md và evidence/2026-10-06-editor-sections/INDEX.md.
+Release/physical/NVDA/TalkBack/FPS/Gemini thật vẫn chưa nghiệm thu ở đợt này.
