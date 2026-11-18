@@ -1,0 +1,28 @@
+{
+  "source_base": "8782a333d099ecc532161c1ece709ec420ba46ea",
+  "artifacts": {
+    "build/web/main.dart.js": {
+      "bytes": 5071900,
+      "sha256": "f55ec296836cbb9729dca0f51f5f5885ca7b8c450cc70c62a08af6ff528c8034"
+    },
+    "build/web/offline_worker.js": {
+      "bytes": 3018,
+      "sha256": "f0a7d4c408ec144e7a4688852eba34f122f0170dd0176d5b9826936f64656fc6"
+    },
+    "build/app/outputs/flutter-apk/app-debug.apk": {
+      "bytes": 238349240,
+      "sha256": "225e5fdfbb2edd02030f50a10ab6a09bfb9e9b9d0518d2c479c46c05e487070f"
+    }
+  },
+  "web": {
+    "register_http": 201,
+    "api_origin": "http://127.0.0.1:8090",
+    "initial_sync_http": 200,
+    "offline_reconnect_http": 200,
+    "revision_after_web_edit": 2,
+    "note_id": "ee0452df-98e3-4593-b795-d566f7f16727",
+    "txt_upload_matches_input": true,
+    "attachment_sha256": "0db308522dc8d10c60c531d74bce9d6165ca463a234970158e94461190661117",
+    "android_edit_visible_in_open_chrome": true
+  }
+}

@@ -1,5 +1,9 @@
 # Nhóm và đóng góp thật
 
+Ngày 18/11, Nguyễn Bảo Long <523k0014@student.tdtu.edu.vn> là author/committer
+cho nhánh `codex/web-android-runtime-acceptance`. Có AI hỗ trợ kiểm tra Chrome
+và Android, sửa script chạy local, xử lý tệp Gemini bị mất và lưu bằng chứng.
+
 15/11 người dùng yêu cầu commit/push dưới tên mình. Theo quy ước hiện hành,
 Nguyễn Bảo Long <523k0014@student.tdtu.edu.vn> là author/committer.
 Branch `codex/local-readiness-update`: đồng bộ source9d00fcf, hoàn thiện quickstart,

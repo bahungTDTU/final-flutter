@@ -5,8 +5,10 @@ from uuid import uuid4
 import httpx
 import pytest
 from fastapi import HTTPException
+from fastapi.testclient import TestClient
 
 from backend.ai import GeminiProvider, provider_from_environment
+from backend.app import create_app
 from backend.tests.test_security import env, headers, operation
 
 
@@ -50,6 +52,20 @@ def configure(app):
 
 def ask(client, user, question='Dự án cuối kỳ có hạn nộp và ngân sách thế nào?'):
     return client.post('/ai/questions', headers=headers(user), json={'question': question})
+
+
+def test_missing_gemini_key_file_keeps_core_online(tmp_path, monkeypatch):
+    monkeypatch.delenv('GEMINI_API_KEY', raising=False)
+    monkeypatch.setenv('GEMINI_API_KEY_FILE', str(tmp_path / 'missing.key'))
+    app = create_app(tmp_path / 'core.sqlite3', start_email_worker=False)
+    with TestClient(app) as client:
+        assert client.get('/health').json()['ai'] == 'not_configured'
+        response = client.post('/auth/register', json={
+            'email': 'core@example.test', 'name': 'Core QA',
+            'password': 'fixture-password-123', 'confirmation': 'fixture-password-123',
+        })
+        assert response.status_code == 201
+        assert client.get('/ai/status', headers=headers(response.json())).json()['enabled'] is False
 
 
 def test_disabled_never_returns_fake_success_and_authentication_required(env):

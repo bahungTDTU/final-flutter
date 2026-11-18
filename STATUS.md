@@ -1,4 +1,11 @@
-# NoteTogether - trạng thái 15/11/2026
+# NoteTogether - trạng thái 18/11/2026
+
+Chrome và Android emulator đã chạy với FastAPI/SQLite QA. Đã kiểm tra đăng
+ký/đăng nhập xuyên nền tảng, Web autosave và tệp TXT, Chrome reload offline,
+Android force-stop/mở lại offline rồi đồng bộ cùng UUID. Đã sửa lỗi khởi động
+khi mất tệp khóa Gemini và bổ sung cấu hình build/port cho script local.
+Format/analyze và 164 backend tests PASS.
+[Bằng chứng và phần còn thiếu](docs/RUNTIME_ACCEPTANCE_2026-11-18.md).
 
 ## Đồng bộ và kiểm tra local — 15/11/2026
 

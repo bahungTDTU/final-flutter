@@ -1,5 +1,6 @@
 """Bounded Gemini inference with request-time ACL; no stored prompts or AI history."""
 import json
+import logging
 import math
 import re
 import threading
@@ -16,6 +17,7 @@ from backend.note_document import plain_content
 MAX_CONTEXT = 24000
 MAX_OUTPUT = 8000
 NO_INFORMATION = 'Chưa có đủ thông tin trong các ghi chú được phép truy cập để trả lời câu hỏi này.'
+logger = logging.getLogger(__name__)
 
 
 class Question(BaseModel):
@@ -107,7 +109,11 @@ def provider_from_environment(env):
     key = env.get('GEMINI_API_KEY', '').strip()
     key_file = env.get('GEMINI_API_KEY_FILE', '').strip()
     if not key and key_file:
-        key = Path(key_file).read_text(encoding='utf-8').strip()
+        try:
+            key = Path(key_file).read_text(encoding='utf-8').strip()
+        except FileNotFoundError:
+            logger.warning('Gemini key file is missing; AI is disabled.')
+            return None
     if not key:
         return None
     if len(key) > 512 or any(c.isspace() for c in key):
