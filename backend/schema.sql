@@ -15,8 +15,10 @@ CREATE TABLE IF NOT EXISTS session_details (
 );
 CREATE TABLE IF NOT EXISTS email_tokens (
  digest TEXT PRIMARY KEY, user_id TEXT NOT NULL REFERENCES users(id),
- kind TEXT NOT NULL, expires REAL NOT NULL, used INTEGER NOT NULL DEFAULT 0
+ kind TEXT NOT NULL, expires REAL NOT NULL, used INTEGER NOT NULL DEFAULT 0,
+ otp_nonce BLOB, failed_attempts INTEGER NOT NULL DEFAULT 0
 );
+CREATE INDEX IF NOT EXISTS email_tokens_user_kind ON email_tokens(user_id,kind,used,expires);
 CREATE TABLE IF NOT EXISTS email_jobs (
  id TEXT PRIMARY KEY, user_id TEXT NOT NULL REFERENCES users(id),
  kind TEXT NOT NULL CHECK(kind IN ('verify','reset')),

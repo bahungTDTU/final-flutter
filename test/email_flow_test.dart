@@ -113,6 +113,9 @@ void main() {
     (tester) async {
       final requests = <String>[];
       final c = makeController((r) async {
+        final body = jsonDecode(r.body) as Map<String, dynamic>;
+        expect(body['email'], 'reset@example.test');
+        expect(body['token'], '012345');
         requests.add(r.url.path);
         return reply({'ok': true, 'valid': true});
       });
@@ -124,9 +127,10 @@ void main() {
       await tester.pumpAndSettle();
       expect(find.byKey(const Key('email-reset-password')), findsNothing);
       await tester.enterText(
-        find.byKey(const Key('email-code')),
-        'fixture-reset-code',
+        find.byKey(const Key('reset-email')),
+        'reset@example.test',
       );
+      await tester.enterText(find.byKey(const Key('email-code')), '012345');
       await tester.tap(find.byKey(const Key('email-code-submit')));
       await tester.pumpAndSettle();
       expect(requests, ['/auth/reset/check']);
@@ -179,9 +183,10 @@ void main() {
       });
       await tester.pumpWidget(MaterialApp(home: TokenScreen(controller: c)));
       await tester.enterText(
-        find.byKey(const Key('email-code')),
-        'expired-fixture-code',
+        find.byKey(const Key('verify-email')),
+        'verify@example.test',
       );
+      await tester.enterText(find.byKey(const Key('email-code')), '012346');
       await tester.tap(find.byKey(const Key('email-code-submit')));
       await tester.pump();
       await tester.tap(find.byKey(const Key('email-code-submit')));
@@ -200,7 +205,7 @@ void main() {
             .widget<TextFormField>(find.byKey(const Key('email-code')))
             .controller!
             .text,
-        'expired-fixture-code',
+        '012346',
       );
       await tester.pumpWidget(const SizedBox());
       c.dispose();
@@ -251,10 +256,14 @@ void main() {
               .copyWith(textScaler: const TextScaler.linear(2)),
           child: child!,
         ),
-        home: TokenScreen(controller: c, initialReset: true),
+        home: TokenScreen(
+          controller: c,
+          initialReset: true,
+          initialEmail: 'reset@example.test',
+        ),
       ),
     );
-    await tester.enterText(find.byKey(const Key('email-code')), 'fixture-code');
+    await tester.enterText(find.byKey(const Key('email-code')), '012347');
     await tester.ensureVisible(find.byKey(const Key('email-code-submit')));
     await tester.tap(find.byKey(const Key('email-code-submit')));
     await tester.pumpAndSettle();

@@ -1,5 +1,12 @@
 # Ma trận yêu cầu 32 tiêu chí
 
+ID 2/4 dùng OTP email 6 chữ số cho mã mới. Web/Android nhập cùng địa chỉ
+email, mã hết hạn sau 30 phút, tối đa 5 lần thử sai và không tái sử dụng.
+[Chi tiết luồng SMTP](EMAIL_DELIVERY.md).
+Ngày 19/11 Gmail chấp nhận cả hai thư OTP, người dùng xác nhận thư xác minh
+đã đến và ca reset PASS ở API. Nghiệm thu trên hai bản phát hành vẫn còn mở.
+[Bằng chứng](../evidence/2026-11-18-email-otp/INDEX.md).
+
 ## Nghiệm thu runtime local 18/11/2026
 
 Đối chiếu bổ sung ID 1/3, 11/12/14/31, 15/16, 23–26, 29/30 và 32 bằng Chrome,

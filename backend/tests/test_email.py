@@ -23,7 +23,7 @@ def test_real_tls_smtp_delivers_utf8_code_and_auth_only_after_tls(tls_files, imp
                                 security='ssl' if implicit else 'starttls', ca_file=str(cert),
                                 username='fixture-user', password='fixture-password')
         smtp = SmtpDelivery(settings)
-        code = 'x' * 43
+        code = '012345'
         assert smtp.send('recipient@example.test', 'verify', code) == 'smtp_accepted'
         assert sink.code('recipient@example.test', 'verify') == code
         assert sink.messages[0]['tls'] is True
@@ -54,6 +54,19 @@ def test_environment_is_disabled_by_default_and_rejects_insecure_or_partial_conf
             delivery_from_environment({'SMTP_HOST': 'localhost', 'SMTP_FROM': 'from@example.test', **values})
 
 
+def test_gmail_shortcut_uses_address_as_sender_and_removes_password_grouping():
+    gmail = {'SMTP_USERNAME': 'local.qa@gmail.com', 'SMTP_PASSWORD': 'abcd efgh ijkl mnop'}
+    settings = delivery_from_environment(gmail).settings
+    assert (settings.host, settings.port, settings.security) == ('smtp.gmail.com', 587, 'starttls')
+    assert settings.sender == settings.username == gmail['SMTP_USERNAME']
+    assert settings.password == 'abcdefghijklmnop'
+    assert 'abcdefghijklmnop' not in repr(settings)
+    with pytest.raises(ValueError, match='Google App Password'):
+        delivery_from_environment({'SMTP_USERNAME': gmail['SMTP_USERNAME']})
+    with pytest.raises(ValueError, match='SMTP_HOST'):
+        delivery_from_environment({**gmail, 'SMTP_USERNAME': 'qa@example.test'})
+
+
 def register(client, email='person@example.test'):
     response = client.post('/auth/register', json={'email': email, 'name': 'Test',
         'password': 'safe-password-123', 'confirmation': 'safe-password-123'})
@@ -75,23 +88,24 @@ def test_api_codes_survive_restart_and_reset_revokes_old_sessions(tls_files, tmp
             assert not hasattr(app.state, 'mailbox')
             headers = {'Authorization': 'Bearer ' + result['token']}
             code = sink.code('person@example.test', 'verify')
-            assert code not in str(result)
+            assert code.isascii() and code.isdigit() and len(code) == 6
+            assert 'token' not in result or result['token'] != code
             with sqlite3.connect(database) as conn:
-                assert code not in str(conn.execute('SELECT * FROM email_tokens').fetchall())
+                assert all(code not in row for row in conn.execute('SELECT * FROM email_tokens'))
             assert client.post('/auth/resend', headers=headers).status_code == 429
         with TestClient(create_app(database, email_delivery=transport, start_email_worker=False)) as client:
-            assert client.post('/auth/verify', json={'token': code}).status_code == 200
+            assert client.post('/auth/verify', json={'email': 'person@example.test', 'token': code}).status_code == 200
             assert client.get('/me', headers=headers).json()['verified'] is True
-            assert client.post('/auth/verify', json={'token': code}).status_code == 400
+            assert client.post('/auth/verify', json={'email': 'person@example.test', 'token': code}).status_code == 400
             assert client.post('/auth/forgot', json={'email': 'person@example.test'}).json()['email_delivery'] == 'requested'
             client.app.state.email_queue.run_once()
             reset = sink.code('person@example.test', 'reset')
-            assert client.post('/auth/reset/check', json={'token': code}).status_code == 400
-            assert client.post('/auth/reset/check', json={'token': reset}).status_code == 200
-            assert client.post('/auth/reset/check', json={'token': reset}).status_code == 200
-            assert client.post('/auth/reset', json={'token': reset, 'password': 'next-password-123', 'confirmation': 'next-password-123'}).json() == {'ok': True, 'login_required': True}
+            assert client.post('/auth/reset/check', json={'email': 'person@example.test', 'token': code}).status_code == 400
+            assert client.post('/auth/reset/check', json={'email': 'person@example.test', 'token': reset}).status_code == 200
+            assert client.post('/auth/reset/check', json={'email': 'person@example.test', 'token': reset}).status_code == 200
+            assert client.post('/auth/reset', json={'email': 'person@example.test', 'token': reset, 'password': 'next-password-123', 'confirmation': 'next-password-123'}).json() == {'ok': True, 'login_required': True}
             assert client.get('/me', headers=headers).status_code == 401
-            assert client.post('/auth/reset/check', json={'token': reset}).status_code == 400
+            assert client.post('/auth/reset/check', json={'email': 'person@example.test', 'token': reset}).status_code == 400
             assert client.post('/auth/login', json={'email': 'person@example.test', 'password': 'next-password-123'}).status_code == 200
 
 
@@ -118,8 +132,8 @@ def test_failed_delivery_keeps_account_usable_resend_replaces_code_and_no_enumer
             conn.execute("UPDATE attempts SET blocked_until=0 WHERE scope LIKE 'verify:%'")
         client.post('/auth/resend', headers=headers)
         app.state.email_queue.run_once()
-        assert client.post('/auth/verify', json={'token': old}).status_code == 400
-        assert client.post('/auth/verify', json={'token': transport.messages[-1]['token']}).status_code == 200
+        assert client.post('/auth/verify', json={'email': 'person@example.test', 'token': old}).status_code == 400
+        assert client.post('/auth/verify', json={'email': 'person@example.test', 'token': transport.messages[-1]['token']}).status_code == 200
         assert client.post('/auth/resend', headers=headers).json()['email_delivery'] == 'already_verified'
         assert client.post('/auth/resend').status_code == 401
         assert register(client, 'person@example.test\nBcc: stolen@example.test').status_code == 422

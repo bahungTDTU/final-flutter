@@ -1,16 +1,19 @@
 # NoteTogether
 
 Ứng dụng ghi chú Flutter cho Web và Android, dùng FastAPI/SQLite và Sembast.
-Có đăng nhập, rich text, tự lưu/bản nháp offline, nhãn, tệp đính kèm riêng tư,
+Có đăng nhập, xác minh email và đặt lại mật khẩu bằng OTP 6 số, rich text,
+tự lưu/bản nháp offline, nhãn, tệp đính kèm riêng tư,
 khóa ghi chú, chia sẻ theo quyền, realtime và tích hợp AI Summary/Q&A.
 
-## Trạng thái hiện hành — 18/11/2026
+## Trạng thái hiện hành — 19/11/2026
 
-Đã kiểm tra đăng nhập xuyên nền tảng, tệp và khôi phục thay đổi offline trên Chrome
-và Android emulator với backend local. SMTP, Gemini thật, Web HTTPS, Android ký
-phát hành và bộ nộp vẫn còn mở.
+Đã kiểm tra đăng nhập xuyên nền tảng, tệp và khôi phục offline trên Chrome
+và Android emulator. Gmail SMTP đã chấp nhận cả thư xác minh lẫn thư reset
+OTP 6 số trong QA local. Gemini thật, Web HTTPS, Android ký phát hành và bộ
+nộp vẫn còn mở.
 
 - [Nghiệm thu Web và Android 18/11](docs/RUNTIME_ACCEPTANCE_2026-11-18.md).
+- [Nghiệm thu OTP và Gmail](evidence/2026-11-18-email-otp/INDEX.md).
 - [Kết quả kiểm tra môi trường 15/11](docs/LOCAL_READINESS_2026-11-15.md).
 - [Các việc còn thiếu](docs/REMAINING_GATES.md), [ma trận 32 tiêu chí](docs/REQUIREMENTS_MATRIX.md).
 - [Checklist bộ nộp](docs/SUBMISSION_CHECKLIST.md), [quy trình branch/PR](docs/BRANCH_WORKFLOW.md).
@@ -48,8 +51,9 @@ Chỉ định `-ApiUrl` sẽ build lại bundle vì URL được gắn ở lúc 
 Script setup từ chối `.venv` khác Python 3.12; môi trường kiểm tra tương thích 3.13
 ở lượt 15/11 không thay baseline CI. Dùng checkout riêng với Python 3.12 để tái lập baseline.
 
-`.env.example` là mẫu tham khảo, ứng dụng **không tự nạp `.env`**.
-Cấu hình provider qua environment/private key file theo hướng dẫn bên dưới.
+`scripts/start_backend.ps1` tự đọc `.env` ở thư mục gốc. Với Gmail, điền
+`SMTP_USERNAME` và `SMTP_PASSWORD` (Google App Password) rồi khởi động lại.
+`.env.example` là mẫu các biến. Biến đã đặt trong terminal được ưu tiên.
 Không cần email/LLM thật để chạy các test fixture; các test đó không chứng minh dịch vụ thật hoạt động.
 
 ## Hoàn thiện bản nộp
@@ -127,7 +131,8 @@ http://127.0.0.1:7358,http://localhost:7358); không dùng wildcard.
 
 Backend http://127.0.0.1:8000, /health, /docs. Web port7357 mặc định; start_web phục vụ release local,
 tự build nếu chưa có worker. Sau sửa source chạy scripts/build.ps1 -Target web rồi reload.
-Backend đọc NOTETOGETHER_DB và WEB_ORIGINS từ process environment. .env.example là template;
-code không tự load .env. CORS cần origin chính xác. API_URL chỉ là public URL, không secret.
+Backend đọc NOTETOGETHER_DB và WEB_ORIGINS từ process environment. Launcher PowerShell
+nạp `.env` qua Uvicorn. Khi tự gọi Uvicorn, truyền `--env-file .env` nếu cần.
+CORS cần origin chính xác. API_URL chỉ là public URL, không secret.
 Tạo tài khoản test email/display name/password≥10 ký tự hai lần, tự login và giữ banner unverified.
 Không có grading account/public credentials preloaded; production email/AI không được giả success.

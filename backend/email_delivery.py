@@ -53,8 +53,9 @@ class SmtpDelivery:
         message['Subject'] = 'NoteTogether - Mã ' + action
         message['Date'] = formatdate(localtime=False)
         message['Message-ID'] = make_msgid()
+        label = 'Mã OTP 6 chữ số' if len(token) == 6 and token.isascii() and token.isdigit() else 'Mã'
         message.set_content(
-            f'Mã {action} NoteTogether:\n\n{token}\n\n'
+            f'{label} {action} NoteTogether:\n\n{token}\n\n'
             'Mã dùng một lần, hết hạn sau 30 phút.\n'
             'Mở NoteTogether trên Web hoặc Android, chọn Kích hoạt / đặt lại và nhập mã này.\n'
             'Nếu bạn không yêu cầu, hãy bỏ qua email. Không chia sẻ mã với người khác.\n')
@@ -83,11 +84,23 @@ class SmtpDelivery:
 
 def delivery_from_environment(env):
     host = env.get('SMTP_HOST', '').strip()
+    username = env.get('SMTP_USERNAME', '').strip()
+    password = env.get('SMTP_PASSWORD', '')
     if not host:
-        return DisabledDelivery()
-    security = env.get('SMTP_SECURITY', 'starttls')
+        if not username and not password:
+            return DisabledDelivery()
+        if not (valid_email(username) and username.lower().endswith('@gmail.com')):
+            raise ValueError('Set SMTP_HOST for non-Gmail senders or provide a Gmail SMTP_USERNAME')
+        host = 'smtp.gmail.com'
+    sender = env.get('SMTP_FROM', '').strip()
+    if host.lower() == 'smtp.gmail.com':
+        # Google displays App Passwords in groups. Its SMTP login takes the ungrouped value.
+        password = ''.join(password.split())
+        if not username or not password:
+            raise ValueError('Gmail SMTP requires SMTP_USERNAME and a Google App Password in SMTP_PASSWORD')
+        sender = sender or username
+    security = env.get('SMTP_SECURITY') or 'starttls'
     return SmtpDelivery(SmtpSettings(
-        host=host, port=int(env.get('SMTP_PORT', '465' if security == 'ssl' else '587')),
-        sender=env.get('SMTP_FROM', ''), security=security,
-        username=env.get('SMTP_USERNAME', ''), password=env.get('SMTP_PASSWORD', ''),
-        ca_file=env.get('SMTP_CA_FILE') or None, timeout=float(env.get('SMTP_TIMEOUT', '3'))))
+        host=host, port=int(env.get('SMTP_PORT') or ('465' if security == 'ssl' else '587')),
+        sender=sender, security=security, username=username, password=password,
+        ca_file=env.get('SMTP_CA_FILE') or None, timeout=float(env.get('SMTP_TIMEOUT') or '3')))

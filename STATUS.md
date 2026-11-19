@@ -1,4 +1,12 @@
-# NoteTogether - trạng thái 18/11/2026
+# NoteTogether - trạng thái 19/11/2026
+
+Mã xác minh email và đặt lại mật khẩu mới dùng OTP 6 chữ số. Mỗi mã gắn
+với email và loại yêu cầu, dùng một lần, hết hạn sau 30 phút hoặc 5 lần
+nhập sai. [Cấu hình và cách kiểm tra email](docs/EMAIL_DELIVERY.md).
+
+Người dùng xác nhận đã nhận OTP xác minh qua Gmail. Ca reset gửi qua Gmail
+SMTP thật và PASS ở API, gồm hủy phiên cũ, chặn mã dùng lại và đăng nhập
+bằng mật khẩu mới. [Bằng chứng](evidence/2026-11-18-email-otp/INDEX.md).
 
 Chrome và Android emulator đã chạy với FastAPI/SQLite QA. Đã kiểm tra đăng
 ký/đăng nhập xuyên nền tảng, Web autosave và tệp TXT, Chrome reload offline,

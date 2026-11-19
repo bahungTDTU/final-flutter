@@ -39,8 +39,9 @@ Nguồn: [Flutter Android signing](https://docs.flutter.dev/deployment/android).
 
 `docker compose up -d --build backend` dùng port loopback8000 mặc định, volume
 `<compose-project>_backend-state` giữ SQLite, attachment/avatar BLOB và mail key cùng nhau.
-Chọn `BACKEND_PORT` riêng để không đè dịch vụ đang chạy. `.env` chỉ được Compose dùng
-để nội suy các biến đã liệt kê trong compose.yaml; uvicorn trực tiếp không tự load .env.
+Chọn `BACKEND_PORT` riêng để không đè dịch vụ đang chạy. Compose dùng `.env`
+để nội suy các biến đã liệt kê trong compose.yaml. Launcher PowerShell cũng
+nạp `.env`. Lệnh Uvicorn trực tiếp cần `--env-file .env` để nạp file.
 SMTP/Gemini trống mặc định. File-based provider secret và SMTP_CA_FILE chưa mount tự động;
 nếu cần, cấu hình mount chỉ đọc và env tương ứng riêng trước khi bật provider.
 Không chạy `docker compose config` có secrets ra log; chỉ dùng `config --quiet`.
@@ -74,7 +75,8 @@ SHA256, SQLite integrity/foreign keys và key trước khi tạo destination. Ha
 truyền/lưu trữ, không xác thực nguồn backup; chỉ restore backup tin cậy do nhóm quản lý.
 Restore output `app.sqlite3` + `app.sqlite3.mail-key` nếu có. Trỏ NOTETOGETHER_DB và
 MAIL_OUTBOX_KEY_FILE sang output khi chạy backend thử, giữ backend/volume gốc nguyên vẹn.
-Đặt SMTP_HOST/GEMINI_API_KEY trống trong drill để không gửi mail hoặc gọi provider thật.
+Trong drill, dùng cấu hình riêng và để trống SMTP_HOST/SMTP_USERNAME/SMTP_PASSWORD
+cùng các biến Gemini để tránh gửi mail hoặc gọi provider thật.
 
 Với container, export backup private vào volume trước rồi `docker compose cp` ra storage
 private; module có sẵn trong image. Restore drill dùng volume/project riêng, không mount
