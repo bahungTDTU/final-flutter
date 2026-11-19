@@ -117,7 +117,7 @@ class AiSession extends ChangeNotifier {
         case 'AI_QUOTA':
           return 'Đã đạt hạn mức AI. Hãy đợi rồi thử lại.';
         case 'AI_BUSY':
-          return 'AI đang xử lý yêu cầu khác. Hãy thử lại sau ít phút.';
+          return 'Dịch vụ AI đang bận. Hãy thử lại sau ít phút.';
         case 'AI_TIMEOUT':
           return 'AI phản hồi quá lâu. Bạn có thể thử lại.';
         case 'AI_SOURCES_CHANGED':

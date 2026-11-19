@@ -15,11 +15,37 @@ import time
 from uuid import uuid4
 
 
-def derive_mail_code(key, user_id, kind, nonce):
-    """Stable PRF shared by delivery and offline backup/key-pair validation."""
-    message = json.dumps(['NoteTogether:mail:v1', user_id, kind, nonce.hex()],
+OTP_ATTEMPTS = 5
+
+
+def migrate_email_tokens(conn):
+    columns = {row[1] for row in conn.execute('PRAGMA table_info(email_tokens)')}
+    if 'otp_nonce' not in columns:
+        conn.execute('ALTER TABLE email_tokens ADD COLUMN otp_nonce BLOB')
+    if 'failed_attempts' not in columns:
+        conn.execute('ALTER TABLE email_tokens ADD COLUMN failed_attempts INTEGER NOT NULL DEFAULT 0')
+
+
+def mail_mac(key, purpose, user_id, kind, nonce, *extra):
+    message = json.dumps([purpose, user_id, kind, nonce.hex(), *extra],
                          separators=(',', ':')).encode()
-    return base64.urlsafe_b64encode(hmac.digest(key, message, 'sha256')).decode().rstrip('=')
+    return hmac.digest(key, message, 'sha256')
+
+
+def derive_mail_code(key, user_id, kind, nonce):
+    """Legacy long code. Pending mail and existing backups still use this."""
+    value = mail_mac(key, 'NoteTogether:mail:v1', user_id, kind, nonce)
+    return base64.urlsafe_b64encode(value).decode().rstrip('=')
+
+
+def derive_mail_otp(key, user_id, kind, nonce):
+    value = mail_mac(key, 'NoteTogether:mail:otp:v2', user_id, kind, nonce)
+    return f'{int.from_bytes(value, "big") % 1_000_000:06d}'
+
+
+def otp_digest(key, user_id, kind, nonce, code):
+    # A bare SHA-256 digest would expose a small-code search space from SQLite alone.
+    return mail_mac(key, 'NoteTogether:mail:otp-digest:v2', user_id, kind, nonce, code).hex()
 
 
 class EmailQueue:
@@ -53,36 +79,75 @@ class EmailQueue:
             self._key_bytes = value
         return self._key_bytes
 
-    def code(self, conn, user_id, kind, nonce):
-        return derive_mail_code(self.key(conn), user_id, kind, nonce)
-
     def issue(self, conn, user_id, kind):
-        enabled = self.delivery.mode != 'not_configured'
-        nonce = secrets.token_bytes(32)
-        code = self.code(conn, user_id, kind, nonce) if enabled else secrets.token_urlsafe(32)
-        digest = hashlib.sha256(code.encode()).hexdigest()
+        if self.delivery.mode == 'not_configured':
+            return 'not_configured'
+        key = self.key(conn)
         timestamp = self.clock()
+        recent_codes = {
+            derive_mail_otp(key, user_id, kind, row['otp_nonce'])
+            for row in conn.execute(
+                'SELECT otp_nonce FROM email_tokens WHERE user_id=? AND kind=? AND expires>? '
+                'AND otp_nonce IS NOT NULL', (user_id, kind, timestamp))
+        }
+        while True:
+            nonce = secrets.token_bytes(32)
+            code = derive_mail_otp(key, user_id, kind, nonce)
+            if code not in recent_codes:
+                break
+        digest = otp_digest(key, user_id, kind, nonce, code)
         conn.execute('UPDATE email_tokens SET used=1 WHERE user_id=? AND kind=?', (user_id, kind))
         conn.execute("UPDATE email_jobs SET status='cancelled',nonce=NULL,lease_owner=NULL,leased_until=0 "
                      "WHERE user_id=? AND kind=? AND status IN ('queued','retrying','sending')", (user_id, kind))
-        conn.execute('INSERT INTO email_tokens VALUES (?,?,?,?,0)', (digest, user_id, kind, timestamp + 1800))
-        if enabled:
-            conn.execute('INSERT INTO email_jobs (id,user_id,kind,token_digest,nonce,status,next_attempt,created_at) '
-                         "VALUES (?,?,?,?,?,'queued',?,?)", (str(uuid4()), user_id, kind, digest, nonce, timestamp, timestamp))
-            self._wake.set()
-        return 'queued' if enabled else 'not_configured'
+        conn.execute('INSERT INTO email_tokens (digest,user_id,kind,expires,otp_nonce) VALUES (?,?,?,?,?)',
+                     (digest, user_id, kind, timestamp + 1800, nonce))
+        conn.execute('INSERT INTO email_jobs (id,user_id,kind,token_digest,nonce,status,next_attempt,created_at) '
+                     "VALUES (?,?,?,?,?,'queued',?,?)", (str(uuid4()), user_id, kind, digest, nonce, timestamp, timestamp))
+        self._wake.set()
+        return 'queued'
+
+    def check(self, conn, email, kind, code, *, consume=True):
+        if len(code) == 6 and code.isascii() and code.isdigit():
+            row = conn.execute(
+                'SELECT t.* FROM users u JOIN email_tokens t ON t.user_id=u.id '
+                'WHERE u.email=? AND t.kind=? AND t.used=0 AND t.expires>? AND t.otp_nonce IS NOT NULL',
+                (email, kind, self.clock())).fetchone()
+            if not row or row['failed_attempts'] >= OTP_ATTEMPTS:
+                return None
+            try:
+                key = self.key(conn)
+            except (OSError, ValueError):
+                return None
+            expected = otp_digest(key, row['user_id'], kind, row['otp_nonce'], code)
+            if not hmac.compare_digest(expected, row['digest']):
+                conn.execute('UPDATE email_tokens SET failed_attempts=failed_attempts+1 WHERE digest=?',
+                             (row['digest'],))
+                return None
+        elif len(code) == 43:
+            row = conn.execute(
+                'SELECT t.* FROM email_tokens t JOIN users u ON u.id=t.user_id '
+                'WHERE t.digest=? AND t.kind=? AND t.used=0 AND t.expires>? AND t.otp_nonce IS NULL '
+                "AND (?='' OR u.email=?)",
+                (hashlib.sha256(code.encode()).hexdigest(), kind, self.clock(), email, email)).fetchone()
+            if not row:
+                return None
+        else:
+            return None
+        if consume:
+            conn.execute('UPDATE email_tokens SET used=1 WHERE digest=?', (row['digest'],))
+        return row['user_id']
 
     def status(self, conn, user_id):
         if conn.execute('SELECT verified FROM users WHERE id=?', (user_id,)).fetchone()['verified']:
             return {'email_delivery': 'already_verified', 'retry_after': 0}
         if self.delivery.mode == 'not_configured':
             return {'email_delivery': 'not_configured', 'retry_after': 0}
-        row = conn.execute("SELECT j.status,j.next_attempt,t.used,t.expires FROM email_jobs j "
+        row = conn.execute("SELECT j.status,j.next_attempt,t.used,t.expires,t.failed_attempts FROM email_jobs j "
                            "JOIN email_tokens t ON t.digest=j.token_digest WHERE j.user_id=? AND j.kind='verify' "
                            'ORDER BY j.created_at DESC,j.rowid DESC LIMIT 1', (user_id,)).fetchone()
         if not row:
             return {'email_delivery': 'not_requested', 'retry_after': 0}
-        expired = row['used'] or row['expires'] <= self.clock()
+        expired = row['used'] or row['expires'] <= self.clock() or row['failed_attempts'] >= OTP_ATTEMPTS
         value = 'expired' if expired else ('queued' if row['status'] == 'sending' else row['status'])
         delay = max(0, int(row['next_attempt'] - self.clock())) if value == 'retrying' else 0
         return {'email_delivery': value, 'retry_after': delay}
@@ -101,12 +166,14 @@ class EmailQueue:
         with self.db() as conn:
             conn.execute("UPDATE email_jobs SET status='cancelled',nonce=NULL,lease_owner=NULL,leased_until=0 "
                          "WHERE status IN ('queued','retrying','sending') AND token_digest IN "
-                         '(SELECT digest FROM email_tokens WHERE used=1 OR expires<=?)', (timestamp,))
+                         '(SELECT digest FROM email_tokens WHERE used=1 OR expires<=? OR failed_attempts>=?)',
+                         (timestamp, OTP_ATTEMPTS))
             conn.execute("DELETE FROM email_jobs WHERE created_at<? AND status NOT IN ('queued','retrying','sending')",
                          (timestamp - 86400,))
             conn.execute("UPDATE email_jobs SET status='failed',nonce=NULL,lease_owner=NULL,leased_until=0,last_error='retry_limit' "
                          "WHERE status='sending' AND leased_until<=? AND attempts>=6", (timestamp,))
-            row = conn.execute("SELECT j.*,u.email FROM email_jobs j JOIN users u ON u.id=j.user_id "
+            row = conn.execute("SELECT j.*,u.email,t.otp_nonce FROM email_jobs j JOIN users u ON u.id=j.user_id "
+                               "JOIN email_tokens t ON t.digest=j.token_digest "
                                "WHERE (j.status IN ('queued','retrying') AND j.next_attempt<=?) "
                                "OR (j.status='sending' AND j.leased_until<=?) "
                                'ORDER BY j.created_at LIMIT 1', (timestamp, timestamp)).fetchone()
@@ -117,12 +184,20 @@ class EmailQueue:
         key_error = False
         try:
             with self.db() as conn:
-                code = self.code(conn, row['user_id'], row['kind'], bytes(row['nonce']))
-                if not hmac.compare_digest(hashlib.sha256(code.encode()).hexdigest(), row['token_digest']):
+                key = self.key(conn)
+                nonce = bytes(row['nonce'])
+                if row['otp_nonce'] is None:
+                    code = derive_mail_code(key, row['user_id'], row['kind'], nonce)
+                    expected = hashlib.sha256(code.encode()).hexdigest()
+                else:
+                    code = derive_mail_otp(key, row['user_id'], row['kind'], nonce)
+                    expected = otp_digest(key, row['user_id'], row['kind'], row['otp_nonce'], code)
+                if not hmac.compare_digest(expected, row['token_digest']):
                     raise ValueError('Mail key unavailable')
                 active = conn.execute("SELECT 1 FROM email_jobs j JOIN email_tokens t ON t.digest=j.token_digest "
-                                      "WHERE j.id=? AND j.status='sending' AND j.lease_owner=? AND t.used=0 AND t.expires>?",
-                                      (row['id'], owner, self.clock())).fetchone()
+                                      "WHERE j.id=? AND j.status='sending' AND j.lease_owner=? AND t.used=0 "
+                                      "AND t.expires>? AND t.failed_attempts<?",
+                                      (row['id'], owner, self.clock(), OTP_ATTEMPTS)).fetchone()
             if not active:
                 return True
         except (ValueError, OSError):

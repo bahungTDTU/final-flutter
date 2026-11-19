@@ -43,15 +43,15 @@ def main():
         call('POST', '/sync', users['viewer'], op(1, 'Forbidden'), status=403)
         call('GET', f'/notes/{note}', users['stranger'], status=404)
         call('POST', '/sync', users['editor'], op(1, 'Editor can still edit'))
-        call('POST', '/auth/verify', body={'token': received})
-        call('POST', '/auth/verify', body={'token': received}, status=400)
+        call('POST', '/auth/verify', body={'email': email, 'token': received})
+        call('POST', '/auth/verify', body={'email': email, 'token': received}, status=400)
         assert call('GET', '/auth/email-status', owner)['email_delivery'] == 'already_verified'
         known = call('POST', '/auth/forgot', body={'email': email})
         unknown = call('POST', '/auth/forgot', body={'email': 'absent-' + prefix + '@example.test'})
         assert known == unknown
         reset = code(email, 'reset')
-        call('POST', '/auth/reset/check', body={'token': reset})
-        result = call('POST', '/auth/reset', body={'token': reset, 'password': password + 'next', 'confirmation': password + 'next'})
+        call('POST', '/auth/reset/check', body={'email': email, 'token': reset})
+        result = call('POST', '/auth/reset', body={'email': email, 'token': reset, 'password': password + 'next', 'confirmation': password + 'next'})
         assert result == {'ok': True, 'login_required': True}
         call('GET', '/me', owner, status=401)
         call('POST', '/auth/login', body={'email': email, 'password': password + 'next'})

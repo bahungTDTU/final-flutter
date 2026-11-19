@@ -13,8 +13,9 @@ import os
 from pathlib import Path
 import shutil
 import sqlite3
+import time
 
-from backend.email_queue import derive_mail_code
+from backend.email_queue import derive_mail_code, derive_mail_otp, otp_digest
 
 
 def digest(path):
@@ -42,11 +43,27 @@ def validate_mail_key(database, key):
     if len(key) != 32:
         raise ValueError('Mail key must contain exactly32 bytes')
     with closing(read_database(database)) as conn:
-        for user_id, kind, nonce, expected in conn.execute(
-                'SELECT user_id,kind,nonce,token_digest FROM email_jobs WHERE nonce IS NOT NULL'):
-            code = derive_mail_code(key, user_id, kind, bytes(nonce))
-            if not hmac.compare_digest(hashlib.sha256(code.encode()).hexdigest(), expected):
+        has_otp = 'otp_nonce' in {row[1] for row in conn.execute('PRAGMA table_info(email_tokens)')}
+        nonce_column = 't.otp_nonce' if has_otp else 'NULL'
+        for user_id, kind, nonce, expected, otp_nonce in conn.execute(
+                f'SELECT j.user_id,j.kind,j.nonce,j.token_digest,{nonce_column} FROM email_jobs j '
+                'JOIN email_tokens t ON t.digest=j.token_digest WHERE j.nonce IS NOT NULL'):
+            if otp_nonce is None:
+                code = derive_mail_code(key, user_id, kind, nonce)
+                actual = hashlib.sha256(code.encode()).hexdigest()
+            else:
+                code = derive_mail_otp(key, user_id, kind, nonce)
+                actual = otp_digest(key, user_id, kind, otp_nonce, code)
+            if not hmac.compare_digest(actual, expected):
                 raise ValueError('Mail key does not match queued mail in the snapshot')
+        if has_otp:
+            for user_id, kind, nonce, expected in conn.execute(
+                    'SELECT user_id,kind,otp_nonce,digest FROM email_tokens '
+                    'WHERE otp_nonce IS NOT NULL AND used=0 AND expires>?',
+                    (time.time(),)):
+                code = derive_mail_otp(key, user_id, kind, nonce)
+                if not hmac.compare_digest(otp_digest(key, user_id, kind, nonce, code), expected):
+                    raise ValueError('Mail key does not match active OTP in the snapshot')
 
 
 def write_private(path, value):

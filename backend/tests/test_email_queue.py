@@ -7,6 +7,8 @@ import pytest
 from fastapi.testclient import TestClient
 
 from backend.app import create_app
+from backend.backup import backup, restore
+from backend.email_queue import derive_mail_code, otp_digest
 from backend.email_delivery import DisabledDelivery
 from backend.email_delivery import SmtpDelivery, SmtpSettings
 from backend.tests.mail_support import RecordingDelivery
@@ -39,6 +41,12 @@ def mutate(app, query, args=()):
         conn.execute(query, args)
 
 
+def stored_digest(app, code):
+    token = read(app, 'SELECT user_id,kind,otp_nonce FROM email_tokens')
+    key = app.state.email_queue.key_path.read_bytes()
+    return otp_digest(key, token['user_id'], token['kind'], token['otp_nonce'], code)
+
+
 def test_job_survives_restart_without_raw_code_or_key_in_sqlite(tmp_path):
     app, client, transport = setup(tmp_path)
     headers, data = register(client)
@@ -50,12 +58,73 @@ def test_job_survives_restart_without_raw_code_or_key_in_sqlite(tmp_path):
     code = transport.messages[0]['token']
     key = restarted.state.email_queue.key_path.read_bytes()
     raw = open(app.state.database, 'rb').read()
-    assert code.encode() not in raw and key not in raw
+    assert key not in raw
+    assert len(code) == 6 and code.isascii() and code.isdigit()
     job = read(app, 'SELECT * FROM email_jobs')
     assert job['nonce'] is None and job['status'] == 'test_only'
-    assert job['token_digest'] == hashlib.sha256(code.encode()).hexdigest()
-    assert client.post('/auth/verify', json={'token': code}).status_code == 200
-    assert client.post('/auth/verify', json={'token': code}).status_code == 400
+    assert job['token_digest'] != hashlib.sha256(code.encode()).hexdigest()
+    assert stored_digest(app, code) == job['token_digest']
+    assert client.post('/auth/verify', json={'email': 'queue@example.test', 'token': code}).status_code == 200
+    assert client.post('/auth/verify', json={'email': 'queue@example.test', 'token': code}).status_code == 400
+
+
+def test_reset_attempt_limit_is_scoped_and_shared_across_routes(tmp_path):
+    app, client, transport = setup(tmp_path)
+    register(client)
+    assert app.state.email_queue.run_once()
+    verify_code = transport.messages[-1]['token']
+    email = 'queue@example.test'
+    assert client.post('/auth/reset/check', json={'email': email, 'token': verify_code}).status_code == 400
+    assert client.post('/auth/verify', json={'token': verify_code}).status_code == 400
+    assert client.post('/auth/verify', json={'email': 'other@example.test', 'token': verify_code}).status_code == 400
+    assert client.post('/auth/verify', json={'email': ' QUEUE@example.test ', 'token': verify_code}).status_code == 200
+
+    assert client.post('/auth/forgot', json={'email': email}).status_code == 200
+    assert app.state.email_queue.run_once()
+    code = transport.messages[-1]['token']
+    wrong = ('0' if code[0] != '0' else '1') + code[1:]
+    for _ in range(4):
+        assert client.post('/auth/reset/check', json={'email': email, 'token': wrong}).status_code == 400
+    assert client.post('/auth/reset/check', json={'email': email, 'token': code}).status_code == 200
+
+    restarted = create_app(app.state.database, email_delivery=transport, start_email_worker=False)
+    client = TestClient(restarted)
+    password = {'password': 'new-password-123', 'confirmation': 'new-password-123'}
+    assert client.post('/auth/reset', json={'email': email, 'token': wrong, **password}).status_code == 400
+    assert client.post('/auth/reset/check', json={'email': email, 'token': code}).status_code == 400
+    assert client.post('/auth/reset', json={'email': email, 'token': code, **password}).status_code == 400
+    assert read(app, "SELECT failed_attempts FROM email_tokens WHERE kind='reset'")['failed_attempts'] == 5
+
+    mutate(app, 'UPDATE attempts SET blocked_until=0')
+    assert client.post('/auth/forgot', json={'email': email}).status_code == 200
+    assert restarted.state.email_queue.run_once()
+    new_code = transport.messages[-1]['token']
+    assert new_code != code
+    assert client.post('/auth/reset', json={'email': email, 'token': new_code, **password}).status_code == 200
+
+
+def test_legacy_backup_and_pending_code_survive_otp_migration(tmp_path):
+    app, _, transport = setup(tmp_path)
+    nonce = b'n' * 32
+    key = b'k' * 32
+    app.state.email_queue.key_path.write_bytes(key)
+    legacy = derive_mail_code(key, 'legacy', 'verify', nonce)
+    digest = hashlib.sha256(legacy.encode()).hexdigest()
+    with sqlite3.connect(app.state.database) as conn:
+        conn.execute('ALTER TABLE email_tokens DROP COLUMN otp_nonce')
+        conn.execute('ALTER TABLE email_tokens DROP COLUMN failed_attempts')
+        conn.execute('INSERT INTO users (id,email,name,password) VALUES (?,?,?,?)',
+                     ('legacy', 'legacy@example.test', 'Legacy', 'fixture'))
+        conn.execute('INSERT INTO email_tokens VALUES (?,?,?,?,0)', (digest, 'legacy', 'verify', time.time()+600))
+        conn.execute('INSERT INTO email_jobs (id,user_id,kind,token_digest,nonce,status,next_attempt,created_at) '
+                     "VALUES ('legacy-job','legacy','verify',?,?,'queued',0,?)", (digest, nonce, time.time()))
+    backup(app.state.database, tmp_path / 'backup')
+    restore(tmp_path / 'backup', tmp_path / 'restore')
+
+    restored = create_app(tmp_path / 'restore/app.sqlite3', email_delivery=transport, start_email_worker=False)
+    assert restored.state.email_queue.run_once()
+    assert transport.messages[-1]['token'] == legacy
+    assert TestClient(restored).post('/auth/verify', json={'token': legacy}).status_code == 200
 
 
 def test_failure_backoff_retries_same_code_then_accepts(tmp_path):
@@ -74,7 +143,7 @@ def test_failure_backoff_retries_same_code_then_accepts(tmp_path):
     transport.fail = False
     assert app.state.email_queue.run_once()
     code = transport.messages[-1]['token']
-    assert hashlib.sha256(code.encode()).hexdigest() == first['token_digest']
+    assert stored_digest(app, code) == first['token_digest']
     assert read(app, 'SELECT * FROM email_jobs')['nonce'] is None
 
 
@@ -91,16 +160,16 @@ def test_real_tls_retry_accepts_the_queued_code_and_verifies_after_restart(tmp_p
         app.state.email_queue.clock = lambda: time.time() + 16
         assert app.state.email_queue.run_once()
         code = sink.code('queue@example.test', 'verify')
-        assert hashlib.sha256(code.encode()).hexdigest() == original
+        assert stored_digest(app, code) == original
         assert sink.messages[0]['tls'] is True
         restarted = TestClient(create_app(app.state.database, email_delivery=transport, start_email_worker=False))
-        assert restarted.post('/auth/verify', json={'token': code}).status_code == 200
+        assert restarted.post('/auth/verify', json={'email': 'queue@example.test', 'token': code}).status_code == 200
         assert sink.code('queue@example.test', 'reset') is None
         assert client.post('/auth/forgot', json={'email': 'queue@example.test'}).status_code == 200
         assert sink.code('queue@example.test', 'reset') is None
         assert app.state.email_queue.run_once()
         reset = sink.code('queue@example.test', 'reset')
-        assert client.post('/auth/reset/check', json={'token': reset}).status_code == 200
+        assert client.post('/auth/reset/check', json={'email': 'queue@example.test', 'token': reset}).status_code == 200
 
 
 def test_crashed_send_lease_replays_same_code_after_restart(tmp_path):
@@ -113,7 +182,7 @@ def test_crashed_send_lease_replays_same_code_after_restart(tmp_path):
     assert not other.state.email_queue.run_once()
     other.state.email_queue.clock = lambda: time.time() + 121
     assert other.state.email_queue.run_once()
-    assert hashlib.sha256(transport.messages[-1]['token'].encode()).hexdigest() == original['token_digest']
+    assert stored_digest(app, transport.messages[-1]['token']) == original['token_digest']
     mutate(app, 'UPDATE attempts SET blocked_until=0')
     assert client.post('/auth/resend', headers=headers).status_code == 200
     mutate(app, "UPDATE email_jobs SET status='sending',attempts=6,leased_until=0,lease_owner='dead-worker' WHERE status='queued'")

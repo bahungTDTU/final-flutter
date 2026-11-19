@@ -51,8 +51,8 @@ const englishMessages = <String, String>{
   "AI phản hồi quá lâu. Bạn có thể thử lại.":
       "AI took too long to respond. You can try again.",
   "AI tổng hợp từ ghi chú đã đồng bộ mà bạn có quyền đọc. Kết quả kèm nguồn để bạn kiểm tra.": "AI answers using synced notes you can read, with sources for you to check.",
-  "AI đang xử lý yêu cầu khác. Hãy thử lại sau ít phút.":
-      "AI is processing another request. Try again in a few minutes.",
+  "Dịch vụ AI đang bận. Hãy thử lại sau ít phút.":
+      "The AI service is busy. Try again in a few minutes.",
   "Biên bản cuộc họp": "Meeting notes",
   "Biến trao đổi thành quyết định và việc cần làm.":
       "Turn discussions into decisions and next steps.",
@@ -485,6 +485,7 @@ const englishMessages = <String, String>{
       "The code is invalid, expired or already used.",
   "Mã hợp lệ. Nhập mật khẩu mới.": "Valid code. Enter a new password.",
   "Mã xác minh trong email": "Verification code from your email",
+  "Mã OTP 6 chữ số": "6-digit code",
   "Mã xác minh đã được chấp nhận.": "The verification code was accepted.",
   "Mã đang chờ gửi. Server sẽ tự thử lại nếu dịch vụ email gặp lỗi; bạn vẫn dùng được ghi chú.": "The code is waiting to be sent. The server retries if email delivery fails. You can still use your notes.",
   "Mã đã hết hạn hoặc được thay thế. Yêu cầu gửi mã mới.":
@@ -577,8 +578,9 @@ const englishMessages = <String, String>{
   "Nhập mã khác": "Enter another code",
   "Nhập mã nhận được để hoàn tất xác minh.":
       "Enter the code you received to finish verification.",
-  "Nhập mã trong email (tối đa 128 ký tự).":
-      "Enter the emailed code (up to 128 characters).",
+  "Nhập đủ 6 chữ số trong email.": "Enter all 6 digits from the email.",
+  "Nhập địa chỉ email hợp lệ.": "Enter a valid email address.",
+  "Mã dùng một lần, hết hạn sau 30 phút hoặc 5 lần nhập sai. Nếu nhận mã dạng cũ, hãy yêu cầu gửi lại.": "Use the code once within 30 minutes. Five wrong attempts invalidate it. If you received an older code, request a new one.",
   "Nhập mật khẩu ghi chú": "Enter the note password",
   "Nhập mật khẩu hiện tại": "Enter your current password",
   "Nhập mật khẩu tài khoản để xác nhận.":

@@ -53,7 +53,7 @@ def test_wal_backup_restores_acl_blobs_and_queued_mail_without_touching_source(t
             # Recover the exact pending PRF code using the copied key (test transport only).
             assert restored.state.email_queue.run_once()
             message = restored.state.email_delivery.messages[0]
-            assert recovered.post('/auth/verify', json={'token': message['token']}).status_code == 200
+            assert recovered.post('/auth/verify', json={'email': message['recipient'], 'token': message['token']}).status_code == 200
         assert set(manifest['sha256']) == {'app.sqlite3', 'app.sqlite3.mail-key'}
 
 

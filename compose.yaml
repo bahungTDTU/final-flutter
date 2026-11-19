@@ -17,7 +17,7 @@ services:
       SMTP_FROM: ${SMTP_FROM:-}
       SMTP_TIMEOUT: ${SMTP_TIMEOUT:-3}
       GEMINI_API_KEY: ${GEMINI_API_KEY:-}
-      GEMINI_MODEL: ${GEMINI_MODEL:-gemini-2.5-flash-lite}
+      GEMINI_MODEL: ${GEMINI_MODEL:-gemini-3.1-flash-lite}
     volumes:
       - backend-state:/app/backend/state
     restart: unless-stopped

@@ -220,6 +220,7 @@ def test_gemini_wire_protocol_bounds_and_prompt_data_are_separate():
     def send(request):
         assert request.headers['x-goog-api-key'] == 'local-test-key'
         assert 'local-test-key' not in str(request.url)
+        assert request.url.path == '/v1beta/models/gemini-3.1-flash-lite:generateContent'
         body = json.loads(request.content)
         captured.append(body)
         output = json.dumps({'summary': 'LLM transport double'})
@@ -232,14 +233,31 @@ def test_gemini_wire_protocol_bounds_and_prompt_data_are_separate():
     assert injection in captured[0]['contents'][0]['parts'][0]['text']
     assert 'tools' not in captured[0]
     assert provider_from_environment({}) is None
+    assert provider_from_environment({'GEMINI_API_KEY': 'local-test-key', 'GEMINI_MODEL': ''}).model == provider.model
+    assert provider_from_environment({'GEMINI_API_KEY': 'local-test-key', 'GEMINI_MODEL': 'test-model'}).model == 'test-model'
     with pytest.raises(ValueError):
         GeminiProvider('key', 'model/path?key=bad')
 
 
-@pytest.mark.parametrize('status,detail', [(429,'AI_QUOTA'), (403,'AI_CONFIGURATION'), (500,'AI_PROVIDER_ERROR')])
+@pytest.mark.parametrize('status,detail', [
+    (429, 'AI_QUOTA'), (403, 'AI_CONFIGURATION'), (500, 'AI_PROVIDER_ERROR'), (503, 'AI_BUSY'),
+])
 def test_provider_errors_are_sanitized(status, detail):
     provider = GeminiProvider('secret-test-only', transport=httpx.MockTransport(
         lambda _: httpx.Response(status, text='private provider diagnostics and secret-test-only')))
     with pytest.raises(HTTPException) as error:
         provider.generate('summary', '', [{'title':'x', 'context':'y'}])
     assert error.value.detail == detail
+
+
+@pytest.mark.parametrize('reason,expected', [
+    ('API_KEY_INVALID', (503, 'AI_CONFIGURATION')),
+    ('BAD_REQUEST', (502, 'AI_PROVIDER_ERROR')),
+])
+def test_google_bad_request_classifies_invalid_key_without_exposing_error(reason, expected):
+    provider = GeminiProvider('local-test-key', transport=httpx.MockTransport(
+        lambda _: httpx.Response(400, json={'error': {'message': 'private diagnostic',
+                                                      'details': [{'reason': reason}]}})))
+    with pytest.raises(HTTPException) as error:
+        provider.generate('summary', '', [{'title': 'x', 'context': 'y'}])
+    assert (error.value.status_code, error.value.detail) == expected

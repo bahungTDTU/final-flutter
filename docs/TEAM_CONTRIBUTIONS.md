@@ -1,5 +1,9 @@
 # Nhóm và đóng góp thật
 
+Ngày 19/11, Nguyễn Bảo Long <523k0014@student.tdtu.edu.vn> là author/committer
+cho nhánh `codex/email-otp-dotenv`. Có AI hỗ trợ cập nhật OTP 6 chữ số,
+cấu hình SMTP bằng dotenv và kiểm tra reset qua Gmail.
+
 Ngày 18/11, Nguyễn Bảo Long <523k0014@student.tdtu.edu.vn> là author/committer
 cho nhánh `codex/web-android-runtime-acceptance`. Có AI hỗ trợ kiểm tra Chrome
 và Android, sửa script chạy local, xử lý tệp Gemini bị mất và lưu bằng chứng.

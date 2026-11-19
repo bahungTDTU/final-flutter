@@ -21,7 +21,7 @@ from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from pydantic import BaseModel, Field, ConfigDict, model_validator, field_validator
 
 from backend.email_delivery import delivery_from_environment, valid_email
-from backend.email_queue import EmailQueue
+from backend.email_queue import EmailQueue, migrate_email_tokens
 from backend.avatars import install_avatar_routes
 from backend.attachments import install_attachment_routes
 from backend.sharing import install_share_routes, touch_shares, shared_metadata
@@ -70,6 +70,7 @@ class EmailRequest(BaseModel):
 
 class TokenRequest(BaseModel):
     token: str = Field(min_length=1, max_length=128)
+    email: str = Field(default='', max_length=254)
 
 
 class ResetRequest(TokenRequest):
@@ -182,6 +183,7 @@ def create_app(db_path=None, *, email_delivery=None, ai_provider=None, start_ema
         conn.executescript(Path(__file__).with_name('schema.sql').read_text())
         conn.execute('BEGIN IMMEDIATE')
         migrate(conn)
+        migrate_email_tokens(conn)
         install_tracking(conn)
         install_session_catalogue(conn, digest)
 
@@ -266,13 +268,9 @@ def create_app(db_path=None, *, email_delivery=None, ai_provider=None, start_ema
             raise HTTPException(429, 'Try again later')
         conn.execute('INSERT OR REPLACE INTO attempts VALUES (?,0,?)', (scope, time.time() + 60))
 
-    def take_token(conn, token, kind):
-        row = conn.execute('SELECT * FROM email_tokens WHERE digest=? AND kind=? AND used=0 AND expires>?',
-                           (digest(token), kind, time.time())).fetchone()
-        if not row:
-            raise HTTPException(400, 'Invalid, expired or reused token')
-        conn.execute('UPDATE email_tokens SET used=1 WHERE digest=?', (digest(token),))
-        return row['user_id']
+    def check_email_token(conn, body, kind, *, consume=True):
+        return app.state.email_queue.check(conn, body.email.strip().lower(), kind,
+                                           body.token.strip(), consume=consume)
 
     def access(conn, note_id, identity, mode='read', unlocked=True):
         validate_session(conn, identity)
@@ -441,8 +439,12 @@ def create_app(db_path=None, *, email_delivery=None, ai_provider=None, start_ema
     @app.post('/auth/verify')
     def verify(body: TokenRequest):
         with db() as conn:
-            user_id = take_token(conn, body.token, 'verify')
-            conn.execute('UPDATE users SET verified=1 WHERE id=?', (user_id,))
+            user_id = check_email_token(conn, body, 'verify')
+            if user_id:
+                conn.execute('UPDATE users SET verified=1 WHERE id=?', (user_id,))
+        if not user_id:
+            # Raise after the transaction commits so failed OTP attempts persist.
+            raise HTTPException(400, 'Invalid, expired or reused token')
         return {'ok': True}
 
     @app.post('/auth/resend')
@@ -485,9 +487,9 @@ def create_app(db_path=None, *, email_delivery=None, ai_provider=None, start_ema
     @app.post('/auth/reset/check')
     def check_reset(body: TokenRequest):
         with db() as conn:
-            if not conn.execute('SELECT 1 FROM email_tokens WHERE digest=? AND kind=? AND used=0 AND expires>?',
-                                (digest(body.token), 'reset', time.time())).fetchone():
-                raise HTTPException(400, 'Invalid, expired or reused token')
+            user_id = check_email_token(conn, body, 'reset', consume=False)
+        if not user_id:
+            raise HTTPException(400, 'Invalid, expired or reused token')
         return {'valid': True}
 
     @app.post('/auth/reset')
@@ -495,9 +497,12 @@ def create_app(db_path=None, *, email_delivery=None, ai_provider=None, start_ema
         if body.password != body.confirmation:
             raise HTTPException(422, 'Passwords do not match')
         with db() as conn:
-            user_id = take_token(conn, body.token, 'reset')
-            conn.execute('UPDATE users SET password=? WHERE id=?', (hasher.hash(body.password), user_id))
-            conn.execute('DELETE FROM sessions WHERE user_id=?', (user_id,))
+            user_id = check_email_token(conn, body, 'reset')
+            if user_id:
+                conn.execute('UPDATE users SET password=? WHERE id=?', (hasher.hash(body.password), user_id))
+                conn.execute('DELETE FROM sessions WHERE user_id=?', (user_id,))
+        if not user_id:
+            raise HTTPException(400, 'Invalid, expired or reused token')
         return {'ok': True, 'login_required': True}
 
     @app.post('/auth/password')

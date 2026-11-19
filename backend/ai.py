@@ -16,6 +16,7 @@ from backend.note_document import plain_content
 
 MAX_CONTEXT = 24000
 MAX_OUTPUT = 8000
+DEFAULT_GEMINI_MODEL = 'gemini-3.1-flash-lite'
 NO_INFORMATION = 'Chưa có đủ thông tin trong các ghi chú được phép truy cập để trả lời câu hỏi này.'
 logger = logging.getLogger(__name__)
 
@@ -39,7 +40,7 @@ class Validation(BaseModel):
 class GeminiProvider:
     mode = 'gemini'
 
-    def __init__(self, key, model='gemini-2.5-flash-lite', *, transport=None):
+    def __init__(self, key, model=DEFAULT_GEMINI_MODEL, *, transport=None):
         if not re.fullmatch(r'[a-zA-Z0-9.\-]{1,100}', model):
             raise ValueError('Invalid GEMINI_MODEL')
         self._key = key
@@ -82,13 +83,28 @@ class GeminiProvider:
                         raise HTTPException(429, 'AI_QUOTA')
                     if response.status_code in (401, 403):
                         raise HTTPException(503, 'AI_CONFIGURATION')
-                    if response.status_code >= 400:
+                    if response.status_code == 503:
+                        logger.warning('Gemini temporarily unavailable (HTTP 503).')
+                        raise HTTPException(503, 'AI_BUSY')
+                    if response.status_code >= 400 and response.status_code != 400:
+                        logger.warning('Gemini returned HTTP %s.', response.status_code)
                         raise HTTPException(502, 'AI_PROVIDER_ERROR')
                     data = bytearray()
                     for chunk in response.iter_bytes():
                         data.extend(chunk)
                         if len(data) > 65536:
                             raise HTTPException(502, 'AI_INVALID_OUTPUT')
+                    if response.status_code == 400:
+                        try:
+                            details = json.loads(data)['error']['details']
+                            invalid_key = any(detail.get('reason') == 'API_KEY_INVALID' for detail in details
+                                              if isinstance(detail, dict))
+                        except (ValueError, TypeError, KeyError):
+                            invalid_key = False
+                        if invalid_key:
+                            raise HTTPException(503, 'AI_CONFIGURATION')
+                        logger.warning('Gemini rejected the request with HTTP 400.')
+                        raise HTTPException(502, 'AI_PROVIDER_ERROR')
             envelope = json.loads(data)
             candidate = envelope['candidates'][0]
             if candidate.get('finishReason') != 'STOP':
@@ -99,7 +115,8 @@ class GeminiProvider:
             return json.loads(output)
         except httpx.TimeoutException:
             raise HTTPException(504, 'AI_TIMEOUT') from None
-        except httpx.HTTPError:
+        except httpx.HTTPError as error:
+            logger.warning('Gemini transport failed (%s).', type(error).__name__)
             raise HTTPException(502, 'AI_PROVIDER_ERROR') from None
         except (ValueError, KeyError, IndexError, TypeError):
             raise HTTPException(502, 'AI_INVALID_OUTPUT') from None
@@ -118,7 +135,8 @@ def provider_from_environment(env):
         return None
     if len(key) > 512 or any(c.isspace() for c in key):
         raise ValueError('Invalid Gemini key configuration')
-    return GeminiProvider(key, env.get('GEMINI_MODEL', 'gemini-2.5-flash-lite'))
+    model = env.get('GEMINI_MODEL', '').strip() or DEFAULT_GEMINI_MODEL
+    return GeminiProvider(key, model)
 
 
 STOP_WORDS = set('toi ban cac nhung cua la va voi cho trong ve co gi nao nhu the hay mot duoc can toi minh '

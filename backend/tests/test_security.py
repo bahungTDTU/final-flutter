@@ -46,9 +46,9 @@ def test_registration_unverified_can_use_all_core_apis(env):
     assert client.get('/me', headers=headers(owner)).status_code == 200
     make_note(client, owner)
     token = app.state.email_delivery.messages[0]['token']
-    assert client.post('/auth/verify', json={'token': token}).status_code == 200
+    assert client.post('/auth/verify', json={'email': 'owner@example.com', 'token': token}).status_code == 200
     assert client.get('/me', headers=headers(owner)).json()['verified'] is True
-    assert client.post('/auth/verify', json={'token': token}).status_code == 400
+    assert client.post('/auth/verify', json={'email': 'owner@example.com', 'token': token}).status_code == 400
 
 
 def test_auth_guards_logout_and_hashes(env):
@@ -67,12 +67,12 @@ def test_reset_requires_manual_login_and_invalidates_sessions(env):
     client.post('/auth/forgot', json={'email': 'owner@example.com'})
     app.state.email_queue.run_once()
     token = app.state.email_delivery.messages[-1]['token']
-    result = client.post('/auth/reset', json={'token': token,
+    result = client.post('/auth/reset', json={'email': 'owner@example.com', 'token': token,
         'password': 'new-password-123', 'confirmation': 'new-password-123'})
     assert result.json() == {'ok': True, 'login_required': True}
     assert client.get('/me', headers=headers(users[0])).status_code == 401
     assert client.post('/auth/login', json={'email': 'owner@example.com', 'password': 'new-password-123'}).status_code == 200
-    assert client.post('/auth/reset', json={'token': token,
+    assert client.post('/auth/reset', json={'email': 'owner@example.com', 'token': token,
         'password': 'new-password-123', 'confirmation': 'new-password-123'}).status_code == 400
 
 
@@ -80,7 +80,7 @@ def test_expired_activation_rejected(env):
     client, app, _ = env
     with sqlite3.connect(app.state.database) as conn:
         conn.execute('UPDATE email_tokens SET expires=0')
-    assert client.post('/auth/verify', json={'token': app.state.email_delivery.messages[0]['token']}).status_code == 400
+    assert client.post('/auth/verify', json={'email': 'owner@example.com', 'token': app.state.email_delivery.messages[0]['token']}).status_code == 400
 
 
 def test_change_password_checks_old_and_revokes_session(env):

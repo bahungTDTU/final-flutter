@@ -1,10 +1,17 @@
 # SMTP và xác minh/khôi phục bằng mã email
 
-Đề gốc tr.2–3 cho phép link hoặc mã tương đương/OTP. NoteTogether dùng mã43 ký tự URL-safe,
-copy nguyên mã từ email vào app Web/Android. Mã được dẫn xuất HMAC-SHA256 từ nonce ngẫu nhiên
-32 byte + account/kind và khóa server32 byte, không tự viết thuật toán crypto. Không cần deep
-link để dùng luồng này. Mã một lần, hết hạn sau30 phút từ lúc tạo; email_tokens lưu SHA-256
-digest, email_jobs chỉ giữ nonce/metadata để retry. Không lưu mã thô trong SQLite hoặc log.
+Đề gốc tr.2–3 cho phép link hoặc OTP. NoteTogether gửi **OTP 6 chữ số**,
+giữ cả số 0 đầu mã, cho xác minh email và đặt lại mật khẩu trên Web/Android.
+Nhập cùng địa chỉ email nhận mã. Mã chỉ dùng một lần, hết hạn sau 30 phút
+hoặc sau 5 lần nhập sai. Bước kiểm tra và bước đặt lại mật khẩu dùng chung
+giới hạn. Gửi lại có cooldown 60 giây và thay mã cũ.
+
+Backend dẫn xuất OTP bằng HMAC-SHA256 với nonce ngẫu nhiên và khóa lưu ngoài
+SQLite. HMAC dùng để xác nhận mã ràng buộc email qua ID tài khoản, loại yêu
+cầu và nonce. SQLite không lưu mã thô hoặc SHA-256 không khóa của OTP.
+Hàng đợi giữ nonce để gửi lại cùng OTP khi SMTP phải retry. Backend vẫn xử
+lý được mã dài cũ trên client cũ trong thời gian còn hiệu lực. Trên giao diện
+6 chữ số, hãy gửi lại nếu thư cũ chứa mã dài.
 
 Đăng ký tự đăng nhập; chưa verified vẫn dùng chức năng ghi chú. Home **Xác minh** → nhập mã
 → **Xác nhận** → Back; banner biến mất sau cập nhật profile. **Gửi lại mã xác minh** cần session
@@ -15,7 +22,8 @@ của đúng tài khoản. Gửi lại thay mã cũ và có cooldown60s (kể c�
 fields chỉ hiện sau API kiểm tra mã; kiểm tra chưa tiêu thụ mã. Nhập mật khẩu mới hai lần
 (10–128 ký tự) → xác nhận. Backend kiểm tra lại TTL/kind/used và tiêu thụ mã trong transaction,
 đổi Argon2id hash, hủy mọi session/grant cũ. App về login để đăng nhập thủ công, không auto-login.
-Mã invalid/expired/reused giữ input và báo lỗi; có thể chọn **Nhập mã khác**.
+Mã sai/hết hạn/đã dùng giữ input và báo lỗi. Có thể chọn **Nhập mã khác**
+hoặc yêu cầu gửi lại để nhận OTP mới.
 
 Đợt06/10: đăng ký/resend trả `queued` ngay sau transaction, không chờ SMTP. **Kiểm tra trạng
 thái gửi** truy vấn GET /auth/email-status bằng session của đúng account, không trả mã/nonce/
@@ -51,16 +59,54 @@ Không cung cấp UI tự rotate/delete key ở đợt này. Key là bí mật s
 
 ## Cấu hình hộp thư ngoài
 
-Backend đọc process environment; không tự load .env. .env.example chỉ là template, không chứa
-secret thật. Không dán password vào chat/repo. Chỉ cấu hình credentials của nhóm sau khi có
-dịch vụ. Đợt này không thêm credential ngoại vi hoặc gửi thư ngoài.
+Với Gmail cá nhân, bật xác minh hai bước và tạo App Password riêng cho
+NoteTogether. Trong file `.env` ở thư mục gốc chỉ cần điền hai biến:
+
+```dotenv
+SMTP_USERNAME=your-address@gmail.com
+SMTP_PASSWORD=
+```
+
+Điền Google App Password sau dấu `=` trên dòng `SMTP_PASSWORD`. Backend
+dùng `smtp.gmail.com:587`, STARTTLS và địa chỉ gửi trùng username. Có thể
+dán App Password có khoảng trắng phân nhóm. Chạy hoặc khởi động lại backend:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/start_backend.ps1
+```
+
+Script nạp `.env` ở thư mục gốc. Biến môi trường đã đặt trong tiến trình
+cha được ưu tiên. Nếu cần trỏ tới file riêng, dùng tham số `-EnvFile`.
+`.env` nằm trong Git ignore. Giữ file cục bộ vì App Password được lưu dạng văn bản.
+
+Nếu muốn nhập App Password qua lời nhắc che ký tự mỗi lần chạy:
+
+```powershell
+# Kiểm tra STARTTLS và đăng nhập SMTP, không phát sinh email.
+& scripts/start_backend_gmail.ps1 -CheckOnly
+# Kiểm tra SMTP rồi chạy backend local. Nhập App Password khi được hỏi.
+& scripts/start_backend_gmail.ps1
+```
+
+Nhập địa chỉ Gmail gửi thư và App Password ở prompt che ký tự. Script dùng
+`smtp.gmail.com:587` với STARTTLS. Mật khẩu ở trong tiến trình chạy backend
+và không lưu vào file. Cần nhập lại khi khởi động lần sau. Dùng bộ biến bên
+dưới nếu nhóm sử dụng nhà cung cấp SMTP khác hoặc triển khai lên máy chủ.
+
+Sau khi mở backend, vào Web và chọn **Đăng ký** hoặc **Gửi lại mã xác minh**
+với hộp thư QA của nhóm. Kiểm tra thư đến hoặc Spam, nhập mã vào app và xác
+nhận banner biến mất. Sau đó thử **Quên mật khẩu**, dùng mã mới và đăng nhập
+bằng mật khẩu đã đổi. Đây là bước kiểm tra inbox cho tiêu chí 2 và 4.
+
+Backend nhận cấu hình qua process environment. Khi gọi Uvicorn trực tiếp, dùng
+`--env-file .env` nếu cần nạp file. `.env.example` chỉ chứa cấu hình mẫu.
 
 | Biến | Ý nghĩa |
 |---|---|
-| SMTP_HOST |Host provider; trống = disabled, không giữ mailbox mã thô |
+| SMTP_HOST |Host provider. Nếu trống và có Gmail/App Password thì dùng smtp.gmail.com. Để tắt SMTP, bỏ trống host và cả hai thông tin đăng nhập. |
 | SMTP_PORT |587 cho STARTTLS hoặc465 cho implicit TLS theo provider |
 | SMTP_SECURITY |starttls hoặc ssl; không chấp nhận plaintext/none |
-| SMTP_FROM |Địa chỉ sender ASCII được provider cho phép |
+| SMTP_FROM |Địa chỉ sender ASCII được provider cho phép. Mặc định là username với Gmail. |
 | SMTP_USERNAME/SMTP_PASSWORD |Cả hai có hoặc cùng trống cho TLS relay; chỉ auth sau TLS |
 | SMTP_TIMEOUT |Socket timeout mỗi bước,1–6 giây, mặc định3; không phải tổng deadline |
 | SMTP_CA_FILE |Optional trusted CA riêng; mặc định system roots; luôn verify certificate/hostname |
@@ -80,7 +126,7 @@ try { & scripts/start_backend.ps1 }
 finally { $env:SMTP_PASSWORD = $null; $smtpCredential = $null }
 ```
 
-Khi SMTP_HOST có giá trị, backend fail startup nếu port/security/sender/timeout/cặp credentials
+Khi SMTP được cấu hình, backend fail startup nếu port/security/sender/timeout/cặp credentials
 không hợp lệ. Lỗi CA/kết nối báo delivery_failed lúc gửi; không fallback plaintext/bypass CA.
 /health email_delivery=smtp chỉ nói đã cấu hình, không chứng minh inbox delivery.
 Đăng ký/resend trả queued sau persist, not_configured khi disabled. Authenticated status trả

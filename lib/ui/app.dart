@@ -3,6 +3,7 @@ import '../l10n/app_strings.dart';
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_quill/flutter_quill.dart';
 
@@ -485,7 +486,7 @@ class _TokenScreenState extends State<TokenScreen> {
   final token = TextEditingController(),
       password = TextEditingController(),
       confirm = TextEditingController(),
-      resetEmail = TextEditingController();
+      email = TextEditingController();
   late bool reset;
   bool busy = false, checked = false, complete = false;
   String? message;
@@ -493,7 +494,9 @@ class _TokenScreenState extends State<TokenScreen> {
   void initState() {
     super.initState();
     reset = widget.initialReset;
-    resetEmail.text = widget.initialEmail;
+    email.text = widget.initialEmail.isNotEmpty
+        ? widget.initialEmail
+        : widget.controller.user?['email'] as String? ?? '';
   }
 
   @override
@@ -501,7 +504,7 @@ class _TokenScreenState extends State<TokenScreen> {
     token.dispose();
     password.dispose();
     confirm.dispose();
-    resetEmail.dispose();
+    email.dispose();
     super.dispose();
   }
 
@@ -513,7 +516,7 @@ class _TokenScreenState extends State<TokenScreen> {
         await widget.controller.api.call(
           'POST',
           '/auth/reset/check',
-          body: {'token': token.text.trim()},
+          body: {'email': email.text.trim(), 'token': token.text},
         );
         if (mounted) {
           setState(() {
@@ -527,7 +530,8 @@ class _TokenScreenState extends State<TokenScreen> {
         'POST',
         reset ? '/auth/reset' : '/auth/verify',
         body: {
-          'token': token.text.trim(),
+          'email': email.text.trim(),
+          'token': token.text,
           if (reset) 'password': password.text,
           if (reset) 'confirmation': confirm.text,
         },
@@ -560,8 +564,7 @@ class _TokenScreenState extends State<TokenScreen> {
 
   Future<void> resend() async {
     if (busy || (!reset && widget.controller.token == null)) return;
-    if (reset &&
-        (resetEmail.text.trim().isEmpty || resetEmail.text.length > 254)) {
+    if (reset && (email.text.trim().isEmpty || email.text.length > 254)) {
       setState(() => message = context.tr("Nhập email nhận mã khôi phục."));
       return;
     }
@@ -572,7 +575,7 @@ class _TokenScreenState extends State<TokenScreen> {
         'POST',
         reset ? '/auth/forgot' : '/auth/resend',
         token: reset ? null : sessionToken,
-        body: reset ? {'email': resetEmail.text.trim()} : null,
+        body: reset ? {'email': email.text.trim()} : null,
       );
       if (!reset && widget.controller.token != sessionToken) return;
       if (!reset) {
@@ -654,11 +657,40 @@ class _TokenScreenState extends State<TokenScreen> {
                             checked = false;
                             complete = false;
                             message = null;
+                            if (!v &&
+                                widget.controller.user?['email'] != null) {
+                              email.text =
+                                  widget.controller.user!['email'] as String;
+                            }
                             token.clear();
                             password.clear();
                             confirm.clear();
                           }),
                   ),
+                  TextFormField(
+                    key: Key(reset ? 'reset-email' : 'verify-email'),
+                    controller: email,
+                    enabled: !busy && !complete,
+                    readOnly:
+                        checked ||
+                        (!reset && widget.controller.user?['email'] != null),
+                    keyboardType: TextInputType.emailAddress,
+                    autofillHints: const [AutofillHints.email],
+                    validator: (value) {
+                      final address = (value ?? '').trim();
+                      return address.length > 254 ||
+                              !RegExp(r'^[^\s@]+@[^\s@]+\.[^\s@]+$')
+                                  .hasMatch(address)
+                          ? context.tr("Nhập địa chỉ email hợp lệ.")
+                          : null;
+                    },
+                    decoration: InputDecoration(
+                      labelText: context.tr(
+                        reset ? "Email nhận mã khôi phục" : "Email",
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 12),
                   TextFormField(
                     errorBuilder: (context, message) =>
                         Text(context.trMessage(message)),
@@ -668,12 +700,17 @@ class _TokenScreenState extends State<TokenScreen> {
                     readOnly: checked,
                     autocorrect: false,
                     enableSuggestions: false,
-                    validator: (v) =>
-                        (v ?? '').trim().isEmpty || (v ?? '').length > 128
-                        ? context.tr("Nhập mã trong email (tối đa 128 ký tự).")
+                    keyboardType: TextInputType.number,
+                    autofillHints: const [AutofillHints.oneTimeCode],
+                    inputFormatters: [
+                      FilteringTextInputFormatter.digitsOnly,
+                      LengthLimitingTextInputFormatter(6),
+                    ],
+                    validator: (v) => (v ?? '').length != 6
+                        ? context.tr("Nhập đủ 6 chữ số trong email.")
                         : null,
                     decoration: InputDecoration(
-                      labelText: context.tr("Mã xác minh trong email"),
+                      labelText: context.tr("Mã OTP 6 chữ số"),
                     ),
                   ),
                   const SizedBox(height: 16),
@@ -734,15 +771,6 @@ class _TokenScreenState extends State<TokenScreen> {
                       child: Text(context.tr("Nhập mã khác")),
                     ),
                   if (reset && !checked) ...[
-                    TextField(
-                      key: const Key('reset-email'),
-                      controller: resetEmail,
-                      enabled: !busy,
-                      keyboardType: TextInputType.emailAddress,
-                      decoration: InputDecoration(
-                        labelText: context.tr("Email nhận mã khôi phục"),
-                      ),
-                    ),
                     TextButton(
                       key: const Key('resend-reset-code'),
                       onPressed: busy ? null : resend,
@@ -776,7 +804,7 @@ class _TokenScreenState extends State<TokenScreen> {
                   const SizedBox(height: 16),
                   Text(
                     context.tr(
-                      "Nhập mã dùng một lần trong email NoteTogether. Mã hết hạn sau 30 phút; gửi lại sẽ thay mã cũ. Bạn vẫn dùng được ghi chú khi chưa xác minh.",
+                      "Mã dùng một lần, hết hạn sau 30 phút hoặc 5 lần nhập sai. Nếu nhận mã dạng cũ, hãy yêu cầu gửi lại.",
                     ),
                   ),
                 ],

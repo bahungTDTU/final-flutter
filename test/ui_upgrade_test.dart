@@ -209,10 +209,7 @@ void main() {
       await tester.pumpAndSettle();
       await tester.tap(find.byKey(const Key('email-code-submit')));
       await tester.pump();
-      expect(
-        find.text('Nhập mã trong email (tối đa 128 ký tự).'),
-        findsOneWidget,
-      );
+      expect(find.text('Nhập đủ 6 chữ số trong email.'), findsOneWidget);
       expect(tester.takeException(), isNull);
       await tester.pumpWidget(const SizedBox());
       await c.logout();
