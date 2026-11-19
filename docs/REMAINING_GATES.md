@@ -1,4 +1,9 @@
-# Các gate còn lại — cập nhật 15/11/2026
+# Các gate còn lại — cập nhật 18/11/2026
+
+Đã kiểm tra Chrome và APK debug Android với cùng một FastAPI/SQLite QA.
+N02 có mở lại offline sau OS force-stop, rồi sync cùng UUID. N05 có Android
+hủy DocumentsUI và giữ tệp sẵn có. Xem [biên bản 18/11](RUNTIME_ACCEPTANCE_2026-11-18.md)
+cho phạm vi cụ thể. Provider thật, public HTTPS, APK ký phát hành và bộ nộp còn mở.
 
 ## Đồng bộ và kiểm tra local — 15/11/2026
 

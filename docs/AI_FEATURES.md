@@ -30,6 +30,8 @@ hoặc public server static root. Production đặt secret qua service environme
 Backend có thể cấu hình trực tiếp các biến process:
 
 - `GEMINI_API_KEY` hoặc `GEMINI_API_KEY_FILE`: key hoặc đường dẫn file secret.
+- Nếu đường dẫn key không còn tồn tại, backend ghi cảnh báo và vẫn chạy. `/health`
+  báo AI `not_configured` cho đến khi sửa cấu hình và khởi động lại backend.
 - `GEMINI_MODEL`: mặc định `gemini-2.5-flash-lite`; không tự fallback sang model khác.
 - `.env.example` là template, backend không tự load `.env`.
 

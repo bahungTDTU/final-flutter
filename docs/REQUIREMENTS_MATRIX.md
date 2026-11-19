@@ -1,5 +1,12 @@
 # Ma trận yêu cầu 32 tiêu chí
 
+## Nghiệm thu runtime local 18/11/2026
+
+Đối chiếu bổ sung ID 1/3, 11/12/14/31, 15/16, 23–26, 29/30 và 32 bằng Chrome,
+APK debug Android API 36 và HTTP thật. Xem kết quả theo từng môi trường tại
+[biên bản 18/11](RUNTIME_ACCEPTANCE_2026-11-18.md). ID 2/4, 27/28 và phát hành
+ID 32 vẫn cần dịch vụ và artifact thật.
+
 ## Đồng bộ và kiểm tra local — 15/11/2026
 
 Source GitHub `9d00fcf` (PR #17), branch local `codex/local-readiness-update`.

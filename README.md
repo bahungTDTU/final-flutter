@@ -4,13 +4,14 @@
 Có đăng nhập, rich text, tự lưu/bản nháp offline, nhãn, tệp đính kèm riêng tư,
 khóa ghi chú, chia sẻ theo quyền, realtime và tích hợp AI Summary/Q&A.
 
-## Trạng thái hiện hành — 15/11/2026
+## Trạng thái hiện hành — 18/11/2026
 
-Đã đồng bộ source GitHub `master` tại `9d00fcf` (PR #17). Đang hoàn thiện local;
-**chưa sẵn sàng nộp/public release**. Chức năng có code không đồng nghĩa đã
-nghiệm thu provider thật, bản Android ký phát hành và Web HTTPS.
+Đã kiểm tra đăng nhập xuyên nền tảng, tệp và khôi phục thay đổi offline trên Chrome
+và Android emulator với backend local. SMTP, Gemini thật, Web HTTPS, Android ký
+phát hành và bộ nộp vẫn còn mở.
 
-- [Kết quả kiểm tra máy hiện tại](docs/LOCAL_READINESS_2026-11-15.md).
+- [Nghiệm thu Web và Android 18/11](docs/RUNTIME_ACCEPTANCE_2026-11-18.md).
+- [Kết quả kiểm tra môi trường 15/11](docs/LOCAL_READINESS_2026-11-15.md).
 - [Các việc còn thiếu](docs/REMAINING_GATES.md), [ma trận 32 tiêu chí](docs/REQUIREMENTS_MATRIX.md).
 - [Checklist bộ nộp](docs/SUBMISSION_CHECKLIST.md), [quy trình branch/PR](docs/BRANCH_WORKFLOW.md).
 - [Lịch sử triển khai và lệnh trên máy cũ](README_HISTORY.md); các kết quả trong đó chỉ áp dụng cho lần chạy được ghi.
@@ -39,7 +40,11 @@ powershell -NoProfile -ExecutionPolicy Bypass -File scripts/start_web.ps1
 ```
 
 Mở Web tại `http://127.0.0.1:7357`, API health tại `http://127.0.0.1:8000/health`.
-Sau sửa source, chạy `scripts/build.ps1 -Target web` rồi reload; server không tự rebuild.
+Sau khi sửa source, chạy lại `scripts/start_web.ps1 -Rebuild` để build trước khi phục vụ.
+Nếu cổng mặc định bận, có thể dùng `scripts/start_backend.ps1 -Port 8090` và
+`scripts/start_web.ps1 -Port 7390 -ApiUrl http://127.0.0.1:8090`.
+Đặt `WEB_ORIGINS=http://127.0.0.1:7390` trong terminal backend trước khi chạy.
+Chỉ định `-ApiUrl` sẽ build lại bundle vì URL được gắn ở lúc biên dịch.
 Script setup từ chối `.venv` khác Python 3.12; môi trường kiểm tra tương thích 3.13
 ở lượt 15/11 không thay baseline CI. Dùng checkout riêng với Python 3.12 để tái lập baseline.
 
