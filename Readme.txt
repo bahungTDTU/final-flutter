@@ -16,7 +16,7 @@ nộp vẫn còn mở.
 - [Nghiệm thu OTP và Gmail](evidence/2026-11-18-email-otp/INDEX.md).
 - [Kết quả kiểm tra môi trường 15/11](docs/LOCAL_READINESS_2026-11-15.md).
 - [Các việc còn thiếu](docs/REMAINING_GATES.md), [ma trận 32 tiêu chí](docs/REQUIREMENTS_MATRIX.md).
-- [Checklist bộ nộp](docs/SUBMISSION_CHECKLIST.md), [quy trình branch/PR](docs/BRANCH_WORKFLOW.md).
+- [Deploy Web trên Azure](docs/AZURE_WEB_DEPLOYMENT.md), [checklist bộ nộp](docs/SUBMISSION_CHECKLIST.md), [quy trình branch/PR](docs/BRANCH_WORKFLOW.md).
 - [Lịch sử triển khai và lệnh trên máy cũ](README_HISTORY.md); các kết quả trong đó chỉ áp dụng cho lần chạy được ghi.
 
 ## Chạy nhanh trên Windows

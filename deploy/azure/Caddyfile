@@ -1,0 +1,13 @@
+{$NOTETOGETHER_HOST} {
+	@api path /health /auth/* /me /me/* /notes /notes/* /sync /labels /labels/* /ai/* /events
+	handle @api {
+		reverse_proxy backend:8000
+	}
+
+	handle {
+		root * /srv
+		@entry path / /index.html /offline_worker.js /flutter_bootstrap.js /deploy-revision.txt
+		header @entry Cache-Control "no-cache"
+		file_server
+	}
+}

@@ -25,9 +25,10 @@ self.addEventListener('fetch', event => {
   const request = event.request;
   const url = new URL(request.url);
   const base = new URL(self.registration.scope);
-  if (request.method !== 'GET' || url.origin !== base.origin) return;
+  if (request.method !== 'GET' || url.origin !== base.origin ||
+      !url.pathname.startsWith(base.pathname)) return;
   const relative = url.pathname.substring(base.pathname.length);
-  if (request.mode === 'navigate') {
+  if (request.mode === 'navigate' && (relative === '' || relative === 'index.html')) {
     event.respondWith(fetch(request).catch(async () =>
       (await caches.open(CACHE_NAME)).match('index.html')));
   } else if (allowed.has(relative)) {

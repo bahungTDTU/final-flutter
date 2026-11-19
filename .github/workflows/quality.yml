@@ -65,5 +65,10 @@ jobs:
           cache: true
       - run: flutter pub get --enforce-lockfile
       - run: flutter build web --release --no-web-resources-cdn --dart-define=API_URL=http://127.0.0.1:8000
-      - run: python scripts/prepare_web_offline.py
+      - run: bash deploy/azure/package.sh "$GITHUB_SHA" "$RUNNER_TEMP/notetogether.tar.gz"
+      - run: bash -n deploy/azure/activate.sh
+      - name: Validate Azure Compose settings
+        env:
+          NOTETOGETHER_HOST: deploy-ci.example.org
+        run: docker compose --env-file .env.example -f compose.yaml -f deploy/azure/compose.yaml config --quiet
       - run: flutter build apk --debug --dart-define=API_URL=http://127.0.0.1:8000

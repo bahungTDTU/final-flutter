@@ -32,6 +32,8 @@ powershell -NoProfile -ExecutionPolicy Bypass -File scripts/start_backend.ps1
 
 `start_backend.ps1` nạp `.env` qua Uvicorn. Biến môi trường đã đặt trước khi
 khởi động có ưu tiên. Có thể đặt `GEMINI_MODEL` nếu project cần model khác.
+Đặt `GEMINI_IPV6=1` khi máy chủ đã xác minh truy cập trực tiếp được API
+Gemini qua IPv6. Tùy chọn mặc định là `0`.
 Biến `GEMINI_API_KEY_FILE` là phương án cho tệp secret và được dùng khi
 `GEMINI_API_KEY` trống. Nếu tệp secret bị thiếu, backend ghi cảnh báo và vẫn chạy.
 Production có thể đặt key qua môi trường dịch vụ hoặc secret store.
