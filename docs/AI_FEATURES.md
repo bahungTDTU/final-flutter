@@ -6,39 +6,69 @@ Mốc audit trước đó vẫn là snapshot trước khi triển khai AI, khôn
 
 ## Cấu hình Gemini free tier
 
-Đối chiếu tài liệu Google ngày 05/10/2026: `gemini-2.5-flash-lite` có standard free tier.
-Hạn mức thực tế phụ thuộc project/model/Google; không hard-code một quota Google được
-cho là luôn còn. Dùng key của project Free tier trong [Google AI Studio](https://aistudio.google.com/api-keys).
-Không cần đổi sang Paid tier hoặc bật billing cho nghiệm thu này.
+Backend mặc định dùng `gemini-3.1-flash-lite`, hỗ trợ JSON có cấu trúc và có Free
+Tier theo tài liệu Google ngày 19/11/2026. Dùng key mới của project Free Tier
+để nghiệm thu. Hạn mức phụ thuộc project và model.
+[Model Gemini](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite),
+[bảng giá và Free Tier](https://ai.google.dev/gemini-api/docs/pricing),
+[tạo API key](https://aistudio.google.com/api-keys).
 
 Free tier có thể dùng nội dung gửi lên để cải thiện sản phẩm. UI thông báo điều đó
 trước thao tác AI. Chỉ dùng dữ liệu demo phù hợp khi nghiệm thu; không coi đây là
 bảo đảm riêng tư của dịch vụ LLM hoặc khả năng thu hồi dữ liệu đã gửi hợp lệ.
 
-Key chỉ ở backend. Trên máy local, nhập bằng prompt che ký tự:
+Điền key vào `GEMINI_API_KEY` trong file `.env` ở gốc dự án. Dùng chính file
+đang cấu hình SMTP. Với bản clone mới, sao chép `.env.example` thành `.env` trước.
+
+```dotenv
+GEMINI_API_KEY=
+```
+
+Khởi động lại backend để nạp giá trị mới:
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File scripts/configure_ai.ps1
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts/start_backend.ps1
 ```
 
-Script ghi `backend/state/gemini-api-key.txt` (Git ignored). `start_backend.ps1` tự
-chọn file này khi chưa đặt `GEMINI_API_KEY`/`GEMINI_API_KEY_FILE` trong process environment.
-File là secret local plaintext để development, không được copy vào source/release/ZIP
-hoặc public server static root. Production đặt secret qua service environment/secret store.
-
-Backend có thể cấu hình trực tiếp các biến process:
-
-- `GEMINI_API_KEY` hoặc `GEMINI_API_KEY_FILE`: key hoặc đường dẫn file secret.
-- Nếu đường dẫn key không còn tồn tại, backend ghi cảnh báo và vẫn chạy. `/health`
-  báo AI `not_configured` cho đến khi sửa cấu hình và khởi động lại backend.
-- `GEMINI_MODEL`: mặc định `gemini-2.5-flash-lite`; không tự fallback sang model khác.
-- `.env.example` là template, backend không tự load `.env`.
+`start_backend.ps1` nạp `.env` qua Uvicorn. Biến môi trường đã đặt trước khi
+khởi động có ưu tiên. Có thể đặt `GEMINI_MODEL` nếu project cần model khác.
+Biến `GEMINI_API_KEY_FILE` là phương án cho tệp secret và được dùng khi
+`GEMINI_API_KEY` trống. Nếu tệp secret bị thiếu, backend ghi cảnh báo và vẫn chạy.
+Production có thể đặt key qua môi trường dịch vụ hoặc secret store.
 
 Không dùng key trong Flutter `--dart-define`, URL/query string, browser worker, Git,
 request bodies trả cho client, log hoặc screenshots. Key outbound nằm trong header
 `x-goog-api-key`, chỉ gửi đến endpoint Google cố định qua HTTPS/verify certificate.
 Chưa có key → 503 `AI_NOT_CONFIGURED`, không có câu trả lời giả.
+
+`GET /health` báo `ai: configured` khi backend đã nạp cấu hình. Sau khi có key
+Free Tier, chạy lệnh sau để kiểm tra bằng dữ liệu mẫu và SQLite tạm, với SMTP tắt:
+
+```powershell
+& .\.venv\Scripts\python.exe scripts/qa_ai.py --live --output output/ai-live.json
+```
+
+Để chạy giao diện với Gemini thật, mở backend QA ở terminal riêng. Server chỉ
+nghe loopback, dùng SQLite tạm và tắt SMTP.
+
+```powershell
+$env:WEB_ORIGINS = 'http://127.0.0.1:17357'
+& .\.venv\Scripts\python.exe scripts/qa_ai.py --live --serve 18245
+```
+
+Mở Web release local với cùng API. Đăng nhập bằng tài khoản QA và dùng ghi chú mẫu.
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/start_web.ps1 -Port 17357 -ApiUrl http://127.0.0.1:18245
+```
+
+Trên Android emulator, chuyển tiếp cổng rồi chạy integration test. Thay
+`emulator-5580` bằng thiết bị QA đang chạy.
+
+```powershell
+adb -s emulator-5580 reverse tcp:18245 tcp:18245
+flutter drive --driver=test_driver/ai.dart --target=integration_test/ai_flow_test.dart -d emulator-5580 --dart-define=API_URL=http://127.0.0.1:18245 --dart-define=AI_QA_LIVE=true --enable-software-rendering --no-enable-impeller
+```
 
 ## Giao diện và hành vi
 
@@ -53,6 +83,8 @@ Chưa có key → 503 `AI_NOT_CONFIGURED`, không có câu trả lời giả.
 - Loading, cancel, quota/busy/timeout/not-configured/permission/source-change errors được
   hiển thị. Cancel che output và abort client request; không hứa server/Google đã hủy
   inference đang chạy hoặc hoàn lại quota.
+- Khi Gemini trả HTTP 503, app báo dịch vụ AI đang bận và cho phép người dùng
+  thử lại. Backend ghi mã lỗi để chẩn đoán và giữ nội dung yêu cầu ngoài log.
 - Kết quả ở RAM của màn hình, không lưu vào local vault, DB, notes, history hay outbox.
   Không có multi-turn chat history. Đóng route/chuyển nền/xóa kết quả sẽ bỏ response.
   AI output render bằng text, không HTML/Markdown tools hoặc URL lấy từ LLM.
@@ -116,15 +148,15 @@ JSON/citation validation, no-mutation/regenerate, rate limits và sanitized erro
 response, citation permission, protected TTL/background, Q&A navigation và Summary UI
 320×568/chữ 200%. HTTP doubles, không thay Web/native acceptance.
 
-Lệnh thật và kết quả của lượt này ở [AI evidence](../evidence/2026-10-05-ai/INDEX.md).
-Real Gemini/provider, actual browser bundle và Android native acceptance chỉ được ghi
-PASS sau khi chạy đúng target. Public HTTPS và video không được suy từ tests/build.
+Ngày 19/11/2026, Tóm tắt AI và Hỏi ghi chú qua FastAPI đều PASS với Gemini
+`gemini-3.1-flash-lite` thật. Summary giữ đúng hạn nộp và ghi chú gốc. Q&A
+trả đúng hạn nộp, ngân sách và hai nguồn mở được. Lượt chạy dùng ghi chú mẫu,
+SQLite tạm và tắt SMTP. [Bằng chứng Gemini thật](../evidence/2026-11-19-ai-dotenv/INDEX.md#gemini-thật).
 
-Lượt này: Web actual local và native debug API36 qua provider fixture đã chạy PASS;
-Gemini thật **chưa chạy** theo lựa chọn người dùng. Key đã có trên AI Studio dùng format
-mới, đã xuất hiện trong tool output do bộ che format cũ; key đó không được lưu hoặc
-gọi API. Người dùng cần thay/config key mới trước live QA. Không lưu screenshot key
-hoặc giá trị key trong evidence/source; report này không lặp lại secret.
+Chrome Web release local và Android emulator API 36 cũng PASS với Gemini thật
+ngày 19/11. Cả hai chạy Summary, Tạo lại, kiểm tra ghi chú gốc giữ nguyên, Q&A
+đa nguồn và mở đúng ghi chú nguồn. Nghiệm thu public HTTPS, Android release và
+video vẫn còn. [Bằng chứng Web và Android](../evidence/2026-11-19-ai-dotenv/INDEX.md#web-và-android-với-gemini-thật).
 
 Nguồn kỹ thuật chính thức đã đọc:
 [Gemini pricing](https://ai.google.dev/gemini-api/docs/pricing),

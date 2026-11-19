@@ -1,5 +1,12 @@
 # NoteTogether - trạng thái 19/11/2026
 
+Backend cổng 8000 đã khởi động lại với `GEMINI_API_KEY` từ `.env`, báo AI
+`configured` và SMTP `smtp`. Tóm tắt AI và Hỏi ghi chú với
+`gemini-3.1-flash-lite` thật đều PASS qua API, Chrome Web release local và
+Android emulator API 36. Các lượt QA dùng ghi chú mẫu, SQLite tạm và tắt SMTP.
+Khi Gemini trả HTTP 503, app báo dịch vụ đang bận. [Cấu hình](docs/AI_FEATURES.md)
+và [bằng chứng Web và Android](evidence/2026-11-19-ai-dotenv/INDEX.md#web-và-android-với-gemini-thật).
+
 Mã xác minh email và đặt lại mật khẩu mới dùng OTP 6 chữ số. Mỗi mã gắn
 với email và loại yêu cầu, dùng một lần, hết hạn sau 30 phút hoặc 5 lần
 nhập sai. [Cấu hình và cách kiểm tra email](docs/EMAIL_DELIVERY.md).

@@ -51,8 +51,8 @@ const englishMessages = <String, String>{
   "AI phản hồi quá lâu. Bạn có thể thử lại.":
       "AI took too long to respond. You can try again.",
   "AI tổng hợp từ ghi chú đã đồng bộ mà bạn có quyền đọc. Kết quả kèm nguồn để bạn kiểm tra.": "AI answers using synced notes you can read, with sources for you to check.",
-  "AI đang xử lý yêu cầu khác. Hãy thử lại sau ít phút.":
-      "AI is processing another request. Try again in a few minutes.",
+  "Dịch vụ AI đang bận. Hãy thử lại sau ít phút.":
+      "The AI service is busy. Try again in a few minutes.",
   "Biên bản cuộc họp": "Meeting notes",
   "Biến trao đổi thành quyết định và việc cần làm.":
       "Turn discussions into decisions and next steps.",

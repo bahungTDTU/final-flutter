@@ -1,0 +1,20 @@
+{
+  "date_local": "2026-11-19T20:07:57+07:00",
+  "target": "Chrome 157.0.8103.79, local Flutter Web release",
+  "frontend": "http://127.0.0.1:17357",
+  "qa_backend": "http://127.0.0.1:18245",
+  "result": {
+    "provider": "gemini",
+    "model": "gemini-3.1-flash-lite",
+    "summary": "Dự án Orion có lịch nộp vào ngày 20 tháng 11 năm 2026.",
+    "regenerated": "Dự án Orion có lịch nộp vào ngày 20 tháng 11 năm 2026.",
+    "originalUnchanged": true,
+    "answer": "Dự án Orion được nộp vào ngày 20 tháng 11 năm 2026 với ngân sách là 300.000 đồng.",
+    "sources": [
+      "Orion ngân sách",
+      "Orion lịch nộp"
+    ],
+    "opened": "Orion lịch nộp",
+    "busyResponses": 0
+  }
+}

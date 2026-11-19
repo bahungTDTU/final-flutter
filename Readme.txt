@@ -71,19 +71,22 @@ Không dùng các bước local thay nghiệm thu release hoặc tự đánh d�
 
 ## Setup trên Windows
 
-AI: xem [docs/AI_FEATURES.md](docs/AI_FEATURES.md). Dùng Gemini key của project Free tier,
-chỉ cấu hình ở backend, không đặt trong Flutter hoặc Git. Key cũ đã xuất hiện trong output
-công cụ ở lượt05/10 và chưa được lưu/sử dụng; cần thay trước khi cấu hình.
+Để bật AI, điền `GEMINI_API_KEY` trong file `.env` ở gốc dự án, cùng file dùng
+cho SMTP. Nếu chưa có file, sao chép `.env.example` thành `.env`. Dùng key của
+project Free Tier trong Google AI Studio. Backend mặc định dùng `gemini-3.1-flash-lite`.
+[Hướng dẫn cấu hình AI](docs/AI_FEATURES.md).
+
+```dotenv
+GEMINI_API_KEY=
+```
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File scripts/configure_ai.ps1
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts/start_backend.ps1
 ```
 
-Nhập key vào prompt che ký tự. File local `backend/state/gemini-api-key.txt` bị Git bỏ qua;
-không đưa vào gói nộp. `.env.example` có `GEMINI_API_KEY`/`GEMINI_API_KEY_FILE`/`GEMINI_MODEL`.
-`start_backend.ps1` tự chọn file local; backend deployment cần service env/secret store riêng.
-Free tier có thể dùng dữ liệu gửi lên để cải thiện sản phẩm; AI UI có thông báo trước khi gửi.
+Khởi động lại backend sau khi cập nhật key. Git bỏ qua file `.env`. Khi deploy,
+đặt key trong biến môi trường hoặc secret store của backend. AI UI thông báo
+trước khi gửi ghi chú vì Google có thể dùng dữ liệu Free Tier để cải thiện sản phẩm.
 
 Nghiệm thu local có provider double tường minh, không gọi Google:
 
@@ -94,11 +97,13 @@ Nghiệm thu local có provider double tường minh, không gọi Google:
 # Android debug/emulator cần adb reverse8012, giống hướng dẫn integration bên dưới.
 & 'D:\Android\sdk\platform-tools\adb.exe' reverse tcp:8012 tcp:8012
 & 'C:\Users\LENOVO\flutter-sdk\bin\flutter.bat' drive --driver=test_driver/ai.dart --target=integration_test/ai_flow_test.dart -d emulator-5554 --dart-define=API_URL=http://127.0.0.1:8012 --enable-software-rendering --no-enable-impeller
-# Chỉ khi đã thay/config key: actual Gemini QA với disposable notes.
-& .\.venv\Scripts\python.exe scripts/qa_ai.py --url http://127.0.0.1:8000 --live --output output/ai-live.json
+# Sau khi cấu hình key Free Tier: Gemini thật với SQLite tạm và SMTP tắt.
+& .\.venv\Scripts\python.exe scripts/qa_ai.py --live --output output/ai-live.json
 ```
 
-`--live` từ chối provider fixture; không được gọi fixture PASS là Gemini đã nghiệm thu.
+`--live` dùng API FastAPI qua ASGI, gửi ghi chú mẫu đến Gemini và lưu kết quả QA.
+Dùng `--live --serve 18245` để chạy Web và Android với SQLite tạm, SMTP tắt.
+[Các lệnh kiểm tra Web và Android](docs/AI_FEATURES.md#cấu-hình-gemini-free-tier).
 Hai AI routes chỉ đọc bản server; summary không overwrite/autosave vào note, pending draft
 bị chặn. Q&A retrieval lọc quyền/unlock trước prompt, recheck mọi nguồn sau inference;
 result ở RAM, citation mở note thật với recheck. Hạn mức/giới hạn ở AI_FEATURES.md.
