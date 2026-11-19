@@ -1,0 +1,23 @@
+services:
+  backend:
+    environment:
+      WEB_ORIGINS: https://${NOTETOGETHER_HOST:?Set the public DNS name}
+
+  web:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    depends_on:
+      backend:
+        condition: service_healthy
+    environment:
+      NOTETOGETHER_HOST: ${NOTETOGETHER_HOST:?Set the public DNS name}
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./build/web:/srv:ro
+      - ./deploy/azure/Caddyfile:/etc/caddy/Caddyfile:ro
+      - tls-data:/data
+
+volumes:
+  tls-data:

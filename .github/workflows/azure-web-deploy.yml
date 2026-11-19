@@ -1,0 +1,88 @@
+name: Deploy Web to Azure
+
+on:
+  workflow_run:
+    workflows: [Quality]
+    types: [completed]
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: notetogether-azure-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: >-
+      vars.AZURE_DEPLOY_HOST != '' &&
+      (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/master' ||
+      github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.event == 'push' && github.event.workflow_run.head_branch == 'master' &&
+      github.event.workflow_run.head_repository.full_name == github.repository)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    environment:
+      name: azure-production
+      url: https://${{ vars.AZURE_DEPLOY_HOST }}
+    env:
+      DEPLOY_SHA: ${{ github.event.workflow_run.head_sha || github.sha }}
+      DEPLOY_HOST: ${{ vars.AZURE_DEPLOY_HOST }}
+      DEPLOY_USER: ${{ vars.AZURE_DEPLOY_USER }}
+
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: ${{ env.DEPLOY_SHA }}
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: '3.12'
+      - uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2
+        with:
+          flutter-version: '3.47.1'
+          channel: stable
+          cache: true
+      - name: Build the public Web bundle
+        shell: bash
+        run: |
+          python scripts/release_preflight.py --api-url "https://$DEPLOY_HOST"
+          flutter pub get --enforce-lockfile
+          flutter build web --release --no-web-resources-cdn --dart-define="API_URL=https://$DEPLOY_HOST"
+          bash deploy/azure/package.sh "$DEPLOY_SHA" "$RUNNER_TEMP/notetogether.tar.gz"
+      - name: Deploy and verify HTTPS
+        shell: bash
+        env:
+          SSH_KEY: ${{ secrets.AZURE_DEPLOY_SSH_KEY }}
+          SSH_KNOWN_HOSTS: ${{ secrets.AZURE_DEPLOY_KNOWN_HOSTS }}
+        run: |
+          if [[ ! $DEPLOY_USER =~ ^[a-z_][a-z0-9_-]*$ || ! $DEPLOY_HOST =~ ^[a-z0-9.-]+$ ]]; then
+            echo "Set a valid Azure deployment host and SSH user." >&2
+            exit 1
+          fi
+          : "${SSH_KEY:?Set AZURE_DEPLOY_SSH_KEY in the azure-production environment}"
+          : "${SSH_KNOWN_HOSTS:?Set AZURE_DEPLOY_KNOWN_HOSTS in the azure-production environment}"
+          head_sha=$(git ls-remote origin refs/heads/master | cut -f1)
+          if [[ ! $head_sha =~ ^[0-9a-f]{40}$ ]]; then
+            echo "Could not verify the latest master revision." >&2
+            exit 1
+          fi
+          if [[ $head_sha != "$DEPLOY_SHA" ]]; then
+            echo "A newer master revision is available. Skipping the older build."
+            exit 0
+          fi
+          umask 077
+          ssh_dir=$(mktemp -d "$RUNNER_TEMP/notetogether-ssh.XXXXXXXX")
+          trap 'rm -f "$ssh_dir/key" "$ssh_dir/known_hosts"; rmdir "$ssh_dir"' EXIT
+          printf '%s\n' "$SSH_KEY" > "$ssh_dir/key"
+          printf '%s\n' "$SSH_KNOWN_HOSTS" > "$ssh_dir/known_hosts"
+          unset SSH_KEY SSH_KNOWN_HOSTS
+          ssh_options=(-i "$ssh_dir/key" -o BatchMode=yes -o StrictHostKeyChecking=yes
+            -o "UserKnownHostsFile=$ssh_dir/known_hosts" -o ConnectTimeout=15)
+          target="$DEPLOY_USER@$DEPLOY_HOST"
+          incoming=.local/share/notetogether/incoming
+          ssh "${ssh_options[@]}" "$target" "umask 077; mkdir -p '$incoming'"
+          scp "${ssh_options[@]}" "$RUNNER_TEMP/notetogether.tar.gz" "$target:$incoming/$DEPLOY_SHA.tar.gz"
+          ssh "${ssh_options[@]}" "$target" "bash -s -- '$DEPLOY_SHA' '$DEPLOY_HOST'" < deploy/azure/activate.sh

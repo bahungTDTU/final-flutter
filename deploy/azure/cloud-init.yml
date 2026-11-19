@@ -1,0 +1,10 @@
+#cloud-config
+ssh_pwauth: false
+package_update: true
+packages:
+  - docker.io
+  - docker-compose-v2
+  - curl
+runcmd:
+  - [systemctl, enable, --now, docker]
+  - [usermod, -aG, docker, notedeploy]
