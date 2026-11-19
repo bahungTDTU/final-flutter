@@ -2,6 +2,9 @@ services:
   backend:
     environment:
       WEB_ORIGINS: https://${NOTETOGETHER_HOST:?Set the public DNS name}
+    networks:
+      - default
+      - gemini-egress
 
   web:
     image: caddy:2-alpine
@@ -21,3 +24,8 @@ services:
 
 volumes:
   tls-data:
+
+networks:
+  gemini-egress:
+    enable_ipv4: false
+    enable_ipv6: true

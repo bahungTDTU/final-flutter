@@ -12,7 +12,8 @@ volume `tls-data`. Compose dùng project name `notetogether` cố định khi c�
   hạn mức tín dụng, ổ đĩa OS lưu bền, IP công khai và một DNS name label.
   Giữ spending limit. Tên DNS phải trỏ tới VM và các cổng TCP 80, 443 phải
   đến được Caddy để cấp chứng chỉ. Backend cổng 8000 chỉ bind loopback.
-- Cài Docker Engine và Compose v2 với `up --wait`. Tài khoản SSH dành cho
+- Cài Docker Engine và Compose v2.33.1 trở lên để hỗ trợ `up --wait` và
+  mạng riêng cho kết nối IPv6. Tài khoản SSH dành cho
   môi trường deploy cần chạy được `docker compose` và có Python 3, curl, tar,
   flock. Mở SSH cho runner triển khai và dùng đăng nhập bằng khóa. Lấy khóa
   host SSH từ VM qua kênh Azure xác thực để ghim trong GitHub.
@@ -22,6 +23,11 @@ volume `tls-data`. Compose dùng project name `notetogether` cố định khi c�
   Đặt quyền đọc cho chủ file. Điền `SMTP_USERNAME`, `SMTP_PASSWORD` và
   `GEMINI_API_KEY` trực tiếp ở VM. Compose thiết lập sẵn origin và đường
   dẫn dữ liệu. Bản chấm mới khởi động với database riêng.
+
+Nếu Gemini trả lỗi vị trí với IPv4, kiểm tra một yêu cầu mẫu trực tiếp qua
+IPv6 của VM trước khi đặt `GEMINI_IPV6=1` trong `backend.env`. Backend Azure
+có thêm mạng Docker chỉ IPv6 cho kết nối này. Cờ chỉ tác động đến Gemini
+và giữ kết nối trực tiếp tới API Google.
 
 ## Kết nối GitHub Actions
 

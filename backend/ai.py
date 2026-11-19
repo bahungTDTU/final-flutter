@@ -40,12 +40,13 @@ class Validation(BaseModel):
 class GeminiProvider:
     mode = 'gemini'
 
-    def __init__(self, key, model=DEFAULT_GEMINI_MODEL, *, transport=None):
+    def __init__(self, key, model=DEFAULT_GEMINI_MODEL, *, transport=None, use_ipv6=False):
         if not re.fullmatch(r'[a-zA-Z0-9.\-]{1,100}', model):
             raise ValueError('Invalid GEMINI_MODEL')
         self._key = key
         self.model = model
         self.transport = transport
+        self._use_ipv6 = use_ipv6
 
     def generate(self, kind, question, sources):
         schema = {'type': 'OBJECT', 'properties': {'summary': {'type': 'STRING'}}, 'required': ['summary']}
@@ -75,7 +76,10 @@ class GeminiProvider:
         }
         # Key in header, never URL. No SDK telemetry, tools, uploads, automatic retries or paid fallback.
         try:
-            with httpx.Client(timeout=45, transport=self.transport, follow_redirects=False) as client:
+            transport = self.transport
+            if self._use_ipv6 and transport is None:
+                transport = httpx.HTTPTransport(local_address='::')
+            with httpx.Client(timeout=45, transport=transport, follow_redirects=False) as client:
                 with client.stream('POST',
                     f'https://generativelanguage.googleapis.com/v1beta/models/{self.model}:generateContent',
                     headers={'x-goog-api-key': self._key}, json=payload) as response:
@@ -136,7 +140,7 @@ def provider_from_environment(env):
     if len(key) > 512 or any(c.isspace() for c in key):
         raise ValueError('Invalid Gemini key configuration')
     model = env.get('GEMINI_MODEL', '').strip() or DEFAULT_GEMINI_MODEL
-    return GeminiProvider(key, model)
+    return GeminiProvider(key, model, use_ipv6=env.get('GEMINI_IPV6', '').strip() == '1')
 
 
 STOP_WORDS = set('toi ban cac nhung cua la va voi cho trong ve co gi nao nhu the hay mot duoc can toi minh '

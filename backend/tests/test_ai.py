@@ -239,6 +239,27 @@ def test_gemini_wire_protocol_bounds_and_prompt_data_are_separate():
         GeminiProvider('key', 'model/path?key=bad')
 
 
+def test_configured_gemini_ipv6_uses_a_fresh_transport_per_request(monkeypatch):
+    addresses = []
+
+    def send(request):
+        assert request.url.host == 'generativelanguage.googleapis.com'
+        assert request.headers['x-goog-api-key'] == 'local-test-key'
+        return httpx.Response(200, json={'candidates': [{
+            'finishReason': 'STOP', 'content': {'parts': [{'text': '{"summary":"ok"}'}]},
+        }]})
+
+    def transport(*, local_address):
+        addresses.append(local_address)
+        return httpx.MockTransport(send)
+
+    monkeypatch.setattr(httpx, 'HTTPTransport', transport)
+    provider = provider_from_environment({'GEMINI_API_KEY': 'local-test-key', 'GEMINI_IPV6': '1'})
+    for _ in range(2):
+        assert provider.generate('summary', '', [{'title': 'Test', 'context': 'Example'}]) == {'summary': 'ok'}
+    assert addresses == ['::', '::']
+
+
 @pytest.mark.parametrize('status,detail', [
     (429, 'AI_QUOTA'), (403, 'AI_CONFIGURATION'), (500, 'AI_PROVIDER_ERROR'), (503, 'AI_BUSY'),
 ])
