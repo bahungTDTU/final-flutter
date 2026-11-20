@@ -31,9 +31,17 @@ import 'workspace.dart';
 import 'security_center.dart';
 
 class UnverifiedBanner extends StatelessWidget {
-  const UnverifiedBanner({super.key, required this.onCheck, this.delivery});
+  const UnverifiedBanner({
+    super.key,
+    required this.onCheck,
+    this.delivery,
+    this.onDismiss,
+  });
   final VoidCallback onCheck;
   final String? delivery;
+
+  /// Hides the reminder for this session so it stops pushing notes down.
+  final VoidCallback? onDismiss;
   @override
   Widget build(BuildContext context) => StatusNotice(
     icon: Icons.mark_email_unread_outlined,
@@ -44,7 +52,20 @@ class UnverifiedBanner extends StatelessWidget {
             "Email chưa xác minh. Mã đang chờ gửi; ghi chú vẫn dùng được.",
           )
         : context.tr("Email của bạn chưa được xác minh."),
-    action: TextButton(onPressed: onCheck, child: Text(context.tr("Xác minh"))),
+    // Wrap so the two actions stack instead of overflowing at large text.
+    action: Wrap(
+      crossAxisAlignment: WrapCrossAlignment.center,
+      children: [
+        TextButton(onPressed: onCheck, child: Text(context.tr("Xác minh"))),
+        if (onDismiss != null)
+          IconButton(
+            key: const Key('dismiss-unverified'),
+            tooltip: context.tr("Ẩn nhắc nhở đến lần mở sau"),
+            onPressed: onDismiss,
+            icon: const Icon(Icons.close),
+          ),
+      ],
+    ),
   );
 }
 
@@ -84,6 +105,8 @@ class _HomeScreenState extends State<HomeScreen> {
   Timer? searchDelay;
   final listingCache = NoteListingCache();
   bool routeCurrent = true;
+  // Session-only: the reminder returns on the next launch until verified.
+  bool unverifiedHidden = false;
   late List<Object?> observedView;
   AppController get c => widget.controller;
   @override
@@ -256,6 +279,8 @@ class _HomeScreenState extends State<HomeScreen> {
   }) => DashboardHeader(
     key: const Key('dashboard-header'),
     workbench: studio,
+    // Intro copy and art only help an empty library; then notes come first.
+    dense: c.notes.isNotEmpty,
     title: destination == 1
         ? (small
               ? context.tr("Được chia sẻ")
@@ -277,13 +302,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 MediaQuery.textScalerOf(context).scale(1) >= 1.5 ||
                 MediaQuery.sizeOf(context).width < 900,
           ),
-    notice: c.user?['verified'] == true && c.error == null
+    notice: (c.user?['verified'] == true || unverifiedHidden) && c.error == null
         ? null
         : Column(
             children: [
-              if (c.user?['verified'] != true)
+              if (c.user?['verified'] != true && !unverifiedHidden)
                 UnverifiedBanner(
                   delivery: c.emailDelivery,
+                  onDismiss: () => setState(() => unverifiedHidden = true),
                   onCheck: () => Navigator.of(context).push(
                     MaterialPageRoute<void>(
                       builder: (_) => TokenScreen(controller: c),
@@ -291,7 +317,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               if (c.error != null) ...[
-                if (c.user?['verified'] != true) const SizedBox(height: 12),
+                if (c.user?['verified'] != true && !unverifiedHidden)
+                  const SizedBox(height: 12),
                 StatusNotice(
                   message: c.localWriteFailed
                       ? c.error!
@@ -900,6 +927,21 @@ class _HomeScreenState extends State<HomeScreen> {
                                                           ),
                                                         ),
                                                       )
+                                                    : destination == 0
+                                                    ? FilledButton.icon(
+                                                        key: const Key(
+                                                          'empty-new-note',
+                                                        ),
+                                                        onPressed: () => open(),
+                                                        icon: const Icon(
+                                                          Icons.add,
+                                                        ),
+                                                        label: Text(
+                                                          context.tr(
+                                                            "Tạo ghi chú đầu tiên",
+                                                          ),
+                                                        ),
+                                                      )
                                                     : null,
                                               ),
                                             ),
@@ -1065,6 +1107,69 @@ class _HomeScreenState extends State<HomeScreen> {
     ];
   }
 
+  /// Confirms, then removes every recipient of a locked note without unlock.
+  Future<void> revokeAll(Note note) async {
+    final confirmed =
+        await showDialog<bool>(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: Text(context.tr("Thu hồi mọi chia sẻ?")),
+            content: Text(
+              context.tr(
+                "Mọi người được chia sẻ sẽ mất quyền truy cập ngay. Không cần mở khóa ghi chú.",
+              ),
+            ),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context, false),
+                child: Text(context.tr("Hủy")),
+              ),
+              FilledButton(
+                key: const Key('confirm-revoke-all'),
+                style: FilledButton.styleFrom(
+                  backgroundColor: Theme.of(context).colorScheme.error,
+                  foregroundColor: Theme.of(context).colorScheme.onError,
+                ),
+                onPressed: () => Navigator.pop(context, true),
+                child: Text(context.tr("Thu hồi")),
+              ),
+            ],
+          ),
+        ) ??
+        false;
+    if (!confirmed || !mounted) return;
+    final messenger = ScaffoldMessenger.of(context);
+    final done = context.tr("Đã thu hồi mọi chia sẻ.");
+    final failed = context.tr(
+      "Không thu hồi được. Kiểm tra kết nối rồi thử lại.",
+    );
+    try {
+      await c.revokeAllShares(note);
+      messenger.showSnackBar(SnackBar(content: Text(done)));
+    } catch (_) {
+      messenger.showSnackBar(SnackBar(content: Text(failed)));
+    }
+  }
+
+  /// Leading icon + label; [color] marks destructive actions (icon and text).
+  PopupMenuItem<String> _menuItem(
+    String value,
+    IconData icon,
+    String label, {
+    Color? color,
+  }) => PopupMenuItem(
+    value: value,
+    child: Row(
+      children: [
+        Icon(icon, size: 20, color: color),
+        const SizedBox(width: 12),
+        Flexible(
+          child: Text(label, style: TextStyle(color: color)),
+        ),
+      ],
+    ),
+  );
+
   Widget noteCard(
     Note note, {
     bool compact = false,
@@ -1097,6 +1202,8 @@ class _HomeScreenState extends State<HomeScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ExcludeSemantics(
+                  // Locked cards keep their status for screen readers here.
+                  excluding: !note.locked,
                   child: Container(
                     padding: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
@@ -1114,6 +1221,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           : Icons.description_outlined,
                       size: 20,
                       color: note.locked ? colors.onSurfaceVariant : tone!.ink,
+                      semanticLabel: note.locked ? context.tr("Đã khóa") : null,
                     ),
                   ),
                 ),
@@ -1131,6 +1239,20 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                 ),
+                if (note.role == 'owner' && note.locked && note.isShared)
+                  PopupMenuButton<String>(
+                    key: Key('locked-menu-${note.id}'),
+                    tooltip: context.tr("Thao tác ghi chú"),
+                    onSelected: (_) => revokeAll(note),
+                    itemBuilder: (_) => [
+                      _menuItem(
+                        'revoke-all',
+                        Icons.person_remove_outlined,
+                        context.tr("Thu hồi mọi chia sẻ"),
+                        color: Theme.of(context).colorScheme.error,
+                      ),
+                    ],
+                  ),
                 if (note.role == 'owner' && !note.locked)
                   PopupMenuButton<String>(
                     tooltip: context.tr("Thao tác ghi chú"),
@@ -1171,25 +1293,31 @@ class _HomeScreenState extends State<HomeScreen> {
                       }
                     },
                     itemBuilder: (_) => [
-                      PopupMenuItem(
-                        value: 'share',
-                        child: Text(context.tr("Chia sẻ")),
+                      _menuItem(
+                        'share',
+                        Icons.person_add_alt_1_outlined,
+                        context.tr("Chia sẻ"),
                       ),
-                      PopupMenuItem(
-                        value: 'pin',
-                        child: Text(
-                          note.pinnedAt == null
-                              ? context.tr('Ghim')
-                              : context.tr("Bỏ ghim"),
-                        ),
+                      _menuItem(
+                        'pin',
+                        note.pinnedAt == null
+                            ? Icons.push_pin_outlined
+                            : Icons.push_pin,
+                        note.pinnedAt == null
+                            ? context.tr('Ghim')
+                            : context.tr("Bỏ ghim"),
                       ),
-                      PopupMenuItem(
-                        value: 'protect',
-                        child: Text(context.tr("Bật khóa ghi chú")),
+                      _menuItem(
+                        'protect',
+                        Icons.lock_outline,
+                        context.tr("Bật khóa ghi chú"),
                       ),
-                      PopupMenuItem(
-                        value: 'delete',
-                        child: Text(context.tr("Xóa")),
+                      const PopupMenuDivider(),
+                      _menuItem(
+                        'delete',
+                        Icons.delete_outline,
+                        context.tr("Xóa"),
+                        color: Theme.of(context).colorScheme.error,
                       ),
                     ],
                   ),
@@ -1246,12 +1374,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       semanticLabel: context.tr("Ghi chú được chia sẻ"),
                     ),
                   ),
-                if (note.locked)
-                  Icon(
-                    Icons.lock_outline,
-                    size: 20,
-                    semanticLabel: context.tr("Đã khóa"),
-                  ),
+                // The card's leading lock and "Ghi chú đã khóa" title already
+                // state the lock; a second footer padlock only repeated it.
                 if (note.role != 'owner')
                   Text(
                     note.role == 'viewer'
@@ -1513,10 +1637,10 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {});
   }
 
-  Future<void> settings() => showModalBottomSheet<void>(
-    context: context,
-    isScrollControlled: true,
-    builder: (context) => AnimatedBuilder(
+  /// Profile & preferences: a centred dialog on wide windows (a full-width
+  /// bottom sheet there reads as a mobile pattern), a sheet on phones.
+  Future<void> settings() {
+    Widget panel(BuildContext context) => AnimatedBuilder(
       animation: c,
       builder: (context, _) => SafeArea(
         child: SingleChildScrollView(
@@ -1702,8 +1826,30 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
-    ),
-  );
+    );
+    if (MediaQuery.sizeOf(context).width >= 1024) {
+      return showDialog<void>(
+        context: context,
+        builder: (context) => Dialog(
+          key: const Key('settings-dialog'),
+          insetPadding: const EdgeInsets.all(32),
+          clipBehavior: Clip.antiAlias,
+          child: ConstrainedBox(
+            constraints: BoxConstraints(
+              maxWidth: 640,
+              maxHeight: MediaQuery.sizeOf(context).height * .88,
+            ),
+            child: panel(context),
+          ),
+        ),
+      );
+    }
+    return showModalBottomSheet<void>(
+      context: context,
+      isScrollControlled: true,
+      builder: panel,
+    );
+  }
 
   Future<void> changePassword() => showDialog<void>(
     context: context,

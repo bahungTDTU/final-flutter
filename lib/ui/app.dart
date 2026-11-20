@@ -133,6 +133,8 @@ class _AuthScreenState extends State<AuthScreen> {
       name = TextEditingController(),
       confirm = TextEditingController();
   bool register = false, showPassword = false;
+  // Errors appear on submit; afterwards each field revalidates as it is fixed.
+  AutovalidateMode autovalidate = AutovalidateMode.disabled;
   @override
   void dispose() {
     email.dispose();
@@ -143,7 +145,11 @@ class _AuthScreenState extends State<AuthScreen> {
   }
 
   Future<void> submit() async {
-    if (widget.controller.busy || !form.currentState!.validate()) return;
+    if (widget.controller.busy) return;
+    if (!form.currentState!.validate()) {
+      setState(() => autovalidate = AutovalidateMode.onUserInteraction);
+      return;
+    }
     await widget.controller.authenticate(
       register: register,
       email: email.text.trim(),
@@ -172,8 +178,8 @@ class _AuthScreenState extends State<AuthScreen> {
                     const Brand(),
                     const Spacer(),
                     Text(
-                      context.tr("KHÔNG GIAN CHO Ý TƯỞNG"),
-                      style: TextStyle(letterSpacing: 2, fontSize: 12),
+                      context.tr("Không gian cho ý tưởng"),
+                      style: TextStyle(fontSize: 13),
                     ),
                     const SizedBox(height: 24),
                     Text(
@@ -198,8 +204,8 @@ class _AuthScreenState extends State<AuthScreen> {
                       children: [
                         Expanded(
                           child: Text(
-                            'NOTE / TOGETHER',
-                            style: TextStyle(letterSpacing: 2),
+                            'NoteTogether',
+                            style: TextStyle(fontWeight: FontWeight.w500),
                           ),
                         ),
                         Icon(Icons.auto_stories_outlined, size: 40),
@@ -223,6 +229,7 @@ class _AuthScreenState extends State<AuthScreen> {
                   ),
                   child: Form(
                     key: form,
+                    autovalidateMode: autovalidate,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
@@ -384,7 +391,12 @@ class _AuthScreenState extends State<AuthScreen> {
                               ? null
                               : () => setState(() {
                                   register = !register;
+                                  autovalidate = AutovalidateMode.disabled;
+                                  // reset() clears errors but also values;
+                                  // keep the email the person already typed.
+                                  final typed = email.text;
                                   form.currentState?.reset();
+                                  email.text = typed;
                                 }),
                           child: Text(
                             register

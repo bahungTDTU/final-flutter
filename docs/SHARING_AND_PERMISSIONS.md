@@ -34,6 +34,9 @@ UI chưa nghiệm thu, API owner/grant/relock đã có tests.
   Replay đã ack trả **catalogue hiện tại**, không reapply quyền đã bị thu hồi ở thao tác sau.
 - List/mutation private,no-store; không có endpoint recipient đọc danh sách email người nhận khác.
   Note recipient chỉ có shared_by owner và shared_at của chính mình; owner chỉ shared_count.
+- Thu hồi (20/11/2026) không cần mở khóa ghi chú: `DELETE /notes/{id}/shares/{user_id}` và
+  `DELETE /notes/{id}/shares` (thu hồi tất cả, chỉ owner, trả `revoked` là số lượng, không trả email/tên).
+  Xem danh sách người nhận vẫn cần mở khóa (423). UI: menu "Thu hồi mọi chia sẻ" trên thẻ khóa.
 - Share revision độc lập content revision; cấp/đổi/thu hồi không sửa note content/title/pin/labels.
   User IDs/role server xác định; payload note không đổi owner/ACL/protection.
 

@@ -80,7 +80,7 @@ class _AiQuestionsPanelState extends State<AiQuestionsPanel>
             "AI tổng hợp từ ghi chú đã đồng bộ mà bạn có quyền đọc. Kết quả kèm nguồn để bạn kiểm tra.",
           ),
           icon: Icons.auto_awesome_outlined,
-          eyebrow: context.tr("TRỢ LÝ GHI CHÚ"),
+          eyebrow: context.tr("Trợ lý ghi chú"),
           accent: 2,
         ),
         const SizedBox(height: 16),
@@ -90,6 +90,17 @@ class _AiQuestionsPanelState extends State<AiQuestionsPanel>
           ),
           icon: Icons.info_outline,
         ),
+        if (session.available == false) ...[
+          const SizedBox(height: 12),
+          StatusNotice(
+            key: const Key('ai-unavailable'),
+            message: context.tr(
+              "AI chưa được cấu hình trên máy chủ. Hãy thử lại sau.",
+            ),
+            icon: Icons.cloud_off_outlined,
+            error: true,
+          ),
+        ],
         const SizedBox(height: 24),
         Form(
           key: form,
@@ -98,7 +109,8 @@ class _AiQuestionsPanelState extends State<AiQuestionsPanel>
                 Text(context.trMessage(message)),
             key: const Key('ai-question'),
             controller: question,
-            enabled: !session.busy && session.active,
+            enabled:
+                !session.busy && session.active && session.available != false,
             minLines: 2,
             maxLines: 5,
             maxLength: 1000,
@@ -120,7 +132,10 @@ class _AiQuestionsPanelState extends State<AiQuestionsPanel>
           children: [
             FilledButton.icon(
               key: const Key('ai-ask'),
-              onPressed: session.active && !session.busy ? ask : null,
+              onPressed:
+                  session.active && !session.busy && session.available != false
+                  ? ask
+                  : null,
               icon: const Icon(Icons.auto_awesome),
               label: Text(
                 session.busy
@@ -149,7 +164,8 @@ class _AiQuestionsPanelState extends State<AiQuestionsPanel>
             padding: const EdgeInsets.only(top: 16),
             child: StatusNotice(
               message: session.error!,
-              icon: Icons.info_outline,
+              icon: Icons.error_outline,
+              error: true,
             ),
           ),
         if (session.result != null) ...[
@@ -279,6 +295,16 @@ class _AiSummaryDialogState extends State<AiSummaryDialog>
                 "Nội dung sẽ được gửi tới Google. Free tier có thể dùng dữ liệu để cải thiện sản phẩm; hãy dùng ghi chú phù hợp.",
               ),
             ),
+            if (session.available == false) ...[
+              const SizedBox(height: 12),
+              StatusNotice(
+                message: context.tr(
+                  "AI chưa được cấu hình trên máy chủ. Hãy thử lại sau.",
+                ),
+                icon: Icons.cloud_off_outlined,
+                error: true,
+              ),
+            ],
             const SizedBox(height: 20),
             Wrap(
               spacing: 12,
@@ -286,7 +312,10 @@ class _AiSummaryDialogState extends State<AiSummaryDialog>
               children: [
                 FilledButton.icon(
                   key: const Key('ai-summary-generate'),
-                  onPressed: session.active && !session.busy
+                  onPressed:
+                      session.active &&
+                          !session.busy &&
+                          session.available != false
                       ? () => session.generate()
                       : null,
                   icon: const Icon(Icons.auto_awesome),
@@ -315,7 +344,8 @@ class _AiSummaryDialogState extends State<AiSummaryDialog>
                 padding: const EdgeInsets.only(top: 16),
                 child: StatusNotice(
                   message: session.error!,
-                  icon: Icons.info_outline,
+                  icon: Icons.error_outline,
+                  error: true,
                 ),
               ),
             if (session.result != null) ...[

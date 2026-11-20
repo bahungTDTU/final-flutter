@@ -349,7 +349,7 @@ class _PlannerSliverState extends State<PlannerSliver>
                             "Chọn ghi chú, đặt ưu tiên và chia công việc thành ba chặng rõ ràng.",
                           ),
                           icon: Icons.view_kanban_outlined,
-                          eyebrow: context.tr("KẾ HOẠCH CÁ NHÂN"),
+                          eyebrow: context.tr("Kế hoạch cá nhân"),
                           panel: false,
                         ),
                         const SizedBox(height: 20),

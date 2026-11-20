@@ -64,7 +64,7 @@ class LibraryDestination extends StatelessWidget {
         title: Text(
           title,
           style: TextStyle(
-            fontWeight: selected ? FontWeight.w700 : FontWeight.w500,
+            fontWeight: selected ? FontWeight.w600 : FontWeight.w500,
           ),
         ),
         trailing: Icon(icon, size: 19),
@@ -88,6 +88,7 @@ class DashboardHeader extends StatelessWidget {
     this.notice,
     this.workbench = false,
     this.syncIndicator,
+    this.dense = false,
   });
   final String title, detail, syncLabel;
   final int count;
@@ -97,6 +98,10 @@ class DashboardHeader extends StatelessWidget {
   final Widget? action, notice;
   final bool workbench;
   final Widget? syncIndicator;
+
+  /// Once the library has notes, drop the intro copy, eyebrow and art so the
+  /// first note card sits higher on the page.
+  final bool dense;
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -118,15 +123,14 @@ class DashboardHeader extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        if (!compact && !workbench) ...[
+        if (!compact && !workbench && !dense) ...[
           Row(
             children: [
               Expanded(
                 flex: 4,
                 child: Text(
-                  context.tr("KHÔNG GIAN GHI CHÚ"),
+                  context.tr("Không gian ghi chú"),
                   style: theme.textTheme.bodySmall?.copyWith(
-                    letterSpacing: 2,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
@@ -141,6 +145,7 @@ class DashboardHeader extends StatelessWidget {
           builder: (context, area) {
             final wide =
                 !compact &&
+                !dense &&
                 area.maxWidth >= 700 &&
                 MediaQuery.textScalerOf(context).scale(1) < 1.5;
             if (!workbench &&
@@ -212,7 +217,7 @@ class DashboardHeader extends StatelessWidget {
                     ],
                   ],
                 ),
-                if (!compact) ...[
+                if (!compact && !dense) ...[
                   const SizedBox(height: 12),
                   Text(detail, style: theme.textTheme.bodyMedium),
                 ],
@@ -243,6 +248,7 @@ class DashboardHeader extends StatelessWidget {
                 count: count,
                 total: total,
                 sync: sync,
+                dense: dense,
               );
             }
             if (!wide) {

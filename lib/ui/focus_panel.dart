@@ -138,7 +138,7 @@ class _FocusPanelState extends State<FocusPanel> {
                     "Làm một việc, nghỉ một chút và ghi nhận tiến độ của bạn.",
                   ),
                   icon: Icons.timer_outlined,
-                  eyebrow: context.tr("THỜI GIAN CỦA BẠN"),
+                  eyebrow: context.tr("Thời gian của bạn"),
                   accent: 2,
                   panel: false,
                 ),
@@ -154,7 +154,7 @@ class _FocusPanelState extends State<FocusPanel> {
                           time,
                           style: Theme.of(context).textTheme.displayLarge
                               ?.copyWith(
-                                fontWeight: FontWeight.w700,
+                                fontWeight: FontWeight.w600,
                                 color: Theme.of(context).colorScheme.primary,
                               ),
                         ),

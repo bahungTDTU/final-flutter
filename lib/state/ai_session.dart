@@ -22,7 +22,30 @@ class AiSession extends ChangeNotifier {
       const Duration(seconds: 10),
       (_) => unawaited(validate()),
     );
+    unawaited(checkAvailability());
   }
+
+  /// `null` until `/ai/status` answers; `false` when the server has no AI
+  /// provider, so the UI can explain before anyone types a question.
+  bool? available;
+
+  Future<void> checkAvailability() async {
+    if (!controller.online || sessionToken == null) return;
+    try {
+      final data = await controller.api.call(
+        'GET',
+        '/ai/status',
+        token: sessionToken,
+        timeout: const Duration(seconds: 10),
+      );
+      if (_disposed || data is! Map) return;
+      available = data['enabled'] == true;
+      notifyListeners();
+    } catch (_) {
+      // Unknown status keeps AI usable; generate() still reports real errors.
+    }
+  }
+
   final AppController controller;
   final String? noteId;
   final bool Function()? protectedGate;
@@ -176,6 +199,9 @@ class AiSession extends ChangeNotifier {
         result = null;
         busy = false;
         error = message(e);
+        if (e is ApiException && e.detail == 'AI_NOT_CONFIGURED') {
+          available = false;
+        }
       }
     }
     if (!_disposed && attempt == _epoch) notifyListeners();

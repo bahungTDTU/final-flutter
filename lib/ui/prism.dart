@@ -111,6 +111,24 @@ class PrismPalette extends ThemeExtension<PrismPalette> {
         );
 }
 
+/// Shared motion scale (transitions.dev): exits run ~60% of their entrance,
+/// only opacity/transform animate, and reduced motion resolves to zero.
+abstract final class MotionTokens {
+  static const micro = Duration(milliseconds: 80);
+  static const quick = Duration(milliseconds: 150);
+  static const fast = Duration(milliseconds: 250);
+  static const medium = Duration(milliseconds: 350);
+
+  /// smooth-out `cubic-bezier(0.22, 1, 0.36, 1)`: open, close, resize, move.
+  static const Curve enter = Cubic(0.22, 1, 0.36, 1);
+
+  /// Same curve played as an exit: leaves quickly, settles without a tail.
+  static final Curve exit = enter.flipped;
+
+  /// Vertical rise for entering routes and surfaces, in logical pixels.
+  static const double rise = 8;
+}
+
 abstract final class PrismMotion {
   static const hover = Duration(milliseconds: 180);
   static const reveal = Duration(milliseconds: 420);
@@ -164,8 +182,23 @@ class PrismProgress extends StatelessWidget {
   );
 }
 
+/// Route motion: 250 ms smooth-out entrance rising [MotionTokens.rise], and a
+/// shorter 150 ms exit so a popped page never lingers over the one beneath.
 class PrismPageTransitions extends PageTransitionsBuilder {
   const PrismPageTransitions();
+
+  @override
+  Duration get transitionDuration => MotionTokens.fast;
+
+  @override
+  Duration get reverseTransitionDuration => MotionTokens.quick;
+
+  /// Eased progress for [value]; exits use the flipped curve.
+  static double progress(double value, AnimationStatus status) =>
+      status == AnimationStatus.reverse
+      ? MotionTokens.exit.transform(value)
+      : MotionTokens.enter.transform(value);
+
   @override
   Widget buildTransitions<T>(
     PageRoute<T> route,
@@ -175,15 +208,19 @@ class PrismPageTransitions extends PageTransitionsBuilder {
     Widget child,
   ) {
     if (MediaQuery.disableAnimationsOf(context)) return child;
-    final eased = animation.drive(CurveTween(curve: Curves.easeOutCubic));
-    return FadeTransition(
-      opacity: eased,
-      child: SlideTransition(
-        position: eased.drive(
-          Tween(begin: const Offset(0, .018), end: Offset.zero),
-        ),
-        child: child,
-      ),
+    return AnimatedBuilder(
+      animation: animation,
+      child: child,
+      builder: (_, child) {
+        final t = progress(animation.value, animation.status);
+        return Opacity(
+          opacity: t.clamp(0.0, 1.0),
+          child: Transform.translate(
+            offset: Offset(0, MotionTokens.rise * (1 - t)),
+            child: child,
+          ),
+        );
+      },
     );
   }
 }
@@ -492,29 +529,26 @@ class PrismAction extends StatelessWidget {
   final VoidCallback? onPressed;
   final Widget child;
   final Widget? icon;
+
+  /// Solid brand ink (no gradient): one flat primary per view reads as the
+  /// action, and the disabled state keeps the theme's own colours.
   @override
   Widget build(BuildContext context) {
     final style = FilledButton.styleFrom(
-      backgroundColor: onPressed == null ? null : Colors.transparent,
+      backgroundColor: onPressed == null
+          ? null
+          : PaletteTokens.of(context).brand[1],
       foregroundColor: onPressed == null ? null : Colors.white,
       shadowColor: Colors.transparent,
     );
-    return DecoratedBox(
-      decoration: BoxDecoration(
-        gradient: onPressed == null
-            ? null
-            : LinearGradient(colors: PaletteTokens.of(context).brand),
-        borderRadius: BorderRadius.circular(StudioStyle.control),
-      ),
-      child: icon == null
-          ? FilledButton(onPressed: onPressed, style: style, child: child)
-          : FilledButton.icon(
-              onPressed: onPressed,
-              style: style,
-              icon: icon!,
-              label: child,
-            ),
-    );
+    return icon == null
+        ? FilledButton(onPressed: onPressed, style: style, child: child)
+        : FilledButton.icon(
+            onPressed: onPressed,
+            style: style,
+            icon: icon!,
+            label: child,
+          );
   }
 }
 

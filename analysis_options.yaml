@@ -16,6 +16,8 @@ analyzer:
     - tmp/**
     - evidence/**
     - build/**
+    # Local QA toolchains/pub caches (gitignored) are not app sources.
+    - output/**
     - android/**
     - ios/**
     - web/**

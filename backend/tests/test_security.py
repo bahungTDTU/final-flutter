@@ -226,3 +226,32 @@ def test_invalid_registration_and_share(env):
     note_id = make_note(client, users[0])
     for email, status in [('missing@example.com', 404), ('owner@example.com', 422)]:
         assert client.post('/notes/' + note_id + '/shares', json={'email': email, 'role': 'viewer'}, headers=headers(users[0])).status_code == status
+
+
+def test_owner_revokes_shares_of_locked_note_without_unlock(env):
+    client, _, users = env
+    owner, recipient, stranger = users
+    note_id = make_note(client, owner)
+    url = '/notes/' + note_id
+    for user in (recipient, stranger):
+        assert client.post(url + '/shares', json={'email': user['user']['email'], 'role': 'viewer'},
+                           headers=headers(owner)).status_code == 200
+    protection = {'password': 'note-password-123', 'confirmation': 'note-password-123'}
+    assert client.post(url + '/protection', json=protection, headers=headers(owner)).status_code == 200
+    # The recipient unlocks, then loses that grant when access is revoked.
+    assert client.post(url + '/unlock', json={'password': 'note-password-123'}, headers=headers(recipient)).status_code == 200
+    # Recipient identities stay behind the unlock; revoking does not need it.
+    assert client.get(url + '/shares', headers=headers(owner)).status_code == 423
+    assert client.delete(url + '/shares/' + stranger['user']['id'], headers=headers(owner)).status_code == 200
+    assert client.get(url, headers=headers(stranger)).status_code == 404
+    # Only the owner may revoke, locked or not.
+    assert client.delete(url + '/shares', headers=headers(recipient)).status_code == 403
+    response = client.delete(url + '/shares', headers=headers(owner))
+    assert response.status_code == 200
+    assert response.json() == {'ok': True, 'revoked': 1}
+    assert 'email' not in response.text
+    assert client.get(url, headers=headers(recipient)).status_code == 404
+    assert client.post(url + '/unlock', json={'password': 'note-password-123'}, headers=headers(recipient)).status_code == 404
+    listing = client.get('/notes', headers=headers(owner)).json()
+    assert listing[0]['shared'] is False
+    assert client.delete(url + '/shares', headers=headers(stranger)).status_code == 404

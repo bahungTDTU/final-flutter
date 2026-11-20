@@ -111,10 +111,8 @@ class _DocumentWorkspaceState extends State<DocumentWorkspace> {
               children: [
                 Expanded(
                   child: Text(
-                    context.tr("NOTETOGETHER / TÀI LIỆU"),
-                    style: theme.textTheme.bodySmall?.copyWith(
-                      letterSpacing: 1.5,
-                    ),
+                    context.tr("NoteTogether / Tài liệu"),
+                    style: theme.textTheme.bodySmall?.copyWith(),
                   ),
                 ),
                 const SizedBox(width: 20),
@@ -135,7 +133,7 @@ class _DocumentWorkspaceState extends State<DocumentWorkspace> {
                   child: Text(
                     context.tr("Tiêu đề"),
                     style: theme.textTheme.bodySmall?.copyWith(
-                      fontWeight: FontWeight.w700,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
                 ),
@@ -196,7 +194,7 @@ class _DocumentWorkspaceState extends State<DocumentWorkspace> {
                   child: Text(
                     context.tr("Nội dung"),
                     style: theme.textTheme.bodySmall?.copyWith(
-                      fontWeight: FontWeight.w700,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
                 ),
