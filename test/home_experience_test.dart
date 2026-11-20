@@ -34,6 +34,49 @@ void main() {
         .load();
   });
 
+  testWidgets(
+    'Search counts keep tab totals and clear back to unfiltered count',
+    (tester) async {
+      final c = offlineController()
+        ..user!['verified'] = true
+        ..notes = [
+          note('match', title: 'Mạng máy tính'),
+          note('other', title: 'Khác'),
+          const Note(
+            id: 'shared',
+            title: 'Mạng máy tính',
+            content: '',
+            role: 'viewer',
+            revision: 1,
+            updatedAt: '2026-11-20',
+          ),
+        ];
+      await tester.pumpWidget(NoteTogetherApp(controller: c));
+      await tester.pumpAndSettle();
+      // Search input is debounced by 300 ms before the listing updates.
+      Future<void> search(String text) async {
+        await tester.enterText(find.byKey(const Key('note-search')), text);
+        await tester.pump(const Duration(milliseconds: 350));
+        await tester.pumpAndSettle();
+      }
+
+      expect(find.text('2 ghi chú'), findsOneWidget);
+      await search('mang may');
+      expect(find.text('1/2 ghi chú'), findsOneWidget);
+      await search('không tồn tại');
+      expect(find.text('0/2 ghi chú'), findsOneWidget);
+      await search('');
+      expect(find.text('2 ghi chú'), findsOneWidget);
+      await tester.tap(find.text('Được chia sẻ').first);
+      await tester.pumpAndSettle();
+      expect(find.text('1 ghi chú'), findsOneWidget);
+      await search('mang may');
+      expect(find.text('1/1 ghi chú'), findsOneWidget);
+      await tester.pumpWidget(const SizedBox());
+      c.dispose();
+    },
+  );
+
   testWidgets('Controller pulses update Home without rebuilding the app shell', (
     tester,
   ) async {
@@ -143,17 +186,17 @@ void main() {
         find.byKey(const Key('note-search')),
       );
       expect(search.controller!.text, 'Bài học');
-      expect(find.text('2 ghi chú'), findsOneWidget);
+      expect(find.text('2/4 ghi chú'), findsOneWidget);
       await tester.tap(find.widgetWithText(FilterChip, 'Nhãn 0'));
       await tester.pumpAndSettle();
-      expect(find.text('1 ghi chú'), findsOneWidget);
+      expect(find.text('1/4 ghi chú'), findsOneWidget);
       expect(find.textContaining('bí mật'), findsNothing);
       await tester.tap(find.byKey(const Key('all-label-filters')));
       await tester.pumpAndSettle();
       await tester.tap(find.text('Bỏ chọn'));
       await tester.tap(find.byTooltip('Đóng bộ lọc'));
       await tester.pumpAndSettle();
-      expect(find.text('1 ghi chú'), findsOneWidget);
+      expect(find.text('1/4 ghi chú'), findsOneWidget);
       expect(find.text('Khớp tất cả 2 nhãn đã chọn'), findsOneWidget);
       await tester.pumpWidget(const SizedBox());
       c.dispose();
