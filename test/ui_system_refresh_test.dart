@@ -33,7 +33,7 @@ void main() {
     expect(tester.takeException(), isNull);
     expect(find.text('Ghi chú của bạn'), findsOneWidget);
     expect(find.text('9 ghi chú'), findsOneWidget);
-    expect(find.text('KHÔNG GIAN GHI CHÚ'), findsNothing);
+    expect(find.text('Không gian ghi chú'), findsNothing);
     expect(
       find.text('Ý tưởng, bài học và kế hoạch — gọn trong một nơi.'),
       findsNothing,
@@ -107,7 +107,7 @@ void main() {
                 child: PageIntro(
                   title: 'Bạn kiểm soát phiên đăng nhập',
                   detail: 'Xem các phiên đang hoạt động và kết thúc phiên bạn không còn sử dụng.',
-                  eyebrow: 'TRUNG TÂM BẢO MẬT',
+                  eyebrow: 'Trung tâm bảo mật',
                   icon: Icons.shield_outlined,
                   trailing: FilledButton(
                     onPressed: () {},

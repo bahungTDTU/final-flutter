@@ -133,6 +133,12 @@ class _NoteProtectionDialogState extends State<NoteProtectionDialog> {
                     obscureText: !visible,
                     decoration: InputDecoration(
                       labelText: context.tr("Mật khẩu ghi chú hiện tại"),
+                      suffixIcon: PasswordVisibilityButton(
+                        visible: visible,
+                        onChanged: busy
+                            ? null
+                            : (v) => setState(() => visible = v),
+                      ),
                     ),
                     validator: (v) => (v ?? '').isEmpty
                         ? context.tr("Nhập mật khẩu hiện tại")
@@ -149,6 +155,12 @@ class _NoteProtectionDialogState extends State<NoteProtectionDialog> {
                     obscureText: !visible,
                     decoration: InputDecoration(
                       labelText: context.tr("Mật khẩu ghi chú mới"),
+                      suffixIcon: PasswordVisibilityButton(
+                        visible: visible,
+                        onChanged: busy
+                            ? null
+                            : (v) => setState(() => visible = v),
+                      ),
                     ),
                     validator: (v) =>
                         (v ?? '').length < 10 || (v ?? '').length > 128
@@ -165,6 +177,12 @@ class _NoteProtectionDialogState extends State<NoteProtectionDialog> {
                     obscureText: !visible,
                     decoration: InputDecoration(
                       labelText: context.tr("Nhập lại mật khẩu ghi chú mới"),
+                      suffixIcon: PasswordVisibilityButton(
+                        visible: visible,
+                        onChanged: busy
+                            ? null
+                            : (v) => setState(() => visible = v),
+                      ),
                     ),
                     validator: (v) => v != next.text
                         ? context.tr("Hai mật khẩu chưa khớp")
@@ -172,12 +190,6 @@ class _NoteProtectionDialogState extends State<NoteProtectionDialog> {
                     onFieldSubmitted: (_) => unawaited(submit()),
                   ),
                 ],
-                CheckboxListTile(
-                  contentPadding: EdgeInsets.zero,
-                  title: Text(context.tr("Hiện mật khẩu")),
-                  value: visible,
-                  onChanged: busy ? null : (v) => setState(() => visible = v!),
-                ),
                 if (error != null)
                   Text(
                     context.trMessage(error!),

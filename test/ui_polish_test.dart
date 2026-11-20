@@ -1,9 +1,18 @@
+import 'package:note_together/state/app_controller.dart';
+import 'package:note_together/data/api.dart';
+import 'package:http/testing.dart';
+import 'package:http/http.dart' as http;
+
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:note_together/domain/note.dart';
 import 'package:note_together/ui/app.dart';
 import 'package:note_together/ui/design_system.dart';
 import 'package:note_together/ui/editor.dart';
+import 'package:note_together/ui/home.dart';
+import 'package:note_together/ui/note_protection.dart';
 
 import 'support.dart';
 
@@ -201,13 +210,208 @@ void main() {
     );
     await tester.pumpAndSettle();
     expect(find.text('Nhập email hợp lệ'), findsNothing);
-    // Switching between login and register starts quiet again.
+    // Switching between login and register starts quiet again and keeps
+    // the email already typed.
     await tester.tap(find.text('Chưa có tài khoản? Đăng ký'));
     await tester.pumpAndSettle();
+    expect(
+      tester
+          .widget<TextField>(
+            find.descendant(
+              of: find.byKey(const Key('auth-email')),
+              matching: find.byType(TextField),
+            ),
+          )
+          .controller!
+          .text,
+      'qa@example.test',
+    );
     await tester.enterText(find.byKey(const Key('auth-email')), 'bad');
     await tester.pumpAndSettle();
     expect(find.text('Nhập email hợp lệ'), findsNothing);
     await tester.pumpWidget(const SizedBox());
     c.dispose();
   });
+
+  Note note(String id, {bool locked = false, bool shared = false}) => Note(
+    id: id,
+    title: locked ? '' : 'Mạng máy tính $id',
+    content: locked ? '' : 'OSI',
+    revision: 1,
+    updatedAt: '2026-11-20',
+    locked: locked,
+    shared: shared,
+  );
+
+  testWidgets('Populated library uses a one-line header of stable height', (
+    tester,
+  ) async {
+    useDeskViewport(tester);
+    final c = offlineController()
+      ..user!['verified'] = true
+      ..notes = [for (var i = 0; i < 6; i++) note('n$i')];
+    await tester.pumpWidget(NoteTogetherApp(controller: c));
+    await tester.pumpAndSettle();
+    // Intro copy and art are for an empty library only.
+    expect(
+      find.text('Ý tưởng, bài học và kế hoạch — gọn trong một nơi.'),
+      findsNothing,
+    );
+    final heights = <double>{};
+    for (var i = 0; i < 4; i++) {
+      c.online = i.isEven;
+      c.notifyListeners();
+      await tester.pump();
+      heights.add(
+        tester.getSize(find.byKey(const Key('dashboard-header'))).height,
+      );
+    }
+    expect(heights, hasLength(1));
+    await tester.pumpWidget(const SizedBox());
+    c.dispose();
+  });
+
+  testWidgets('Unverified reminder can be hidden for the session', (
+    tester,
+  ) async {
+    useDeskViewport(tester);
+    final c = offlineController()..notes = [note('n')];
+    await tester.pumpWidget(NoteTogetherApp(controller: c));
+    await tester.pumpAndSettle();
+    expect(find.byType(UnverifiedBanner), findsOneWidget);
+    await tester.tap(find.byKey(const Key('dismiss-unverified')));
+    await tester.pumpAndSettle();
+    expect(find.byType(UnverifiedBanner), findsNothing);
+    await tester.pumpWidget(const SizedBox());
+    c.dispose();
+  });
+
+  testWidgets('Settings open as a centred dialog on wide windows', (
+    tester,
+  ) async {
+    useDeskViewport(tester);
+    final c = offlineController()..user!['verified'] = true;
+    await tester.pumpWidget(NoteTogetherApp(controller: c));
+    await tester.pumpAndSettle();
+    await tester.tap(find.byTooltip('Hồ sơ và tùy chỉnh').first);
+    await tester.pumpAndSettle();
+    expect(find.byKey(const Key('settings-dialog')), findsOneWidget);
+    expect(find.byType(BottomSheet), findsNothing);
+    expect(find.text('Giao diện tối'), findsOneWidget);
+    await tester.tap(find.byTooltip('Đóng tùy chỉnh'));
+    await tester.pumpAndSettle();
+    await tester.pumpWidget(const SizedBox());
+    c.dispose();
+  });
+
+  testWidgets('Phones keep the settings bottom sheet', (tester) async {
+    tester.view.physicalSize = const Size(390, 844);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.reset);
+    final c = offlineController()..user!['verified'] = true;
+    await tester.pumpWidget(NoteTogetherApp(controller: c));
+    await tester.pumpAndSettle();
+    await tester.tap(find.byTooltip('Hồ sơ và tùy chỉnh').first);
+    await tester.pumpAndSettle();
+    expect(find.byType(BottomSheet), findsOneWidget);
+    expect(find.byKey(const Key('settings-dialog')), findsNothing);
+    await tester.pumpWidget(const SizedBox());
+    c.dispose();
+  });
+
+  testWidgets('Note lock dialog reveals passwords with the shared eye toggle', (
+    tester,
+  ) async {
+    final c = offlineController()..notes = [note('n')];
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: noteTheme(Brightness.light),
+        home: Scaffold(
+          body: NoteProtectionDialog(
+            controller: c,
+            id: 'n',
+            action: ProtectionAction.enable,
+          ),
+        ),
+      ),
+    );
+    expect(find.byType(CheckboxListTile), findsNothing);
+    bool obscured() => tester
+        .widgetList<EditableText>(find.byType(EditableText))
+        .every((e) => e.obscureText);
+    expect(obscured(), isTrue);
+    await tester.tap(find.byTooltip('Hiện mật khẩu').first);
+    await tester.pump();
+    expect(
+      tester
+          .widgetList<EditableText>(find.byType(EditableText))
+          .every((e) => !e.obscureText),
+      isTrue,
+    );
+    expect(find.byTooltip('Ẩn mật khẩu'), findsWidgets);
+    await tester.pumpWidget(const SizedBox());
+    c.dispose();
+  });
+
+  testWidgets('Locked shared notes offer revoke-all without unlocking', (
+    tester,
+  ) async {
+    useDeskViewport(tester);
+    final c = offlineController()
+      ..user!['verified'] = true
+      ..notes = [note('locked', locked: true, shared: true), note('plain')];
+    await tester.pumpWidget(NoteTogetherApp(controller: c));
+    await tester.pumpAndSettle();
+    // Only the locked + shared owner note gets the emergency menu.
+    expect(find.byKey(const Key('locked-menu-locked')), findsOneWidget);
+    await tester.tap(find.byKey(const Key('locked-menu-locked')));
+    await tester.pumpAndSettle();
+    expect(find.text('Thu hồi mọi chia sẻ'), findsOneWidget);
+    await tester.tap(find.text('Thu hồi mọi chia sẻ'));
+    await tester.pumpAndSettle();
+    expect(find.text('Thu hồi mọi chia sẻ?'), findsOneWidget);
+    await tester.tap(find.text('Hủy'));
+    await tester.pumpAndSettle();
+    expect(c.notes.first.isShared, isTrue);
+    await tester.pumpWidget(const SizedBox());
+    c.dispose();
+  });
+
+  test(
+    'revokeAllShares calls the owner endpoint and clears the shared flag',
+    () async {
+      final calls = <String>[];
+      final c =
+          AppController(
+              Api(
+                'http://test',
+                client: MockClient((r) async {
+                  calls.add('${r.method} ${r.url.path}');
+                  if (r.method == 'DELETE') {
+                    return http.Response(
+                      jsonEncode({'ok': true, 'revoked': 2}),
+                      200,
+                    );
+                  }
+                  throw http.ClientException('offline');
+                }),
+              ),
+              MemoryStore(),
+            )
+            ..user = {
+              'id': 'A',
+              'name': 'T',
+              'email': 't@example.test',
+              'verified': true,
+            }
+            ..token = 'tok'
+            ..ready = true
+            ..notes = [note('locked', locked: true, shared: true)];
+      expect(await c.revokeAllShares(c.notes.single), 2);
+      expect(calls, contains('DELETE /notes/locked/shares'));
+      expect(c.notes.single.isShared, isFalse);
+      expect(c.notes.single.locked, isTrue);
+      c.dispose();
+    },
+  );
 }

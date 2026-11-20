@@ -152,7 +152,7 @@ class _SecurityCenterScreenState extends State<SecurityCenterScreen> {
                                 detail: context.tr(
                                   "Xem các phiên đang hoạt động và kết thúc phiên bạn không còn sử dụng.",
                                 ),
-                                eyebrow: context.tr("TRUNG TÂM BẢO MẬT"),
+                                eyebrow: context.tr("Trung tâm bảo mật"),
                                 panel: false,
                               ),
                               const SizedBox(height: 20),

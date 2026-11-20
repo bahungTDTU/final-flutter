@@ -84,6 +84,10 @@ class _PasswordChangeDialogState extends State<PasswordChangeDialog> {
                 enabled: !busy,
                 decoration: InputDecoration(
                   labelText: context.tr("Mật khẩu hiện tại"),
+                  suffixIcon: PasswordVisibilityButton(
+                    visible: visible,
+                    onChanged: busy ? null : (v) => setState(() => visible = v),
+                  ),
                 ),
                 validator: (v) => v == null || v.isEmpty
                     ? context.tr("Nhập mật khẩu hiện tại")
@@ -99,6 +103,10 @@ class _PasswordChangeDialogState extends State<PasswordChangeDialog> {
                 enabled: !busy,
                 decoration: InputDecoration(
                   labelText: context.tr("Mật khẩu mới"),
+                  suffixIcon: PasswordVisibilityButton(
+                    visible: visible,
+                    onChanged: busy ? null : (v) => setState(() => visible = v),
+                  ),
                 ),
                 validator: (v) => v == null || v.length < 10 || v.length > 128
                     ? context.tr("Mật khẩu từ 10 đến 128 ký tự")
@@ -114,19 +122,15 @@ class _PasswordChangeDialogState extends State<PasswordChangeDialog> {
                 enabled: !busy,
                 decoration: InputDecoration(
                   labelText: context.tr("Nhập lại mật khẩu mới"),
+                  suffixIcon: PasswordVisibilityButton(
+                    visible: visible,
+                    onChanged: busy ? null : (v) => setState(() => visible = v),
+                  ),
                 ),
                 validator: (v) => v != next.text
                     ? context.tr("Hai mật khẩu chưa khớp")
                     : null,
                 onFieldSubmitted: (_) => submit(),
-              ),
-              CheckboxListTile(
-                contentPadding: EdgeInsets.zero,
-                title: Text(context.tr("Hiện mật khẩu")),
-                value: visible,
-                onChanged: busy
-                    ? null
-                    : (value) => setState(() => visible = value!),
               ),
               if (error != null)
                 Text(

@@ -1,4 +1,6 @@
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
+import 'package:flutter/semantics.dart';
 
 import 'data/api.dart';
 import 'data/encrypted_account_store.dart';
@@ -10,6 +12,9 @@ import 'ui/app.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  // Flutter Web otherwise hides the semantics tree behind an off-screen
+  // "Enable accessibility" button that most screen-reader users never find.
+  if (kIsWeb) SemanticsBinding.instance.ensureSemantics();
   try {
     final controller = AppController(
       Api(

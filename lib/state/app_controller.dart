@@ -1122,6 +1122,40 @@ class AppController extends ChangeNotifier {
     unawaited(synchronize());
   }
 
+  /// Owner-only emergency revoke. Works while the note is locked: the server
+  /// returns only a count, never recipient identities.
+  Future<int> revokeAllShares(Note note) async {
+    if (note.role != 'owner') return 0;
+    final result = await api.call(
+      'DELETE',
+      '/notes/${Uri.encodeComponent(note.id)}/shares',
+      token: token,
+    );
+    final revoked = result is Map ? result['revoked'] as int? ?? 0 : 0;
+    notes = [
+      for (final n in notes)
+        n.id == note.id
+            ? Note(
+                id: n.id,
+                title: n.title,
+                content: n.content,
+                revision: n.revision,
+                updatedAt: n.updatedAt,
+                pinnedAt: n.pinnedAt,
+                labels: n.labels,
+                labelNames: n.labelNames,
+                role: n.role,
+                locked: n.locked,
+                protectionVersion: n.protectionVersion,
+              )
+            : n,
+    ];
+    await _persist();
+    notifyListeners();
+    unawaited(synchronize());
+    return revoked;
+  }
+
   Future<void> delete(Note note) async {
     if (note.locked || note.role != 'owner') return;
     pending = [

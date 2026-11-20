@@ -91,7 +91,7 @@ class InspectorSection extends StatelessWidget {
                     child: Text(
                       title,
                       style: theme.textTheme.titleSmall?.copyWith(
-                        fontWeight: FontWeight.w700,
+                        fontWeight: FontWeight.w600,
                         height: 1.35,
                       ),
                     ),
