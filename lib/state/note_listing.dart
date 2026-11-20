@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 
 import '../domain/note.dart';
+import '../domain/text_fold.dart';
 
 class NoteListing {
   NoteListing(List<Note> notes)
@@ -47,23 +48,22 @@ class NoteListingCache {
     _notes = List.of(notes);
     _labels = Set.of(labels);
     _deleted = Set.of(deletedLabels);
-    final pattern = query.isEmpty
-        ? null
-        : RegExp(RegExp.escape(query), caseSensitive: false, unicode: true);
+    // Literal (not regex) and accent/case-insensitive: "mang may" finds
+    // "Mạng máy". Folding preserves length, so boundary offsets stay valid.
+    final needle = query.isEmpty ? null : foldVietnamese(query);
     bool contains(Note note) {
-      if (pattern == null) return true;
+      if (needle == null) return true;
       if (note.locked) return false;
+      final title = note.title;
       final content = note.plainContent;
-      if (pattern.hasMatch(note.title) || pattern.hasMatch(content)) {
+      if (containsFolded(title, needle) || containsFolded(content, needle)) {
         return true;
       }
-      final start = (note.title.length - query.length).clamp(
-        0,
-        note.title.length,
-      );
-      final end = query.length.clamp(0, content.length);
-      return pattern.hasMatch(
-        '${note.title.substring(start)} ${content.substring(0, end)}',
+      final start = (title.length - needle.length).clamp(0, title.length);
+      final end = needle.length.clamp(0, content.length);
+      return containsFolded(
+        '${title.substring(start)} ${content.substring(0, end)}',
+        needle,
       );
     }
 

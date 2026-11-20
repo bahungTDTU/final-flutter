@@ -900,6 +900,7 @@ const englishMessages = <String, String>{
   "{0} bản chỉnh sửa đã được giữ an toàn trên thiết bị.":
       "Edits safely kept on this device: {0}.",
   "{0} ghi chú": "Notes: {0}",
+  "{0}/{1} ghi chú": "Notes: {0}/{1}",
   "{0} ghi chú trong kế hoạch": "Planned notes: {0}",
   "{0} hoàn thành": "Completed: {0}",
   "{0} kết quả{1}": "Results: {0}{1}",
