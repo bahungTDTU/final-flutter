@@ -232,18 +232,18 @@ ThemeData _buildNoteTheme(Brightness brightness, AppPalette selected) {
           ),
           headlineSmall: TextStyle(
             fontSize: 24,
-            fontWeight: FontWeight.w700,
+            fontWeight: FontWeight.w600,
             color: ink,
             height: 1.3,
           ),
           titleLarge: TextStyle(
             fontSize: 22,
-            fontWeight: FontWeight.w700,
+            fontWeight: FontWeight.w600,
             color: ink,
           ),
           titleMedium: TextStyle(
             fontSize: 18,
-            fontWeight: FontWeight.w700,
+            fontWeight: FontWeight.w600,
             color: ink,
           ),
           bodyLarge: TextStyle(fontSize: 16, height: 1.6, color: ink),
@@ -358,7 +358,7 @@ ThemeData _buildNoteTheme(Brightness brightness, AppPalette selected) {
         WidgetState.selected: TextStyle(
           fontFamily: 'NotoSans',
           fontSize: 14,
-          fontWeight: FontWeight.w700,
+          fontWeight: FontWeight.w600,
           color: primary,
         ),
         WidgetState.any: TextStyle(
@@ -377,7 +377,7 @@ ThemeData _buildNoteTheme(Brightness brightness, AppPalette selected) {
       unselectedIconTheme: IconThemeData(color: muted),
       selectedLabelTextStyle: TextStyle(
         color: primary,
-        fontWeight: FontWeight.w700,
+        fontWeight: FontWeight.w600,
       ),
       unselectedLabelTextStyle: TextStyle(color: muted),
     ),
@@ -507,11 +507,31 @@ class Brand extends StatelessWidget {
             'NoteTogether',
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
           ),
         ),
       ],
     ],
+  );
+}
+
+/// Eye toggle used by every password field (auth, note lock, account
+/// password) so revealing a password works the same way everywhere.
+class PasswordVisibilityButton extends StatelessWidget {
+  const PasswordVisibilityButton({
+    super.key,
+    required this.visible,
+    required this.onChanged,
+  });
+  final bool visible;
+  final ValueChanged<bool>? onChanged;
+  @override
+  Widget build(BuildContext context) => IconButton(
+    tooltip: visible ? context.tr("Ẩn mật khẩu") : context.tr("Hiện mật khẩu"),
+    onPressed: onChanged == null ? null : () => onChanged!(!visible),
+    icon: Icon(
+      visible ? Icons.visibility_off_outlined : Icons.visibility_outlined,
+    ),
   );
 }
 
@@ -688,7 +708,7 @@ class PageIntro extends StatelessWidget {
                 eyebrow!,
                 style: theme.textTheme.bodySmall?.copyWith(
                   color: tone.ink,
-                  fontWeight: FontWeight.w700,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
               const SizedBox(height: 12),
@@ -728,7 +748,7 @@ class PageIntro extends StatelessWidget {
                                   ? theme.textTheme.titleLarge
                                   : theme.textTheme.headlineSmall)
                               ?.copyWith(
-                                fontWeight: FontWeight.w700,
+                                fontWeight: FontWeight.w600,
                                 height: 1.3,
                               ),
                     ),

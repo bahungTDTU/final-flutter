@@ -25,9 +25,21 @@ Map<String, dynamic> answer() => {
   'sources': [source('n')],
   'context_sources': [source('n'), source('other')],
 };
-AppController configured(Future<http.Response> Function(http.Request) handler) {
+AppController configured(
+  Future<http.Response> Function(http.Request) handler, {
+  bool aiEnabled = true,
+}) {
   final c = AppController(
-    Api('http://test', client: MockClient(handler)),
+    Api(
+      'http://test',
+      // Sessions ask /ai/status once; answer it here so tests that count
+      // requests see only the AI calls they exercise.
+      client: MockClient(
+        (r) async => r.url.path == '/ai/status'
+            ? http.Response(jsonEncode({'enabled': aiEnabled}), 200)
+            : handler(r),
+      ),
+    ),
     MemoryStore(),
   );
   c.user = {
@@ -274,6 +286,33 @@ void main() {
       c.dispose();
     },
   );
+
+  testWidgets('Unconfigured AI is explained up front and cannot be submitted', (
+    tester,
+  ) async {
+    final reads = <String>[];
+    final c = configured((r) async {
+      reads.add(r.url.path);
+      return http.Response('{"detail":"AI_NOT_CONFIGURED"}', 503);
+    }, aiEnabled: false);
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(body: AiQuestionsPanel(controller: c)),
+      ),
+    );
+    await tester.pumpAndSettle();
+    expect(find.byKey(const Key('ai-unavailable')), findsOneWidget);
+    expect(
+      tester
+          .widget<ButtonStyleButton>(find.byKey(const Key('ai-ask')))
+          .onPressed,
+      isNull,
+    );
+    expect(tester.widget<TextField>(find.byType(TextField)).enabled, isFalse);
+    expect(reads, isEmpty);
+    await tester.pumpWidget(const SizedBox());
+    c.dispose();
+  });
 }
 
 Map<String, dynamic> cNote() => {

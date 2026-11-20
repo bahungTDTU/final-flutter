@@ -164,7 +164,7 @@ class DeskDestinationStrip extends StatelessWidget {
                               fontSize: 14,
                               height: 1.3,
                               fontWeight: i == selected
-                                  ? FontWeight.w700
+                                  ? FontWeight.w600
                                   : FontWeight.w600,
                             ),
                           ),
@@ -236,10 +236,9 @@ class DeskToolDrawer extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
-              context.tr("NGĂN BÀN"),
+              context.tr("Ngăn bàn"),
               style: theme.textTheme.bodySmall?.copyWith(
-                letterSpacing: 2,
-                fontWeight: FontWeight.w700,
+                fontWeight: FontWeight.w600,
               ),
             ),
             const SizedBox(height: 24),
@@ -285,10 +284,7 @@ class DeskToolDrawer extends StatelessWidget {
               label: Text(context.tr("Tùy chỉnh")),
             ),
             const SizedBox(height: 36),
-            Text(
-              context.tr("ĐƯỜNG TẮT"),
-              style: theme.textTheme.bodySmall?.copyWith(letterSpacing: 1.5),
-            ),
+            Text(context.tr("Đường tắt"), style: theme.textTheme.bodySmall),
             const SizedBox(height: 12),
             Text(
               context.tr(
@@ -376,15 +372,70 @@ class NotebookTitle extends StatelessWidget {
     required this.count,
     this.total,
     required this.sync,
+    this.dense = false,
   });
   final String title, detail;
   final int count;
   final int? total;
   final Widget sync;
 
+  /// One-line heading once the library has notes: title, count and sync only.
+  final bool dense;
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context), colors = theme.colorScheme;
+    final countChip = Container(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 7),
+      decoration: BoxDecoration(
+        color: colors.surface,
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(color: colors.outlineVariant),
+      ),
+      child: Text(
+        AppStrings.of(context).noteCount(count, total: total),
+        style: theme.textTheme.bodySmall,
+      ),
+    );
+    final heading = Semantics(
+      header: true,
+      child: Text(
+        title,
+        // One line in the dense row so its height never depends on the
+        // sync label's length.
+        maxLines: dense ? 1 : null,
+        overflow: dense ? TextOverflow.ellipsis : null,
+        style: theme.textTheme.headlineLarge?.copyWith(
+          fontSize: dense ? 30 : 38,
+          fontWeight: FontWeight.w600,
+          height: 1.2,
+          letterSpacing: dense ? -.5 : -.8,
+        ),
+      ),
+    );
+    if (dense) {
+      // A Row keeps one fixed height while the sync label changes length;
+      // a Wrap would reflow and shift every card below on each sync pulse.
+      return StudioHeaderPanel(
+        compact: true,
+        child: MediaQuery.textScalerOf(context).scale(1) >= 1.3
+            ? Wrap(
+                spacing: 16,
+                runSpacing: 8,
+                crossAxisAlignment: WrapCrossAlignment.center,
+                children: [heading, countChip, sync],
+              )
+            : Row(
+                children: [
+                  Expanded(child: heading),
+                  const SizedBox(width: 16),
+                  countChip,
+                  const SizedBox(width: 12),
+                  sync,
+                ],
+              ),
+      );
+    }
     return StudioHeaderPanel(
       child: LayoutBuilder(
         builder: (context, area) => Row(
@@ -394,26 +445,14 @@ class NotebookTitle extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    context.tr("SỔ GHI / NOTETOGETHER"),
+                    context.tr("Sổ ghi / NoteTogether"),
                     style: theme.textTheme.bodySmall?.copyWith(
-                      letterSpacing: 1.5,
                       color: colors.onSurfaceVariant,
-                      fontWeight: FontWeight.w600,
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
                   const SizedBox(height: 10),
-                  Semantics(
-                    header: true,
-                    child: Text(
-                      title,
-                      style: theme.textTheme.headlineLarge?.copyWith(
-                        fontSize: 38,
-                        fontWeight: FontWeight.w600,
-                        height: 1.2,
-                        letterSpacing: -.8,
-                      ),
-                    ),
-                  ),
+                  heading,
                   const SizedBox(height: 10),
                   Text(detail, style: theme.textTheme.bodyMedium),
                   const SizedBox(height: 12),
@@ -421,24 +460,7 @@ class NotebookTitle extends StatelessWidget {
                     spacing: 12,
                     runSpacing: 4,
                     crossAxisAlignment: WrapCrossAlignment.center,
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 12,
-                          vertical: 7,
-                        ),
-                        decoration: BoxDecoration(
-                          color: colors.surface,
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(color: colors.outlineVariant),
-                        ),
-                        child: Text(
-                          AppStrings.of(context).noteCount(count, total: total),
-                          style: theme.textTheme.bodySmall,
-                        ),
-                      ),
-                      sync,
-                    ],
+                    children: [countChip, sync],
                   ),
                 ],
               ),

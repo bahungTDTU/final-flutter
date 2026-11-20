@@ -631,14 +631,27 @@ def create_app(db_path=None, *, email_delivery=None, ai_provider=None, start_ema
                          (note_id, user['id']))
         return {'ok': True}
 
+    # Revoking only reduces exposure, so a locked note need not be unlocked first.
+    # Neither route returns recipient identities, which stay behind the unlock.
     @app.delete('/notes/{note_id}/shares/{user_id}')
     def revoke(note_id: str, user_id: str, identity=Depends(authenticate)):
         with db() as conn:
-            access(conn, note_id, identity, 'owner')
+            access(conn, note_id, identity, 'owner', unlocked=False)
             conn.execute('DELETE FROM shares WHERE note_id=? AND user_id=?', (note_id, user_id))
             touch_shares(conn, note_id)
             conn.execute('DELETE FROM grants WHERE note_id=? AND session_digest IN (SELECT digest FROM sessions WHERE user_id=?)',
                          (note_id, user_id))
         return {'ok': True}
+
+    @app.delete('/notes/{note_id}/shares')
+    def revoke_all(note_id: str, identity=Depends(authenticate)):
+        with db() as conn:
+            access(conn, note_id, identity, 'owner', unlocked=False)
+            conn.execute('DELETE FROM grants WHERE note_id=? AND session_digest IN '
+                         '(SELECT digest FROM sessions WHERE user_id IN (SELECT user_id FROM shares WHERE note_id=?))',
+                         (note_id, note_id))
+            removed = conn.execute('DELETE FROM shares WHERE note_id=?', (note_id,)).rowcount
+            touch_shares(conn, note_id)
+        return {'ok': True, 'revoked': removed}
 
     return app

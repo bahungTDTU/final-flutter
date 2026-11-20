@@ -529,29 +529,26 @@ class PrismAction extends StatelessWidget {
   final VoidCallback? onPressed;
   final Widget child;
   final Widget? icon;
+
+  /// Solid brand ink (no gradient): one flat primary per view reads as the
+  /// action, and the disabled state keeps the theme's own colours.
   @override
   Widget build(BuildContext context) {
     final style = FilledButton.styleFrom(
-      backgroundColor: onPressed == null ? null : Colors.transparent,
+      backgroundColor: onPressed == null
+          ? null
+          : PaletteTokens.of(context).brand[1],
       foregroundColor: onPressed == null ? null : Colors.white,
       shadowColor: Colors.transparent,
     );
-    return DecoratedBox(
-      decoration: BoxDecoration(
-        gradient: onPressed == null
-            ? null
-            : LinearGradient(colors: PaletteTokens.of(context).brand),
-        borderRadius: BorderRadius.circular(StudioStyle.control),
-      ),
-      child: icon == null
-          ? FilledButton(onPressed: onPressed, style: style, child: child)
-          : FilledButton.icon(
-              onPressed: onPressed,
-              style: style,
-              icon: icon!,
-              label: child,
-            ),
-    );
+    return icon == null
+        ? FilledButton(onPressed: onPressed, style: style, child: child)
+        : FilledButton.icon(
+            onPressed: onPressed,
+            style: style,
+            icon: icon!,
+            label: child,
+          );
   }
 }
 

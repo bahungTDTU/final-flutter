@@ -1354,7 +1354,7 @@ class _WorkspaceScreenState extends State<WorkspaceScreen> {
                                   "Tìm lại ghi chú, sắp xếp công việc và dành thời gian cho điều quan trọng.",
                                 ),
                                 icon: Icons.space_dashboard_outlined,
-                                eyebrow: 'WORKSPACE',
+                                eyebrow: 'Workspace',
                                 accent: 2,
                               ),
                               const SizedBox(height: 24),

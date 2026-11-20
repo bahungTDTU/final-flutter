@@ -148,7 +148,7 @@ class _PalettePickerState extends State<PalettePicker> {
                                         context.tr(p.label),
                                         style: const TextStyle(
                                           fontSize: 16,
-                                          fontWeight: FontWeight.w700,
+                                          fontWeight: FontWeight.w600,
                                         ),
                                       ),
                                     ),
