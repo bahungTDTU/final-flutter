@@ -252,6 +252,7 @@ class _HomeScreenState extends State<HomeScreen> {
     int count,
     String syncLabel, {
     bool studio = false,
+    int? total,
   }) => DashboardHeader(
     key: const Key('dashboard-header'),
     workbench: studio,
@@ -264,6 +265,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ? context.tr("Cùng theo dõi những điều quan trọng của nhóm.")
         : context.tr("Ý tưởng, bài học và kế hoạch — gọn trong một nơi."),
     count: count,
+    total: total,
     syncLabel: syncLabel,
     syncIndicator: DashboardSync(controller: c),
     online: c.online,
@@ -680,6 +682,20 @@ class _HomeScreenState extends State<HomeScreen> {
                                                     list.length,
                                                     syncLabel,
                                                     studio: sidebar,
+                                                    total:
+                                                        query.isNotEmpty ||
+                                                            selectedLabels
+                                                                .isNotEmpty
+                                                        ? c.notes
+                                                              .where(
+                                                                (n) =>
+                                                                    destination ==
+                                                                        1
+                                                                    ? n.role != 'owner'
+                                                                    : n.role == 'owner',
+                                                              )
+                                                              .length
+                                                        : null,
                                                   ),
                                                   const SizedBox(height: 24),
                                                   TextField(
