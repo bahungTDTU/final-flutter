@@ -80,6 +80,7 @@ class DashboardHeader extends StatelessWidget {
     required this.title,
     required this.detail,
     required this.count,
+    this.total,
     required this.syncLabel,
     required this.online,
     required this.onSync,
@@ -90,6 +91,7 @@ class DashboardHeader extends StatelessWidget {
   });
   final String title, detail, syncLabel;
   final int count;
+  final int? total;
   final bool online;
   final VoidCallback onSync;
   final Widget? action, notice;
@@ -167,7 +169,8 @@ class DashboardHeader extends StatelessWidget {
                           ),
                           const SizedBox(height: 4),
                           Text(
-                            context.tr("{0} ghi chú", [count]),
+                            AppStrings.of(context)
+                                .noteCount(count, total: total),
                             style: theme.textTheme.bodySmall,
                           ),
                         ],
@@ -224,7 +227,7 @@ class DashboardHeader extends StatelessWidget {
                     crossAxisAlignment: WrapCrossAlignment.center,
                     children: [
                       Text(
-                        context.tr("{0} ghi chú", [count]),
+                        AppStrings.of(context).noteCount(count, total: total),
                         style: theme.textTheme.bodySmall,
                       ),
                       sync,
@@ -238,6 +241,7 @@ class DashboardHeader extends StatelessWidget {
                 title: title,
                 detail: detail,
                 count: count,
+                total: total,
                 sync: sync,
               );
             }
@@ -285,7 +289,8 @@ class DashboardHeader extends StatelessWidget {
                                 ),
                                 const SizedBox(height: 8),
                                 Text(
-                                  context.tr("{0} ghi chú", [count]),
+                                  AppStrings.of(context)
+                                      .noteCount(count, total: total),
                                   style: plate.textTheme.bodySmall,
                                 ),
                                 const SizedBox(height: 12),

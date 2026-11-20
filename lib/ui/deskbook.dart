@@ -374,10 +374,12 @@ class NotebookTitle extends StatelessWidget {
     required this.title,
     required this.detail,
     required this.count,
+    this.total,
     required this.sync,
   });
   final String title, detail;
   final int count;
+  final int? total;
   final Widget sync;
 
   @override
@@ -431,7 +433,7 @@ class NotebookTitle extends StatelessWidget {
                           border: Border.all(color: colors.outlineVariant),
                         ),
                         child: Text(
-                          context.tr("{0} ghi chú", [count]),
+                          AppStrings.of(context).noteCount(count, total: total),
                           style: theme.textTheme.bodySmall,
                         ),
                       ),
