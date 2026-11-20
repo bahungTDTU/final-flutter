@@ -803,6 +803,7 @@ const englishMessages = <String, String>{
   "Tạo bản nháp riêng · dùng được offline":
       "Create a private draft · works offline",
   "Tạo bản riêng": "Create private copy",
+  "Tạo ghi chú đầu tiên": "Create your first note",
   "Tạo bộ sưu tập": "Create collection",
   "Tạo bộ sưu tập thông minh": "Create smart collection",
   "Tạo các ghi chú mới": "Create new notes",
