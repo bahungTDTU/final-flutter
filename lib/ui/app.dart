@@ -133,6 +133,8 @@ class _AuthScreenState extends State<AuthScreen> {
       name = TextEditingController(),
       confirm = TextEditingController();
   bool register = false, showPassword = false;
+  // Errors appear on submit; afterwards each field revalidates as it is fixed.
+  AutovalidateMode autovalidate = AutovalidateMode.disabled;
   @override
   void dispose() {
     email.dispose();
@@ -143,7 +145,11 @@ class _AuthScreenState extends State<AuthScreen> {
   }
 
   Future<void> submit() async {
-    if (widget.controller.busy || !form.currentState!.validate()) return;
+    if (widget.controller.busy) return;
+    if (!form.currentState!.validate()) {
+      setState(() => autovalidate = AutovalidateMode.onUserInteraction);
+      return;
+    }
     await widget.controller.authenticate(
       register: register,
       email: email.text.trim(),
@@ -223,6 +229,7 @@ class _AuthScreenState extends State<AuthScreen> {
                   ),
                   child: Form(
                     key: form,
+                    autovalidateMode: autovalidate,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
@@ -384,6 +391,7 @@ class _AuthScreenState extends State<AuthScreen> {
                               ? null
                               : () => setState(() {
                                   register = !register;
+                                  autovalidate = AutovalidateMode.disabled;
                                   form.currentState?.reset();
                                 }),
                           child: Text(

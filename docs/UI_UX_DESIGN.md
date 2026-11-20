@@ -1,5 +1,12 @@
 # NoteTogether – UI/UX design, cập nhật 14/10/2026
 
+## Motion tokens, empty state, menu thẻ —20/11/2026
+
+`MotionTokens` (80/150/250/350ms, smooth-out `Cubic(0.22,1,0.36,1)`, rise 8dp) theo transitions.dev;
+route enter 250ms / exit 150ms, chỉ opacity + translate, reduced motion tĩnh. Empty state tab Ghi chú
+có nút tạo; menu thẻ có icon, divider và "Xóa" màu error; form auth tự xóa lỗi khi sửa sau lần gửi đầu.
+QA người dùng, 79 kịch bản và kế hoạch còn lại: [UX_QA_2026-11-20](UX_QA_2026-11-20.md).
+
 ## Bảng màu16/10
 
 Sáu tổ hợp sáng/tối, semantic tokens toàn UI và previews/check/selected semantics; palette modal có header cố định, gallery cuộn. Settings đặt công tắc sáng/tối trước gallery. Giữ Deskbook/NotoSans. [Override](../design-system/notetogether-deskbook/pages/color-palettes.md), [chi tiết](COLOR_PALETTES.md).

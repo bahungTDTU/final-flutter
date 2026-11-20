@@ -900,6 +900,21 @@ class _HomeScreenState extends State<HomeScreen> {
                                                           ),
                                                         ),
                                                       )
+                                                    : destination == 0
+                                                    ? FilledButton.icon(
+                                                        key: const Key(
+                                                          'empty-new-note',
+                                                        ),
+                                                        onPressed: () => open(),
+                                                        icon: const Icon(
+                                                          Icons.add,
+                                                        ),
+                                                        label: Text(
+                                                          context.tr(
+                                                            "Tạo ghi chú đầu tiên",
+                                                          ),
+                                                        ),
+                                                      )
                                                     : null,
                                               ),
                                             ),
@@ -1065,6 +1080,25 @@ class _HomeScreenState extends State<HomeScreen> {
     ];
   }
 
+  /// Leading icon + label; [color] marks destructive actions (icon and text).
+  PopupMenuItem<String> _menuItem(
+    String value,
+    IconData icon,
+    String label, {
+    Color? color,
+  }) => PopupMenuItem(
+    value: value,
+    child: Row(
+      children: [
+        Icon(icon, size: 20, color: color),
+        const SizedBox(width: 12),
+        Flexible(
+          child: Text(label, style: TextStyle(color: color)),
+        ),
+      ],
+    ),
+  );
+
   Widget noteCard(
     Note note, {
     bool compact = false,
@@ -1171,25 +1205,31 @@ class _HomeScreenState extends State<HomeScreen> {
                       }
                     },
                     itemBuilder: (_) => [
-                      PopupMenuItem(
-                        value: 'share',
-                        child: Text(context.tr("Chia sẻ")),
+                      _menuItem(
+                        'share',
+                        Icons.person_add_alt_1_outlined,
+                        context.tr("Chia sẻ"),
                       ),
-                      PopupMenuItem(
-                        value: 'pin',
-                        child: Text(
-                          note.pinnedAt == null
-                              ? context.tr('Ghim')
-                              : context.tr("Bỏ ghim"),
-                        ),
+                      _menuItem(
+                        'pin',
+                        note.pinnedAt == null
+                            ? Icons.push_pin_outlined
+                            : Icons.push_pin,
+                        note.pinnedAt == null
+                            ? context.tr('Ghim')
+                            : context.tr("Bỏ ghim"),
                       ),
-                      PopupMenuItem(
-                        value: 'protect',
-                        child: Text(context.tr("Bật khóa ghi chú")),
+                      _menuItem(
+                        'protect',
+                        Icons.lock_outline,
+                        context.tr("Bật khóa ghi chú"),
                       ),
-                      PopupMenuItem(
-                        value: 'delete',
-                        child: Text(context.tr("Xóa")),
+                      const PopupMenuDivider(),
+                      _menuItem(
+                        'delete',
+                        Icons.delete_outline,
+                        context.tr("Xóa"),
+                        color: Theme.of(context).colorScheme.error,
                       ),
                     ],
                   ),
