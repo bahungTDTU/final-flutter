@@ -14,6 +14,10 @@ class AppStrings {
       const AppStrings('vi');
   static final _placeholder = RegExp(r'\{(\d+)\}');
 
+  String noteCount(int count, {int? total}) => total == null
+      ? text('{0} ghi chú', [count])
+      : text('{0}/{1} ghi chú', [count, total]);
+
   String text(String source, [List<Object?> arguments = const []]) {
     final value = languageCode == 'en'
         ? englishMessages[source] ?? source
