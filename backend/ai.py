@@ -148,14 +148,46 @@ STOP_WORDS = set('toi ban cac nhung cua la va voi cho trong ve co gi nao nhu the
                  'what which how the is are a an of to and in my notes'.split())
 
 
-def terms(text):
+def normalized_words(text):
     normalized = unicodedata.normalize('NFKD', text.lower().replace('đ', 'd'))
-    normalized = ''.join(c for c in normalized if not unicodedata.combining(c))
-    return [t for t in re.findall(r'[a-z0-9]+', normalized) if len(t) > 1 and t not in STOP_WORDS]
+    return re.findall(r'[^\W_]+', ''.join(c for c in normalized if not unicodedata.combining(c)))
+
+
+# Use whole phrases so terms such as "due" or "han" alone keep their meaning.
+DEADLINE = re.compile(r'\b(?:deadlines?|due dates?|han (?:chot|nop)|thoi han)\b')
+
+
+def terms(text):
+    words = ' '.join(normalized_words(text))
+    tokens = [t for t in words.split() if len(t) > 1 and t not in STOP_WORDS]
+    if DEADLINE.search(words):
+        tokens.append('concept:deadline')
+    return tokens
+
+
+# Only explicit library-wide questions may use recent notes without a keyword
+# match. A question naming a topic must still retrieve supporting evidence.
+OVERVIEW = re.compile(
+    r'(?:(?:hay |giup toi |giup minh )?(?:tom tat |liet ke |tong hop |cho xem )?'
+    r'(?:noi dung )?(?:(?:tat ca cac|tat ca|cac|nhung) )?(?:ghi chu|notes?)'
+    r'(?: (?:cua )?(?:toi|minh))?(?: (?:co gi|co nhung gi|la gi|viet gi|noi ve gi|gom nhung gi))?'
+    r'|(?:toi|minh) (?:co|da viet|da luu) (?:nhung |cac )?ghi chu (?:gi|nao)'
+    r'|(?:toi|minh) da ghi (?:lai )?(?:nhung )?gi'
+    r'|(?:list|summarize|summarise|show) (?:all )?(?:my )?notes'
+    r'|what (?:is|s) in my notes)'
+)
+
+
+def is_overview(question):
+    return bool(OVERVIEW.fullmatch(' '.join(normalized_words(question))))
 
 
 def retrieve(question, notes):
     """BM25 chunks from authorized current rows only; no stale external index."""
+    if is_overview(question):
+        # SQL supplies most recently updated first; titles and bounded excerpts
+        # share the same six-source envelope and revalidation as keyword hits.
+        return [dict(note, context=plain_content(note['content'])[:3800]) for note in notes[:6]]
     query = set(terms(question))
     if not query:
         return []
@@ -307,9 +339,12 @@ def install_ai_routes(app, db, authenticate, validate_session, access):
                 raise HTTPException(413, 'AI_LIBRARY_TOO_LARGE')
             if sum(len(row['title']) + len(row['content']) for row in rows) > 2_000_000:
                 raise HTTPException(413, 'AI_LIBRARY_TOO_LARGE')
-            sources = retrieve(body.question, [dict(row) for row in rows])
+            sources = retrieve(body.question, rows)
         if not sources:
-            return {'sufficient': False, 'answer': NO_INFORMATION, 'sources': [], 'context_sources': []}
+            message = ('Chưa tìm thấy ghi chú phù hợp. Hãy thử tên ghi chú hoặc từ khóa trong nội dung.'
+                       if rows else 'Chưa có ghi chú đã đồng bộ và đang mở mà bạn có thể hỏi. '
+                       'Hãy lưu đầy đủ tiêu đề, nội dung và đồng bộ ghi chú trước.')
+            return {'sufficient': False, 'answer': message, 'sources': [], 'context_sources': []}
         result = infer('question', body.question.strip(), sources, identity)
         metadata = [source_metadata(source) for source in sources]
         if result.get('sufficient') is False:
@@ -320,6 +355,9 @@ def install_ai_routes(app, db, authenticate, validate_session, access):
         mapping = {f'S{i+1}': source_metadata(source) for i, source in enumerate(sources)}
         if any(not isinstance(ref, str) or ref not in mapping for ref in refs):
             raise HTTPException(502, 'AI_INVALID_OUTPUT')
-        return {'sufficient': True, 'answer': output_text(result.get('answer')),
+        answer = output_text(result.get('answer'))
+        if len(rows) > len(sources) and is_overview(body.question):
+            answer = 'Tổng quan từ 6 ghi chú gần đây nhất.\n\n' + answer
+        return {'sufficient': True, 'answer': answer,
                 'sources': [mapping[ref] for ref in dict.fromkeys(refs)], 'context_sources': metadata,
                 'provider': app.state.ai_provider.mode, 'model': app.state.ai_provider.model}

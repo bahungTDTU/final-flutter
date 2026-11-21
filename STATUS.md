@@ -832,6 +832,10 @@ Release/physical/NVDA/TalkBack/FPS/Gemini thật vẫn chưa nghiệm thu ở đ
   vẫn là snapshot lịch sử. Không push/deploy mới. Không E2EE/key backup/OS force-kill/physical/
   public HTTPS/release functional/all32-criteria claim.
 
+## Hỏi ghi chú — 21/11/2026
+
+Đã tái hiện và sửa trường hợp câu hỏi tổng quan hoặc từ “deadline” bỏ sót nguồn đã đồng bộ. Chrome release local và Gemini thật trả lời kèm nguồn mở được. [Chi tiết và giới hạn](docs/AI_FEATURES.md).
+
 ## AI Summary và Q&A — 05/10/2026
 
 - Đã nối Gemini REST backend, authenticated Summary/Questions/Validate API, provider
