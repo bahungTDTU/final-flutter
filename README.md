@@ -12,6 +12,7 @@ Bản sửa trên nhánh bổ sung tìm kiếm tiếng Việt với dấu tổ h
 Web trong khi chuẩn bị cache offline và hỗ trợ xoay màn hình khi cài PWA.
 Xem kết quả kiểm tra trong STATUS.md. Android ký phát hành và bộ nộp vẫn còn mở.
 
+- [Giao diện thích ứng, chuyển trang và kiểm thử luồng 21/11](docs/UI_UX_QA.md).
 - [Nghiệm thu Web và Android 18/11](docs/RUNTIME_ACCEPTANCE_2026-11-18.md).
 - [Nghiệm thu OTP và Gmail](evidence/2026-11-18-email-otp/INDEX.md).
 - [Kết quả kiểm tra môi trường 15/11](docs/LOCAL_READINESS_2026-11-15.md).

@@ -55,7 +55,12 @@ class StudioHeaderPanel extends StatelessWidget {
         border: Border.all(color: colors.outlineVariant),
         boxShadow: StudioStyle.shadows(context),
       ),
-      child: Padding(padding: EdgeInsets.all(compact ? 18 : 24), child: child),
+      child: Padding(
+        padding: compact
+            ? const EdgeInsets.symmetric(horizontal: 18, vertical: 12)
+            : const EdgeInsets.all(24),
+        child: child,
+      ),
     );
   }
 }
