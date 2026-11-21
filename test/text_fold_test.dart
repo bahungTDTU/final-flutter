@@ -5,35 +5,41 @@ import 'package:note_together/l10n/app_strings.dart';
 import 'package:note_together/state/note_listing.dart';
 
 void main() {
+  test('Vietnamese folding handles composed and decomposed vowels', () {
+    expect(foldVietnamese('Mạng Máy Tính'), 'mang may tinh');
+    expect(foldVietnamese('Đường'), 'duong');
+    expect(foldVietnamese('ASCII 123 [.*]'), 'ascii 123 [.*]');
+    const vowels =
+        'àáảãạăằắẳẵặâầấẩẫậèéẻẽẹêềếểễệìíỉĩị'
+        'òóỏõọôồốổỗộơờớởỡợùúủũụưừứửữựỳýỷỹỵđ';
+    final expected =
+        '${'a' * 17}${'e' * 11}${'i' * 5}'
+        '${'o' * 17}${'u' * 11}${'y' * 5}d';
+    expect(foldVietnamese(vowels), expected);
+    expect(foldVietnamese(vowels.toUpperCase()), expected);
+    const mixed = 'Mạng ĐƯỜNG 😀 中 A\u0300';
+    expect(foldVietnamese(mixed), 'mang duong 😀 中 a');
+    expect(foldVietnamese('İ').length, 1);
+    expect(foldVietnamese('😀 中 A\u0300'), '😀 中 a');
+  });
+
   test(
-    'Vietnamese folding preserves code-unit offsets and other characters',
+    'Search stops at title matches and handles repeated prefix fallbacks',
     () {
-      expect(foldVietnamese('Mạng Máy Tính'), 'mang may tinh');
-      expect(foldVietnamese('Đường'), 'duong');
-      expect(foldVietnamese('ASCII 123 [.*]'), 'ascii 123 [.*]');
-      const vowels =
-          'àáảãạăằắẳẵặâầấẩẫậèéẻẽẹêềếểễệìíỉĩị'
-          'òóỏõọôồốổỗộơờớởỡợùúủũụưừứửữựỳýỷỹỵđ';
-      final expected =
-          '${'a' * 17}${'e' * 11}${'i' * 5}'
-          '${'o' * 17}${'u' * 11}${'y' * 5}d';
-      expect(foldVietnamese(vowels), expected);
-      expect(foldVietnamese(vowels.toUpperCase()), expected);
-      const mixed = 'Mạng ĐƯỜNG 😀 中 A\u0300 İ';
-      expect(foldVietnamese(mixed).length, mixed.length);
-      expect(foldVietnamese('😀 中 A\u0300'), '😀 中 a\u0300');
+      expect(
+        NoteSearchPattern('đường').matches(
+          'Đu\u031bo\u031b\u0300ng',
+          () => throw StateError('body read'),
+        ),
+        isTrue,
+      );
+      expect(
+        NoteSearchPattern('aaaaab').matches('', () => '${'a' * 10000}b'),
+        isTrue,
+      );
+      expect(NoteSearchPattern('a.b').matches('axb', () => ''), isFalse);
     },
   );
-
-  test('containsFolded matches literally without accents or case', () {
-    expect(containsFolded('Học MẠNG máy tính', 'mang may'), isTrue);
-    expect(containsFolded('Đường phố', 'duong'), isTrue);
-    expect(containsFolded('mạng', 'mang may'), isFalse);
-    expect(containsFolded('a.b', 'a.b'), isTrue);
-    expect(containsFolded('axb', 'a.b'), isFalse);
-    expect(containsFolded('', ''), isTrue);
-    expect(containsFolded('abc', ''), isTrue);
-  });
 
   test(
     'Listing folds title, content and boundary without exposing locked notes',
@@ -71,7 +77,12 @@ void main() {
           .all
           .map((n) => n.id)
           .toList();
-      for (final query in ['mang may', 'MẠNG máy', 'mạng máy']) {
+      for (final query in [
+        'mang may',
+        'MẠNG máy',
+        'mạng máy',
+        'ma\u0323ng ma\u0301y',
+      ]) {
         expect(
           search(query),
           unorderedEquals(['title', 'content', 'boundary']),

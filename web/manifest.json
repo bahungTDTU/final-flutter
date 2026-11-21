@@ -1,12 +1,12 @@
 {
-    "name": "note_together",
-    "short_name": "note_together",
+    "name": "NoteTogether",
+    "short_name": "NoteTogether",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
-    "orientation": "portrait-primary",
+    "description": "Ghi chú cá nhân và cộng tác với NoteTogether.",
+    "orientation": "any",
     "prefer_related_applications": false,
     "icons": [
         {

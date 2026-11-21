@@ -5,12 +5,12 @@ Có đăng nhập, xác minh email và đặt lại mật khẩu bằng OTP 6 s�
 tự lưu/bản nháp offline, nhãn, tệp đính kèm riêng tư,
 khóa ghi chú, chia sẻ theo quyền, realtime và tích hợp AI Summary/Q&A.
 
-## Trạng thái hiện hành — 19/11/2026
+## Trạng thái hiện hành — 21/11/2026
 
-Đã kiểm tra đăng nhập xuyên nền tảng, tệp và khôi phục offline trên Chrome
-và Android emulator. Gmail SMTP đã chấp nhận cả thư xác minh lẫn thư reset
-OTP 6 số trong QA local. Gemini thật, Web HTTPS, Android ký phát hành và bộ
-nộp vẫn còn mở.
+Web HTTPS trên Azure phục vụ master `26e4660` tại lần kiểm tra ngày 21/11.
+Bản sửa trên nhánh bổ sung tìm kiếm tiếng Việt với dấu tổ hợp, cho phép mở
+Web trong khi chuẩn bị cache offline và hỗ trợ xoay màn hình khi cài PWA.
+Xem kết quả kiểm tra trong STATUS.md. Android ký phát hành và bộ nộp vẫn còn mở.
 
 - [Nghiệm thu Web và Android 18/11](docs/RUNTIME_ACCEPTANCE_2026-11-18.md).
 - [Nghiệm thu OTP và Gmail](evidence/2026-11-18-email-otp/INDEX.md).
