@@ -1,5 +1,7 @@
 # NoteTogether — kiểm tra ngày 21/11/2026
 
+Bản rà UI kế tiếp từ master `f6dfb92` sửa chuyển trang khi bấm Back giữa animation, thẻ một cột và thanh công cụ ở 320 px. [Kiểm tra Chrome, Android và animation](docs/UI_UX_QA.md).
+
 Base GitHub `26e4660`. Bản sửa tìm kiếm, Web bootstrap và manifest đã qua
 `scripts/check.ps1` (format, analyze, 353 Flutter, 172 backend). Build bằng
 `scripts/build.ps1 -Target web -ApiUrl http://127.0.0.1:18321` tạo 41 tài nguyên

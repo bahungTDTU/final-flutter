@@ -542,16 +542,20 @@ class StatusNotice extends StatelessWidget {
     this.icon = Icons.info_outline,
     this.action,
     this.error = false,
+    this.compact = false,
   });
   final String message;
   final IconData icon;
   final Widget? action;
   final bool error;
+  final bool compact;
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: compact
+          ? const EdgeInsets.symmetric(horizontal: 12, vertical: 4)
+          : const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: error ? colors.errorContainer : colors.surfaceContainerHighest,
         borderRadius: BorderRadius.circular(16),
@@ -567,11 +571,13 @@ class StatusNotice extends StatelessWidget {
               MediaQuery.sizeOf(context).width < 360 ||
               MediaQuery.textScalerOf(context).scale(1) >= 1.5;
           final description = Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: compact
+                ? CrossAxisAlignment.center
+                : CrossAxisAlignment.start,
             children: [
               ExcludeSemantics(
                 child: Container(
-                  padding: const EdgeInsets.all(8),
+                  padding: EdgeInsets.all(compact ? 4 : 8),
                   decoration: BoxDecoration(
                     color:
                         (error
@@ -582,7 +588,7 @@ class StatusNotice extends StatelessWidget {
                   ),
                   child: Icon(
                     icon,
-                    size: 22,
+                    size: compact ? 18 : 22,
                     color: error
                         ? colors.onErrorContainer
                         : colors.onSurfaceVariant,

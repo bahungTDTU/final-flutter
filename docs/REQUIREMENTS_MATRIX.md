@@ -1,5 +1,7 @@
 # Ma trận yêu cầu 32 tiêu chí
 
+Mục 29 có thêm kiểm tra luồng thư viện/editor trên Chrome và Android API 36 ngày 21/11. [Phạm vi và ảnh giao diện](UI_UX_QA.md).
+
 ID 2/4 dùng OTP email 6 chữ số cho mã mới. Web/Android nhập cùng địa chỉ
 email, mã hết hạn sau 30 phút, tối đa 5 lần thử sai và không tái sử dụng.
 [Chi tiết luồng SMTP](EMAIL_DELIVERY.md).
