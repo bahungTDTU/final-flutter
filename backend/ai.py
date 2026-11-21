@@ -178,6 +178,15 @@ OVERVIEW = re.compile(
 )
 
 
+LIBRARY_COUNT = re.compile(
+    r'(?:(?:(?:minh|toi|thu vien(?: cua (?:minh|toi))?) )?(?:hien tai |hien |dang )?'
+    r'(?:co )?(?:tong cong |tat ca )?(?:bao nhieu|may) (?:ghi chu|notes?)'
+    r'(?: (?:trong thu vien|cua (?:minh|toi)))?'
+    r'|(?:tong )?so (?:luong )?ghi chu(?: cua (?:minh|toi))?(?: la bao nhieu)?'
+    r'|how many notes (?:do i have|are in my library))'
+)
+
+
 def is_overview(question):
     return bool(OVERVIEW.fullmatch(' '.join(normalized_words(question))))
 
@@ -326,6 +335,20 @@ def install_ai_routes(app, db, authenticate, validate_session, access):
             raise HTTPException(422, 'Invalid question')
         with db() as conn:
             validate_session(conn, identity)
+            if LIBRARY_COUNT.fullmatch(' '.join(normalized_words(body.question))):
+                # Count the same two collections shown on Home, including locked
+                # cards. No private note fields or prompts are needed for counts.
+                owned = conn.execute(
+                    'SELECT COUNT(*) FROM notes WHERE owner_id=? AND deleted=0',
+                    (identity[0],)).fetchone()[0]
+                shared = conn.execute(
+                    'SELECT COUNT(*) FROM shares s JOIN notes n ON n.id=s.note_id '
+                    'WHERE s.user_id=? AND n.owner_id<>? AND n.deleted=0',
+                    (identity[0], identity[0])).fetchone()[0]
+                return {'sufficient': True,
+                        'answer': (f'Thư viện đã đồng bộ có {owned + shared} ghi chú: '
+                                   f'{owned} của bạn và {shared} được chia sẻ với bạn.'),
+                        'sources': [], 'context_sources': []}
             # Never load stranger content or locked content without this session's live grant.
             rows = conn.execute('''SELECT n.* FROM notes n
                 LEFT JOIN shares s ON s.note_id=n.id AND s.user_id=?

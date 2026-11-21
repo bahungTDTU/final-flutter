@@ -4,6 +4,12 @@ Nguồn yêu cầu: 503107-FinalProject-V1.pdf tr.5/13, tiêu chí 27 và 28.
 Một Flutter Web/Android core; FastAPI gọi Gemini bằng HTTP từ server.
 Mốc audit trước đó vẫn là snapshot trước khi triển khai AI, không sửa lịch sử evidence.
 
+## Đếm ghi chú trong thư viện
+
+Với “mình có bao nhiêu ghi chú”, API đếm hai nhóm trên màn hình thư viện trong cùng một giao dịch SQLite: ghi chú sở hữu và ghi chú được chia sẻ với tài khoản. Kết quả chỉ tính bản đã đồng bộ, gồm cả thẻ đang khóa. Bản đã xóa được loại khỏi phép đếm. Truy vấn đếm chỉ dùng metadata, không đọc nội dung hay gọi Gemini. Giới hạn sáu nguồn của câu hỏi tổng quan không áp dụng cho số đếm. Câu hỏi có thêm điều kiện chủ đề vẫn đi qua tìm kiếm nguồn.
+
+Kiểm tra ngày 21/11/2026, base `03d86e9`: `pytest backend/tests/test_ai.py -q` đạt 25 test, gồm thư viện trống, tám ghi chú, thẻ đã khóa và được chia sẻ, ghi chú đã xóa và người ngoài.
+
 ## Hỏi tổng quan và hỏi hạn nộp — 21/11/2026
 
 “Ghi chú của tôi có gì?” hoặc “Liệt kê các ghi chú” lấy tối đa sáu ghi chú đã đồng bộ gần đây nhất mà phiên hiện tại được phép đọc. Khi có nhiều hơn sáu ghi chú, câu trả lời nêu giới hạn đó. Câu hỏi theo chủ đề dùng BM25, trong đó “deadline”, “due date”, “hạn chót”, “hạn nộp” và “thời hạn” có cùng tín hiệu tìm kiếm. Nếu thư viện trống hoặc chưa đồng bộ, API giải thích cần lưu và đồng bộ. Nếu có ghi chú nhưng không khớp, người dùng có thể thử lại bằng tên hoặc từ khóa trong nội dung.
