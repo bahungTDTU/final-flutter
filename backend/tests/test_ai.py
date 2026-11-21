@@ -201,6 +201,37 @@ def test_questions_find_overviews_titles_and_deadline_aliases(env):
     assert not ask(client, owner, 'Tóm tắt ghi chú về Neptune').json()['sources']
 
 
+def test_library_count_matches_owned_and_shared_cards_without_inference(env):
+    client, app, (owner, viewer, stranger) = env
+    provider = configure(app)
+    question = 'mình có bao nhiêu ghi chú'
+    def check(user, total, owned, shared):
+        response = ask(client, user, question)
+        assert response.status_code == 200
+        assert response.json() == {
+            'sufficient': True, 'answer': f'Thư viện đã đồng bộ có {total} ghi chú: '
+            f'{owned} của bạn và {shared} được chia sẻ với bạn.',
+            'sources': [], 'context_sources': []}
+
+    check(owner, 0, 0, 0)
+    for i in range(7):
+        note(client, owner, title=f'Bài {i}')
+    key = note(client, owner)
+    share(client, owner, viewer, key)
+    assert client.post(f'/notes/{key}/protection', headers=headers(owner),
+                       json={'password': 'note-password-123', 'confirmation': 'note-password-123'}).status_code == 200
+    deleted = note(client, viewer)
+    assert client.post('/sync', headers=headers(viewer),
+                       json=operation(deleted, 1, kind='delete')).status_code == 200
+    check(owner, 8, 8, 0)
+    check(viewer, 1, 0, 1)
+    check(stranger, 0, 0, 0)
+    question = 'Minh co bao nhieu ghi chu?'
+    check(owner, 8, 8, 0)
+    assert not provider.calls
+    assert not ask(client, owner, 'Mình có bao nhiêu ghi chú về Neptune?').json()['sufficient']
+
+
 def test_library_overview_caps_sources_and_excludes_locked_notes(env):
     client, app, (owner, _, _) = env
     provider = configure(app)
