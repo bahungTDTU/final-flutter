@@ -48,24 +48,10 @@ class NoteListingCache {
     _notes = List.of(notes);
     _labels = Set.of(labels);
     _deleted = Set.of(deletedLabels);
-    // Literal (not regex) and accent/case-insensitive: "mang may" finds
-    // "Mạng máy". Folding preserves length, so boundary offsets stay valid.
-    final needle = query.isEmpty ? null : foldVietnamese(query);
-    bool contains(Note note) {
-      if (needle == null) return true;
-      if (note.locked) return false;
-      final title = note.title;
-      final content = note.plainContent;
-      if (containsFolded(title, needle) || containsFolded(content, needle)) {
-        return true;
-      }
-      final start = (title.length - needle.length).clamp(0, title.length);
-      final end = needle.length.clamp(0, content.length);
-      return containsFolded(
-        '${title.substring(start)} ${content.substring(0, end)}',
-        needle,
-      );
-    }
+    final pattern = query.isEmpty ? null : NoteSearchPattern(query);
+    bool contains(Note note) =>
+        pattern == null ||
+        !note.locked && pattern.matches(note.title, () => note.plainContent);
 
     // The API array carries last-modified order without exposing locked dates.
     // Persisted account arrays preserve it; local pending edits are prepended.

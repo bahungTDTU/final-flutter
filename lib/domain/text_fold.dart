@@ -1,38 +1,69 @@
 import 'dart:typed_data';
 
-/// Folds precomposed Vietnamese letters for search, preserving UTF-16 length.
-/// Each code unit maps to one code unit: Vietnamese vowels lose tone/shape
-/// marks, `đ/Đ` becomes `d`, and other characters are lowercased only when
-/// that preserves length. NFD combining marks (U+0300–U+0323) are retained;
-/// removing them would change offsets used by substring matching.
+bool _isVietnameseMark(int unit) => switch (unit) {
+  0x300 || 0x301 || 0x302 || 0x303 || 0x306 || 0x309 || 0x31b || 0x323 => true,
+  _ => false,
+};
+
+bool _isVowel(int unit) => switch (unit) {
+  97 || 101 || 105 || 111 || 117 || 121 => true,
+  _ => false,
+};
+
 String foldVietnamese(String input) {
-  final table = _foldTable;
-  final units = Uint16List(input.length);
-  for (var i = 0; i < input.length; i++) {
-    units[i] = table[input.codeUnitAt(i)];
+  final units = <int>[];
+  var afterVowel = false;
+  for (final unit in input.codeUnits) {
+    if (afterVowel && _isVietnameseMark(unit)) continue;
+    final folded = _foldTable[unit];
+    units.add(folded);
+    afterVowel = _isVowel(folded);
   }
   return String.fromCharCodes(units);
 }
 
-/// Literal, accent-insensitive substring test. [foldedNeedle] must already be
-/// passed through [foldVietnamese]; [haystack] is folded on the fly without
-/// allocating a folded copy, and the scan stops at the first match.
-bool containsFolded(String haystack, String foldedNeedle) {
-  final n = foldedNeedle.length;
-  if (n == 0) return true;
-  final table = _foldTable;
-  final first = foldedNeedle.codeUnitAt(0);
-  final last = haystack.length - n;
-  for (var i = 0; i <= last; i++) {
-    if (table[haystack.codeUnitAt(i)] != first) continue;
-    var j = 1;
-    while (j < n &&
-        table[haystack.codeUnitAt(i + j)] == foldedNeedle.codeUnitAt(j)) {
-      j++;
+/// Reuse one prefix table across notes. The matched prefix carries across the
+/// title/body separator without joining strings or storing folded private text.
+class NoteSearchPattern {
+  NoteSearchPattern(String query) : pattern = foldVietnamese(query) {
+    prefix = Uint32List(pattern.length);
+    var matched = 0;
+    for (var i = 1; i < pattern.length; i++) {
+      matched = _advance(matched, pattern.codeUnitAt(i));
+      prefix[i] = matched;
     }
-    if (j == n) return true;
   }
-  return false;
+  final String pattern;
+  late final Uint32List prefix;
+
+  int _advance(int matched, int unit) {
+    while (matched > 0 && pattern.codeUnitAt(matched) != unit) {
+      matched = prefix[matched - 1];
+    }
+    return pattern.codeUnitAt(matched) == unit ? matched + 1 : matched;
+  }
+
+  int _scan(String text, int matched) {
+    var afterVowel = false;
+    for (var i = 0; i < text.length; i++) {
+      final unit = text.codeUnitAt(i);
+      if (afterVowel && _isVietnameseMark(unit)) continue;
+      final folded = _foldTable[unit];
+      matched = _advance(matched, folded);
+      if (matched == pattern.length) break;
+      afterVowel = _isVowel(folded);
+    }
+    return matched;
+  }
+
+  bool matches(String title, String Function() body) {
+    if (pattern.isEmpty) return true;
+    var matched = _scan(title, 0);
+    if (matched == pattern.length) return true;
+    matched = _advance(matched, 32);
+    return matched == pattern.length ||
+        _scan(body(), matched) == pattern.length;
+  }
 }
 
 /// UTF-16 code unit -> folded code unit. Built lazily on first search.

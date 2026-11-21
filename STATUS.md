@@ -1,3 +1,21 @@
+# NoteTogether — kiểm tra ngày 21/11/2026
+
+Base GitHub `26e4660`. Bản sửa tìm kiếm, Web bootstrap và manifest đã qua
+`scripts/check.ps1` (format, analyze, 353 Flutter, 172 backend). Build bằng
+`scripts/build.ps1 -Target web -ApiUrl http://127.0.0.1:18321` tạo 41 tài nguyên
+offline. Chrome release local đăng nhập, tìm và xóa từ khóa ở 1440×900, 390×844
+và 844×390, mở lại thư viện offline thành công. Ô email hiển thị và tương tác
+được khi trì hoãn đăng ký service worker. API loopback qua `scripts/qa_performance.py`
+đạt với owner, editor, viewer và stranger.
+
+Dart VM local, 100.000 ký tự a, từ khóa 2.000 ký tự a theo sau bởi b,
+1 lượt làm nóng và 5 lượt đo. Trung vị tìm không khớp là 300,302 ms trên
+base và 1,172 ms trên bản sửa. Với `scripts/benchmark_notes.py`, SQLite/ASGI
+local trả 1.000 ghi chú qua 4 truy vấn SELECT, trung vị 7 lượt là 74,9 ms
+cho owner và 80,9 ms cho viewer. Các số này đo thuật toán và API riêng biệt.
+
+HTTPS Azure trả revision `26e4660` và health OK tại thời điểm kiểm tra trước PR.
+
 # NoteTogether - trạng thái 19/11/2026
 
 Backend cổng 8000 đã khởi động lại với `GEMINI_API_KEY` từ `.env`, báo AI
