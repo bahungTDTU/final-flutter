@@ -272,16 +272,17 @@ class DeskToolDrawer extends StatelessWidget {
             const SizedBox(height: 12),
             Tooltip(
               message: context.tr("Quản lý nhãn"),
-              child: TextButton.icon(
-                onPressed: onLabels,
-                icon: const Icon(Icons.label_outline),
-                label: Text(context.tr("Quản lý nhãn")),
+              child: _DrawerAction(
+                onTap: onLabels,
+                icon: Icons.label_outline,
+                title: context.tr("Quản lý nhãn"),
               ),
             ),
-            TextButton.icon(
-              onPressed: onAccount,
-              icon: const Icon(Icons.tune),
-              label: Text(context.tr("Tùy chỉnh")),
+            const SizedBox(height: 8),
+            _DrawerAction(
+              onTap: onAccount,
+              icon: Icons.tune,
+              title: context.tr("Tùy chỉnh"),
             ),
             const SizedBox(height: 36),
             Text(context.tr("Đường tắt"), style: theme.textTheme.bodySmall),
@@ -303,63 +304,102 @@ class _DrawerAction extends StatelessWidget {
   const _DrawerAction({
     required this.icon,
     required this.title,
-    required this.detail,
+    this.detail,
     required this.onTap,
   });
+
   final IconData icon;
-  final String title, detail;
+  final String title;
+  final String? detail;
   final VoidCallback onTap;
+
   @override
   Widget build(BuildContext context) {
-    final colors = Theme.of(context).colorScheme;
-    return Semantics(
-      button: true,
-      child: Material(
-        color: colors.surface,
-        borderRadius: BorderRadius.circular(12),
-        child: InkWell(
-          onTap: onTap,
-          borderRadius: BorderRadius.circular(12),
-          child: Padding(
-            padding: const EdgeInsets.all(16),
-            child: Column(
+    final theme = Theme.of(context);
+    final colors = theme.colorScheme;
+    final description = detail;
+    final compact = description == null;
+    final label = Text(
+      title,
+      style: theme.textTheme.titleSmall?.copyWith(
+        color: colors.onSurface,
+        fontWeight: FontWeight.w600,
+      ),
+    );
+    final arrow = ExcludeSemantics(
+      child: Icon(Icons.chevron_right_rounded, size: 20, color: colors.primary),
+    );
+    return OutlinedButton(
+      onPressed: onTap,
+      style:
+          OutlinedButton.styleFrom(
+            foregroundColor: colors.primary,
+            backgroundColor: Color.alphaBlend(
+              colors.primary.withValues(alpha: compact ? .05 : .14),
+              colors.surface,
+            ),
+            minimumSize: const Size(0, 48),
+            visualDensity: VisualDensity.standard,
+            padding: EdgeInsets.all(compact ? 12 : 16),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(14),
+            ),
+          ).copyWith(
+            side: WidgetStateProperty.resolveWith((states) {
+              final active =
+                  states.contains(WidgetState.focused) ||
+                  states.contains(WidgetState.hovered) ||
+                  states.contains(WidgetState.pressed);
+              return BorderSide(
+                color: active
+                    ? colors.primary
+                    : Color.alphaBlend(
+                        colors.primary.withValues(alpha: compact ? .42 : .56),
+                        colors.surface,
+                      ),
+                width: states.contains(WidgetState.focused) ? 2 : 1,
+              );
+            }),
+          ),
+      child: compact
+          ? Row(
+              children: [
+                Icon(icon, size: 20),
+                const SizedBox(width: 10),
+                Expanded(child: label),
+                arrow,
+              ],
+            )
+          : Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   children: [
-                    ExcludeSemantics(
-                      child: Container(
-                        padding: const EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                          color: colors.primaryContainer,
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: Icon(
-                          icon,
-                          color: colors.onPrimaryContainer,
-                          size: 22,
-                        ),
+                    DecoratedBox(
+                      decoration: BoxDecoration(
+                        color: colors.primary,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8),
+                        child: Icon(icon, color: colors.onPrimary, size: 22),
                       ),
                     ),
                     const Spacer(),
-                    ExcludeSemantics(
-                      child: Icon(
-                        Icons.north_east_rounded,
-                        size: 18,
-                        color: colors.onSurfaceVariant,
-                      ),
-                    ),
+                    arrow,
                   ],
                 ),
-                const SizedBox(height: 16),
-                Text(title, style: Theme.of(context).textTheme.titleSmall),
-                const SizedBox(height: 8),
-                Text(detail, style: Theme.of(context).textTheme.bodySmall),
+                const SizedBox(height: 12),
+                label,
+                const SizedBox(height: 4),
+                Text(
+                  description,
+                  style: theme.textTheme.bodySmall?.copyWith(
+                    color: colors.onSurfaceVariant,
+                  ),
+                ),
               ],
             ),
-          ),
-        ),
-      ),
     );
   }
 }
