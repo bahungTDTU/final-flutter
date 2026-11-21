@@ -4,6 +4,12 @@ Nguồn yêu cầu: 503107-FinalProject-V1.pdf tr.5/13, tiêu chí 27 và 28.
 Một Flutter Web/Android core; FastAPI gọi Gemini bằng HTTP từ server.
 Mốc audit trước đó vẫn là snapshot trước khi triển khai AI, không sửa lịch sử evidence.
 
+## Hỏi tổng quan và hỏi hạn nộp — 21/11/2026
+
+“Ghi chú của tôi có gì?” hoặc “Liệt kê các ghi chú” lấy tối đa sáu ghi chú đã đồng bộ gần đây nhất mà phiên hiện tại được phép đọc. Khi có nhiều hơn sáu ghi chú, câu trả lời nêu giới hạn đó. Câu hỏi theo chủ đề dùng BM25, trong đó “deadline”, “due date”, “hạn chót”, “hạn nộp” và “thời hạn” có cùng tín hiệu tìm kiếm. Nếu thư viện trống hoặc chưa đồng bộ, API giải thích cần lưu và đồng bộ. Nếu có ghi chú nhưng không khớp, người dùng có thể thử lại bằng tên hoặc từ khóa trong nội dung.
+
+Trên base `f6dfb92`, Chrome release local → FastAPI loopback → Gemini thật trả đúng 20/11/2026 cho “Deadline là khi nào?”, dẫn tới editor của ghi chú “Báo cáo Orion”. Câu hỏi tổng quan về thư viện thử gồm ba ghi chú trả về ba nguồn. `scripts/qa_ai.py --live` đạt cả câu hỏi tổng hợp hai nguồn, thiếu dữ liệu, ghi chú khóa và thu hồi quyền. Một lượt trước đó nhận HTTP 503 tạm thời từ Gemini.
+
 ## Cấu hình Gemini free tier
 
 Backend mặc định dùng `gemini-3.1-flash-lite`, hỗ trợ JSON có cấu trúc và có Free

@@ -107,7 +107,7 @@ Dùng `--live --serve 18245` để chạy Web và Android với SQLite tạm, SM
 [Các lệnh kiểm tra Web và Android](docs/AI_FEATURES.md#cấu-hình-gemini-free-tier).
 Hai AI routes chỉ đọc bản server; summary không overwrite/autosave vào note, pending draft
 bị chặn. Q&A retrieval lọc quyền/unlock trước prompt, recheck mọi nguồn sau inference;
-result ở RAM, citation mở note thật với recheck. Hạn mức/giới hạn ở AI_FEATURES.md.
+result ở RAM, citation mở note thật với recheck. Câu hỏi tổng quan dùng tối đa sáu ghi chú gần nhất. Xem phạm vi trong AI_FEATURES.md.
 
 Flutter3.47.1/Dart3.13.1 là phiên bản CI đã chốt; SDK Dart phải thỏa ^3.13.1.
 Flutter3.47.0/Dart3.13.0 không đủ. Đặt Flutter phù hợp trên PATH hoặc FLUTTER_BIN

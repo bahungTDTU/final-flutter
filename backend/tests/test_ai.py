@@ -185,6 +185,36 @@ def test_uncited_context_revoke_invalidates_answer_too(env):
     assert ask(client, viewer).status_code == 409
 
 
+def test_questions_find_overviews_titles_and_deadline_aliases(env):
+    client, app, (owner, viewer, stranger) = env
+    configure(app)
+    meeting = note(client, owner, title='Buổi họp Orion lúc 9 giờ', content='Mang theo sổ tay.')
+    deadline = note(client, owner, title='Bài báo cáo', content='Hạn nộp là 20/11.')
+    share(client, owner, viewer, meeting)
+    for question, expected in [('Ghi chú của tôi có gì?', {meeting, deadline}),
+                               ('Buổi họp Orion lúc mấy giờ?', {meeting}),
+                               ('Deadline là khi nào?', {deadline})]:
+        result = ask(client, owner, question).json()
+        assert result['sufficient'] and {s['id'] for s in result['sources']} == expected
+    assert [s['id'] for s in ask(client, viewer, 'Liệt kê các ghi chú').json()['sources']] == [meeting]
+    assert not ask(client, stranger, 'Ghi chú của tôi có gì?').json()['sources']
+    assert not ask(client, owner, 'Tóm tắt ghi chú về Neptune').json()['sources']
+
+
+def test_library_overview_caps_sources_and_excludes_locked_notes(env):
+    client, app, (owner, _, _) = env
+    provider = configure(app)
+    for i in range(7):
+        note(client, owner, title=f'Bài {i}')
+    locked = note(client, owner, title='Riêng tư')
+    response = client.post(f'/notes/{locked}/protection', headers=headers(owner),
+                           json={'password': 'note-password-123', 'confirmation': 'note-password-123'})
+    assert response.status_code == 200
+    result = ask(client, owner, 'Tóm tắt các ghi chú của tôi').json()
+    assert len(result['sources']) == 6 and '6 ghi chú' in result['answer']
+    assert all(s['id'] != locked for s in provider.calls[0][2])
+
+
 def test_insufficient_context_and_invalid_citations_never_fabricate_sources(env):
     client, app, users = env
     provider = configure(app)
