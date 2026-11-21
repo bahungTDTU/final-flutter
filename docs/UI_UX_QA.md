@@ -1,5 +1,13 @@
 # UI/UX QA – cập nhật20/10/2026
 
+## Thư viện và chuyển màn hình ngày 21/11/2026
+
+Base `f6dfb92`, nhánh `ui/library-layout-polish`. `scripts/check.ps1` đạt format, analyze, 353 Flutter và 172 backend tests. Test chuyển trang bấm Back ở giữa lượt mở và so độ mờ trước/sau khi đảo chiều. Test giảm chuyển động kiểm tra trang xuất hiện ngay từ khung hình đầu.
+
+Chrome release local build bằng `scripts/build.ps1 -Target web -ApiUrl http://127.0.0.1:18321`. Tìm/xóa từ khóa ở 1440×900, 390×844, 320×640 và 844×390. Tìm một trong ba ghi chú, mở editor, đổi theme và resize, quay lại vẫn giữ truy vấn. Hủy xóa giữ ghi chú. Chuyển Ghi chú → Được chia sẻ → Hỏi ghi chú → Ghi chú giữ bộ lọc từ khóa. Mở lại thư viện offline đạt. [Thư viện 390 px](../evidence/2026-11-21-library-layout/phone.png) · [Editor tối](../evidence/2026-11-21-library-layout/editor-dark.png).
+
+Android API 36 debug, `flutter drive --driver=test_driver/integration_test.dart --target=integration_test/ui_cohesion_test.dart` với API loopback riêng, software rendering. Ba workflow đạt: đăng ký/nhãn/tùy chỉnh/editor, template/checklist/focus/mở lại offline, chỉnh sửa có khóa/SSE/mở lại/xác thực lại/xóa. Log emulator ghi nhận skipped frames khi mở/đóng bàn phím. Chưa đo frame time bản profile trên điện thoại thật. Kiểm tra API riêng bằng `scripts/qa_performance.py` đạt với bốn vai trò.
+
 ## Soft Studio — 20/10
 
 PASS: 134 format (0 changes), analyze, 324 Flutter tests và 152 backend tests (mã backend không đổi). Contrast 12 themes, 200% vi/en, phone quick-label scrolling/filter, compact landscape/tablet; real Web 1280×1000/375×812/768×1024/844×390 sáng/tối. Web QA/API 8000 và APK debug compile. [Báo cáo](SOFT_STUDIO_UI_2026-10-20.md), [INDEX](../evidence/2026-10-20-soft-studio/INDEX.md). Native/FPS/provider/CI/release mới NOT RUN.

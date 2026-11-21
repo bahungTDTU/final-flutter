@@ -36,20 +36,14 @@ void main() {
     });
 
     test('entrance and exit curves settle at their endpoints', () {
-      for (final status in [AnimationStatus.forward, AnimationStatus.reverse]) {
-        expect(PrismPageTransitions.progress(0, status), closeTo(0, 1e-9));
-        expect(PrismPageTransitions.progress(1, status), closeTo(1, 1e-9));
+      for (final curve in [MotionTokens.enter, MotionTokens.exit]) {
+        expect(curve.transform(0), closeTo(0, 1e-9));
+        expect(curve.transform(1), closeTo(1, 1e-9));
       }
       // Smooth-out entrance is mostly done by mid-way; the flipped exit
       // leaves quickly from fully visible (value falls fastest near 1).
-      expect(
-        PrismPageTransitions.progress(.5, AnimationStatus.forward),
-        greaterThan(.85),
-      );
-      expect(
-        PrismPageTransitions.progress(.5, AnimationStatus.reverse),
-        lessThan(.15),
-      );
+      expect(MotionTokens.enter.transform(.5), greaterThan(.85));
+      expect(MotionTokens.exit.transform(.5), lessThan(.15));
     });
 
     testWidgets('pushes rise 8dp and fade, and are static with reduced motion', (
@@ -93,6 +87,22 @@ void main() {
           .map((t) => t.transform.getTranslation().y)
           .firstWhere((y) => y > 0);
       expect(dy, lessThanOrEqualTo(MotionTokens.rise));
+      await tester.pump(const Duration(milliseconds: 80));
+      final target = find.byKey(const Key('next'));
+      double opacity() => tester
+          .widget<Opacity>(
+            find.ancestor(of: target, matching: find.byType(Opacity)).first,
+          )
+          .opacity;
+      final beforeBack = opacity();
+      expect(beforeBack, inExclusiveRange(0, 1));
+      Navigator.of(tester.element(target)).pop();
+      await tester.pump();
+      expect(opacity(), closeTo(beforeBack, .001));
+      await tester.pumpAndSettle();
+      expect(target, findsNothing);
+
+      await pushFrom(false);
       await tester.pump(MotionTokens.fast);
       await tester.pumpAndSettle();
       expect(find.byKey(const Key('next')), findsOneWidget);

@@ -38,11 +38,11 @@ thực thi theo trạng thái Actions; báo kết quả thực trong evidence, k
 ```powershell
 git switch master
 git pull --ff-only origin master
-git switch -c codex/mo-ta-thay-doi
+git switch -c ui/library-layout-polish
 powershell -ExecutionPolicy Bypass -File scripts/check.ps1
 git add -- <cac-file-can-commit>
 git commit -m "Mo ta thay doi"
-git push -u origin codex/mo-ta-thay-doi
+git push -u origin ui/library-layout-polish
 ```
 
 Tạo PR với problem/behavior/validation và attach vào task. Chỉ merge sau review code,

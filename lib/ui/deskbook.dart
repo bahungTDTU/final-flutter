@@ -397,14 +397,15 @@ class NotebookTitle extends StatelessWidget {
         style: theme.textTheme.bodySmall,
       ),
     );
+    final largeText = MediaQuery.textScalerOf(context).scale(1) >= 1.3;
     final heading = Semantics(
       header: true,
       child: Text(
         title,
         // One line in the dense row so its height never depends on the
         // sync label's length.
-        maxLines: dense ? 1 : null,
-        overflow: dense ? TextOverflow.ellipsis : null,
+        maxLines: dense && !largeText ? 1 : null,
+        overflow: dense && !largeText ? TextOverflow.ellipsis : null,
         style: theme.textTheme.headlineLarge?.copyWith(
           fontSize: dense ? 30 : 38,
           fontWeight: FontWeight.w600,
@@ -418,7 +419,7 @@ class NotebookTitle extends StatelessWidget {
       // a Wrap would reflow and shift every card below on each sync pulse.
       return StudioHeaderPanel(
         compact: true,
-        child: MediaQuery.textScalerOf(context).scale(1) >= 1.3
+        child: largeText
             ? Wrap(
                 spacing: 16,
                 runSpacing: 8,

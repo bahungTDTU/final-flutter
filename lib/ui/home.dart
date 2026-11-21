@@ -44,6 +44,7 @@ class UnverifiedBanner extends StatelessWidget {
   final VoidCallback? onDismiss;
   @override
   Widget build(BuildContext context) => StatusNotice(
+    compact: true,
     icon: Icons.mark_email_unread_outlined,
     message: ['not_configured', 'delivery_failed', 'failed'].contains(delivery)
         ? context.tr("Email chưa xác minh. Chưa gửi được mã.")
@@ -51,7 +52,7 @@ class UnverifiedBanner extends StatelessWidget {
         ? context.tr(
             "Email chưa xác minh. Mã đang chờ gửi; ghi chú vẫn dùng được.",
           )
-        : context.tr("Email của bạn chưa được xác minh."),
+        : context.tr("Email chưa xác minh"),
     // Wrap so the two actions stack instead of overflowing at large text.
     action: Wrap(
       crossAxisAlignment: WrapCrossAlignment.center,
@@ -353,6 +354,7 @@ class _HomeScreenState extends State<HomeScreen> {
     // Keep quick choices in catalog order so tapping a late chip does not
     // move it out of the horizontal viewport. Selected IDs still get priority.
     final visibleLabels = c.labels.where(quickLabelIds.contains);
+    final iconOnly = MediaQuery.sizeOf(context).width < 360;
     final tools = <Widget>[
       SegmentedButton<bool>(
         showSelectedIcon: false,
@@ -360,13 +362,17 @@ class _HomeScreenState extends State<HomeScreen> {
         segments: [
           ButtonSegment(
             value: true,
-            icon: small ? null : const Icon(Icons.grid_view),
-            label: Text(context.tr("Lưới")),
+            icon: small && !iconOnly ? null : const Icon(Icons.grid_view),
+            label: iconOnly ? null : Text(context.tr("Lưới")),
+            tooltip: iconOnly ? context.tr("Lưới") : null,
           ),
           ButtonSegment(
             value: false,
-            icon: small ? null : const Icon(Icons.view_list_outlined),
-            label: Text(context.tr("Danh sách")),
+            icon: small && !iconOnly
+                ? null
+                : const Icon(Icons.view_list_outlined),
+            label: iconOnly ? null : Text(context.tr("Danh sách")),
+            tooltip: iconOnly ? context.tr("Danh sách") : null,
           ),
         ],
         selected: {c.grid},
@@ -570,7 +576,12 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Scaffold(
             appBar: small
                 ? noteAppBar(
-                    title: const Brand(),
+                    title: size.maxWidth < 360
+                        ? Semantics(
+                            label: 'NoteTogether',
+                            child: const Brand(compact: true),
+                          )
+                        : const Brand(),
                     actions: [
                       if (destination != 2)
                         IconButton.filled(
@@ -724,7 +735,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                                               .length
                                                         : null,
                                                   ),
-                                                  const SizedBox(height: 24),
+                                                  SizedBox(
+                                                    height: small ? 12 : 16,
+                                                  ),
                                                   TextField(
                                                     key: const Key(
                                                       'note-search',
@@ -792,7 +805,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                                       );
                                                     },
                                                   ),
-                                                  const SizedBox(height: 16),
+                                                  SizedBox(
+                                                    height: small ? 8 : 12,
+                                                  ),
                                                   filterToolbar(small, sidebar),
                                                   if (c.drafts.isNotEmpty)
                                                     Wrap(
@@ -1008,7 +1023,8 @@ class _HomeScreenState extends State<HomeScreen> {
         title == context.tr("Đã ghim") &&
         notes.length >= 2 &&
         width - padding * 2 >= 800;
-    final extent =
+    final columns = ((width - padding * 2) / (260 * scale)).floor().clamp(1, 4);
+    late final extent =
         (320 +
             (notes.any((n) => !n.locked && n.role != 'owner') ? 48 : 0) +
             (c.fontSize - 16).clamp(0, 8) * 10 +
@@ -1072,20 +1088,11 @@ class _HomeScreenState extends State<HomeScreen> {
           padding: EdgeInsets.symmetric(horizontal: padding),
           sliver: tiles && title == context.tr("Đã ghim") && notes.length == 1
               ? SliverToBoxAdapter(child: noteCard(notes.single, compact: true))
-              : tiles
+              : tiles && columns > 1
               ? SliverGrid(
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: ((width - padding * 2) / (260 * scale))
-                        .floor()
-                        .clamp(1, 4),
-                    mainAxisExtent:
-                        (320 +
-                            (notes.any((n) => !n.locked && n.role != 'owner')
-                                ? 48
-                                : 0) +
-                            (c.fontSize - 16).clamp(0, 8) * 10 +
-                            (c.conflicts.isNotEmpty ? 64 : 0)) *
-                        scale,
+                    crossAxisCount: columns,
+                    mainAxisExtent: extent,
                     crossAxisSpacing: 16,
                     mainAxisSpacing: 16,
                   ),
@@ -1328,7 +1335,7 @@ class _HomeScreenState extends State<HomeScreen> {
             const SizedBox(height: 12),
             NotePreview(
               note: note,
-              maxLines: tile ? 4 : 2,
+              maxLines: c.grid && !compact ? 4 : 2,
               style: TextStyle(
                 fontSize: c.fontSize,
                 height: 1.5,

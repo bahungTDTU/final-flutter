@@ -193,12 +193,6 @@ class PrismPageTransitions extends PageTransitionsBuilder {
   @override
   Duration get reverseTransitionDuration => MotionTokens.quick;
 
-  /// Eased progress for [value]; exits use the flipped curve.
-  static double progress(double value, AnimationStatus status) =>
-      status == AnimationStatus.reverse
-      ? MotionTokens.exit.transform(value)
-      : MotionTokens.enter.transform(value);
-
   @override
   Widget buildTransitions<T>(
     PageRoute<T> route,
@@ -208,11 +202,44 @@ class PrismPageTransitions extends PageTransitionsBuilder {
     Widget child,
   ) {
     if (MediaQuery.disableAnimationsOf(context)) return child;
-    return AnimatedBuilder(
+    return _RouteMotion(
+      key: ObjectKey(animation),
       animation: animation,
       child: child,
+    );
+  }
+}
+
+class _RouteMotion extends StatefulWidget {
+  const _RouteMotion({super.key, required this.animation, required this.child});
+  final Animation<double> animation;
+  final Widget child;
+
+  @override
+  State<_RouteMotion> createState() => _RouteMotionState();
+}
+
+class _RouteMotionState extends State<_RouteMotion> {
+  // CurvedAnimation retains the active curve when a push is interrupted by Back.
+  late final progress = CurvedAnimation(
+    parent: widget.animation,
+    curve: MotionTokens.enter,
+    reverseCurve: MotionTokens.exit,
+  );
+
+  @override
+  void dispose() {
+    progress.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: progress,
+      child: widget.child,
       builder: (_, child) {
-        final t = progress(animation.value, animation.status);
+        final t = progress.value;
         return Opacity(
           opacity: t.clamp(0.0, 1.0),
           child: Transform.translate(

@@ -315,7 +315,7 @@ class DashboardHeader extends StatelessWidget {
           },
         ),
         if (notice != null) ...[
-          const SizedBox(height: 20),
+          SizedBox(height: compact ? 8 : 12),
           Theme(
             data: theme.copyWith(
               colorScheme: colors.copyWith(
@@ -336,8 +336,6 @@ class DashboardHeader extends StatelessWidget {
             child: notice!,
           ),
         ],
-        const SizedBox(height: 20),
-        Divider(color: colors.outlineVariant),
       ],
     );
   }
