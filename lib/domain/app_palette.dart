@@ -5,7 +5,11 @@ enum AppPalette {
   iris('Diên vĩ', 'Tím mực · Thạch nam · Xanh sương'),
   rose('Thạch anh hồng', 'Hồng mận · Tím khói · Vàng cát'),
   amber('Hổ phách', 'Nâu mật · Ô liu · Đất nung'),
-  forest('Rừng ngọc', 'Lục bảo · Lá non · Đồng đỏ');
+  forest('Rừng ngọc', 'Lục bảo · Lá non · Đồng đỏ'),
+  reef('Rạn san hô', 'Ngọc lam · San hô · Chàm'),
+  solstice('Hạ chí', 'Cam cháy · Lam cobalt · Mâm xôi'),
+  aurora('Cực quang', 'Chàm · Ngọc bích · Phong lan'),
+  lagoon('Đầm phá', 'Lam sâu · Nghệ vàng · Lục biển');
 
   const AppPalette(this.label, this.description);
   final String label, description;

@@ -1193,3 +1193,5 @@ và vì sao backend test/build pass chưa phải full feature/production/video e
 - Docs REALTIME_COLLABORATION/evidence/2026-10-02-realtime ghi protocol/commands/date/targets/
   hashes/limitations; README/Readme/matrix cập nhật. Commit chưa có, không push/deploy/phí/nộp.
   Bước tiếp theo: LLM Summary/Q&A có nguồn/quyền; SMTP ngoài/release/submission gates vẫn riêng.
+
+Ngày 22/11/2026, mục **Giao diện → Bảng màu giao diện** có 10 bảng phối sáng/tối, gồm bốn lựa chọn mới Rạn san hô, Hạ chí, Cực quang và Đầm phá. Chi tiết trong docs/COLOR_PALETTES.md.

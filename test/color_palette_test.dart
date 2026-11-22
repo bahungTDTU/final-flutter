@@ -25,7 +25,7 @@ double contrast(Color a, Color b) {
 }
 
 void main() {
-  test('All six palettes meet text contrast in twelve themes; chrome stays distinct and cached', () {
+  test('All palettes meet text contrast in light and dark themes; chrome stays distinct and cached', () {
     final primaries = <Color>{}, canvases = <Color>{};
     for (final p in AppPalette.values) {
       for (final brightness in Brightness.values) {
@@ -82,14 +82,14 @@ void main() {
         noteTheme(Brightness.light, palette: p).scaffoldBackgroundColor,
       );
     }
-    expect(primaries.length, 6);
-    expect(canvases.length, 6);
+    expect(primaries.length, AppPalette.values.length);
+    expect(canvases.length, AppPalette.values.length);
   });
   test('Palette is durable offline and queues remain isolated after account switch', () async {
     final store = MemoryStore();
     final a = offlineController(store: store);
     await store.write('session', {'user': a.user, 'token': a.token});
-    await a.setPreferences({'palette': 'iris', 'dark': true, 'locale': 'en'});
+    await a.setPreferences({'palette': 'reef', 'dark': true, 'locale': 'en'});
     while (a.syncing) {
       await Future<void>.delayed(Duration.zero);
     }
@@ -103,7 +103,7 @@ void main() {
       store,
     );
     await reopened.initialize();
-    expect(reopened.palette, AppPalette.iris);
+    expect(reopened.palette, AppPalette.reef);
     expect(reopened.dark, true);
     expect(reopened.language, 'en');
     expect(reopened.pendingPreferences.single, op);
@@ -199,7 +199,10 @@ void main() {
               ),
             );
             await tester.pumpAndSettle();
-            expect(find.byType(PaletteThumbnail), findsNWidgets(6));
+            expect(
+              find.byType(PaletteThumbnail),
+              findsNWidgets(AppPalette.values.length),
+            );
             expect(
               tester.takeException(),
               isNull,

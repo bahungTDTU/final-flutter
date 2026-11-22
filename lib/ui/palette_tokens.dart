@@ -56,6 +56,34 @@ class PaletteSpec {
       Color(0xffeff7f1),
       Color(0xff111f19),
     ),
+    AppPalette.reef => const PaletteSpec(
+      Color(0xff006965),
+      Color(0xffac423e),
+      Color(0xff514598),
+      Color(0xfff1f8f6),
+      Color(0xff102021),
+    ),
+    AppPalette.solstice => const PaletteSpec(
+      Color(0xffa04918),
+      Color(0xff334f9b),
+      Color(0xff923960),
+      Color(0xfffff6ec),
+      Color(0xff241a19),
+    ),
+    AppPalette.aurora => const PaletteSpec(
+      Color(0xff463891),
+      Color(0xff007058),
+      Color(0xff923e87),
+      Color(0xfff4f3fc),
+      Color(0xff17162a),
+    ),
+    AppPalette.lagoon => const PaletteSpec(
+      Color(0xff155780),
+      Color(0xff845a08),
+      Color(0xff087060),
+      Color(0xffeff6f9),
+      Color(0xff101e28),
+    ),
   };
   Color canvas(Brightness b) => b == Brightness.dark ? night : paper;
   ColorScheme scheme(Brightness b) {

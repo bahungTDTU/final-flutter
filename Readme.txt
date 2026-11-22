@@ -142,3 +142,5 @@ nạp `.env` qua Uvicorn. Khi tự gọi Uvicorn, truyền `--env-file .env` n�
 CORS cần origin chính xác. API_URL chỉ là public URL, không secret.
 Tạo tài khoản test email/display name/password≥10 ký tự hai lần, tự login và giữ banner unverified.
 Không có grading account/public credentials preloaded; production email/AI không được giả success.
+
+Ngày 22/11/2026, mục **Giao diện → Bảng màu giao diện** có 10 bảng phối sáng/tối, gồm bốn lựa chọn mới Rạn san hô, Hạ chí, Cực quang và Đầm phá. Chi tiết trong docs/COLOR_PALETTES.md.
