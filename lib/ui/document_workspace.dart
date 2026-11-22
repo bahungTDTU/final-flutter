@@ -316,7 +316,7 @@ class _DocumentWorkspaceState extends State<DocumentWorkspace> {
     builder: (ctx, _, _) {
       final stats = WritingSnapshot(widget.document.snapshotSource);
       return Material(
-        color: Theme.of(ctx).colorScheme.surfaceContainerLow,
+        color: Theme.of(ctx).colorScheme.secondaryContainer,
         child: SafeArea(
           top: false,
           child: Padding(
@@ -413,7 +413,7 @@ class _DocumentWorkspaceState extends State<DocumentWorkspace> {
                     SizedBox(
                       width: 212,
                       child: Material(
-                        color: Theme.of(ctx).colorScheme.surfaceContainerLow,
+                        color: Theme.of(ctx).colorScheme.secondaryContainer,
                         child: DecoratedBox(
                           decoration: BoxDecoration(
                             border: Border(
@@ -455,7 +455,7 @@ class _DocumentWorkspaceState extends State<DocumentWorkspace> {
                     SizedBox(
                       width: 260,
                       child: Material(
-                        color: Theme.of(ctx).colorScheme.surfaceContainerLow,
+                        color: Theme.of(ctx).colorScheme.tertiaryContainer,
                         child: DecoratedBox(
                           decoration: BoxDecoration(
                             border: Border(

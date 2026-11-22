@@ -56,6 +56,12 @@ Thiết bị khác nhận trong lần sync tiếp theo, không claim realtime pr
 ID/frozen base revision, query/filter/scroll và quyền/grant. Ghi chú khóa tiếp tục che title/body/
 labels/date/share identities trong visual/semantics/cache. Public pin/shared flags giữ chính sách cũ.
 
+## Phối màu toàn giao diện ngày 22/11/2026
+
+Ba màu của mỗi bảng phối xuất hiện ở các mục điều hướng, dải tiêu đề thư viện và các thẻ ghi chú. Ô tìm kiếm và nút chọn kiểu xem dùng màu phụ. Trong trình soạn thảo, mục lục, thanh trạng thái và bảng công cụ dùng các sắc nền riêng. Thẻ khóa tiếp tục dùng nền trung tính.
+
+Đã kiểm tra trên bản làm việc dựa trên `b7db83a`. Lệnh `flutter test test/color_palette_test.dart` kiểm tra độ tương phản chữ trên các điểm màu của tiêu đề, nền ô nhập và nền thẻ trong 20 giao diện. Build web bằng `scripts/build.ps1 -Target web -ApiUrl http://127.0.0.1:18321` và kiểm tra màn hình thư viện trên Chrome localhost ở 1440 × 900 với Rừng ngọc sáng và Cực quang tối.
+
 ## Nghiệm thu16/10
 
 PASS format129files0changes/analyze/308Flutter/147backend;6regression mới về contrast/cache,

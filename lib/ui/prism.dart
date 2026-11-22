@@ -290,12 +290,12 @@ class _Atmosphere extends CustomPainter {
           end: Alignment.bottomRight,
           colors: [
             Color.alphaBlend(
-              palette.tones[0].light.withValues(alpha: .045),
+              palette.tones[1].ink.withValues(alpha: .09),
               palette.canvas,
             ),
             palette.canvas,
             Color.alphaBlend(
-              palette.tones[2].light.withValues(alpha: .025),
+              palette.tones[2].ink.withValues(alpha: .10),
               palette.canvas,
             ),
           ],
@@ -359,12 +359,12 @@ class PrismSurface extends StatelessWidget {
                     backgroundColors ??
                     [
                       Color.alphaBlend(
-                        p.tones[0].light.withValues(alpha: tinted ? .06 : 0),
+                        p.tones[1].ink.withValues(alpha: tinted ? .09 : 0),
                         surface,
                       ),
                       surface,
                       Color.alphaBlend(
-                        p.tones[2].light.withValues(alpha: tinted ? .04 : 0),
+                        p.tones[2].ink.withValues(alpha: tinted ? .08 : 0),
                         surface,
                       ),
                     ],
@@ -402,7 +402,7 @@ class _PrismCardState extends State<PrismCard> {
     final colors = Theme.of(context).colorScheme;
     final tone = widget.tone;
     final active = hovered || focused;
-    final accent = tone?.light ?? colors.outlineVariant;
+    final accent = tone?.ink ?? colors.outlineVariant;
     final dark = Theme.of(context).brightness == Brightness.dark;
     final rich = widget.rich && tone != null;
     return RepaintBoundary(
@@ -477,8 +477,8 @@ class _PrismCardState extends State<PrismCard> {
                                 : tone == null
                                 ? .025
                                 : rich
-                                ? (dark ? .075 : .085)
-                                : .03,
+                                ? (dark ? .14 : .19)
+                                : .12,
                           ),
                           colors.surface,
                         ),
