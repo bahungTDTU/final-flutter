@@ -88,7 +88,7 @@ class ProfileUpdate(BaseModel):
     name: str = Field(min_length=1, max_length=100)
 
 
-PaletteId = Literal['atelier', 'ocean', 'iris', 'rose', 'amber', 'forest']
+PaletteId = Literal['atelier', 'ocean', 'iris', 'rose', 'amber', 'forest', 'reef', 'solstice', 'aurora', 'lagoon']
 
 
 class Preferences(BaseModel):

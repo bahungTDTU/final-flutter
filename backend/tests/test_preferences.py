@@ -63,7 +63,7 @@ def test_palette_merge_replay_preserves_locale_and_legacy_client(env):
     auth = headers(users[0])
     first = {'op_id': 'palette-first', 'palette': 'ocean'}
     assert client.post('/me/preferences/sync', json=first, headers=auth).status_code == 200
-    for palette in ('atelier', 'iris', 'rose', 'amber', 'forest'):
+    for palette in ('atelier', 'iris', 'rose', 'amber', 'reef', 'solstice', 'aurora', 'lagoon', 'forest'):
         assert client.post('/me/preferences/sync', json={'op_id': f'palette-{palette}', 'palette': palette}, headers=auth).status_code == 200
     client.post('/me/preferences/sync', json={'op_id': 'language', 'locale': 'en'}, headers=auth)
     profile = client.patch('/me/preferences', json={'grid': False, 'dark': True, 'font_size': 20}, headers=auth).json()

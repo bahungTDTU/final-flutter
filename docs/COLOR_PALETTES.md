@@ -1,6 +1,6 @@
-# Bảng màu giao diện —16/10/2026
+# Bảng màu giao diện — 22/11/2026
 
-IMPLEMENTED:6 tổ hợp màu, mỗi tổ hợp có bản sáng/tối (12theme).
+Có 10 tổ hợp màu, mỗi tổ hợp có bản sáng và tối.
 Mở Hồ sơ và tùy chỉnh → Giao diện → Bảng màu giao diện.
 Trong editor PC dùng biểu tượng palette; điện thoại mở Công cụ ghi chú → Bảng màu giao diện.
 Chọn mẫu để áp dụng và lưu trên thiết bị, rồi đồng bộ theo tài khoản khi kết nối.
@@ -14,6 +14,10 @@ Công tắc sáng/tối độc lập, đặt trước gallery trong settings; ga
 | rose | Thạch anh hồng | Hồng mận / tím khói / vàng cát |
 | amber | Hổ phách | Nâu mật / ô liu / đất nung |
 | forest | Rừng ngọc | Lục bảo / lá non / đồng đỏ |
+| reef | Rạn san hô | Ngọc lam · San hô · Chàm |
+| solstice | Hạ chí | Cam cháy · Lam cobalt · Mâm xôi |
+| aurora | Cực quang | Chàm · Ngọc bích · Phong lan |
+| lagoon | Đầm phá | Lam sâu · Nghệ vàng · Lục biển |
 
 ## Thiết kế và triển khai
 
@@ -24,7 +28,7 @@ không áp bố cục đó vào app ghi chú; retry domain color khớp Notes & 
 48dp targets, focus và reduced motion. [Override](../design-system/notetogether-deskbook/pages/color-palettes.md).
 
 `domain/app_palette.dart` giữ IDs; `ui/palette_tokens.dart` giữ primitive/ColorScheme/chrome tokens;
-`noteTheme` trong design_system.dart cache theo (brightness,palette), tối đa12ThemeData.
+`noteTheme` trong design_system.dart cache theo (brightness,palette), tối đa 20 ThemeData.
 Gallery tái sử dụng cache, không tạo theme liên tục theo thông báo đồng bộ.
 MaterialApp, PrismPalette, brand gradient/action, background, panel, toolbar, button,
 navigation, dialog/field/card và contrasting pinned cover nhận cùng palette.
@@ -41,7 +45,7 @@ Hỗ trợ Việt/Anh; không dùng nội dung ghi chú trong preview.
 
 Thêm trường `palette` trong JSON preference, không đổi schema SQLite/Sembast.
 Tài khoản cũ thiếu palette và giá trị local không biết dùng Atelier. Màn chưa đăng nhập dùng Atelier.
-POST `/me/preferences/sync`: `{op_id, palette: "iris"}`; chỉ nhận6ID, strict/no-null/extra-forbidden.
+POST `/me/preferences/sync`: `{op_id, palette: "iris"}`; chỉ nhận 10 ID, strict/no-null/extra-forbidden.
 Field merge/idempotency/account namespace và immutable operations dùng cơ chế hiện có.
 Retry op cũ không đảo lựa chọn mới; op_id trùng payload khác409; mất mạng giữ queue.
 Palette là preference; không dùng last-server-accepted cho nội dung ghi chú.

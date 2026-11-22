@@ -265,14 +265,14 @@ class PaletteThumbnail extends StatelessWidget {
                   Container(
                     width: 30,
                     decoration: BoxDecoration(
-                      color: s.tertiaryContainer,
+                      color: s.tertiary,
                       borderRadius: BorderRadius.circular(4),
                     ),
                     alignment: Alignment.center,
                     child: Icon(
                       Icons.check_rounded,
                       size: 16,
-                      color: s.onTertiaryContainer,
+                      color: s.onTertiary,
                     ),
                   ),
                 ],

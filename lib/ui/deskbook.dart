@@ -258,6 +258,7 @@ class DeskToolDrawer extends StatelessWidget {
               icon: Icons.auto_awesome_mosaic_outlined,
               title: context.tr("Xưởng ghi chú"),
               detail: context.tr("Bắt đầu từ một mẫu"),
+              accent: (colors.secondary, colors.onSecondary),
               onTap: onTemplates,
             ),
             const SizedBox(height: 12),
@@ -265,6 +266,7 @@ class DeskToolDrawer extends StatelessWidget {
               icon: Icons.space_dashboard_outlined,
               title: context.tr("Không gian làm việc"),
               detail: context.tr("Kế hoạch, việc cần làm và tập trung"),
+              accent: (colors.tertiary, colors.onTertiary),
               onTap: onWorkspace,
             ),
             const SizedBox(height: 24),
@@ -305,9 +307,11 @@ class _DrawerAction extends StatelessWidget {
     required this.icon,
     required this.title,
     this.detail,
+    this.accent,
     required this.onTap,
   });
 
+  final (Color, Color)? accent;
   final IconData icon;
   final String title;
   final String? detail;
@@ -317,6 +321,7 @@ class _DrawerAction extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final colors = theme.colorScheme;
+    final (tone, onTone) = accent ?? (colors.primary, colors.onPrimary);
     final description = detail;
     final compact = description == null;
     final label = Text(
@@ -327,15 +332,15 @@ class _DrawerAction extends StatelessWidget {
       ),
     );
     final arrow = ExcludeSemantics(
-      child: Icon(Icons.chevron_right_rounded, size: 20, color: colors.primary),
+      child: Icon(Icons.chevron_right_rounded, size: 20, color: tone),
     );
     return OutlinedButton(
       onPressed: onTap,
       style:
           OutlinedButton.styleFrom(
-            foregroundColor: colors.primary,
+            foregroundColor: tone,
             backgroundColor: Color.alphaBlend(
-              colors.primary.withValues(alpha: compact ? .05 : .14),
+              tone.withValues(alpha: compact ? .05 : .14),
               colors.surface,
             ),
             minimumSize: const Size(0, 48),
@@ -352,9 +357,9 @@ class _DrawerAction extends StatelessWidget {
                   states.contains(WidgetState.pressed);
               return BorderSide(
                 color: active
-                    ? colors.primary
+                    ? tone
                     : Color.alphaBlend(
-                        colors.primary.withValues(alpha: compact ? .42 : .56),
+                        tone.withValues(alpha: compact ? .42 : .56),
                         colors.surface,
                       ),
                 width: states.contains(WidgetState.focused) ? 2 : 1,
@@ -377,12 +382,12 @@ class _DrawerAction extends StatelessWidget {
                   children: [
                     DecoratedBox(
                       decoration: BoxDecoration(
-                        color: colors.primary,
+                        color: tone,
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(8),
-                        child: Icon(icon, color: colors.onPrimary, size: 22),
+                        child: Icon(icon, color: onTone, size: 22),
                       ),
                     ),
                     const Spacer(),
