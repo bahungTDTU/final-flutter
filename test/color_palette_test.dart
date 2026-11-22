@@ -33,6 +33,15 @@ void main() {
         expect(identical(theme, noteTheme(brightness, palette: p)), true);
         var minimum = 100.0;
         for (final surface in [
+          ...StudioStyle.headingColors(s),
+          for (final tone in theme.extension<PrismPalette>()!.tones)
+            Color.alphaBlend(
+              tone.ink.withValues(
+                alpha: brightness == Brightness.dark ? .14 : .19,
+              ),
+              s.surface,
+            ),
+          theme.inputDecorationTheme.fillColor!,
           theme.scaffoldBackgroundColor,
           s.surface,
           s.surfaceContainerLowest,

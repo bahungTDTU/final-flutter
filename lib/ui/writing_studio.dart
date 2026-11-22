@@ -217,7 +217,7 @@ class _TemplateCard extends StatelessWidget {
       selected: selected,
       child: Material(
         color: Color.alphaBlend(
-          tone.light.withValues(alpha: selected ? .18 : .07),
+          tone.ink.withValues(alpha: selected ? .18 : .09),
           Theme.of(context).colorScheme.surface,
         ),
         shape: RoundedRectangleBorder(

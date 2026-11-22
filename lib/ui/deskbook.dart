@@ -83,6 +83,16 @@ class DeskDestinationStrip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context), colors = theme.colorScheme;
+    final destinationTones = [
+      colors.primary,
+      colors.secondary,
+      colors.tertiary,
+    ];
+    final selectedInks = [
+      colors.onPrimary,
+      colors.onSecondary,
+      colors.onTertiary,
+    ];
     return Semantics(
       container: true,
       explicitChildNodes: true,
@@ -119,12 +129,12 @@ class DeskDestinationStrip extends StatelessWidget {
                           ),
                           backgroundColor: WidgetStatePropertyAll(
                             i == selected
-                                ? colors.primaryContainer
+                                ? destinationTones[i % destinationTones.length]
                                 : Colors.transparent,
                           ),
                           foregroundColor: WidgetStatePropertyAll(
                             i == selected
-                                ? colors.onPrimaryContainer
+                                ? selectedInks[i % selectedInks.length]
                                 : colors.onSurface,
                           ),
                           overlayColor: WidgetStateProperty.resolveWith((
@@ -132,13 +142,13 @@ class DeskDestinationStrip extends StatelessWidget {
                           ) {
                             if (states.contains(WidgetState.pressed)) {
                               return (i == selected
-                                      ? colors.onPrimaryContainer
+                                      ? selectedInks[i % selectedInks.length]
                                       : colors.primary)
                                   .withValues(alpha: .12);
                             }
                             if (states.contains(WidgetState.hovered)) {
                               return (i == selected
-                                      ? colors.onPrimaryContainer
+                                      ? selectedInks[i % selectedInks.length]
                                       : colors.primary)
                                   .withValues(alpha: .06);
                             }
@@ -153,7 +163,7 @@ class DeskDestinationStrip extends StatelessWidget {
                             (states) => BorderSide(
                               color: states.contains(WidgetState.focused)
                                   ? i == selected
-                                        ? colors.onPrimaryContainer
+                                        ? selectedInks[i % selectedInks.length]
                                         : colors.primary
                                   : Colors.transparent,
                               width: 2,
@@ -176,6 +186,10 @@ class DeskDestinationStrip extends StatelessWidget {
                                 i < icons.length
                                     ? icons[i]
                                     : Icons.notes_rounded,
+                                color: i == selected
+                                    ? null
+                                    : destinationTones[i %
+                                          destinationTones.length],
                                 size: 20,
                               ),
                             ),

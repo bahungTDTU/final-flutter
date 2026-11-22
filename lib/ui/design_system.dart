@@ -212,7 +212,11 @@ ThemeData _buildNoteTheme(Brightness brightness, AppPalette selected) {
           ],
     rim: selected == AppPalette.atelier
         ? null
-        : List.filled(3, scheme.outlineVariant),
+        : [
+            scheme.primaryContainer,
+            scheme.secondaryContainer,
+            scheme.tertiaryContainer,
+          ],
   );
   final base = ThemeData(
     useMaterial3: true,
@@ -272,7 +276,12 @@ ThemeData _buildNoteTheme(Brightness brightness, AppPalette selected) {
       hintStyle: TextStyle(color: muted),
       labelStyle: TextStyle(color: muted, fontWeight: FontWeight.w500),
       filled: true,
-      fillColor: scheme.surfaceContainerLowest,
+      fillColor: Color.lerp(
+        scheme.surfaceContainerLowest,
+        scheme.secondary,
+        .06,
+      ),
+      prefixIconColor: scheme.secondary,
       contentPadding: const EdgeInsets.all(Space.lg),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(StudioStyle.control),
@@ -283,7 +292,7 @@ ThemeData _buildNoteTheme(Brightness brightness, AppPalette selected) {
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(StudioStyle.control),
-        borderSide: BorderSide(color: primary, width: 2),
+        borderSide: BorderSide(color: scheme.secondary, width: 2),
       ),
     ),
     cardTheme: CardThemeData(
@@ -385,12 +394,12 @@ ThemeData _buildNoteTheme(Brightness brightness, AppPalette selected) {
       style: ButtonStyle(
         minimumSize: const WidgetStatePropertyAll(Size(48, 48)),
         backgroundColor: WidgetStateProperty.fromMap({
-          WidgetState.selected: scheme.secondaryContainer,
+          WidgetState.selected: scheme.secondary,
           WidgetState.any: scheme.surfaceContainerLowest,
         }),
         foregroundColor: WidgetStateProperty.fromMap({
           WidgetState.disabled: scheme.onSurface.withValues(alpha: .38),
-          WidgetState.selected: scheme.onSecondaryContainer,
+          WidgetState.selected: scheme.onSecondary,
           WidgetState.any: muted,
         }),
         side: WidgetStatePropertyAll(BorderSide(color: scheme.outline)),

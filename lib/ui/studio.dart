@@ -5,15 +5,9 @@ abstract final class StudioStyle {
   static const double control = 14, card = 20, panel = 24, hero = 28;
 
   static List<Color> headingColors(ColorScheme colors) => [
-    Color.alphaBlend(
-      colors.primaryContainer.withValues(alpha: .55),
-      colors.surface,
-    ),
-    colors.surface,
-    Color.alphaBlend(
-      colors.tertiaryContainer.withValues(alpha: .36),
-      colors.surface,
-    ),
+    Color.alphaBlend(colors.primary.withValues(alpha: .19), colors.surface),
+    colors.secondaryContainer,
+    Color.alphaBlend(colors.tertiary.withValues(alpha: .19), colors.surface),
   ];
 
   static List<BoxShadow> shadows(BuildContext context, {bool raised = false}) {
