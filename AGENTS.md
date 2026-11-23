@@ -8,8 +8,6 @@ Không chép app/module hoàn chỉnh từ repo khác. Không đổi owner/permi
 Không biến mock/email memory thành claim production. Không fake AI/Git/commit/video/timestamp.
 Không push/deploy/tốn phí/nộp bài khi chưa được ủy quyền. Git đã có initial import35ee911
 lên bahungTDTU/final-flutter; lịch sử tác giả giữ nguyên, không giả teamwork/authorship.
-Yêu cầu hiện hành: commit mới dùng author/committer Nguyễn Bảo Long
-<523k0014@student.tdtu.edu.vn>, có AI hỗ trợ. Không đổi tác giả commit lịch sử.
 
 Quy trình Git người dùng yêu cầu07/10: từ giờ chỉ push branch làm việc, đặt tên theo nội dung thay đổi (ví dụ `ui/library-layout-polish`, `fix/sync-retry`), không dùng tên chứa `codex`;
 không push trực tiếp master/default branch, không force-push hoặc bypass ruleset. Tạo PR vào
