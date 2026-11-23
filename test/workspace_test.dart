@@ -75,6 +75,22 @@ Future<void> idle(AppController c) async {
 }
 
 void main() {
+  test('Malformed workspace sections preserve other saved references', () {
+    expect(WorkspaceData.fromJson('invalid').views, isEmpty);
+    final workspace = WorkspaceData.fromJson({
+      'favorites': 'bad',
+      'recent': ['keep'],
+      'templates': false,
+      'views': [
+        {'id': 'bad', 'name': 'Invalid filter', 'query': '', 'labels': 42},
+        {'id': 'valid', 'name': 'Keep view', 'query': ''},
+      ],
+    });
+    expect(workspace.recent, ['keep']);
+    expect(workspace.views.single.id, 'valid');
+    expect(workspace.favorites, isEmpty);
+    expect(workspace.templates, isEmpty);
+  });
   testWidgets(
     'quick find stays scrollable with keyboard at 200 percent in portrait and landscape',
     (tester) async {

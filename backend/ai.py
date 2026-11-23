@@ -203,7 +203,7 @@ def retrieve(question, notes):
     chunks = []
     for note in notes:
         body = plain_content(note['content'])
-        for start in range(0, len(body), 1400):
+        for start in range(0, max(1, len(body)), 1400):
             context = body[start:start + 1800]
             tokens = terms(note['title'] + ' ' + note['title'] + ' ' + context)
             chunks.append((note, context, Counter(tokens), len(tokens)))
@@ -227,7 +227,7 @@ def retrieve(question, notes):
     for _, note, context in scored:
         if note['id'] in selected and context not in selected[note['id']]['context']:
             current = selected[note['id']]['context']
-            if len(current) + len(context) <= 3800:
+            if len(current) + len(context) + len('\n…\n') <= 3800:
                 selected[note['id']]['context'] += '\n…\n' + context
     return list(selected.values())
 
@@ -350,18 +350,22 @@ def install_ai_routes(app, db, authenticate, validate_session, access):
                                    f'{owned} của bạn và {shared} được chia sẻ với bạn.'),
                         'sources': [], 'context_sources': []}
             # Never load stranger content or locked content without this session's live grant.
-            rows = conn.execute('''SELECT n.* FROM notes n
+            cursor = conn.execute('''SELECT n.id,n.title,n.content,n.revision,n.protection_version,
+                    (COALESCE(n.password,'') <> '') AS password FROM notes n
                 LEFT JOIN shares s ON s.note_id=n.id AND s.user_id=?
                 WHERE n.deleted=0 AND (n.owner_id=? OR s.user_id IS NOT NULL)
                 AND (n.password IS NULL OR n.password='' OR EXISTS (
                     SELECT 1 FROM grants g WHERE g.session_digest=? AND g.note_id=n.id
                     AND g.version=n.protection_version AND g.expires>?))
                 ORDER BY n.updated_at DESC,n.id LIMIT 1001''',
-                (identity[0], identity[0], identity[1], time.time())).fetchall()
-            if len(rows) > 1000:
-                raise HTTPException(413, 'AI_LIBRARY_TOO_LARGE')
-            if sum(len(row['title']) + len(row['content']) for row in rows) > 2_000_000:
-                raise HTTPException(413, 'AI_LIBRARY_TOO_LARGE')
+                (identity[0], identity[0], identity[1], time.time()))
+            rows = []
+            size = 0
+            for row in cursor:
+                size += len(row['title']) + len(row['content'])
+                if len(rows) >= 1000 or size > 2_000_000:
+                    raise HTTPException(413, 'AI_LIBRARY_TOO_LARGE')
+                rows.append(row)
             sources = retrieve(body.question, rows)
         if not sources:
             message = ('Chưa tìm thấy ghi chú phù hợp. Hãy thử tên ghi chú hoặc từ khóa trong nội dung.'

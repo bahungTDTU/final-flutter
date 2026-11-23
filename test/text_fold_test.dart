@@ -8,6 +8,7 @@ void main() {
   test('Vietnamese folding handles composed and decomposed vowels', () {
     expect(foldVietnamese('Mạng Máy Tính'), 'mang may tinh');
     expect(foldVietnamese('Đường'), 'duong');
+    expect(foldVietnamese('Σ Д Ñ'), 'σ д ñ');
     expect(foldVietnamese('ASCII 123 [.*]'), 'ascii 123 [.*]');
     const vowels =
         'àáảãạăằắẳẵặâầấẩẫậèéẻẽẹêềếểễệìíỉĩị'

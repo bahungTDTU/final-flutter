@@ -15,7 +15,7 @@ String foldVietnamese(String input) {
   var afterVowel = false;
   for (final unit in input.codeUnits) {
     if (afterVowel && _isVietnameseMark(unit)) continue;
-    final folded = _foldTable[unit];
+    final folded = _foldUnit(unit);
     units.add(folded);
     afterVowel = _isVowel(folded);
   }
@@ -48,7 +48,7 @@ class NoteSearchPattern {
     for (var i = 0; i < text.length; i++) {
       final unit = text.codeUnitAt(i);
       if (afterVowel && _isVietnameseMark(unit)) continue;
-      final folded = _foldTable[unit];
+      final folded = _foldUnit(unit);
       matched = _advance(matched, folded);
       if (matched == pattern.length) break;
       afterVowel = _isVowel(folded);
@@ -66,18 +66,19 @@ class NoteSearchPattern {
   }
 }
 
-/// UTF-16 code unit -> folded code unit. Built lazily on first search.
+// Populate uncommon Unicode mappings on demand so the first keystroke does
+// not allocate and lowercase a separate string for every UTF-16 code unit.
+int _foldUnit(int unit) {
+  if (unit < 128) return unit >= 65 && unit <= 90 ? unit + 32 : unit;
+  final known = _foldTable[unit];
+  if (known != 0) return known;
+  if (unit >= 0xd800 && unit <= 0xdfff) return unit;
+  final lower = String.fromCharCode(unit).toLowerCase();
+  return _foldTable[unit] = lower.length == 1 ? lower.codeUnitAt(0) : unit;
+}
+
 final Uint16List _foldTable = () {
   final table = Uint16List(0x10000);
-  for (var unit = 0; unit < table.length; unit++) {
-    // Surrogates are kept as-is; lowercasing a lone surrogate is meaningless.
-    if (unit >= 0xD800 && unit <= 0xDFFF) {
-      table[unit] = unit;
-      continue;
-    }
-    final lower = String.fromCharCode(unit).toLowerCase();
-    table[unit] = lower.length == 1 ? lower.codeUnitAt(0) : unit;
-  }
   const groups = {
     'a': 'aàáảãạăằắẳẵặâầấẩẫậ',
     'e': 'eèéẻẽẹêềếểễệ',

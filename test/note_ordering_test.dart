@@ -49,6 +49,14 @@ NoteListing select(
 );
 
 void main() {
+  test('A locked shared note does not change ordering of the owner tab', () {
+    final notes = [
+      ordinary('older', '2025-01-01'),
+      hidden('shared', role: 'viewer'),
+      ordinary('newer', '2025-05-01'),
+    ];
+    expect(select(notes).remaining.map((n) => n.id), ['newer', 'older']);
+  });
   test('Mixed locked date order survives filtering and pin grouping without private dates', () {
     final notes = [
       hidden('new-locked'),

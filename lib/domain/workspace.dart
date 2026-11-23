@@ -28,17 +28,16 @@ class WorkspaceData {
   final FocusData focus;
   final Map<String, NotePlan> plans;
 
-  factory WorkspaceData.fromJson(Map? value) {
-    final v = value ?? {};
+  factory WorkspaceData.fromJson(Object? value) {
+    final v = value is Map ? value : const {};
+    List items(Object? raw) => raw is List ? raw : const [];
     final templates = <NoteTemplate>[];
     final plans = <String, NotePlan>{};
-    for (final value
-        in (v['plans'] is List ? v['plans'] as List : const []).take(500)) {
+    for (final value in items(v['plans']).take(500)) {
       final plan = NotePlan.parse(value);
       if (plan != null) plans.putIfAbsent(plan.noteId, () => plan);
     }
-    for (final item
-        in (v['templates'] as List? ?? []).take(30).whereType<Map>()) {
+    for (final item in items(v['templates']).take(30).whereType<Map>()) {
       if (item['id'] is String &&
           item['description'] is String &&
           validPortable(item['title'], item['content'])) {
@@ -53,22 +52,17 @@ class WorkspaceData {
       }
     }
     return WorkspaceData(
-      favorites: (v['favorites'] as List? ?? [])
-          .whereType<String>()
-          .take(500)
-          .toSet(),
-      recent: (v['recent'] as List? ?? [])
-          .whereType<String>()
-          .take(20)
-          .toList(),
-      views: (v['views'] as List? ?? [])
+      favorites: items(v['favorites']).whereType<String>().take(500).toSet(),
+      recent: items(v['recent']).whereType<String>().take(20).toList(),
+      views: items(v['views'])
           .take(20)
           .whereType<Map>()
           .where(
             (i) =>
                 i['id'] is String &&
                 i['name'] is String &&
-                i['query'] is String,
+                i['query'] is String &&
+                (i['labels'] == null || i['labels'] is List),
           )
           .map(
             (i) => WorkspaceView(

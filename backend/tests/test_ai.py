@@ -343,3 +343,22 @@ def test_google_bad_request_classifies_invalid_key_without_exposing_error(reason
     with pytest.raises(HTTPException) as error:
         provider.generate('summary', '', [{'title': 'x', 'context': 'y'}])
     assert (error.value.status_code, error.value.detail) == expected
+
+
+def test_search_matches_title_with_empty_plain_body():
+    from backend.ai import retrieve
+
+    note = {'id': 'title-only', 'title': 'Orion', 'content': ''}
+    assert [r['id'] for r in retrieve('Orion', [note])] == ['title-only']
+    assert retrieve('Neptune', [note]) == []
+
+
+def test_library_text_limit_rejects_before_provider_call(env):
+    client, app, (owner, _, _) = env
+    provider = configure(app)
+    for _ in range(20):
+        note(client, owner, title='Orion', content='x' * 100000)
+    response = ask(client, owner, 'Orion')
+    assert response.status_code == 413
+    assert response.json()['detail'] == 'AI_LIBRARY_TOO_LARGE'
+    assert not provider.calls

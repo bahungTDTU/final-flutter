@@ -15,24 +15,18 @@ Future<void> main() async {
   // Flutter Web otherwise hides the semantics tree behind an off-screen
   // "Enable accessibility" button that most screen-reader users never find.
   if (kIsWeb) SemanticsBinding.instance.ensureSemantics();
+  const apiUrl = String.fromEnvironment(
+    'API_URL',
+    defaultValue: 'http://127.0.0.1:8000',
+  );
   try {
     final controller = AppController(
-      Api(
-        const String.fromEnvironment(
-          'API_URL',
-          defaultValue: 'http://127.0.0.1:8000',
-        ),
-      ),
+      Api(apiUrl),
       EncryptedAccountStore(
         SembastLocalStore(await openLocalDatabase()),
         const DeviceRecoveryKeys(),
       ),
-      realtime: RealtimeFeed(
-        const String.fromEnvironment(
-          'API_URL',
-          defaultValue: 'http://127.0.0.1:8000',
-        ),
-      ),
+      realtime: RealtimeFeed(apiUrl),
     );
     runApp(NoteTogetherApp(controller: controller));
     await controller.initialize();
