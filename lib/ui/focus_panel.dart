@@ -36,8 +36,12 @@ class _FocusPanelState extends State<FocusPanel> {
   void tick() {
     if (!mounted || c.user?['id'] != account) return;
     final now = DateTime.now();
-    clock.value = now;
     final s = c.workspace.focus.session;
+    final newDay = !DateUtils.isSameDay(clock.value, now);
+    if (newDay) setState(() {});
+    if (s?.running == true || newDay) {
+      clock.value = now;
+    }
     if (!busy &&
         s != null &&
         s.running &&
@@ -113,150 +117,164 @@ class _FocusPanelState extends State<FocusPanel> {
 
   @override
   Widget build(BuildContext context) => AnimatedBuilder(
-    animation: Listenable.merge([c, clock]),
+    animation: c,
     builder: (context, _) {
       if (c.user?['id'] != account) return const SizedBox.shrink();
       final data = c.workspace.focus;
       final s = data.session;
-      final remaining = s?.remaining(clock.value) ?? minutes * 60;
-      final today = data.onDay(clock.value);
-      final time =
-          '${(remaining ~/ 60).toString().padLeft(2, '0')}:${(remaining % 60).toString().padLeft(2, '0')}';
+      final now = DateTime.now();
+      final today = data.onDay(now);
       return Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          SurfacePanel(
-            tinted: true,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                PageIntro(
-                  title: s?.breakTime == true
-                      ? context.tr("Nghỉ ngắn")
-                      : context.tr("Tập trung từng phiên"),
-                  detail: context.tr(
-                    "Làm một việc, nghỉ một chút và ghi nhận tiến độ của bạn.",
-                  ),
-                  icon: Icons.timer_outlined,
-                  eyebrow: context.tr("Thời gian của bạn"),
-                  accent: 2,
-                  panel: false,
-                ),
-                const SizedBox(height: 16),
-                Center(
-                  child: Semantics(
-                    label: context.tr("Thời gian còn lại {0}", [time]),
-                    liveRegion: false,
-                    child: ExcludeSemantics(
-                      child: FittedBox(
-                        fit: BoxFit.scaleDown,
-                        child: Text(
-                          time,
-                          style: Theme.of(context).textTheme.displayLarge
-                              ?.copyWith(
-                                fontWeight: FontWeight.w600,
-                                color: Theme.of(context).colorScheme.primary,
-                              ),
+          ValueListenableBuilder<DateTime>(
+            valueListenable: clock,
+            builder: (context, _, _) {
+              final remaining = s?.remaining(DateTime.now()) ?? minutes * 60;
+              final time =
+                  '${(remaining ~/ 60).toString().padLeft(2, '0')}:${(remaining % 60).toString().padLeft(2, '0')}';
+              return SurfacePanel(
+                tinted: true,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    PageIntro(
+                      title: s?.breakTime == true
+                          ? context.tr("Nghỉ ngắn")
+                          : context.tr("Tập trung từng phiên"),
+                      detail: context.tr(
+                        "Làm một việc, nghỉ một chút và ghi nhận tiến độ của bạn.",
+                      ),
+                      icon: Icons.timer_outlined,
+                      eyebrow: context.tr("Thời gian của bạn"),
+                      accent: 2,
+                      panel: false,
+                    ),
+                    const SizedBox(height: 16),
+                    Center(
+                      child: Semantics(
+                        label: context.tr("Thời gian còn lại {0}", [time]),
+                        liveRegion: false,
+                        child: ExcludeSemantics(
+                          child: FittedBox(
+                            fit: BoxFit.scaleDown,
+                            child: Text(
+                              time,
+                              style: Theme.of(context).textTheme.displayLarge
+                                  ?.copyWith(
+                                    fontWeight: FontWeight.w600,
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .primary,
+                                  ),
+                            ),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ),
-                const SizedBox(height: 12),
-                if (s != null) ...[
-                  LinearProgressIndicator(value: 1 - remaining / s.seconds),
-                  const SizedBox(height: 12),
-                  Text(
-                    remaining == 0
-                        ? context.tr("Đã hết giờ. Đang ghi nhận phiên…")
-                        : s.running
-                        ? context.tr(
-                            "Đang chạy · có thể rời màn hình và quay lại",
-                          )
-                        : context.tr("Đã tạm dừng"),
-                  ),
-                ] else
-                  Wrap(
-                    spacing: 8,
-                    runSpacing: 8,
-                    children: [
-                      for (final v in [5, 15, 25, 50])
-                        ChoiceChip(
-                          label: Text(context.tr("{0} phút", [v])),
-                          selected: minutes == v,
-                          onSelected: busy
+                    const SizedBox(height: 12),
+                    if (s != null) ...[
+                      LinearProgressIndicator(value: 1 - remaining / s.seconds),
+                      const SizedBox(height: 12),
+                      Text(
+                        remaining == 0 && failedCompletion == s.id
+                            ? context.tr("Chưa lưu được đồng hồ. Hãy thử lại.")
+                            : remaining == 0
+                            ? context.tr("Đã hết giờ. Đang ghi nhận phiên…")
+                            : s.running
+                            ? context.tr(
+                                "Đang chạy · có thể rời màn hình và quay lại",
+                              )
+                            : context.tr("Đã tạm dừng"),
+                      ),
+                    ] else
+                      Wrap(
+                        spacing: 8,
+                        runSpacing: 8,
+                        children: [
+                          for (final v in [5, 15, 25, 50])
+                            ChoiceChip(
+                              label: Text(context.tr("{0} phút", [v])),
+                              selected: minutes == v,
+                              onSelected: busy
+                                  ? null
+                                  : (_) => setState(() => minutes = v),
+                            ),
+                        ],
+                      ),
+                    const SizedBox(height: 20),
+                    Wrap(
+                      spacing: 12,
+                      runSpacing: 12,
+                      children: [
+                        if (s == null) ...[
+                          FilledButton.icon(
+                            onPressed: busy
+                                ? null
+                                : () => act(() => c.startFocus(minutes)),
+                            icon: const Icon(Icons.play_arrow_rounded),
+                            label: Text(context.tr("Bắt đầu")),
+                          ),
+                          OutlinedButton.icon(
+                            onPressed: busy
+                                ? null
+                                : () => act(
+                                    () => c.startFocus(5, breakTime: true),
+                                  ),
+                            icon: const Icon(Icons.coffee_outlined),
+                            label: Text(context.tr("Nghỉ 5 phút")),
+                          ),
+                        ] else ...[
+                          FilledButton.icon(
+                            onPressed: busy || remaining == 0
+                                ? null
+                                : () => act(
+                                    () => c.changeFocus(
+                                      s.id,
+                                      s.running ? 'pause' : 'resume',
+                                    ),
+                                  ),
+                            icon: Icon(
+                              s.running
+                                  ? Icons.pause
+                                  : Icons.play_arrow_rounded,
+                            ),
+                            label: Text(
+                              s.running
+                                  ? context.tr("Tạm dừng")
+                                  : context.tr("Tiếp tục"),
+                            ),
+                          ),
+                          TextButton(
+                            onPressed: busy ? null : reset,
+                            child: Text(context.tr("Kết thúc phiên")),
+                          ),
+                        ],
+                      ],
+                    ),
+                    if (busy)
+                      const Padding(
+                        padding: EdgeInsets.only(top: 12),
+                        child: LinearProgressIndicator(),
+                      ),
+                    if (error != null) ...[
+                      const SizedBox(height: 12),
+                      StatusNotice(message: error!, error: true),
+                      if (remaining == 0 && s != null)
+                        TextButton(
+                          onPressed: busy
                               ? null
-                              : (_) => setState(() => minutes = v),
-                        ),
-                    ],
-                  ),
-                const SizedBox(height: 20),
-                Wrap(
-                  spacing: 12,
-                  runSpacing: 12,
-                  children: [
-                    if (s == null) ...[
-                      FilledButton.icon(
-                        onPressed: busy
-                            ? null
-                            : () => act(() => c.startFocus(minutes)),
-                        icon: const Icon(Icons.play_arrow_rounded),
-                        label: Text(context.tr("Bắt đầu")),
-                      ),
-                      OutlinedButton.icon(
-                        onPressed: busy
-                            ? null
-                            : () => act(() => c.startFocus(5, breakTime: true)),
-                        icon: const Icon(Icons.coffee_outlined),
-                        label: Text(context.tr("Nghỉ 5 phút")),
-                      ),
-                    ] else ...[
-                      FilledButton.icon(
-                        onPressed: busy || remaining == 0
-                            ? null
-                            : () => act(
-                                () => c.changeFocus(
-                                  s.id,
-                                  s.running ? 'pause' : 'resume',
+                              : () => act(
+                                  () => c.changeFocus(s.id, 'finish'),
+                                  completing: s.id,
                                 ),
-                              ),
-                        icon: Icon(
-                          s.running ? Icons.pause : Icons.play_arrow_rounded,
+                          child: Text(context.tr("Thử lưu lại")),
                         ),
-                        label: Text(
-                          s.running
-                              ? context.tr("Tạm dừng")
-                              : context.tr("Tiếp tục"),
-                        ),
-                      ),
-                      TextButton(
-                        onPressed: busy ? null : reset,
-                        child: Text(context.tr("Kết thúc phiên")),
-                      ),
                     ],
                   ],
                 ),
-                if (busy)
-                  const Padding(
-                    padding: EdgeInsets.only(top: 12),
-                    child: LinearProgressIndicator(),
-                  ),
-                if (error != null) ...[
-                  const SizedBox(height: 12),
-                  StatusNotice(message: error!, error: true),
-                  if (remaining == 0 && s != null)
-                    TextButton(
-                      onPressed: busy
-                          ? null
-                          : () => act(
-                              () => c.changeFocus(s.id, 'finish'),
-                              completing: s.id,
-                            ),
-                      child: Text(context.tr("Thử lưu lại")),
-                    ),
-                ],
-              ],
-            ),
+              );
+            },
           ),
           const SizedBox(height: 20),
           SurfacePanel(
@@ -308,9 +326,9 @@ class _FocusPanelState extends State<FocusPanel> {
                       Builder(
                         builder: (_) {
                           final day = DateTime(
-                            clock.value.year,
-                            clock.value.month,
-                            clock.value.day - i,
+                            now.year,
+                            now.month,
+                            now.day - i,
                           );
                           return MetadataPill(
                             context.tr("{0}/{1} · {2} phiên", [

@@ -314,7 +314,7 @@ class AppController extends ChangeNotifier {
     final durable = await local.read(accountKey);
     _hasAccountSnapshot = durable != null;
     final cached = durable ?? {};
-    workspace = WorkspaceData.fromJson(cached['workspace'] as Map?);
+    workspace = WorkspaceData.fromJson(cached['workspace']);
     notes = (cached['notes'] as List? ?? [])
         .map((n) => Note.fromListingJson(Map<String, dynamic>.from(n as Map)))
         .toList();
@@ -713,7 +713,7 @@ class AppController extends ChangeNotifier {
       if (!active() || root == null) {
         throw StateError('Kho tài khoản chưa sẵn sàng.');
       }
-      final next = edit(WorkspaceData.fromJson(root['workspace'] as Map?));
+      final next = edit(WorkspaceData.fromJson(root['workspace']));
       root['workspace'] = next.toJson();
       await local.write(key, root);
       if (active()) {
@@ -794,9 +794,6 @@ class AppController extends ChangeNotifier {
     final session = focus.session;
     if (session == null || session.id != id) return current;
     final clock = now ?? DateTime.now();
-    if (action == 'reset') {
-      return current.copy(focus: focus.copy(clearSession: true));
-    }
     if (session.running && session.remaining(clock) == 0) {
       // Use the deadline, not the later reopen time, for daily statistics.
       final records =
@@ -809,6 +806,9 @@ class AppController extends ChangeNotifier {
       return current.copy(
         focus: focus.copy(clearSession: true, completed: records),
       );
+    }
+    if (action == 'reset') {
+      return current.copy(focus: focus.copy(clearSession: true));
     }
     if (action == 'pause' && session.running) {
       return current.copy(focus: focus.copy(session: session.pause(clock)));

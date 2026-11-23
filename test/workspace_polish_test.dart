@@ -100,6 +100,13 @@ void main() {
     await c.startFocus(25, now: start);
     await c.changeFocus(c.workspace.focus.session!.id, 'reset', now: start);
     expect(c.workspace.focus.completed, hasLength(1));
+    await c.startFocus(5, now: start);
+    await c.changeFocus(
+      c.workspace.focus.session!.id,
+      'reset',
+      now: start.add(const Duration(minutes: 5)),
+    );
+    expect(c.workspace.focus.completed, hasLength(2));
     await expectLater(c.startFocus(100), throwsStateError);
     await expectLater(c.setFocusGoal(0), throwsStateError);
   });

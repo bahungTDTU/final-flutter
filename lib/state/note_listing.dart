@@ -56,26 +56,25 @@ class NoteListingCache {
     // The API array carries last-modified order without exposing locked dates.
     // Persisted account arrays preserve it; local pending edits are prepended.
     // Never derive locked ordering from redacted/legacy private timestamps.
-    final sourceOrder = {for (var i = 0; i < notes.length; i++) notes[i].id: i};
-    final hasHiddenDates = notes.any((n) => n.locked && n.pinnedAt == null);
-    final matches =
-        notes
-            .where(
-              (n) =>
-                  (shared ? n.role != 'owner' : n.role == 'owner') &&
-                  contains(n) &&
-                  (labels.isEmpty ||
-                      !n.locked &&
-                          labels.every(
-                            (label) =>
-                                !deletedLabels.contains(label) &&
-                                n.labels.contains(label),
-                          )),
-            )
-            .toList()
-          ..sort(
-            (a, b) => _compareVisibleNotes(a, b, sourceOrder, hasHiddenDates),
-          );
+    final matches = notes
+        .where(
+          (n) =>
+              (shared ? n.role != 'owner' : n.role == 'owner') &&
+              contains(n) &&
+              (labels.isEmpty ||
+                  !n.locked &&
+                      labels.every(
+                        (label) =>
+                            !deletedLabels.contains(label) &&
+                            n.labels.contains(label),
+                      )),
+        )
+        .toList();
+    final hasHiddenDates = matches.any((n) => n.locked && n.pinnedAt == null);
+    final sourceOrder = hasHiddenDates
+        ? {for (var i = 0; i < matches.length; i++) matches[i].id: i}
+        : null;
+    matches.sort((a, b) => _compareVisibleNotes(a, b, sourceOrder));
     return _result = NoteListing(matches);
   }
 
@@ -89,15 +88,10 @@ class NoteListingCache {
   }
 }
 
-int _compareVisibleNotes(
-  Note a,
-  Note b,
-  Map<String, int> sourceOrder,
-  bool hasHiddenDates,
-) {
+int _compareVisibleNotes(Note a, Note b, Map<String, int>? sourceOrder) {
   final aPin = a.pinnedAt, bPin = b.pinnedAt;
   if ((aPin != null) != (bPin != null)) return aPin != null ? -1 : 1;
-  if (aPin == null && hasHiddenDates) {
+  if (aPin == null && sourceOrder != null) {
     return sourceOrder[a.id]!.compareTo(sourceOrder[b.id]!);
   }
   final aTime = aPin ?? a.updatedAt;

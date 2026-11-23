@@ -1195,3 +1195,13 @@ và vì sao backend test/build pass chưa phải full feature/production/video e
   Bước tiếp theo: LLM Summary/Q&A có nguồn/quyền; SMTP ngoài/release/submission gates vẫn riêng.
 
 Ngày 22/11/2026, mục **Giao diện → Bảng màu giao diện** có 10 bảng phối sáng/tối, gồm bốn lựa chọn mới Rạn san hô, Hạ chí, Cực quang và Đầm phá. Chi tiết trong docs/COLOR_PALETTES.md.
+
+## Rà soát ngày 23/11/2026
+
+Bản làm việc trên `cac19bc`, nhánh `fix/project-audit`. Sửa thứ tự thư viện khi lọc các nhóm có ghi chú khóa, khôi phục dữ liệu workspace sai kiểu, ghi nhận phiên tập trung hết hạn và cập nhật đồng hồ. Hỏi ghi chú đọc kết quả theo giới hạn, tìm được nguồn có tiêu đề phù hợp khi văn bản thuần rỗng. HTTP và realtime dùng chung cấu hình API. Workflow Quality tách nhóm chạy thủ công khỏi lượt push và PR.
+
+- `scripts/check.ps1` đạt format, analyze, 355 kiểm thử Flutter và 176 kiểm thử backend.
+- `scripts/build.ps1 -Target web -ApiUrl http://127.0.0.1:18321` đạt. Chrome localhost xác nhận tìm kiếm không dấu, mở workspace, bắt đầu, tạm dừng, tiếp tục và kết thúc phiên.
+- `scripts/qa_performance.py` chạy trên API localhost với owner/editor/viewer/stranger, đạt kiểm tra quyền tệp đính kèm. Hai workflow vượt kiểm tra actionlint v1.7.7.
+- Đo lần tìm đầu tiên trong ba tiến trình Dart VM mới cho mỗi bản, mẫu “đường” trong “Đường đến lớp”. Trung vị giảm từ 11,54 ms xuống 3,65 ms trên máy phát triển. Đây là thời gian xử lý mẫu tìm kiếm, chưa đo độ trễ toàn màn hình hoặc máy chủ production.
+- Build Android debug bằng `flutter build apk --debug --no-pub` đạt. SDK báo cảnh báo phiên bản XML. Chưa chạy trên điện thoại thật hoặc Azure.
