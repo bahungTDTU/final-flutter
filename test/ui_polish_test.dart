@@ -3,6 +3,7 @@ import 'package:note_together/data/api.dart';
 import 'package:http/testing.dart';
 import 'package:http/http.dart' as http;
 
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -385,6 +386,39 @@ void main() {
     expect(c.notes.first.isShared, isTrue);
     await tester.pumpWidget(const SizedBox());
     c.dispose();
+  });
+
+  test('late revoke response leaves the next account intact', () async {
+    final response = Completer<http.Response>();
+    final started = Completer<void>();
+    final controller =
+        AppController(
+            Api(
+              'http://test',
+              client: MockClient((request) async {
+                if (request.method == 'DELETE') {
+                  started.complete();
+                  return response.future;
+                }
+                return http.Response('{}', 200);
+              }),
+            ),
+            MemoryStore(),
+          )
+          ..user = {'id': 'A'}
+          ..token = 'token-a'
+          ..notes = [note('shared', shared: true)];
+    addTearDown(controller.dispose);
+    final revoke = controller.revokeAllShares(controller.notes.single);
+    await started.future;
+    await controller.logout();
+    controller
+      ..user = {'id': 'B'}
+      ..token = 'token-b'
+      ..notes = [note('shared', shared: true)];
+    response.complete(http.Response('{"revoked":1}', 200));
+    expect(await revoke, 1);
+    expect(controller.notes.single.isShared, isTrue);
   });
 
   test(
