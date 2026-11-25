@@ -5,7 +5,11 @@ def list_visible_notes(conn, user_id):
     # Seed candidate IDs using notes_owner/shares_user indexes. An OR across
     # the joined tables scans unrelated accounts even for an empty library.
     rows = conn.execute('''
-        SELECT n.*, CASE WHEN n.owner_id=? THEN 'owner' ELSE s.role END AS role,
+        SELECT n.id, n.owner_id, n.revision, n.pinned_at, n.updated_at,
+               COALESCE(n.password, '') <> '' AS locked,
+               CASE WHEN COALESCE(n.password, '') = '' THEN n.title END AS title,
+               CASE WHEN COALESCE(n.password, '') = '' THEN n.content END AS content,
+               CASE WHEN n.owner_id=? THEN 'owner' ELSE s.role END AS role,
                s.shared_at, u.name AS owner_name, u.email AS owner_email,
                (SELECT COUNT(*) FROM shares recipients WHERE recipients.note_id=n.id) AS shared_count
         FROM notes n
@@ -41,7 +45,7 @@ def list_visible_notes(conn, user_id):
         names[row['id']] = row['name']
     result = []
     for note in rows:
-        if note['password']:
+        if note['locked']:
             # Public status policy confirmed by the user: pin order and a
             # sharing flag are visible; content/labels/identities stay redacted,
             # even when the listing caller has a live unlock grant.
