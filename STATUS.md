@@ -1218,3 +1218,13 @@ Kết quả local: format và analyze đạt, 358 kiểm thử Flutter và 177 k
 Trên nhánh `fix/workspace-persistence` cập nhật từ `c5b57f2`, controller kiểm tra phiên trước khi áp dụng phản hồi thu hồi chia sẻ và trước khi đồng bộ lại. Màn hình thư viện kiểm tra phiên khi người dùng xác nhận và khi hiển thị kết quả. Kiểm thử trong `test/ui_polish_test.dart` giữ phản hồi của A đến sau khi đăng xuất và chuyển sang B, rồi xác minh cờ chia sẻ của ghi chú trùng ID trong B vẫn còn.
 
 Đã chạy `scripts/check.ps1` (format, analyze, 359 kiểm thử Flutter và 177 kiểm thử backend đạt), `scripts/build.ps1 -Target web` với API localhost (đạt) và `scripts/qa_performance.py` cho các vai trò owner/editor/viewer/stranger (đạt). Trên Chrome localhost, đăng nhập A, đăng xuất, đăng nhập B và tải lại trang đều hiển thị đúng thư viện. Lần chạy qua thao tác click và gõ phím đạt sau khi thao tác điền tự động của trình kiểm thử thất bại ở ô mật khẩu.
+
+## Rà soát lưu tự động và danh sách ghi chú khóa ngày 26/11/2026
+
+Nhánh `fix/editor-autosave` dựa trên `9af56e1`. Trình soạn thảo bỏ qua kết quả lưu của lượt nhập cũ và dừng các thao tác đang chờ nếu màn hình đã đóng hoặc quyền sửa đã mất. Bấm Quay lại liên tiếp trong lúc lưu chỉ rời trình soạn thảo một lần. Ba ca hồi quy trong `test/widgets_test.dart` dùng kho lưu trữ có thể trì hoãn hoặc báo lỗi để kiểm tra các tình huống này.
+
+API danh sách chỉ lấy tiêu đề và nội dung từ SQLite đối với ghi chú đã bỏ khóa bảo vệ hoặc chưa từng khóa. Trên SQLite trong bộ nhớ với 400 ghi chú khóa, mỗi ghi chú có 20.000 ký tự ASCII, đo bảy lần gọi `list_visible_notes` cho chủ sở hữu. Trung vị đỉnh cấp phát Python theo `tracemalloc` giảm từ 8.298.740 xuống 227.784 byte. Phép đo chỉ bao gồm hàm tạo danh sách, không bao gồm bộ nhớ của SQLite hay thời gian truyền HTTP.
+
+Build web release và 362 kiểm thử Flutter đạt. Trên Chrome localhost, đổi tiêu đề rồi bấm Quay lại ngay, tải lại và mở ghi chú vẫn thấy tiêu đề vừa nhập. Tìm và xóa từ khóa đạt ở 1440×900, 390×844, 320×640 và 844×390. Đổi giao diện, quay lại từ trình soạn thảo, hủy xóa và mở lại thư viện ngoại tuyến cũng đạt. Kiểm tra API tệp đính kèm đạt với owner/editor/viewer/stranger. Hai script Azure đạt kiểm tra cú pháp Bash và cấu hình Docker Compose hợp lệ.
+
+Bộ kiểm tra backend chạy bằng `scripts/check.ps1` đạt 177/177. APK debug build thành công. Chạy `flutter drive --driver=test_driver/integration_test.dart --target=integration_test/note_flow_test.dart` trên emulator Android API 36 với FastAPI localhost đạt. Sau khi mở lại kho dữ liệu và tạo/sửa ghi chú lúc ngoại tuyến, kiểm thử kết nối lại và xác minh hai nội dung trên máy chủ. Công cụ Android báo cảnh báo phiên bản SDK XML và pytest báo cảnh báo tương thích của Starlette TestClient.

@@ -50,6 +50,12 @@ class _EditorScreenState extends State<EditorScreen>
   bool requiresReopen = false;
   AppController get c => widget.controller;
   bool get authorized => c.user?['id'] == account;
+  bool get canWrite =>
+      mounted &&
+      authorized &&
+      editable &&
+      !requiresReopen &&
+      c.notes.where((n) => n.id == widget.id).firstOrNull?.locked != true;
   bool get editable =>
       !c.accessUnavailable.contains(widget.id) &&
       (!existedAtOpen || c.notes.any((n) => n.id == widget.id)) &&
@@ -71,11 +77,7 @@ class _EditorScreenState extends State<EditorScreen>
     );
     document = NoteDocumentController(
       source: content,
-      canEdit: () =>
-          authorized &&
-          editable &&
-          !requiresReopen &&
-          c.notes.where((n) => n.id == widget.id).firstOrNull?.locked != true,
+      canEdit: () => canWrite,
       onChanged: () => unawaited(input()),
     );
     dirty = draft != null;
@@ -164,28 +166,27 @@ class _EditorScreenState extends State<EditorScreen>
   }
 
   Future<void> input() async {
+    if (!canWrite) return;
     saveFailed = false;
-    editVersion++;
+    final version = ++editVersion;
     dirty = true;
     debounce?.cancel();
     setState(() => feedback = context.tr("Đang lưu trên thiết bị…"));
     try {
-      if (!authorized) return;
       await c.draft(widget.id, title.text, content.text);
-      if (mounted) {
-        setState(
-          () => feedback = context.trMessage(
-            noteValidationError(title.text, content.text) ??
-                'Bản nháp đã lưu trên thiết bị',
-          ),
-        );
-      }
+      if (!canWrite || !dirty || version != editVersion) return;
+      setState(
+        () => feedback = context.trMessage(
+          noteValidationError(title.text, content.text) ??
+              'Bản nháp đã lưu trên thiết bị',
+        ),
+      );
       debounce = Timer(
         const Duration(milliseconds: 650),
         () => unawaited(flush()),
       );
     } catch (e) {
-      if (mounted) {
+      if (canWrite && dirty && version == editVersion) {
         setState(() {
           saveFailed = true;
           feedback = context.tr(
@@ -220,7 +221,7 @@ class _EditorScreenState extends State<EditorScreen>
       if (dirty && !saveFailed) await flush();
       return;
     }
-    if (!authorized || !editable || requiresReopen || !dirty) return;
+    if (!dirty || !canWrite) return;
     flushing = flushSnapshot();
     await flushing;
     flushing = null;
@@ -233,7 +234,7 @@ class _EditorScreenState extends State<EditorScreen>
     saveFailed = false;
     try {
       await c.draft(widget.id, titleValue, contentValue);
-      if (version != editVersion || !authorized) return;
+      if (version != editVersion || !canWrite || !dirty) return;
       final validation = noteValidationError(titleValue, contentValue);
       if (validation == null) {
         await c.save(
@@ -242,10 +243,11 @@ class _EditorScreenState extends State<EditorScreen>
           contentValue,
           baseRevision: baseRevision,
         );
+        if (!canWrite || !dirty) return;
         baseRevision =
             c.notes.where((n) => n.id == widget.id).firstOrNull?.revision ??
             baseRevision;
-        if (mounted) {
+        if (version == editVersion) {
           setState(() => feedback = context.tr("Đã lưu trên thiết bị"));
         }
       } else if (mounted) {
@@ -253,8 +255,7 @@ class _EditorScreenState extends State<EditorScreen>
       }
       dirty = version != editVersion;
     } catch (e) {
-      saveFailed = true;
-      if (mounted) {
+      if (canWrite && dirty && version == editVersion) {
         setState(() {
           saveFailed = true;
           feedback = context.tr(
@@ -267,10 +268,15 @@ class _EditorScreenState extends State<EditorScreen>
 
   Future<void> leave() async {
     await flush();
-    if (!mounted || saveFailed) return;
+    if (!mounted || saveFailed || canLeave) return;
     setState(() => canLeave = true);
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (mounted) Navigator.of(context).pop();
+      if (!mounted) return;
+      if (ModalRoute.of(context)?.isCurrent == true) {
+        Navigator.of(context).pop();
+      } else {
+        setState(() => canLeave = false);
+      }
     });
   }
 
@@ -296,6 +302,7 @@ class _EditorScreenState extends State<EditorScreen>
         await c.setPreferences({'dark': !c.dark});
       case 'sync':
         await flush();
+        if (!mounted || !authorized || saveFailed) return;
         await c.synchronize();
       case 'ai':
         if (note == null ||
@@ -545,10 +552,7 @@ class _EditorScreenState extends State<EditorScreen>
               ),
               IconButton(
                 tooltip: context.tr("Đồng bộ"),
-                onPressed: () async {
-                  await flush();
-                  await c.synchronize();
-                },
+                onPressed: () => toolAction('sync'),
                 icon: const Icon(Icons.sync),
               ),
             ],
@@ -693,6 +697,7 @@ class _EditorScreenState extends State<EditorScreen>
                             ? null
                             : () async {
                                 await flush();
+                                if (!canWrite || saveFailed) return;
                                 await c.save(
                                   note.id,
                                   title.text,
@@ -703,6 +708,7 @@ class _EditorScreenState extends State<EditorScreen>
                                       ? DateTime.now().toUtc().toIso8601String()
                                       : null,
                                 );
+                                if (!mounted || !authorized) return;
                                 baseRevision =
                                     c.notes
                                         .where((n) => n.id == widget.id)
@@ -728,6 +734,7 @@ class _EditorScreenState extends State<EditorScreen>
                               ? null
                               : (v) async {
                                   await flush();
+                                  if (!canWrite || saveFailed) return;
                                   await c.save(
                                     note.id,
                                     title.text,
@@ -739,6 +746,7 @@ class _EditorScreenState extends State<EditorScreen>
                                               .where((l) => l != label)
                                               .toList(),
                                   );
+                                  if (!mounted || !authorized) return;
                                   baseRevision =
                                       c.notes
                                           .where((n) => n.id == widget.id)

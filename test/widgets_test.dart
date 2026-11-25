@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:note_together/ui/app.dart';
@@ -7,7 +9,93 @@ import 'package:note_together/domain/note.dart';
 
 import 'support.dart';
 
+class DelayedStore extends MemoryStore {
+  final release = Completer<void>();
+  bool failNextWrite = false;
+
+  @override
+  Future<void> write(String key, Map<String, dynamic> value) async {
+    await release.future;
+    if (failNextWrite) {
+      failNextWrite = false;
+      throw StateError('Write failed');
+    }
+    await super.write(key, value);
+  }
+}
+
 void main() {
+  testWidgets(
+    'A failed older draft does not mark a newer saved draft as failed',
+    (tester) async {
+      final store = DelayedStore()..failNextWrite = true;
+      final c = offlineController(store: store);
+      addTearDown(c.dispose);
+      await tester.pumpWidget(
+        MaterialApp(
+          home: EditorScreen(controller: c, id: 'n'),
+        ),
+      );
+      final title = find.byKey(const Key('note-title'));
+      await tester.enterText(title, 'First');
+      await tester.enterText(title, 'Second');
+      store.release.complete();
+      await tester.pump();
+      expect(store.values['account:A']!['drafts']['n']['title'], 'Second');
+      expect(find.widgetWithText(TextButton, 'Thử lại'), findsNothing);
+      await tester.pumpWidget(const SizedBox());
+    },
+  );
+
+  testWidgets('Closing an editor with a pending draft retires its timer', (
+    tester,
+  ) async {
+    final store = DelayedStore();
+    final c = offlineController(store: store);
+    addTearDown(c.dispose);
+    await tester.pumpWidget(
+      MaterialApp(
+        home: EditorScreen(controller: c, id: 'n'),
+      ),
+    );
+    await tester.enterText(find.byKey(const Key('note-title')), 'Draft');
+    await tester.pumpWidget(const SizedBox());
+    store.release.complete();
+    await tester.pump();
+    await tester.pump(const Duration(seconds: 1));
+    expect(tester.takeException(), isNull);
+    expect(store.values['account:A']!['drafts']['n']['title'], 'Draft');
+  });
+
+  testWidgets('Repeated back while saving returns to the library once', (
+    tester,
+  ) async {
+    final store = DelayedStore();
+    final c = offlineController(store: store);
+    addTearDown(c.dispose);
+    final nav = GlobalKey<NavigatorState>();
+    await tester.pumpWidget(
+      MaterialApp(navigatorKey: nav, home: const Text('Root')),
+    );
+    nav.currentState!.push(
+      MaterialPageRoute<void>(builder: (_) => const Text('Library')),
+    );
+    await tester.pumpAndSettle();
+    nav.currentState!.push(
+      MaterialPageRoute<void>(
+        builder: (_) => EditorScreen(controller: c, id: 'n'),
+      ),
+    );
+    await tester.pumpAndSettle();
+    await tester.enterText(find.byKey(const Key('note-title')), 'Draft');
+    await tester.tap(find.byTooltip('Quay lại'));
+    await tester.tap(find.byTooltip('Quay lại'));
+    store.release.complete();
+    await tester.pumpAndSettle();
+    expect(find.text('Library'), findsOneWidget);
+    expect(tester.takeException(), isNull);
+  });
+
   testWidgets(
     'Settings apply dark theme, show pending sync and reset at logout',
     (tester) async {
