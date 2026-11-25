@@ -64,6 +64,87 @@ Note note(int revision, String content) => Note(
 );
 
 void main() {
+  for (final scenario in [
+    (name: 'peer edited', remoteRevision: 2, legacy: false, expectedBase: 1),
+    (name: 'unchanged', remoteRevision: 1, legacy: false, expectedBase: 1),
+    (name: 'legacy draft', remoteRevision: 2, legacy: true, expectedBase: 0),
+  ]) {
+    testWidgets('Reopened draft submits its original base: ${scenario.name}', (
+      tester,
+    ) async {
+      final store = MemoryStore();
+      final first = offlineController(store: store)
+        ..notes = [note(1, 'Original')];
+      await store.write('session', {'user': first.user, 'token': first.token});
+      await first.draft('n', '', 'Local unfinished text');
+      first.dispose();
+      if (scenario.legacy) {
+        final snapshot = (await store.read('account:A'))!;
+        snapshot['drafts']['n'].remove('base_revision');
+        await store.write('account:A', snapshot);
+      }
+
+      final sent = <Map<String, dynamic>>[];
+      final remote = note(
+        scenario.remoteRevision,
+        scenario.remoteRevision == 1 ? 'Original' : 'Peer version',
+      );
+      final reopened = AppController(
+        Api(
+          'http://test',
+          client: MockClient((request) async {
+            if (request.url.path == '/notes') {
+              return answer([remote.toListingJson()]);
+            }
+            if (request.url.path == '/sync') {
+              final op = jsonDecode(request.body) as Map<String, dynamic>;
+              sent.add(op);
+              if (op['base_revision'] != remote.revision) {
+                return answer({
+                  'detail': {'remote': remote.toListingJson()},
+                }, 409);
+              }
+            }
+            return answer({'id': 'A'});
+          }),
+        ),
+        store,
+      )..setForeground(false);
+      await reopened.initialize();
+      await reopened.synchronize();
+      expect(reopened.notes.single.revision, scenario.remoteRevision);
+      await tester.pumpWidget(
+        MaterialApp(
+          home: EditorScreen(controller: reopened, id: 'n'),
+        ),
+      );
+      expect(
+        tester
+            .widget<NoteRichTextField>(find.byKey(const Key('note-content')))
+            .document
+            .text,
+        'Local unfinished text',
+      );
+      await tester.enterText(
+        find.byKey(const Key('note-title')),
+        'Finished title',
+      );
+      await tester.pump(const Duration(seconds: 1));
+      await tester.pumpAndSettle();
+      expect(sent.single['base_revision'], scenario.expectedBase);
+      expect(sent.single['content'], 'Local unfinished text');
+      if (scenario.remoteRevision == 1) {
+        expect(reopened.pending, isEmpty);
+        expect(reopened.conflicts, isEmpty);
+      } else {
+        expect(reopened.conflicts['n']['status'], 409);
+        expect(reopened.pending.single['content'], 'Local unfinished text');
+      }
+      await tester.pumpWidget(const SizedBox());
+      reopened.dispose();
+    });
+  }
+
   test(
     'SSE parser handles chunk boundaries, comments, CRLF and expiration',
     () async {
