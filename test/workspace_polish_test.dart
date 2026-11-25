@@ -131,6 +131,7 @@ void main() {
     );
     await c.startFocus(25, now: start);
     final next = c.workspace.focus.session!.id;
+    store.fail = true; // An obsolete completion must not attempt a write.
     await c.changeFocus(id, 'finish', now: start.add(const Duration(days: 1)));
     expect(c.workspace.focus.session!.id, next);
     expect(c.workspace.focus.completed, hasLength(1));

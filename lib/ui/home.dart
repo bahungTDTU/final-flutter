@@ -1116,6 +1116,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   /// Confirms, then removes every recipient of a locked note without unlock.
   Future<void> revokeAll(Note note) async {
+    final sessionToken = c.token;
+    bool sameSession() =>
+        mounted && sessionToken != null && c.token == sessionToken;
     final confirmed =
         await showDialog<bool>(
           context: context,
@@ -1144,7 +1147,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ) ??
         false;
-    if (!confirmed || !mounted) return;
+    if (!confirmed || !mounted || !sameSession()) return;
     final messenger = ScaffoldMessenger.of(context);
     final done = context.tr("Đã thu hồi mọi chia sẻ.");
     final failed = context.tr(
@@ -1152,8 +1155,10 @@ class _HomeScreenState extends State<HomeScreen> {
     );
     try {
       await c.revokeAllShares(note);
+      if (!sameSession()) return;
       messenger.showSnackBar(SnackBar(content: Text(done)));
     } catch (_) {
+      if (!sameSession()) return;
       messenger.showSnackBar(SnackBar(content: Text(failed)));
     }
   }

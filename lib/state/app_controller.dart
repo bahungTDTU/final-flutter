@@ -258,21 +258,24 @@ class AppController extends ChangeNotifier {
 
   Future<void> initialize() async {
     if (_disposed) return;
+    final generation = _generation;
     try {
       final publicPreferences = await local.read('ui:locale');
       _publicLocale = publicPreferences?['locale'] == 'en' ? 'en' : 'vi';
       final session = await local.read('session');
       if (_disposed) return;
-      if (session != null) {
+      if (session != null && generation == _generation) {
         user = Map<String, dynamic>.from(session['user'] as Map);
         token = session['token'] as String;
         await _loadAccount();
       }
     } catch (e) {
       if (_disposed) return;
-      user = null;
-      token = null;
-      error = 'Không thể mở dữ liệu local: $e';
+      if (generation == _generation) {
+        user = null;
+        token = null;
+        error = 'Không thể mở dữ liệu local: $e';
+      }
     }
     if (_disposed) return;
     ready = true;
@@ -285,6 +288,8 @@ class AppController extends ChangeNotifier {
   }
 
   Future<void> _loadAccount() async {
+    final generation = _generation;
+    final key = accountKey;
     accessUnavailable.clear();
     _accountLoaded = false;
     _hasAccountSnapshot = false;
@@ -311,7 +316,9 @@ class AppController extends ChangeNotifier {
       'locale': 'vi',
     };
     await _writes.catchError((_) {});
-    final durable = await local.read(accountKey);
+    if (_disposed || generation != _generation) return;
+    final durable = await local.read(key);
+    if (_disposed || generation != _generation) return;
     _hasAccountSnapshot = durable != null;
     final cached = durable ?? {};
     workspace = WorkspaceData.fromJson(cached['workspace']);
@@ -356,11 +363,20 @@ class AppController extends ChangeNotifier {
     );
     if (cached['label_catalogue'] == null) _migrateLocalLabels();
     _rebuildLabels();
-    final avatar = cached['avatar'] as Map?;
-    cachedAvatarRevision = avatar?['revision'] as int? ?? 0;
-    avatarBytes = avatar?['data'] == null
-        ? null
-        : base64Decode(avatar!['data'] as String);
+    final avatar = cached['avatar'];
+    if (avatar is Map) {
+      final revision = avatar['revision'];
+      cachedAvatarRevision = revision is int ? revision : 0;
+      final encoded = avatar['data'];
+      if (encoded is String) {
+        try {
+          avatarBytes = base64Decode(encoded);
+        } on FormatException {
+          // A missing image is fetched on sync even if the revision matches.
+          avatarBytes = null;
+        }
+      }
+    }
     preferences = Map<String, dynamic>.from(
       cached['preferences'] as Map? ??
           user?['preferences'] as Map? ??
@@ -581,6 +597,9 @@ class AppController extends ChangeNotifier {
     String name = '',
     String confirmation = '',
   }) async {
+    if (_disposed || busy) return false;
+    var generation = _generation;
+    bool active() => !_disposed && generation == _generation;
     var accepted = false;
     String? issuedToken;
     busy = true;
@@ -599,7 +618,8 @@ class AppController extends ChangeNotifier {
       );
       accepted = true;
       issuedToken = result['token'] as String;
-      _generation++;
+      if (!active()) throw StateError('Tài khoản đã thay đổi.');
+      generation = ++_generation;
       realtime?.stop();
       _realtimeRefresh?.cancel();
       _realtimeDirty = false;
@@ -607,18 +627,23 @@ class AppController extends ChangeNotifier {
       token = issuedToken;
       emailDelivery = register ? result['email_delivery'] as String? : null;
       await _loadAccount();
+      if (!active()) throw StateError('Tài khoản đã thay đổi.');
       final session = {'user': user, 'token': token};
-      await _queueWrite(() => local.write('session', session));
+      await _queueWrite(() async {
+        if (active()) await local.write('session', session);
+      });
+      if (!active()) return false;
       sessionRemovalFailed = false;
       if (!preferences.containsKey('locale') && _publicLocale == 'en') {
         await setPreferences({'locale': 'en'});
       }
+      if (!active()) return false;
       online = true;
       _startRealtime();
       unawaited(synchronize());
       return true;
     } catch (e) {
-      if (accepted || !_accountLoaded) {
+      if (active() && (accepted || !_accountLoaded)) {
         user = null;
         token = null;
         _accountLoaded = false;
@@ -630,19 +655,22 @@ class AppController extends ChangeNotifier {
           // The newly issued session still expires server-side if unreachable.
         }
       }
-      error = 'Không thể đăng nhập/đăng ký: $e';
+      if (active()) error = 'Không thể đăng nhập/đăng ký: $e';
       return false;
     } finally {
-      busy = false;
-      notifyListeners();
+      if (active()) {
+        busy = false;
+        notifyListeners();
+      }
     }
   }
 
   Future<void> logout() async {
+    busy = false;
     sessionRemovalFailed = false;
     accessUnavailable.clear();
     final oldToken = token;
-    _generation++;
+    final generation = ++_generation;
     realtime?.stop();
     _realtimeRefresh?.cancel();
     _realtimeDirty = false;
@@ -678,9 +706,11 @@ class AppController extends ChangeNotifier {
     try {
       await _queueWrite(() => local.remove('session'));
     } catch (_) {
-      sessionRemovalFailed = true;
-      error = 'Chưa xóa được phiên đăng nhập trên thiết bị. Hãy thử đăng xuất lại trước khi đóng ứng dụng.';
-      notifyListeners();
+      if (!_disposed && generation == _generation) {
+        sessionRemovalFailed = true;
+        error = 'Chưa xóa được phiên đăng nhập trên thiết bị. Hãy thử đăng xuất lại trước khi đóng ứng dụng.';
+        notifyListeners();
+      }
     }
     if (oldToken != null) {
       try {
@@ -713,7 +743,9 @@ class AppController extends ChangeNotifier {
       if (!active() || root == null) {
         throw StateError('Kho tài khoản chưa sẵn sàng.');
       }
-      final next = edit(WorkspaceData.fromJson(root['workspace']));
+      final current = WorkspaceData.fromJson(root['workspace']);
+      final next = edit(current);
+      if (identical(next, current)) return;
       root['workspace'] = next.toJson();
       await local.write(key, root);
       if (active()) {
@@ -1125,13 +1157,15 @@ class AppController extends ChangeNotifier {
   /// Owner-only emergency revoke. Works while the note is locked: the server
   /// returns only a count, never recipient identities.
   Future<int> revokeAllShares(Note note) async {
-    if (note.role != 'owner') return 0;
+    if (note.role != 'owner' || user == null || token == null) return 0;
+    final generation = _generation;
     final result = await api.call(
       'DELETE',
       '/notes/${Uri.encodeComponent(note.id)}/shares',
       token: token,
     );
     final revoked = result is Map ? result['revoked'] as int? ?? 0 : 0;
+    if (_disposed || generation != _generation) return revoked;
     notes = [
       for (final n in notes)
         n.id == note.id
@@ -1151,6 +1185,7 @@ class AppController extends ChangeNotifier {
             : n,
     ];
     await _persist();
+    if (_disposed || generation != _generation) return revoked;
     notifyListeners();
     unawaited(synchronize());
     return revoked;

@@ -1205,3 +1205,16 @@ Bản làm việc trên `cac19bc`, nhánh `fix/project-audit`. Sửa thứ tự 
 - `scripts/qa_performance.py` chạy trên API localhost với owner/editor/viewer/stranger, đạt kiểm tra quyền tệp đính kèm. Hai workflow vượt kiểm tra actionlint v1.7.7.
 - Đo lần tìm đầu tiên trong ba tiến trình Dart VM mới cho mỗi bản, mẫu “đường” trong “Đường đến lớp”. Trung vị giảm từ 11,54 ms xuống 3,65 ms trên máy phát triển. Đây là thời gian xử lý mẫu tìm kiếm, chưa đo độ trễ toàn màn hình hoặc máy chủ production.
 - Build Android debug bằng `flutter build apk --debug --no-pub` đạt. SDK báo cảnh báo phiên bản XML. Chưa chạy trên điện thoại thật hoặc Azure.
+
+## Kiểm tra chuyển tài khoản và khôi phục phiên ngày 23/11/2026
+
+Nhánh `fix/workspace-persistence` dựa trên `c5db035`. Khi yêu cầu đăng nhập hoặc đọc cache của A hoàn tất sau khi chuyển sang B, controller bỏ qua kết quả cũ. Ảnh đại diện có cache sai kiểu hoặc base64 lỗi không cản mở lại bản nháp ngoại tuyến. Lệnh kết thúc phiên tập trung đã cũ bỏ qua bước ghi lại kho tài khoản.
+
+Kiểm thử hồi quy trong `test/maintenance_regression_test.dart` chủ động trì hoãn phản hồi HTTP và đọc cache, sau đó kiểm tra phiên đã lưu, tài khoản đang hiển thị và dữ liệu bản nháp. `test/workspace_polish_test.dart` kiểm tra callback cũ khi kho lưu trữ sẽ báo lỗi nếu bị ghi.
+Kết quả local: format và analyze đạt, 358 kiểm thử Flutter và 177 kiểm thử backend đạt. Build Web thành công. Trên Chrome localhost, đăng xuất A bằng chuột và bàn phím, đăng nhập B rồi tải lại trang đều hiển thị đúng thư viện B. Kiểm tra API tệp đính kèm với owner/editor/viewer/stranger đạt.
+
+## Kiểm tra phản hồi thu hồi chia sẻ ngày 25/11/2026
+
+Trên nhánh `fix/workspace-persistence` cập nhật từ `c5b57f2`, controller kiểm tra phiên trước khi áp dụng phản hồi thu hồi chia sẻ và trước khi đồng bộ lại. Màn hình thư viện kiểm tra phiên khi người dùng xác nhận và khi hiển thị kết quả. Kiểm thử trong `test/ui_polish_test.dart` giữ phản hồi của A đến sau khi đăng xuất và chuyển sang B, rồi xác minh cờ chia sẻ của ghi chú trùng ID trong B vẫn còn.
+
+Đã chạy `scripts/check.ps1` (format, analyze, 359 kiểm thử Flutter và 177 kiểm thử backend đạt), `scripts/build.ps1 -Target web` với API localhost (đạt) và `scripts/qa_performance.py` cho các vai trò owner/editor/viewer/stranger (đạt). Trên Chrome localhost, đăng nhập A, đăng xuất, đăng nhập B và tải lại trang đều hiển thị đúng thư viện. Lần chạy qua thao tác click và gõ phím đạt sau khi thao tác điền tự động của trình kiểm thử thất bại ở ô mật khẩu.

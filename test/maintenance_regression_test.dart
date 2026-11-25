@@ -22,6 +22,17 @@ class DeferredSessionStore extends MemoryStore {
   }
 }
 
+class DeferredAccountStore extends MemoryStore {
+  final entered = Completer<void>();
+  final account = Completer<Map<String, dynamic>?>();
+  @override
+  Future<Map<String, dynamic>?> read(String key) {
+    if (key != 'account:A') return super.read(key);
+    if (!entered.isCompleted) entered.complete();
+    return account.future;
+  }
+}
+
 class StalledClient extends http.BaseClient {
   final aborted = Completer<void>();
   @override
@@ -71,6 +82,104 @@ void main() {
     },
   );
 
+  test('Invalid avatar cache cannot prevent offline draft recovery', () async {
+    final store = MemoryStore();
+    await store.write('session', {
+      'user': {'id': 'A'},
+      'token': 'token',
+    });
+    for (final avatar in [
+      'legacy',
+      {'revision': 2, 'data': '!'},
+    ]) {
+      await store.write('account:A', {
+        'avatar': avatar,
+        'drafts': {
+          'draft': {'title': 'Keep', 'content': 'Offline content'},
+        },
+      });
+      final c = AppController(Api('http://test'), store)..setForeground(false);
+      try {
+        await c.initialize();
+        expect(c.user?['id'], 'A');
+        expect(c.drafts['draft']['content'], 'Offline content');
+        expect(c.avatarBytes, isNull);
+        expect(c.error, isNull);
+      } finally {
+        c.dispose();
+      }
+    }
+  });
+
+  for (final delayCache in [false, true]) {
+    test(
+      'Logout retires login A while waiting for ${delayCache ? "account cache" : "HTTP"}',
+      () async {
+        final store = DeferredAccountStore();
+        final requested = Completer<void>();
+        final loginReply = Completer<http.Response>();
+        final revoked = <String?>[];
+        final api = Api(
+          'http://test',
+          client: MockClient((r) async {
+            if (r.url.path == '/auth/login') {
+              if (jsonDecode(r.body)['email'] == 'A@test.invalid') {
+                requested.complete();
+                return loginReply.future;
+              }
+              return reply({
+                'user': {'id': 'B'},
+                'token': 'B-token',
+              });
+            }
+            if (r.url.path == '/auth/logout') {
+              revoked.add(r.headers['Authorization']);
+            }
+            if (r.url.path == '/me') return reply({'id': 'B'});
+            return reply(['/notes', '/labels'].contains(r.url.path) ? [] : {});
+          }),
+        );
+        final c = AppController(api, store)..setForeground(false);
+        addTearDown(c.dispose);
+        Future<bool> login(String id) => c.authenticate(
+          register: false,
+          email: '$id@test.invalid',
+          password: 'test',
+        );
+        final first = login('A');
+        await requested.future;
+        final a = reply({
+          'user': {'id': 'A'},
+          'token': 'A-token',
+        });
+        if (delayCache) {
+          loginReply.complete(a);
+          await store.entered.future;
+        }
+        await c.logout();
+        expect(await login('B'), isTrue);
+        if (delayCache) {
+          store.account.complete({
+            'drafts': {
+              'old': {'title': 'Old draft'},
+            },
+          });
+        } else {
+          loginReply.complete(a);
+        }
+        expect(await first, isFalse);
+        expect(c.user?['id'], 'B');
+        expect(c.drafts, isEmpty);
+        expect(c.error, isNull);
+        expect((await store.read('session'))?['token'], 'B-token');
+        expect(revoked, contains('Bearer A-token'));
+        expect(revoked, isNot(contains('Bearer B-token')));
+        while (c.syncing) {
+          await Future<void>.delayed(Duration.zero);
+        }
+      },
+    );
+  }
   testWidgets(
     'Background skips periodic sync and resume catches up without SSE',
     (tester) async {
