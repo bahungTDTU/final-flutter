@@ -254,6 +254,131 @@ void main() {
     shared: shared,
   );
 
+  for (final peerEdited in [false, true]) {
+    testWidgets(
+      'Library pin preserves unfinished draft (peer edit: $peerEdited)',
+      (tester) async {
+        useDeskViewport(tester);
+        final store = MemoryStore();
+        final c = offlineController(store: store)
+          ..user!['verified'] = true
+          ..notes = [note('n')];
+        await c.draft('n', '', 'Unfinished body');
+        await tester.pumpWidget(NoteTogetherApp(controller: c));
+        await tester.pumpAndSettle();
+        await tester.tap(find.byTooltip('Thao tác ghi chú'));
+        await tester.pumpAndSettle();
+        if (peerEdited) {
+          // A listing response may land before the card callback gets a new frame.
+          c.notes = [
+            const Note(
+              id: 'n',
+              title: 'Peer title',
+              content: 'Peer body',
+              revision: 2,
+              updatedAt: '',
+              labels: ['peer-label'],
+            ),
+          ];
+        }
+        final saved = c.notes.single;
+        await tester.tap(find.text('Ghim'));
+        await tester.pumpAndSettle();
+        final pin = c.pending.single;
+        expect(pin['base_revision'], saved.revision);
+        expect(pin['content'], saved.content);
+        expect(pin['labels'], saved.labels);
+        expect(pin['pinned_at'], isNotNull);
+        final expectedDraft = {
+          'title': '',
+          'content': 'Unfinished body',
+          'base_revision': peerEdited ? 1 : 2,
+        };
+        expect((await store.read('account:A'))!['drafts']['n'], expectedDraft);
+
+        await tester.tap(find.byTooltip('Thao tác ghi chú'));
+        await tester.pumpAndSettle();
+        await tester.tap(find.text('Bỏ ghim'));
+        await tester.pumpAndSettle();
+        expect(c.pending, hasLength(2));
+        expect(c.pending.last['pinned_at'], isNull);
+        expect(c.pending.last['base_revision'], saved.revision + 1);
+        expect((await store.read('account:A'))!['drafts']['n'], {
+          ...expectedDraft,
+          'base_revision': peerEdited ? 1 : 3,
+        });
+        await tester.pumpWidget(const SizedBox());
+        c.dispose();
+      },
+    );
+  }
+
+  testWidgets('Pinning from an open menu uses the latest saved text', (
+    tester,
+  ) async {
+    useDeskViewport(tester);
+    final c = offlineController()
+      ..user!['verified'] = true
+      ..notes = [note('n')];
+    await tester.pumpWidget(NoteTogetherApp(controller: c));
+    await tester.pumpAndSettle();
+    await tester.tap(find.byTooltip('Thao tác ghi chú'));
+    await tester.pumpAndSettle();
+    c.notes = [
+      const Note(
+        id: 'n',
+        title: 'Updated title',
+        content: 'Updated content',
+        revision: 2,
+        updatedAt: '',
+      ),
+    ];
+    await tester.tap(find.text('Ghim'));
+    await tester.pumpAndSettle();
+    final pin = c.pending.single;
+    expect(pin['title'], 'Updated title');
+    expect(pin['content'], 'Updated content');
+    expect(pin['base_revision'], 2);
+    await tester.pumpWidget(const SizedBox());
+    c.dispose();
+  });
+
+  testWidgets('Delete confirmation cannot remove a note updated by a peer', (
+    tester,
+  ) async {
+    useDeskViewport(tester);
+    final c = offlineController()
+      ..user!['verified'] = true
+      ..notes = [note('n')];
+    await tester.pumpWidget(NoteTogetherApp(controller: c));
+    await tester.pumpAndSettle();
+    await tester.tap(find.byTooltip('Thao tác ghi chú'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Xóa'));
+    await tester.pumpAndSettle();
+    expect(find.text('Xóa ghi chú?'), findsOneWidget);
+    const newer = Note(
+      id: 'n',
+      title: 'New version',
+      content: 'Peer edit',
+      revision: 2,
+      updatedAt: '',
+    );
+    c.notes = [newer];
+    await c.draft('n', '', 'Keep my draft');
+    await tester.tap(find.widgetWithText(FilledButton, 'Xóa'));
+    await tester.pumpAndSettle();
+    expect(c.notes, [newer]);
+    expect(c.pending, isEmpty);
+    expect(c.drafts['n']['content'], 'Keep my draft');
+    expect(
+      find.text('Ghi chú đã thay đổi. Hãy kiểm tra lại trước khi xóa.'),
+      findsOneWidget,
+    );
+    await tester.pumpWidget(const SizedBox());
+    c.dispose();
+  });
+
   testWidgets('Populated library uses a one-line header of stable height', (
     tester,
   ) async {
