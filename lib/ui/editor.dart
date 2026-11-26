@@ -67,7 +67,7 @@ class _EditorScreenState extends State<EditorScreen>
     account = c.user!['id'] as String;
     final note = c.notes.where((n) => n.id == widget.id).firstOrNull;
     existedAtOpen = note != null;
-    baseRevision = note?.revision ?? 0;
+    baseRevision = c.draftBaseRevision(widget.id, note);
     final draft = c.drafts[widget.id] as Map?;
     title = TextEditingController(
       text: draft?['title'] as String? ?? note?.title ?? '',
@@ -173,7 +173,12 @@ class _EditorScreenState extends State<EditorScreen>
     debounce?.cancel();
     setState(() => feedback = context.tr("Đang lưu trên thiết bị…"));
     try {
-      await c.draft(widget.id, title.text, content.text);
+      await c.draft(
+        widget.id,
+        title.text,
+        content.text,
+        baseRevision: baseRevision,
+      );
       if (!canWrite || !dirty || version != editVersion) return;
       setState(
         () => feedback = context.trMessage(
@@ -233,7 +238,12 @@ class _EditorScreenState extends State<EditorScreen>
     final titleValue = title.text, contentValue = content.text;
     saveFailed = false;
     try {
-      await c.draft(widget.id, titleValue, contentValue);
+      await c.draft(
+        widget.id,
+        titleValue,
+        contentValue,
+        baseRevision: baseRevision,
+      );
       if (version != editVersion || !canWrite || !dirty) return;
       final validation = noteValidationError(titleValue, contentValue);
       if (validation == null) {

@@ -1063,7 +1063,21 @@ class AppController extends ChangeNotifier {
     return created.map((n) => n.id).toList();
   }
 
-  Future<void> draft(String id, String title, String content) async {
+  int draftBaseRevision(String id, Note? saved) {
+    final draft = drafts[id];
+    if (draft == null) return saved?.revision ?? 0;
+    final revision = draft is Map ? draft['base_revision'] : null;
+    // Older drafts have no provable base. Revision 0 can create a note, but
+    // cannot replace an existing one without going through conflict recovery.
+    return revision is int && revision >= 0 ? revision : 0;
+  }
+
+  Future<void> draft(
+    String id,
+    String title,
+    String content, {
+    int? baseRevision,
+  }) async {
     if (user == null ||
         accessUnavailable.contains(id) ||
         notes.any((n) => n.id == id && (n.locked || n.role == 'viewer'))) {
@@ -1077,7 +1091,11 @@ class AppController extends ChangeNotifier {
       await _persistDrafts();
       return;
     }
-    drafts[id] = {'title': title, 'content': content};
+    drafts[id] = {
+      'title': title,
+      'content': content,
+      'base_revision': baseRevision ?? draftBaseRevision(id, saved),
+    };
     await _persistDrafts();
   }
 
@@ -1095,7 +1113,7 @@ class AppController extends ChangeNotifier {
     final existing = notes.where((n) => n.id == id).firstOrNull;
     if (existing?.locked == true || existing?.role == 'viewer') return;
     if (!validNote(title, content)) {
-      await draft(id, title, content);
+      await draft(id, title, content, baseRevision: baseRevision);
       return;
     }
     final pin = updatePin ? pinnedAt : existing?.pinnedAt;
@@ -1114,7 +1132,7 @@ class AppController extends ChangeNotifier {
       await _persist();
       return;
     }
-    final revision = baseRevision ?? existing?.revision ?? 0;
+    final revision = baseRevision ?? draftBaseRevision(id, existing);
     pending = [
       ...pending,
       {
@@ -1524,7 +1542,11 @@ class AppController extends ChangeNotifier {
           ...notes,
         ];
       } else {
-        drafts[copyId] = {'title': title, 'content': content};
+        drafts[copyId] = {
+          'title': title,
+          'content': content,
+          'base_revision': 0,
+        };
       }
     }
     try {
@@ -1569,7 +1591,11 @@ class AppController extends ChangeNotifier {
     };
     drafts = {
       ...drafts,
-      draftId: {'title': item['title'] ?? '', 'content': item['content'] ?? ''},
+      draftId: {
+        'title': item['title'] ?? '',
+        'content': item['content'] ?? '',
+        'base_revision': 0,
+      },
     };
     await _persist();
     if (_disposed || generation != _generation) {

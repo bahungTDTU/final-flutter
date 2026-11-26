@@ -1228,3 +1228,11 @@ API danh sách chỉ lấy tiêu đề và nội dung từ SQLite đối với g
 Build web release và 362 kiểm thử Flutter đạt. Trên Chrome localhost, đổi tiêu đề rồi bấm Quay lại ngay, tải lại và mở ghi chú vẫn thấy tiêu đề vừa nhập. Tìm và xóa từ khóa đạt ở 1440×900, 390×844, 320×640 và 844×390. Đổi giao diện, quay lại từ trình soạn thảo, hủy xóa và mở lại thư viện ngoại tuyến cũng đạt. Kiểm tra API tệp đính kèm đạt với owner/editor/viewer/stranger. Hai script Azure đạt kiểm tra cú pháp Bash và cấu hình Docker Compose hợp lệ.
 
 Bộ kiểm tra backend chạy bằng `scripts/check.ps1` đạt 177/177. APK debug build thành công. Chạy `flutter drive --driver=test_driver/integration_test.dart --target=integration_test/note_flow_test.dart` trên emulator Android API 36 với FastAPI localhost đạt. Sau khi mở lại kho dữ liệu và tạo/sửa ghi chú lúc ngoại tuyến, kiểm thử kết nối lại và xác minh hai nội dung trên máy chủ. Công cụ Android báo cảnh báo phiên bản SDK XML và pytest báo cảnh báo tương thích của Starlette TestClient.
+
+## Mở lại bản nháp sau khi thiết bị khác sửa ghi chú — 26/11/2026
+
+Nhánh `fix/draft-base-revision`, base `6e3d6d1`. Tái hiện trên Chrome release và FastAPI localhost với hai phiên đăng nhập cùng tài khoản. A để trống tiêu đề để giữ bản nháp của phiên bản 1. B sửa tiêu đề và nội dung thành phiên bản 2. A tải lại trang, mở bản nháp, điền tiêu đề rồi quay lại. Trước khi sửa, A gửi `base_revision=2`, máy chủ nhận HTTP 200 và nội dung cũ ghi đè B thành phiên bản 3.
+
+Sau khi sửa, bản nháp lưu số phiên bản lúc bắt đầu chỉnh sửa. Cùng kịch bản trên gửi `base_revision=1`, nhận HTTP 409. Đọc lại qua API xác nhận nội dung B ở phiên bản 2. Tải lại Chrome vẫn thấy thay đổi của A. Chọn **Giữ bản sao của tôi** tạo ghi chú riêng chứa nội dung A và giữ nguyên ghi chú B. Bản nháp định dạng cũ thiếu số phiên bản chỉ có thể tạo mới hoặc đi qua xử lý xung đột khi trùng ghi chú đã tồn tại.
+
+`scripts/check.ps1` đạt format, analyze, 365 kiểm thử Flutter và 177 kiểm thử backend. Ba ca hồi quy trong `test/realtime_test.dart` kiểm tra khi máy chủ đã sửa, chưa sửa và khi mở dữ liệu cũ. `scripts/build.ps1 -Target web -ApiUrl http://127.0.0.1:18321` đạt. Hai phiên dùng chung backend localhost, với A thao tác giao diện Chrome và B gửi yêu cầu qua API.
