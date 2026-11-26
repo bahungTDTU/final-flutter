@@ -1,3 +1,22 @@
+# Thao tác thư viện khi còn bản nháp
+
+Ngày 26/11/2026, trên bản làm việc từ commit `49fed0f`, đã tái hiện ba lỗi bằng widget test trước khi sửa. Ghim làm mất bản nháp trên thiết bị. Menu ghim đang mở có thể lấy nội dung hoặc số phiên bản cũ. Xác nhận xóa sau khi thiết bị khác cập nhật ghi chú làm mất cả thẻ và bản nháp khỏi thư viện local.
+
+Ghim và bỏ ghim từ thư viện hiện lấy nội dung, nhãn và phiên bản mới nhất mà thiết bị đã nhận. Nếu bản nháp dựa trên đúng phiên bản vừa ghim, lần lưu tiếp theo kế thừa thay đổi ghim của chính người dùng. Bản nháp cũ hơn vẫn giữ số phiên bản ban đầu để xử lý xung đột. Xác nhận xóa kiểm tra lại phiên đăng nhập, quyền sở hữu, trạng thái khóa và phiên bản trước khi thay đổi dữ liệu trên thiết bị.
+
+- `scripts/check.ps1` trên Windows đạt format, analyze, 369 kiểm thử Flutter và 177 kiểm thử backend. Bốn ca mới trong `test/ui_polish_test.dart` bao phủ ghim/bỏ ghim với bản nháp, nội dung thay đổi từ xa khi menu đang mở và xác nhận xóa đã cũ.
+- Build bằng `scripts/build.ps1 -Target web -ApiUrl http://127.0.0.1:18431`. Trên Chrome release ở localhost, để trống tiêu đề, sửa nội dung rồi quay lại thư viện và ghim. Máy chủ nhận thao tác ghim trên phiên bản 1 với nội dung đã lưu. Tải lại trang, mở **Khôi phục bản nháp** và điền tiêu đề. FastAPI nhận đúng nội dung viết dở trên phiên bản 2. Bỏ ghim được xác nhận trên phiên bản 3.
+- Trong khi Chrome hiển thị xác nhận xóa, phiên đăng nhập thứ hai sửa ghi chú qua API từ phiên bản 4 lên 5. Chrome nhận cập nhật, từ chối xác nhận cũ và hiển thị yêu cầu kiểm tra lại. Đọc qua API xác nhận phiên bản 5 còn nguyên. Mở lại menu và xác nhận xóa lần nữa thành công trên phiên bản 5.
+- `scripts/qa_performance.py --url http://127.0.0.1:18431 --output four-roles.json` đạt kiểm tra HTTP về quyền tệp cho owner, editor, viewer và người ngoài trên SQLite thử nghiệm.
+
+**Android 16, API 36, ngày 26/11/2026.** Kiểm tra trên AVD `taskflow_api36` dùng APK debug từ nhánh `fix/library-actions-draft-safety` dựa trên `ecdaa26`. Build bằng `flutter build apk --debug --no-pub`, cài bằng `adb -s emulator-5582 install -r build/app/outputs/flutter-apk/app-debug.apk`. SHA-256 của APK là `25f2f0691a85395ef8d884b95d6fb0094405dee7f7905f762fc26434bc3d1488`. Ứng dụng dùng backend FastAPI/SQLite thử nghiệm qua `adb -s emulator-5582 reverse tcp:8000 tcp:18433`. Thao tác giao diện bằng ADB và UI Automator, đối chiếu kết quả bằng phiên API thứ hai.
+
+- Ghim khi tiêu đề bản nháp còn trống. Máy chủ giữ nội dung đã lưu và nhận ghim ở phiên bản 5. Sau `adb shell am force-stop vn.edu.notetogether.note_together` và mở lại, PID thay đổi. Bỏ ghim ở phiên bản 6, mở **Khôi phục bản nháp** thấy đúng nguyên văn. Điền tiêu đề, máy chủ lưu được nội dung đang viết ở phiên bản 7.
+- Khi menu ghim đang mở, phiên thứ hai đổi tiêu đề, nội dung và gắn nhãn ở phiên bản 8. Bấm **Ghim** trên Android. Đọc lại qua API thấy phiên bản 9 đã ghim, giữ cả ba thay đổi của phiên kia.
+- Khi hộp xóa đang mở, phiên thứ hai sửa ghi chú lên phiên bản 10. Xác nhận trên Android hiện thông báo yêu cầu kiểm tra lại. API vẫn đọc được phiên bản 10 và trình soạn thảo vẫn mở được bản nháp local. Mở lại menu và xác nhận lần nữa mới xóa thành công.
+
+Lượt kiểm tra trước push bằng `scripts/check.ps1` đạt format, analyze, 369 kiểm thử Flutter và 177 kiểm thử backend. Phạm vi Android là APK debug trên emulator. Điện thoại vật lý, APK ký phát hành và Azure chưa được kiểm tra trong lượt này.
+
 # NoteTogether — kiểm tra ngày 21/11/2026
 
 Bản rà UI kế tiếp từ master `f6dfb92` sửa chuyển trang khi bấm Back giữa animation, thẻ một cột và thanh công cụ ở 320 px. [Kiểm tra Chrome, Android và animation](docs/UI_UX_QA.md).

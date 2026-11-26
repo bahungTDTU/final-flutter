@@ -1,5 +1,7 @@
 # Ma trận yêu cầu 32 tiêu chí
 
+Ngày 26/11/2026, mục 13, 14, 17 và 31 có thêm kiểm tra trên Chrome và Android 16 (AVD API 36) cho thao tác ghim khi còn bản nháp và xác nhận xóa sau khi phiên khác sửa ghi chú. Android đã khôi phục bản nháp sau khi buộc dừng ứng dụng. [Kết quả theo môi trường](../STATUS.md#thao-tác-thư-viện-khi-còn-bản-nháp).
+
 Mục 29 có thêm kiểm tra luồng thư viện/editor trên Chrome và Android API 36 ngày 21/11. [Phạm vi và ảnh giao diện](UI_UX_QA.md).
 
 ID 2/4 dùng OTP email 6 chữ số cho mã mới. Web/Android nhập cùng địa chỉ

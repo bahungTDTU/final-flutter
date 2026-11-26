@@ -1163,6 +1163,38 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
+  Future<void> changeLibraryNote(
+    Note note,
+    String action,
+    String sessionToken,
+  ) async {
+    try {
+      if (action != 'delete') {
+        await c.setPinned(note.id, pinned: action == 'pin');
+        return;
+      }
+      if (!await confirmDelete(context, note.title) ||
+          !mounted ||
+          c.token != sessionToken) {
+        return;
+      }
+      final deleted = await c.delete(note);
+      if (!deleted && mounted && c.token == sessionToken) {
+        showMessage(
+          context,
+          context.tr('Ghi chú đã thay đổi. Hãy kiểm tra lại trước khi xóa.'),
+        );
+      }
+    } catch (_) {
+      if (mounted && c.token == sessionToken) {
+        showMessage(
+          context,
+          context.tr('Chưa lưu được thay đổi trên thiết bị. Vui lòng thử lại.'),
+        );
+      }
+    }
+  }
+
   /// Leading icon + label; [color] marks destructive actions (icon and text).
   PopupMenuItem<String> _menuItem(
     String value,
@@ -1189,6 +1221,7 @@ class _HomeScreenState extends State<HomeScreen> {
     BuildContext? appearance,
   }) {
     final visual = appearance ?? context;
+    final sessionToken = c.token;
     final colors = Theme.of(visual).colorScheme;
     final palette = PrismPalette.of(visual);
     final tone = note.locked ? null : palette.tone(note.id);
@@ -1269,21 +1302,16 @@ class _HomeScreenState extends State<HomeScreen> {
                   PopupMenuButton<String>(
                     tooltip: context.tr("Thao tác ghi chú"),
                     onSelected: (action) async {
-                      if (action == 'pin') {
-                        await c.save(
-                          note.id,
-                          note.title,
-                          note.content,
-                          updatePin: true,
-                          pinnedAt: note.pinnedAt == null
-                              ? DateTime.now().toUtc().toIso8601String()
-                              : null,
-                        );
+                      if (!mounted ||
+                          sessionToken == null ||
+                          c.token != sessionToken) {
+                        return;
                       }
-                      if (action == 'delete' &&
-                          mounted &&
-                          await confirmDelete(context, note.title)) {
-                        await c.delete(note);
+                      if (action == 'pin' ||
+                          action == 'unpin' ||
+                          action == 'delete') {
+                        await changeLibraryNote(note, action, sessionToken);
+                        return;
                       }
                       if (action == 'protect' && mounted) {
                         await showDialog<bool>(
@@ -1311,7 +1339,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         context.tr("Chia sẻ"),
                       ),
                       _menuItem(
-                        'pin',
+                        note.pinnedAt == null ? 'pin' : 'unpin',
                         note.pinnedAt == null
                             ? Icons.push_pin_outlined
                             : Icons.push_pin,

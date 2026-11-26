@@ -1133,6 +1133,50 @@ class AppController extends ChangeNotifier {
       return;
     }
     final revision = baseRevision ?? draftBaseRevision(id, existing);
+    drafts.remove(id);
+    await _queueNoteEdit(
+      id,
+      existing: existing,
+      title: title.trim(),
+      content: content,
+      revision: revision,
+      pinnedAt: pin,
+      labels: selectedLabels,
+    );
+  }
+
+  /// A library action edits the saved note. Unfinished text stays in its draft.
+  Future<void> setPinned(String id, {required bool pinned}) async {
+    if (user == null || accessUnavailable.contains(id)) return;
+    final note = notes.where((n) => n.id == id).firstOrNull;
+    if (note == null || note.locked || note.role != 'owner') return;
+    if ((note.pinnedAt != null) == pinned) return;
+    final draft = drafts[id];
+    if (draft is Map && draft['base_revision'] == note.revision) {
+      // Only our own metadata change can advance a draft with this exact base.
+      drafts[id] = {...draft, 'base_revision': note.revision + 1};
+    }
+    await _queueNoteEdit(
+      id,
+      existing: note,
+      title: note.title,
+      content: note.content,
+      revision: note.revision,
+      pinnedAt: pinned ? DateTime.now().toUtc().toIso8601String() : null,
+      labels: List<String>.of(note.labels),
+    );
+  }
+
+  Future<void> _queueNoteEdit(
+    String id, {
+    required Note? existing,
+    required String title,
+    required String content,
+    required int revision,
+    required String? pinnedAt,
+    required List<String> labels,
+  }) async {
+    final generation = _generation;
     pending = [
       ...pending,
       {
@@ -1140,22 +1184,22 @@ class AppController extends ChangeNotifier {
         'note_id': id,
         'kind': 'upsert',
         'base_revision': revision,
-        'title': title.trim(),
+        'title': title,
         'content': content,
-        'pinned_at': pin,
-        'labels': selectedLabels,
+        'pinned_at': pinnedAt,
+        'labels': labels,
         'labels_format': 'ids',
       },
     ];
     notes = [
       Note(
         id: id,
-        title: title.trim(),
+        title: title,
         content: content,
         revision: revision + 1,
         updatedAt: DateTime.now().toUtc().toIso8601String(),
-        pinnedAt: pin,
-        labels: selectedLabels,
+        pinnedAt: pinnedAt,
+        labels: labels,
         labelNames: existing?.labelNames ?? {},
         role: existing?.role ?? 'owner',
         sharedCount: existing?.sharedCount ?? 0,
@@ -1166,8 +1210,8 @@ class AppController extends ChangeNotifier {
       ),
       ...notes.where((n) => n.id != id),
     ];
-    drafts.remove(id);
     await _persist();
+    if (_disposed || generation != _generation) return;
     notifyListeners();
     unawaited(synchronize());
   }
@@ -1209,8 +1253,16 @@ class AppController extends ChangeNotifier {
     return revoked;
   }
 
-  Future<void> delete(Note note) async {
-    if (note.locked || note.role != 'owner') return;
+  Future<bool> delete(Note note) async {
+    final current = notes.where((n) => n.id == note.id).firstOrNull;
+    if (user == null ||
+        current == null ||
+        current.role != 'owner' ||
+        current.locked ||
+        current.revision != note.revision) {
+      return false;
+    }
+    final generation = _generation;
     pending = [
       ...pending,
       {
@@ -1223,8 +1275,11 @@ class AppController extends ChangeNotifier {
     notes = notes.where((n) => n.id != note.id).toList();
     drafts.remove(note.id);
     await _persist();
-    notifyListeners();
-    unawaited(synchronize());
+    if (!_disposed && generation == _generation) {
+      notifyListeners();
+      unawaited(synchronize());
+    }
+    return true;
   }
 
   Future<void> synchronize() async {

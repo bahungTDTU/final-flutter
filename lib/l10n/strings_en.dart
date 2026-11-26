@@ -1,6 +1,8 @@
 // English UI resources. Vietnamese source messages are stable keys.
 // Arguments are inserted once; user content is never translated.
 const englishMessages = <String, String>{
+  'Ghi chú đã thay đổi. Hãy kiểm tra lại trước khi xóa.':
+      'This note has changed. Review it before deleting it.',
   'Tiêu đề vượt giới hạn 200 mã Unicode. Bản nháp vẫn được giữ.':
       'Title exceeds 200 Unicode code points. Your draft is retained.',
   'Nội dung vượt giới hạn lưu trữ. Hãy rút gọn; bản nháp vẫn được giữ.':
