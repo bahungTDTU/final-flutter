@@ -9,12 +9,9 @@ Trong thư viện, tài khoản chưa xác minh luôn có nút **Xác minh**. B�
 
 Bạn có thể ghim hoặc bỏ ghim ngay trong thư viện khi còn viết dở. Chọn **Khôi phục bản nháp** để viết tiếp, kể cả sau khi mở lại ứng dụng.
 
-## Trạng thái hiện hành — 21/11/2026
+## Trạng thái hiện hành — 27/11/2026
 
-Web HTTPS trên Azure phục vụ master `26e4660` tại lần kiểm tra ngày 21/11.
-Bản sửa trên nhánh bổ sung tìm kiếm tiếng Việt với dấu tổ hợp, cho phép mở
-Web trong khi chuẩn bị cache offline và hỗ trợ xoay màn hình khi cài PWA.
-Xem kết quả kiểm tra trong STATUS.md. Android ký phát hành và bộ nộp vẫn còn mở.
+Ngày 27/11, Web Azure chạy commit `4c7418b`. APK Android 1.0.0+1 đã ký và dùng cùng cây mã nguồn.
 
 - [Giao diện thích ứng, chuyển trang và kiểm thử luồng 21/11](docs/UI_UX_QA.md).
 - [Nghiệm thu Web và Android 18/11](docs/RUNTIME_ACCEPTANCE_2026-11-18.md).
@@ -23,6 +20,17 @@ Xem kết quả kiểm tra trong STATUS.md. Android ký phát hành và bộ n�
 - [Các việc còn thiếu](docs/REMAINING_GATES.md), [ma trận 32 tiêu chí](docs/REQUIREMENTS_MATRIX.md).
 - [Deploy Web trên Azure](docs/AZURE_WEB_DEPLOYMENT.md), [checklist bộ nộp](docs/SUBMISSION_CHECKLIST.md), [quy trình branch/PR](docs/BRANCH_WORKFLOW.md).
 - [Lịch sử triển khai và lệnh trên máy cũ](README_HISTORY.md); các kết quả trong đó chỉ áp dụng cho lần chạy được ghi.
+
+## Tài khoản chấm và ghi chú mẫu
+
+Mở [NoteTogether trên Azure](https://notetogether-029218.malaysiawest.cloudapp.azure.com) hoặc cài `release/app-release.apk` trong bộ nộp. Hai tài khoản dùng chung trên Web và Android, đã xác minh email. Email đăng nhập và mật khẩu của từng người nằm trong `Readme.txt` ở thư mục gốc của bộ nộp.
+
+| Tài khoản | Ghi chú riêng trong mục Ghi chú | Ghi chú chung |
+|---|---|---|
+| Minh An · Chủ ghi chú | Lịch khảo sát thư viện | Sở hữu **Biên bản khảo sát thư viện**, đã chia sẻ với Khánh Linh. |
+| Khánh Linh · Cộng tác viên | Phiếu phỏng vấn bạn đọc | Mở **Được chia sẻ → Biên bản khảo sát thư viện** để đọc và chỉnh sửa. |
+
+Để kiểm tra đồng bộ, đăng nhập Minh An trên Web và Khánh Linh trên APK. Từ APK, thêm một từ vào cuối tiêu đề ghi chú chung. Khi ứng dụng hiện **Đã đồng bộ**, đối chiếu tiêu đề trong thư viện Web rồi trả lại tên ban đầu.
 
 ## Chạy nhanh trên Windows
 
@@ -63,12 +71,12 @@ Không cần email/LLM thật để chạy các test fixture; các test đó kh�
 
 ## Hoàn thiện bản nộp
 
-1. Cấu hình SMTP/inbox và LLM thật, chạy nghiệm thu email và AI trên hai nền tảng.
-2. Chuẩn bị backend/Web HTTPS và keystore của nhóm; build, cài và nghiệm thu cùng source.
+1. Lưu kết quả nghiệm thu OTP qua Gmail trên Web Azure và APK release, đối chiếu minh chứng AI trên hai nền tảng với các mục tự chấm.
+2. Đưa URL Web Azure vào `release/web-url.txt` và APK đã ký vào `release/app-release.apk` trong bộ nộp.
 3. Chạy các luồng còn thiếu trên artifact cuối: IME, offline/relaunch, khóa/background,
    tệp bảo vệ, nhãn và hai client đổi quyền khi đang sửa.
-4. Bổ sung Rubric gốc, video hai thành viên, Insights thật và tài khoản chấm;
-   đóng gói source có `.git`, release, tài liệu, rồi giải nén kiểm tra.
+4. Hoàn tất Rubric gốc và video hai thành viên. Kèm ảnh Insights nếu tự nhận đạt tiêu chí teamwork.
+   Đóng gói source có `.git`, thư mục release và bản Readme có tài khoản chấm, rồi giải nén kiểm tra.
 
 Xem [release/backup](docs/RELEASE_AND_BACKUP.md), [nghiệm thu native](docs/NATIVE_OS_ACCEPTANCE.md),
 [AI](docs/AI_FEATURES.md), [email](docs/EMAIL_DELIVERY.md) và [kế hoạch C0–C5](docs/COMPLETION_PLAN_2026-10-19.md).
@@ -145,6 +153,6 @@ Backend đọc NOTETOGETHER_DB và WEB_ORIGINS từ process environment. Launche
 nạp `.env` qua Uvicorn. Khi tự gọi Uvicorn, truyền `--env-file .env` nếu cần.
 CORS cần origin chính xác. API_URL chỉ là public URL, không secret.
 Tạo tài khoản test email/display name/password≥10 ký tự hai lần, tự login và giữ banner unverified.
-Không có grading account/public credentials preloaded; production email/AI không được giả success.
+Để chấm trên Azure, dùng hai tài khoản và ghi chú mẫu ở mục **Tài khoản chấm và ghi chú mẫu**.
 
 Ngày 22/11/2026, mục **Giao diện → Bảng màu giao diện** có 10 bảng phối sáng/tối, gồm bốn lựa chọn mới Rạn san hô, Hạ chí, Cực quang và Đầm phá. Chi tiết trong docs/COLOR_PALETTES.md.
