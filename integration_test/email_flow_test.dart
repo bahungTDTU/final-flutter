@@ -107,6 +107,11 @@ void main() {
       await tester.pumpWidget(NoteTogetherApp(controller: c));
       await tester.pumpAndSettle();
       expect(find.byType(UnverifiedBanner), findsOneWidget);
+      await tester.tap(find.text('Xác minh'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.byType(BackButton));
+      await tester.pumpAndSettle();
+      expect(find.byType(UnverifiedBanner), findsOneWidget);
       final verifyCode = await code(email, 'verify');
       await tester.tap(find.text('Xác minh'));
       await tester.pumpAndSettle();

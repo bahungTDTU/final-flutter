@@ -1,3 +1,7 @@
+# Nhắc xác minh email trong thư viện
+
+Ngày 27/11/2026, nhánh `fix/persistent-email-reminder` từ `22c65ae` giữ trạng thái chưa xác minh và nút mở form OTP cho đến khi tài khoản được xác minh. Trên Android 16 API 36, `flutter drive --target=integration_test/email_flow_test.dart --driver=test_driver/integration_test.dart` với SMTP/TLS thử nghiệm ở loopback đã kiểm tra quay lại khi chưa nhập mã, xác minh thành công, đặt lại mật khẩu và đăng nhập lại. Cùng luồng đó xác nhận ghi chú tạo trước khi xác minh vẫn đọc được sau khi đăng nhập.
+
 # Thao tác thư viện khi còn bản nháp
 
 Ngày 26/11/2026, trên bản làm việc từ commit `49fed0f`, đã tái hiện ba lỗi bằng widget test trước khi sửa. Ghim làm mất bản nháp trên thiết bị. Menu ghim đang mở có thể lấy nội dung hoặc số phiên bản cũ. Xác nhận xóa sau khi thiết bị khác cập nhật ghi chú làm mất cả thẻ và bản nháp khỏi thư viện local.

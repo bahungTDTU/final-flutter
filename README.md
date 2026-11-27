@@ -5,6 +5,8 @@ Có đăng nhập, xác minh email và đặt lại mật khẩu bằng OTP 6 s�
 tự lưu/bản nháp offline, nhãn, tệp đính kèm riêng tư,
 khóa ghi chú, chia sẻ theo quyền, realtime và tích hợp AI Summary/Q&A.
 
+Trong thư viện, tài khoản chưa xác minh luôn có nút **Xác minh**. Bạn có thể quay lại để tiếp tục dùng ghi chú và nhập mã sau. Lời nhắc tự ẩn khi xác minh thành công.
+
 Bạn có thể ghim hoặc bỏ ghim ngay trong thư viện khi còn viết dở. Chọn **Khôi phục bản nháp** để viết tiếp, kể cả sau khi mở lại ứng dụng.
 
 ## Trạng thái hiện hành — 21/11/2026

@@ -407,20 +407,38 @@ void main() {
     c.dispose();
   });
 
-  testWidgets('Unverified reminder can be hidden for the session', (
-    tester,
-  ) async {
-    useDeskViewport(tester);
-    final c = offlineController()..notes = [note('n')];
-    await tester.pumpWidget(NoteTogetherApp(controller: c));
-    await tester.pumpAndSettle();
-    expect(find.byType(UnverifiedBanner), findsOneWidget);
-    await tester.tap(find.byKey(const Key('dismiss-unverified')));
-    await tester.pumpAndSettle();
-    expect(find.byType(UnverifiedBanner), findsNothing);
-    await tester.pumpWidget(const SizedBox());
-    c.dispose();
-  });
+  testWidgets(
+    'Unverified reminder stays actionable after cancelling verification',
+    (tester) async {
+      useDeskViewport(tester);
+      final c = offlineController()..notes = [note('n')];
+      await tester.pumpWidget(NoteTogetherApp(controller: c));
+      await tester.pumpAndSettle();
+      expect(find.byType(UnverifiedBanner), findsOneWidget);
+      final banner = find.byType(UnverifiedBanner);
+      expect(
+        find.descendant(of: banner, matching: find.byIcon(Icons.close)),
+        findsNothing,
+      );
+      await tester.tap(
+        find.descendant(of: banner, matching: find.text('Xác minh')),
+      );
+      await tester.pumpAndSettle();
+      expect(find.byType(TokenScreen), findsOneWidget);
+      await tester.tap(find.byType(BackButton));
+      await tester.pumpAndSettle();
+      expect(
+        find.descendant(of: banner, matching: find.text('Xác minh')),
+        findsOneWidget,
+      );
+      c.user!['verified'] = true;
+      c.notifyListeners();
+      await tester.pumpAndSettle();
+      expect(find.byType(UnverifiedBanner), findsNothing);
+      await tester.pumpWidget(const SizedBox());
+      c.dispose();
+    },
+  );
 
   testWidgets('Settings open as a centred dialog on wide windows', (
     tester,
