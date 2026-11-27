@@ -819,7 +819,6 @@ const englishMessages = <String, String>{
       "Create a private draft · works offline",
   "Tạo bản riêng": "Create private copy",
   "Tạo ghi chú đầu tiên": "Create your first note",
-  "Ẩn nhắc nhở đến lần mở sau": "Hide this reminder until next time",
   "Tạo bộ sưu tập": "Create collection",
   "Tạo bộ sưu tập thông minh": "Create smart collection",
   "Tạo các ghi chú mới": "Create new notes",

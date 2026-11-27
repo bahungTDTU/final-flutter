@@ -1,5 +1,7 @@
 # Ma trận yêu cầu 32 tiêu chí
 
+Mục 2, ngày 27/11/2026: lời nhắc và nút xác minh trong thư viện vẫn hiện sau khi quay lại từ form OTP; xác minh thành công gỡ lời nhắc. Đã kiểm tra trên AVD Android 16 API 36 với hộp thư SMTP thử nghiệm. [Lệnh và phạm vi](../STATUS.md#nhắc-xác-minh-email-trong-thư-viện).
+
 Ngày 26/11/2026, mục 13, 14, 17 và 31 có thêm kiểm tra trên Chrome và Android 16 (AVD API 36) cho thao tác ghim khi còn bản nháp và xác nhận xóa sau khi phiên khác sửa ghi chú. Android đã khôi phục bản nháp sau khi buộc dừng ứng dụng. [Kết quả theo môi trường](../STATUS.md#thao-tác-thư-viện-khi-còn-bản-nháp).
 
 Mục 29 có thêm kiểm tra luồng thư viện/editor trên Chrome và Android API 36 ngày 21/11. [Phạm vi và ảnh giao diện](UI_UX_QA.md).

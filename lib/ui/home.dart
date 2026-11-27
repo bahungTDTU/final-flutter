@@ -31,17 +31,10 @@ import 'workspace.dart';
 import 'security_center.dart';
 
 class UnverifiedBanner extends StatelessWidget {
-  const UnverifiedBanner({
-    super.key,
-    required this.onCheck,
-    this.delivery,
-    this.onDismiss,
-  });
+  const UnverifiedBanner({super.key, required this.onCheck, this.delivery});
   final VoidCallback onCheck;
   final String? delivery;
 
-  /// Hides the reminder for this session so it stops pushing notes down.
-  final VoidCallback? onDismiss;
   @override
   Widget build(BuildContext context) => StatusNotice(
     compact: true,
@@ -53,20 +46,7 @@ class UnverifiedBanner extends StatelessWidget {
             "Email chưa xác minh. Mã đang chờ gửi; ghi chú vẫn dùng được.",
           )
         : context.tr("Email chưa xác minh"),
-    // Wrap so the two actions stack instead of overflowing at large text.
-    action: Wrap(
-      crossAxisAlignment: WrapCrossAlignment.center,
-      children: [
-        TextButton(onPressed: onCheck, child: Text(context.tr("Xác minh"))),
-        if (onDismiss != null)
-          IconButton(
-            key: const Key('dismiss-unverified'),
-            tooltip: context.tr("Ẩn nhắc nhở đến lần mở sau"),
-            onPressed: onDismiss,
-            icon: const Icon(Icons.close),
-          ),
-      ],
-    ),
+    action: TextButton(onPressed: onCheck, child: Text(context.tr("Xác minh"))),
   );
 }
 
@@ -106,8 +86,6 @@ class _HomeScreenState extends State<HomeScreen> {
   Timer? searchDelay;
   final listingCache = NoteListingCache();
   bool routeCurrent = true;
-  // Session-only: the reminder returns on the next launch until verified.
-  bool unverifiedHidden = false;
   late List<Object?> observedView;
   AppController get c => widget.controller;
   @override
@@ -303,14 +281,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 MediaQuery.textScalerOf(context).scale(1) >= 1.5 ||
                 MediaQuery.sizeOf(context).width < 900,
           ),
-    notice: (c.user?['verified'] == true || unverifiedHidden) && c.error == null
+    notice: c.user?['verified'] == true && c.error == null
         ? null
         : Column(
             children: [
-              if (c.user?['verified'] != true && !unverifiedHidden)
+              if (c.user?['verified'] != true)
                 UnverifiedBanner(
                   delivery: c.emailDelivery,
-                  onDismiss: () => setState(() => unverifiedHidden = true),
                   onCheck: () => Navigator.of(context).push(
                     MaterialPageRoute<void>(
                       builder: (_) => TokenScreen(controller: c),
@@ -318,8 +295,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               if (c.error != null) ...[
-                if (c.user?['verified'] != true && !unverifiedHidden)
-                  const SizedBox(height: 12),
+                if (c.user?['verified'] != true) const SizedBox(height: 12),
                 StatusNotice(
                   message: c.localWriteFailed
                       ? c.error!
